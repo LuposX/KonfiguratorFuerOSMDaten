@@ -42,9 +42,36 @@ bookmarks=true,
 
 \subsection{Anwendungsbereiche}
 \subsection{Zielgruppen}
+\textbf{not reviewed yet, author=Karl\\}
 In diesem Abschnitt wird die Zielgruppe des Produkts definiert. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Außerdem sind die Anwendungsbereiche, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
 
 \subsection{Betriebsbedingungen}
+\textbf{not reviewed yet, auhor=Pascal\\}
+Dieses Unterkapitel behandelt die Bedürfnisse und Anforderungen der Software.
+Zum nutzen der Software werden Daten aus der OpenStreetMap benötig, spezifischer sollen .osm.pbf / .osm.bz2 Daten von der Software einlesbar sein, ebenso wie Dateien, welche die Software selber wieder exportieren kann.
+Die Software arbeitet in Etappen, welche definiert sind durch
+\begin{enumerate}
+    \item Dateninput
+    \item Geofilter
+    \item Tag Filter
+    \item Reduktion
+    \item Attraktivität
+    \item Aggregation
+\end{enumerate}
+
+(Für Spezifikation dieser Etappen siehe HIER KONTEXT ANGEBEN)
+Diese Etappen werden nach einander ausgeführt und bedarf gegebenenfalls Konfiguration durch den Benutzer, bevor die Berechnungen ausgeführt werden kann.
+Es sollen dabei Zwischenergebnisse der einzelnen Etappen gespeichert werden.
+Die Software soll nun auch in der läge sein, selber ihre Konfigurationen als Datei exportieren zu können (DATEITYP ANGEBEN NOCH). Dies muss allerdings keine vollständig berechnete Datei sein, sondern diese kann auch nur bis zu einer gewissen Etappe erfolgt sein.
+Diese von der Software exportierten Dateien sollen ebenfalls wieder importierbar sein, um an diesen weiter arbeiten zu können, oder um mehreren Nutzern an verschiedenen Geräten die Selbe Datei zur verfügung stellen zu können.
+Innerhalb der Software soll es möglich sein auch ab einer gewissen Etappe neu Berechnungen mit anderen Konfigurationen anzustoßen, hierbei wird angezeigt welche Etappen alle betroffen sind und wo ebenfalls, gegebenenfalls Konfigurationen neu angegeben werden müssen.
+Die Software soll auf dem Betriebssystem Windows 10 oder 11 laufen.
+Dabei soll für kleinere Instanzen an Daten ein Laptop mit 8GB RAM, i5 4 Kerne ausreichen.
+Für größere Instanzen wird eine Workstation mit 125-250 GB RAM, 8-16 Kerne benötigt.
+(KLEINE INSTANTEN UND GROßE INSTANZEN NOCH DEFINIEREN)
+Für niederwertigere Hardware wird keine Funktion gewährleistet.
+Die Software soll dabei von einer Person bedienbar sein, ohne jegliches vorwissen an Informatik.
+
 \newpage
 
 
