@@ -31,31 +31,53 @@ bookmarks=true,
 \section{Zielbestimmung}
 
 \subsection{Musskriterien}
-\textbf{not reviewed yet, author=Simon\\}
+\textbf{author=Simon,reviewedby=Karl\\}
 Musskriterien: unabdingbare Leistungen der Software.
 \begin{itemize}
     \item Es muss möglich sein Daten einzulesen
     \item Die Daten müssen räumlich gefiltert werden
-    \item Der User muss die Möglichkeit haben Kategorien zu erstellen und nach diesen zu filtern
+    \item Der Nutzer muss Kategorien erstellen können
+    \item Der Nutzer muss je Kategorie Tag-Filter konfigurieren können
     \item Es müssen Gebäude-Polygonen reduziert werden zu einem Gebäude-Punkt
-    \item Es muss der Attraktivität-Score von Gebäuden berechnet werden
-    \item Der Attraktivität-Score muss aggregiert werden können in vordefinierten Vekehrszellen
-    \item Alle Zwischenschritte dieses Prozesses müssen gespeichert werden
+    \item Es muss eine Attraktivitätspunktzahl von Gebäuden berechnet werden können
+    \item Die Attraktivitätspunktzahl muss in vordefinierten Vekehrszellen aggregiert werden können 
+    \item Alle Zwischenschritte dieses Prozesses müssen gespeichert werden können.
 \end{itemize}
 
-\subsection{Sollkriterien}
-\textbf{not reviewed yet, author=Simon\\}
-Sollkriterien: erstrebenswerte Leistungen.
+
+\textbf{reviewedby = Felix , author=Karl, ich hab meine ausformulierten Kriterien jetzt auch mal reingeschrieben, ich wusste jetzt nicht, inwiefern ich die oben reindrücken sollte\\}
 \begin{itemize}
-    \item Es soll möglich sein OSM-Daten einzulesen per Link oder repository
-    \item Es soll eine Karte geben die die Vekehrsdaten visualisiert 
-    \item Es sollte möglich sein in die Karte Polygone Einzuzeichnen, die benutzt werden für das räumliche filtern
-    \item Es soll für dass filtern mit Kategorien, beliebige logische Ausdrücke möglich sein
+    \item Der Nutzer muss OSM-Datensätze einlesen können
+    \item Der Nutzer muss den betrachteten Raum auswählen können
+    \item Der Nutzer muss Kategorien von OSM-Elementen definieren können
+    \item Das Programm muss Standard-Kategorien anbieten
+    \item Das Programm muss OSM-Elemente auf einen Punkt reduzieren können
+    \item Das Programm muss den OSM-Elementen Attribute zuweisen können
+    \item Der Nutzer muss für jede Kategorie das Verfahren zur Berechnung der Attribute auswählen können
+    \item (Standard-Werte?)
+    \item Es muss unterschiedliche Attraktivitätsattribute geben
+    \item Der Nutzer muss die Attraktivitätsattribute in Abhängigkeit zu den Attributen konfigurieren können
+    \item Das Programm muss in jeder Verkehrszelle die Attraktivitätsattribute aggregieren können
+    \item Es muss eine intuitive GUI geben
+    \item Das Programm soll die Zwischenschritte regelmäßig speichern
+    \item (maybe noch was mit blacklist / whitelist)
 \end{itemize}
 
 
-\subsection{Kannkriterien}
+\subsection{Wunschkriterien}
+\textbf{author=Simon,reviewedby=Karl\\}
+\begin{itemize}
+    \item Es soll möglich sein OSM-Daten per Link oder Repository einzulesen
+    \item Die Verkehrsdaten sollen mit einer Karte visualisiert werden können
+    \item Der Nutzer soll durch Klicken auf eine Karte Polygone definieren können
+    \item Es soll für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein
+\end{itemize}
+
+
 \subsection{Abgrenzungskriterien}
+\begin{itemize}
+    \item Es findet keine Analyse der generierten Daten statt
+\end{itemize}
 \newpage
 
 
@@ -63,14 +85,17 @@ Sollkriterien: erstrebenswerte Leistungen.
 \section{Produkteinsatz}
 
 \subsection{Anwendungsbereiche}
+\textbf{author="JP", reviewedby=Karl} 
+Dieses Kapitel erläutert, in welchen Bereichen die Software eingesetzt werden soll. Als Open-Source-Veröffentlichung soll die Anwendung Verkehrsinstituten dem Berechnen von Daten dienen, welche anschließend als Eingabe zum Erstellen von Verkehrsnachfragemodellen verwendet werden. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
+
 \subsection{Zielgruppen}
-\textbf{not reviewed yet, author=Karl\\}
-In diesem Abschnitt wird die Zielgruppe des Produkts definiert. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Außerdem sind die Anwendungsbereiche, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
+\textbf{reviewedby = Felix, author=Karl\\}
+Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Außerdem sind die Anwendungsbereiche, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
 
 \subsection{Betriebsbedingungen}
 \textbf{not reviewed yet, auhor=Pascal\\}
 Dieses Unterkapitel behandelt die Bedürfnisse und Anforderungen der Software.
-Zum nutzen der Software werden Daten aus der OpenStreetMap benötigt, spezifischer sollen .osm.pbf / .osm.bz2 Daten von der Software einlesbar sein, ebenso wie Dateien, welche die Software selber wieder exportieren kann.
+Zum Verwenden der Software werden Daten aus der OpenStreetMap benötigt, spezifischer sollen .osm.pbf / .osm.bz2 Daten von der Software einlesbar sein, ebenso wie Dateien, welche die Software selber wieder exportieren kann.
 Die Software arbeitet in Etappen, welche definiert sind durch
 \begin{enumerate}
     \item Dateninput
@@ -85,14 +110,14 @@ Die Software arbeitet in Etappen, welche definiert sind durch
 Diese Etappen werden nach einander ausgeführt und bedarf gegebenenfalls Konfiguration durch den Benutzer, bevor die Berechnungen ausgeführt werden kann.
 Es sollen dabei Zwischenergebnisse der einzelnen Etappen gespeichert werden.
 Die Software soll nun auch in der Lage sein, selber ihre Konfigurationen als Datei exportieren zu können (DATEITYP ANGEBEN NOCH). Dies muss allerdings keine vollständig berechnete Datei sein, sondern diese kann auch nur bis zu einer gewissen Etappe erfolgt sein.
-Diese von der Software exportierten Dateien sollen ebenfalls wieder importierbar sein, um an diesen weiter arbeiten zu können, oder um mehreren Nutzern an verschiedenen Geräten die Selbe Datei zur verfügung stellen zu können.
+Diese von der Software exportierten Dateien sollen ebenfalls wieder importierbar sein, um an diesen weiter arbeiten zu können, oder um mehreren Nutzern an verschiedenen Geräten die Selbe Datei zur Verfügung stellen zu können.
 Innerhalb der Software soll es möglich sein auch ab einer gewissen Etappe neu Berechnungen mit anderen Konfigurationen anzustoßen, hierbei wird angezeigt welche Etappen alle betroffen sind und wo ebenfalls, gegebenenfalls Konfigurationen neu angegeben werden müssen.
 Die Software soll auf dem Betriebssystem Windows 10 oder 11 laufen.
 Dabei soll für kleinere Instanzen an Daten ein Laptop mit 8GB RAM, i5 4 Kerne ausreichen.
 Für größere Instanzen wird eine Workstation mit 125-250 GB RAM, 8-16 Kerne benötigt.
-(KLEINE INSTANTEN UND GROßE INSTANZEN NOCH DEFINIEREN)
+(KLEINE INSTANZEN UND GROßE INSTANZEN NOCH DEFINIEREN)
 Für niederwertigere Hardware wird keine Funktion gewährleistet.
-Die Software soll dabei von einer Person bedienbar sein, ohne jegliches vorwissen an Informatik.
+Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwissen an Informatik.
 
 \newpage
 
@@ -114,14 +139,14 @@ Die Software soll dabei von einer Person bedienbar sein, ohne jegliches vorwisse
 
 
 \section{Nichtfunktionale Anforderungen}
-Hier möglicherweise noch Unterkapitel
-\begin{enumerate}
-    \item Funktionalität
-    \item Sicherheit
-    \item Benutzbarkeit
-    \item Änderbarkeit
-    \item Qualitätsanforderungen
-\end{enumerate}
+
+\subsection{Funktionalität}
+\subsection{Sicherheit}
+\subsection{Benutzbarkeit, author = Felix}
+\subsection{Änderbarkeit}
+\subsection{Qualitätsanforderungen}
+
+
 \newpage
 
 
