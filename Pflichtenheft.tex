@@ -71,7 +71,7 @@ Musskriterien: unabdingbare Leistungen der Software.
     \item Die Verkehrsdaten sollen mit einer Karte visualisiert werden können
     \item Der Nutzer soll durch Klicken auf eine Karte Polygone definieren können
     \item Es soll für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein
-    \item Das Programm soll Standard-Attribute vorgeschlagen werden, für die Kategorie Erstellung
+    \item Das Programm soll Standard-Attribute vorgeschlagen, für die Kategorie Erstellung
 \end{itemize}
 
 
@@ -94,9 +94,10 @@ Dieses Kapitel erläutert, in welchen Bereichen die Software eingesetzt werden s
 Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Außerdem sind die Anwendungsbereiche, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
 
 \subsection{Betriebsbedingungen}
-\textbf{not reviewed yet, auhor=Pascal\\}
+\textbf{review=Simon, auhor=Pascal\\}
 Dieses Unterkapitel behandelt die Bedürfnisse und Anforderungen der Software.
 Zum Verwenden der Software werden Daten aus der OpenStreetMap benötigt, spezifischer sollen .osm.pbf / .osm.bz2 Daten von der Software einlesbar sein, ebenso wie Dateien, welche die Software selber wieder exportieren kann.
+\newpage
 Die Software arbeitet in Etappen, welche definiert sind durch
 \begin{enumerate}
     \item Dateninput
@@ -108,6 +109,7 @@ Die Software arbeitet in Etappen, welche definiert sind durch
 \end{enumerate}
 
 (Für Spezifikation dieser Etappen siehe HIER KONTEXT ANGEBEN)
+\newline
 Diese Etappen werden nach einander ausgeführt und bedarf gegebenenfalls Konfiguration durch den Benutzer, bevor die Berechnungen ausgeführt werden kann.
 Es sollen dabei Zwischenergebnisse der einzelnen Etappen gespeichert werden.
 Die Software soll nun auch in der Lage sein, selber ihre Konfigurationen als Datei exportieren zu können (DATEITYP ANGEBEN NOCH). Dies muss allerdings keine vollständig berechnete Datei sein, sondern diese kann auch nur bis zu einer gewissen Etappe erfolgt sein.
@@ -115,8 +117,9 @@ Diese von der Software exportierten Dateien sollen ebenfalls wieder importierbar
 Innerhalb der Software soll es möglich sein auch ab einer gewissen Etappe neu Berechnungen mit anderen Konfigurationen anzustoßen, hierbei wird angezeigt welche Etappen alle betroffen sind und wo ebenfalls, gegebenenfalls Konfigurationen neu angegeben werden müssen.
 Die Software soll auf dem Betriebssystem Windows 10 oder 11 laufen.
 Dabei soll für kleinere Instanzen an Daten ein Laptop mit 8GB RAM, i5 4 Kerne ausreichen.
+Eine kleine Instanz ist definiert als eine osm Datei, welche nicht mehr als 250mB an Speicher verbraucht.
 Für größere Instanzen wird eine Workstation mit 125-250 GB RAM, 8-16 Kerne benötigt.
-(KLEINE INSTANZEN UND GROßE INSTANZEN NOCH DEFINIEREN)
+Eine Große Instanz ist definiert als alles, was keine kleine Instanz ist.
 Für niederwertigere Hardware wird keine Funktion gewährleistet.
 Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwissen an Informatik.
 
@@ -141,7 +144,45 @@ Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwisse
 
 \section{Nichtfunktionale Anforderungen}
 
-\subsection{Funktionalität}
+Dieses Kapitel definiert die nichtfunktionalen Anforderungen und Qualitätsmerkmale der Software.
+
+
+
+
+
+\subsection{Funktionalität, author=Pascal}
+
+\begin{tabular}{|l| c| c| c| c|}
+    \hline
+        Produktqualität & sehr gut & gut & normal & nicht relevant \\
+    \hline
+        Angemessenheit & & x & &\\
+    \hline
+        Richtigkeit & x & & &\\
+    \hline
+        Ordnungsmäßgkeit & x & & &\\
+    \hline
+        Interoperabilität & & & & x\\
+    \hline
+        
+    \end{tabular}
+
+\textbf{Angemessenheit}
+\newline
+Die Angemessenheit ist als gut einzustufen, da die gesamte Software für ihre Funktion geeignet sein muss und eine schwere Handhabung der Software nur zu unnötigem Aufwand seitens des Nutzers führt.
+
+\textbf{Richtigkeit und Ordnungsmäßigkeit}
+\newline
+Da die von der Software generierten Daten für weitere Verwendungen benutzt werden und man ein deterministisches verhalten möchte bei gleichen Konfigurationen, ist eine sehr gute Richtigkeit und Ordnungsmäßigkeit der Software unumgänglich. Denn auf fehlerhaften Daten und oder undeterministisch generierte Daten, zu Arbeiten führt nur zu Folgefehlern welche zum verfehlen des eigentlichen Ziels führen.
+
+\textbf{Interoperabilität}
+\newline
+Da die Software nur auf Windows 10/11 funktionieren soll und keine Kommunikation zwischen Geräten vorsieht ist eine Interoperabilität irrelevant.
+
+
+
+
+
 \subsection{Sicherheit, author=Simon}
 
 \textbf{Zuverlässigkeit}
