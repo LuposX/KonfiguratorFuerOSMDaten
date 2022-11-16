@@ -71,6 +71,7 @@ Musskriterien: unabdingbare Leistungen der Software.
     \item Die Verkehrsdaten sollen mit einer Karte visualisiert werden können
     \item Der Nutzer soll durch Klicken auf eine Karte Polygone definieren können
     \item Es soll für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein
+    \item Das Programm soll Standard-Attribute vorgeschlagen werden, für die Kategorie Erstellung
 \end{itemize}
 
 
@@ -141,8 +142,44 @@ Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwisse
 \section{Nichtfunktionale Anforderungen}
 
 \subsection{Funktionalität}
-\subsection{Sicherheit}
+\subsection{Sicherheit, author=Simon}
+
+\textbf{Zuverlässigkeit}
+Durch definitition von Testfällen im Pflichtenheft und das spätere ausführen von diesen und weiteren währen der Implementierungsphase, können Fehler früh zeit gefunden und behoben werden.
+Dadurch können wir eine äquadate Zuverlässigkeit gewährleisten.
+
+\textbf{Fehlertoleranz}
+Trotz aller Testfälle, kann es zu Fehlern kommen während des Program läuft oder mit dem Endergebniss, durch korrumpierte Daten oder durch fehlerhafte Eingabe bei der User Eingabe(MAYBE WEGLASSEN, VLT. GEWÄHRLEISTEN WIR ALLE USER INPUTS).
+Die Fehlertoleranz des Programmes variiert von Fall zu fall.
+
+\textbf{wiederherstellbarkeit}
+Jeder Zwischenschnitt wird nach seiner berechnung lokal auf dem Endgerät gepseichert, dass das Programm ausführt, kommt es zum absturz während eines rechnenschrittes so kann die wiedeherstellung(VERWEIS MUSSKRITERIUM) des zu berechenden schrittes nicht gewährleistet werden, andernsfalle ist  eine widerherstellung aller Zwischenschritte gewährleistet.
+
+
 \subsection{Benutzbarkeit, author = Felix}
+    \begin{tabular}{|l| c| c| c| c|}
+    \hline
+        Produktqualität & sehr gut & gut & normal & nicht relevant \\
+    \hline
+        Verständlichkeit & x & & &\\
+    \hline
+        Erlernbarkeit & & x & &\\
+    \hline
+        Bedienbarkeit & x & & &\\
+    \hline
+        Effizienz & & & x &\\
+    \hline
+        Zeitverhalten & & & x &\\
+    \hline
+        Verbrauchsverhalten & & x & &\\
+    \hline
+    \end{tabular}
+
+\textbf{Verständlichkeit, Erlernbarkeit und Bedienbarkeit}\\
+Die Anwendung soll intuitiv zugänglich sein, um ein reibungsloses Einlesen der Daten zu ermöglichen. Da die Anwendung auch an Nicht-Informatiker gerichtet ist, muss die Bedienung leicht einsehbar und verständlich sein.
+
+\textbf{Effizienz, Zeitverhalten und Verbrauchsverhalten}\\
+Die Effizienz der Anwendung ist als normal eingestuft, da kein schnelles Reaktionsverhalten in der Berechnung gefordert ist, trotzdem aber eine gewisse Benutzerfreundlichkeit erhalten bleiben werden muss. Folglich soll die Anwendung ein gutes Zeit- und Verbrauchsverhalten haben.
 \subsection{Änderbarkeit}
 \subsection{Qualitätsanforderungen}
 
