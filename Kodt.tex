@@ -30,9 +30,8 @@ bookmarks=true,
 
 \section{Zielbestimmung}
 
-(Author=Pascal)
-
-Verkehrsmodelle sind allgegenwärtig, egal ob man nur ein Teilnehmer am Verkehr ist oder Entscheidungen Treffen muss um diesen zu Optimieren.
+\textbf{author=Pascal,not reviewed yet\\}
+Verkehrsmodelle sind allgegenwärtig, egal ob man nur ein Teilnehmer am Verkehr ist oder Entscheidungen treffen muss um diesen zu optimieren.
 Für eine effektive Optimierung des Verkehrswesens sind Daten über den Verkehr umumgänglich und abgesehen von der geografischen Lage von Gebäuden, Straßen usw. ist auch das Verhalten der Menschen ein wichtiger Bestandteil.
 Um diese Menschen effektiv simulieren zu können, bedarf es Spezifikation und Konfiguration geografischer Daten um ein verhalten von Menschen berechenbar zu machen.
 Hier kommt die (NAME DER SOFTWARE) ins spiel.
@@ -46,49 +45,34 @@ Neben der Attraktivität einzelner Elemente kann auch über mehrere Aggregiert w
 \subsection{Musskriterien}
 \textbf{author=Simon,reviewedby=Karl\\}
 Musskriterien: unabdingbare Leistungen der Software.
-\begin{itemize}
-    \item Es muss möglich sein Daten einzulesen
-    \item Die Daten müssen räumlich gefiltert werden
-    \item Der Nutzer muss Kategorien erstellen können
-    \item Der Nutzer muss je Kategorie Tag-Filter konfigurieren können
-    \item Es müssen Gebäude-Polygonen reduziert werden zu einem Gebäude-Punkt
-    \item Es muss eine Attraktivitätspunktzahl von Gebäuden berechnet werden können
-    \item Die Attraktivitätspunktzahl muss in vordefinierten Vekehrszellen aggregiert werden können 
-    \item Alle Zwischenschritte dieses Prozesses müssen gespeichert werden können.
-\end{itemize}
 
-
-\textbf{reviewedby = Felix und Pascal(habe die Liste um Punkte die ich relevant fande ergänzt, die letzen 3 also geg. von wem anders nochnal anschauen bei Musskriterien), author=Karl, ich hab meine ausformulierten Kriterien jetzt auch mal reingeschrieben, ich wusste jetzt nicht, inwiefern ich die oben reindrücken sollte\\}
+\textbf{reviewDone = True, author=Karl\\}
 \begin{itemize}
     \item Der Nutzer muss OSM-Datensätze einlesen können
-    \item Der Nutzer muss den betrachteten Raum auswählen können
-    \item Der Nutzer muss Kategorien von OSM-Elementen definieren können
+    \item Der Nutzer muss Kartenausschnitte auswählen können
+    \item Der Nutzer muss OSM-Elemente mithilfe von Black- und Whitelisten zu Kategorien zusammenfassen können
     \item Das Programm muss Standard-Kategorien anbieten
     \item Das Programm muss OSM-Elemente auf einen Punkt reduzieren können
     \item Das Programm muss den OSM-Elementen Attribute zuweisen können
+    \item Das Programm muss die Zwischenschritte der Berechnung und Konfigurationen speichern und laden können
     \item Der Nutzer muss für jede Kategorie das Verfahren zur Berechnung der Attribute auswählen können
-    \item (Standard-Werte?)
-    \item Es muss unterschiedliche Attraktivitätsattribute geben
-    \item Der Nutzer muss die Attraktivitätsattribute in Abhängigkeit zu den Attributen konfigurieren können
+    \item Der Nutzer muss Standardwerte für Attribute festlegen können
+    \item Der Nutzer muss Attraktivitätsattribute je Kategorie in Abhängigkeit zu Attributen definieren können
     \item Das Programm muss in jeder Verkehrszelle die Attraktivitätsattribute aggregieren können
-    \item Es muss eine intuitive GUI geben
-    \item Das Programm soll die Zwischenschritte regelmäßig speichern
-    \item Black- und Whitelisten für Tag-Filterung müssen Konfigurierbar sein
-    \item Die Konfigurationen müssen exportierbar sein um an anderen Geräten wieder von der Software eingelesen werden zu können
+    \item Es muss eine GUI geben
     \item Das Programm soll den Nutzer warnen und anzeigen können, welche Etappen neu berechnet werden müssen, bei Änderungen von Konfigurationen
 \end{itemize}
 
 
 \subsection{Wunschkriterien}
-\textbf{author=Simon,reviewedby=Karl\\}
+\textbf{author=Simon, reviewedBy=Karl, reviewDone = True\\}
 \begin{itemize}
-    \item Es soll möglich sein OSM-Daten per Link oder Repository einzulesen
-    \item Die Verkehrsdaten sollen mit einer Karte visualisiert werden können
-    \item Der Nutzer soll durch Klicken auf eine Karte Polygone definieren können
-    \item Es soll für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein
-    \item Das Programm soll Standard-Attribute vorgeschlagen, für die Kategorie Erstellung
+    \item Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen
+    \item Die Verkehrsdaten können mit einer Karte visualisiert werden
+    \item Der Nutzer kann durch Klicken auf eine Karte Polygone definieren
+    \item Es kann für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein
+    \item Das Programm kann Standard-Attribute vorgeschlagen, für die Kategorie Erstellung
 \end{itemize}
-
 
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
@@ -112,6 +96,7 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 \textbf{review=Simon, auhor=Pascal\\}
 Dieses Unterkapitel behandelt die Bedürfnisse und Anforderungen der Software.
 Zum Verwenden der Software werden Daten aus der OpenStreetMap benötigt, spezifischer sollen .osm.pbf / .osm.bz2 Daten von der Software einlesbar sein, ebenso wie Dateien, welche die Software selber wieder exportieren kann.
+
 \newpage
 Die Software arbeitet in Etappen, welche definiert sind durch
 \begin{enumerate}
@@ -161,7 +146,7 @@ Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwisse
 
 Dieses Kapitel definiert die nichtfunktionalen Anforderungen und Qualitätsmerkmale der Software.
 
-
+Reminder: Punktreduktion soll erweiterbar sein
 
 
 
@@ -194,10 +179,6 @@ Da die von der Software generierten Daten für weitere Verwendungen benutzt werd
 \newline
 Da die Software nur auf Windows 10/11 funktionieren soll und keine Kommunikation zwischen Geräten vorsieht ist eine Interoperabilität irrelevant.
 
-
-
-
-
 \subsection{Sicherheit, author=Simon}
 
 \textbf{Zuverlässigkeit}
@@ -213,6 +194,7 @@ Jeder Zwischenschnitt wird nach seiner berechnung lokal auf dem Endgerät gepsei
 
 
 \subsection{Benutzbarkeit, author = Felix}
+
     \begin{tabular}{|l| c| c| c| c|}
     \hline
         Produktqualität & sehr gut & gut & normal & nicht relevant \\
@@ -236,7 +218,41 @@ Die Anwendung soll intuitiv zugänglich sein, um ein reibungsloses Einlesen der 
 
 \textbf{Effizienz, Zeitverhalten und Verbrauchsverhalten}\\
 Die Effizienz der Anwendung ist als normal eingestuft, da kein schnelles Reaktionsverhalten in der Berechnung gefordert ist, trotzdem aber eine gewisse Benutzerfreundlichkeit erhalten bleiben werden muss. Folglich soll die Anwendung ein gutes Zeit- und Verbrauchsverhalten haben.
+
 \subsection{Änderbarkeit}
+    \begin{tabular}{|l| c| c| c| c|}
+    \hline
+        Produktqualität & sehr gut & gut & normal & nicht relevant \\
+    \hline
+        Analysierbarkeit & x & & &\\
+    \hline
+        Modifizierbarkeit & & x & &\\
+    \hline
+        Stabilität & x & & &\\
+    \hline
+        Prüfbarkeit & & & x &\\
+    \hline
+        Übertragbarkeit & & & x &\\
+    \hline
+        Anpassbarkeit & & x & &\\
+    \hline
+        Installierbarkeit & & x & &\\
+    \hline
+        Austauschbarkeit & & x & &\\
+    \hline
+    \end{tabular}
+    
+\textbf{Analysierbarkeit, Modifizierbarkeit, Anpassbarkeit und Austauschbarkeit}\\
+Da Erweiterungen ein häufig gewünschtes Kriterium darstellt, ist das Produkt gut Modifizierbar und der Programmcode ist gut analysierbar. Um Änderungen umzusetzen ist jedoch Code-Verständnis erforderlich (Informatiker gefordert).
+
+\textbf{Stabilität}\\
+Die Stabilität des Produktes muss gegeben sein.
+
+\textbf{Installierbarkeit}\\
+Das Produkt ist als Open-Source-Anwendung online herunterzuladen
+
+
+
 \subsection{Qualitätsanforderungen}
 
 
@@ -254,9 +270,41 @@ Die Effizienz der Anwendung ist als normal eingestuft, da kein schnelles Reaktio
 \subsection{Software}
 \subsection{Hardware}
 \subsection{Produktschnittstellen}
+
+\section{Glossar}
+\textbf{OSM}\\
+OpenStreetMap ist ein freies Projekt, das frei nutzbare Geodaten sammelt, strukturiert und für die Nutzung durch jedermann in einer Datenbank vorhält.
+
+\textbf{Verkehrsnachfragemodell}\\
+Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungsprozesse der Menschen nachbildet, die zu Ortsveränderungen führen. Im Personenverkehr umfassen diese Entscheidungen die Aktivitätenwahl, die Zielwahl, die Verkehrsmittelwahl, die Abfahrtszeitwahl und die Routenwahl.
+
+\textbf{Geofilter}\\
+Tool zur Einteilung von Räumen auf der Karte.
+
+\textbf{Tag}\\
+Eigenschaft einer Node in OSM.
+
+\textbf{Tag Filter}\\
+Filterung nach Tags.
+
+\textbf{Reduktion}\\
+Verfahren zur Abbildung von Gebäuden auf Punkte mit Attraktivitäten.
+
+\textbf{Attraktivität}\\
+Eigenschaft eines Gebäudes.
+
+\textbf{Aggregation}\\
+Verfahren zum Zusammenfassen mehrerer Attraktivitäten innerhalb einer Verkehrszelle.
+
+\textbf{Node}\\
+Objekt in OSM.
+
+\textbf{Repository}\\
+Zentrale Ablage in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
+
+\textbf{Verkehrszelle}\\
+Bezeichnet einen räumlich abgegrenzten Teil eines Untersuchungsgebietes, der als Bezugseinheit bei der Verkehrsanalyse und Verkehrsprognose dient.
+
 \newpage
-
-
-
 
 \end{document}
