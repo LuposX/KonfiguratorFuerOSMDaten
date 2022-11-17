@@ -43,42 +43,51 @@ Die Berechnung für Attraktivität soll Konfigurierbar sein und kann von beliebi
 Neben der Attraktivität einzelner Elemente kann auch über mehrere Aggregiert werden, was ebenfalls Konfigurierbar sein soll.
 
 \subsection{Musskriterien}
-\textbf{author=Simon,reviewedby=Karl\\}
 Musskriterien: unabdingbare Leistungen der Software.
 
-\textbf{reviewDone = True, author=Karl\\}
 \begin{itemize}
-    \item Der Nutzer muss OSM-Datensätze einlesen können
-    \item Der Nutzer muss Kartenausschnitte auswählen können
-    \item Der Nutzer muss OSM-Elemente mithilfe von Black- und Whitelisten zu Kategorien zusammenfassen können
-    \item Das Programm muss Standard-Kategorien anbieten
-    \item Das Programm muss OSM-Elemente auf einen Punkt reduzieren können
-    \item Das Programm muss den OSM-Elementen Attribute zuweisen können
-    \item Das Programm muss die Zwischenschritte der Berechnung und Konfigurationen speichern und laden können
-    \item Der Nutzer muss für jede Kategorie das Verfahren zur Berechnung der Attribute auswählen können
-    \item Der Nutzer muss Standardwerte für Attribute festlegen können
-    \item Der Nutzer muss Attraktivitätsattribute je Kategorie in Abhängigkeit zu Attributen definieren können
-    \item Das Programm muss in jeder Verkehrszelle die Attraktivitätsattribute aggregieren können
-    \item Es muss eine GUI geben
-    \item Das Programm soll den Nutzer warnen und anzeigen können, welche Etappen neu berechnet werden müssen, bei Änderungen von Konfigurationen
+    \item Der Nutzer muss OSM-Datensätze einlesen können.
+    \item Der Nutzer muss Kartenausschnitte auswählen können.
+    \item Der Nutzer muss OSM-Elemente mithilfe von Black- und Whitelisten zu Kategorien zusammenfassen können.
+    \item Das Programm muss Standard-Kategorien anbieten.
+    \item Das Programm muss OSM-Elemente auf einen Punkt reduzieren können.
+    \item Das Programm muss den OSM-Elementen Attribute zuweisen können.
+    \item Der Nutzer muss für jede Kategorie das Verfahren zur Berechnung der Attribute auswählen können.
+    \item Der Nutzer muss Standardwerte für Attribute festlegen können.
+    \item Der Nutzer muss Attraktivitätsattribute je Kategorie in Abhängigkeit zu Attributen definieren können.
+    \item Das Programm muss in jeder Verkehrszelle die Attraktivitätsattribute aggregieren können.
+    \item Es muss eine grafische Oberfläche geben.
+    \item Das Programm muss die Zwischenschritte der Berechnungen und Konfigurationen speichern und laden können.
+    \item Der Nutzer muss die Berechnungen aus jeder Phase aus starten können.
+    \item Die Anwendung markiert unausgeführte Berechnungsschritte.
 \end{itemize}
 
 
 \subsection{Wunschkriterien}
 \textbf{author=Simon, reviewedBy=Karl, reviewDone = True\\}
 \begin{itemize}
-    \item Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen
-    \item Die Verkehrsdaten können mit einer Karte visualisiert werden
-    \item Der Nutzer kann durch Klicken auf eine Karte Polygone definieren
-    \item Es kann für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein
-    \item Das Programm kann Standard-Attribute vorgeschlagen, für die Kategorie Erstellung
+    \item Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen.
+    \item Die Verkehrsdaten können mit einer Karte visualisiert werden.
+    \item Der Nutzer kann durch Klicken auf eine Karte Polygone definieren.
+    \item Es kann für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein.
+    \item Das Programm kann Attribute vorgeschlagen, für die Kategorie Erstellung.
+    \item Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
+    
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
-    \item Es findet keine Analyse der generierten Daten statt
+    \item Es findet keine Analyse der generierten Daten statt.
 \end{itemize}
 \newpage
+
+
+
+
+
+
+
+
 
 
 
@@ -86,11 +95,17 @@ Musskriterien: unabdingbare Leistungen der Software.
 
 \subsection{Anwendungsbereiche}
 \textbf{author="JP", reviewedby=Karl} 
-Dieses Kapitel erläutert, in welchen Bereichen die Software eingesetzt werden soll. Als Open-Source-Veröffentlichung soll die Anwendung Verkehrsinstituten dem Berechnen von Daten dienen, welche anschließend als Eingabe zum Erstellen von Verkehrsnachfragemodellen verwendet werden. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
+Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden soll. Als Open-Source-Veröffentlichung soll die Anwendung Verkehrsinstituten dem Berechnen von Daten dienen, welche anschließend als Eingabe zum Erstellen von Verkehrsnachfragemodellen verwendet werden. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
+
+
+
 
 \subsection{Zielgruppen}
 \textbf{reviewedby = Felix, author=Karl\\}
-Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Außerdem sind die Anwendungsbereiche, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
+Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Die Anwendungsbereiche sind, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
+
+
+
 
 \subsection{Betriebsbedingungen}
 \textbf{review=Simon, auhor=Pascal\\}
@@ -127,8 +142,16 @@ Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwisse
 
 
 
+
+
+
+
 \section{Produktübersicht}
 \newpage
+
+
+
+
 
 
 
@@ -137,8 +160,16 @@ Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwisse
 
 
 
+
+
+
+
 \section{Produktdaten}
 \newpage
+
+
+
+
 
 
 
@@ -150,7 +181,7 @@ Reminder: Punktreduktion soll erweiterbar sein
 
 
 
-\subsection{Funktionalität, author=Pascal}
+\subsection{Funktionalität, author=Pascal, reviewedby=Karl}
 
 \begin{tabular}{|l| c| c| c| c|}
     \hline
@@ -171,27 +202,51 @@ Reminder: Punktreduktion soll erweiterbar sein
 \newline
 Die Angemessenheit ist als gut einzustufen, da die gesamte Software für ihre Funktion geeignet sein muss und eine schwere Handhabung der Software nur zu unnötigem Aufwand seitens des Nutzers führt.
 
+
+
 \textbf{Richtigkeit und Ordnungsmäßigkeit}
 \newline
-Da die von der Software generierten Daten für weitere Verwendungen benutzt werden und man ein deterministisches verhalten möchte bei gleichen Konfigurationen, ist eine sehr gute Richtigkeit und Ordnungsmäßigkeit der Software unumgänglich. Denn auf fehlerhaften Daten und oder undeterministisch generierte Daten, zu Arbeiten führt nur zu Folgefehlern welche zum verfehlen des eigentlichen Ziels führen.
+Da die von der Software generierten Daten für weitere Verwendungen benutzt werden und man ein deterministisches Verhalten möchte bei gleichen Konfigurationen, ist eine sehr gute Richtigkeit und Ordnungsmäßigkeit der Software unumgänglich. Denn auf fehlerhaften Daten und oder undeterministisch generierte Daten, zu Arbeiten führt nur zu Folgefehlern welche zum verfehlen des eigentlichen Ziels führen.
 
 \textbf{Interoperabilität}
 \newline
 Da die Software nur auf Windows 10/11 funktionieren soll und keine Kommunikation zwischen Geräten vorsieht ist eine Interoperabilität irrelevant.
 
+
+
+
 \subsection{Sicherheit, author=Simon}
 
-\textbf{Zuverlässigkeit}
-Durch definitition von Testfällen im Pflichtenheft und das spätere ausführen von diesen und weiteren währen der Implementierungsphase, können Fehler früh zeit gefunden und behoben werden.
-Dadurch können wir eine äquadate Zuverlässigkeit gewährleisten.
+    \begin{tabular}{|l| c| c| c| c|}
+    \hline
+        Produktqualität & sehr gut & gut & normal & nicht relevant \\
+    \hline
+        Zuverlässigkeit & x & & &\\
+    \hline
+        Fehlertoleranz & & x & &\\
+    \hline
+        Wiederherstellbarkeit & & x & &\\
+    \hline
+     \end{tabular}
 
-\textbf{Fehlertoleranz}
-Trotz aller Testfälle, kann es zu Fehlern kommen während des Program läuft oder mit dem Endergebniss, durch korrumpierte Daten oder durch fehlerhafte Eingabe bei der User Eingabe(MAYBE WEGLASSEN, VLT. GEWÄHRLEISTEN WIR ALLE USER INPUTS).
-Die Fehlertoleranz des Programmes variiert von Fall zu fall.
+\textbf{Zuverlässigkeit\\}
+Die Zuverlässigkeit ist wichtig, da Benutzer erwarten, dass die Anwendung konsistente Ergebnisse liefert.
+Es wird erwartet, dass das Programm die eingegebenen Daten basierend auf Benutzereingaben korrekt auswertet.
+So muss das Programm immer das gleiche Endergebnis mit den gleichen Daten und Benutzereingaben zurückgeben.
+Durch das Definieren von Testfällen in dem Pflichtenheft und das Ausführen dieser Testfälle während der Implementierungsphase können Fehler frühzeitig erkannt und behoben werden.
+Dies gewährleistet eine sehr gute Zuverlässigkeit.
 
-\textbf{wiederherstellbarkeit}
-Jeder Zwischenschnitt wird nach seiner berechnung lokal auf dem Endgerät gepseichert, dass das Programm ausführt, kommt es zum absturz während eines rechnenschrittes so kann die wiedeherstellung(VERWEIS MUSSKRITERIUM) des zu berechenden schrittes nicht gewährleistet werden, andernsfalle ist  eine widerherstellung aller Zwischenschritte gewährleistet.
+\textbf{Fehlertoleranz\\}
+Trotz aller Testfälle, kann es zu Fehlern kommen während das Programm läuft. Diese Fehler können Entstehen durch korrumpierte Daten oder durch fehlerhafte Eingabe des Users.
+Fehler die durch falsche Eingabe des Users Entstehen können abgefangen werden und der User benachrichtigt werden, somit kann dieser die fehlerhafte Eingabe korrigieren.
+Fehler die ausgelöst werden durch korrumpierte Daten, können behoben werden indem der User benachrichtigt wird und dieser die korrumpierte Daten ersetzt.
+Da diese Fehler nur enstehen können durch das falsche Verhalten des Users, kann 
+die Fehlertoleranz als gut eingestuft werden.
 
+\textbf{Wiederherstellbarkeit\\}
+Beim Erstellen der Konfigurationen kann der Nutzer zu jedem Zeitpunkt die Konfigurationen lokal zwischenspeichern. Diese kann er zu einem späteren Zeitpunkt wieder einlesen. Dadurch wird gewährleistet, dass die Konfigurationsentscheidungen des Nutzers einfach wiederhergestellt werden können.
+Auch alle Zwischenergebnisse, der vom Programm durchgeführten Berechnungen, werden direkt nach Fertigstellung auf dem Endgerät gespeichert. Während der einzelnen Berechnungen sind jedoch keine Zwischenspeicherungen vorgesehen.
+Somit ist die die Wiederherstellbarkeit als gut einzustufen.
 
 \subsection{Benutzbarkeit, author = Felix}
 
@@ -254,7 +309,19 @@ Das Produkt ist als Open-Source-Anwendung online herunterzuladen
 
 
 \subsection{Qualitätsanforderungen}
+In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkrete Qualitätsanforderungen formuliert.
 
+\begin{itemize}
+    \item Die Anwendung soll in englischer Sprache verfügbar sein
+    \item Die Anwendung soll intuitiv bedienbar sein
+    \item Die Anwendung muss auf Windows 10 und 11 nutzbar sein
+    \item Durch eine große Testabdeckung soll die Korrektheit des Produkts gewährleistet sein
+    \item Das Produkt soll um neue Verfahren erweiterbar sein
+    \item Das Produkt muss als Open-Source-Projekt weiterentwickelbar sein
+    \item Der Quelltext soll lesbar und kommentiert sein
+    \item Berechnungszeiten sollen minimal sein
+    \item Die Programmiersprache muss Python sein.
+\end{itemize}
 
 \newpage
 
