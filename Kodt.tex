@@ -59,7 +59,7 @@ Musskriterien: unabdingbare Leistungen der Software.
     \item Es muss eine grafische Oberfläche geben.
     \item Das Programm muss die Zwischenschritte der Berechnungen und Konfigurationen speichern und laden können.
     \item Der Nutzer muss die Berechnungen aus jeder Phase aus starten können.
-    \item Die Anwendung markiert unausgeführte Berechnungsschritte.
+    \item Der Nutzer muss Projekte erstellen können
 \end{itemize}
 
 
@@ -72,6 +72,7 @@ Musskriterien: unabdingbare Leistungen der Software.
     \item Es kann für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein.
     \item Das Programm kann Attribute vorgeschlagen, für die Kategorie Erstellung.
     \item Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
+    \item Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert wurden
     
 \end{itemize}
 
@@ -81,16 +82,6 @@ Musskriterien: unabdingbare Leistungen der Software.
 \end{itemize}
 \newpage
 
-
-
-
-
-
-
-
-
-
-
 \section{Produkteinsatz}
 
 \subsection{Anwendungsbereiche}
@@ -98,45 +89,10 @@ Musskriterien: unabdingbare Leistungen der Software.
 Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden soll. Als Open-Source-Veröffentlichung soll die Anwendung Verkehrsinstituten dem Berechnen von Daten dienen, welche anschließend als Eingabe zum Erstellen von Verkehrsnachfragemodellen verwendet werden. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
 
 
-
-
 \subsection{Zielgruppen}
-\textbf{reviewedby = Felix, author=Karl\\}
+\textbf{reviewedby = Felix, JP author=Karl\\}
 Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Die Anwendungsbereiche sind, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
 
-
-
-
-\subsection{Betriebsbedingungen}
-\textbf{review=Simon, auhor=Pascal\\}
-Dieses Unterkapitel behandelt die Bedürfnisse und Anforderungen der Software.
-Zum Verwenden der Software werden Daten aus der OpenStreetMap benötigt, spezifischer sollen .osm.pbf / .osm.bz2 Daten von der Software einlesbar sein, ebenso wie Dateien, welche die Software selber wieder exportieren kann.
-
-\newpage
-Die Software arbeitet in Etappen, welche definiert sind durch
-\begin{enumerate}
-    \item Dateninput
-    \item Geofilter
-    \item Tag Filter
-    \item Reduktion
-    \item Attraktivität
-    \item Aggregation
-\end{enumerate}
-
-(Für Spezifikation dieser Etappen siehe HIER KONTEXT ANGEBEN)
-\newline
-Diese Etappen werden nach einander ausgeführt und bedarf gegebenenfalls Konfiguration durch den Benutzer, bevor die Berechnungen ausgeführt werden kann.
-Es sollen dabei Zwischenergebnisse der einzelnen Etappen gespeichert werden.
-Die Software soll nun auch in der Lage sein, selber ihre Konfigurationen als Datei exportieren zu können (DATEITYP ANGEBEN NOCH). Dies muss allerdings keine vollständig berechnete Datei sein, sondern diese kann auch nur bis zu einer gewissen Etappe erfolgt sein.
-Diese von der Software exportierten Dateien sollen ebenfalls wieder importierbar sein, um an diesen weiter arbeiten zu können, oder um mehreren Nutzern an verschiedenen Geräten die Selbe Datei zur Verfügung stellen zu können.
-Innerhalb der Software soll es möglich sein auch ab einer gewissen Etappe neu Berechnungen mit anderen Konfigurationen anzustoßen, hierbei wird angezeigt welche Etappen alle betroffen sind und wo ebenfalls, gegebenenfalls Konfigurationen neu angegeben werden müssen.
-Die Software soll auf dem Betriebssystem Windows 10 oder 11 laufen.
-Dabei soll für kleinere Instanzen an Daten ein Laptop mit 8GB RAM, i5 4 Kerne ausreichen.
-Eine kleine Instanz ist definiert als eine osm Datei, welche nicht mehr als 250mB an Speicher verbraucht.
-Für größere Instanzen wird eine Workstation mit 125-250 GB RAM, 8-16 Kerne benötigt.
-Eine Große Instanz ist definiert als alles, was keine kleine Instanz ist.
-Für niederwertigere Hardware wird keine Funktion gewährleistet.
-Die Software soll dabei von einer Person bedienbar sein, ohne jegliches Vorwissen an Informatik.
 
 \newpage
 
@@ -206,14 +162,17 @@ Die Angemessenheit ist als gut einzustufen, da die gesamte Software für ihre Fu
 
 \textbf{Richtigkeit und Ordnungsmäßigkeit}
 \newline
-Da die von der Software generierten Daten für weitere Verwendungen benutzt werden und man ein deterministisches Verhalten möchte bei gleichen Konfigurationen, ist eine sehr gute Richtigkeit und Ordnungsmäßigkeit der Software unumgänglich. Denn auf fehlerhaften Daten und oder undeterministisch generierte Daten, zu Arbeiten führt nur zu Folgefehlern welche zum verfehlen des eigentlichen Ziels führen.
+Die Aufgabe der Software ist über die Konfigurationen des Nutzers und den eingelesenen Dateien, neue Daten zu berechnen, welche weiter verwendet werden können. Hierbei ist es wichtig, dass diese Daten auch korrekt berechnet werden und ein deterministisches Verhalten gewährleistet ist.
+Daher ist die Richtigkeit und Ordnungsmäßigkeit der Software als sehr gut einzustufen.
 
 \textbf{Interoperabilität}
 \newline
-Da die Software nur auf Windows 10/11 funktionieren soll und keine Kommunikation zwischen Geräten vorsieht ist eine Interoperabilität irrelevant.
+Es ist keine Kommunikation zwischen Geräten vorgesehen, daher ist die Interoperabilität als irrelevant einzustufen.
 
 
-
+% remove this if we dont want to have a new page for each
+% subsection
+\newpage 
 
 \subsection{Sicherheit, author=Simon}
 
@@ -248,6 +207,12 @@ Beim Erstellen der Konfigurationen kann der Nutzer zu jedem Zeitpunkt die Konfig
 Auch alle Zwischenergebnisse, der vom Programm durchgeführten Berechnungen, werden direkt nach Fertigstellung auf dem Endgerät gespeichert. Während der einzelnen Berechnungen sind jedoch keine Zwischenspeicherungen vorgesehen.
 Somit ist die die Wiederherstellbarkeit als gut einzustufen.
 
+
+% remove this if we dont want to have a new page for each
+% subsection
+\newpage 
+
+
 \subsection{Benutzbarkeit, author = Felix}
 
     \begin{tabular}{|l| c| c| c| c|}
@@ -269,12 +234,19 @@ Somit ist die die Wiederherstellbarkeit als gut einzustufen.
     \end{tabular}
 
 \textbf{Verständlichkeit, Erlernbarkeit und Bedienbarkeit}\\
-Die Anwendung soll intuitiv zugänglich sein, um ein reibungsloses Einlesen der Daten zu ermöglichen. Da die Anwendung auch an Nicht-Informatiker gerichtet ist, muss die Bedienung leicht einsehbar und verständlich sein.
+Die Anwendung soll intuitiv zugänglich sein, um ein reibungsloses Einlesen der Daten zu ermöglichen. Da die Anwendung auch an Nicht-Informatiker gerichtet ist, muss die Bedienung leicht einsehbar und verständlich sein. Dies erfolgt über eine moderne GUI.
 
 \textbf{Effizienz, Zeitverhalten und Verbrauchsverhalten}\\
 Die Effizienz der Anwendung ist als normal eingestuft, da kein schnelles Reaktionsverhalten in der Berechnung gefordert ist, trotzdem aber eine gewisse Benutzerfreundlichkeit erhalten bleiben werden muss. Folglich soll die Anwendung ein gutes Zeit- und Verbrauchsverhalten haben.
+Eine kleine Instanz ist auf einem Laptop innerhalb von zwei Stunden berechenbar. Für größere Instanzen wird ein stärkerer Computer empfohlen.
 
-\subsection{Änderbarkeit}
+
+% remove this if we dont want to have a new page for each
+% subsection
+\newpage 
+
+
+\subsection{Änderbarkeit, author = JP, reviewedBy = Felix}
     \begin{tabular}{|l| c| c| c| c|}
     \hline
         Produktqualität & sehr gut & gut & normal & nicht relevant \\
@@ -298,7 +270,7 @@ Die Effizienz der Anwendung ist als normal eingestuft, da kein schnelles Reaktio
     \end{tabular}
     
 \textbf{Analysierbarkeit, Modifizierbarkeit, Anpassbarkeit und Austauschbarkeit}\\
-Da Erweiterungen ein häufig gewünschtes Kriterium darstellt, ist das Produkt gut Modifizierbar und der Programmcode ist gut analysierbar. Um Änderungen umzusetzen ist jedoch Code-Verständnis erforderlich (Informatiker gefordert).
+Erweiterungen stellen ein häufig gewünschtes Kriterium dar. Deshalb ist das Produkt gut modifizierbar. Der Programmcode ist gut analysierbar. Um Änderungen umzusetzen ist jedoch Code-Verständnis erforderlich (Informatiker gefordert).
 
 \textbf{Stabilität}\\
 Die Stabilität des Produktes muss gegeben sein.
@@ -307,8 +279,12 @@ Die Stabilität des Produktes muss gegeben sein.
 Das Produkt ist als Open-Source-Anwendung online herunterzuladen
 
 
+% remove this if we dont want to have a new page for each
+% subsection
+\newpage 
 
-\subsection{Qualitätsanforderungen}
+
+\subsection{Qualitätsanforderungen, author = Karl}
 In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkrete Qualitätsanforderungen formuliert.
 
 \begin{itemize}
@@ -332,12 +308,25 @@ In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkre
 
 
 
-\section{Technische Produktumgebung}
+\section{Technische Produktumgebung, author = JP}
+In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 
 \subsection{Software}
-\subsection{Hardware}
-\subsection{Produktschnittstellen}
+\begin{itemize}
+    \item Implementierungssprache der Anwendung – Python
+    \item Implementierungssprache der Benutzeroberfläche - Python (?)
+\end{itemize}
 
+\subsection{Hardware}
+\begin{itemize}
+    \item Windows 10/11 Laptop mit 8 GB RAM und i5 4 Kerne (8 log.) für kleine Instanzen
+    \item Workstation mit 125 – 250 GB RAM und 8-16 Kerne für große Instanzen Effiziente
+\end{itemize}
+
+\subsection{Produktschnittstellen}
+Die Benutzerschnittstelle wird über ein GUI zur Verfügung gestellt.
+
+\newpage
 \section{Glossar}
 \textbf{OSM}\\
 OpenStreetMap ist ein freies Projekt, das frei nutzbare Geodaten sammelt, strukturiert und für die Nutzung durch jedermann in einer Datenbank vorhält.
