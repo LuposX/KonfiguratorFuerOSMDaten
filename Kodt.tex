@@ -4,6 +4,8 @@
 \usepackage[T1]{fontenc} % avoid garbled Unicode text in pdf
 \usepackage[german]{babel} % german hyphenation, quotes, etc
 \usepackage{hyperref} % detailed hyperlink/pdf configuration
+\usepackage{setspace} % to set spacings between lines
+\usepackage{parskip}
 \hypersetup{ % ‘texdoc hyperref‘ for options
 pdftitle={PSE},
 bookmarks=true,
@@ -32,7 +34,7 @@ bookmarks=true,
 
 \textbf{author=Pascal,not reviewed yet\\}
 Verkehrsmodelle sind allgegenwärtig, egal ob man nur ein Teilnehmer am Verkehr ist oder Entscheidungen treffen muss um diesen zu optimieren.
-Für eine effektive Optimierung des Verkehrswesens sind Daten über den Verkehr umumgänglich und abgesehen von der geografischen Lage von Gebäuden, Straßen usw. ist auch das Verhalten der Menschen ein wichtiger Bestandteil.
+Für eine effektive Optimierung des Verkehrswesens sind Daten über den Verkehr unumgänglich und abgesehen von der geografischen Lage von Gebäuden, Straßen usw. ist auch das Verhalten der Menschen ein wichtiger Bestandteil.
 Um diese Menschen effektiv simulieren zu können, bedarf es Spezifikation und Konfiguration geografischer Daten um ein verhalten von Menschen berechenbar zu machen.
 Hier kommt die (NAME DER SOFTWARE) ins spiel.
 Mit Hilfe von (NAME DER SOFTWARE) soll es  Verkehrsingenieuren und Verkehrswissenschafter möglich sein, genau solche Daten für ihre Berechnungen anfertigen zu können.
@@ -43,42 +45,47 @@ Die Berechnung für Attraktivität soll Konfigurierbar sein und kann von beliebi
 Neben der Attraktivität einzelner Elemente kann auch über mehrere Aggregiert werden, was ebenfalls Konfigurierbar sein soll.
 
 \subsection{Musskriterien}
-Musskriterien: unabdingbare Leistungen der Software.
+Musskriterien(kurz MK): unabdingbare Leistungen der Software.
 
 \begin{itemize}
-    \item Der Nutzer muss OSM-Datensätze einlesen können.
-    \item Der Nutzer muss Kartenausschnitte auswählen können.
-    \item Der Nutzer muss OSM-Elemente mithilfe von Black- und Whitelisten zu Kategorien zusammenfassen können.
-    \item Das Programm muss Standard-Kategorien anbieten.
-    \item Das Programm muss OSM-Elemente auf einen Punkt reduzieren können.
-    \item Das Programm muss den OSM-Elementen Attribute zuweisen können.
-    \item Der Nutzer muss für jede Kategorie das Verfahren zur Berechnung der Attribute auswählen können.
-    \item Der Nutzer muss Standardwerte für Attribute festlegen können.
-    \item Der Nutzer muss Attraktivitätsattribute je Kategorie in Abhängigkeit zu Attributen definieren können.
-    \item Das Programm muss in jeder Verkehrszelle die Attraktivitätsattribute aggregieren können.
-    \item Es muss eine grafische Oberfläche geben.
-    \item Das Programm muss die Zwischenschritte der Berechnungen und Konfigurationen speichern und laden können.
-    \item Der Nutzer muss die Berechnungen aus jeder Phase aus starten können.
-    \item Der Nutzer muss Projekte erstellen können
+    \item <MK1> Der Nutzer muss Projekte erstellen können
+    \item <MK2> Der Nutzer muss OSM-Datensätze einlesen können.
+    \item <MK3> Der Nutzer muss Kartenausschnitte auswählen können.
+    \item <MK4> Der Nutzer muss OSM-Elemente mithilfe von Black- und Whitelisten zu Kategorien zusammenfassen können.
+    \item <MK5> Das Programm muss Standard-Kategorien anbieten.
+    \item <MK6>Das Programm muss OSM-Elemente auf einen Punkt reduzieren können.
+    \item <MK7> Das Programm muss den OSM-Elementen Attribute zuweisen können.
+    \item <MK8> Der Nutzer muss für jede Kategorie das Verfahren zur Berechnung der Attribute auswählen können.
+    \item <MK9> Der Nutzer muss Standardwerte für Attribute festlegen können.
+    \item <MK10> Der Nutzer muss Attraktivitätsattribute je Kategorie in Abhängigkeit zu Attributen definieren können.
+    \item <MK11> Das Programm muss in jeder Verkehrszelle die Attraktivitätsattribute aggregieren können.
+    \item <MK12> Das Programm muss die Zwischenschritte der Berechnungen und Konfigurationen speichern und laden können.
+    \item <MK13> Der Nutzer muss die Berechnungen aus jeder Phase aus starten können.
+    \item <MK14> Es muss eine grafische Oberfläche geben.
 \end{itemize}
 
 
 \subsection{Wunschkriterien}
 \textbf{author=Simon, reviewedBy=Karl, reviewDone = True\\}
+Wunschkriterien(kurz WK): wünschenswerte Leistungen der Software.
 \begin{itemize}
-    \item Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen.
-    \item Die Verkehrsdaten können mit einer Karte visualisiert werden.
-    \item Der Nutzer kann durch Klicken auf eine Karte Polygone definieren.
-    \item Es kann für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein.
-    \item Das Programm kann Attribute vorgeschlagen, für die Kategorie Erstellung.
-    \item Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
-    \item Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert wurden
+    \item <WK1> Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen.
+    \item <WK2> Die Verkehrsdaten können mit einer Karte visualisiert werden.
+    \item <WK3> Der Nutzer kann durch Klicken auf eine Karte Polygone definieren.
+    \item <WK4> Es kann für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein.
+    \item <WK5> Das Programm bietet eine Liste an OSM-Tags an
+    \item <WK6> Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
+    \item <WK7> Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert werden
+    \item <WK8> Die Anwendung besitzt eine Statusanzeige, die den aktuellen Fortschritt der Berechnungen anzeigt
+    \item <WK9> Der Nutzer kann die Attraktivitätsattribute auch in Abhängigkeit zu OSM-Tags definieren.
     
 \end{itemize}
 
 \subsection{Abgrenzungskriterien}
 \begin{itemize}
     \item Es findet keine Analyse der generierten Daten statt.
+    \item Die Anwendung ist nicht für Mobilgeräte optimiert.
+    \item Es findet keine Analyse der Straßennetze statt.
 \end{itemize}
 \newpage
 
@@ -86,7 +93,7 @@ Musskriterien: unabdingbare Leistungen der Software.
 
 \subsection{Anwendungsbereiche}
 \textbf{author="JP", reviewedby=Karl} 
-Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden soll. Als Open-Source-Veröffentlichung soll die Anwendung Verkehrsinstituten dem Berechnen von Daten dienen, welche anschließend als Eingabe zum Erstellen von Verkehrsnachfragemodellen verwendet werden. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
+Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden soll. Der Anwendungsbereich des Produkts liegt bei Verkerhrsinstituten. Diese Nutzen die Berechnung von Attratktivitäten verschiedener Verkehrszellen zum Erstellen von Verkehrsnachfragemodellen. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
 
 
 \subsection{Zielgruppen}
@@ -111,8 +118,206 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 
 
 
+
+
+
 \section{Produktfunktionen}
+Blabla, Erklärtext
 \newpage
+
+\section*{Vorlage für Steckbrief}
+\textbf{Anwendungsfall:} ...\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} A \\\\
+\textbf{Vorbedingung:} B \\\\
+\textbf{Nachbedingung Erfolg:} C \\\\
+\textbf{Nachbedingung Fehlschlag:} D \\\\
+\textbf{Auslösendes Ereignis:} E \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item F
+    \item G
+    \item H
+\end{enumerate}
+\textbf{Erweiterungen:} 
+\begin{itemize}
+    \item 3a: I
+\end{itemize}
+\textbf{Alternativen:} 
+\begin{itemize}
+    \item 3a: J
+\end{itemize}
+\newpage
+
+
+\section*{Starten des Programms <A1>}
+\textbf{Anwendungsfall:}  Der user möchte das Programm starten\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Das Programm wurde gestartet und läuft \\\\
+\textbf{Vorbedingung:} Das Programm muss installiert sein  \\\\
+\textbf{Nachbedingung Erfolg:} Das Programm läuft erfolgreich, die `Main-Menu` Seite wird angezeigt\\\\
+\textbf{Nachbedingung Fehlschlag:} Das Programm startet nicht \\\\
+\textbf{Auslösendes Ereignis:} Der User führt das Programm aus \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der User führt das Programm aus
+    \item Die `Main-Menu` Seite wird angezeigt
+\end{enumerate}
+\newpage
+
+
+\section*{Neues Projekt erstellen <A2>}
+\textbf{Anwendungsfall:} Der user möchte ein neues Projekt erstellen\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Ein neues Projekt wurde erstellt \\\\
+\textbf{Vorbedingung:} Das Programm muss auf der `Main-Menu` Seite sein   \\\\
+\textbf{Nachbedingung Erfolg:} Ein neues Projekt wurde im Speicher erstellt  \\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt in der `Main-Menu` Seite \\\\
+\textbf{Auslösendes Ereignis:} Der User hat auf den `Create New Project` Knopf gedrückt \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der User wählt den Namen und die Beschreibung für das Projekt
+    \item Der User drückt auf den `Create` Knopf
+    \item Es wird ein Projekt Ordner im Speicherort erstellt, den der User selbst wählen kann oder nicht
+    \item Es wird eine Projekt Konfiguration Datei erstellt und im Projek-tOdner abgespeichert
+\end{enumerate}
+\newpage
+
+
+\section*{Internes Projekt laden <A3>}
+\textbf{Anwendungsfall:} Der User möchte ein Projekt aus dem Standart-Ordner laden\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Ein Projekt das schon in dem dem Standart-Ordner existiert wurde geladen \\\\
+\textbf{Vorbedingung:} Das Programm muss auf der `Main-Menu` Seite sein  \\\\
+\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts wurden geladen und die `Daten` Seite wird angezeigt \\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt in der `Main-Menu` Seite \\\\
+\textbf{Auslösendes Ereignis:}  Der User hat ein Projekt ausgewählt aus dem Standart-Speicher-Ordner und den `Load internal Project` Knopf gedrückt \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Das Projekt wird intern geladen
+\end{enumerate}
+\newpage
+
+\section*{Externes Projekt laden <A4>}
+\textbf{Anwendungsfall:} Der User möchte ein Projekt aus einem nicht Standart-Ordner laden\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Ein Projekt das nicht in dem dem Standart-Ordner existiert wurde geladen \\\\
+\textbf{Vorbedingung:} Das Programm muss auf der `Main-Menu` Seite sein  \\\\
+\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts wurden geladen und die `Daten` Seite wird angezeigt \\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt in der `Main-Menu` Seite \\\\
+\textbf{Auslösendes Ereignis:}  Der User hat den `Load external Project` Knopf gedrückt \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der Datei-Explorer öffnet sich.
+    \item Der Nutzer wählt eine Datei im passenden Format aus.
+\end{enumerate}
+\newpage
+
+
+\section*{OSM-Datei angeben<A5>}
+\textbf{Anwendungsfall:} ...\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Der Nutzer hinterlegt eine OSM-Datei\\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten - OSM Daten'. \\\\
+\textbf{Nachbedingung Erfolg:} Erfolgreiches Hinterlegen der angegebenen Dateien. \\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, erneute Aufforderung zur Dateiangabe. \\\\
+\textbf{Auslösendes Ereignis:} Drücken des Buttons zum Auswählen des OSM Datensatzes. \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der Datei-Explorer öffnet sich.
+    \item Der Nutzer wählt eine Datei im passenden Format aus.
+    \item Die Anwendung zeigt den Namen der gewählten Datei an.
+\end{enumerate}
+\textbf{Erweiterungen:} 
+\begin{itemize}
+    \item 3a: Durch Drücken eines Buttons wird die gewählte Datei als Karte grafisch dargestellt.
+\end{itemize}
+\newpage
+
+
+
+\section*{Large Räumlichen Filter definieren<A6>}
+\textbf{Anwendungsfall:} ...\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Der Nutzer definiert die Menge der betrachteten OSM-Elemente\\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten - Räumlicher Filter'. \\\\
+\textbf{Nachbedingung Erfolg:} Erfolgreiches Hinterlegen der angegebenen Dateien. \\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, erneute Aufforderung zur Dateiangabe. \\\\
+\textbf{Auslösendes Ereignis:} Drücken des Buttons zum Auswählen der Verkehrszellen. \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der Datei-Explorer öffnet sich.
+    \item Der Nutzer wählt eine Datei im passenden Format aus.
+    \item Die Anwendung zeigt den Namen der gewählten Datei an.
+    \item Der Nutzer wählt eine der folgenden Optionen aus
+    \begin{itemize}
+        \item Im räumlichen Filter befinden sich nur OSM-Elemente, welche sich vollständig in den angegebenen Verkehrszellen befinden.
+        \item Im räumlichen Filter befinden sich auch OSM-Elemente, welche sich nur teilweise in den angegebenen Verkehrszellen befinden
+    \end{itemize}
+\end{enumerate}
+\newpage
+
+
+% Noch nicht fertig, wir müssen noch besprechen, wo das stattfindet
+\section*{Kategorien importieren<A7>}
+\textbf{Anwendungsfall:} Der Nutzer möchte in seinem Projekt Kategorien verwenden, welche bereits in einem anderen definiert wurden.\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} ... \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten - Konfiguration' \\\\
+\textbf{Nachbedingung Erfolg:} Die  \\\\
+\textbf{Nachbedingung Fehlschlag:} D \\\\
+\textbf{Auslösendes Ereignis:} E \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item F
+    \item G
+    \item H
+\end{enumerate}
+\textbf{Erweiterungen:} 
+\begin{itemize}
+    \item 3a: I
+\end{itemize}
+\textbf{Alternativen:} 
+\begin{itemize}
+    \item 3a: J
+\end{itemize}
+\newpage
+
+
+
+\section*{Erstellen von Kategorien<A9>}
+\textbf{Anwendungsfall:} Der Nutzer möchte eine weitere Kategorie hinzufügen\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Die Liste der Kategorien soll um eine weitere Kategorie ergänzt werden \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien' \\\\
+\textbf{Nachbedingung Erfolg:} In der Liste der Kategorien befindet sich eine neue, nicht-konfigurierte Kategorie. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Hinzufügen einer neuen Datei. \\
+\newpage
+
+
+
+\section*{Konfgurieren von Kategorien<A10>}
+\textbf{Anwendungsfall:} Der Nutzer möchte die Eigenschaften einer Kategorie verändern\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} ? \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie.\\\\
+\textbf{Nachbedingung Erfolg:} Die Änderungen an der Kategorie und an ihren Eigenschaften wird angezeigt. \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer klickt auf eine Kategorie oder der Nutzer erstellt eine neue Kategorie \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Anwendung zeigt dem Nutzer den Namen, die Whitelist und die Blacklist der Kategorie an. Die Anwendung signalisiert, ob die Kategorie aktiviert ist.
+    \item Der Nutzer kann keine, eine oder mehrere der folgenden Aktionen durchführen:
+    \begin{itemize}
+        \item Der Nutzer kann die Kategorie aktivieren oder deaktivieren.
+        \item Der Nutzer kann den Namen der Anwendung ändern.
+        \item Der Nutzer kann Einträge zur Blacklist und zur Whitelist hinzufügen
+    \end{itemize}
+\end{enumerate}
+\newpage
+
+
+
 
 
 
@@ -238,7 +443,7 @@ Die Anwendung soll intuitiv zugänglich sein, um ein reibungsloses Einlesen der 
 
 \textbf{Effizienz, Zeitverhalten und Verbrauchsverhalten}\\
 Die Effizienz der Anwendung ist als normal eingestuft, da kein schnelles Reaktionsverhalten in der Berechnung gefordert ist, trotzdem aber eine gewisse Benutzerfreundlichkeit erhalten bleiben werden muss. Folglich soll die Anwendung ein gutes Zeit- und Verbrauchsverhalten haben.
-Eine kleine Instanz ist auf einem Laptop innerhalb von zwei Stunden berechenbar. Für größere Instanzen wird ein stärkerer Computer empfohlen.
+Eine kleine Instanz (bspw. Stadtkreis Karlsruhe) ist auf einem Laptop mit 8GB RAM innerhalb weniger Stunden berechenbar. Für größere Instanzen wird eine Workstation empfohlen.
 
 
 % remove this if we dont want to have a new page for each
@@ -251,9 +456,9 @@ Eine kleine Instanz ist auf einem Laptop innerhalb von zwei Stunden berechenbar.
     \hline
         Produktqualität & sehr gut & gut & normal & nicht relevant \\
     \hline
-        Analysierbarkeit & x & & &\\
+        Analysierbarkeit x & & & &\\
     \hline
-        Modifizierbarkeit & & x & &\\
+        Modifizierbarkeit & x & & &\\
     \hline
         Stabilität & x & & &\\
     \hline
@@ -261,22 +466,20 @@ Eine kleine Instanz ist auf einem Laptop innerhalb von zwei Stunden berechenbar.
     \hline
         Übertragbarkeit & & & x &\\
     \hline
-        Anpassbarkeit & & x & &\\
+        Anpassbarkeit & x & & &\\
     \hline
-        Installierbarkeit & & x & &\\
-    \hline
-        Austauschbarkeit & & x & &\\
+        Installierbarkeit & & & x &\\
     \hline
     \end{tabular}
     
-\textbf{Analysierbarkeit, Modifizierbarkeit, Anpassbarkeit und Austauschbarkeit}\\
-Erweiterungen stellen ein häufig gewünschtes Kriterium dar. Deshalb ist das Produkt gut modifizierbar. Der Programmcode ist gut analysierbar. Um Änderungen umzusetzen ist jedoch Code-Verständnis erforderlich (Informatiker gefordert).
+\textbf{Analysierbarkeit, Modifizierbarkeit und Anpassbarkeit}\\
+Erweiterungen stellen ein häufig gewünschtes Kriterium dar. Deshalb ist das Produkt gut modifizierbar. Um Änderungen und Erweiterungen, wie das Hinzufügen von Verfahren bei der Reduktion oder Methoden bei der Aggregation, umzusetzen ist jedoch Code-Verständnis erforderlich und diese müssen von einem Informatiker implementiert werden. Die Anpassbarkeit des Produktes ist gut. Änderungen an der Benutzeroberfläche beziehungsweise der Implementierung der Berechnungs-Verfahren beeinflussen sich nicht untereinander. Um dies zu gewährleisten, muss der muss der Programmcode übersichtlich, strukturiert, kommentiert und somit sehr gut analysierbar sein.
 
 \textbf{Stabilität}\\
-Die Stabilität des Produktes muss gegeben sein.
+Die Benutzeroberfläche darf die Funktionalität des Produktes nicht beeinträchtigen. Daher muss eine gute Stabilität gewährleistet werden.
 
 \textbf{Installierbarkeit}\\
-Das Produkt ist als Open-Source-Anwendung online herunterzuladen
+Das Produkt ist als Open-Source-Anwendung online erhältlich. Die Installierbarkeit ist als normal einzustufen.
 
 
 % remove this if we dont want to have a new page for each
@@ -284,7 +487,7 @@ Das Produkt ist als Open-Source-Anwendung online herunterzuladen
 \newpage 
 
 
-\subsection{Qualitätsanforderungen, author = Karl}
+\subsection{Qualitätsanforderungen, author = Karl, reviewedBy = Felix}
 In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkrete Qualitätsanforderungen formuliert.
 
 \begin{itemize}
@@ -295,7 +498,7 @@ In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkre
     \item Das Produkt soll um neue Verfahren erweiterbar sein
     \item Das Produkt muss als Open-Source-Projekt weiterentwickelbar sein
     \item Der Quelltext soll lesbar und kommentiert sein
-    \item Berechnungszeiten sollen minimal sein
+    \item Die Berechnungszeiten sollen minimal sein
     \item Die Programmiersprache muss Python sein.
 \end{itemize}
 
@@ -328,14 +531,35 @@ Die Benutzerschnittstelle wird über ein GUI zur Verfügung gestellt.
 
 \newpage
 \section{Glossar}
+
+\textbf{Aggregation}\\
+Verfahren zum Zusammenfassen mehrerer Attraktivitäten innerhalb einer Verkehrszelle.
+
+\textbf{Attribut}\\
+
+\textbf{Attraktivität}\\
+Eigenschaft eines Gebäudes zur Beschreibung, wie gut ein Objekt in OSM basierend auf verschiedenen Faktoren ist. Diese prognostiziert die Beliebtheit des Gebäudes.
+
+\textbf{Attraktivitätsattribut}\\
+
+
+\textbf{Geofilter}\\
+Werkzeug zur Einteilung von Zellen in der Karte.
+
+\textbf{Kategorie}\\
+
+
+\textbf{Node}\\
+Objekt in OSM.
+
 \textbf{OSM}\\
 OpenStreetMap ist ein freies Projekt, das frei nutzbare Geodaten sammelt, strukturiert und für die Nutzung durch jedermann in einer Datenbank vorhält.
 
-\textbf{Verkehrsnachfragemodell}\\
-Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungsprozesse der Menschen nachbildet, die zu Ortsveränderungen führen. Im Personenverkehr umfassen diese Entscheidungen die Aktivitätenwahl, die Zielwahl, die Verkehrsmittelwahl, die Abfahrtszeitwahl und die Routenwahl.
+\textbf{Reduktion}\\
+Verfahren zur Abbildung von Gebäuden auf Punkte mit Attraktivitäten.
 
-\textbf{Geofilter}\\
-Tool zur Einteilung von Räumen auf der Karte.
+\textbf{Repository}\\
+Zentrale Ablage in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
 
 \textbf{Tag}\\
 Eigenschaft einer Node in OSM.
@@ -343,24 +567,10 @@ Eigenschaft einer Node in OSM.
 \textbf{Tag Filter}\\
 Filterung nach Tags.
 
-\textbf{Reduktion}\\
-Verfahren zur Abbildung von Gebäuden auf Punkte mit Attraktivitäten.
-
-\textbf{Attraktivität}\\
-Eigenschaft eines Gebäudes.
-
-\textbf{Aggregation}\\
-Verfahren zum Zusammenfassen mehrerer Attraktivitäten innerhalb einer Verkehrszelle.
-
-\textbf{Node}\\
-Objekt in OSM.
-
-\textbf{Repository}\\
-Zentrale Ablage in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
+\textbf{Verkehrsnachfragemodell}\\
+Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungsprozesse der Menschen nachbildet, die zu Ortsveränderungen führen. Im Personenverkehr umfassen diese Entscheidungen die Aktivitätenwahl, die Zielwahl, die Verkehrsmittelwahl, die Abfahrtszeitwahl und die Routenwahl.
 
 \textbf{Verkehrszelle}\\
 Bezeichnet einen räumlich abgegrenzten Teil eines Untersuchungsgebietes, der als Bezugseinheit bei der Verkehrsanalyse und Verkehrsprognose dient.
-
-\newpage
 
 \end{document}
