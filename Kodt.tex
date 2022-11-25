@@ -13,7 +13,7 @@ bookmarks=true,
 \usepackage{csquotes} % provides \enquote{} macro for "quotes"
 
 \title{Pflichtenheft}
-\author{...}
+\author{Karl, JP, Simon, Felix, Pascal}
 \date{November 2022}
 
 \begin{document}
@@ -125,7 +125,7 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 Blabla, Erklärtext
 \newpage
 
-\section*{Vorlage für Steckbrief}
+\subsection*{Vorlage für Steckbrief}
 \textbf{Anwendungsfall:} ...\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} A \\\\
@@ -150,7 +150,7 @@ Blabla, Erklärtext
 \newpage
 
 
-\section*{Starten des Programms <A1>}
+\subsection*{Starten des Programms <A1>}
 \textbf{Anwendungsfall:}  Der user möchte das Programm starten\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Programm wurde gestartet und läuft \\\\
@@ -166,7 +166,7 @@ Blabla, Erklärtext
 \newpage
 
 
-\section*{Neues Projekt erstellen <A2>}
+\subsection*{Neues Projekt erstellen <A2>}
 \textbf{Anwendungsfall:} Der user möchte ein neues Projekt erstellen\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Ein neues Projekt wurde erstellt \\\\
@@ -184,7 +184,7 @@ Blabla, Erklärtext
 \newpage
 
 
-\section*{Internes Projekt laden <A3>}
+\subsection*{Internes Projekt laden <A3>}
 \textbf{Anwendungsfall:} Der User möchte ein Projekt aus dem Standart-Ordner laden\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Ein Projekt das schon in dem dem Standart-Ordner existiert wurde geladen \\\\
@@ -198,7 +198,7 @@ Blabla, Erklärtext
 \end{enumerate}
 \newpage
 
-\section*{Externes Projekt laden <A4>}
+\subsection*{Externes Projekt laden <A4>}
 \textbf{Anwendungsfall:} Der User möchte ein Projekt aus einem nicht Standart-Ordner laden\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Ein Projekt das nicht in dem dem Standart-Ordner existiert wurde geladen \\\\
@@ -214,38 +214,20 @@ Blabla, Erklärtext
 \newpage
 
 
-\section*{OSM-Datei angeben<A5>}
+\subsection*{Dateien referenzieren <A5>}
 \textbf{Anwendungsfall:} ...\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Der Nutzer hinterlegt eine OSM-Datei\\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten - OSM Daten'. \\\\
-\textbf{Nachbedingung Erfolg:} Erfolgreiches Hinterlegen der angegebenen Dateien. \\\\
-\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, erneute Aufforderung zur Dateiangabe. \\\\
-\textbf{Auslösendes Ereignis:} Drücken des Buttons zum Auswählen des OSM Datensatzes. \\\\
+\textbf{Ziel:} Der Nutzer definiert die OSM-Daten und den räumlichen Filter\\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Data'. \\\\
+\textbf{Nachbedingung Erfolg:} Erfolgreiches Hinterlegen der angegebenen Dateien. Anzeigen der angegebenen Dateien.\\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag. \\\\
+\textbf{Auslösendes Ereignis:} Drücken des Knopfes 'Select OSM-Data'\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
     \item Der Nutzer wählt eine Datei im passenden Format aus.
     \item Die Anwendung zeigt den Namen der gewählten Datei an.
-\end{enumerate}
-\textbf{Erweiterungen:} 
-\begin{itemize}
-    \item 3a: Durch Drücken eines Buttons wird die gewählte Datei als Karte grafisch dargestellt.
-\end{itemize}
-\newpage
-
-
-
-\section*{Large Räumlichen Filter definieren<A6>}
-\textbf{Anwendungsfall:} ...\\\\
-\textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Der Nutzer definiert die Menge der betrachteten OSM-Elemente\\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten - Räumlicher Filter'. \\\\
-\textbf{Nachbedingung Erfolg:} Erfolgreiches Hinterlegen der angegebenen Dateien. \\\\
-\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, erneute Aufforderung zur Dateiangabe. \\\\
-\textbf{Auslösendes Ereignis:} Drücken des Buttons zum Auswählen der Verkehrszellen. \\\\
-\textbf{Beschreibung:}
-\begin{enumerate}
+    \item Der Nutzer drückt auf den Knopf 'Select Cut-Out'
     \item Der Datei-Explorer öffnet sich.
     \item Der Nutzer wählt eine Datei im passenden Format aus.
     \item Die Anwendung zeigt den Namen der gewählten Datei an.
@@ -259,47 +241,54 @@ Blabla, Erklärtext
 
 
 % Noch nicht fertig, wir müssen noch besprechen, wo das stattfindet
-\section*{Kategorien importieren<A7>}
+\subsection*{Kategorien importieren <A7>}
 \textbf{Anwendungsfall:} Der Nutzer möchte in seinem Projekt Kategorien verwenden, welche bereits in einem anderen definiert wurden.\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} ... \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten - Konfiguration' \\\\
-\textbf{Nachbedingung Erfolg:} Die  \\\\
-\textbf{Nachbedingung Fehlschlag:} D \\\\
-\textbf{Auslösendes Ereignis:} E \\\\
+\textbf{Ziel:} Das Importieren vordefinierter Kategorien. \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten' \\\\
+\textbf{Nachbedingung Erfolg:} Die Kategorien der importierten Datei sind in der Liste der Kategorien aufgelistet \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
+\textbf{Auslösendes Ereignis:} Drücken des Knopfes 'Import categories'\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item F
-    \item G
-    \item H
+    \item Der Datei-Explorer öffnet sich.
+    \item Der Nutzer wählt eine Datei im passenden Format aus
+    \item Die Anwendung zeigt den Namen der ausgewählten Datei an.
+    \item Der Nutzer bestätigt den Import der Kategorien.
+    \item Die Anwendung fügt die Kategorien zur Kategorienliste hinzu
 \end{enumerate}
 \textbf{Erweiterungen:} 
 \begin{itemize}
-    \item 3a: I
+    \item 3a: Neben dem Namen der Datei werden auch die in ihr enthaltenen Daten visualisiert.
 \end{itemize}
 \textbf{Alternativen:} 
 \begin{itemize}
-    \item 3a: J
+    \item 5a: Die Anwendung ersetzt die bisherigen Kategorien mit den importierten.
 \end{itemize}
 \newpage
 
 
 
-\section*{Erstellen von Kategorien<A9>}
+\subsection*{Erstellen von Kategorien <A9>}
 \textbf{Anwendungsfall:} Der Nutzer möchte eine weitere Kategorie hinzufügen\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Die Liste der Kategorien soll um eine weitere Kategorie ergänzt werden \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien' \\\\
-\textbf{Nachbedingung Erfolg:} In der Liste der Kategorien befindet sich eine neue, nicht-konfigurierte Kategorie. \\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Hinzufügen einer neuen Datei. \\
+\textbf{Nachbedingung Erfolg:} In der Liste der Kategorien befindet sich eine neue, nicht-konfigurierte Kategorie. Die neue Kategorie ist ausgewählt.\\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Hinzufügen einer neuen Datei. \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Anwendung schreibt einen leeren Eintrag in die Kategorienliste
+    \item Die Anwendung wählt den neuen Eintrag aus
+\end{enumerate}
 \newpage
 
 
 
-\section*{Konfgurieren von Kategorien<A10>}
+\subsection*{Konfgurieren von Kategorien <A10>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die Eigenschaften einer Kategorie verändern\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} ? \\\\
+\textbf{Ziel:} Konfigurieren einer Kategorie \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie.\\\\
 \textbf{Nachbedingung Erfolg:} Die Änderungen an der Kategorie und an ihren Eigenschaften wird angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
@@ -320,12 +309,108 @@ Blabla, Erklärtext
 
 
 
+\subsection*{Phase wechseln}
+\textbf{Anwendungsfall:} Der Nutzer möchte in eine andere Phase der Konfigurierung wechseln.\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Die aktuelle Konfigurationsseite wird gespeichert und eine andere geladen. \\\\
+\textbf{Vorbedingung:} Ein Projekt ist geladen. \\\\
+\textbf{Nachbedingung Erfolg:} Die ausgewählte Seite wird angezeigt. Änderungen der alten Seite sind gespeichert.\\\\
+\textbf{Nachbedingung Fehlschlag:} Die alte Seite wird weiterhin angezeigt. Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
+\textbf{Auslösendes Ereignis:} Drücken auf eine Phase im Kopf der Seite oder Drücken auf einen 'Continue' Button \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Anwendung speichert die Daten, die der Nutzer auf der aktuellen Seite hinterlegt hat.
+    \item Die Anwendung lädt die Daten für die ausgewählte bzw. nächste Seite
+    \item Die Anwendung öffnet die ausgewählte bzw. nächste Seite
+\end{enumerate}
+\textbf{Erweiterungen:} 
+\begin{itemize}
+    \item 3a: Die Anwendung informiert den Nutzer über die Speicherung der Daten
+\end{itemize}
+\newpage
+
+
+
+\subsection*{Anwendung beenden}
+\textbf{Anwendungsfall:} Der Nutzer möchte die Anwendung schließen\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Die Anwendung soll sich schließen und nicht-gespeicherte Daten speichern \\\\
+\textbf{Vorbedingung:} Die Anwendung ist gestartet\\\\
+\textbf{Nachbedingung Erfolg:} Die Anwendung ist geschlossen und nicht-gespeicherte Daten sind gespeichert\\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung ist noch geöffnet \\\\
+\textbf{Auslösendes Ereignis:} Drücken auf das Kreuz, zum Beenden der Anwendung, welches durch das Betriebssystem üblich ist. \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Befindet sich der Nutzer auf einer Konfigurationsseite mit nicht-gespeicherten Daten, so werden diese zwischengespeichert.
+    \item Die Anwendung schließt sich
+\end{enumerate}
+\textbf{Erweiterungen:} 
+\begin{itemize}
+    \item 1a: Gibt es nicht-gespeicherte Daten, so wird der Nutzer aufgefordert diese zu speichern oder zu verwerfen.
+\end{itemize}
+\newpage
+
+
+
+
 
 
 
 
 
 \section{Produktdaten}
+Dieses Kapitel beschreibt die Organisation der Produktdaten. Daten, welche nicht unbedingt erhoben werden müssen, sind mit einem Stern ($\ast$) markiert. Die größte Organisationseinheit sind hierbei die Projekte. Jedem Projekt ist ein Verzeichnis zugeordnet. Dieses Verzeichnis wird im folgenden auch als Projektordner bezeichnet. In jedem Projektordner befinden sich die folgenden Dateien und Verzeichnisse:
+\begin{itemize}
+    \item Projekt-Konfiguration (JSON-Datei)
+    \item Kategorien-Konfiguration (JSON-Datei)
+    \item Zwischenergebnisse (Verzeichnis)
+    \item Ausgabe (Verzeichnis)
+\end{itemize}
+
+\subsection*{Projekt-Konfiguration}
+Diese JSON-Datei enthält die wichtigsten Grundeinstellungen des jeweiligen Projektes. Darunter:
+\begin{itemize}
+    \item Name des Projekts
+    \item Beschreibung des Projekts ($\ast$)
+    \item Erstellungsdatum des Produkts ($\ast$)
+    \item Datum der letzten Änderung ($\ast$)
+    \item Definition des räumlichen Filters: Müssen OSM-Elemente vollständig im definierten Bereich liegen, um betrachtet zu werden?
+    \item Liste der Statistiken, die während der Aggregation berechnet werden sollen
+    \item Verweis auf die OSM-Eingabedatei
+    \item Verweis auf die Datei, welche die Verkehrszellen definiert
+\end{itemize}
+
+
+\subsection*{Kategorien-Konfiguration}
+Diese JSON-Datei enthält alle Informationen zu den Kategorien des jeweiligen Projekts. Es folgt eine Liste der Eigenschaften, die je Kategorie gespeichert werden müssen.
+\begin{itemize}
+    \item Name der Datei (eindeutig)
+    \item Einträge der Tag-Whitelist
+    \item Einträge der Tag-Blacklist
+    \item Definition der Default-Werte je Attribut
+    \item Konfiguration der Punktreduktion
+    \item Faktoren der Attribute je Attraktivitätsattribut
+\end{itemize}
+
+
+\subsection*{Zwischenergebnisse}
+Dieses Verzeichnis enthält die Zwischenergebnisse der Berechnungen der jeweiligen Phasen.
+
+\subsection*{Ausgabe}
+Dieses Verzeichnis enthält die finale Ausgabe der Berechnungen. Hier befindet sich je ausgewählter Aggregationsstatistik eine CSV-Datei. Jede dieser CSV-Dateien ordnet jeder Verkehrszelle je Attraktivitätsattribut einen numerischen Wert zu.
+
+
+\subsection*{Projektverwaltung}
+Der Nutzer kann Projekte bzw. ihre Projektordner grundsätzlich an beliebigen Stellen speichern. Jedoch gibt es einen Projektstandardordner. In diesem werden Projekte standardmäßig gespeichert. Die GUI ermöglicht ein nutzerfreundlicheres Öffnen von Projekten aus dem Projektstandardordner. Der Nutzer kann den Projektstandardordner beliebig verschieben.
+
+\subsection*{Dateiformate}
+Zum Lesen der anwendungsspezifischen Daten verwendet die Anwendung Dateiformate:
+\begin{itemize}
+    \item OSM-Dateien: Zum Lesen und Speichern von OSM-Elementen unterstützt die Anwendung die Dateiformate .osm.bz2 und .osm.pbz.
+    \item Verkehrszellen: Zum definieren von Verkehrszellen verwendet die Anwendung die Dateiformate shape und geojson.
+\end{itemize}
+
+
 \newpage
 
 
@@ -396,7 +481,6 @@ Es ist keine Kommunikation zwischen Geräten vorgesehen, daher ist die Interoper
 \textbf{Zuverlässigkeit\\}
 Die Zuverlässigkeit ist wichtig, da Benutzer erwarten, dass die Anwendung konsistente Ergebnisse liefert.
 Es wird erwartet, dass das Programm die eingegebenen Daten basierend auf Benutzereingaben korrekt auswertet.
-So muss das Programm immer das gleiche Endergebnis mit den gleichen Daten und Benutzereingaben zurückgeben.
 Durch das Definieren von Testfällen in dem Pflichtenheft und das Ausführen dieser Testfälle während der Implementierungsphase können Fehler frühzeitig erkannt und behoben werden.
 Dies gewährleistet eine sehr gute Zuverlässigkeit.
 
@@ -491,15 +575,17 @@ Das Produkt ist als Open-Source-Anwendung online erhältlich. Die Installierbark
 In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkrete Qualitätsanforderungen formuliert.
 
 \begin{itemize}
-    \item Die Anwendung soll in englischer Sprache verfügbar sein
-    \item Die Anwendung soll intuitiv bedienbar sein
-    \item Die Anwendung muss auf Windows 10 und 11 nutzbar sein
-    \item Durch eine große Testabdeckung soll die Korrektheit des Produkts gewährleistet sein
-    \item Das Produkt soll um neue Verfahren erweiterbar sein
-    \item Das Produkt muss als Open-Source-Projekt weiterentwickelbar sein
-    \item Der Quelltext soll lesbar und kommentiert sein
-    \item Die Berechnungszeiten sollen minimal sein
-    \item Die Programmiersprache muss Python sein.
+    \item <Q1> Die Anwendung soll in englischer Sprache verfügbar sein
+    \item <Q2> Die Anwendung soll intuitiv bedienbar sein
+    \item <Q3> Die Anwendung muss auf Windows 10 und 11 nutzbar sein
+    \item <Q4> Durch eine große Testabdeckung soll die Korrektheit des Produkts gewährleistet sein
+    \item <Q5> Das Produkt soll um neue Verfahren erweiterbar sein
+    \item <Q6> Das Produkt muss als Open-Source-Projekt weiterentwickelbar sein
+    \item <Q7> Der Quelltext soll lesbar und kommentiert sein
+    \item <Q8> Die Berechnungszeiten sollen minimal sein
+    \item <Q9> Die Programmiersprache muss Python sein.
+    \item <Q10> Der Programmablauf soll deterministisch sein
+    \item <Q11> Die Anwendung soll von unerfahrenen Nutzern leicht installierbar sein
 \end{itemize}
 
 \newpage
