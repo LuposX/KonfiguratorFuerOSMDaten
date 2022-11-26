@@ -305,8 +305,58 @@ Blabla, Erklärtext
 \end{enumerate}
 \newpage
 
+(ohne gui gemacht, ist komptaibel zu gui? checken!)
+\subsection*{Wählen der Aggregations-Verfahren<A11>}
+\textbf{Anwendungsfall:} Der Nutzer möchte Unterschiedliches Aggregations-Verfahren wählen\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Es wurde ausgewählt welche Aggregations-Verfahren alle berechnet werden sollen \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite `Aggregations`\\\\
+\textbf{Nachbedingung Erfolg:} Die ausgewählten Aggregations-Verfahren wurden ausgewählt und angezeigt\\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer checkt eine Checkbox. \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Das Aggregations-Verfahren, das mit der Checkbox ge-checkt wurde wird übernommen.
+\end{enumerate}
+\newpage
+
+Wusnchkriterium, vlt. irgednwie kennzeichnen
+\subsection*{Darstellen der Berechnungsergebnisse<A12>}
+\textbf{Anwendungsfall:} Der User möchte sich Diagramme darstellen lassen von den berechneten Daten\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Es wird ein Diagramm dargestellt, das die berecheten Daten visualisiert\\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite `View and Calculate`\\\\
+\textbf{Nachbedingung Erfolg:} Ein Diagramm der berechneten Daten wird angezeigt \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
+\textbf{Auslösendes Ereignis:} Der User drückt den Knopf `Visualize calculated Data` \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der User wählt folgende Eigenschaften aus, die er Visualisieren will:
+    \begin{itemize}
+        \item Die Kategorie
+        \item Das Aggregation-Verfahren
+    \end{itemize}
+    \item Der User drückt den Knopf `Visualize calculated Data
+    \item Es wird ein Balkendiagramm angzeigt der die ausgewählten Daten Visualisiert
+\end{enumerate}
+\newpage
 
 
+\subsection*{Exportieren des Endresultate<A13>}
+\textbf{Anwendungsfall:} Der User möchte die Endresultate exportieren\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Das berechnete Endresultate liegt dort im System vor wo der User es will \\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite `Export`\\\\
+\textbf{Nachbedingung Erfolg:} Die berechneten Ergebisse wurden erfolgreich exportiert und befinden sich nun an der richtigen Stelle. \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
+\textbf{Auslösendes Ereignis:} Der User drückt den Knopf `Calculations Export` \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der Datei-Explorer öffnet sich.
+    \item Der Nutzer wählt einen Speicherort aus.
+    \item Das Endergebnisse wird an diese Stelle kopiert
+\end{enumerate}
+\newpage
 
 
 \subsection*{Phase wechseln}
@@ -658,5 +708,11 @@ Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungspro
 
 \textbf{Verkehrszelle}\\
 Bezeichnet einen räumlich abgegrenzten Teil eines Untersuchungsgebietes, der als Bezugseinheit bei der Verkehrsanalyse und Verkehrsprognose dient.
+
+\textbf{Aggregatoions-Vefahren}\\
+Das beschreibt wie die unterschiedlichen Attraktivitäten aggregiert werden unterschiedlichen Aggregatoions-Vefahren sind: Summe, Maximum, Mittelwert, Std. Abw., usw.
+
+\textbf{Geofilter}\\
+Dies beschreibt ein Verfahren, bei eine Neues OSM-Datenset erstellt wird, in das OSM-Elementen die ganz oder teilweise in dem Geofilter liegen geschrieben werden.
 
 \end{document}
