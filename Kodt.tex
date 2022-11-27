@@ -16,6 +16,8 @@ bookmarks=true,
 \author{Karl, JP, Simon, Felix, Pascal}
 \date{November 2022}
 
+
+
 \begin{document}
 
 
@@ -31,6 +33,8 @@ bookmarks=true,
 
 
 \section{Zielbestimmung}
+Ob mit dem Fahrrad zur Uni oder mit dem Auto zum Supermarkt: Verkehr betrifft uns alle. Dieses Produkt generiert aus Geodaten des freien Projektes 'Open Street Map' (OSM) eine numerische Wertung der Attraktivität geografischer Standorte. Ein Hauptaugenmerk liegt hierbei auf der Konfigurierbarkeit der Generierung dieser Wertung. Verkehrsplaner können so die richtigen Daten für ihre Verkehrsnachfragemodelle einfach generieren.
+
 
 \textbf{author=Pascal,not reviewed yet\\}
 Verkehrsmodelle sind allgegenwärtig, egal ob man nur ein Teilnehmer am Verkehr ist oder Entscheidungen treffen muss um diesen zu optimieren.
@@ -39,10 +43,6 @@ Um diese Menschen effektiv simulieren zu können, bedarf es Spezifikation und Ko
 Hier kommt die (NAME DER SOFTWARE) ins spiel.
 Mit Hilfe von (NAME DER SOFTWARE) soll es  Verkehrsingenieuren und Verkehrswissenschafter möglich sein, genau solche Daten für ihre Berechnungen anfertigen zu können.
 Hierbei werden Daten aus der OSM als Basis genutzt.
-Die Nutzer müssen nun kein Vorwissen an Informatik mit sich bringen um die Software bedienen zu können.
-Die Software simplifiziert die OSM Daten von Gebäude auf Punkte. Der Nutzer kann diese mit Tags versehen und Kategorisieren über selber angegebene Filter.
-Die Berechnung für Attraktivität soll Konfigurierbar sein und kann von beliebigen Attributen des Nutzers festgelegt werden.
-Neben der Attraktivität einzelner Elemente kann auch über mehrere Aggregiert werden, was ebenfalls Konfigurierbar sein soll.
 
 \subsection{Musskriterien}
 Musskriterien(kurz MK): unabdingbare Leistungen der Software.
@@ -72,12 +72,13 @@ Wunschkriterien(kurz WK): wünschenswerte Leistungen der Software.
     \item <WK1> Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen.
     \item <WK2> Die Verkehrsdaten können mit einer Karte visualisiert werden.
     \item <WK3> Der Nutzer kann durch Klicken auf eine Karte Polygone definieren.
-    \item <WK4> Es kann für das Filtern mit Kategorien beliebige logische Ausdrücke möglich sein.
+    \item <WK4> Der Nutzer kann zum Filtern der Kategorien beliebige aussagenlogische Formeln angeben.
     \item <WK5> Das Programm bietet eine Liste an OSM-Tags an
     \item <WK6> Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
     \item <WK7> Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert werden
     \item <WK8> Die Anwendung besitzt eine Statusanzeige, die den aktuellen Fortschritt der Berechnungen anzeigt
     \item <WK9> Der Nutzer kann die Attraktivitätsattribute auch in Abhängigkeit zu OSM-Tags definieren.
+    \item <WK10> Der Nutze kann Kategorien von der Berechnung ausschließen
     
 \end{itemize}
 
@@ -95,12 +96,13 @@ Wunschkriterien(kurz WK): wünschenswerte Leistungen der Software.
 \textbf{author="JP", reviewedby=Karl} 
 Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden soll. Der Anwendungsbereich des Produkts liegt bei Verkerhrsinstituten. Diese Nutzen die Berechnung von Attratktivitäten verschiedener Verkehrszellen zum Erstellen von Verkehrsnachfragemodellen. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
 
+Alternative:
+Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden kann. Die größte Anwendung findet das Produkt bei der Nutzung von Verkehrsnachfragemodellen. Diese benötigen eine Bewertung von Verkehrszellen nach ihrer Attraktivität, um aussagekräftige Vorhersagen treffen zu können. Auf Grundlage dieser Vorhersagen können dann verkehrsplanerische, sowie politische Entscheidungen getroffen werden.
+
 
 \subsection{Zielgruppen}
 \textbf{reviewedby = Felix, JP author=Karl\\}
-Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Die Anwendungsbereiche sind, wie oben beschrieben, beschränkt. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
-
-
+Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
 \newpage
 
 
@@ -122,7 +124,7 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 
 
 \section{Produktfunktionen}
-Blabla, Erklärtext
+Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendungsfälle. Für jeden Anwendungsfall werden die funktionalen Anforderungen aufgelistet, die dieser umsetzt. In der Testphase können Tester diesen Katalog nutzen um die korrekte Umsetzung der jeweiligen Produktfunktionen zu testen. Dazu ist für jeden Anwendungsfall eine Vorbedingung, Nachbedingungen, das auslösende Ereignis und eine genau Beschreibung angegeben.
 \newpage
 
 \subsection*{Vorlage für Steckbrief}
@@ -151,65 +153,67 @@ Blabla, Erklärtext
 
 
 \subsection*{Starten des Programms <A1>}
-\textbf{Anwendungsfall:}  Der user möchte das Programm starten\\\\
+\textbf{Anwendungsfall:}  Der Nutzer möchte das Programm starten\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Das Programm wurde gestartet und läuft \\\\
+\textbf{Ziel:} Das Starten des Programms \\\\
 \textbf{Vorbedingung:} Das Programm muss installiert sein  \\\\
-\textbf{Nachbedingung Erfolg:} Das Programm läuft erfolgreich, die `Main-Menu` Seite wird angezeigt\\\\
+\textbf{Nachbedingung Erfolg:} Das Programm läuft erfolgreich, das Hauptmenü wird angezeigt\\\\
 \textbf{Nachbedingung Fehlschlag:} Das Programm startet nicht \\\\
-\textbf{Auslösendes Ereignis:} Der User führt das Programm aus \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer startet das Programm \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Der User führt das Programm aus
-    \item Die `Main-Menu` Seite wird angezeigt
+    \item Das Hauptmenü wird angezeigt
 \end{enumerate}
 \newpage
 
 
 \subsection*{Neues Projekt erstellen <A2>}
-\textbf{Anwendungsfall:} Der user möchte ein neues Projekt erstellen\\\\
+\textbf{Anwendungsfall:} Der Nutzer möchte ein neues Projekt erstellen\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Ein neues Projekt wurde erstellt \\\\
-\textbf{Vorbedingung:} Das Programm muss auf der `Main-Menu` Seite sein   \\\\
-\textbf{Nachbedingung Erfolg:} Ein neues Projekt wurde im Speicher erstellt  \\\\
-\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt in der `Main-Menu` Seite \\\\
-\textbf{Auslösendes Ereignis:} Der User hat auf den `Create New Project` Knopf gedrückt \\\\
+\textbf{Ziel:} Erstellen eines neuen Projekts \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü \\\\
+\textbf{Nachbedingung Erfolg:} Ein neues Projekt befindet sich im Speicher. Die Seite 'Daten' ist geöffnet.  \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. Der Nutzer befindet sich im Hauptmenü. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den 'Create New Project' Button \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Der User wählt den Namen und die Beschreibung für das Projekt
-    \item Der User drückt auf den `Create` Knopf
-    \item Es wird ein Projekt Ordner im Speicherort erstellt, den der User selbst wählen kann oder nicht
-    \item Es wird eine Projekt Konfiguration Datei erstellt und im Projek-tOdner abgespeichert
+    \item Der Nutzer wählt den Namen und die Beschreibung für das Projekt.
+    \item Der Nutzer wählt den Speicherort des Projekts.
+    \item Der Nutzer drückt auf den 'Create' Knopf
+    \item Das Projekt wird erstellt und der Projektordner am angegebenen Speicherort angelegt.
 \end{enumerate}
 \newpage
 
 
 \subsection*{Internes Projekt laden <A3>}
-\textbf{Anwendungsfall:} Der User möchte ein Projekt aus dem Standart-Ordner laden\\\\
+\textbf{Anwendungsfall:} Der Nutzer möchte ein Projekt aus dem Projektstandardordner laden\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Ein Projekt das schon in dem dem Standart-Ordner existiert wurde geladen \\\\
-\textbf{Vorbedingung:} Das Programm muss auf der `Main-Menu` Seite sein  \\\\
-\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts wurden geladen und die `Daten` Seite wird angezeigt \\\\
-\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt in der `Main-Menu` Seite \\\\
-\textbf{Auslösendes Ereignis:}  Der User hat ein Projekt ausgewählt aus dem Standart-Speicher-Ordner und den `Load internal Project` Knopf gedrückt \\\\
+\textbf{Ziel:} Das Laden eines Projektes aus dem Projektstandardordner \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü  \\\\
+\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Daten' wird angezeigt \\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt im Hauptmenü \\\\
+\textbf{Auslösendes Ereignis:}  Der Nutzer wählt ein Projekt aus und Drückt den Button 'Load selected Project' \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Das Projekt wird intern geladen
+    \item Das ausgewählte Projekt wird geladen
+    \item Die Anwendung zeigt die Seite 'Daten' an
 \end{enumerate}
 \newpage
 
 \subsection*{Externes Projekt laden <A4>}
-\textbf{Anwendungsfall:} Der User möchte ein Projekt aus einem nicht Standart-Ordner laden\\\\
+\textbf{Anwendungsfall:} Der Nutzer möchte ein Projekt außerhalb des Projektstandardordners laden\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Ein Projekt das nicht in dem dem Standart-Ordner existiert wurde geladen \\\\
-\textbf{Vorbedingung:} Das Programm muss auf der `Main-Menu` Seite sein  \\\\
-\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts wurden geladen und die `Daten` Seite wird angezeigt \\\\
-\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt in der `Main-Menu` Seite \\\\
-\textbf{Auslösendes Ereignis:}  Der User hat den `Load external Project` Knopf gedrückt \\\\
+\textbf{Ziel:} Ein Projekt wird geladen \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü  \\\\
+\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Daten' wird angezeigt \\\\
+\textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, der Nutzer bleibt im Hauptmenü \\\\
+\textbf{Auslösendes Ereignis:}  Der Nutzer drückt den `Load external Project` Button \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
-    \item Der Nutzer wählt eine Datei im passenden Format aus.
+    \item Der Nutzer wählt einen Projektordner aus.
+    \item Die Anwendung lädt das ausgewählte Projekt.
+    \item Die Anwendung zeigt die Seite 'Daten' an
 \end{enumerate}
 \newpage
 
@@ -225,11 +229,11 @@ Blabla, Erklärtext
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
-    \item Der Nutzer wählt eine Datei im passenden Format aus.
+    \item Der Nutzer wählt eine Datei im {passenden Format}~\ref{dataformat} aus.
     \item Die Anwendung zeigt den Namen der gewählten Datei an.
     \item Der Nutzer drückt auf den Knopf 'Select Cut-Out'
     \item Der Datei-Explorer öffnet sich.
-    \item Der Nutzer wählt eine Datei im passenden Format aus.
+    \item Der Nutzer wählt eine Datei im \hyperlink{dataformat}{passenden Format} aus.
     \item Die Anwendung zeigt den Namen der gewählten Datei an.
     \item Der Nutzer wählt eine der folgenden Optionen aus
     \begin{itemize}
@@ -252,7 +256,7 @@ Blabla, Erklärtext
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
-    \item Der Nutzer wählt eine Datei im passenden Format aus
+    \item Der Nutzer wählt eine Datei im \hyperlink{dataformat}{passenden Format} aus
     \item Die Anwendung zeigt den Namen der ausgewählten Datei an.
     \item Der Nutzer bestätigt den Import der Kategorien.
     \item Die Anwendung fügt die Kategorien zur Kategorienliste hinzu
@@ -275,7 +279,7 @@ Blabla, Erklärtext
 \textbf{Ziel:} Die Liste der Kategorien soll um eine weitere Kategorie ergänzt werden \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien' \\\\
 \textbf{Nachbedingung Erfolg:} In der Liste der Kategorien befindet sich eine neue, nicht-konfigurierte Kategorie. Die neue Kategorie ist ausgewählt.\\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Hinzufügen einer neuen Datei. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Hinzufügen einer neuen Kategorie. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Anwendung schreibt einen leeren Eintrag in die Kategorienliste
@@ -284,15 +288,32 @@ Blabla, Erklärtext
 \newpage
 
 
+\subsection*{Auswählen von Kategorien}
+\textbf{Anwendungsfall:} Der Nutzer möchte eine Kategorie auswählen, um diese genauer zu betrachten\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Das Auswählen und Anzeigen einer Kategorie \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie \\\\
+\textbf{Nachbedingung Erfolg:} Name, Whitelist und Blacklist der neuen Kategorie wird angezeigt.\\\\
+\textbf{Nachbedingung Fehlschlag:} Die Seite bleibt unverändert.\\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf das Dropdown-Menü zum Auswählen der Kategorie \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Anwendung zeigt eine Liste aller Kategorien.
+    \item Der Nutzer wählt eine der Kategorien aus.
+    \item Die Anwendung zeigt den Namen, die Whitelist und die Blacklist der Kategorie an.
+\end{enumerate}
+\newpage
 
-\subsection*{Konfgurieren von Kategorien <A10>}
+
+
+\subsection*{Konfigurieren von Kategorien <A10>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die Eigenschaften einer Kategorie verändern\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Konfigurieren einer Kategorie \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie.\\\\
 \textbf{Nachbedingung Erfolg:} Die Änderungen an der Kategorie und an ihren Eigenschaften wird angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer klickt auf eine Kategorie oder der Nutzer erstellt eine neue Kategorie \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus oder erstellt eine neue Kategorie \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Anwendung zeigt dem Nutzer den Namen, die Whitelist und die Blacklist der Kategorie an. Die Anwendung signalisiert, ob die Kategorie aktiviert ist.
@@ -303,58 +324,127 @@ Blabla, Erklärtext
         \item Der Nutzer kann Einträge zur Blacklist und zur Whitelist hinzufügen
     \end{itemize}
 \end{enumerate}
+\textbf{Erweiterung:}
+\begin{itemize}
+        \item 2a: Die Anwendung schlägt in einer Liste OSM-Tags vor
+    \end{itemize}
 \newpage
 
-(ohne gui gemacht, ist komptaibel zu gui? checken!)
-\subsection*{Wählen der Aggregations-Verfahren<A11>}
-\textbf{Anwendungsfall:} Der Nutzer möchte Unterschiedliches Aggregations-Verfahren wählen\\\\
+
+\subsection*{Löschen von Kategorien}
+\textbf{Anwendungsfall:} Der Nutzer möchte eine Kategorie löschen\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Es wurde ausgewählt welche Aggregations-Verfahren alle berechnet werden sollen \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite `Aggregations`\\\\
-\textbf{Nachbedingung Erfolg:} Die ausgewählten Aggregations-Verfahren wurden ausgewählt und angezeigt\\\\
-\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer checkt eine Checkbox. \\\\
+\textbf{Ziel:} Das Entfernen einer Kategorie aus der Kategorienliste\\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie. Eine Kategorie ist ausgewählt.\\\\
+\textbf{Nachbedingung Erfolg:} Die ausgewählte Kategorie befindet sich nicht mehr in der Liste. Es ist keine Kategorie mehr ausgewählt.\\\\
+\textbf{Nachbedingung Fehlschlag:} Die Liste der Kategorien ändert sich nicht.\\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Löschen einer Kategorie. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Das Aggregations-Verfahren, das mit der Checkbox ge-checkt wurde wird übernommen.
+    \item Die Anwendung löscht die Kategorie.
+\end{enumerate}
+\textbf{Erweiterung:}
+\begin{itemize}
+    \item 0a: Die Anwendung fordert den Nutzer auf die Löschung zu bestätigen.
+\end{itemize}
+\newpage
+
+
+
+\subsection*{Punktreduktion definieren}
+\textbf{Anwendungsfall:} Der Nutzer möchte den Ablauf der Punktreduktion definieren\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Definition der Punktreduktion \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Punktreduktion' \\\\
+\textbf{Nachbedingung Erfolg:} Die geänderten Einstellungen werden angezeigt \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der Nutzer kann entscheidet, ob eine Fläche berechnet werden soll.
+    \item Falls ja, entscheidet der Nutzer, ob die Fläche des Grundstücks oder des Gebäudes berechnet werden soll.
+    \item Der Nutzer entscheidet, ob die Geschossfläche berechnet werden soll.
 \end{enumerate}
 \newpage
 
-Wusnchkriterium, vlt. irgednwie kennzeichnen
-\subsection*{Darstellen der Berechnungsergebnisse<A12>}
-\textbf{Anwendungsfall:} Der User möchte sich Diagramme darstellen lassen von den berechneten Daten\\\\
+
+
+\subsection*{Standardwerte für Attribute festlegen}
+\textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie und ein Attribut einen Standarwert angeben\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Es wird ein Diagramm dargestellt, das die berecheten Daten visualisiert\\\\
-\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite `View and Calculate`\\\\
-\textbf{Nachbedingung Erfolg:} Ein Diagramm der berechneten Daten wird angezeigt \\\\
-\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
-\textbf{Auslösendes Ereignis:} Der User drückt den Knopf `Visualize calculated Data` \\\\
+\textbf{Ziel:} Festlegen eines Standardwertes eines Attributs für eine Kategorie \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Punktreduktion' \\\\
+\textbf{Nachbedingung Erfolg:} Die Standardwerte sind hinterlegt \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Der User wählt folgende Eigenschaften aus, die er Visualisieren will:
+    \item Der Nutzer klickt auf den Reiter zum Festlegen der Standardwerte
+    \item Die Anwendung zeigt die Liste der Tags für die Standardwerte an
+    \item Der Nutzer erstellt einen neuen Eintrag in der Tag-Liste oder wählt einen bereits erstellten Eintrag aus.
+    \item Die Anwendung zeigt die bisherigen Standardwerte der Attribute für diesem Eintrag an.
+    \item Der Nutzer kann den Tag-Listen-Eintrag verändern
+    \item Der Nutzer kann die Reihenfolge der Tag-Listen-Einträge verändern
+    \item Der Nutzer legt je Attribut den Standardwert fest.
+\end{enumerate}
+\newpage
+
+
+
+
+(ohne gui gemacht, ist komptaibel zu gui? checken!)
+\subsection*{Wählen der Aggregations-Verfahren <A11>}
+\textbf{Anwendungsfall:} Der Nutzer möchte unterschiedliches Aggregations-Verfahren wählen\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Es wurde ausgewählt welche Aggregations-Verfahren berechnet werden sollen \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Aggregation'\\\\
+\textbf{Nachbedingung Erfolg:} Es werden die vom Nutzer gewählten Aggregationsverfahren angezeigt.\\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer aktiviert oder deaktiviert die Checkbox eines Aggregations-Verfahrens. \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Anwendung setzt den Hacken in die Checkbox bzw. setzt ihn zurück.
+\end{enumerate}
+\newpage
+
+
+
+Wusnchkriterium, vlt. irgednwie kennzeichnen
+\subsection*{Darstellen der Berechnungsergebnisse <A12>}
+\textbf{Anwendungsfall:} Der Nutzer möchte die berechneten Daten visualisieren.\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Visualisierung der Daten\\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite 'View and Calculate'\\\\
+\textbf{Nachbedingung Erfolg:} Ein Diagramm der berechneten Daten wird angezeigt \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Knopf 'Visualize calculated Data' \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der Nutzer wählt folgende Eigenschaften aus, die er Visualisieren will:
     \begin{itemize}
         \item Die Kategorie
         \item Das Aggregation-Verfahren
     \end{itemize}
-    \item Der User drückt den Knopf `Visualize calculated Data
+    \item Der User drückt den Knopf 'Visualize calculated Data'
     \item Es wird ein Balkendiagramm angzeigt der die ausgewählten Daten Visualisiert
 \end{enumerate}
 \newpage
 
 
-\subsection*{Exportieren des Endresultate<A13>}
-\textbf{Anwendungsfall:} Der User möchte die Endresultate exportieren\\\\
+
+\subsection*{Exportieren des Endergebnisses <A13>}
+\textbf{Anwendungsfall:} Der Nutzer möchte das Endergebnis exportieren\\\\
 \textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Das berechnete Endresultate liegt dort im System vor wo der User es will \\\\
-\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite `Export`\\\\
-\textbf{Nachbedingung Erfolg:} Die berechneten Ergebisse wurden erfolgreich exportiert und befinden sich nun an der richtigen Stelle. \\\\
+\textbf{Ziel:} Das Endergebnis soll an den gewünschten Speicherplatz kopiert werden. \\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite 'Export'\\\\
+\textbf{Nachbedingung Erfolg:} An der vom Nutzer definierten Stelle befindet sich ein ZIP-Archiv, welches das Endergebnis enthält. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
-\textbf{Auslösendes Ereignis:} Der User drückt den Knopf `Calculations Export` \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Button 'Calculations Export' \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
     \item Der Nutzer wählt einen Speicherort aus.
-    \item Das Endergebnisse wird an diese Stelle kopiert
+    \item Die Anwendung komprimiert das Endergebnis zu einem ZIP-Archiv und speichert es an passender Stelle ab.
 \end{enumerate}
 \newpage
 
@@ -453,7 +543,7 @@ Dieses Verzeichnis enthält die finale Ausgabe der Berechnungen. Hier befindet s
 \subsection*{Projektverwaltung}
 Der Nutzer kann Projekte bzw. ihre Projektordner grundsätzlich an beliebigen Stellen speichern. Jedoch gibt es einen Projektstandardordner. In diesem werden Projekte standardmäßig gespeichert. Die GUI ermöglicht ein nutzerfreundlicheres Öffnen von Projekten aus dem Projektstandardordner. Der Nutzer kann den Projektstandardordner beliebig verschieben.
 
-\subsection*{Dateiformate}
+\subsection*{Dateiformate} \hypertarget{dataformat}{}
 Zum Lesen der anwendungsspezifischen Daten verwendet die Anwendung Dateiformate:
 \begin{itemize}
     \item OSM-Dateien: Zum Lesen und Speichern von OSM-Elementen unterstützt die Anwendung die Dateiformate .osm.bz2 und .osm.pbz.
@@ -653,7 +743,7 @@ In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 \subsection{Software}
 \begin{itemize}
     \item Implementierungssprache der Anwendung – Python
-    \item Implementierungssprache der Benutzeroberfläche - Python (?)
+    \item Betriebssystem: Windows 10/11
 \end{itemize}
 
 \subsection{Hardware}
@@ -664,44 +754,55 @@ In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 
 \subsection{Produktschnittstellen}
 Die Benutzerschnittstelle wird über ein GUI zur Verfügung gestellt.
-
 \newpage
+
+
+
+
+
 \section{Glossar}
 
 \textbf{Aggregation}\\
-Verfahren zum Zusammenfassen mehrerer Attraktivitäten innerhalb einer Verkehrszelle.
+Verfahren zum Zusammenfassen mehrerer Attraktivitätsattribute innerhalb einer Verkehrszelle.
 
 \textbf{Attribut}\\
+Eigenschaft eines OSM-Elements. Wird aus den OSM-Tags des OSM-Elements während der Punktreduktion berechnet.
 
 \textbf{Attraktivität}\\
 Eigenschaft eines Gebäudes zur Beschreibung, wie gut ein Objekt in OSM basierend auf verschiedenen Faktoren ist. Diese prognostiziert die Beliebtheit des Gebäudes.
 
 \textbf{Attraktivitätsattribut}\\
+Eigenschaft eines geografischen Objektes. Beschreibt die Attraktivität eines Ortes bezüglich einer bestimmten Tätigkeit. Wird aus Attributen berechnet.
 
-
-\textbf{Geofilter}\\
-Werkzeug zur Einteilung von Zellen in der Karte.
+\textbf{Räumlicher Filter}\\
+Verfahren zum Definieren von Zugehörigkeit von OSM-Objekten zu einem geografischen Gebiet.
 
 \textbf{Kategorie}\\
-
+Einheit zum Organisieren von OSM-Elementen. Eine Kategorie definiert eine Menge an OSM-Elementen und weißt diesem Eigenschaften zu.
 
 \textbf{Node}\\
 Objekt in OSM.
 
 \textbf{OSM}\\
-OpenStreetMap ist ein freies Projekt, das frei nutzbare Geodaten sammelt, strukturiert und für die Nutzung durch jedermann in einer Datenbank vorhält.
+Abkürzung für OpenStreetMap. OpenStreetMap ist ein freies Projekt, das Geodaten sammelt, strukturiert und für die freie Nutzung in einer Datenbank bereitstellt.
 
-\textbf{Reduktion}\\
+\textbf{OSM-Objekt}\\
+Eintrag in der OSM-Datenbank. Ist definiert durch seine Tags.
+
+\textbf{OSM-Datei}\\
+Datei, die OSM-Objekte enthält.
+
+\textbf{Punktreduktion}\\
 Verfahren zur Abbildung von Gebäuden auf Punkte mit Attraktivitäten.
 
 \textbf{Repository}\\
 Zentrale Ablage in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
 
 \textbf{Tag}\\
-Eigenschaft einer Node in OSM.
+Eigenschaft eines OSM-Objekts. Besteht aus den Werten 'key' und 'value'.
 
 \textbf{Tag Filter}\\
-Filterung nach Tags.
+Die Gruppierung von OSM-Elementen anhand ihrer Tags.
 
 \textbf{Verkehrsnachfragemodell}\\
 Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungsprozesse der Menschen nachbildet, die zu Ortsveränderungen führen. Im Personenverkehr umfassen diese Entscheidungen die Aktivitätenwahl, die Zielwahl, die Verkehrsmittelwahl, die Abfahrtszeitwahl und die Routenwahl.
@@ -709,10 +810,35 @@ Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungspro
 \textbf{Verkehrszelle}\\
 Bezeichnet einen räumlich abgegrenzten Teil eines Untersuchungsgebietes, der als Bezugseinheit bei der Verkehrsanalyse und Verkehrsprognose dient.
 
-\textbf{Aggregatoions-Vefahren}\\
-Das beschreibt wie die unterschiedlichen Attraktivitäten aggregiert werden unterschiedlichen Aggregatoions-Vefahren sind: Summe, Maximum, Mittelwert, Std. Abw., usw.
+\textbf{Untersuchungsgebiet}\\
+Räumliches Gebiet, das von der Anwendung untersucht wird. Disjunkte Vereinigung der Verkehrszellen. Wird durch den Räumlichen Filter definiert.
+
+\textbf{Aggregations-Vefahren}\\
+Abbildung einer Menge von Attraktivitätsattributen auf eine numerischen Wert. Beispiele sind die Summe, das Produkt oder das arithmetische Mittel.
 
 \textbf{Geofilter}\\
 Dies beschreibt ein Verfahren, bei eine Neues OSM-Datenset erstellt wird, in das OSM-Elementen die ganz oder teilweise in dem Geofilter liegen geschrieben werden.
+
+\textbf{Projekt}\\
+Organisationseinheit. Gesamtheit von zusammengehörenden Konfigurationen.
+
+\textbf{Projektordner}\\
+Verzeichnis. Organisiert alle Konfigurationsdateien eines Projektes.
+
+\textbf{Projektstandardordner}\\
+Verzeichnis, in welchem standardmäßig Projekte gespeichert und geladen werden.
+
+\textbf{Berechnungsphase}\\
+Zeitlich zusammenhängender Abschnitt des Berechnungsvorgangs. Es gibt die Phasen OSM-Daten, Räumlicher Filter, Tag Filter, Punktreduktion, Attraktivitätsberechnung und Aggregation.
+
+\textbf{Konfigurationsphase}\\
+Abschnitt der Konfiguration eines Projektes
+
+\textbf{Seite}\\
+(Hier ist eine GUI-Seite gemeint, Definition fehlt)
+
+
+
+
 
 \end{document}
