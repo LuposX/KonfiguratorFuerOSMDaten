@@ -12,8 +12,9 @@ bookmarks=true,
 }
 \usepackage{csquotes} % provides \enquote{} macro for "quotes"
 
-\title{Pflichtenheft}
-\author{Karl, JP, Simon, Felix, Pascal}
+\title{Konfigurator für OSM-Datenaufbereitungs-Prozesse für die Verkehrsnachfragemodellierung}
+\subtitle{Pflichtenheft}
+\author{Felix Weik, Jan-Philipp Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp}
 \date{November 2022}
 
 
@@ -70,15 +71,13 @@ Musskriterien(kurz MK): unabdingbare Leistungen der Software.
 Wunschkriterien(kurz WK): wünschenswerte Leistungen der Software.
 \begin{itemize}
     \item <WK1> Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen.
-    \item <WK2> Die Verkehrsdaten können mit einer Karte visualisiert werden.
-    \item <WK3> Der Nutzer kann durch Klicken auf eine Karte Polygone definieren.
-    \item <WK4> Der Nutzer kann zum Filtern der Kategorien beliebige aussagenlogische Formeln angeben.
-    \item <WK5> Das Programm bietet eine Liste an OSM-Tags an
-    \item <WK6> Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
-    \item <WK7> Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert werden
-    \item <WK8> Die Anwendung besitzt eine Statusanzeige, die den aktuellen Fortschritt der Berechnungen anzeigt
-    \item <WK9> Der Nutzer kann die Attraktivitätsattribute auch in Abhängigkeit zu OSM-Tags definieren.
-    \item <WK10> Der Nutzer kann Kategorien von der Berechnung ausschließen
+    \item <WK2> Der Nutzer kann zum Filtern der Kategorien beliebige aussagenlogische Formeln angeben.
+    \item <WK3> Das Programm bietet eine Liste an OSM-Tags an
+    \item <WK4> Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
+    \item <WK5> Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert werden
+    \item <WK6> Die Anwendung besitzt eine Statusanzeige, die den aktuellen Fortschritt der Berechnungen anzeigt
+    \item <WK7> Der Nutzer kann die Attraktivitätsattribute auch in Abhängigkeit zu OSM-Tags definieren.
+    \item <WK8> Der Nutzer kann Kategorien von der Berechnung ausschließen
     
 \end{itemize}
 
@@ -124,10 +123,13 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 
 
 \section{Produktfunktionen}
-Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendungsfälle. Für jeden Anwendungsfall werden die funktionalen Anforderungen aufgelistet, die dieser umsetzt. In der Testphase können Tester diesen Katalog nutzen um die korrekte Umsetzung der jeweiligen Produktfunktionen zu testen. Dazu ist für jeden Anwendungsfall eine Vorbedingung, Nachbedingungen, das auslösende Ereignis und eine genau Beschreibung angegeben.
+In diesem Kapitel werden die Produktfunktionen erläutert. Wir unterscheiden hier zwischen Funktionen, die die Konfiguration betreffen und Funktionen, die die Berechnungen betreffen. Die Funktionen der Konfiguration sind im ersten Unterkapitel als Katalog von Anforderungsfällen dargestellt. Die Funktionen der Berechnung werden im zweiten Unterkapitel beschrieben.
+
+\subsection{Anforderungsfälle}
+Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendungsfälle. Für jeden Anwendungsfall werden die funktionalen Anforderungen aufgelistet, die dieser umsetzt. In der Testphase können Tester diesen Katalog nutzen um die korrekte Umsetzung der jeweiligen Produktfunktionen zu testen. Dazu ist für jeden Anwendungsfall eine Vorbedingung, Nachbedingungen, das auslösende Ereignis und eine genau Beschreibung angegeben.
 \newpage
 
-\subsection*{Vorlage für Steckbrief}
+\subsubsection*{Vorlage für Steckbrief}
 \textbf{Anwendungsfall:} ...\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} A \\\\
@@ -152,7 +154,7 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 \newpage
 
 
-\subsection*{Starten des Programms <A1>}
+\subsubsection*{Starten des Programms <A1>}
 \textbf{Anwendungsfall:}  Der Nutzer möchte das Programm starten\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Starten des Programms \\\\
@@ -167,12 +169,12 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 \newpage
 
 
-\subsection*{Neues Projekt erstellen <A2>}
+\subsubsection*{Neues Projekt erstellen <A2>}
 \textbf{Anwendungsfall:} Der Nutzer möchte ein neues Projekt erstellen\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Erstellen eines neuen Projekts \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü \\\\
-\textbf{Nachbedingung Erfolg:} Ein neues Projekt befindet sich im Speicher. Die Seite 'Daten' ist geöffnet.  \\\\
+\textbf{Nachbedingung Erfolg:} Ein neues Projekt befindet sich im Speicher. Die Seite 'Data' ist geöffnet.  \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. Der Nutzer befindet sich im Hauptmenü. \\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt den 'Create New Project' Button \\\\
 \textbf{Beschreibung:}
@@ -185,27 +187,27 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 \newpage
 
 
-\subsection*{Internes Projekt laden <A3>}
+\subsubsection*{Internes Projekt laden <A3>}
 \textbf{Anwendungsfall:} Der Nutzer möchte ein Projekt aus dem Projektstandardordner laden\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Laden eines Projektes aus dem Projektstandardordner \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü  \\\\
-\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Daten' wird angezeigt \\\\
+\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt \\\\
 \textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt im Hauptmenü \\\\
 \textbf{Auslösendes Ereignis:}  Der Nutzer wählt ein Projekt aus und Drückt den Button 'Load selected Project' \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Das ausgewählte Projekt wird geladen
-    \item Die Anwendung zeigt die Seite 'Daten' an
+    \item Die Anwendung zeigt die Seite 'Data' an
 \end{enumerate}
 \newpage
 
-\subsection*{Externes Projekt laden <A4>}
+\subsubsection*{Externes Projekt laden <A4>}
 \textbf{Anwendungsfall:} Der Nutzer möchte ein Projekt außerhalb des Projektstandardordners laden\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Ein Projekt wird geladen \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü  \\\\
-\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Daten' wird angezeigt \\\\
+\textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt \\\\
 \textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, der Nutzer bleibt im Hauptmenü \\\\
 \textbf{Auslösendes Ereignis:}  Der Nutzer drückt den `Load external Project` Button \\\\
 \textbf{Beschreibung:}
@@ -218,7 +220,7 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 \newpage
 
 
-\subsection*{Dateien referenzieren <A5>}
+\subsubsection*{Dateien referenzieren <A5>}
 \textbf{Anwendungsfall:} ...\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Der Nutzer definiert die OSM-Daten und den räumlichen Filter\\\\
@@ -229,11 +231,11 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
-    \item Der Nutzer wählt eine Datei im {passenden Format}~\ref{dataformat} aus.
+    \item Der Nutzer wählt eine {OSM-Datei}~\ref{dataformat} aus.
     \item Die Anwendung zeigt den Namen der gewählten Datei an.
     \item Der Nutzer drückt auf den Knopf 'Select Cut-Out'
     \item Der Datei-Explorer öffnet sich.
-    \item Der Nutzer wählt eine Datei im \hyperlink{dataformat}{passenden Format} aus.
+    \item Der Nutzer wählt eine \hyperlink{dataformat}{Datei mit Verkehrszellen} aus.
     \item Die Anwendung zeigt den Namen der gewählten Datei an.
     \item Der Nutzer wählt eine der folgenden Optionen aus
     \begin{itemize}
@@ -245,14 +247,14 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 % Noch nicht fertig, wir müssen noch besprechen, wo das stattfindet
-\subsection*{Kategorien importieren <A7>}
+\subsubsection*{Kategorien importieren <A7>}
 \textbf{Anwendungsfall:} Der Nutzer möchte in seinem Projekt Kategorien verwenden, welche bereits in einem anderen definiert wurden.\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Importieren vordefinierter Kategorien. \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Daten' \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Data' \\\\
 \textbf{Nachbedingung Erfolg:} Die Kategorien der importierten Datei sind in der Liste der Kategorien aufgelistet \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
-\textbf{Auslösendes Ereignis:} Drücken des Knopfes 'Import categories'\\\\
+\textbf{Auslösendes Ereignis:} Drücken des Knopfes zum Importieren der Kategorien.\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
@@ -273,11 +275,11 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 
-\subsection*{Erstellen von Kategorien <A9>}
+\subsubsection*{Erstellen von Kategorien <A9>}
 \textbf{Anwendungsfall:} Der Nutzer möchte eine weitere Kategorie hinzufügen\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Die Liste der Kategorien soll um eine weitere Kategorie ergänzt werden \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien' \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories' \\\\
 \textbf{Nachbedingung Erfolg:} In der Liste der Kategorien befindet sich eine neue, nicht-konfigurierte Kategorie. Die neue Kategorie ist ausgewählt.\\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Hinzufügen einer neuen Kategorie. \\\\
 \textbf{Beschreibung:}
@@ -288,17 +290,18 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 \newpage
 
 
-\subsection*{Auswählen von Kategorien}
+\subsubsection*{Auswählen von Kategorien}
 \textbf{Anwendungsfall:} Der Nutzer möchte eine Kategorie auswählen, um diese genauer zu betrachten\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Auswählen und Anzeigen einer Kategorie \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. Es existiert mindestens eine Kategorie \\\\
 \textbf{Nachbedingung Erfolg:} Name, Whitelist und Blacklist der neuen Kategorie wird angezeigt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Seite bleibt unverändert.\\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt auf das Dropdown-Menü zum Auswählen der Kategorie \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Anwendung zeigt eine Liste aller Kategorien.
+    \item Beim ersten Öffnen, befinden sich bereits Standardkategorien in der Liste
     \item Der Nutzer wählt eine der Kategorien aus.
     \item Die Anwendung zeigt den Namen, die Whitelist und die Blacklist der Kategorie an.
 \end{enumerate}
@@ -306,11 +309,11 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 
-\subsection*{Konfigurieren von Kategorien <A10>}
+\subsubsection*{Konfigurieren von Kategorien <A10>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die Eigenschaften einer Kategorie verändern\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Konfigurieren einer Kategorie \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie.\\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. Es existiert mindestens eine Kategorie.\\\\
 \textbf{Nachbedingung Erfolg:} Die Änderungen an der Kategorie und an ihren Eigenschaften wird angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus oder erstellt eine neue Kategorie \\\\
@@ -319,23 +322,27 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
     \item Die Anwendung zeigt dem Nutzer den Namen, die Whitelist und die Blacklist der Kategorie an. Die Anwendung signalisiert, ob die Kategorie aktiviert ist.
     \item Der Nutzer kann keine, eine oder mehrere der folgenden Aktionen durchführen:
     \begin{itemize}
-        \item Der Nutzer kann die Kategorie aktivieren oder deaktivieren.
         \item Der Nutzer kann den Namen der Anwendung ändern.
-        \item Der Nutzer kann Einträge zur Blacklist und zur Whitelist hinzufügen
+        \item Der Nutzer kann Einträge zur Blacklist und zur Whitelist hinzufügen und entfernen
     \end{itemize}
 \end{enumerate}
 \textbf{Erweiterung:}
 \begin{itemize}
-        \item 2a: Die Anwendung schlägt in einer Liste OSM-Tags vor
-    \end{itemize}
+    \item 1a: Die Anwendung schlägt in einer Liste OSM-Tags vor
+    \item 2a: Der Nutzer kann die Kategorie aktivieren oder deaktivieren. Die Anwendung blendet deaktivierte Kategorien auf den kommenden Seiten aus.
+\end{itemize}
+\textbf{Alternativen:}
+\begin{itemize}
+    \item 2b: Statt den Tag-Filter durch eine Whitelist und Blacklist zu definieren, kann der Nutzer einen beliebigen regulären Ausdruck angeben.
+\end{itemize}
 \newpage
 
 
-\subsection*{Löschen von Kategorien}
+\subsubsection*{Löschen von Kategorien}
 \textbf{Anwendungsfall:} Der Nutzer möchte eine Kategorie löschen\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Entfernen einer Kategorie aus der Kategorienliste\\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Kategorien'. Es existiert mindestens eine Kategorie. Eine Kategorie ist ausgewählt.\\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. Es existiert mindestens eine Kategorie. Eine Kategorie ist ausgewählt.\\\\
 \textbf{Nachbedingung Erfolg:} Die ausgewählte Kategorie befindet sich nicht mehr in der Liste. Es ist keine Kategorie mehr ausgewählt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Liste der Kategorien ändert sich nicht.\\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Button zum Löschen einer Kategorie. \\\\
@@ -351,11 +358,11 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 
-\subsection*{Punktreduktion definieren}
+\subsubsection*{Punktreduktion definieren}
 \textbf{Anwendungsfall:} Der Nutzer möchte den Ablauf der Punktreduktion definieren\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Definition der Punktreduktion \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Punktreduktion' \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Reduction' \\\\
 \textbf{Nachbedingung Erfolg:} Die geänderten Einstellungen werden angezeigt \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus \\\\
@@ -369,11 +376,11 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 
-\subsection*{Standardwerte für Attribute festlegen}
+\subsubsection*{Standardwerte für Attribute festlegen}
 \textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie und ein Attribut einen Standarwert angeben\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Festlegen eines Standardwertes eines Attributs für eine Kategorie \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Punktreduktion' \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Reduction' \\\\
 \textbf{Nachbedingung Erfolg:} Die Standardwerte sind hinterlegt \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus \\\\
@@ -391,11 +398,11 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 
-\subsection*{Attraktivitätsattribute konfigurieren}
+\subsubsection*{Attraktivitätsattribute konfigurieren}
 \textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie Attraktivitätsattribute definieren.\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Konfigurieren der Attraktivitätsattribute \\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Attraktivität' \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Attractivity' \\\\
 \textbf{Nachbedingung Erfolg:} Die Änderungen an der Konfiguration sind sichtbar \\\\
 \textbf{Nachbedingung Fehlschlag:} Der Nutzer wird über den Fehler informiert. \\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus \\\\
@@ -413,7 +420,7 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 (ohne gui gemacht, ist komptaibel zu gui? checken!)
-\subsection*{Wählen der Aggregations-Verfahren <A11>}
+\subsubsection*{Wählen der Aggregations-Verfahren <A11>}
 \textbf{Anwendungsfall:} Der Nutzer möchte unterschiedliches Aggregations-Verfahren wählen\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Es wurde ausgewählt welche Aggregations-Verfahren berechnet werden sollen \\\\
@@ -429,7 +436,7 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 
-\subsection*{Berechnungen durchführen}
+\subsubsection*{Berechnungen durchführen}
 \textbf{Anwendungsfall:} Der Nutzer hat das Projekt konfiguriert und möchte nun die Berechnungen starten.\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Durchführen der Berechnungen und das Generieren des Endergebnisses\\\\
@@ -439,13 +446,15 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 \textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Berechnungsphase und drückt den Button 'Calculate from selected'\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Die Anwendung beginnt die Berechnung in der ausgewählten Phase.
-    \item Die Anwendung zeigt dem Nutzer die aktuelle Berechnungsphase an und approximiert den gemachten Fortschritt.
+    \item Die Anwendung beginnt die Berechnung in der ausgewählten Berechnungsphase. (für Details siehe \hyperlink{calculations}{Berechnungen})
+    \item Die Anwendung zeigt dem Nutzer die aktuelle Berechnungsphase an.
     \item Die Anwendung beendet die Berechnung.
     \item Der Nutzer exportiert die generierten Daten.
 \end{enumerate}
 \textbf{Erweiterungen:} 
 \begin{itemize}
+    \item 0a: Die Anwendung informiert den Nutzer über Berechnungsphasen, die neu berechnet werde müssen.
+    \item 2a: Die Anwendung approximiert den prozentualen Fortschritt der Berechnungen.
     \item 3a: Der Nutzer kann die Daten visualisieren.
 \end{itemize}
 \newpage
@@ -454,14 +463,14 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 Wusnchkriterium, vlt. irgednwie kennzeichnen
-\subsection*{Darstellen der Berechnungsergebnisse <A12>}
+\subsubsection*{Darstellen der Berechnungsergebnisse <A12>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die berechneten Daten visualisieren.\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Visualisierung der Daten\\\\
 \textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite 'View and Calculate'\\\\
 \textbf{Nachbedingung Erfolg:} Ein Diagramm der berechneten Daten wird angezeigt \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Knopf 'Visualize calculated Data' \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Knopf 'Visualize Results' \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Nutzer wählt folgende Eigenschaften aus, die er Visualisieren will:
@@ -469,23 +478,23 @@ Wusnchkriterium, vlt. irgednwie kennzeichnen
         \item Die Kategorie
         \item Das Aggregation-Verfahren
     \end{itemize}
-    \item Der User drückt den Knopf 'Visualize calculated Data'
+    \item Der User drückt den Knopf 'Visualize Results'
     \item Es wird ein Balkendiagramm angzeigt der die ausgewählten Daten Visualisiert
 \end{enumerate}
 \newpage
 
 
-
-\subsection*{Exportieren des Endergebnisses <A13>}
+\subsubsection*{Exportieren des Endergebnisses <A13>}
 \textbf{Anwendungsfall:} Der Nutzer möchte das Endergebnis exportieren\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Das Endergebnis soll an den gewünschten Speicherplatz kopiert werden. \\\\
-\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite 'Export'\\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich innerhalb eines Projekts\\\\
 \textbf{Nachbedingung Erfolg:} An der vom Nutzer definierten Stelle befindet sich ein ZIP-Archiv, welches das Endergebnis enthält. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Button 'Calculations Export' \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Button 'Export' \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
+    \item Der Nutzer drückt auf 'Calculations Export'
     \item Der Datei-Explorer öffnet sich.
     \item Der Nutzer wählt einen Speicherort aus.
     \item Die Anwendung komprimiert das Endergebnis zu einem ZIP-Archiv und speichert es an passender Stelle ab.
@@ -493,7 +502,7 @@ Wusnchkriterium, vlt. irgednwie kennzeichnen
 \newpage
 
 
-\subsection*{Phase wechseln}
+\subsubsection*{Phase wechseln}
 \textbf{Anwendungsfall:} Der Nutzer möchte in eine andere Phase der Konfigurierung wechseln.\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Die aktuelle Konfigurationsseite wird gespeichert und eine andere geladen. \\\\
@@ -515,7 +524,58 @@ Wusnchkriterium, vlt. irgednwie kennzeichnen
 
 
 
-\subsection*{Anwendung beenden}
+\subsubsection*{Einstellungen vornehmen}
+\textbf{Anwendungsfall:} Der Nutzer möchte die Einstellungen verändern\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Ändern der allgemeinen Einstellungen des Projekts und der Anwendung \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich in einem Projekt oder im Hauptmenü\\\\
+\textbf{Nachbedingung Erfolg:} Der Nutzer befindet sich auf der Seite 'Settings'. Die Änderungen an den Einstellungen sind vorgenommen. \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehschlag. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Knopf zum Öffnen der Einstellungen \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Befindet sich der Nutzer in einem Projekt, so kann er den Namen und die Beschreibung von diesem ändern.
+    \item Der Nutzer kann den Projektstandardordner setzen.
+\end{enumerate}
+\newpage
+
+\subsubsection*{Einstellungen ändern im Hauptmenü }
+\textbf{Anwendungsfall:} Der Nutzer möchte Einstellungen des Programms ändern, während er im Hauptmenü ist. \\\\
+\textbf{Anforderungen:} \\\\
+\textbf{Ziel:} Einstellungen des Programmes ändern.\\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich im Hauptmenü  \\\\
+\textbf{Nachbedingung Erfolg:} Die geänderten Einstellungen wurden auf das Programm angewendet.\\\\
+\textbf{Nachbedingung Fehlschlag:}Die Anwendung informiert den Nutzer über den Fehl-  
+schlag.\\\\
+\textbf{Auslösendes Ereignis:} Drücken des Einstellungs Knopfes. \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Einstellungen Seite öffnet sich.
+    \item Der Nutzer kann hier nun Einstellungen über das Programm ändern.
+    \item Die Einstellungen werden übernommen.
+\end{enumerate}
+\newpage
+
+\subsubsection*{Einstellungen ändern}
+\textbf{Anwendungsfall:} Der Nutzer möchte Einstellungen des Programms oder des Projekts ändern  \\\\
+\textbf{Anforderungen:} \\\\
+\textbf{Ziel:} Einstellungen des Programmes oder des Projektes ändern.\\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich in einer Seite wo nicht das Hauptmenü ist oder die Einstellungsseite\\\\
+\textbf{Nachbedingung Erfolg:} Die geänderten Einstellungen wurden auf das Programm angewendet.\\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehl-  
+schlag.\\\\
+\textbf{Auslösendes Ereignis:} Drücken des Einstellungs Knopfes.\\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Einstellungs Seite öffnet sich
+    \item Der Nutzer kann hier nun Einstellungen über das Programm und das Projekt ändern
+    \item Die Einstellungen werden übernommen.
+\end{enumerate}
+\newpage
+
+
+
+\subsubsection*{Anwendung beenden}
 \textbf{Anwendungsfall:} Der Nutzer möchte die Anwendung schließen\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Die Anwendung soll sich schließen und nicht-gespeicherte Daten speichern \\\\
@@ -540,9 +600,67 @@ Wusnchkriterium, vlt. irgednwie kennzeichnen
 
 
 
+\subsection{Berechnungsablauf} \hypertarget{calculations}{}
+Dieser Abschnitt beschreibt den Ablauf der Berechnungsphasen. Es gibt folgende Berechnungsphasen:
+\begin{enumerate}
+    \item Dateninput und Geofilter
+    \item Tag Filter
+    \item Reduktion
+    \item Attraktivität
+    \item Aggregation
+\end{enumerate}
+Die Abarbeitung der Berechnungsphasen kann in jeder Phase gestartet werden, läuft die Phasen aber dann in der gegebenen Reihenfolge durch.
+
+\subsubsection*{Dateninput und Geofilter}
+\begin{itemize}
+    \item Die Anwendung liest die in AX referenzierte OSM-Datei D1 ein.
+    \item Die Anwendung liest die in AX definierte Verkehrszellen-Datei D2 ein.
+    \item Die Anwendung generiert eine neue OSM-Datei D3. In dieser befinden sich die OSM-Elemente aus D1, die sich in den Verkehrszellen aus D2 befinden. Die Einordnung von Elementen, die sich nicht vollständig in den Verkehrszellen befinden, ist in AX definiert.
+\end{itemize}
 
 
-\section{Produktdaten}
+\subsubsection*{Tag Filter}
+\begin{itemize}
+    \item Die Anwendung weist den OSM-Elementen aus D3 Kategorien zu. Ein OSM-Elemente befindet sich in einer Kategorie, wenn
+    \begin{itemize}
+        \item es alle Tag-Einträge der Whitelist der Kategorie (AX) erfüllt \textbf{und}
+        \item es keinen Tag-Eintrag der Blacklist der Kategorie (AX) erfüllt.
+        \item alternativ (WKX): es dem in angegebenen regulären Ausdruck (AX) entspricht.
+    \end{itemize}
+    \item Die Ergebnisse werden in einer Datei D4 gespeichert.
+\end{itemize}
+
+
+\subsubsection*{Reduktion}
+\begin{itemize}
+    \item Die Anwendung projiziert je Kategorie alle OSM-Elemente (aus D4) jeweils auf eine Koordinate.
+    \item Die Anwendung weißt jedem OSM-Elemente in jeder Kategorie den Attributen (wie in AX konfiguriert) Werte zu.
+    \item Kann oder soll die Anwendung einem Attribut keinen Wert zuweisen, so wird ihm ein Standardwert zugewiesen. Dazu wird der tiefste Tag-Listen-Eintrag (wie in AX konfiguriert) gewählt, den das OSM-Element erfüllt.
+    \item Die Anwendung speichert je Kategorie und OSM-Element die generierten Koordinaten und Attribute in einer Datei D5.
+\end{itemize}
+
+
+\subsubsection*{Attraktivität}
+\begin{itemize}
+    \item Die Anwendung berechnet in jeder Kategorie für jedes (in AX) konfigurierte Attraktivitätsattribut. Sei $X$ die Menge der Attribute, $v(x)$ der Wert des Attribut $x$ und $f(x)$ der (in AX) definierte Faktor des Attributs zu einem festen Attraktivitätsattribut $a$. Dann berechnet die Anwendung den Wert $v(a)$ des Attraktivitätsattributs mit der Formel $$v(a)=\sum_{x\in X}{v(x)\cdot f(x)}.$$
+    \item Erweiterung (WKX): $X$ enthält neben allen Attributen auch Tags.
+    \item Die Anwendung speichert die generierten Attraktivitätsattribute in einer Datei D6.
+\end{itemize}
+
+\subsubsection*{Aggregation}
+\begin{itemize}
+    \item Die Anwendung bestimmt für jedes OSM-Element (in jeder Kategorie) in welchen Verkehrszellen es sich befindet.
+    \item Für jede Verkehrszelle aggregiert die Anwendung die Attraktivitätsattribute nach (in AX aktivierten) Aggregationsverfahren.
+    \item Die Anwendung speichert das Endergebnis in der \hyperlink{finalresult}{Ausgabe}.
+\end{itemize}
+
+\newpage
+
+
+
+
+
+\section{Produktdaten} \hypertarget{data}{}
 Dieses Kapitel beschreibt die Organisation der Produktdaten. Daten, welche nicht unbedingt erhoben werden müssen, sind mit einem Stern ($\ast$) markiert. Die größte Organisationseinheit sind hierbei die Projekte. Jedem Projekt ist ein Verzeichnis zugeordnet. Dieses Verzeichnis wird im folgenden auch als Projektordner bezeichnet. In jedem Projektordner befinden sich die folgenden Dateien und Verzeichnisse:
 \begin{itemize}
     \item Projekt-Konfiguration (JSON-Datei)
@@ -580,12 +698,13 @@ Diese JSON-Datei enthält alle Informationen zu den Kategorien des jeweiligen Pr
 \subsection*{Zwischenergebnisse}
 Dieses Verzeichnis enthält die Zwischenergebnisse der Berechnungen der jeweiligen Phasen.
 
-\subsection*{Ausgabe}
-Dieses Verzeichnis enthält die finale Ausgabe der Berechnungen. Hier befindet sich je ausgewählter Aggregationsstatistik eine CSV-Datei. Jede dieser CSV-Dateien ordnet jeder Verkehrszelle je Attraktivitätsattribut einen numerischen Wert zu.
+\subsection*{Ausgabe} \hypertarget{finalresult}{}
+Dieses Verzeichnis enthält die finale Ausgabe der Berechnungen. Hier befindet sich je ausgewähltem Aggregationsverfahren eine CSV-Datei. Jede dieser CSV-Dateien ordnet jeder Verkehrszelle je Attraktivitätsattribut einen numerischen Wert zu.
 
 
 \subsection*{Projektverwaltung}
-Der Nutzer kann Projekte bzw. ihre Projektordner grundsätzlich an beliebigen Stellen speichern. Jedoch gibt es einen Projektstandardordner. In diesem werden Projekte standardmäßig gespeichert. Die GUI ermöglicht ein nutzerfreundlicheres Öffnen von Projekten aus dem Projektstandardordner. Der Nutzer kann den Projektstandardordner beliebig verschieben.
+Der Nutzer kann Projekte bzw. ihre Projektordner grundsätzlich an beliebigen Stellen speichern. Jedoch gibt es einen Projektstandardordner. In diesem werden Projekte standardmäßig gespeichert. Die GUI ermöglicht ein nutzerfreundlicheres Öffnen von Projekten aus dem Projektstandardordner. Der Nutzer kann den Projektstandardordner beliebig versetzen.
+
 
 \subsection*{Dateiformate} \hypertarget{dataformat}{}
 Zum Lesen der anwendungsspezifischen Daten verwendet die Anwendung Dateiformate:
@@ -776,33 +895,39 @@ In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkre
 
 
 
-\section{Benutzeroberfläche/Schnittstellen, author = Felix}
+\section{Benutzeroberfläche/Schnittstellen}
 In diesem Kapitel wird die Benutzeroberfläche erläutert. Es wird auf die Darstellung der einzelnen Funktionen sowie die Navigation zwischen diesen eingegangen.
 
-\textbf{Benutzeroberfläche:}
+\textbf{Benutzeroberfläche: author = Felix}
 Die Anwendung "Kodt" ist für Desktop-Computer mit Windows 10 oder 11. Folglich stellt die Benutzeroberfläche einen wichtigen teil des Produktes dar.
 Die Steuerung erfolgt durch Maus- und Tastatureingaben. Das Anwendungsdesign ist in den verschiedenen Navigationskomponenten möglichst einheitlich gestaltet. Für den Nutzer soll die Anwendung intuitiv verständlich sein. Die Übersichtlichkeit spielt eine große Rolle, gleichzeitig soll das Design anregend zur Verwendung sein.
 Die Navigation läuft über ein Hauptmenü auf der Startseite, über das mithilfe von Buttons die weiteren Funktionen aufgerufen werden können. Die entsprechende Struktur wird in den folgenden Unterkapiteln weiter erläutert. Eine Toolbar am oberen Rand der Anwendung dient der Information über den aktuellen Schritt sowie am unteren Anwendungsrand der Navigation zwischen ebendiesen.
 
 \textsc{Hier krasse Grafik zur Workflowvisualisierung einfügen}
 
-\textbf{Startseite }<UI10>\textbf{ :}
+\textbf{Main Menu }<UI10>\textbf{ : author = Felix}
 Das Hauptmenü bietet eine erste Übersicht zum Starten des Workflows. Über drei Buttons kann der Workflow durch Laden eines bereits vorhandenen Projekts oder Erstellen eines neuen gestartet werden. Weiter befindet sich rechts der Buttons eine Schaltfläche, die die vergangenen Projekte auflistet und eine Möglichkeit zum Laden bietet. Über einen letzten Knopf lassen sich die Anwendungseinstellungen aufrufen.
 
-\textbf{Erstellen eines neuen Projektes }<UI20>\textbf{ :}
+\textbf{New Project }<UI20>\textbf{ : author = Felix}
 Hat der Nutzer im Hauptmenü die Option zum Erstellen eines neuen Projektes aufgerufen wird er in dieses Fenster geleitet.
-Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden.
+Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden. Wird kein Speicherort angegeben wird ein Standardordner gewählt.
 Über zwei Buttons am unteren rechten Rand kann die Projekterstellung bestätigt und begonnen oder abgebrochen werden.
 
-\textbf{Data }<UI30>\textbf{ :}
+\textbf{Data }<UI30>\textbf{ : author = Felix}
 Hier können die zur Berechnung wichtigen Daten ausgewählt und visualisiert werden.
 Über drei Buttons können die OSM-Daten, der Cutout zur Bereichseingrenzung sowie ein Kopieraufruf gewählt werden. Über eine Checkbox kann angegeben werden, ob Gebäude am Cutout-Rand in die Berechnung miteinbezogen werden sollen.
 Entstehen Konflikte bei der Auswahl gibt das Programm eine Fehlermmeldung aus und fragt den Nutzer nach Bestätigung zum Überschreiben. Hier kann der Nutzer entweder das Überschreiben starten, oder über einen Abbrechen-Button zurück zum Data-Fenster gelangen.
 
-\textbf{Categories }<UI 40>\textbf{ :}
+\textbf{Categories }<UI 40>\textbf{ : author = Felix}
+Über dieses Fenster kann der Nutzer neue Kategorien erstellen sowie sich bereits erstellte Kategorien anzeigen lassen. Weiter kann er den Kategorien White- und Blacklist-Attribute zuordnen, die bei der späteren Berechnung miteinbezogen werden.
+Über ein Dropdown-Menü können Kategorien ausgewählt werden. In einem enstprechenden Textfeld wird daraufhin der Namen der gewählten Kategorie angezeigt. Eine Schaltfläche schlägt Tag-Examples vor. Weiter können in zwei Tabellen besagte Black- und Whitelistattribute gewählt werden.
+Über zwei Buttons am unteren rechten Anwendungsrand kann die Erstellung einer neuen Kategorie bestätigt oder abgebrochen werden. 
+Wir der Abbruchsbutton gewählt wird über ein Popup nach Bestätigung gefragt. Wir auch hier der Abbruchsbutton betätigt wird der Nutzer zum selben, unausgefüllten Formular weitergeleitet. Andernfalls bleibt er im aktuell ausgefüllten Formular.
 
+\textbf{Reduction }<UI 50>\textbf{ :}
 
-
+\textbf{View and Calculate author = Felix}\\
+\textbf{Settings author = Felix}\\
 \newpage
 
 
@@ -844,9 +969,6 @@ Eigenschaft eines Gebäudes zur Beschreibung, wie gut ein Objekt in OSM basieren
 \textbf{Attraktivitätsattribut}\\
 Eigenschaft eines geografischen Objektes. Beschreibt die Attraktivität eines Ortes bezüglich einer bestimmten Tätigkeit. Wird aus Attributen berechnet.
 
-\textbf{Räumlicher Filter}\\
-Verfahren zum Definieren von Zugehörigkeit von OSM-Objekten zu einem geografischen Gebiet.
-
 \textbf{Kategorie}\\
 Einheit zum Organisieren von OSM-Elementen. Eine Kategorie definiert eine Menge an OSM-Elementen und weißt diesem Eigenschaften zu.
 
@@ -887,7 +1009,10 @@ Räumliches Gebiet, das von der Anwendung untersucht wird. Disjunkte Vereinigung
 Abbildung einer Menge von Attraktivitätsattributen auf eine numerischen Wert. Beispiele sind die Summe, das Produkt oder das arithmetische Mittel.
 
 \textbf{Geofilter}\\
-Dies beschreibt ein Verfahren, bei eine Neues OSM-Datenset erstellt wird, in das OSM-Elementen die ganz oder teilweise in dem Geofilter liegen geschrieben werden.
+Verfahren zum Definieren der Zugehörigkeiten von OSM-Objekten zu einem geografischen Gebiet.
+
+\textbf{Räumlicher Filter}\\
+Methode zur genaueren Definition eines Geofilters. Entscheidet ob OSM-Elemente die sich nur teilweise in einem Gebiet befinden, diesem zugehörig sind.
 
 \textbf{Projekt}\\
 Organisationseinheit. Gesamtheit von zusammengehörenden Konfigurationen.
