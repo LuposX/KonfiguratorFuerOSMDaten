@@ -391,6 +391,26 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
 
 
 
+\subsection*{Attraktivitätsattribute konfigurieren}
+\textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie Attraktivitätsattribute definieren.\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Konfigurieren der Attraktivitätsattribute \\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Attraktivität' \\\\
+\textbf{Nachbedingung Erfolg:} Die Änderungen an der Konfiguration sind sichtbar \\\\
+\textbf{Nachbedingung Fehlschlag:} Der Nutzer wird über den Fehler informiert. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Kategorie aus \\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Der Nutzer wählt ein Attraktivitätsattribut aus oder erstellt ein neues.
+    \item Der Nutzer kann das Attraktivitätsattribut löschen, den Namen ändern und je Attribut einen Faktor festlegen.
+\end{enumerate}
+\textbf{Erweiterungen:} 
+\begin{itemize}
+    \item 2a: Der Nutzer kann auch Tags Faktoren zuweisen.
+\end{itemize}
+\newpage
+
+
 
 (ohne gui gemacht, ist komptaibel zu gui? checken!)
 \subsection*{Wählen der Aggregations-Verfahren <A11>}
@@ -406,6 +426,30 @@ Dieses Kapitel definiert die Funktionen des Produkts mittels konkreter Anwendung
     \item Die Anwendung setzt den Hacken in die Checkbox bzw. setzt ihn zurück.
 \end{enumerate}
 \newpage
+
+
+
+\subsection*{Berechnungen durchführen}
+\textbf{Anwendungsfall:} Der Nutzer hat das Projekt konfiguriert und möchte nun die Berechnungen starten.\\\\
+\textbf{Anforderungen:} ...\\\\
+\textbf{Ziel:} Das Durchführen der Berechnungen und das Generieren des Endergebnisses\\\\
+\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'View and Calculate'. Alle Konfigurationsphasen sind konfiguriert.\\\\
+\textbf{Nachbedingung Erfolg:} Das Endresultat ist berechnet und kann unter 'Export' exportiert werden. \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über die Berechnungsphase, in welcher der Fehlschlag passiert. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer wählt eine Berechnungsphase und drückt den Button 'Calculate from selected'\\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Anwendung beginnt die Berechnung in der ausgewählten Phase.
+    \item Die Anwendung zeigt dem Nutzer die aktuelle Berechnungsphase an und approximiert den gemachten Fortschritt.
+    \item Die Anwendung beendet die Berechnung.
+    \item Der Nutzer exportiert die generierten Daten.
+\end{enumerate}
+\textbf{Erweiterungen:} 
+\begin{itemize}
+    \item 3a: Der Nutzer kann die Daten visualisieren.
+\end{itemize}
+\newpage
+
 
 
 
@@ -732,7 +776,33 @@ In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkre
 
 
 
-\section{Benutzeroberfläche/Schnittstellen}
+\section{Benutzeroberfläche/Schnittstellen, author = Felix}
+In diesem Kapitel wird die Benutzeroberfläche erläutert. Es wird auf die Darstellung der einzelnen Funktionen sowie die Navigation zwischen diesen eingegangen.
+
+\textbf{Benutzeroberfläche:}
+Die Anwendung "Kodt" ist für Desktop-Computer mit Windows 10 oder 11. Folglich stellt die Benutzeroberfläche einen wichtigen teil des Produktes dar.
+Die Steuerung erfolgt durch Maus- und Tastatureingaben. Das Anwendungsdesign ist in den verschiedenen Navigationskomponenten möglichst einheitlich gestaltet. Für den Nutzer soll die Anwendung intuitiv verständlich sein. Die Übersichtlichkeit spielt eine große Rolle, gleichzeitig soll das Design anregend zur Verwendung sein.
+Die Navigation läuft über ein Hauptmenü auf der Startseite, über das mithilfe von Buttons die weiteren Funktionen aufgerufen werden können. Die entsprechende Struktur wird in den folgenden Unterkapiteln weiter erläutert. Eine Toolbar am oberen Rand der Anwendung dient der Information über den aktuellen Schritt sowie am unteren Anwendungsrand der Navigation zwischen ebendiesen.
+
+\textsc{Hier krasse Grafik zur Workflowvisualisierung einfügen}
+
+\textbf{Startseite }<UI10>\textbf{ :}
+Das Hauptmenü bietet eine erste Übersicht zum Starten des Workflows. Über drei Buttons kann der Workflow durch Laden eines bereits vorhandenen Projekts oder Erstellen eines neuen gestartet werden. Weiter befindet sich rechts der Buttons eine Schaltfläche, die die vergangenen Projekte auflistet und eine Möglichkeit zum Laden bietet. Über einen letzten Knopf lassen sich die Anwendungseinstellungen aufrufen.
+
+\textbf{Erstellen eines neuen Projektes }<UI20>\textbf{ :}
+Hat der Nutzer im Hauptmenü die Option zum Erstellen eines neuen Projektes aufgerufen wird er in dieses Fenster geleitet.
+Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden.
+Über zwei Buttons am unteren rechten Rand kann die Projekterstellung bestätigt und begonnen oder abgebrochen werden.
+
+\textbf{Data }<UI30>\textbf{ :}
+Hier können die zur Berechnung wichtigen Daten ausgewählt und visualisiert werden.
+Über drei Buttons können die OSM-Daten, der Cutout zur Bereichseingrenzung sowie ein Kopieraufruf gewählt werden. Über eine Checkbox kann angegeben werden, ob Gebäude am Cutout-Rand in die Berechnung miteinbezogen werden sollen.
+Entstehen Konflikte bei der Auswahl gibt das Programm eine Fehlermmeldung aus und fragt den Nutzer nach Bestätigung zum Überschreiben. Hier kann der Nutzer entweder das Überschreiben starten, oder über einen Abbrechen-Button zurück zum Data-Fenster gelangen.
+
+\textbf{Categories }<UI 40>\textbf{ :}
+
+
+
 \newpage
 
 
