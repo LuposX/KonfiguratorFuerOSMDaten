@@ -467,12 +467,30 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \begin{itemize}
     \item 0a: Die Anwendung informiert den Nutzer über Berechnungsphasen, die neu berechnet werde müssen.
     \item 2a: Die Anwendung approximiert den prozentualen Fortschritt der Berechnungen.
+    \item 2b: Der Nutzer kann die Berechnung pausieren und sie fortsetzen.
     \item 3a: Der Nutzer kann die Daten visualisieren.
 \end{itemize}
 \newpage
 
 
-\subsubsection*{Darstellen der Berechnungsergebnisse <A17>}
+
+\subsubsection*{Neuberechnung <A17>}
+\textbf{Anwendungsfall:}  Der Nutzer möchte die Berechnung neustarten.\\\\
+\textbf{Anforderungen:} \\\\
+\textbf{Ziel:} Neustarten der Berechnung.\\\\
+\textbf{Vorbedingung:} Die Anwendung berechnet gerade oder die Berechnungen sind abgeschlossen. Der Nutzer befindet sich auf der Seite 'View and calculate'.\\\\
+\textbf{Nachbedingung Erfolg:} Die Berechnungen sind unterbrochen und der Nutzer kann sie neustarten.\\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den 'Cancel' Knopf während der Berechnung oder den 'Recalculate' Knopf am Ende der Berechnung.\\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Die Berechnung wird abgebrochen, sofern sie nicht schon beendet ist.
+    \item Die Berechnungs-Seite wird auf die Startposition zurückgesetzt.
+\end{enumerate}
+\newpage
+
+
+
+\subsubsection*{Darstellen der Berechnungsergebnisse <A18>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die berechneten Daten visualisieren.\\\\
 \textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Visualisierung der Daten\\\\
@@ -492,23 +510,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \end{enumerate}
 \newpage
 
-\subsubsection*{Abbrechen der Berechnung/Neuberechnung <A18>}
-\textbf{Anwendungsfall:}  Der Nutzer befindet sich gerade in der Berechnung/Oder die Berechnung wurde gerade abgeschlossen.\\\\
-\textbf{Anforderungen:} \\\\
-\textbf{Ziel:} Die Berechnung abzubrechen neuzustarten.\\\\
-\textbf{Vorbedingung:} Der Nutzer befindet sich auf der Berechnungsseite und berechnet etwas oder ist fertig mit der Berechnung.\\\\
-\textbf{Nachbedingung Erfolg:} Der Nutzer kann erneut auswählen was berechnet werden soll und die Berechnung starten.\\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt den 'cancel' Knopf während der Berechnung doer den 'Recalculate' Knopf am Ende der Berechnung.\\\\
-\textbf{Beschreibung:}
-\begin{enumerate}
-    \item Die Berechnung wird abgebrochen.
-    \item Die Berechnungs-Seite wird auf seine Startposition zurückgesetzt.
-\end{enumerate}
-\textbf{Alternative:}
-\begin{itemize}
-    \item 1a: Die Berechnung ist schon fertig und muss nicht abgebrochen werden.
-\end{itemize}
-\newpage
+
 
 \subsubsection*{Exportieren des Endergebnisses <A19>}
 \textbf{Anwendungsfall:} Der Nutzer möchte das Endergebnis exportieren\\\\
@@ -873,7 +875,7 @@ Eine kleine Instanz (bspw. Stadtkreis Karlsruhe) ist auf einem Laptop mit 8GB RA
     \hline
         Produktqualität & sehr gut & gut & normal & nicht relevant \\
     \hline
-        Analysierbarkeit x & & & &\\
+        Analysierbarkeit & x & & & \\
     \hline
         Modifizierbarkeit & x & & &\\
     \hline
@@ -954,13 +956,34 @@ Entstehen Konflikte bei der Auswahl gibt das Programm eine Fehlermmeldung aus un
 Über zwei Buttons am unteren rechten Anwendungsrand kann die Erstellung einer neuen Kategorie bestätigt oder abgebrochen werden. 
 Wir der Abbruchsbutton gewählt wird über ein Popup nach Bestätigung gefragt. Wir auch hier der Abbruchsbutton betätigt wird der Nutzer zum selben, unausgefüllten Formular weitergeleitet. Andernfalls bleibt er im aktuell ausgefüllten Formular.
 
-\textbf{Reduction }<UI50>\textbf{ :}
+\textbf{Reduction }<UI50>\textbf{ author = Pascal}
+In Diesem Fenster kann der Nutzer festlegen wie die Flächenberechnung der Kategorien auszusehen hat.
+Das Fenster wird dazu in eine linke und rechte hälfte unterteilt.
+Links befindet sich die Liste aller Kategorien und rechts kann der Nutzer nun deren Reduktion Konfigurieren.
+Durch das anklicken einer Kategorie in der Liste links, wird rechts subFenster angezeigt. Dieses hat 2 wichtige Knöpfe, zum einen den Calculation Knopf, drückt man diesen, kann der Nutzer nun Konfigurieren, was für diese kategoroe berechnet werden soll. Dies ist über checkboxen geregelt. So muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll, nur wenn diese Option aktiviert ist, werden die spezifikationen darunter angezeigt. Hier kann nun entschieden werden zwischen dem Berechnen der Grundstücksfläche oder Gebäudefläche. Zuletzt kann noch gewählt werden, ob diese Fläche mit den Stockwerken multipliziert werden soll.
+Drückt man den Knopf Default-Values, so kann nun für Tags Defaultwerte gesetzt werden. Es kann über den New Tag Knopf neue Tags hinzugefügt werden und über den Delete Tag auch wieder gelöscht werden, beim löschen wird vorher noch ein Bestätigungsfenster angezeigt, um diese Entscheidung zu bestätigen.
+Bei jeder Kategorie wird es so sein, das es immer eine DEFAULT Defaultwert gibt, dieser kann nicht gelöscht werden und tritt in kraft wenn keine der tags bei der berechnung zu treffen.
+Wann welcher Defaultwert benutzt wird hängt von der Reihenfolge in der Liste ab, so gilt je weiter oben desto geringer die Priorität. Über die Pfeilknöpfe an den Tags in der Liste, können diese in dieser Prioritäts Liste verschoben werden. Es kann dabei nichts über den DEFAULT wert gehen.
+
+\textbf{Attractivity author = Pascal}<UI60>
+Dieses Fenster beinhaltet 2 Dropdown Listen. Die obere ist zum auswählen einer Kategorie, die untere um auf die einzelnen Attraktivitäts Attribute dieser Kategorie unterscheiden zu können.
+Ist eine Kategorie und ein Attraktivitäts Attribut ausgewählt, so werden das Feld für den Name des Attraktivitäts Attributes angezeigt, sowie die Tag-Factor-List und die Attribute-Factors.
+In der Tag-Factor-List könenn nun ähnlich wie in den Black- und White-Listen im Kategorie Fenster, tags geschrieben werden. Diesen tags wird aber nun auch ein multiplikations Zeichen mit einer Zahl gefolgt. Diese Zahl gibt dann den Factor an, mit dem dieser Tag verrechnet werden soll.
+Bei den Attribute-Factors gibt es nur die 3 Standart Attribute zu der Kategorie welche alle mit einem Faktor versehen werden können.
+Die New Attraktivity und Delete Attraktivity sind dazu da um neue Attraktivitäts Attribute erstellen zu können, als auch das ausgewählte löschen zu können. Beim löschen, wird wieder ein PopupFenser angezeigt, welches dazu da ist diese Aktion zu bestätigen.
+
+\textbf{Aggregation author = Pascal}<UI60>
+Im Aggregations Fenster kann festgelegt werden welche Werte in den Verkehrszellen berechnet werden sollen. Hierzu wird eine Liste mit allen möglichen Berechnungsarten angezeigt. In dieser Liste kann über checkmarks nun festgelegt werden welche Berechnungsarten alle in der berechnung getätigt werden sollen und welche nicht.
 
 \textbf{View and Calculate author = Felix}\\
 Hier als letzter Schritt nach fertiger Dateneingabe die Berechnung gestartet. Über eine Schaltfläche am linken Anwendungsrand kann der gewünschte Startpunkt der Berechnung angegeben werden. Hier könnnen beliebig viele Phasen übersprungen werden, ab der die folgenden Schritte in angezeigter Reihenfolge ausgeführt werden. Über den "Start Calculation" Button wird dann die Berechnung gesartet.
 Während der Berechnung informiert ein Ladebalken über den aktuellen Berechnungsstatus. Weiter zeigt die Schaltfläche links die aktuelle Phase als auch die bereits bearbeiteten Phasen an. Über einen Button kann die Berechnung jederzeit abgebrochen werden.
 Nach Vollendung der Berechnung können die Ergebnisse angesehen, oder die Berechnung erneut gestartet werden.
 Die Anwendung informiert den Nutzer, wenn die Berechnung vollendet wurde.
+
+\textbf{Export author = Pascal}<UI80>
+Der Export Knopf im HeadMenü öffnet kein neues Fenster, sonder ein DropDownMenü mit 3 Knöpfen für jede Export möglichkeit. Durch das anklicken einder der Knöpfe wird man zu seinen Dokumenten weitergeleitet um den Ort zu wählen, wohin Exportiert werden soll.
+Durch erneutes Drücken des Export Knopfs verschwindet das DropDownMenü wieder.
 
 \textbf{Settings author = Felix}\\
 Im Settings-Fenster der Anwendung können Einstellungen zum aktuellen Projekt vorgenommen werden.
