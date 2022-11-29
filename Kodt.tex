@@ -12,9 +12,15 @@ bookmarks=true,
 }
 \usepackage{csquotes} % provides \enquote{} macro for "quotes"
 
+\usepackage{authblk} % Mehrere Autorn (von Karl)
+
 \title{Konfigurator für OSM-Datenaufbereitungs-Prozesse für die Verkehrsnachfragemodellierung}
 \subtitle{Pflichtenheft}
-\author{Felix Weik, Jan-Philipp Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp}
+
+\author[1]{Test}
+\author[2]{Testa}
+
+%\author{Felix Weik, Jan-Philipp Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp}
 \date{November 2022}
 
 
@@ -49,12 +55,12 @@ Hierbei werden Daten aus der OSM als Basis genutzt.
 Musskriterien(kurz MK): unabdingbare Leistungen der Software.
 
 \begin{itemize}
-    \item <MK1> Der Nutzer muss Projekte erstellen können
+    \item <MK1> Der Nutzer muss Projekte erstellen, laden und verwalten können.
     \item <MK2> Der Nutzer muss OSM-Datensätze einlesen können.
     \item <MK3> Der Nutzer muss Kartenausschnitte auswählen können.
-    \item <MK4> Der Nutzer muss OSM-Elemente mithilfe von Black- und Whitelisten zu Kategorien zusammenfassen können.
+    \item <MK4> Der Nutzer muss OSM-Elemente mithilfe von Black- und Whitelisten zu Kategorien zusammenfassen und verwalten können.
     \item <MK5> Das Programm muss Standard-Kategorien anbieten.
-    \item <MK6>Das Programm muss OSM-Elemente auf einen Punkt reduzieren können.
+    \item <MK6> Das Programm muss OSM-Elemente auf einen Punkt reduzieren können.
     \item <MK7> Das Programm muss den OSM-Elementen Attribute zuweisen können.
     \item <MK8> Der Nutzer muss für jede Kategorie das Verfahren zur Berechnung der Attribute auswählen können.
     \item <MK9> Der Nutzer muss Standardwerte für Attribute festlegen können.
@@ -63,6 +69,7 @@ Musskriterien(kurz MK): unabdingbare Leistungen der Software.
     \item <MK12> Das Programm muss die Zwischenschritte der Berechnungen und Konfigurationen speichern und laden können.
     \item <MK13> Der Nutzer muss die Berechnungen aus jeder Phase aus starten können.
     \item <MK14> Es muss eine grafische Oberfläche geben.
+    \item <MK15> Der Nutzer muss Einstellungen des Programms ändern können.
 \end{itemize}
 
 
@@ -72,7 +79,7 @@ Wunschkriterien(kurz WK): wünschenswerte Leistungen der Software.
 \begin{itemize}
     \item <WK1> Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen.
     \item <WK2> Der Nutzer kann zum Filtern der Kategorien beliebige aussagenlogische Formeln angeben.
-    \item <WK3> Das Programm bietet eine Liste an OSM-Tags an
+    \item <WK3> Das Programm bietet eine Liste an OSM-Key Vorschlägen an
     \item <WK4> Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
     \item <WK5> Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert werden
     \item <WK6> Die Anwendung besitzt eine Statusanzeige, die den aktuellen Fortschritt der Berechnungen anzeigt
@@ -111,6 +118,16 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 
 
 \section{Produktübersicht}
+In diesem Kapitel werden die Produktfunktionen beschrieben und in einem Use-Case-Diagramm visualisiert. Das Use-Case-Diagramm zeigt mittels Verbindungslinien, wie die einzelnen Use-Cases zueinander stehen. Der Abschnitt „Pipeline-Schritte“ wird genauer in einem Aktivitätsdiagramm abgebildet. Dadurch können die einzelnen Schritte, die durchlaufen werden, besser beschrieben werden.
+
+\subsection*{Abbildung 3.1}
+In dem Use-Case-Diagramm „Aufbau der Anwendung“ sieht man die allgemeine Struktur der Anwendung. Der Nutzer befindet sich zu Beginn im Main Menu und kann von dort aus zwischen verschiedenen Möglichkeiten wählen.
+Zunächst kann der Nutzer ein neues Projekt erstellen und diesem einen Namen zuweisen. Außerdem ist es möglich ein zuvor abgespeichertes Projekt zu laden. Von dort aus kann der Nutzer dann die einzelnen Schritte der Anwendung durchlaufen und berechnen lassen. 
+Zusätzlich kann der Nutzer die Optionen öffnen und dort Speicherort, Name und Beschreibung des Projektes ändern.
+
+\subsection*{Abbildung 3.2}
+Im Aktivitätsdiagramm „Pipeline“ durchläuft der Nutzer alle Schritte des Konfigurators für OSM-Datenaufbereitungs-Prozesse. Dabei kann dieser zunächst auswählen, ob ein neues Projekt erstellt oder ein bestehendes Projekt geladen werden soll. Danach wird der OSM-Datensatz, sowie die shape-Dateien der Verkehrszellen, eingelesen und die Konfiguration der Kategorien optional geladen. Anschließend legt der Nutzer die Kategorien fest und erstellt dafür die Black-und Whitelist. Als nächstes wird für die Reduktion die Berechnungsmethode festgelegt und für die Tags werden Default-Werte eingetragen. Danach gibt der Nutzer für die Kategorien eine Berechnungsmethode an, welche sich aus Tags und Faktoren zusammensetzt. Zuletzt bestimmt der Nutzer noch die Aggregationsmethode innerhalb der Verkehrszellen. Nachdem die Anwendung die Berechnung zu Ende ausgeführt hat, kann der Nutzer das Ergebnis, sowie die Konfiguration exportieren. 
+
 \newpage
 
 
@@ -123,40 +140,15 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 
 
 \section{Produktfunktionen}
-In diesem Kapitel werden die Produktfunktionen erläutert. Wir unterscheiden hier zwischen Funktionen, die die Konfiguration betreffen und Funktionen, die die Berechnungen betreffen. Die Funktionen der Konfiguration sind im ersten Unterkapitel als Katalog von Anforderungsfällen dargestellt. Die Funktionen der Berechnung werden im zweiten Unterkapitel beschrieben.
+In diesem Kapitel werden die Produktfunktionen erläutert. Wir unterscheiden hier zwischen Funktionen, die die Konfiguration betreffen und Funktionen, die die Berechnungen betreffen. Die Funktionen der Konfiguration sind im ersten Unterkapitel als Katalog von Anwendungsfällen dargestellt. Im zweiten Kapitel ist ein größeres Testszenario angegeben. Die Funktionen der Berechnung werden im dritten Unterkapitel beschrieben.
 
-\subsection{Anforderungsfälle}
+\subsection{Anwendungsfälle}
 Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendungsfälle. Für jeden Anwendungsfall werden die funktionalen Anforderungen aufgelistet, die dieser umsetzt. In der Testphase können Tester diesen Katalog nutzen um die korrekte Umsetzung der jeweiligen Produktfunktionen zu testen. Dazu ist für jeden Anwendungsfall eine Vorbedingung, Nachbedingungen, das auslösende Ereignis und eine genau Beschreibung angegeben.
-\newpage
-
-\subsubsection*{Vorlage für Steckbrief}
-\textbf{Anwendungsfall:} ...\\\\
-\textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} A \\\\
-\textbf{Vorbedingung:} B \\\\
-\textbf{Nachbedingung Erfolg:} C \\\\
-\textbf{Nachbedingung Fehlschlag:} D \\\\
-\textbf{Auslösendes Ereignis:} E \\\\
-\textbf{Beschreibung:}
-\begin{enumerate}
-    \item F
-    \item G
-    \item H
-\end{enumerate}
-\textbf{Erweiterungen:} 
-\begin{itemize}
-    \item 3a: I
-\end{itemize}
-\textbf{Alternativen:} 
-\begin{itemize}
-    \item 3a: J
-\end{itemize}
 \newpage
 
 
 \subsubsection*{Starten des Programms <A1>}
 \textbf{Anwendungsfall:}  Der Nutzer möchte das Programm starten.\\\\
-\textbf{Anforderungen:} \\\\
 \textbf{Ziel:} Das Starten des Programms. \\\\
 \textbf{Vorbedingung:} Das Programm muss installiert sein.  \\\\
 \textbf{Nachbedingung Erfolg:} Das Programm läuft erfolgreich, das Hauptmenü wird angezeigt.\\\\
@@ -171,7 +163,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Neues Projekt erstellen <A2>}
 \textbf{Anwendungsfall:} Der Nutzer möchte ein neues Projekt erstellen.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK1\\\\
 \textbf{Ziel:} Erstellen eines neuen Projekts. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü. \\\\
 \textbf{Nachbedingung Erfolg:} Ein neues Projekt befindet sich im Speicher. Die Seite 'Data' ist geöffnet.  \\\\
@@ -189,7 +181,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Internes Projekt laden <A3>}
 \textbf{Anwendungsfall:} Der Nutzer möchte ein Projekt aus dem Projektstandardordner laden.\\\\
-\textbf{Anforderungen:} \\\\
+\textbf{Anforderungen:} MK1 \\\\
 \textbf{Ziel:} Das Laden eines Projektes aus dem Projektstandardordner. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü.  \\\\
 \textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt. \\\\
@@ -205,7 +197,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Externes Projekt laden <A4>}
 \textbf{Anwendungsfall:} Der Nutzer möchte ein Projekt außerhalb des Projektstandardordners laden.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK1\\\\
 \textbf{Ziel:} Ein Projekt wird geladen. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü.  \\\\
 \textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt. \\\\
@@ -224,7 +216,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Einstellungen ändern im Hauptmenü <A5>}
 \textbf{Anwendungsfall:} Der Nutzer möchte Änderungen der Einstellungen des Programms vornehmen. \\\\
-\textbf{Anforderungen:} \\\\
+\textbf{Anforderungen:} MK15\\\\
 \textbf{Ziel:} Einstellungen des Programms ändern.\\\\
 \textbf{Vorbedingung:}  Der Nutzer befindet sich im Hauptmenü.  \\\\
 \textbf{Nachbedingung Erfolg:} Die Änderung der Einstellungen werden angezeigt.\\\\
@@ -242,7 +234,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Dateien referenzieren <A6>}
 \textbf{Anwendungsfall:} ...\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK2, MK3, WK1 \\\\
 \textbf{Ziel:} Der Nutzer definiert die OSM-Daten und den räumlichen Filter.\\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Data'. \\\\
 \textbf{Nachbedingung Erfolg:} Erfolgreiches Hinterlegen der angegebenen Dateien. Anzeigen der angegebenen Dateien.\\\\
@@ -263,13 +255,17 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
         \item Im räumlichen Filter befinden sich auch OSM-Elemente, welche sich nur teilweise in den angegebenen Verkehrszellen befinden.
     \end{itemize}
 \end{enumerate}
+\textbf{Alternative:}
+\begin{itemize}
+    \item 2a: Der Nutzer gibt die URL eines OSM-Repository an.
+\end{itemize}
 \newpage
 
 
 % Noch nicht fertig, wir müssen noch besprechen, wo das stattfindet
 \subsubsection*{Kategorien importieren <A7>}
 \textbf{Anwendungsfall:} Der Nutzer möchte in seinem Projekt Kategorien verwenden, welche bereits in einem anderen definiert wurden.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK4, MK12\\\\
 \textbf{Ziel:} Das Importieren vordefinierter Kategorien. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Data'. \\\\
 \textbf{Nachbedingung Erfolg:} Die Kategorien der importierten Datei sind in der Liste der Kategorien aufgelistet. \\\\
@@ -296,7 +292,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Erstellen von Kategorien <A8>}
 \textbf{Anwendungsfall:} Der Nutzer möchte eine weitere Kategorie hinzufügen.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK4\\\\
 \textbf{Ziel:} Die Liste der Kategorien soll um eine weitere Kategorie ergänzt werden. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. \\\\
 \textbf{Nachbedingung Erfolg:} In der Liste der Kategorien befindet sich eine neue, nicht-konfigurierte Kategorie. Die neue Kategorie ist ausgewählt.\\\\
@@ -311,7 +307,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Auswählen von Kategorien <A9>}
 \textbf{Anwendungsfall:} Der Nutzer möchte eine Kategorie auswählen, um diese genauer zu betrachten.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK5, MK4\\\\
 \textbf{Ziel:} Das Auswählen und Anzeigen einer Kategorie. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. Es existiert mindestens eine Kategorie. \\\\
 \textbf{Nachbedingung Erfolg:} Name, Whitelist und Blacklist der neuen Kategorie wird angezeigt.\\\\
@@ -329,7 +325,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Konfigurieren von Kategorien <A10>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die Eigenschaften einer Kategorie verändern.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK4, WK2, WK3, WK8\\\\
 \textbf{Ziel:} Konfigurieren einer Kategorie \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. Es existiert mindestens eine Kategorie.\\\\
 \textbf{Nachbedingung Erfolg:} Die Änderungen an der Kategorie und an ihren Eigenschaften wird angezeigt. \\\\
@@ -358,7 +354,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Löschen von Kategorien <A11>}
 \textbf{Anwendungsfall:} Der Nutzer möchte eine Kategorie löschen.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK4\\\\
 \textbf{Ziel:} Das Entfernen einer Kategorie aus der Kategorienliste.\\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. Es existiert mindestens eine Kategorie. Eine Kategorie ist ausgewählt.\\\\
 \textbf{Nachbedingung Erfolg:} Die ausgewählte Kategorie befindet sich nicht mehr in der Liste. Es ist keine Kategorie mehr ausgewählt.\\\\
@@ -377,8 +373,8 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Punktreduktion definieren <A12>}
 \textbf{Anwendungsfall:} Der Nutzer möchte den Ablauf der Punktreduktion definieren.\\\\
-\textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Definition der Punktreduktion \\\\
+\textbf{Anforderungen:} MK6, MK8\\\\
+\textbf{Ziel:} Definition der Punktreduktion. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Reduction'.\\\\
 \textbf{Nachbedingung Erfolg:} Die geänderten Einstellungen werden angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
@@ -394,7 +390,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Standardwerte für Attribute festlegen <A13>}
 \textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie und ein Attribut einen Standarwert angeben.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK8, MK9\\\\
 \textbf{Ziel:} Festlegen eines Standardwertes eines Attributs für eine Kategorie. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Reduction'. \\\\
 \textbf{Nachbedingung Erfolg:} Die Standardwerte sind hinterlegt. \\\\
@@ -415,7 +411,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Attraktivitätsattribute konfigurieren <A14>}
 \textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie Attraktivitätsattribute definieren.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK10, WK7\\\\
 \textbf{Ziel:} Konfigurieren der Attraktivitätsattribute. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Attractivity'. \\\\
 \textbf{Nachbedingung Erfolg:} Die Änderungen an der Konfiguration sind sichtbar. \\\\
@@ -435,7 +431,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Wählen der Aggregations-Verfahren <A15>}
 \textbf{Anwendungsfall:} Der Nutzer möchte unterschiedliches Aggregations-Verfahren wählen.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK11\\\\
 \textbf{Ziel:} Es wurde ausgewählt welche Aggregations-Verfahren berechnet werden sollen.\\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Aggregation'.\\\\
 \textbf{Nachbedingung Erfolg:} Es werden die vom Nutzer gewählten Aggregationsverfahren angezeigt.\\\\
@@ -450,7 +446,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Berechnungen durchführen <A16>}
 \textbf{Anwendungsfall:} Der Nutzer hat das Projekt konfiguriert und möchte nun die Berechnungen starten.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK7, MK11, MK13, WK4, WK5, WK6\\\\
 \textbf{Ziel:} Das Durchführen der Berechnungen und das Generieren des Endergebnisses.\\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'View and Calculate'. Alle Konfigurationsphasen sind konfiguriert.\\\\
 \textbf{Nachbedingung Erfolg:} Das Endresultat ist berechnet und kann unter 'Export' exportiert werden. \\\\
@@ -476,10 +472,9 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Neuberechnung <A17>}
 \textbf{Anwendungsfall:}  Der Nutzer möchte die Berechnung neustarten.\\\\
-\textbf{Anforderungen:} \\\\
 \textbf{Ziel:} Neustarten der Berechnung.\\\\
 \textbf{Vorbedingung:} Die Anwendung berechnet gerade oder die Berechnungen sind abgeschlossen. Der Nutzer befindet sich auf der Seite 'View and calculate'.\\\\
-\textbf{Nachbedingung Erfolg:} Die Berechnungen sind unterbrochen und der Nutzer kann sie neustarten.\\\\
+\textbf{Nachbedingung Erfolg:} Die Berechnungen sind unterbrochen und der Nutzer kann sie neu-starten.\\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt den 'Cancel' Knopf während der Berechnung oder den 'Recalculate' Knopf am Ende der Berechnung.\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
@@ -492,31 +487,30 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Darstellen der Berechnungsergebnisse <A18>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die berechneten Daten visualisieren.\\\\
-\textbf{Anforderungen:} ...\\\\
-\textbf{Ziel:} Visualisierung der Daten\\\\
-\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite 'View and Calculate'\\\\
-\textbf{Nachbedingung Erfolg:} Ein Diagramm der berechneten Daten wird angezeigt \\\\
+\textbf{Anforderungen:} WK4\\\\
+\textbf{Ziel:} Visualisierung der Daten.\\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite 'View and Calculate'.\\\\
+\textbf{Nachbedingung Erfolg:} Ein Diagramm der berechneten Daten wird angezeigt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Knopf 'Visualize Results' \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den Knopf 'Visualize Results'.\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Nutzer wählt folgende Eigenschaften aus, die er Visualisieren will:
     \begin{itemize}
-        \item Die Kategorie
-        \item Das Aggregation-Verfahren
+        \item Das Aggregation-Verfahren.
     \end{itemize}
-    \item Der User drückt den Knopf 'Visualize Results'
-    \item Es wird ein Balkendiagramm angzeigt der die ausgewählten Daten Visualisiert
+    \item Der User drückt den Knopf 'Visualize Results'.
+    \item Es wird ein Diagramm angezeigt der die ausgewählten Daten Visualisiert.
 \end{enumerate}
 \newpage
 
 
 
 \subsubsection*{Exportieren des Endergebnisses <A19>}
-\textbf{Anwendungsfall:} Der Nutzer möchte das Endergebnis exportieren\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anwendungsfall:} Der Nutzer möchte das Endergebnis exportieren.\\\\
+\textbf{Anforderungen:} MK12\\\\
 \textbf{Ziel:} Das Endergebnis soll an den gewünschten Speicherplatz kopiert werden. \\\\
-\textbf{Vorbedingung:}  Der Nutzer befindet sich innerhalb eines Projekts\\\\
+\textbf{Vorbedingung:}  Der Nutzer befindet sich innerhalb eines Projekts.\\\\
 \textbf{Nachbedingung Erfolg:} An der vom Nutzer definierten Stelle befindet sich ein ZIP-Archiv, welches das Endergebnis enthält. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt den Button 'Export' \\\\
@@ -532,7 +526,6 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Phase wechseln <A20>}
 \textbf{Anwendungsfall:} Der Nutzer möchte in eine andere Phase der Konfigurierung wechseln.\\\\
-\textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Die aktuelle Konfigurationsseite wird gespeichert und eine andere geladen. \\\\
 \textbf{Vorbedingung:} Ein Projekt ist geladen. \\\\
 \textbf{Nachbedingung Erfolg:} Die ausgewählte Seite wird angezeigt. Änderungen der alten Seite sind gespeichert.\\\\
@@ -552,7 +545,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsubsection*{Exportieren des Projektes <A21>}
 \textbf{Anwendungsfall:} Der Nutzer exportiert das Projekt. \\\\
-\textbf{Anforderungen:} \\\\
+\textbf{Anforderungen:} MK12\\\\
 \textbf{Ziel:} Das Projekt wurde zu einem gewünschten Speicherort exportiert.\\\\
 \textbf{Vorbedingung:} Das Programm wurde gestartet und der Nutzer hat den Export Reiter ausgewählt.\\\\
 \textbf{Nachbedingung Erfolg:} Das Projekt wurde erfolgreich exportiert und befindet sich am gewünschten Speicherort.\\\\
@@ -568,10 +561,9 @@ schlag.\\\\
 \end{enumerate}
 \newpage
 
-\subsubsection*{Exportieren des Projektes <A22>}
-\textbf{Anwendungsfall:} Der Nutzer exportiert die Konfiguration des Projektes.
-Anforderung \\\\
-\textbf{Anforderungen:} \\\\
+\subsubsection*{Exportieren der Konfigurationen <A22>}
+\textbf{Anwendungsfall:} Der Nutzer exportiert die Konfiguration des Projektes.\\\\
+\textbf{Anforderungen:} MK1, MK12\\\\
 \textbf{Ziel:} Die Konfigurationen wurde zu einem gewünschten Speicherort exportiert.\\\\
 \textbf{Vorbedingung:} Das Programm wurde gestartet und der Nutzer hat den Export Reiter ausgewählt.\\\\
 \textbf{Nachbedingung Erfolg:} Die Konfigurationen wurde erfolgreich exportiert und befindet sich am gewünschten Speicherort.\\\\
@@ -589,7 +581,7 @@ schlag.\\\\
 
 \subsubsection*{Einstellungen vornehmen <A23>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die Einstellungen verändern.\\\\
-\textbf{Anforderungen:} ...\\\\
+\textbf{Anforderungen:} MK1, MK15\\\\
 \textbf{Ziel:} Ändern der allgemeinen Einstellungen des Projekts und der Anwendung. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich in einem Projekt oder im Hauptmenü.\\\\
 \textbf{Nachbedingung Erfolg:} Der Nutzer befindet sich auf der Seite 'Settings'. Die Änderungen an den Einstellungen sind vorgenommen. \\\\
@@ -605,7 +597,6 @@ schlag.\\\\
 
 \subsubsection*{Anwendung beenden <A24>}
 \textbf{Anwendungsfall:} Der Nutzer möchte die Anwendung schließen.\\\\
-\textbf{Anforderungen:} ...\\\\
 \textbf{Ziel:} Die Anwendung soll sich schließen und nicht-gespeicherte Daten speichern. \\\\
 \textbf{Vorbedingung:} Die Anwendung ist gestartet.\\\\
 \textbf{Nachbedingung Erfolg:} Die Anwendung ist geschlossen und nicht-gespeicherte Daten sind gespeichert.\\\\
@@ -622,6 +613,31 @@ schlag.\\\\
 \end{itemize}
 \newpage
 
+
+
+
+
+\subsection{Testszenario}
+\subsubsection*{Transfer von Kategorien <S1>}
+\textbf{Anwendungsfall:} Nutzer $A$ hat ein Projekt $P_A$ erstellt und in diesem Kategorien definiert. Nutzer $B$ möchte die selben Kategorien in einem anderen Projekt $P_B$ verwenden.\\\\
+\textbf{Ziel:} Transfer der Kategorien von $P_A$ nach $P_B$.\\\\
+\textbf{Vorbedingung:} Nutzer $A$ hat ein Projekt konfiguriert.\\\\
+\textbf{Nachbedingung Erfolg:} Die Kategorien von Nutzer $A$ befinden sich im Projekt von Nutzer $B$.\\\\
+\textbf{Beschreibung:}
+\begin{enumerate}
+    \item Nutzer $A$ startet die Anwendung und lädt das Projekt $P_A$.
+    \item Nutzer $A$ klickt auf 'Export' und dann 'Configurations Export'.
+    \item Die Anwendung öffnet den Datei-Explorer.
+    \item Nutzer $A$ wählt einen Speicherort der Konfigurations-Datei $D$ aus.
+    \item Nutzer $A$ sendet $D$ per E-Mail an $B$.
+    \item Nutzer $B$ startet die Anwendung und lädt das Projekt $P_B$.
+    \item Nutzer $B$ drückt unter 'Data' den Button zum Importiern von Kategorien.
+    \item Die Anwendung öffnet den Dateiexplorer
+    \item Nutzer $B$ wählt die Datei $D$ aus.
+    \item Der Nutzer bestätigt den Import.
+    \item Die Anwendung lädt die Kategorien in Projekt $P_B$.
+\end{enumerate}
+\newpage
 
 
 
@@ -681,7 +697,6 @@ Die Abarbeitung der Berechnungsphasen kann in jeder Phase gestartet werden, läu
     \item Für jede Verkehrszelle aggregiert die Anwendung die Attraktivitätsattribute nach (in AX aktivierten) Aggregationsverfahren.
     \item Die Anwendung speichert das Endergebnis in der \hyperlink{finalresult}{Ausgabe}.
 \end{itemize}
-
 \newpage
 
 
@@ -913,7 +928,7 @@ In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkre
     \item <Q1> Die Anwendung soll in englischer Sprache verfügbar sein
     \item <Q2> Die Anwendung soll intuitiv bedienbar sein
     \item <Q3> Die Anwendung muss auf Windows 10 und 11 nutzbar sein
-    \item <Q4> Durch eine große Testabdeckung soll die Korrektheit des Produkts gewährleistet sein
+    \item <Q4> Durch eine 80 prozentige Testabdeckung soll die Korrektheit des Produkts gewährleistet sein
     \item <Q5> Das Produkt soll um neue Verfahren erweiterbar sein
     \item <Q6> Das Produkt muss als Open-Source-Projekt weiterentwickelbar sein
     \item <Q7> Der Quelltext soll lesbar und kommentiert sein
@@ -969,7 +984,7 @@ Wann welcher Defaultwert benutzt wird hängt von der Reihenfolge in der Liste ab
 Dieses Fenster beinhaltet 2 Dropdown Listen. Die obere ist zum auswählen einer Kategorie, die untere um auf die einzelnen Attraktivitäts Attribute dieser Kategorie unterscheiden zu können.
 Ist eine Kategorie und ein Attraktivitäts Attribut ausgewählt, so werden das Feld für den Name des Attraktivitäts Attributes angezeigt, sowie die Tag-Factor-List und die Attribute-Factors.
 In der Tag-Factor-List könenn nun ähnlich wie in den Black- und White-Listen im Kategorie Fenster, tags geschrieben werden. Diesen tags wird aber nun auch ein multiplikations Zeichen mit einer Zahl gefolgt. Diese Zahl gibt dann den Factor an, mit dem dieser Tag verrechnet werden soll.
-Bei den Attribute-Factors gibt es nur die 3 Standart Attribute zu der Kategorie welche alle mit einem Faktor versehen werden können.
+Bei den Attribute-Factors gibt es nur die 3 Standard Attribute zu der Kategorie welche alle mit einem Faktor versehen werden können.
 Die New Attraktivity und Delete Attraktivity sind dazu da um neue Attraktivitäts Attribute erstellen zu können, als auch das ausgewählte löschen zu können. Beim löschen, wird wieder ein PopupFenser angezeigt, welches dazu da ist diese Aktion zu bestätigen.
 
 \textbf{Aggregation author = Pascal}<UI60>
@@ -1001,7 +1016,7 @@ In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 
 \subsection{Software}
 \begin{itemize}
-    \item Implementierungssprache der Anwendung – Python
+    \item Implementierungssprache der Anwendung: Python
     \item Betriebssystem: Windows 10/11
 \end{itemize}
 
@@ -1012,7 +1027,7 @@ In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 \end{itemize}
 
 \subsection{Produktschnittstellen}
-Die Benutzerschnittstelle wird über ein GUI zur Verfügung gestellt.
+Die Anwendung bietet eine Benutzerschnittstelle über ein GUI zur Verfügung.
 \newpage
 
 
