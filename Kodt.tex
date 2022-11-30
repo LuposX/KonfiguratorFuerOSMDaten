@@ -13,7 +13,11 @@ bookmarks=true,
 }
 \usepackage{csquotes} % provides \enquote{} macro for "quotes"
 
-\usepackage[section]{placeins} % Prevent piczures in next section
+\usepackage[section]{placeins} % Bilder sollen nicht in andere Kapitel ragen
+
+% Abbildungen mit Kapiteln numerieren
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
 
 \title{Konfigurator für OSM-Datenaufbereitungs-Prozesse für die Verkehrsnachfragemodellierung}
 \subtitle{Pflichtenheft}
@@ -40,15 +44,6 @@ bookmarks=true,
 
 \section{Zielbestimmung}
 Ob mit dem Fahrrad zur Uni oder mit dem Auto zum Supermarkt: Verkehr betrifft uns alle. Dieses Produkt generiert aus Geodaten des freien Projektes 'Open Street Map' (OSM) eine numerische Wertung der Attraktivität geografischer Standorte. Ein Hauptaugenmerk liegt hierbei auf der Konfigurierbarkeit der Generierung dieser Wertung. Verkehrsplaner können so die richtigen Daten für ihre Verkehrsnachfragemodelle einfach generieren.
-
-
-\textbf{author=Pascal,not reviewed yet\\}
-Verkehrsmodelle sind allgegenwärtig, egal ob man nur ein Teilnehmer am Verkehr ist oder Entscheidungen treffen muss um diesen zu optimieren.
-Für eine effektive Optimierung des Verkehrswesens sind Daten über den Verkehr unumgänglich und abgesehen von der geografischen Lage von Gebäuden, Straßen usw. ist auch das Verhalten der Menschen ein wichtiger Bestandteil.
-Um diese Menschen effektiv simulieren zu können, bedarf es Spezifikation und Konfiguration geografischer Daten um ein verhalten von Menschen berechenbar zu machen.
-Hier kommt die (NAME DER SOFTWARE) ins spiel.
-Mit Hilfe von (NAME DER SOFTWARE) soll es  Verkehrsingenieuren und Verkehrswissenschafter möglich sein, genau solche Daten für ihre Berechnungen anfertigen zu können.
-Hierbei werden Daten aus der OSM als Basis genutzt.
 
 \subsection{Musskriterien}
 Musskriterien (kurz MK): unabdingbare Leistungen der Software.
@@ -98,10 +93,6 @@ Abgrenzungskriterien (kurz AK): Leistungen, die von der Software nicht erbracht 
 \section{Produkteinsatz}
 
 \subsection{Anwendungsbereiche}
-\textbf{author="JP", reviewedby=Karl} 
-Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden soll. Der Anwendungsbereich des Produkts liegt bei Verkehrsinstituten. Diese Nutzen die Berechnung von Attraktivitäten verschiedener Verkehrszellen zum Erstellen von Verkehrsnachfragemodellen. Diese sind später die Grundlage, um sowohl verkehrsplanerische, wie auch politische Entscheidungen bezüglich der Infrastruktur zu treffen.
-
-\textbf{Alternative:}
 Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden kann. Die größte Anwendung findet das Produkt bei der Nutzung von Verkehrsnachfragemodellen. Diese benötigen eine Bewertung von Verkehrszellen nach ihrer Attraktivität, um aussagekräftige Vorhersagen treffen zu können. Auf Grundlage dieser Vorhersagen können dann verkehrsplanerische, sowie politische Entscheidungen getroffen werden.
 
 
@@ -109,21 +100,15 @@ Dieses Kapitel erläutert, in welchen Bereichen das Produkt eingesetzt werden ka
 Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Person die Anwendung nutzen. Nutzer müssen jedoch Grundkenntnisse im OSM-Dateiformat besitzen. Daher bilden Verkehrsingenieure und Verkehrswissenschaftler die größte Zielgruppe des Produkts. Da die Zielgruppe insbesondere nicht aus Informatikern besteht, werden keine Kenntnisse in der Programmierung vorausgesetzt.
 \newpage
 
-
-
-
-
-
-
 \section{Produktübersicht}
 In diesem Kapitel werden die Produktfunktionen beschrieben und in einem Use-Case-Diagramm visualisiert. Das Use-Case-Diagramm zeigt mittels Verbindungslinien, wie die einzelnen Use-Cases zueinander stehen. Der Abschnitt „Pipeline-Schritte“ wird genauer in einem Aktivitätsdiagramm abgebildet. Dadurch können die einzelnen Schritte, die durchlaufen werden, besser beschrieben werden.
 
-\subsection{Abbildung 3.1}
+\subsection*{Abbildung 3.1}
 In dem Use-Case-Diagramm „Aufbau der Anwendung“ sieht man die allgemeine Struktur der Anwendung. Der Nutzer befindet sich zu Beginn im Main Menu und kann von dort aus zwischen verschiedenen Möglichkeiten wählen.
 Zunächst kann der Nutzer ein neues Projekt erstellen und diesem einen Namen zuweisen. Außerdem ist es möglich ein zuvor abgespeichertes Projekt zu laden. Von dort aus kann der Nutzer dann die einzelnen Schritte der Anwendung durchlaufen und berechnen lassen. 
 Zusätzlich kann der Nutzer die Optionen öffnen und dort Speicherort, Name und Beschreibung des Projektes ändern.
 
-\subsection{Abbildung 3.2}
+\subsection*{Abbildung 3.2}
 Im Aktivitätsdiagramm „Pipeline“ durchläuft der Nutzer alle Schritte des Konfigurators für OSM-Datenaufbereitungs-Prozesse. Dabei kann dieser zunächst auswählen, ob ein neues Projekt erstellt oder ein bestehendes Projekt geladen werden soll. Danach wird der OSM-Datensatz, sowie die shape-Dateien der Verkehrszellen, eingelesen und die Konfiguration der Kategorien optional geladen. Anschließend legt der Nutzer die Kategorien fest und erstellt dafür die Black-und Whitelist. Als nächstes wird für die Reduktion die Berechnungsmethode festgelegt und für die Tags werden Default-Werte eingetragen. Danach gibt der Nutzer für die Kategorien eine Berechnungsmethode an, welche sich aus Tags und Faktoren zusammensetzt. Zuletzt bestimmt der Nutzer noch die Aggregationsmethode innerhalb der Verkehrszellen. Nachdem die Anwendung die Berechnung zu Ende ausgeführt hat, kann der Nutzer das Ergebnis, sowie die Konfiguration exportieren. 
 \begin{figure}
     \centering
@@ -914,7 +899,7 @@ Erweiterungen stellen ein häufig gewünschtes Kriterium dar. Deshalb ist das Pr
 Die Benutzeroberfläche darf die Funktionalität des Produktes nicht beeinträchtigen. Daher muss eine gute Stabilität gewährleistet werden.
 
 \textbf{Installierbarkeit}\\
-Das Produkt ist als Open-Source-Anwendung online erhältlich. Die Installierbarkeit ist als normal einzustufen.
+Das Produkt ist als Open-Source-Anwendung online erhältlich als .exe-Datei. Die Installierbarkeit ist als normal einzustufen.
 
 
 % remove this if we dont want to have a new page for each
@@ -946,67 +931,71 @@ In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkre
 \section{Benutzeroberfläche/Schnittstellen}
 In diesem Kapitel wird die Benutzeroberfläche erläutert. Es wird auf die Darstellung der einzelnen Funktionen sowie die Navigation zwischen diesen eingegangen.
 
-\textbf{Benutzeroberfläche: author = Felix, reviewed by Pascal}
-Die Anwendung "KozDt" ist für Desktop-Computer konzipiert. Folglich stellt die Benutzeroberfläche einen wichtigen teil des Produktes dar.
+\textbf{Benutzeroberfläche}
+Die Anwendung ist für Desktop-Computer konzipiert. Folglich stellt die Benutzeroberfläche einen wichtigen Teil des Produktes dar.
 Die Steuerung erfolgt durch Maus- und Tastatureingaben. Das Anwendungsdesign ist in den verschiedenen Navigationskomponenten möglichst einheitlich gestaltet. Für den Nutzer soll die Anwendung intuitiv verständlich sein. Die Übersichtlichkeit spielt eine große Rolle, gleichzeitig soll das Design anregend zur Verwendung sein.
 Die Navigation beginnt auf dem Hauptmenü, über das mithilfe von Buttons die weiteren Funktionen aufgerufen werden können.
 Innerhalb der folgenden Seiten wird der aktuelle Schritt sowie die Navigation über eine Toolbar am oberen Rand der Anwendung visualisiert. 
-Eine entsprechende Visualisierung des Programmworkflows wird in Abbildung 3 erläutert.
+Eine entsprechende Visualisierung des Programmworkflows wird in Abbildung 7.3 erläutert.
 
-\textbf{Main Menu }<UI10>\textbf{ : author = Felix, reviewed by Pascal}
+\textbf{Main Menu }<UI10>
 Das Hauptmenü bietet eine erste Übersicht zum Starten des Workflows. Über drei Buttons kann der Workflow durch Laden eines bereits vorhandenen Projekts oder Erstellen eines neuen gestartet werden. Weiter befindet sich rechts der Buttons eine Schaltfläche, die die vergangenen Projekte auflistet und eine Möglichkeit zum Laden bietet. Über einen letzten Knopf lassen sich die Anwendungseinstellungen aufrufen.
 
-\textbf{New Project }<UI20>\textbf{ : author = Felix, reviewed by Pascal}
+\textbf{New Project }<UI20>
 Hat der Nutzer im Hauptmenü die Option zum Erstellen eines neuen Projektes aufgerufen wird er in dieses Fenster geleitet.
-Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden. Wird kein Speicherort angegeben wird ein Standardordner gewählt.
+Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden. Wird kein Speicherort angegeben wird ein Projektstandardordner gewählt.
 Über zwei Buttons am unteren rechten Rand kann die Projekterstellung bestätigt und begonnen oder abgebrochen werden.
 
-\textbf{Data }<UI30>\textbf{ : author = Felix, reviewed by Pascal}
+\textbf{Data }<UI30>
 Hier können die zur Berechnung wichtigen Daten ausgewählt werden.
 Über drei Buttons können die OSM-Daten, der Cutout zur Bereichseingrenzung sowie ein Kopieraufruf gewählt werden. Über eine Checkbox kann angegeben werden, ob Gebäude am Cutout-Rand in die Berechnung miteinbezogen werden sollen.
-Entstehen Konflikte bei der Auswahl gibt das Programm eine Fehlermmeldung aus und fragt den Nutzer nach Bestätigung zum Überschreiben und Mergen. Hier kann der Nutzer entweder das Überschreiben starten, oder über einen Abbrechen-Button zurück zum Data-Fenster gelangen.
+Entstehen beim Kopieren über "Copy in Configurations" Konflikte bei der Auswahl gibt das Programm eine Fehlermmeldung aus und fragt den Nutzer nach Bestätigung zum Überschreiben und Mergen (siehe Abbildung 7.17 und 7.18). Hier kann der Nutzer entweder das Überschreiben starten, oder über einen Abbrechen-Button zurück zum Data-Fenster gelangen.
 
-\textbf{Categories }<UI40>\textbf{ : author = Felix, reviewed by Pascal}
-Über dieses Fenster kann der Nutzer neue Kategorien erstellen sowie sich bereits erstellte Kategorien anzeigen lassen. Weiter kann er den Kategorien White- und Blacklist-Attribute zuordnen, die bei der späteren Berechnung miteinbezogen werden. So werden Key-Value Paare gebildet.
-Über ein Dropdown-Menü können Kategorien ausgewählt werden. In einem enstprechenden Textfeld wird daraufhin der Namen der gewählten Kategorie angezeigt. Eine Liste schlägt Key-Recommendations vor. Weiter können in zwei Tabellen besagte Black- und Whitelistattribute gewählt werden.
-Über zwei Buttons am unteren rechten Anwendungsrand kann die Erstellung einer neuen Kategorie bestätigt oder abgebrochen werden. 
-Wir der Abbruchsbutton gewählt wird über ein Popup nach Bestätigung gefragt. Wird auch hier der Abbruchsbutton betätigt wird der Nutzer zum selben, unausgefüllten Formular weitergeleitet. Andernfalls bleibt er im aktuell ausgefüllten Formular.
+\newpage
 
-\textbf{Reduction }<UI50>\textbf{: author = Pascal, reviewedBy = Felix}
-In Diesem Fenster kann der Nutzer festlegen wie die Flächenberechnung der Kategorien auszusehen hat. Das Fenster wird dazu in eine linke und rechte Hälfte unterteilt.
+\textbf{Categories }<UI40>
+Über dieses Fenster kann der Nutzer neue Kategorien erstellen sowie sich bereits erstellte Kategorien anzeigen lassen. Weiter kann er den Kategorien White- und Blacklist Tags zuordnen, die bei der späteren Berechnung miteinbezogen werden.
+Über ein Dropdown-Menü können Kategorien ausgewählt werden. In einem enstprechenden Textfeld wird daraufhin der Namen der gewählten Kategorie angezeigt. Eine Liste schlägt Key-Recommendations vor. Weiter können in zwei Tabellen besagte Black- und Whitelist Tags gewählt werden.
+Über zwei Buttons am unteren rechten Anwendungsrand können neue Kategorien erstellt oder exitierende gelöscht werden. 
+Wir der "Delete" Button gewählt wird über ein Popup (Abbildung 7.19) nach Bestätigung gefragt. Wurde eine neue Kategorie erstellt, wird diese direkt im DropDown-Menü ausgewählt.
+
+\textbf{Reduction }<UI50>
+In Diesem Fenster kann der Nutzer festlegen wie die Flächenberechnung der Kategorien durchgeführt wird. Das Fenster wird dazu in eine linke und rechte Hälfte unterteilt.
 Links befindet sich die Liste aller Kategorien, rechts kann der Nutzer deren Reduktion konfigurieren.
-Durch das Anklicken einer Kategorie in der Liste links, wird rechts das Subfenster angezeigt. Dieses hat 2 Knöpfe: Zum einen den Calculation Knopf; drückt man diesen, kann der Nutzer nun Konfigurieren, was für diese Kategorie berechnet werden soll. Dies ist über Checkboxen geregelt. Es muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll. Nur wenn diese Option aktiviert ist, werden die Spezifikationen darunter angezeigt. Über einen Schalter kann zwischen der Grundstücks- und Gebäudeflächenberechnung unterschieden werden. Weiter kann gewählt werden, ob diese Fläche mit den Stockwerken multipliziert werden soll. Zu Letzt kann gewählt werden, ob nur die angegebenen Default-Werte verwendet werden sollen.
-Drückt man den Default-Values Knopf, so können für Tags Defaultwerte gesetzt werden. Es kann über den "New Key-Value" Button neue Tags hinzugefügt werden und über den "Delete Key-Value" Button gelöscht werden. Das Löschen muss in einem Popup-Fenster bestätigt werden.
-Bei jeder Kategorie wird es so sein, das es immer eine DEFAULT Defaultwert gibt, dieser kann nicht gelöscht werden und tritt in kraft wenn keine der Key-Values bei der Berechnung zu treffen.
-Die Grundwerte können für jedes Key-Value als auch für den DEFAULT wert bestimmt werden in den Textfeldern rechts nebenan.
-Wann welcher Defaultwert benutzt wird hängt von der Reihenfolge in der Liste ab, so gilt je weiter oben desto geringer die Priorität. Über die Pfeilknöpfe an den Key-Values in der Liste, können diese in dieser Prioritäts Liste verschoben werden. Es kann dabei nichts über den DEFAULT wert gehen.
+Durch das Anklicken einer Kategorie in der Liste links, wird rechts eine Schaltfläche angezeigt. Dieses hat 2 Knöpfe: Zum einen den Calculation Knopf. Wird dieser Knopf gedrückt kann festgelegt werden, welche Werte für diese Kategorie berechnet werden sollen, dies geschieht über Checkboxen. Es muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll. Nur wenn diese Option aktiviert ist, werden die Spezifikationen darunter angezeigt. Über einen Schalter kann zwischen der Grundstücks- und Gebäudeflächenberechnung unterschieden werden. Weiter kann gewählt werden, ob diese Fläche mit den Stockwerken multipliziert werden soll oder nicht. Zuletzt kann gewählt werden, ob nur die angegebenen Default-Werte verwendet werden sollen.
+Drückt man den "Default-Values" Knopf, so können für Tags Defaultwerte gesetzt werden. Es kann über den "New Tag" Button neue Tags hinzugefügt werden und über den "Delete Tag" Button gelöscht werden. Das Löschen muss in einem Popup-Fenster bestätigt werden (Abbildung 7.19).
+Jede Kategorie besitzt unlöschbare Default-Werte. Treffen keine Tags zu werden diese zur Berechnung verwendet.
+Wann welcher Defaultwert benutzt wird hängt von der Reihenfolge in der Liste ab, so gilt je weiter oben desto geringer die Priorität. Über die Pfeilknöpfe an den Tags in der Liste, können diese in dieser Prioritätsliste verschoben werden. Es kann dabei nichts über den DEFAULT wert gehen.
 
-\textbf{Attractivity author = Pascal, reviewedBy = Felix}<UI60> \textbf{:}
-Dieses Fenster beinhaltet zwei Dropdown-Listen. Die obere ist zum Auswählen einer Kategorie, die untere um auf die einzelnen Attraktivitäts Attribute dieser Kategorie unterscheiden zu können.
-Ist eine Kategorie und ein Attraktivitätsattribut ausgewählt, so wird das Namensfeld des Attraktivitätsattributes, die Key-Value-Factor-List und die Attribut-Faktoren angezeigt.
-In der Key-Value-Factor-List können nun, ähnlich zu den Black- und White-Listen, Key-Values geschrieben werden. Diesen Key-Values wird aber nun auch ein multiplikations Zeichen mit einer Zahl gefolgt. Diese Zahl gibt dann den Factor an, mit dem dieser Key-Value verrechnet werden soll.
-Bei den Attribute-Factors gibt es die drei Standard Attribute zu der Kategorie welche alle mit einem Faktor versehen werden können, als auch eine Standart Attractivität, welche mit einem Wert versehen werden kann.
-Die Buttons "New Attraktivity" und "Delete Attraktivity" sind dazu da um neue Attraktivitäts Attribute erstellen zu können, als auch das ausgewählte löschen zu können. Das Löschen muss in einem Popup-Fenster bestätigt werden.
-Der Knopf View Attractivity-List führt zu dem Fenster (FENSTER NAME). Dort wird eine Liste angezeigt von allen Kategorien und deren Attraktivitäts-Attributen, so wie deren Berechnung.
-Die Liste ist so aufgebaut, dass ganz Links die Kategorie steht, in der Mitte das Attraktivitäts-Attribut und rechts die zugehörige Berechnung.
+\newpage
+
+\textbf{Attractivity }<UI60>
+Dieses Fenster beinhaltet zwei Dropdown-Listen. Die obere Liste ist zum Auswählen einer Kategorie, die untere dient der Unterscheidung der jeweiligen Attraktivitäts-Attribute.
+Ist eine Kategorie und ein Attraktivitätsattribut ausgewählt, so wird das Namensfeld des Attraktivitätsattributes, die Tag-Factor-List und die Attribut-Faktoren angezeigt.
+In der Tag-Factor-List können nun, ähnlich zu den Black- und White-Listen, Tags geschrieben werden. Zu diesen Tags schreibt man einen Faktor dazu.
+Bei den Attribute-Factors gibt es drei Standardattribute zur Kategorie. Diese können mit einem Faktor und einer Standard-Attraktivität versehen werden.
+Die Buttons "New Attractivity" und "Delete Attractivity" erstellen und löschen Attraktivitätsattribute. Das Löschen muss in einem Popup-Fenster bestätigt werden (Abbildung 7.19).
+Der Knopf View Attractivity-List zeigt eine Liste an. Dort werden alle Kategorien und deren Attraktivitätsattributen, so wie deren Berechnung angezeigt.
+Die Liste ist so aufgebaut, dass ganz Links die Kategorie steht, in der Mitte das Attraktivitätsattribut und rechts die zugehörige Berechnung.
 Die Liste dient nur der Veranschaulichung und Übersicht. Hier kann nicht editiert werden.
 Mit dem Button "Edit Attractivity" kehrt man zum vorherigen Fenster zurück.
 
-\textbf{Aggregation author = Pascal, reviewedBy = Felix}<UI60> \textbf{:}
-Im Aggregations Fenster kann festgelegt werden welche Werte in den Verkehrszellen berechnet werden sollen. Hierzu wird eine Liste mit allen möglichen Berechnungsarten angezeigt. In dieser Liste kann über Checkmarks festgelegt werden welche Berechnungsarten  in der Berechnung getätigt werden sollen.
+\textbf{Aggregation }<UI60>
+Im Aggregationsfenster kann festgelegt werden, welche Werte in den Verkehrszellen berechnet werden sollen. Hierzu wird eine Liste mit allen möglichen Berechnungsarten angezeigt. In dieser Liste kann über Checkboxen festgelegt werden welche Berechnungsarten in der Berechnung getätigt werden sollen.
 
-\textbf{Calculate author = Felix, reviewed by Pascal}<UI70> \textbf{:}\\
+\textbf{Calculate }<UI70>
 Hier wird als letzter Schritt nach fertiger Dateneingabe die Berechnung gestartet. Über eine Schaltfläche am linken Anwendungsrand kann der gewünschte Startpunkt der Berechnung angegeben werden. Hier können beliebig viele Phasen übersprungen werden, ab der die folgenden Schritte in angezeigter Reihenfolge ausgeführt werden. Über den "Start Calculation" Button wird die Berechnung gesartet.
-Während der Berechnung informiert ein Ladebalken über den aktuellen Berechnungsstatus. Weiter zeigt die Schaltfläche links die aktuelle Phase als auch die bereits bearbeiteten Phasen an. Über einen Button kann die Berechnung jederzeit abgebrochen werden. Diese Aktion muss über ein Popup-Fenster bestätigt werden.
-Nach Vollendung der Berechnung können die Ergebnisse angesehen, oder die Berechnung erneut gestartet werden. Diese Aktion muss über ein Popup-Fenster bestätigt werden.
+Während der Berechnung informiert ein Ladebalken über den aktuellen Berechnungsstatus. Weiter zeigt die Schaltfläche links die aktuelle Phase als auch die bereits bearbeiteten Phasen an. Über einen Button kann die Berechnung jederzeit abgebrochen werden. Diese Aktion muss über ein Popup-Fenster bestätigt werden (Abbildung 7.20).
+Nach Vollendung der Berechnung können die Ergebnisse angesehen, oder die Berechnung erneut gestartet werden. Diese Aktion muss über ein Popup-Fenster bestätigt werden (Abbildung 7.21).
 Die Anwendung informiert den Nutzer über einen Schriftzug, wenn die Berechnung vollendet wurde.
 
-\textbf{Export author = Pascal, reviewedBy = Felix}<UI80> \textbf{:}
-
-Der Export Knopf im HeadMenü öffnet kein neues Fenster, sonder ein DropDownMenü mit 3 Knöpfen für jede Export möglichkeit. So kann das ganze Projekt exportiert werden, die Berechnung oder die Konfigurationen in Bezug auf die Kategorien. Durch das Anklicken einer der Knöpfe wird man zu seinen Dokumenten weitergeleitet um den Ort zu wählen, wohin Exportiert werden soll.
+\textbf{Export }<UI80>
+Der Export-Knopf im Head Menü öffnet ein Dropdown-Menü mit Buttons für Exportmöglichkeiten. Wird einer der Buttons betätigt öffnet sich der Explorer zur Speicherortauswahl.
 Durch erneutes Drücken des Export-Knopfs verschwindet das Dropdown-Menü wieder.
 
-\textbf{Settings author = Felix, reviewed by Pascal}<UI90> \textbf{:}\\
+\newpage
+
+\textbf{Settings }<UI90>
 Im Settings-Fenster der Anwendung können Einstellungen zum aktuellen Projekt vorgenommen werden.
 Die Einstellungen gliedern sich in zwei Teile.
 Im ersten Teil können Daten zum Projekt geändert werden. Über eine Schaltfläche können im Nachhinein Projektname und die zugehörige Beschreibung angepasst werden. Wurde das Settings-Fenster ohne ein offenes Projekt geöffnet, wird dieser Teil nicht angezeigt.
@@ -1015,6 +1004,18 @@ Alle Änderungen können über zwei Buttons entweder gespeichert oder verworfen 
 
 \newpage
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Main Menu.png}
+    \caption{Main Menu}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/New Project.png}
+    \caption{New Project}
+\end{figure}
+
 %Grafik zur Workflowvisualisierung
 \begin{figure}
     \centering
@@ -1022,11 +1023,121 @@ Alle Änderungen können über zwei Buttons entweder gespeichert oder verworfen 
     \caption{Workflowvisualisierung}
 \end{figure}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Data.png}
+    \caption{Data}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Categories.png}
+    \caption{Categories}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Categories 2.png}
+    \caption{MCategories 2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Reduction.png}
+    \caption{Reduction}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Reduction 2.png}
+    \caption{MReduction 2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Attractivity.png}
+    \caption{Attractivity}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Attractivity 2.png}
+    \caption{Attractivity 2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Aggregation.png}
+    \caption{Aggregation}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Calculate.png}
+    \caption{Calculate}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Calculate 2.png}
+    \caption{Calculate 2}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Calculate 3.png}
+    \caption{Calculate 3}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Export.png}
+    \caption{Export}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Options.png}
+    \caption{Options}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Conflict PopUp.png}
+    \caption{Conflict PopUp}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Merge PopUp.png}
+    \caption{Merge PopUp}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Delete PopUp.png}
+    \caption{Delete PopUp}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Cancel PopUp.png}
+    \caption{Cancel PopUp}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{pictures/Recalculate PopUp.png}
+    \caption{Recalculate PopUp}
+\end{figure}
+
 \newpage
 
 
 
-\section{Technische Produktumgebung, author = JP}
+\section{Technische Produktumgebung}
 In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 
 \subsection{Software}
@@ -1037,8 +1148,8 @@ In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 
 \subsection{Hardware}
 \begin{itemize}
-    \item Windows 10/11 Laptop mit 8 GB RAM und i5 4 Kerne (8 log.) für kleine Instanzen
-    \item Workstation mit 125 – 250 GB RAM und 8-16 Kerne für große Instanzen Effiziente
+    \item Laptop mit 8 GB RAM und i5 4 Kerne (8 log.) für kleine Instanzen.
+    \item Workstation mit 125 – 250 GB RAM und 8-16 Kerne für große Instanzen.
 \end{itemize}
 
 \subsection{Produktschnittstellen}
@@ -1057,14 +1168,27 @@ Verfahren zum Zusammenfassen mehrerer Attraktivitätsattribute innerhalb einer V
 \textbf{Attribut}\\
 Eigenschaft eines OSM-Elements. Wird aus den OSM-Tags des OSM-Elements während der Punktreduktion berechnet.
 
-\textbf{Attraktivität}\\
-Eigenschaft eines Gebäudes zur Beschreibung, wie gut ein Objekt in OSM basierend auf verschiedenen Faktoren ist. Diese prognostiziert die Beliebtheit des Gebäudes.
 
 \textbf{Attraktivitätsattribut}\\
 Eigenschaft eines geografischen Objektes. Beschreibt die Attraktivität eines Ortes bezüglich einer bestimmten Tätigkeit. Wird aus Attributen berechnet.
 
+\textbf{Checkbox}\\
+Kästchen, die eine binäre Beziehung darstellen. Wird ein Kästchen markiert wird die zugehörige Option ausgewählt.
+
+\textbf{Default-Values}\\
+Vordefinierte Standardwerte, die zu einer Berechnung herangezogen werden können.
+
+\textbf{Dropdown-Menü}\\
+Verbirgt sich hinter einem einzelnen Knopf. Wird das Dropdown-Menü über diesen Button geöffnet erscheinen mehrere Buttons, die zur weiteren Steuerung verwendet werden können.
+
+\textbf{Explorer}\\
+Auflistung aller Ordner, die sich im Computerspeicher befinden. Hier kann der Speicherpfad ausgewählt werden.
+
 \textbf{Kategorie}\\
 Einheit zum Organisieren von OSM-Elementen. Eine Kategorie definiert eine Menge an OSM-Elementen und weißt diesem Eigenschaften zu.
+
+\textbf{Standardkategorien}\\
+Kategorien, die standardmäßig in jedem Projekt vorhanden sind.
 
 \textbf{Node}\\
 Objekt in OSM.
@@ -1079,13 +1203,13 @@ Eintrag in der OSM-Datenbank. Ist definiert durch seine Tags.
 Datei, die OSM-Objekte enthält.
 
 \textbf{Punktreduktion}\\
-Verfahren zur Abbildung von Gebäuden auf Punkte mit Attraktivitäten.
+Verfahren zur Abbildung von Gebäuden auf Punkte. Dabei werden den Punkten Attribute zugewiesen.
 
 \textbf{Repository}\\
 Zentrale Ablage in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
 
 \textbf{Tag}\\
-Eigenschaft eines OSM-Objekts. Besteht aus den Werten 'key' und 'value'.
+Eigenschaft eines OSM-Objekts. Bestehend aus einem 'key' und einer 'value'.
 
 \textbf{Tag Filter}\\
 Die Gruppierung von OSM-Elementen anhand ihrer Tags.
@@ -1124,7 +1248,7 @@ Zeitlich zusammenhängender Abschnitt des Berechnungsvorgangs. Es gibt die Phase
 Abschnitt der Konfiguration eines Projektes
 
 \textbf{Seite}\\
-(Hier ist eine GUI-Seite gemeint, Definition fehlt)
+Ein inhaltlich zusammenhängender Abschnitt der GUI, welcher gleichzeitig angezeigt wird.
 
 
 
