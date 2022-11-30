@@ -70,14 +70,14 @@ Musskriterien (kurz MK): unabdingbare Leistungen der Software.
 \subsection{Wunschkriterien}
 Wunschkriterien (kurz WK): wünschenswerte Leistungen der Software.
 \begin{itemize}
-    \item <WK1> Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen.
+    \item <WK1> Der Nutzer kann OSM-Daten per Link oder OSM-Repository einlesen..
     \item <WK2> Der Nutzer kann zum Filtern der Kategorien beliebige aussagenlogische Formeln angeben.
-    \item <WK3> Das Programm bietet eine Liste an OSM-Key Vorschlägen an
-    \item <WK4> Das Programm kann die Ergebnisse der Aggregation grafisch darstellen
-    \item <WK5> Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert werden
-    \item <WK6> Die Anwendung besitzt eine Statusanzeige, die den aktuellen Fortschritt der Berechnungen anzeigt
+    \item <WK3> Das Programm bietet eine Liste an OSM-Key Vorschlägen an.
+    \item <WK4> Das Programm kann die Ergebnisse der Aggregation grafisch darstellen.
+    \item <WK5> Die Anwendung markiert Phasen, falls sie vom Nutzer abgeändert werden.
+    \item <WK6> Die Anwendung besitzt eine Statusanzeige, die den aktuellen Fortschritt der Berechnungen anzeigt.
     \item <WK7> Der Nutzer kann die Attraktivitätsattribute auch in Abhängigkeit zu OSM-Tags definieren.
-    \item <WK8> Der Nutzer kann Kategorien von der Berechnung ausschließen
+    \item <WK8> Der Nutzer kann Kategorien von der Berechnung ausschließen.
     
 \end{itemize}
 
@@ -105,11 +105,11 @@ In diesem Kapitel werden die Produktfunktionen beschrieben und in einem Use-Case
 
 \subsection*{Abbildung 3.1}
 In dem Use-Case-Diagramm „Aufbau der Anwendung“ sieht man die allgemeine Struktur der Anwendung. Der Nutzer befindet sich zu Beginn im Main Menu und kann von dort aus zwischen verschiedenen Möglichkeiten wählen.
-Zunächst kann der Nutzer ein neues Projekt erstellen und diesem einen Namen zuweisen. Außerdem ist es möglich ein zuvor abgespeichertes Projekt zu laden. Von dort aus kann der Nutzer dann die einzelnen Schritte der Anwendung durchlaufen und berechnen lassen. 
+Zunächst kann der Nutzer ein neues Projekt erstellen und diesem einen Namen zuweisen. Außerdem ist es möglich, ein zuvor abgespeichertes Projekt zu laden. Von dort aus kann der Nutzer dann die einzelnen Schritte der Anwendung durchlaufen und berechnen lassen. 
 Zusätzlich kann der Nutzer die Optionen öffnen und dort Speicherort, Name und Beschreibung des Projektes ändern.
 
 \subsection*{Abbildung 3.2}
-Im Aktivitätsdiagramm „Pipeline“ durchläuft der Nutzer alle Schritte des Konfigurators für OSM-Datenaufbereitungs-Prozesse. Dabei kann dieser zunächst auswählen, ob ein neues Projekt erstellt oder ein bestehendes Projekt geladen werden soll. Danach wird der OSM-Datensatz, sowie die shape-Dateien der Verkehrszellen, eingelesen und die Konfiguration der Kategorien optional geladen. Anschließend legt der Nutzer die Kategorien fest und erstellt dafür die Black-und Whitelist. Als nächstes wird für die Reduktion die Berechnungsmethode festgelegt und für die Tags werden Default-Werte eingetragen. Danach gibt der Nutzer für die Kategorien eine Berechnungsmethode an, welche sich aus Tags und Faktoren zusammensetzt. Zuletzt bestimmt der Nutzer noch die Aggregationsmethode innerhalb der Verkehrszellen. Nachdem die Anwendung die Berechnung zu Ende ausgeführt hat, kann der Nutzer das Ergebnis, sowie die Konfiguration exportieren. 
+Im Aktivitätsdiagramm „Pipeline“ durchläuft der Nutzer alle Schritte des Konfigurators für OSM-Datenaufbereitungs-Prozesse. Dabei kann dieser zunächst auswählen, ob ein neues Projekt erstellt oder ein bestehendes Projekt geladen werden soll. Danach wird der OSM-Datensatz, sowie die shape-Dateien der Verkehrszellen, eingelesen und die Konfiguration der Kategorien optional geladen. Anschließend legt der Nutzer die Kategorien fest und erstellt dafür die Black- und Whitelist. Als nächstes wird für die Reduktion die Berechnungsmethode festgelegt und für die Tags werden Default-Werte eingetragen. Danach gibt der Nutzer für die Kategorien eine Berechnungsmethode an, welche sich aus Tags und Faktoren zusammensetzt. Zuletzt bestimmt der Nutzer noch die Aggregationsmethode innerhalb der Verkehrszellen. Nachdem die Anwendung die Berechnung zu Ende ausgeführt hat, kann der Nutzer das Ergebnis, sowie die Konfiguration exportieren. 
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{pictures/Anwendungsfalldiagramm.png}
@@ -127,7 +127,7 @@ Im Aktivitätsdiagramm „Pipeline“ durchläuft der Nutzer alle Schritte des K
 In diesem Kapitel werden die Produktfunktionen erläutert. Wir unterscheiden hier zwischen Funktionen, die die Konfiguration betreffen und Funktionen, die die Berechnungen betreffen. Die Funktionen der Konfiguration sind im ersten Unterkapitel als Katalog von Anwendungsfällen dargestellt. Im zweiten Kapitel ist ein größeres Testszenario angegeben. Die Funktionen der Berechnung werden im dritten Unterkapitel beschrieben.
 
 \subsection{Anwendungsfälle}
-Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendungsfälle. Für jeden Anwendungsfall werden die funktionalen Anforderungen aufgelistet, die dieser umsetzt. In der Testphase können Tester diesen Katalog nutzen um die korrekte Umsetzung der jeweiligen Produktfunktionen zu überprüfen. Dazu ist für jeden Anwendungsfall eine Vorbedingung, Nachbedingungen, das auslösende Ereignis und eine genau Beschreibung angegeben. Alternativen und Erweiterungen der Anwendungsfälle konkretisieren die mögliche Umsetzung von Wunschkriterien.
+Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendungsfälle. Für jeden Anwendungsfall werden die funktionalen Anforderungen aufgelistet, die dieser umsetzt. In der Testphase können Tester diesen Katalog nutzen um die korrekte Umsetzung der jeweiligen Produktfunktionen zu überprüfen. Dazu ist für jeden Anwendungsfall eine Vorbedingung, Nachbedingungen, das auslösende Ereignis und eine genaue Beschreibung angegeben. Alternativen und Erweiterungen der Anwendungsfälle konkretisieren die mögliche Umsetzung von Wunschkriterien.
 \newpage
 
 
@@ -152,12 +152,12 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü. \\\\
 \textbf{Nachbedingung Erfolg:} Ein neues Projekt befindet sich im Speicher. Die Seite 'Data' ist geöffnet.  \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. Der Nutzer befindet sich im Hauptmenü. \\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt den erstelle ein neues Projekt Knopf. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt, den erstelle ein neues Projekt Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Nutzer wählt den Namen und die Beschreibung für das Projekt.
     \item Der Nutzer wählt den Speicherort des Projekts aus.
-    \item Der Nutzer drückt auf den erstelle neues Projekt Knopf.
+    \item Der Nutzer drückt, auf den erstelle neues Projekt Knopf.
     \item Das Projekt wird erstellt und der Projektordner am angegebenen Speicherort angelegt.
 \end{enumerate}
 \newpage
@@ -186,7 +186,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü.  \\\\
 \textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, der Nutzer bleibt im Hauptmenü. \\\\
-\textbf{Auslösendes Ereignis:}  Der Nutzer drückt den "lade externes Projekt" Knopf. \\\\
+\textbf{Auslösendes Ereignis:}  Der Nutzer drückt den 'lade externes Projekt' Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
@@ -205,7 +205,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:}  Der Nutzer befindet sich im Hauptmenü.  \\\\
 \textbf{Nachbedingung Erfolg:} Die Änderung der Einstellungen werden angezeigt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag.\\\\
-\textbf{Auslösendes Ereignis:} Drücken des Einstellungs Knopfes. \\\\
+\textbf{Auslösendes Ereignis:} Drücken desEinstellungsknopfes Knopfes. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Seite 'Settings' öffnet sich.
@@ -300,7 +300,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Anwendung zeigt eine Liste aller Kategorien.
-    \item Beim ersten Öffnen, befinden sich bereits Standardkategorien in der Liste.
+    \item Beim ersten Öffnen befinden sich bereits Standardkategorien in der Liste.
     \item Der Nutzer wählt eine der Kategorien aus.
     \item Die Anwendung zeigt den Namen, die Whitelist und die Blacklist der Kategorie an.
 \end{enumerate}
@@ -386,7 +386,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
     \item Der Nutzer klickt auf den Reiter zum Festlegen der Standardwerte.
     \item Die Anwendung zeigt die Liste der Tags für die Standardwerte an.
     \item Der Nutzer erstellt einen neuen Eintrag in der Tag-Liste oder wählt einen bereits erstellten Eintrag aus.
-    \item Die Anwendung zeigt die bisherigen Standardwerte der Attribute für diesem Eintrag an.
+    \item Die Anwendung zeigt die bisherigen Standardwerte der Attribute für diesen Eintrag an.
     \item Der Nutzer kann den Tag-Listen-Eintrag verändern.
     \item Der Nutzer kann die Reihenfolge der Tag-Listen-Einträge verändern.
     \item Der Nutzer legt je Attribut den Standardwert fest.
@@ -418,14 +418,14 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \subsubsection*{Wählen der Aggregation-Verfahren <A15>}
 \textbf{Anwendungsfall:} Der Nutzer möchte unterschiedliches Aggregations-Verfahren wählen.\\\\
 \textbf{Anforderungen:} MK11\\\\
-\textbf{Ziel:} Es wurde ausgewählt welche Aggregation-Verfahren berechnet werden sollen.\\\\
+\textbf{Ziel:} Es wurde ausgewählt, welche Aggregation-Verfahren berechnet werden sollen.\\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Aggregation'.\\\\
 \textbf{Nachbedingung Erfolg:} Es werden die vom Nutzer gewählten Aggregationverfahren angezeigt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer aktiviert oder deaktiviert die Checkbox eines Aggregation-Verfahrens. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Der Nutzer setzt Hacken in die Checkbox, von den Aggregation-Verfahren die er berechnen will.
+    \item Der Nutzer setzt Hacken in die Checkbox, von den Aggregation-Verfahren, die er berechnen will.
 \end{enumerate}
 \newpage
 
@@ -447,7 +447,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \end{enumerate}
 \textbf{Erweiterungen:} 
 \begin{itemize}
-    \item 0a: Die Anwendung informiert den Nutzer über Berechnungsphasen, die neu berechnet werde müssen.
+    \item 0a: Die Anwendung informiert den Nutzer über Berechnungsphasen, die neu berechnet, werden müssen.
     \item 2a: Die Anwendung approximiert den prozentualen Fortschritt der Berechnungen.
     \item 2b: Der Nutzer kann die Berechnung pausieren und sie fortsetzen.
     \item 3a: Der Nutzer kann die Daten visualisieren.
@@ -457,7 +457,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 
 \subsubsection*{Neuberechnung <A17>}
-\textbf{Anwendungsfall:}  Der Nutzer möchte die Berechnung neustarten.\\\\
+\textbf{Anwendungsfall:}  Der Nutzer möchte die Berechnung neu starten.\\\\
 \textbf{Ziel:} Neustarten der Berechnung.\\\\
 \textbf{Vorbedingung:} Die Anwendung berechnet gerade oder die Berechnungen sind abgeschlossen. Der Nutzer befindet sich auf der Seite 'Calculate'.\\\\
 \textbf{Nachbedingung Erfolg:} Die Berechnungen sind unterbrochen und der Nutzer kann sie neu-starten.\\\\
@@ -510,7 +510,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \subsubsection*{Exportieren des Endergebnisses <A20>}
 \textbf{Anwendungsfall:} Der Nutzer möchte das Endergebnis exportieren.\\\\
 \textbf{Anforderungen:} MK12\\\\
-\textbf{Ziel:} Exportieren des Endergebnis an einen gewünschten Speicherplatz\\\\
+\textbf{Ziel:} Exportieren des Endergebnisses an einen gewünschten Speicherplatz\\\\
 \textbf{Vorbedingung:}  Der Nutzer befindet sich innerhalb eines Projekts.\\\\
 \textbf{Nachbedingung Erfolg:} An der vom Nutzer definierten Stelle befindet sich ein ZIP-Archiv, welches das Endergebnis enthält. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an.\\\\
@@ -529,7 +529,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \subsubsection*{Exportieren des Projektes <A21>}
 \textbf{Anwendungsfall:} Der Nutzer möchte das Projekt exportieren. \\\\
 \textbf{Anforderungen:} MK12\\\\
-\textbf{Ziel:} Das Exportieren des Projektes an einem Speicherort.\\\\
+\textbf{Ziel:} Das Exportieren des Projektes an einen Speicherort.\\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich innerhalb eines Projekts.\\\\
 \textbf{Nachbedingung Erfolg:} Ein ZIP-Archiv mit dem Projekt befindet sich an der vom Nutzer angegebenen Stelle.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag.\\\\
@@ -605,7 +605,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 \subsection{Testszenario}
 \subsubsection*{Transfer von Kategorien <S1>}
-\textbf{Anwendungsfall:} Nutzer $A$ hat ein Projekt $P_A$ erstellt und in diesem Kategorien definiert. Nutzer $B$ möchte die selben Kategorien in einem anderen Projekt $P_B$ verwenden.\\\\
+\textbf{Anwendungsfall:} Nutzer $A$ hat ein Projekt $P_A$ erstellt und in diesem Kategorien definiert. Nutzer $B$ möchte dieselben Kategorien in einem anderen Projekt $P_B$ verwenden.\\\\
 \textbf{Ziel:} Transfer der Kategorien von $P_A$ nach $P_B$.\\\\
 \textbf{Vorbedingung:} Nutzer $A$ hat ein Projekt konfiguriert.\\\\
 \textbf{Nachbedingung Erfolg:} Die Kategorien von Nutzer $A$ befinden sich im Projekt von Nutzer $B$.\\\\
@@ -633,11 +633,11 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \subsection{Berechnungsablauf} \hypertarget{calculations}{}
 Dieser Abschnitt beschreibt den Ablauf der Berechnungsphasen. Es gibt folgende Berechnungsphasen:
 \begin{enumerate}
-    \item Dateninput und Geofilter
-    \item Tag Filter
-    \item Reduktion
-    \item Attraktivität
-    \item Aggregation
+    \item Dateninput und Geofilter,
+    \item Tag Filter,
+    \item Reduktion,
+    \item Attraktivität,
+    \item Aggregation.
 \end{enumerate}
 Die Abarbeitung der Berechnungsphasen kann in jeder Phase gestartet werden, läuft die Phasen aber dann in der gegebenen Reihenfolge durch.
 
@@ -651,7 +651,7 @@ Die Abarbeitung der Berechnungsphasen kann in jeder Phase gestartet werden, läu
 
 \subsubsection*{Tag Filter}
 \begin{itemize}
-    \item Die Anwendung weist den OSM-Elementen aus D3 Kategorien zu. Ein OSM-Elemente befindet sich in einer Kategorie, wenn
+    \item Die Anwendung weist den OSM-Elementen aus D3 Kategorien zu. Ein OSM-Element befindet sich in einer Kategorie, wenn
     \begin{itemize}
         \item es alle Tag-Einträge der Whitelist der Kategorie (A10) erfüllt \textbf{und}
         \item es keinen Tag-Eintrag der Blacklist der Kategorie (A10) erfüllt.
@@ -672,7 +672,7 @@ Die Abarbeitung der Berechnungsphasen kann in jeder Phase gestartet werden, läu
 
 \subsubsection*{Attraktivität}
 \begin{itemize}
-    \item Die Anwendung berechnet in jeder Kategorie für jedes (in A14) konfigurierte Attraktivitätsattribut. Sei $X$ die Menge der Attribute, $v(x)$ der Wert des Attribut $x$ und $f(x)$ der (in A14) definierte Faktor des Attributs zu einem festen Attraktivitätsattribut $a$. Dann berechnet die Anwendung den Wert $v(a)$ des Attraktivitätsattributs mit der Formel $$v(a)=\sum_{x\in X}{v(x)\cdot f(x)}.$$
+    \item Die Anwendung berechnet in jeder Kategorie für jedes (in A14) konfigurierte Attraktivitätsattribut. Sei $X$ die Menge der Attribute, $v(x)$ der Wert des Attributes $x$ und $f(x)$ der (in A14) definierte Faktor des Attributs zu einem festen Attraktivitätsattribut $a$. Dann berechnet die Anwendung den Wert $v(a)$ des Attraktivitätsattributs mit der Formel $$v(a)=\sum_{x\in X}{v(x)\cdot f(x)}.$$
     \item Erweiterung (WK7): $X$ enthält neben allen Attributen auch Tags.
     \item Die Anwendung speichert die generierten Attraktivitätsattribute in einer Datei D6.
 \end{itemize}
@@ -743,7 +743,7 @@ Neben den projektspezifischen Daten gibt es auch Daten, die für die ganze Anwen
 Zum Lesen der anwendungsspezifischen Daten verwendet die Anwendung Dateiformate:
 \begin{itemize}
     \item OSM-Dateien: Zum Lesen und Speichern von OSM-Elementen unterstützt die Anwendung die Dateiformate .osm.bz2 und .osm.pbz.
-    \item Verkehrszellen: Zum definieren von Verkehrszellen verwendet die Anwendung die Dateiformate shape und geojson.
+    \item Verkehrszellen: Zum Definieren von Verkehrszellen verwendet die Anwendung die Dateiformate shape und geojson.
 \end{itemize}
 
 
@@ -763,7 +763,7 @@ Reminder: Punktreduktion soll erweiterbar sein
 
 
 
-\subsection{Funktionalität, author=Pascal, reviewedby=Karl}
+\subsection{Funktionalität}
 
 \begin{tabular}{|l| c| c| c| c|}
     \hline
@@ -800,7 +800,7 @@ Es ist keine Kommunikation zwischen Geräten vorgesehen, daher ist die Interoper
 % subsection
 \newpage 
 
-\subsection{Sicherheit, author=Simon, reviewed by Pascal}
+\subsection{Sicherheit}
 
     \begin{tabular}{|l| c| c| c| c|}
     \hline
@@ -821,8 +821,8 @@ Durch das Definieren von Testfällen in dem Pflichtenheft und das Ausführen die
 Dies gewährleistet eine sehr gute Zuverlässigkeit.
 
 \textbf{Fehlertoleranz\\}
-Trotz aller Testfälle, kann es zu Fehlern kommen während das Programm läuft. Diese Fehler können Entstehen durch korrumpierte Daten oder durch fehlerhafte Eingabe des Users.
-Fehler die durch falsche Eingabe des Users Entstehen können abgefangen werden und der User benachrichtigt werden, somit kann dieser die fehlerhafte Eingabe korrigieren.
+Trotz aller Testfälle, kann es zu Fehlern kommen, während das Programm läuft. Diese Fehler können entstehen durch korrumpierte Daten oder durch fehlerhafte Eingabe des Users.
+Fehler die durch falsche Eingabe des Users entstehen können abgefangen werden und der User benachrichtigt werden, somit kann dieser die fehlerhafte Eingabe korrigieren.
 Fehler die ausgelöst werden durch korrumpierte Daten, können behoben werden indem der User benachrichtigt wird und dieser die korrumpierte Daten ersetzt.
 Da diese Fehler nur entstehen können durch das falsche Verhalten des Users, kann 
 die Fehlertoleranz als gut eingestuft werden.
@@ -830,7 +830,7 @@ die Fehlertoleranz als gut eingestuft werden.
 \textbf{Wiederherstellbarkeit\\}
 Beim Erstellen der Konfigurationen kann der Nutzer zu jedem Zeitpunkt die Konfigurationen lokal zwischenspeichern. Diese kann er zu einem späteren Zeitpunkt wieder einlesen. Dadurch wird gewährleistet, dass die Konfigurationsentscheidungen des Nutzers einfach wiederhergestellt werden können.
 Auch alle Zwischenergebnisse, der vom Programm durchgeführten Berechnungen, werden direkt nach Fertigstellung auf dem Endgerät gespeichert. Während der einzelnen Berechnungen sind jedoch keine Zwischenspeicherungen vorgesehen.
-Somit ist die die Wiederherstellbarkeit als gut einzustufen.
+Somit ist die Wiederherstellbarkeit als gut einzustufen.
 
 
 % remove this if we dont want to have a new page for each
@@ -871,7 +871,7 @@ Eine kleine Instanz (bspw. Stadtkreis Karlsruhe) ist auf einem Laptop mit 8GB RA
 \newpage 
 
 
-\subsection{Änderbarkeit, author = JP, reviewedBy = Felix}
+\subsection{Änderbarkeit}
     \begin{tabular}{|l| c| c| c| c|}
     \hline
         Produktqualität & sehr gut & gut & normal & nicht relevant \\
@@ -893,7 +893,7 @@ Eine kleine Instanz (bspw. Stadtkreis Karlsruhe) ist auf einem Laptop mit 8GB RA
     \end{tabular}
     
 \textbf{Analysierbarkeit, Modifizierbarkeit und Anpassbarkeit}\\
-Erweiterungen stellen ein häufig gewünschtes Kriterium dar. Deshalb ist das Produkt gut modifizierbar. Um Änderungen und Erweiterungen, wie das Hinzufügen von Verfahren bei der Reduktion oder Methoden bei der Aggregation, umzusetzen ist jedoch Code-Verständnis erforderlich und diese müssen von einem Informatiker implementiert werden. Die Anpassbarkeit des Produktes ist gut. Änderungen an der Benutzeroberfläche beziehungsweise der Implementierung der Berechnungs-Verfahren beeinflussen sich nicht untereinander. Um dies zu gewährleisten, muss der muss der Programmcode übersichtlich, strukturiert, kommentiert und somit sehr gut analysierbar sein.
+Erweiterungen stellen ein häufig gewünschtes Kriterium dar. Deshalb ist das Produkt gut modifizierbar. Um Änderungen und Erweiterungen, wie das Hinzufügen von Verfahren bei der Reduktion oder Methoden bei der Aggregation, umzusetzen ist jedoch Code-Verständnis erforderlich und diese müssen von einem Informatiker implementiert werden. Die Anpassbarkeit des Produktes ist gut. Änderungen an der Benutzeroberfläche beziehungsweise der Implementierung der Berechnungs-Verfahren beeinflussen sich nicht untereinander. Um dies zu gewährleisten, muss der Programmcode übersichtlich, strukturiert, kommentiert und somit sehr gut analysierbar sein.
 
 \textbf{Stabilität}\\
 Die Benutzeroberfläche darf die Funktionalität des Produktes nicht beeinträchtigen. Daher muss eine gute Stabilität gewährleistet werden.
@@ -907,14 +907,14 @@ Das Produkt ist als Open-Source-Anwendung online erhältlich als .exe-Datei. Die
 \newpage 
 
 
-\subsection{Qualitätsanforderungen, author = Karl, reviewedBy = Felix}
+\subsection{Qualitätsanforderungen}
 In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkrete Qualitätsanforderungen formuliert.
 
 \begin{itemize}
     \item <Q1> Die Anwendung soll in englischer Sprache verfügbar sein
     \item <Q2> Die Anwendung soll intuitiv bedienbar sein
     \item <Q3> Die Anwendung muss auf Windows 10 und 11 nutzbar sein
-    \item <Q4> Durch eine 80 prozentige Testabdeckung soll die Korrektheit des Produkts gewährleistet sein
+    \item <Q4> Durch eine 80-prozentige Testabdeckung soll die Korrektheit des Produkts gewährleistet sein
     \item <Q5> Das Produkt soll um neue Verfahren erweiterbar sein
     \item <Q6> Das Produkt muss als Open-Source-Projekt weiterentwickelbar sein
     \item <Q7> Der Quelltext soll lesbar und kommentiert sein
@@ -942,14 +942,14 @@ Eine entsprechende Visualisierung des Programmworkflows wird in Abbildung 7.3 er
 Das Hauptmenü bietet eine erste Übersicht zum Starten des Workflows. Über drei Buttons kann der Workflow durch Laden eines bereits vorhandenen Projekts oder Erstellen eines neuen gestartet werden. Weiter befindet sich rechts der Buttons eine Schaltfläche, die die vergangenen Projekte auflistet und eine Möglichkeit zum Laden bietet. Über einen letzten Knopf lassen sich die Anwendungseinstellungen aufrufen.
 
 \textbf{New Project }<UI20>
-Hat der Nutzer im Hauptmenü die Option zum Erstellen eines neuen Projektes aufgerufen wird er in dieses Fenster geleitet.
-Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden. Wird kein Speicherort angegeben wird ein Projektstandardordner gewählt.
+Hat der Nutzer im Hauptmenü die Option zum Erstellen eines neuen Projektes aufgerufen, wird er in dieses Fenster geleitet.
+Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden. Wird kein Speicherort angegeben, wird ein Projektstandardordner gewählt.
 Über zwei Buttons am unteren rechten Rand kann die Projekterstellung bestätigt und begonnen oder abgebrochen werden.
 
 \textbf{Data }<UI30>
 Hier können die zur Berechnung wichtigen Daten ausgewählt werden.
 Über drei Buttons können die OSM-Daten, der Cutout zur Bereichseingrenzung sowie ein Kopieraufruf gewählt werden. Über eine Checkbox kann angegeben werden, ob Gebäude am Cutout-Rand in die Berechnung miteinbezogen werden sollen.
-Entstehen beim Kopieren über "Copy in Configurations" Konflikte bei der Auswahl gibt das Programm eine Fehlermmeldung aus und fragt den Nutzer nach Bestätigung zum Überschreiben und Mergen (siehe Abbildung 7.17 und 7.18). Hier kann der Nutzer entweder das Überschreiben starten, oder über einen Abbrechen-Button zurück zum Data-Fenster gelangen.
+Entstehen beim Kopieren über "Copy in Configurations" Konflikte bei der Auswahl, gibt das Programm eine Fehlermmeldung aus und fragt den Nutzer nach Bestätigung zum Überschreiben und Mergen (siehe Abbildung 7.17 und 7.18). Hier kann der Nutzer entweder das Überschreiben starten, oder über einen Abbrechen-Button zurück zum Data-Fenster gelangen.
 
 \newpage
 
@@ -957,15 +957,15 @@ Entstehen beim Kopieren über "Copy in Configurations" Konflikte bei der Auswahl
 Über dieses Fenster kann der Nutzer neue Kategorien erstellen sowie sich bereits erstellte Kategorien anzeigen lassen. Weiter kann er den Kategorien White- und Blacklist Tags zuordnen, die bei der späteren Berechnung miteinbezogen werden.
 Über ein Dropdown-Menü können Kategorien ausgewählt werden. In einem enstprechenden Textfeld wird daraufhin der Namen der gewählten Kategorie angezeigt. Eine Liste schlägt Key-Recommendations vor. Weiter können in zwei Tabellen besagte Black- und Whitelist Tags gewählt werden.
 Über zwei Buttons am unteren rechten Anwendungsrand können neue Kategorien erstellt oder exitierende gelöscht werden. 
-Wir der "Delete" Button gewählt wird über ein Popup (Abbildung 7.19) nach Bestätigung gefragt. Wurde eine neue Kategorie erstellt, wird diese direkt im DropDown-Menü ausgewählt.
+Wird der "Delete" Button gewählt, wird über ein Popup (Abbildung 7.19) nach Bestätigung gefragt. Wurde eine neue Kategorie erstellt, wird diese direkt im DropDown-Menü ausgewählt.
 
 \textbf{Reduction }<UI50>
-In Diesem Fenster kann der Nutzer festlegen wie die Flächenberechnung der Kategorien durchgeführt wird. Das Fenster wird dazu in eine linke und rechte Hälfte unterteilt.
+In diesem Fenster kann der Nutzer festlegen, wie die Flächenberechnung der Kategorien durchgeführt wird. Das Fenster wird dazu in eine linke und rechte Hälfte unterteilt.
 Links befindet sich die Liste aller Kategorien, rechts kann der Nutzer deren Reduktion konfigurieren.
-Durch das Anklicken einer Kategorie in der Liste links, wird rechts eine Schaltfläche angezeigt. Dieses hat 2 Knöpfe: Zum einen den Calculation Knopf. Wird dieser Knopf gedrückt kann festgelegt werden, welche Werte für diese Kategorie berechnet werden sollen, dies geschieht über Checkboxen. Es muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll. Nur wenn diese Option aktiviert ist, werden die Spezifikationen darunter angezeigt. Über einen Schalter kann zwischen der Grundstücks- und Gebäudeflächenberechnung unterschieden werden. Weiter kann gewählt werden, ob diese Fläche mit den Stockwerken multipliziert werden soll oder nicht. Zuletzt kann gewählt werden, ob nur die angegebenen Default-Werte verwendet werden sollen.
-Drückt man den "Default-Values" Knopf, so können für Tags Defaultwerte gesetzt werden. Es kann über den "New Tag" Button neue Tags hinzugefügt werden und über den "Delete Tag" Button gelöscht werden. Das Löschen muss in einem Popup-Fenster bestätigt werden (Abbildung 7.19).
+Durch das Anklicken einer Kategorie in der Liste links wird rechts eine Schaltfläche angezeigt. Dieses hat 2 Knöpfe: Zum einen den Calculation Knopf. Wird dieser Knopf gedrückt kann festgelegt werden, welche Werte für diese Kategorie berechnet werden sollen, dies geschieht über Checkboxen. Es muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll. Nur wenn diese Option aktiviert ist, werden die Spezifikationen darunter angezeigt. Über einen Schalter kann zwischen der Grundstücks- und Gebäudeflächenberechnung unterschieden werden. Weiter kann gewählt werden, ob diese Fläche mit den Stockwerken multipliziert werden soll oder nicht. Zuletzt kann gewählt werden, ob nur die angegebenen Default-Werte verwendet werden sollen.
+Drückt man den "Default-Values" Knopf, so können für Tags Defaultwerte gesetzt werden. Es kann über den "New Tag" Button neue Tags hinzugefügt werden und über den "Delete Tag" Button gelöscht werden. Das Löschen muss in einem Pop-up-Fenster bestätigt werden (Abbildung 7.19).
 Jede Kategorie besitzt unlöschbare Default-Werte. Treffen keine Tags zu werden diese zur Berechnung verwendet.
-Wann welcher Defaultwert benutzt wird hängt von der Reihenfolge in der Liste ab, so gilt je weiter oben desto geringer die Priorität. Über die Pfeilknöpfe an den Tags in der Liste, können diese in dieser Prioritätsliste verschoben werden. Es kann dabei nichts über den DEFAULT wert gehen.
+Wann welcher Defaultwert benutzt wird, hängt von der Reihenfolge in der Liste ab, so gilt je weiter oben, desto geringer die Priorität. Über die Pfeilknöpfe an den Tags in der Liste können diese in dieser Prioritätsliste verschoben werden. Es kann dabei nichts über den DEFAULT wert gehen.
 
 \newpage
 
@@ -974,23 +974,23 @@ Dieses Fenster beinhaltet zwei Dropdown-Listen. Die obere Liste ist zum Auswähl
 Ist eine Kategorie und ein Attraktivitätsattribut ausgewählt, so wird das Namensfeld des Attraktivitätsattributes, die Tag-Factor-List und die Attribut-Faktoren angezeigt.
 In der Tag-Factor-List können nun, ähnlich zu den Black- und White-Listen, Tags geschrieben werden. Zu diesen Tags schreibt man einen Faktor dazu.
 Bei den Attribute-Factors gibt es drei Standardattribute zur Kategorie. Diese können mit einem Faktor und einer Standard-Attraktivität versehen werden.
-Die Buttons "New Attractivity" und "Delete Attractivity" erstellen und löschen Attraktivitätsattribute. Das Löschen muss in einem Popup-Fenster bestätigt werden (Abbildung 7.19).
+Die Buttons "New Attractivity" und "Delete Attractivity" erstellen und löschen Attraktivitätsattribute. Das Löschen muss in einem Pop-up-Fenster bestätigt werden (Abbildung 7.19).
 Der Knopf View Attractivity-List zeigt eine Liste an. Dort werden alle Kategorien und deren Attraktivitätsattributen, so wie deren Berechnung angezeigt.
-Die Liste ist so aufgebaut, dass ganz Links die Kategorie steht, in der Mitte das Attraktivitätsattribut und rechts die zugehörige Berechnung.
+Die Liste ist so aufgebaut, dass ganz links die Kategorie steht, in der Mitte das Attraktivitätsattribut und rechts die zugehörige Berechnung.
 Die Liste dient nur der Veranschaulichung und Übersicht. Hier kann nicht editiert werden.
 Mit dem Button "Edit Attractivity" kehrt man zum vorherigen Fenster zurück.
 
 \textbf{Aggregation }<UI60>
-Im Aggregationsfenster kann festgelegt werden, welche Werte in den Verkehrszellen berechnet werden sollen. Hierzu wird eine Liste mit allen möglichen Berechnungsarten angezeigt. In dieser Liste kann über Checkboxen festgelegt werden welche Berechnungsarten in der Berechnung getätigt werden sollen.
+Im Aggregationsfenster kann festgelegt werden, welche Werte in den Verkehrszellen berechnet werden sollen. Hierzu wird eine Liste mit allen möglichen Berechnungsarten angezeigt. In dieser Liste kann über Checkboxen festgelegt werden, welche Berechnungsarten in der Berechnung getätigt werden sollen.
 
 \textbf{Calculate }<UI70>
 Hier wird als letzter Schritt nach fertiger Dateneingabe die Berechnung gestartet. Über eine Schaltfläche am linken Anwendungsrand kann der gewünschte Startpunkt der Berechnung angegeben werden. Hier können beliebig viele Phasen übersprungen werden, ab der die folgenden Schritte in angezeigter Reihenfolge ausgeführt werden. Über den "Start Calculation" Button wird die Berechnung gesartet.
-Während der Berechnung informiert ein Ladebalken über den aktuellen Berechnungsstatus. Weiter zeigt die Schaltfläche links die aktuelle Phase als auch die bereits bearbeiteten Phasen an. Über einen Button kann die Berechnung jederzeit abgebrochen werden. Diese Aktion muss über ein Popup-Fenster bestätigt werden (Abbildung 7.20).
-Nach Vollendung der Berechnung können die Ergebnisse angesehen, oder die Berechnung erneut gestartet werden. Diese Aktion muss über ein Popup-Fenster bestätigt werden (Abbildung 7.21).
+Während der Berechnung informiert ein Ladebalken über den aktuellen Berechnungsstatus. Weiter zeigt die Schaltfläche links die aktuelle Phase als auch die bereits bearbeiteten Phasen an. Über einen Button kann die Berechnung jederzeit abgebrochen werden. Diese Aktion muss über ein Pop-up-Fenster bestätigt werden (Abbildung 7.20).
+Nach Vollendung der Berechnung können die Ergebnisse angesehen, oder die Berechnung erneut gestartet werden. Diese Aktion muss über ein Pop-up-Fenster bestätigt werden (Abbildung 7.21).
 Die Anwendung informiert den Nutzer über einen Schriftzug, wenn die Berechnung vollendet wurde.
 
 \textbf{Export }<UI80>
-Der Export-Knopf im Head Menü öffnet ein Dropdown-Menü mit Buttons für Exportmöglichkeiten. Wird einer der Buttons betätigt öffnet sich der Explorer zur Speicherortauswahl.
+Der Export-Knopf im Head Menü öffnet ein Dropdown-Menü mit Buttons für Exportmöglichkeiten. Wird einer der Buttons betätigt, öffnet sich der Explorer zur Speicherortsauswahl.
 Durch erneutes Drücken des Export-Knopfs verschwindet das Dropdown-Menü wieder.
 
 \newpage
@@ -1149,7 +1149,7 @@ In diesem Kapitel wird die technische Umgebung des Produktes beschrieben.
 \subsection{Hardware}
 \begin{itemize}
     \item Laptop mit 8 GB RAM und i5 4 Kerne (8 log.) für kleine Instanzen.
-    \item Workstation mit 125 – 250 GB RAM und 8-16 Kerne für große Instanzen.
+    \item Workstation mit 125 – 250 GB RAM und 8–16 Kerne für große Instanzen.
 \end{itemize}
 
 \subsection{Produktschnittstellen}
@@ -1173,19 +1173,19 @@ Eigenschaft eines OSM-Elements. Wird aus den OSM-Tags des OSM-Elements während 
 Eigenschaft eines geografischen Objektes. Beschreibt die Attraktivität eines Ortes bezüglich einer bestimmten Tätigkeit. Wird aus Attributen berechnet.
 
 \textbf{Checkbox}\\
-Kästchen, die eine binäre Beziehung darstellen. Wird ein Kästchen markiert wird die zugehörige Option ausgewählt.
+Kästchen, die eine binäre Beziehung darstellen. Wird ein Kästchen markiert, wird die zugehörige Option ausgewählt.
 
 \textbf{Default-Values}\\
 Vordefinierte Standardwerte, die zu einer Berechnung herangezogen werden können.
 
 \textbf{Dropdown-Menü}\\
-Verbirgt sich hinter einem einzelnen Knopf. Wird das Dropdown-Menü über diesen Button geöffnet erscheinen mehrere Buttons, die zur weiteren Steuerung verwendet werden können.
+Verbirgt sich hinter einem einzelnen Knopf. Wird das Dropdown-Menü über diesen Button geöffnet, erscheinen mehrere Buttons, die zur weiteren Steuerung verwendet werden können.
 
 \textbf{Explorer}\\
 Auflistung aller Ordner, die sich im Computerspeicher befinden. Hier kann der Speicherpfad ausgewählt werden.
 
 \textbf{Kategorie}\\
-Einheit zum Organisieren von OSM-Elementen. Eine Kategorie definiert eine Menge an OSM-Elementen und weißt diesem Eigenschaften zu.
+Einheit zum Organisieren von OSM-Elementen. Eine Kategorie definiert eine Menge an OSM-Elementen und weißt dieser Eigenschaften zu.
 
 \textbf{Standardkategorien}\\
 Kategorien, die standardmäßig in jedem Projekt vorhanden sind.
@@ -1206,7 +1206,7 @@ Datei, die OSM-Objekte enthält.
 Verfahren zur Abbildung von Gebäuden auf Punkte. Dabei werden den Punkten Attribute zugewiesen.
 
 \textbf{Repository}\\
-Zentrale Ablage in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
+Zentrale Ablage, in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
 
 \textbf{Tag}\\
 Eigenschaft eines OSM-Objekts. Bestehend aus einem 'key' und einer 'value'.
@@ -1221,10 +1221,10 @@ Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungspro
 Bezeichnet einen räumlich abgegrenzten Teil eines Untersuchungsgebietes, der als Bezugseinheit bei der Verkehrsanalyse und Verkehrsprognose dient.
 
 \textbf{Untersuchungsgebiet}\\
-Räumliches Gebiet, das von der Anwendung untersucht wird. Disjunkte Vereinigung der Verkehrszellen. Wird durch den Räumlichen Filter definiert.
+Räumliches Gebiet, das von der Anwendung untersucht wird. Disjunkte Vereinigung der Verkehrszellen. Wird durch den räumlichen Filter definiert.
 
 \textbf{Aggregations-Vefahren}\\
-Abbildung einer Menge von Attraktivitätsattributen auf eine numerischen Wert. Beispiele sind die Summe, das Produkt oder das arithmetische Mittel.
+Abbildung einer Menge von Attraktivitätsattributen auf einen numerischen Wert. Beispiele sind die Summe, das Produkt oder das arithmetische Mittel.
 
 \textbf{Geofilter}\\
 Verfahren zum Definieren der Zugehörigkeiten von OSM-Objekten zu einem geografischen Gebiet.
@@ -1242,15 +1242,13 @@ Verzeichnis. Organisiert alle Konfigurationsdateien eines Projektes.
 Verzeichnis, in welchem standardmäßig Projekte gespeichert und geladen werden.
 
 \textbf{Berechnungsphase}\\
-Zeitlich zusammenhängender Abschnitt des Berechnungsvorgangs. Es gibt die Phasen OSM-Daten, Räumlicher Filter, Tag Filter, Punktreduktion, Attraktivitätsberechnung und Aggregation.
+Zeitlich zusammenhängender Abschnitt des Berechnungsvorgangs. Es gibt die Phasen OSM-Daten, räumlicher Filter, Tag Filter, Punktreduktion, Attraktivitätsberechnung und Aggregation.
 
 \textbf{Konfigurationsphase}\\
 Abschnitt der Konfiguration eines Projektes
 
 \textbf{Seite}\\
 Ein inhaltlich zusammenhängender Abschnitt der GUI, welcher gleichzeitig angezeigt wird.
-
-
 
 
 
