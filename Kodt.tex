@@ -6,22 +6,19 @@
 \usepackage{hyperref} % detailed hyperlink/pdf configuration
 \usepackage{setspace} % to set spacings between lines
 \usepackage{parskip}
+\usepackage{graphicx}
 \hypersetup{ % ‘texdoc hyperref‘ for options
 pdftitle={PSE},
 bookmarks=true,
 }
 \usepackage{csquotes} % provides \enquote{} macro for "quotes"
 
-\usepackage{authblk} % Mehrere Autorn (von Karl)
-
 \title{Konfigurator für OSM-Datenaufbereitungs-Prozesse für die Verkehrsnachfragemodellierung}
 \subtitle{Pflichtenheft}
 
-\author[1]{Test}
-\author[2]{Testa}
 
-%\author{Felix Weik, Jan-Philipp Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp}
-\date{November 2022}
+\author{Felix Weik\\ Jan-Philipp Hansen\\ Karl Bernhard\\ Pascal Dawideit\\ Simon Schupp}
+\date{Dezember 2022}
 
 
 
@@ -120,23 +117,22 @@ Dieser Abschnitt definiert die Zielgruppe des Projekts. Prinzipiell kann jede Pe
 \section{Produktübersicht}
 In diesem Kapitel werden die Produktfunktionen beschrieben und in einem Use-Case-Diagramm visualisiert. Das Use-Case-Diagramm zeigt mittels Verbindungslinien, wie die einzelnen Use-Cases zueinander stehen. Der Abschnitt „Pipeline-Schritte“ wird genauer in einem Aktivitätsdiagramm abgebildet. Dadurch können die einzelnen Schritte, die durchlaufen werden, besser beschrieben werden.
 
-\subsection*{Abbildung 3.1}
+\subsection{Abbildung 3.1}
 In dem Use-Case-Diagramm „Aufbau der Anwendung“ sieht man die allgemeine Struktur der Anwendung. Der Nutzer befindet sich zu Beginn im Main Menu und kann von dort aus zwischen verschiedenen Möglichkeiten wählen.
 Zunächst kann der Nutzer ein neues Projekt erstellen und diesem einen Namen zuweisen. Außerdem ist es möglich ein zuvor abgespeichertes Projekt zu laden. Von dort aus kann der Nutzer dann die einzelnen Schritte der Anwendung durchlaufen und berechnen lassen. 
 Zusätzlich kann der Nutzer die Optionen öffnen und dort Speicherort, Name und Beschreibung des Projektes ändern.
 
-\subsection*{Abbildung 3.2}
+\subsection{Abbildung 3.2}
 Im Aktivitätsdiagramm „Pipeline“ durchläuft der Nutzer alle Schritte des Konfigurators für OSM-Datenaufbereitungs-Prozesse. Dabei kann dieser zunächst auswählen, ob ein neues Projekt erstellt oder ein bestehendes Projekt geladen werden soll. Danach wird der OSM-Datensatz, sowie die shape-Dateien der Verkehrszellen, eingelesen und die Konfiguration der Kategorien optional geladen. Anschließend legt der Nutzer die Kategorien fest und erstellt dafür die Black-und Whitelist. Als nächstes wird für die Reduktion die Berechnungsmethode festgelegt und für die Tags werden Default-Werte eingetragen. Danach gibt der Nutzer für die Kategorien eine Berechnungsmethode an, welche sich aus Tags und Faktoren zusammensetzt. Zuletzt bestimmt der Nutzer noch die Aggregationsmethode innerhalb der Verkehrszellen. Nachdem die Anwendung die Berechnung zu Ende ausgeführt hat, kann der Nutzer das Ergebnis, sowie die Konfiguration exportieren. 
 
-\newpage
+\begin{center}
 
+\caption{Use-Case-Diagramm}
+\includegraphics[width=1\textwidth]{pictures/Anwendungsfalldiagramm.png}
 
-
-
-
-
-
-
+\caption{Aktivitätsdiagramm - Durchlaufen der Pipeline}
+\includegraphics[width=.9\textwidth]{pictures/Aktivitätsdiagramm.png}
+\end{center}
 
 
 \section{Produktfunktionen}
@@ -168,12 +164,12 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü. \\\\
 \textbf{Nachbedingung Erfolg:} Ein neues Projekt befindet sich im Speicher. Die Seite 'Data' ist geöffnet.  \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. Der Nutzer befindet sich im Hauptmenü. \\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt den 'Create New Project' Button. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt den erstelle ein neues Projekt Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Nutzer wählt den Namen und die Beschreibung für das Projekt.
-    \item Der Nutzer wählt den Speicherort des Projekts.
-    \item Der Nutzer drückt auf den 'Create' Knopf.
+    \item Der Nutzer wählt den Speicherort des Projekts aus.
+    \item Der Nutzer drückt auf den erstelle neues Projekt Knopf.
     \item Das Projekt wird erstellt und der Projektordner am angegebenen Speicherort angelegt.
 \end{enumerate}
 \newpage
@@ -186,7 +182,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü.  \\\\
 \textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, Programm  bleibt im Hauptmenü. \\\\
-\textbf{Auslösendes Ereignis:}  Der Nutzer wählt ein Projekt aus und Drückt den Button 'Load selected Project'. \\\\
+\textbf{Auslösendes Ereignis:}  Der Nutzer wählt ein Projekt aus und drückt den "lade ausgewähltes Projekt" Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Das ausgewählte Projekt wird geladen.
@@ -202,7 +198,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich im Hauptmenü.  \\\\
 \textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, der Nutzer bleibt im Hauptmenü. \\\\
-\textbf{Auslösendes Ereignis:}  Der Nutzer drückt den `Load external Project` Button. \\\\
+\textbf{Auslösendes Ereignis:}  Der Nutzer drückt den "lade externes Projekt" Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
@@ -389,7 +385,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 
 
 \subsubsection*{Standardwerte für Attribute festlegen <A13>}
-\textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie und ein Attribut einen Standarwert angeben.\\\\
+\textbf{Anwendungsfall:} Der Nutzer möchte für eine Kategorie und ein Attribut einen Standardwert angeben.\\\\
 \textbf{Anforderungen:} MK8, MK9\\\\
 \textbf{Ziel:} Festlegen eines Standardwertes eines Attributs für eine Kategorie. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Reduction'. \\\\
@@ -429,17 +425,17 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \newpage
 
 
-\subsubsection*{Wählen der Aggregations-Verfahren <A15>}
+\subsubsection*{Wählen der Aggregation-Verfahren <A15>}
 \textbf{Anwendungsfall:} Der Nutzer möchte unterschiedliches Aggregations-Verfahren wählen.\\\\
 \textbf{Anforderungen:} MK11\\\\
-\textbf{Ziel:} Es wurde ausgewählt welche Aggregations-Verfahren berechnet werden sollen.\\\\
+\textbf{Ziel:} Es wurde ausgewählt welche Aggregation-Verfahren berechnet werden sollen.\\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Aggregation'.\\\\
-\textbf{Nachbedingung Erfolg:} Es werden die vom Nutzer gewählten Aggregationsverfahren angezeigt.\\\\
+\textbf{Nachbedingung Erfolg:} Es werden die vom Nutzer gewählten Aggregationverfahren angezeigt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung zeigt den Grund für den Fehlschlag an. \\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer aktiviert oder deaktiviert die Checkbox eines Aggregations-Verfahrens. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer aktiviert oder deaktiviert die Checkbox eines Aggregation-Verfahrens. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
-    \item Der Nutzer setzt Hacken in die Checkbox, von den Aggregations-Verfahren die er berechnen will.
+    \item Der Nutzer setzt Hacken in die Checkbox, von den Aggregation-Verfahren die er berechnen will.
 \end{enumerate}
 \newpage
 
@@ -549,8 +545,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Ziel:} Das Projekt wurde zu einem gewünschten Speicherort exportiert.\\\\
 \textbf{Vorbedingung:} Das Programm wurde gestartet und der Nutzer hat den Export Reiter ausgewählt.\\\\
 \textbf{Nachbedingung Erfolg:} Das Projekt wurde erfolgreich exportiert und befindet sich am gewünschten Speicherort.\\\\
-\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehl-  
-schlag.\\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag.\\\\
 \textbf{Auslösendes Ereignis:}  Der Nutzer drückt den exportiere Projekt Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
@@ -567,8 +562,7 @@ schlag.\\\\
 \textbf{Ziel:} Die Konfigurationen wurde zu einem gewünschten Speicherort exportiert.\\\\
 \textbf{Vorbedingung:} Das Programm wurde gestartet und der Nutzer hat den Export Reiter ausgewählt.\\\\
 \textbf{Nachbedingung Erfolg:} Die Konfigurationen wurde erfolgreich exportiert und befindet sich am gewünschten Speicherort.\\\\
-\textbf{Nachbedingung Fehlschlag:}  Die Anwendung informiert den Nutzer über den Fehl-  
-schlag.\\\\
+\textbf{Nachbedingung Fehlschlag:}  Die Anwendung informiert den Nutzer über den Fehlschlag.\\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt den exportiere Konfigurationen Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
@@ -585,7 +579,7 @@ schlag.\\\\
 \textbf{Ziel:} Ändern der allgemeinen Einstellungen des Projekts und der Anwendung. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich in einem Projekt oder im Hauptmenü.\\\\
 \textbf{Nachbedingung Erfolg:} Der Nutzer befindet sich auf der Seite 'Settings'. Die Änderungen an den Einstellungen sind vorgenommen. \\\\
-\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehschlag. \\\\
+\textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
 \textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Knopf zum Öffnen der Einstellungen. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
@@ -631,8 +625,8 @@ schlag.\\\\
     \item Nutzer $A$ wählt einen Speicherort der Konfigurations-Datei $D$ aus.
     \item Nutzer $A$ sendet $D$ per E-Mail an $B$.
     \item Nutzer $B$ startet die Anwendung und lädt das Projekt $P_B$.
-    \item Nutzer $B$ drückt unter 'Data' den Button zum Importiern von Kategorien.
-    \item Die Anwendung öffnet den Dateiexplorer
+    \item Nutzer $B$ drückt unter 'Data' den Button zum Importieren von Kategorien.
+    \item Die Anwendung öffnet den Datei-Explorer
     \item Nutzer $B$ wählt die Datei $D$ aus.
     \item Der Nutzer bestätigt den Import.
     \item Die Anwendung lädt die Kategorien in Projekt $P_B$.
@@ -945,62 +939,68 @@ In diesem Abschnitt werden die oben genannten Qualitätseigenschaften als konkre
 \section{Benutzeroberfläche/Schnittstellen}
 In diesem Kapitel wird die Benutzeroberfläche erläutert. Es wird auf die Darstellung der einzelnen Funktionen sowie die Navigation zwischen diesen eingegangen.
 
-\textbf{Benutzeroberfläche: author = Felix}
-Die Anwendung "Kodt" ist für Desktop-Computer mit Windows 10 oder 11. Folglich stellt die Benutzeroberfläche einen wichtigen teil des Produktes dar.
+\textbf{Benutzeroberfläche: author = Felix, reviewed by Pascal}
+Die Anwendung "KozDt" ist für Desktop-Computer mit Windows 10 oder 11. Folglich stellt die Benutzeroberfläche einen wichtigen teil des Produktes dar.
 Die Steuerung erfolgt durch Maus- und Tastatureingaben. Das Anwendungsdesign ist in den verschiedenen Navigationskomponenten möglichst einheitlich gestaltet. Für den Nutzer soll die Anwendung intuitiv verständlich sein. Die Übersichtlichkeit spielt eine große Rolle, gleichzeitig soll das Design anregend zur Verwendung sein.
 Die Navigation läuft über ein Hauptmenü auf der Startseite, über das mithilfe von Buttons die weiteren Funktionen aufgerufen werden können. Die entsprechende Struktur wird in den folgenden Unterkapiteln weiter erläutert. Eine Toolbar am oberen Rand der Anwendung dient der Information über den aktuellen Schritt sowie am unteren Anwendungsrand der Navigation zwischen ebendiesen.
 
 \textsc{Hier krasse Grafik zur Workflowvisualisierung einfügen}
 
-\textbf{Main Menu }<UI10>\textbf{ : author = Felix}
+\textbf{Main Menu }<UI10>\textbf{ : author = Felix, reviewed by Pascal}
 Das Hauptmenü bietet eine erste Übersicht zum Starten des Workflows. Über drei Buttons kann der Workflow durch Laden eines bereits vorhandenen Projekts oder Erstellen eines neuen gestartet werden. Weiter befindet sich rechts der Buttons eine Schaltfläche, die die vergangenen Projekte auflistet und eine Möglichkeit zum Laden bietet. Über einen letzten Knopf lassen sich die Anwendungseinstellungen aufrufen.
 
-\textbf{New Project }<UI20>\textbf{ : author = Felix}
+\textbf{New Project }<UI20>\textbf{ : author = Felix, reviewed by Pascal}
 Hat der Nutzer im Hauptmenü die Option zum Erstellen eines neuen Projektes aufgerufen wird er in dieses Fenster geleitet.
 Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschreibung eines neuen Projektes einzugeben. Weiter kann über einen Button der Explorer zum Auswählen eines Speicherortes für das Projekt festgelegt werden. Wird kein Speicherort angegeben wird ein Standardordner gewählt.
 Über zwei Buttons am unteren rechten Rand kann die Projekterstellung bestätigt und begonnen oder abgebrochen werden.
 
-\textbf{Data }<UI30>\textbf{ : author = Felix}
+\textbf{Data }<UI30>\textbf{ : author = Felix, reviewed by Pascal}
 Hier können die zur Berechnung wichtigen Daten ausgewählt und visualisiert werden.
 Über drei Buttons können die OSM-Daten, der Cutout zur Bereichseingrenzung sowie ein Kopieraufruf gewählt werden. Über eine Checkbox kann angegeben werden, ob Gebäude am Cutout-Rand in die Berechnung miteinbezogen werden sollen.
 Entstehen Konflikte bei der Auswahl gibt das Programm eine Fehlermmeldung aus und fragt den Nutzer nach Bestätigung zum Überschreiben. Hier kann der Nutzer entweder das Überschreiben starten, oder über einen Abbrechen-Button zurück zum Data-Fenster gelangen.
 
-\textbf{Categories }<UI40>\textbf{ : author = Felix}
+\textbf{Categories }<UI40>\textbf{ : author = Felix, reviewed by Pascal}
 Über dieses Fenster kann der Nutzer neue Kategorien erstellen sowie sich bereits erstellte Kategorien anzeigen lassen. Weiter kann er den Kategorien White- und Blacklist-Attribute zuordnen, die bei der späteren Berechnung miteinbezogen werden.
 Über ein Dropdown-Menü können Kategorien ausgewählt werden. In einem enstprechenden Textfeld wird daraufhin der Namen der gewählten Kategorie angezeigt. Eine Schaltfläche schlägt Tag-Examples vor. Weiter können in zwei Tabellen besagte Black- und Whitelistattribute gewählt werden.
 Über zwei Buttons am unteren rechten Anwendungsrand kann die Erstellung einer neuen Kategorie bestätigt oder abgebrochen werden. 
-Wir der Abbruchsbutton gewählt wird über ein Popup nach Bestätigung gefragt. Wir auch hier der Abbruchsbutton betätigt wird der Nutzer zum selben, unausgefüllten Formular weitergeleitet. Andernfalls bleibt er im aktuell ausgefüllten Formular.
+Wir der Abbruchsbutton gewählt wird über ein Popup nach Bestätigung gefragt. Wird auch hier der Abbruchsbutton betätigt wird der Nutzer zum selben, unausgefüllten Formular weitergeleitet. Andernfalls bleibt er im aktuell ausgefüllten Formular.
 
 \textbf{Reduction }<UI50>\textbf{ author = Pascal}
 In Diesem Fenster kann der Nutzer festlegen wie die Flächenberechnung der Kategorien auszusehen hat.
 Das Fenster wird dazu in eine linke und rechte hälfte unterteilt.
 Links befindet sich die Liste aller Kategorien und rechts kann der Nutzer nun deren Reduktion Konfigurieren.
-Durch das anklicken einer Kategorie in der Liste links, wird rechts subFenster angezeigt. Dieses hat 2 wichtige Knöpfe, zum einen den Calculation Knopf, drückt man diesen, kann der Nutzer nun Konfigurieren, was für diese kategoroe berechnet werden soll. Dies ist über checkboxen geregelt. So muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll, nur wenn diese Option aktiviert ist, werden die spezifikationen darunter angezeigt. Hier kann nun entschieden werden zwischen dem Berechnen der Grundstücksfläche oder Gebäudefläche. Zuletzt kann noch gewählt werden, ob diese Fläche mit den Stockwerken multipliziert werden soll.
-Drückt man den Knopf Default-Values, so kann nun für Tags Defaultwerte gesetzt werden. Es kann über den New Tag Knopf neue Tags hinzugefügt werden und über den Delete Tag auch wieder gelöscht werden, beim löschen wird vorher noch ein Bestätigungsfenster angezeigt, um diese Entscheidung zu bestätigen.
-Bei jeder Kategorie wird es so sein, das es immer eine DEFAULT Defaultwert gibt, dieser kann nicht gelöscht werden und tritt in kraft wenn keine der tags bei der berechnung zu treffen.
-Wann welcher Defaultwert benutzt wird hängt von der Reihenfolge in der Liste ab, so gilt je weiter oben desto geringer die Priorität. Über die Pfeilknöpfe an den Tags in der Liste, können diese in dieser Prioritäts Liste verschoben werden. Es kann dabei nichts über den DEFAULT wert gehen.
+Durch das anklicken einer Kategorie in der Liste links, wird rechts das subFenster angezeigt. Dieses hat 2 wichtige Knöpfe, zum einen den Calculation Knopf, drückt man diesen, kann der Nutzer nun Konfigurieren, was für diese Kategorie berechnet werden soll. Dies ist über checkboxen geregelt. So muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll, nur wenn diese Option aktiviert ist, werden die Spezifikationen darunter angezeigt. Hier kann nun entschieden werden zwischen dem Berechnen der Grundstücksfläche oder Gebäudefläche über einen Schalter. Dann kann noch gewählt werden, ob diese Fläche mit den Stockwerken multipliziert werden soll oder nicht. Zu Letzt ist noch möglich einzustellen, dass strickt nur die selber angegebenen
+Default-Werte genutzt werden sollen.
+Drückt man den Knopf Default-Values, so kann nun für Tags Defaultwerte gesetzt werden. Es kann über den New Key-Value Knopf neue Tags hinzugefügt werden und über den Delete Key-Value auch wieder gelöscht werden, beim löschen wird vorher noch ein Bestätigungsfenster angezeigt, um diese Entscheidung zu bestätigen.
+Bei jeder Kategorie wird es so sein, das es immer eine DEFAULT Defaultwert gibt, dieser kann nicht gelöscht werden und tritt in kraft wenn keine der Key-Values bei der Berechnung zu treffen.
+Die Grundwerte können für jedes Key-Value als auch für den DEFAULT wert bestimmt werden in den Textfeldern rechts nebenan.
+Wann welcher Defaultwert benutzt wird hängt von der Reihenfolge in der Liste ab, so gilt je weiter oben desto geringer die Priorität. Über die Pfeilknöpfe an den Key-Values in der Liste, können diese in dieser Prioritäts Liste verschoben werden. Es kann dabei nichts über den DEFAULT wert gehen.
 
 \textbf{Attractivity author = Pascal}<UI60>
 Dieses Fenster beinhaltet 2 Dropdown Listen. Die obere ist zum auswählen einer Kategorie, die untere um auf die einzelnen Attraktivitäts Attribute dieser Kategorie unterscheiden zu können.
-Ist eine Kategorie und ein Attraktivitäts Attribut ausgewählt, so werden das Feld für den Name des Attraktivitäts Attributes angezeigt, sowie die Tag-Factor-List und die Attribute-Factors.
-In der Tag-Factor-List könenn nun ähnlich wie in den Black- und White-Listen im Kategorie Fenster, tags geschrieben werden. Diesen tags wird aber nun auch ein multiplikations Zeichen mit einer Zahl gefolgt. Diese Zahl gibt dann den Factor an, mit dem dieser Tag verrechnet werden soll.
-Bei den Attribute-Factors gibt es nur die 3 Standard Attribute zu der Kategorie welche alle mit einem Faktor versehen werden können.
+Ist eine Kategorie und ein Attraktivitäts Attribut ausgewählt, so werden das Feld für den Name des Attraktivitäts Attributes angezeigt, sowie die Key-Value-Factor-List und die Attribute-Factors.
+In der Key-Value-Factor-List können nun ähnlich wie in den Black- und White-Listen im Kategorie Fenster, Key-Values geschrieben werden. Diesen Key-Values wird aber nun auch ein multiplikations Zeichen mit einer Zahl gefolgt. Diese Zahl gibt dann den Factor an, mit dem dieser Key-Value verrechnet werden soll.
+Bei den Attribute-Factors gibt es die 3 Standard Attribute zu der Kategorie welche alle mit einem Faktor versehen werden können, als auch eine Standart Attractivität, welche mit einem Wert versehen werden kann.
 Die New Attraktivity und Delete Attraktivity sind dazu da um neue Attraktivitäts Attribute erstellen zu können, als auch das ausgewählte löschen zu können. Beim löschen, wird wieder ein PopupFenser angezeigt, welches dazu da ist diese Aktion zu bestätigen.
+Der Knopf View Attractivity-List fürt zu dem Fenster (FENSTER NAME), dort wird eine Liste angezeigt von allen Kategorien und deren Attraktivitäts-Attributen, so wie deren Berechnung.
+Die Liste ist so aufgebaut das ganz Links die Kategorie steht, in der Mitte das Attraktivitäts-Attribut und rechts die Berechnung dieses Attraktivitäts-Attributes.
+In dieser Liste kann nicht editiert werden, sondern dient nur der veranschaulichung und als übersicht.
+Mit dem Knopf Edit Attractivity kommt man wieder zum vorherigen Fenster zurück.
 
 \textbf{Aggregation author = Pascal}<UI60>
 Im Aggregations Fenster kann festgelegt werden welche Werte in den Verkehrszellen berechnet werden sollen. Hierzu wird eine Liste mit allen möglichen Berechnungsarten angezeigt. In dieser Liste kann über checkmarks nun festgelegt werden welche Berechnungsarten alle in der berechnung getätigt werden sollen und welche nicht.
 
-\textbf{View and Calculate author = Felix}\\
+\textbf{View and Calculate author = Felix, reviewed by Pascal}\\
 Hier als letzter Schritt nach fertiger Dateneingabe die Berechnung gestartet. Über eine Schaltfläche am linken Anwendungsrand kann der gewünschte Startpunkt der Berechnung angegeben werden. Hier könnnen beliebig viele Phasen übersprungen werden, ab der die folgenden Schritte in angezeigter Reihenfolge ausgeführt werden. Über den "Start Calculation" Button wird dann die Berechnung gesartet.
 Während der Berechnung informiert ein Ladebalken über den aktuellen Berechnungsstatus. Weiter zeigt die Schaltfläche links die aktuelle Phase als auch die bereits bearbeiteten Phasen an. Über einen Button kann die Berechnung jederzeit abgebrochen werden.
 Nach Vollendung der Berechnung können die Ergebnisse angesehen, oder die Berechnung erneut gestartet werden.
 Die Anwendung informiert den Nutzer, wenn die Berechnung vollendet wurde.
 
 \textbf{Export author = Pascal}<UI80>
-Der Export Knopf im HeadMenü öffnet kein neues Fenster, sonder ein DropDownMenü mit 3 Knöpfen für jede Export möglichkeit. Durch das anklicken einder der Knöpfe wird man zu seinen Dokumenten weitergeleitet um den Ort zu wählen, wohin Exportiert werden soll.
+Der Export Knopf im HeadMenü öffnet kein neues Fenster, sonder ein DropDownMenü mit 3 Knöpfen für jede Export möglichkeit. So kann das ganze Projekt Exportiert werden, die Berechnung oder die Konfigurationen im bezug auf die Kategorien. Durch das anklicken einer der Knöpfe wird man zu seinen Dokumenten weitergeleitet um den Ort zu wählen, wohin Exportiert werden soll.
 Durch erneutes Drücken des Export Knopfs verschwindet das DropDownMenü wieder.
 
-\textbf{Settings author = Felix}\\
+\textbf{Settings author = Felix, reviewed by Pascal}\\
 Im Settings-Fenster der Anwendung können Einstellungen zum aktuellen Projekt vorgenommen werden.
 Die Einstellungen gliedern sich in zwei Teile.
 Im ersten Teil können Daten zum Projekt geändert werden. Über eine Schaltfläche können im Nachhinein Projektname und die zugehörige Beschreibung angepasst werden. Wurde das Settings-Fenster ohne ein offenes Projekt geöffnet, wird dieser Teil nicht angezeigt.
