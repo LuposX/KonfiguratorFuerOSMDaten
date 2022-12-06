@@ -11,6 +11,7 @@
 %Simon: Hinzufügen des Titelbildes
 \usepackage{titlepic}
 
+
 \hypersetup{ % ‘texdoc hyperref‘ for options
 pdftitle={PSE},
 bookmarks=true,
@@ -28,11 +29,13 @@ bookmarks=true,
 \usepackage[export]{adjustbox}
 
 
-\title{Konfigurator für OSM-Datenaufbereitungs-Prozesse für die Verkehrsnachfragemodellierung}
-\subtitle{Pflichtenheft}
+\title{Konfigurator für OSM-Datenaufbereitungs-Prozesse für die Verkehrsnachfragemodellierung \\ \vspace{2mm}\large{}Pflichtenheft}
+%\subtitle{Pflichtenheft}
 
 
-\author{Felix Weik\\ Jan-Philipp Hansen\\ Karl Bernhard\\ Pascal Dawideit\\ Simon Schupp}
+\author{
+\vspace{5mm}\\
+Felix Weik\\ Jan-Philipp Hansen\\ Karl Bernhard\\ Pascal Dawideit\\ Simon Schupp}
 \date{Dezember 2022}
 
 % open street map picture in the titlepage
@@ -128,16 +131,16 @@ Zunächst kann der Nutzer ein neues Projekt erstellen und diesem einen Namen zuw
 Zusätzlich kann der Nutzer die Optionen öffnen und dort Name und Beschreibung des Projektes ändern.
 
 \subsection*{Abbildung 3.2}
-Im Aktivitätsdiagramm „Durchlaufen der Pipeline“ bearbeitet der Nutzer alle Schritte des Konfigurators für OSM-Datenaufbereitungs-Prozesse. Dabei kann dieser zunächst auswählen, ob ein neues Projekt erstellt oder ein bestehendes Projekt geladen werden soll. Danach wird der OSM-Datensatz, sowie die Datei der Verkehrszellen, eingelesen und die Konfiguration der Kategorien optional geladen. Anschließend legt der Nutzer die Kategorien fest und erstellt dafür die Whitelist und Blacklist. Als Nächstes wird für die Reduktion die Berechnungsmethode festgelegt und für die Tags werden Default-Werte eingetragen. Danach gibt der Nutzer für die Kategorien eine Berechnungsmethode an, welche sich aus Tags und Faktoren zusammensetzt. Zuletzt bestimmt der Nutzer noch die Aggregationsmethode innerhalb der Verkehrszellen. Nachdem die Anwendung die Berechnung zu Ende ausgeführt hat, kann der Nutzer das Ergebnis, sowie die Konfiguration exportieren. 
+Im Aktivitätsdiagramm „Durchlaufen der Pipeline“ bearbeitet der Nutzer alle Schritte des Konfigurators für OSM-Datenaufbereitungs-Prozesse. Dabei kann dieser zunächst auswählen, ob ein neues Projekt erstellt oder ein bestehendes Projekt geladen werden soll. Danach wird der OSM-Datensatz, sowie die Datei der Verkehrszellen, eingelesen und die Konfiguration der Kategorien optional geladen. Anschließend legt der Nutzer die Kategorien fest und erstellt dafür die Whitelist und Blacklist. Als Nächstes wird für die Reduktion die Berechnungsmethode festgelegt und für die Tags werden Standardwerte eingetragen. Danach gibt der Nutzer für die Kategorien eine Berechnungsmethode an, welche sich aus Tags und Faktoren zusammensetzt. Zuletzt bestimmt der Nutzer noch die Aggregationsmethode innerhalb der Verkehrszellen. Nachdem die Anwendung die Berechnung zu Ende ausgeführt hat, kann der Nutzer das Ergebnis, sowie die Konfiguration exportieren. 
 \begin{figure}
     \centering
-    \includegraphics[width=1\textwidth,cfbox=black 1pt 0pt]{pictures/Anwendungsfalldiagramm.png}
+    \includegraphics[width=1\textwidth]{pictures/Anwendungsfalldiagramm.png}
     \caption{Use-Case-Diagramm}
 \end{figure}
 
 \begin{figure}
     \centering
-    \includegraphics[width=.9\textwidth,cfbox=black 1pt 0pt]{pictures/Aktivitaetsdiagramm.png}
+    \includegraphics[width=.9\textwidth,cfbox=black 1pt 0pt]{pictures/Aktivitqetsdiagramm1.png}
     \caption{Aktivitätsdiagramm - Durchlaufen der Pipeline}
 \end{figure}
 
@@ -171,12 +174,12 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Main Menu'. \\\\
 \textbf{Nachbedingung Erfolg:} Ein neues Projekt befindet sich im Speicher. Die Seite 'Data' ist geöffnet.  \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. Der Nutzer befindet sich im Hauptmenü. \\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt, den erstelle ein neues Projekt Knopf. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt, den 'New Project' Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Nutzer wählt den Namen und die Beschreibung für das Projekt.
     \item Der Nutzer wählt den Speicherort des Projekts aus.
-    \item Der Nutzer drückt auf den erstelle neues Projekt Knopf.
+    \item Der Nutzer drückt auf den 'New Project' Knopf.
     \item Das Projekt wird erstellt und der Projektordner am angegebenen Speicherort angelegt.
 \end{enumerate}
 \newpage
@@ -205,7 +208,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Main Menu'.  \\\\
 \textbf{Nachbedingung Erfolg:} Alle Daten des Projekts sind geladen und die Seite 'Data' wird angezeigt. \\\\
 \textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag, der Nutzer bleibt im Hauptmenü. \\\\
-\textbf{Auslösendes Ereignis:}  Der Nutzer drückt den 'lade externes Projekt' Knopf. \\\\
+\textbf{Auslösendes Ereignis:}  Der Nutzer drückt den 'Load external Project' Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
@@ -224,7 +227,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:}  Der Nutzer befindet sich auf der Seite 'Main Menu'.  \\\\
 \textbf{Nachbedingung Erfolg:} Die Änderung der Einstellungen werden angezeigt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag.\\\\
-\textbf{Auslösendes Ereignis:} Drücken des Einstellungsknopfes. \\\\
+\textbf{Auslösendes Ereignis:} Drücken des Einstellungsknopfs. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Seite 'Settings' öffnet sich.
@@ -242,11 +245,11 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Data'. \\\\
 \textbf{Nachbedingung Erfolg:} Erfolgreiches Hinterlegen der angegebenen Dateien. Anzeigen der angegebenen Dateien.\\\\
 \textbf{Nachbedingung Fehlschlag:} Benachrichtigung des Nutzers über Fehlschlag. \\\\
-\textbf{Auslösendes Ereignis:} Drücken des Knopfes 'Select OSM-Data'.\\\\
+\textbf{Auslösendes Ereignis:} Drücken des Knopfs 'Select OSM-Data'.\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
-    \item Der Nutzer wählt eine {OSM-Datei}~\ref{dataformat} aus.
+    \item Der Nutzer wählt eine \hyperlink{dataformat}{OSM-Datei} aus.
     \item Die Anwendung zeigt den Namen der gewählten Datei an.
     \item Der Nutzer drückt auf den Knopf 'Select Cut-Out'.
     \item Der Datei-Explorer öffnet sich.
@@ -273,22 +276,21 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Data'. \\\\
 \textbf{Nachbedingung Erfolg:} Die Kategorien der importierten Datei sind in der Liste der Kategorien aufgelistet. \\\\
 \textbf{Nachbedingung Fehlschlag:} Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
-\textbf{Auslösendes Ereignis:} Drücken des Knopfes zum Importieren der Kategorien.\\\\
+\textbf{Auslösendes Ereignis:} Drücken des Knopfs zum Importieren der Kategorien.\\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Der Datei-Explorer öffnet sich.
     \item Der Nutzer wählt eine Datei im \hyperlink{dataformat}{passenden Format} aus.
-    \item Die Anwendung zeigt den Namen der ausgewählten Datei an.
     \item Der Nutzer bestätigt den Import der Kategorien.
     \item Die Anwendung fügt die Kategorien zur Kategorien-Liste hinzu.
 \end{enumerate}
 \textbf{Erweiterungen:} 
 \begin{itemize}
-    \item 3a: Neben dem Namen der Datei werden auch die in ihr enthaltenen Daten visualisiert.
+    \item 3a: Die Anwendung visualisiert die in der Datei enthaltenen Daten.
 \end{itemize}
 \textbf{Alternativen:} 
 \begin{itemize}
-    \item 5a: Die Anwendung ersetzt die bisherigen Kategorien mit den importierten.
+    \item 4a: Die Anwendung ersetzt die bisherigen Kategorien mit den importierten.
 \end{itemize}
 \newpage
 
@@ -299,7 +301,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Ziel:} Die Liste der Kategorien soll um eine weitere Kategorie ergänzt werden. \\\\
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. \\\\
 \textbf{Nachbedingung Erfolg:} In der Liste der Kategorien befindet sich eine neue, nicht-konfigurierte Kategorie. Die neue Kategorie ist ausgewählt.\\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Knopf zum Hinzufügen einer neuen Kategorie. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den 'New Category' Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Anwendung schreibt einen leeren Eintrag in die Kategorien-Liste.
@@ -339,13 +341,13 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
     \item Die Anwendung zeigt dem Nutzer den Namen, die Whitelist und die Blacklist der Kategorie an. Die Anwendung signalisiert, ob die Kategorie aktiviert ist.
     \item Der Nutzer kann keine, eine oder mehrere der folgenden Aktionen durchführen:
     \begin{itemize}
-        \item Der Nutzer kann den Namen der Anwendung ändern.
+        \item Der Nutzer kann den Namen der Kategorie ändern.
         \item Der Nutzer kann Einträge zur Whitelist und zur Blacklist hinzufügen und entfernen.
     \end{itemize}
 \end{enumerate}
 \textbf{Erweiterung:}
 \begin{itemize}
-    \item 1a: Die Anwendung schlägt in einer Liste OSM-Tags vor.
+    \item 1a: Die Anwendung schlägt in einer Liste OSM-Keys vor.
     \item 2a: Der Nutzer kann die Kategorie aktivieren oder deaktivieren. Die Anwendung blendet deaktivierte Kategorien auf den kommenden Seiten aus.
 \end{itemize}
 \textbf{Alternativen:}
@@ -362,7 +364,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Der Nutzer befindet sich auf der Seite 'Categories'. Es existiert mindestens eine Kategorie. Eine Kategorie ist ausgewählt.\\\\
 \textbf{Nachbedingung Erfolg:} Die ausgewählte Kategorie befindet sich nicht mehr in der Liste. Es ist keine Kategorie mehr ausgewählt.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die Liste der Kategorien ändert sich nicht.\\\\
-\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den Knopf zum Löschen einer Kategorie. \\\\
+\textbf{Auslösendes Ereignis:} Der Nutzer drückt auf den 'Delete Category' Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Anwendung löscht die Kategorie.
@@ -512,7 +514,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
 \textbf{Vorbedingung:} Ein Projekt ist geladen. \\\\
 \textbf{Nachbedingung Erfolg:} Die ausgewählte Seite wird angezeigt. Änderungen der alten Seite sind gespeichert.\\\\
 \textbf{Nachbedingung Fehlschlag:} Die alte Seite wird weiterhin angezeigt. Die Anwendung informiert den Nutzer über den Fehlschlag. \\\\
-\textbf{Auslösendes Ereignis:} Drücken auf eine Phase im Kopf der Seite oder Drücken auf den 'Continue' oder 'Back'-Knopf. \\\\
+\textbf{Auslösendes Ereignis:} Drücken auf eine Phase im Kopf der Seite oder Drücken auf den 'Continue' oder 'Back' Knopf. \\\\
 \textbf{Beschreibung:}
 \begin{enumerate}
     \item Die Anwendung speichert die Daten, die der Nutzer auf der aktuellen Seite hinterlegt hat.
@@ -558,7 +560,7 @@ Dieser Abschnitt definiert die Funktionen des Produkts mittels konkreter Anwendu
     \item Der Datei-Explorer öffnet sich.
     \item Der Nutzer wählt den passenden Speicherort aus.
     \item Der Nutzer bestätigt das Exportieren des Projektes.
-    \item Die Anwendung exportiert das Projekt.
+    \item Die Anwendung exportiert das Projekt als ZIP-Archiv.
 \end{enumerate}
 \newpage
 
@@ -737,7 +739,7 @@ Diese JSON-Datei enthält alle Informationen zu den Kategorien des jeweiligen Pr
     \item Name der Datei (eindeutig)
     \item Einträge der Tag-Whitelist
     \item Einträge der Tag-Blacklist
-    \item Definition der Default-Werte je Attribut
+    \item Definition der Standardwerte je Attribut
     \item Konfiguration der Punktreduktion
     \item Faktoren der Attribute je Attraktivitätsattribut
 \end{itemize}
@@ -872,7 +874,7 @@ Die Anwendung soll intuitiv zugänglich sein, um ein reibungsloses Einlesen der 
 
 \textbf{Effizienz, Zeitverhalten und Verbrauchsverhalten}\\
 Die Effizienz der Anwendung ist als normal eingestuft, da kein schnelles Reaktionsverhalten in der Berechnung gefordert ist, trotzdem muss eine gewisse Benutzerfreundlichkeit erhalten bleiben. Folglich soll die Anwendung ein gutes Zeit- und Verbrauchsverhalten haben.
-Eine kleine Instanz (bspw. Stadtkreis Karlsruhe) ist auf einem Laptop mit 8GB RAM innerhalb weniger Stunden berechenbar. Für größere Instanzen wird eine Workstation empfohlen.
+Eine kleine Instanz (bspw. Stadtkreis Karlsruhe) ist auf einem Laptop mit 8 GB RAM innerhalb weniger Stunden berechenbar. Für größere Instanzen wird eine Workstation empfohlen.
 
 
 % remove this if we dont want to have a new page for each
@@ -959,20 +961,17 @@ Hier besteht die Möglichkeit über Texteingabefelder den Namen sowie die Beschr
 Hier können die zur Berechnung wichtigen Daten ausgewählt werden.
 Über drei Knöpfe können die OSM-Daten und der Geofilter referenziert werden, sowie Kategorien importiert werden. Über eine Checkbox kann der räumliche Filter definiert werden. Siehe dazu Abbildung 7.4 
 
-\newpage
-
 \textbf{Categories }<UI40>
 Über dieses Fenster kann der Nutzer neue Kategorien erstellen sowie sich bereits erstellte Kategorien anzeigen lassen. Weiter kann er den Kategorien Whitelist und Blacklist Tags zuordnen (siehe Abbildung 7.5).
 Über ein Dropdown-Menü können Kategorien ausgewählt werden (siehe Abbildung 7.6). In einem entsprechenden Textfeld wird daraufhin der Namen der gewählten Kategorie angezeigt. Eine Liste schlägt Key-Recommendations vor (WK3). Weiter können in zwei Tabellen besagte Whitelist und Blacklist-Tags gewählt werden.
 Über zwei Knöpfe am unteren rechten Anwendungsrand können neue Kategorien erstellt oder existierende gelöscht werden. 
 
+\newpage
 \textbf{Reduction }<UI50>
 In diesem Fenster kann der Nutzer festlegen, wie die Flächenberechnung der Kategorien durchgeführt wird. Das Fenster wird dazu in eine linke und rechte Hälfte unterteilt.
 Links befindet sich die Liste aller Kategorien, rechts kann der Nutzer deren Reduktion konfigurieren.
-Durch das Anklicken einer Kategorie in der Liste links wird rechts eine Schaltfläche angezeigt. Diese hat 2 Knöpfe: Zum einen den 'Calculation'-Knopf. Wird dieser Knopf gedrückt kann festgelegt werden, welche Werte für diese Kategorie berechnet werden sollen (siehe Abbildung 7.7). Dies geschieht über Checkboxen. Es muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll. Nur, wenn diese Option aktiviert ist, werden die Spezifikationen darunter angezeigt. Über Schalter kann der Nutzer die Punktreduktion weiter definieren.
-Drückt der Nutzer den 'Default-Values'- Knopf, so können für Tags Standardwerte gesetzt werden. Es kann über den 'New Tag'-Knopf neue Tags hinzugefügt werden und über den 'Delete Tag'-Knopf gelöscht werden (siehe Abbildung 7.8).
-
-\newpage
+Durch das Anklicken einer Kategorie in der Liste links wird rechts eine Schaltfläche angezeigt. Diese hat 2 Knöpfe: Zum einen den 'Calculation' Knopf. Wird dieser Knopf gedrückt, kann festgelegt werden, welche Werte für diese Kategorie berechnet werden sollen (siehe Abbildung 7.7). Dies geschieht über Checkboxen. Es muss zuerst angegeben werden, ob die Fläche überhaupt berechnet werden soll. Nur, wenn diese Option aktiviert ist, werden die Spezifikationen darunter angezeigt. Über Schalter kann der Nutzer die Punktreduktion weiter definieren.
+Drückt der Nutzer den 'Default-Values' Knopf, so können für Tags Standardwerte gesetzt werden. Es kann über den 'New Tag' Knopf neue Tags hinzugefügt werden und über den 'Delete Tag' Knopf gelöscht werden (siehe Abbildung 7.8).
 
 \textbf{Attractivity }<UI60>
 Dieses Fenster beinhaltet zwei Dropdown-Listen (siehe Abbildung 7.9). Die obere Liste ist zum Auswählen einer Kategorie, die untere dient der Unterscheidung der jeweiligen 
@@ -989,8 +988,9 @@ In diesem Fenster kann der Nutzer mit Checkboxen die Aggregationsverfahren wähl
 Hier wird als letzter Schritt nach fertiger Dateneingabe die Berechnung gestartet. Über eine Schaltfläche am linken Anwendungsrand kann der gewünschte Startpunkt der Berechnung angegeben werden (siehe Abbildung 7.12). Während der Berechnung informiert die GUI mittels Ladebalken und Markierung der Berechnungsphasen über den aktuellen Fortschritt (siehe Abbildung 7.13). Es gibt einen Knopf zum Abbrechen der Berechnung. Nach Vollendung der Berechnung können die Ergebnisse angesehen, oder die Berechnung erneut gestartet werden (Siehe Abbildung 7.14).
 
 \textbf{Export }<UI80>
-Durch Drücken des Knopfes 'Export' (siehe Abbildung 7.15) öffnet sich ein Drop-Down-Menü (siehe Abbildung 7.15). Hier kann der Nutzer die gegebenen Möglichkeiten zum Export wahrnehmen.
+Durch Drücken des Knopfs 'Export' (siehe Abbildung 7.15) öffnet sich ein Drop-Down-Menü (siehe Abbildung 7.15). Hier kann der Nutzer die gegebenen Möglichkeiten zum Export wahrnehmen.
 
+\newpage
 \textbf{Settings }<UI90>
 Im Einstellungs-Fenster der Anwendung können Einstellungen zum aktuellen Projekt vorgenommen werden.
 Die Einstellungen gliedern sich in zwei Teile:
@@ -1046,7 +1046,7 @@ Alle Änderungen können über zwei Knöpfe entweder gespeichert oder verworfen 
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth,cfbox=black 1pt 0pt]{pictures/Reduction 2.png}
-    \caption{MReduction Default-Values}
+    \caption{Reduction Default-Values}
 \end{figure}
 
 \begin{figure}
@@ -1128,69 +1128,53 @@ Die Anwendung stellt eine Benutzerschnittstelle über eine GUI zur Verfügung.
 \textbf{Aggregation}\\
 Verfahren zum Zusammenfassen mehrerer Attraktivitätsattribute innerhalb einer Verkehrszelle.
 
-\textbf{Attribut}\\
-Eigenschaft eines OSM-Elements. Wird aus den OSM-Tags des OSM-Elements während der Punktreduktion berechnet.
-
+\textbf{Aggregations-Vefahren}\\
+Abbildung einer Menge von Attraktivitätsattributen auf einen numerischen Wert. Beispiele sind die Summe, das Produkt oder das arithmetische Mittel.
 
 \textbf{Attraktivitätsattribut}\\
 Eigenschaft eines geografischen Objektes. Beschreibt die Attraktivität eines Ortes bezüglich einer bestimmten Tätigkeit. Wird aus Attributen berechnet.
 
+\textbf{Attribut}\\
+Eigenschaft eines OSM-Elements. Wird aus den OSM-Tags des OSM-Elements während der Punktreduktion berechnet.
+
+\textbf{Berechnungsphase}\\
+Zeitlich zusammenhängender Abschnitt des Berechnungsvorgangs. Es gibt die Phasen OSM-Daten, räumlicher Filter, Tag Filter, Punktreduktion, Attraktivitätsberechnung und Aggregation.
+
 \textbf{Checkbox}\\
 Kästchen, die eine binäre Beziehung darstellen. Wird ein Kästchen markiert, wird die zugehörige Option ausgewählt.
-
-\textbf{Default-Values}\\
-Vordefinierte Standardwerte, die zu einer Berechnung herangezogen werden können.
 
 \textbf{Dropdown-Menü}\\
 Bezeichnet ein Steuerelement hinter einer grafischen Benutzeroberfläche. Es kann ein Element oder eine Funktion aus einer gegebenen Liste an Werten gewählt werden.
 
 \textbf{Explorer}\\
-Auflistung aller Ordner, die sich im Computerspeicher befinden. Hier kann der Speicherpfad ausgewählt werden.
-
-\textbf{Kategorie}\\
-Einheit zum Organisieren von OSM-Elementen. Eine Kategorie definiert eine Menge an OSM-Elementen und weißt dieser Eigenschaften zu.
-
-\textbf{Standardkategorien}\\
-Kategorien, die standardmäßig in jedem Projekt vorhanden sind.
-
-\textbf{OSM}\\
-Abkürzung für OpenStreetMap. OpenStreetMap ist ein freies Projekt, das Geodaten sammelt, strukturiert und für die freie Nutzung in einer Datenbank bereitstellt.
-
-\textbf{OSM-Objekt}\\
-Eintrag in der OSM-Datenbank. Ist definiert durch seine Tags.
-
-\textbf{OSM-Datei}\\
-Datei, die OSM-Objekte enthält.
-
-\textbf{Punktreduktion}\\
-Verfahren zur Abbildung von Gebäuden auf Punkte. Dabei werden den Punkten Attribute zugewiesen.
-
-\textbf{Repository}\\
-Zentrale Ablage, in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
-
-\textbf{Tag}\\
-Eigenschaft eines OSM-Objekts. Bestehend aus einem 'key' und einem 'value'.
-
-\textbf{Tag Filter}\\
-Die Gruppierung von OSM-Elementen anhand ihrer Tags.
-
-\textbf{Verkehrsnachfragemodell}\\
-Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungsprozesse der Menschen nachbildet, die zu Ortsveränderungen führen. Im Personenverkehr umfassen diese Entscheidungen die Aktivitätenwahl, die Zielwahl, die Verkehrsmittelwahl, die Abfahrtszeitwahl und die Routenwahl.
-
-\textbf{Verkehrszelle}\\
-Bezeichnet einen räumlich abgegrenzten Teil eines Untersuchungsgebietes, der als Bezugseinheit bei der Verkehrsanalyse und Verkehrsprognose dient.
-
-\textbf{Untersuchungsgebiet}\\
-Räumliches Gebiet, das von der Anwendung untersucht wird. Disjunkte Vereinigung der Verkehrszellen. Wird durch den räumlichen Filter definiert.
-
-\textbf{Aggregations-Vefahren}\\
-Abbildung einer Menge von Attraktivitätsattributen auf einen numerischen Wert. Beispiele sind die Summe, das Produkt oder das arithmetische Mittel.
+Vom Betriebssystem bereitgestelltes Werkzeug zum Auswählen von Dateien im Speicher.
 
 \textbf{Geofilter}\\
 Verfahren zum Definieren der Zugehörigkeiten von OSM-Objekten zu einem geografischen Gebiet.
 
-\textbf{Räumlicher Filter}\\
-Methode zur genaueren Definition eines Geofilters. Entscheidet, ob OSM-Elemente, die sich nur teilweise in einem Gebiet befinden, diesem zugehörig sind.
+\textbf{GUI}\\
+GUI ist die Abkürzung für "Graphical User Interface" und bedeutet im Deutschen grafische Benutzeroberfläche.
+
+\textbf{Instanz}\\
+Es wird unterschieden zwischen kleinen und großen Instanzen. Kleine Instanzen behandeln Datensätze bis 250 MB. Große Instanzen behandeln Datensätze größer 250 MB.
+
+\textbf{Kategorie}\\
+Einheit zum Organisieren von OSM-Elementen. Eine Kategorie definiert eine Menge an OSM-Elementen und weißt dieser Eigenschaften zu.
+
+\textbf{Knopf}\\
+Ein Knopf ist eine Komponente in Benutzeroberflächen von Anwendungen, die auf Berührungen des Nutzers reagiert und diesen mit dem Programm interagieren lässt.
+
+\textbf{Konfigurationsphase}\\
+Abschnitt der Konfiguration eines Projektes.
+
+\textbf{OSM}\\
+Abkürzung für OpenStreetMap. OpenStreetMap ist ein freies Projekt, das Geodaten sammelt, strukturiert und für die freie Nutzung in einer Datenbank bereitstellt.
+
+\textbf{OSM-Datei}\\
+Datei, die OSM-Objekte enthält.
+
+\textbf{OSM-Objekt}\\
+Eintrag in der OSM-Datenbank. Ist definiert durch seine Tags.
 
 \textbf{Projekt}\\
 Organisationseinheit. Gesamtheit von zusammengehörenden Konfigurationen.
@@ -1201,22 +1185,39 @@ Verzeichnis. Organisiert alle Konfigurationsdateien eines Projektes.
 \textbf{Projektstandardordner}\\
 Verzeichnis, in welchem standardmäßig Projekte gespeichert und geladen werden.
 
-\textbf{Berechnungsphase}\\
-Zeitlich zusammenhängender Abschnitt des Berechnungsvorgangs. Es gibt die Phasen OSM-Daten, räumlicher Filter, Tag Filter, Punktreduktion, Attraktivitätsberechnung und Aggregation.
+\textbf{Punktreduktion}\\
+Verfahren zur Abbildung von Gebäuden auf Punkte. Dabei werden den Punkten Attribute zugewiesen.
 
-\textbf{Konfigurationsphase}\\
-Abschnitt der Konfiguration eines Projektes.
+\textbf{Räumlicher Filter}\\
+Methode zur genaueren Definition eines Geofilters. Entscheidet, ob OSM-Elemente, die sich nur teilweise in einem Gebiet befinden, diesem zugehörig sind.
+
+\textbf{Repository}\\
+Zentrale Ablage, in der digitale Daten, Dokumente, Objekte und Programme mit ihren Metadaten verwaltet werden.
 
 \textbf{Seite}\\
 Ein inhaltlich zusammenhängender Abschnitt der GUI, welcher gleichzeitig angezeigt wird.
 
-\textbf{GUI}\\
-GUI ist die Abkürzung für "Graphical User Interface" und bedeutet im Deutschen grafische Benutzeroberfläche.
+\textbf{Standardkategorien}\\
+Kategorien, die standardmäßig in jedem Projekt vorhanden sind.
 
-\textbf{Knopf}\\
-Ein Knopf ist eine Komponente in Benutzeroberflächen von Anwendungen, die auf Berührungen des Nutzers reagiert und diesen mit der Benutzeroberfläche interagieren lässt.
+\textbf{Tag}\\
+Eigenschaft eines OSM-Objekts. Bestehend aus einem 'key' und einem 'value'.
+
+\textbf{Tag Filter}\\
+Die Gruppierung von OSM-Elementen anhand ihrer Tags.
+
+\textbf{Untersuchungsgebiet}\\
+Räumliches Gebiet, das von der Anwendung untersucht wird. Disjunkte Vereinigung der Verkehrszellen. Wird durch den räumlichen Filter definiert.
+
+\textbf{Verkehrsnachfragemodell}\\
+Ein Verkehrsnachfragemodell ist ein Modell, das alle relevanten Entscheidungsprozesse der Menschen nachbildet, die zu Ortsveränderungen führen. Im Personenverkehr umfassen diese Entscheidungen die Aktivitätenwahl, die Zielwahl, die Verkehrsmittelwahl, die Abfahrtszeitwahl und die Routenwahl.
+
+\textbf{Verkehrszelle}\\
+Bezeichnet einen räumlich abgegrenzten Teil eines Untersuchungsgebietes, der als Bezugseinheit bei der Verkehrsanalyse und Verkehrsprognose dient.
 
 \textbf{Windows}\\
 Windows ist ein Betriebssystem für Computer und Laptops.
+
+
 
 \end{document}
