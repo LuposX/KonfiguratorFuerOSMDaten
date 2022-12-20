@@ -17,7 +17,7 @@ This project was developed in the context of the lecture "Praxis der Softwareent
 For each of this phase you can find the documentation in the corresponding subfolder, most of the documentation is in german.
 
 For a more specific description of the code, check the `README.md` in the subfolder
-"pyhtoncode".
+"pythoncode".
 
 ## Installation
 
