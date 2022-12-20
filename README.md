@@ -16,7 +16,8 @@ Project Creation Screen            |  Inside the Project Screen
 This project was developed in the context of the lecture "Praxis der Softwareentwicklung(PSE)" at the University KIT in 2022,the waterfall model with feedback was used to develop the project.  
 For each of this phase you can find the documentation in the corresponding subfolder, most of the documentation is in german.
 
-
+For a more specific description of the code, check the `README.md` in the subfolder
+"pyhtoncode".
 
 ## Installation
 
@@ -25,7 +26,15 @@ For each of this phase you can find the documentation in the corresponding subfo
 
 
 ## License
+Distributed under the MIT license. See ``LICENSE`` for more information.
+[MIT License](https://github.com/LuposX/KonfiguratorFuerOSMDaten/tree/main/LICENSE)
 
 ## Contribution
 
-[license-url]: 
+1.  Fork it (<https://github.com/LuposX/KonfiguratorFuerOSMDaten/fork>)
+2.  Create your feature branch (`git checkout -b feature/fooBar`)
+3.  Commit your changes (`git commit -am 'Add some fooBar'`)
+4.  Push to the branch (`git push origin feature/fooBar`)
+5.  Create a new Pull Request
+
+[license-url]: https://github.com/LuposX/KonfiguratorFuerOSMDaten/tree/main/LICENSE
