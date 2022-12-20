@@ -8,4 +8,4 @@ dependencies:
   - python=3.8
   - jupyterlab
   - pyrosm
-  - shapely=1.8.5
+  - shapely=1.8.4
