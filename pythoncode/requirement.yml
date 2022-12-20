@@ -1,0 +1,11 @@
+# can be installed with:
+# conda env create --file requirement.yml
+name: PSE
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.8
+  - jupyterlab
+  - pyrosm
+  - shapely=1.8.5
