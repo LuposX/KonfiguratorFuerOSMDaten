@@ -8,4 +8,6 @@ dependencies:
   - python=3.8
   - jupyterlab
   - pyrosm
-  - shapely=1.8.4
+  - shapely=1.8.5
+  - sphinx
+  - sphinx-book-theme
