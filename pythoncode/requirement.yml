@@ -7,7 +7,12 @@ channels:
 dependencies:
   - python=3.8
   - jupyterlab
+  - geopandas
   - pyrosm
-  - shapely=1.8.5
+  - shapely=1.8.4
   - sphinx
   - sphinx-book-theme
+  - osmium-tool
+  - pip
+  - pip:
+    - customtkinter

@@ -22,3 +22,5 @@ For latexPDF:
 ```sh
 make latexpdf
 ```
+
+The results will then be in the folder `docs/build`.
