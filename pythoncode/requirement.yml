@@ -12,7 +12,13 @@ dependencies:
   - shapely=1.8.4
   - sphinx
   - sphinx-book-theme
+<<<<<<< HEAD
   - osmium-tool
   - pip
   - pip:
     - customtkinter
+=======
+  - pip
+  - pip:
+    - customtkinter
+>>>>>>> fc59e277e46194ee5f0d272b91a679cbddcb81b0
