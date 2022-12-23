@@ -5,20 +5,15 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.8
-  - jupyterlab
-  - geopandas
-  - pyrosm
-  - shapely=1.8.4
-  - sphinx
-  - sphinx-book-theme
-<<<<<<< HEAD
-  - osmium-tool
+  - python=3.8        # the highest python version pyrosm works with is 3.8
+  - jupyterlab        # can be removes, is there so you can inspect the tests in the tests fodler
+  - geopandas         # used for the cut out file
+  - pyrosm            # this is the OSM-parser
+  - shapely=1.8.4     # dependency of pyrosm, if its a other version pyrosm wont work
+  - sphinx            # makes documentation
+  - sphinx-book-theme #
+  - psutil            # can be used to get information about the system, used to monito RAM usage
+  - osmium-tool       # used to split .pbf files and convert osm file formats
   - pip
   - pip:
-    - customtkinter
-=======
-  - pip
-  - pip:
-    - customtkinter
->>>>>>> fc59e277e46194ee5f0d272b91a679cbddcb81b0
+    - customtkinter   # this is the GUI libary 
