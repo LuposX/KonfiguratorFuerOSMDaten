@@ -6,10 +6,11 @@ channels:
   - defaults
 dependencies:
   - python=3.8        # the highest python version pyrosm works with is 3.8
+  - numpy<1.24        # numpy is a dependency of other libaries, if version to big i get errors
   - jupyterlab        # can be removes, is there so you can inspect the tests in the tests fodler
   - geopandas         # used for the cut out file
   - pyrosm            # this is the OSM-parser
-  - shapely=1.8.4     # dependency of pyrosm, if its a other version pyrosm wont work
+  - shapely<1.8.5     # dependency of pyrosm, if its a other version pyrosm wont work
   - sphinx            # makes documentation
   - sphinx-book-theme #
   - psutil            # can be used to get information about the system, used to monito RAM usage
