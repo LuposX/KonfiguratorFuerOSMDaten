@@ -1,5 +1,5 @@
-from modules.model import CalculationPhase
-from modules.model import ConfigurationManager
+from ConfiguratorOSMData.model import CalculationPhase
+from ConfiguratorOSMData.model import ConfigurationManager
 
 
 class CalculationManager:
@@ -7,7 +7,7 @@ class CalculationManager:
     The CalculationManager manages Calculation of the Project.
     """
 
-    def __int__(self, starting_point: CalculationPhase, configuration_manager: ConfigurationManager):
+    def __init__(self, starting_point: CalculationPhase, configuration_manager: ConfigurationManager):
         """
         Gets called when we first create an object of this class, it saves all information it needs for
         starting a calculation.

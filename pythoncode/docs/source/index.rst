@@ -10,7 +10,7 @@ Welcome to ExampleProject's documentation!
    :maxdepth: 2
    :caption: Contents:
     
-   modules
+   apidoc/modules
 
 Indices and tables
 ==================
