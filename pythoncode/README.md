@@ -19,10 +19,39 @@ How to set up the develoment enviroment:
 3. switch to dev branch or your feature branch with: `git branch`
 4. Go to the folder `pythoncode`
 5. type `conda activate base` in your terminal, to activate the base enviroment
-5. Install the new enviroment via `conda env create --file requirement.yml`
-6. type `conda activate PSE` in your terminal, to activate the newly installed enviroment
-7. start your favourite IDE open the project and start coding :)
-7.1 Make sure you have selected the conda enviroment as python interpreter in your ide.
+6. There are three ways to do this, if one doesn't work try another one, look below fore more details.
+7. type `conda activate PSE` in your terminal, to activate the newly installed enviroment
+8. start your favourite IDE open the project and start coding :)
+8.1 Make sure you have selected the conda enviroment as python interpreter in your ide.
+
+**Way1:**  
+Install the new enviroment via `conda env create --file environment.yml`
+or  
+Install the new enviroment via `conda env create --file environment2.yml`  
+
+
+**Way2:**  
+1. Create environment with `conda create --name PSE python=3.9.15`  
+2. Execute in the terminal `conda install -c anaconda pip`  
+3. Execute in the terminal `pip install -r requirements.txt`
+
+
+**Way3(Manually):**  
+1. Create environment with `conda create --name PSE python=3.9.15`  
+2. activate the enviroment with `conda activate PSE`  
+2. Execute the following command in the exact order:  
+- `conda install -c anaconda pip`  
+- `conda install -c anaconda cmake`  
+- `conda install osmium-tool`  
+- `pip install seaborn`  
+- `pip install geopandas`  
+- `pip install sphinx`  
+- `pip install sphinx-book-theme `  
+- `pip install psutil`  
+- `pip install osmium`  
+- `pip install osmnx`  
+- `pip install customtkinter`  
+
 
 For how to write correct documentation, check [this out](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
 
