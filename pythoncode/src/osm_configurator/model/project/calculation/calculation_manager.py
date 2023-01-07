@@ -1,3 +1,5 @@
+from src.osm_configurator.model.project.calculation.configuration_manager import ConfigurationManager
+from src.osm_configurator.model.project.calculation.calculation_phase import CalculationPhase
 
 class CalculationManager:
     """
@@ -10,8 +12,8 @@ class CalculationManager:
         starting a calculation.
 
         Args:
-            starting_point (calculation_phase): Describes in which calculation-phase we want to start the calculation.
-            configuration_manager (configuration_manager): Saves all information required to configure the calculation.
+            starting_point (CalculationPhase): Describes in which calculation-phase we want to start the calculation.
+            configuration_manager (ConfigurationManager): Saves all information required to configure the calculation.
         """
         pass
 
