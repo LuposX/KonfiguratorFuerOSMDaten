@@ -1,6 +1,7 @@
 from src.osm_configurator.model.project.calculation.configuration_manager import ConfigurationManager
 from src.osm_configurator.model.project.calculation.calculation_phase import CalculationPhase
 
+
 class CalculationManager:
     """
     The CalculationManager manages Calculation of the Project.
