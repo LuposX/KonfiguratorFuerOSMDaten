@@ -1,4 +1,4 @@
-from src.ConfiguratorOSMData.model import CalculationPhase, ConfigurationManager
+from src.ConfiguratorOSMData.model import calculation_phase, configuration_manager
 
 
 class CalculationManager:
@@ -6,20 +6,24 @@ class CalculationManager:
     The CalculationManager manages Calculation of the Project.
     """
 
-    def __init__(self, starting_point: CalculationPhase, configuration_manager: ConfigurationManager):
+    def __init__(self, starting_point, configuration_manager):
         """
         Gets called when we first create an object of this class, it saves all information it needs for
         starting a calculation.
 
         Args:
-            starting_point: Describes in which calculation-phase we want to start the calculation.
-            configuration_manager: Saves all information required to configure the calculation.
+            starting_point (calculation_phase): Describes in which calculation-phase we want to start the calculation.
+            configuration_manager (configuration_manager): Saves all information required to configure the calculation.
         """
         pass
 
     def cancel_calculation(self):
         """
-        This method is used when we want to cancel an ongoing calculation.
+        This method will cancel an ongoing calculation.
+        A calculation consists of an :class:`<model.CalculationPhase>` (CalculationPhase), that will be interrupted.
+
+        Returns:
+            bool: true if it succeeded, false if something goes wrong, or no calculation is going on.
         """
         pass
 
