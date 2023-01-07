@@ -25,9 +25,9 @@ How to set up the develoment enviroment:
 8.1 Make sure you have selected the conda enviroment as python interpreter in your ide.
 
 **Way1:**  
-Install the new enviroment via `conda env create --file environment.yml`
-or  
-Install the new enviroment via `conda env create --file environment2.yml`  
+Install the new enviroment via `conda env create --file environment.yml`  
+or    
+Install the new enviroment via `conda env create --file environment2.yml`    
 
 
 **Way2:**  
