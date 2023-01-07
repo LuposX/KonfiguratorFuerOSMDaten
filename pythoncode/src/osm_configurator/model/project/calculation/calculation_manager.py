@@ -21,14 +21,14 @@ class CalculationManager:
     def cancel_calculation(self):
         """
         This method will cancel an ongoing calculation.
-        A calculation consists of an :class:`<model.CalculationPhase>` (CalculationPhase), that will be interrupted.
+        A calculation consists of an :class:`<model.CalculationPhase>`, that will be interrupted.
 
         Returns:
             bool: true if it succeeded, false if something goes wrong, or no calculation is going on.
         """
         pass
 
-    def _validate_starting_point(self) -> bool:
+    def _validate_starting_point(self):
         """
         Validates the correctness of the Staring Point.
 
