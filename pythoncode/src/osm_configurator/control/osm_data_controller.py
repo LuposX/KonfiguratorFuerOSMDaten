@@ -22,7 +22,7 @@ class OSMDataController:
         """
         pass
 
-    def get_osm_data_reference():
+    def get_osm_data_reference(self):
         """Returns the path to the osm-data, that is used in the currently selected project.
 
         Returns:
