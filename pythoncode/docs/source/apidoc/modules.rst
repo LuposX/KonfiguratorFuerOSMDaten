@@ -4,4 +4,4 @@ src
 .. toctree::
    :maxdepth: 4
 
-   ConfiguratorOSMData
+   osm_configurator
