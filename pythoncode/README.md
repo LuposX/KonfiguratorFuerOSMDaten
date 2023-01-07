@@ -21,7 +21,7 @@ How to set up the develoment enviroment:
 5. type `conda activate base` in your terminal, to activate the base enviroment
 6. There are three ways to do this Step, if one doesn't work try another one, look below for the different *ways*.
 7. type `conda activate PSE` in your terminal, to activate the newly installed enviroment
-8. start your favourite IDE open the project and start coding :)
+8. start your favourite IDE open the project and start coding :)  
 8.1 Make sure you have selected the conda enviroment as python interpreter in your ide.
 
 **Way1:**  
