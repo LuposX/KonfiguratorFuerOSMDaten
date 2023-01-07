@@ -83,3 +83,11 @@ class ProjectController:
             ConfigPhase: The configuration phase, that is currently stored in the model.
         """
         pass
+
+    def is_project_loaded(self):
+        """Checks, whether any project is currently loaded/selected.
+
+        Returns:
+            bool: True, if a project is currently selected; False, otherwise.
+        """
+        pass
