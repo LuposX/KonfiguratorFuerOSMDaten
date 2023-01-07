@@ -25,7 +25,7 @@ For how to write correct documentation, check [this out](https://sphinxcontrib-n
 
 To build the Documentation from the source code, execute the following commands:
 ```sh
-sphinx-apidoc -f -o source/apidoc ../ConfiguratorOSMData/
+sphinx-apidoc -f -o source/apidoc ../src/
 ```
 For html:
 ```sh

@@ -1,2 +1,3 @@
 class CalculationPhase:
-    pass
+    def __int__(self):
+        pass

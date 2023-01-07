@@ -1,5 +1,4 @@
-from ConfiguratorOSMData.model import CalculationPhase
-from ConfiguratorOSMData.model import ConfigurationManager
+from src.ConfiguratorOSMData.model import CalculationPhase, ConfigurationManager
 
 
 class CalculationManager:

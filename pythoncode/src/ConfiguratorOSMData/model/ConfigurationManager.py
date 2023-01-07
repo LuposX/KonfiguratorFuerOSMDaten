@@ -1,2 +1,3 @@
 class ConfigurationManager:
-    pass
+    def __int__(self):
+        pass

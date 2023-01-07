@@ -18,7 +18,10 @@ import sys
 #sys.path.insert(0, target_dir)
 #print(target_dir)
 
-sys.path.insert(0, os.path.abspath(os.path.join('..', '..', 'src')))
+sys.path.insert(0, os.path.abspath(os.path.join('..', '..')))
+sys.path.insert(0, os.path.abspath("../../src"))
+#sys.path.insert(0, os.path.abspath("../../src"))
+
 
 # -- Project information -----------------------------------------------------
 
@@ -38,10 +41,12 @@ release = '1.0.0'
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
-    'sphinx.ext.napoleon' # support for google docstring style
+    'sphinx.ext.napoleon', # support for google docstring style
+    "sphinx_autodoc_typehints"
 ]
 
 autodoc_typehints = "description"
+add_module_names = False
 
 autodoc_default_options = {
     'members': True,

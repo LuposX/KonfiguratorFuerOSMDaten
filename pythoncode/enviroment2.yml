@@ -1,0 +1,19 @@
+# can be installed with:
+# conda env create --file enviroment2.yml
+name: PSE
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyterlab   # can be removes, is there so you can inspect the tests in the tests fodler
+  - seaborn      # visualizing data
+  - geopandas    # used for the cut out file
+  - osmium-tool  # used to split .pbf files and convert osm file formats
+  - sphinx       # makes documentation
+  - psutil       # can be used to get information about the system, used to monito RAM usage
+  - sphinx-autodoc-typehints
+  - pip
+  - pip:
+    - customtkinter     # this is the GUI libary 
+    - sphinx-book-theme # theme for the documentation
+    - osmium            # parser libary
