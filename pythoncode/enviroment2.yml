@@ -12,7 +12,6 @@ dependencies:
   - osmium-tool  # used to split .pbf files and convert osm file formats
   - sphinx       # makes documentation
   - psutil       # can be used to get information about the system, used to monito RAM usage
-  - sphinx-autodoc-typehints
   - pip
   - pip:
     - customtkinter     # this is the GUI libary 

@@ -43,10 +43,8 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
     'sphinx.ext.napoleon', # support for google docstring style
-    "sphinx_autodoc_typehints"
 ]
 
-autodoc_typehints = "description"
 add_module_names = False
 
 autodoc_default_options = {
