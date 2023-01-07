@@ -1,5 +1,3 @@
-from src.ConfiguratorOSMData.model import calculation_phase, configuration_manager
-
 
 class CalculationManager:
     """

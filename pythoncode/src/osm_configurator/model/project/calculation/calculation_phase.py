@@ -1,7 +1,4 @@
-from src.ConfiguratorOSMData.model.calculation_manager import CalculationManager
-
-
-class CalculationPhase(CalculationManager):
+class CalculationPhase():
 
     def __int__(self):
         pass
