@@ -9,7 +9,8 @@ the project check the README.md in the parent folder.
 
 For the develop enviroment you need to have the following tools installed:
 - conda
-- git
+- git  
+
 For how to install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).
 
 How to set up the develoment enviroment:
