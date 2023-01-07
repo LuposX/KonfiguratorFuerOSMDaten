@@ -204,7 +204,7 @@ dependencies:
   - python-fastjsonschema=2.16.2
   - python-json-logger=2.0.4
   - python_abi=3.11
-  - pytz=2022.7
+  - pytz=2022.7(base) 
   - pyyaml=6.0
   - pyzmq=24.0.1
   - readline=8.1.2

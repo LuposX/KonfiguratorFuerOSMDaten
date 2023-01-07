@@ -1,5 +1,6 @@
 # can be installed with:
 # conda env create --file enviroment2.yml
+# python version: 3.11
 name: PSE
 channels:
   - conda-forge
