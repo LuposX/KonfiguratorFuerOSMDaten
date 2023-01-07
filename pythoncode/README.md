@@ -51,6 +51,14 @@ Install the new enviroment via `conda env create --file environment2.yml`
 - `pip install osmium`  
 - `pip install osmnx`  
 - `pip install customtkinter`  
+- `pip install jupyterlab` # only needed for libary tests
+
+### How to check if the Installation worked  
+
+1. navigate to the libaryTest folder 
+2. execute in the terminal `jupyter-lab` a window should open up
+3. on the left sidebar there are files, each file test that one libary is working correctly
+4. to execute a libary test, open one of the file and execute the content by either clicking on a cell and pressing "SHIFT + ENTER" or by vlicking at the top at `Run` and then `Run all cells`.
 
 
 For how to write correct documentation, check [this out](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
