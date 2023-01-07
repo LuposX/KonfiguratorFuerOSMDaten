@@ -31,13 +31,13 @@ Install the new enviroment via `conda env create --file environment2.yml`
 
 
 **Way2:**  
-1. Create environment with `conda create --name PSE python=3.9.15`  
+1. Create environment with `conda create --name PSE python=3.11`  
 2. Execute in the terminal `conda install -c anaconda pip`  
 3. Execute in the terminal `pip install -r requirements.txt`
 
 
 **Way3(Manually):**  
-1. Create environment with `conda create --name PSE python=3.9.15`  
+1. Create environment with `conda create --name PSE python=3.11`  
 2. activate the enviroment with `conda activate PSE`  
 2. Execute the following command in the exact order:  
 - `conda install -c anaconda pip`  
@@ -53,6 +53,8 @@ Install the new enviroment via `conda env create --file environment2.yml`
 - `pip install customtkinter`  
 - `pip install jupyterlab` # only needed for libary tests
 
+> **_NOTE:_** Strictly speaking, you could also use a python version lower than `3.11` for development, but the deployment python version should be `3.11`, since python `3.11` is up to [60% faster](https://docs.python.org/3/whatsnew/3.11.html) than `3.10`.
+ 
 ### How to check if the Installation worked  
 
 1. navigate to the libaryTest folder 
