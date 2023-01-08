@@ -26,19 +26,8 @@ How to set up the develoment enviroment:
 8. start your favourite IDE open the project and start coding :)  
 8.1 Make sure you have selected the conda enviroment as python interpreter in your ide.
 
-**Way1:**  
-Install the new enviroment via `conda env create --file environment.yml`  
-or    
-Install the new enviroment via `conda env create --file environment2.yml`    
 
-
-**Way2:**  
-1. Create environment with `conda create --name PSE python=3.11`  
-2. Execute in the terminal `conda install -c anaconda pip`  
-3. Execute in the terminal `pip install -r requirements.txt`
-
-
-**Way3(Manually):**  
+**Way1(Manually):**  
 1. Create environment with `conda create --name PSE python=3.11`  
 2. activate the enviroment with `conda activate PSE`  
 2. Execute the following command in the exact order:  
@@ -53,10 +42,27 @@ Install the new enviroment via `conda env create --file environment2.yml`
 - `pip install osmium`  
 - `pip install osmnx`  
 - `pip install customtkinter`  
+- `pip install sphinx-enum-extend`
 - `pip install jupyterlab` # only needed for libary tests
 
 > **_NOTE:_** Strictly speaking, you could also use a python version lower than `3.11` for development, but the deployment python version should be `3.11`, since python `3.11` is up to [60% faster](https://docs.python.org/3/whatsnew/3.11.html) than `3.10`.
- 
+
+
+### Depreceated Ways
+
+**Way2:**  
+Install the new enviroment via `conda env create --file environment.yml`  
+or    
+Install the new enviroment via `conda env create --file environment2.yml`    
+
+
+**Way2:**  
+1. Create environment with `conda create --name PSE python=3.11`  
+2. Execute in the terminal `conda install -c anaconda pip`  
+3. Execute in the terminal `pip install -r requirements.txt`
+
+
+
 ### How to check if the Installation worked  
 
 1. navigate to the libaryTest folder 

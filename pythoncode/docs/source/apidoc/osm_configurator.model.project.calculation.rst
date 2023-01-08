@@ -4,6 +4,14 @@ osm\_configurator.model.project.calculation package
 Submodules
 ----------
 
+osm\_configurator.model.project.calculation.aggregation\_method\_enum module
+----------------------------------------------------------------------------
+
+.. automodule:: osm_configurator.model.project.calculation.aggregation_method_enum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 osm\_configurator.model.project.calculation.calculation\_manager module
 -----------------------------------------------------------------------
 
