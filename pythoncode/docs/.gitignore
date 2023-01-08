@@ -1,5 +1,6 @@
 # sphinx build folder
 build
+source/apidoc
 
 # Compiled source #
 ###################
@@ -9,6 +10,8 @@ build
 *.exe
 *.o
 *.so
+
+.idea
 
 # Packages #
 ############

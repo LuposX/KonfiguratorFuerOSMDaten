@@ -3,6 +3,8 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/docs/build" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/libaryTests/.ipynb_checkpoints" />
+      <excludeFolder url="file://$MODULE_DIR$/tests/libaryTests/build" />
     </content>
     <orderEntry type="jdk" jdkName="pse_project_pycharm" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
