@@ -7,7 +7,7 @@ class YesNoPopUp:
     Creater of the PopUp, giving it the Answer on what had been pressed and closing den Pop Up afterwards.
     """
 
-    def __int__(self, message, func):
+    def __init__(self, message, func):
         """
         This Constructor will create an YesNoPopUp, that will show the given message, as well as an 'OK' and
         'Cancel' Button. If one of the Buttons is pressed, or the PopUp Closed, it will send a message back, via the
@@ -17,7 +17,7 @@ class YesNoPopUp:
         a Boolean = false.
 
         Args:
-            message (String): The message to be shown in the PopUp.
+            message (str): The message to be shown in the PopUp.
             func (Callable): A Function that takes one Boolean and has no return, for the PopUp to send a message back.
         """
         pass
