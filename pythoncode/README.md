@@ -49,9 +49,9 @@ Install the new enviroment via `conda env create --file environment2.yml`
 - `conda install -c anaconda pip`  
 - `conda install -c anaconda cmake`  
 - `conda install osmium-tool`  
-- `conda install seaborn -c conda-forge`  
+- `conda install -c conda-forge osmnx`
 - `conda install geopandas`  
-- `conda install -c conda-forge osmnx`  
+- `conda install seaborn -c conda-forge`  
 - `pip install sphinx`  
 - `pip install sphinx-book-theme `  
 - `pip install psutil`  
