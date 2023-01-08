@@ -11,7 +11,9 @@ For the develop enviroment you need to have the following tools installed:
 - conda
 - git  
 
-For how to install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).
+For how to install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).  
+For what is conda, check [this out](https://conda.io/projects/conda/en/latest/user-guide/concepts/index.html).  
+
 
 How to set up the develoment enviroment:
 1. `git clone https://github.com/LuposX/KonfiguratorFuerOSMDaten.git`
@@ -44,7 +46,7 @@ Install the new enviroment via `conda env create --file environment2.yml`
 - `conda install -c anaconda cmake`  
 - `conda install osmium-tool`  
 - `conda install seaborn -c conda-forge`  
-- `pip install geopandas`  
+- `conda install geopandas`  
 - `pip install sphinx`  
 - `pip install sphinx-book-theme `  
 - `pip install psutil`  
