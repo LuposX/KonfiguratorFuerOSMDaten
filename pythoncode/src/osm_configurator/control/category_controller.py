@@ -48,6 +48,7 @@ class CategoryController:
         Returns:
             Category: The newly created category
         """
+        pass
 
     def delete_category(self, category):
         """Deletes the given category.

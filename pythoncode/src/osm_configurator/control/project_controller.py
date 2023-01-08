@@ -1,3 +1,6 @@
+from src.osm_configurator.control.control import Control
+
+
 class ProjectController:
     """The ProjectController is responsible for consistently forwarding requests regarding the project managment to the model. 
     It is responsible for managing, saving, loading, deleting and creating projects.
