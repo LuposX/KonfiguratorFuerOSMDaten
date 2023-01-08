@@ -63,6 +63,7 @@ intersphinx_mapping = {
     'geopandas': ('https://geopandas.org/en/stable', None),
     'seaborn': ('https://seaborn.pydata.org/', None),
     'osmium': ('https://docs.osmcode.org/pyosmium/latest/', None),
+    'shapely': ('https://shapely.readthedocs.io/en/stable/', None),
 }
 
 
