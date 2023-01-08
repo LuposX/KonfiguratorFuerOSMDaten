@@ -51,11 +51,11 @@ Install the new enviroment via `conda env create --file environment2.yml`
 - `conda install osmium-tool`  
 - `conda install seaborn -c conda-forge`  
 - `conda install geopandas`  
+- `conda install -c conda-forge osmnx`  
 - `pip install sphinx`  
 - `pip install sphinx-book-theme `  
 - `pip install psutil`  
 - `pip install osmium`  
-- `pip install osmnx`  
 - `pip install customtkinter`  
 - `pip install jupyterlab` # only needed for libary tests
 
