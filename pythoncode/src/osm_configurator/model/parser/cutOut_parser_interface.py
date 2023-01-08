@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
-from osm_configurator.model.project.calculation.traffic_cell import TrafficCell
+from src.osm_configurator.model.project.calculation.traffic_cell import TrafficCell
 
 
 class CutOutParserInterface(ABC):

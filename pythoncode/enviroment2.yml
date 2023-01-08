@@ -14,6 +14,7 @@ dependencies:
   - psutil       # can be used to get information about the system, used to monito RAM usage
   - pip
   - pip:
+    - cmake
     - customtkinter     # this is the GUI libary 
     - sphinx-book-theme # theme for the documentation
     - osmium            # parser libary
