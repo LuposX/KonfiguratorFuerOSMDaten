@@ -1,4 +1,4 @@
-from src.osm_configurator.control.i_control import IControl
+from src.osm_configurator.control.control_interface import IControl
 
 
 class Control(IControl):

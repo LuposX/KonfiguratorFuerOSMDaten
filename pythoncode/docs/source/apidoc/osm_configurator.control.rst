@@ -44,6 +44,14 @@ osm\_configurator.control.control module
    :undoc-members:
    :show-inheritance:
 
+osm\_configurator.control.control\_interface module
+---------------------------------------------------
+
+.. automodule:: osm_configurator.control.control_interface
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 osm\_configurator.control.cut\_out\_controller module
 -----------------------------------------------------
 
@@ -64,14 +72,6 @@ osm\_configurator.control.export\_controller module
 ---------------------------------------------------
 
 .. automodule:: osm_configurator.control.export_controller
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-osm\_configurator.control.i\_control module
--------------------------------------------
-
-.. automodule:: osm_configurator.control.i_control
    :members:
    :undoc-members:
    :show-inheritance:
