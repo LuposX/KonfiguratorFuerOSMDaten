@@ -25,3 +25,4 @@ class DataVisualizationController:
         Returns:
             Axes: The resulting visualization as axes of the matplotlib library.
         """
+        pass
