@@ -9,7 +9,7 @@ Welcome to ExampleProject's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-    
+   
    apidoc/modules
 
 Indices and tables
