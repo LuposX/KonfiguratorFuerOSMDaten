@@ -1,14 +1,16 @@
-.. ExampleProject documentation master file, created by
-   sphinx-quickstart on Mon Dec 19 19:53:45 2022.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-Welcome to ExampleProject's documentation!
-==========================================
+.. include:: ../../../README.rst
 
 .. toctree::
+   :caption: User Guide
+   :hidden:
+   
+   installation
+   User Manual <manual>
+   
+.. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: API References:
+   :hidden:
    
    apidoc/modules
 
