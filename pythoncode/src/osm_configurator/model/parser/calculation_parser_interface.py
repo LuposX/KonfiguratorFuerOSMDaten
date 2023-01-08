@@ -9,9 +9,9 @@ class CalculationParserInterface(ABC):
     that are created from the calculation process.
     It needs to make sure that all data that is needed for a calculation step is there.
         
-    Examples:
-        The :obj:`~src.osm_configurator.model.project.calculation.tag_filter_phase.TagFilterPhase` needs the files that got previously calculated in
-        :obj:`~src.osm_configurator.model.project.calculation.geo_data_phase.GeoDataPhase`.
+    Examples: The :obj:`~src.osm_configurator.model.project.calculation.tag_filter_phase.TagFilterPhase` needs the
+    files that got previously calculated in :obj:`~src.osm_configurator.model.project.calculation.geo_data_phase
+    .GeoDataPhase`.
     """
     
     @abstractmethod
