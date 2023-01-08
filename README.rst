@@ -1,7 +1,7 @@
 KonfiguratorFuerOSMDaten
 ========================
 
-.. image:: https://img.shields.io/badge/License-MIT-yellow.svg
+.. image:: pictures/license_MIT.png
    :alt: License status
    :target: https://opensource.org/licenses/MIT
 
