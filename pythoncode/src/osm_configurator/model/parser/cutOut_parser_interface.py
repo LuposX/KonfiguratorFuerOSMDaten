@@ -5,9 +5,6 @@ from osm_configurator.model.project.calculation.traffic_cell import TrafficCell
 
 class CutOutParserInterface(ABC):
     """This Class parses cut_out files to an internal Representation of the  cut_out_file
-
-    Args:
-        ABC (abc.ABC): This signals that this class is an interface.
     """
     
     @abstractmethod
@@ -20,7 +17,7 @@ class CutOutParserInterface(ABC):
         a name and a polygon which is the bounding box of the Traffic Cell.
         
         Args:
-            path (Path):  The path pointing towards cut_out file we want to parse.
+            path (pathlib.Path):  The path pointing towards cut_out file we want to parse.
         
         Returns:
            list(TrafficCell): Our cut_out file transformed into a list of TrafficCells.

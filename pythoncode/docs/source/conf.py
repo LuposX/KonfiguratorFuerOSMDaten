@@ -40,8 +40,9 @@ release = '1.0.0'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
+    'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.napoleon', # support for google docstring style
 ]
 
@@ -54,6 +55,14 @@ autodoc_default_options = {
     'undoc-members': True,
     'exclude-members': '__weakref__'
 }
+
+
+# Looks for objects in external projects
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3.11/', None),
+    'geopandas': ('https://geopandas.org/en/stable', None)
+}
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

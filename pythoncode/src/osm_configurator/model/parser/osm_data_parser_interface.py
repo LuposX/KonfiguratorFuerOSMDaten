@@ -7,9 +7,6 @@ class OSMDataParserInterface(ABC):
     """
     The OSMDataParser job, its to parse the OSMData into a human readible format.
     This human readible format being a GeoDataFrame from GeoPandas.
-
-    Args:
-        ABC (abc.ABC): This signals that this class is an interface.
     """
     
     @abstractmethod
@@ -20,7 +17,7 @@ class OSMDataParserInterface(ABC):
         Each column in the GeoDataFrame is a feature of the osm element from the osm_data, such as the location of the osm element.        
 
         Args:
-            path (Path):  The path pointing towards the OSM data we want to parse, in the ".pbf" format.
+            path (pathlib.Path):  The path pointing towards the OSM data we want to parse, in the ".pbf" format.
         
         Returns:
             GeoDataFrame: the parsed OSM data as a GeoDataFrame.

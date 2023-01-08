@@ -9,9 +9,6 @@ class CategoryParserInterface(ABC):
     make an internal representation out of it. 
     In the category file there are the different categories from the project defined, for more look at the 
     documentation of :obj:`~src.osm_configurator.model.project.configuration.category.Category`.
-    
-     Args:
-        ABC (abc.ABC): This signals that this class is an interface.
     """
     @abstractmethod
     def parse_category_file(self, path):
@@ -19,7 +16,7 @@ class CategoryParserInterface(ABC):
         For what the Category includes check this: :obj:`~src.osm_configurator.model.project.configuration.category.Category`.
 
         Args:
-            path (Path): the path to the category file.
+            path (pathlib.Path): the path to the category file.
             
         Returns:
            list(Category): A List of categories, that describe each category from the category file.

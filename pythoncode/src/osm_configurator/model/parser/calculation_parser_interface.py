@@ -8,9 +8,6 @@ class CalculationParserInterface(ABC):
     The CalculationParser job, is to parse the calculation files 
     that are created from the calculation process.
     It needs to make sure that all data that is needed for a calculation step is there.
-
-    Args:
-        ABC (abc.ABC): This signals that this class is an interface.
         
     Examples:
         The :obj:`~src.osm_configurator.model.project.calculation.tag_filter_phase.TagFilterPhase` needs the files that got previously calculated in
@@ -24,7 +21,7 @@ class CalculationParserInterface(ABC):
         A starting_point is valid when all calculation files needed for the next step are presen in the project.
         
         Args:
-            project_path (Path): The path pointing towards the project, that needs to be validated.
+            project_path (pathlib.Path): The path pointing towards the project, that needs to be validated.
             starting_point (CalculationPhase): The Step which we want to calculate next.
 
         Returns:
