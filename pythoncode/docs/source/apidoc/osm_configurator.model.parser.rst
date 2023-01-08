@@ -4,14 +4,6 @@ osm\_configurator.model.parser package
 Submodules
 ----------
 
-osm\_configurator.model.parser.caclulation\_parser module
----------------------------------------------------------
-
-.. automodule:: osm_configurator.model.parser.caclulation_parser
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 osm\_configurator.model.parser.calculation\_parser\_interface module
 --------------------------------------------------------------------
 
@@ -32,14 +24,6 @@ osm\_configurator.model.parser.category\_parser\_interface module
 -----------------------------------------------------------------
 
 .. automodule:: osm_configurator.model.parser.category_parser_interface
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-osm\_configurator.model.parser.cutOut\_parser module
-----------------------------------------------------
-
-.. automodule:: osm_configurator.model.parser.cutOut_parser
    :members:
    :undoc-members:
    :show-inheritance:
