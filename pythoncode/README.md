@@ -11,7 +11,9 @@ For the develop enviroment you need to have the following tools installed:
 - conda
 - git  
 
-For how to install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).
+For how to install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).  
+For what is conda, check [this out](https://conda.io/projects/conda/en/latest/user-guide/concepts/index.html).  
+
 
 How to set up the develoment enviroment:
 1. `git clone https://github.com/LuposX/KonfiguratorFuerOSMDaten.git`
