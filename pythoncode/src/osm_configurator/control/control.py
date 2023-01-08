@@ -79,7 +79,7 @@ class Control(IControl):
     def get_attractivities_of_category(self, category):
         pass
 
-    def get_aggregation_methods():
+    def get_aggregation_methods(self):
         pass
 
     def is_aggregation_method_active(self, method):
