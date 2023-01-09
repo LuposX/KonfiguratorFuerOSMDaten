@@ -20,3 +20,6 @@ Introduction
 
 .. note::
    Here will stand sth. in the future
+   
+ For an description about how the application works check out the folder 
+``Pflichtenheft``.

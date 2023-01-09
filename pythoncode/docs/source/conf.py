@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.abspath("../../src/osm_configurator"))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Konfigurator für OSM-Datenaufbereitungs-Prozesse für'
+project = 'Konfigurator für OSM-Datenaufbereitungs-Prozesse'
 copyright = '2022, Felix Weik, Jan-Phillip Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp'
 author = 'Felix Weik, Jan-Phillip Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp'
 

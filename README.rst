@@ -1,3 +1,4 @@
+========================
 KonfiguratorFuerOSMDaten
 ========================
 
@@ -35,20 +36,37 @@ For a more specific description of the code, check the ``README.md`` in
 the subfolder `pythoncode`.
 
 Installation
-------------
+============
+
+.. note
+   Not implemented yet.
+
+We recommend installing KonfiguratorFuerOSMDaten 
+using one of the available built distributions, 
+for example using ``pip`` or ``conda``:
+
+.. code-block:: console
+
+    $ pip install KonfiguratorFuerOSMDaten
+    # or using conda
+    $ conda install KonfiguratorFuerOSMDaten --channel conda-forge
+
 
 Usage
------
+=====
+
+To use the application after installing it, simply run the program.
+For an description about how the application works check out the folder 
+``Pflichtenheft``.
 
 License
--------
+=======
 
-Distributed under the MIT license. See ``LICENSE`` for more information.
-`MIT
-License <https://github.com/LuposX/KonfiguratorFuerOSMDaten/tree/main/LICENSE>`__
+KonfiguratorFuerOSMDaten is licensed under the MIT `License 
+<https://github.com/LuposX/KonfiguratorFuerOSMDaten/blob/dev/LICENSE>`__.
 
 Contribution
-------------
+============
 
 1. Fork it (https://github.com/LuposX/KonfiguratorFuerOSMDaten/fork)
 2. Create your feature branch (``git checkout -b feature/fooBar``)
