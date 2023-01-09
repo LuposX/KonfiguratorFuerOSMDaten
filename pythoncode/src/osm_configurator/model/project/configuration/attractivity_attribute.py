@@ -1,2 +1,0 @@
-class AttractivityAttribution:
-    pass

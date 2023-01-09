@@ -4,10 +4,10 @@ osm\_configurator.model.parser package
 Submodules
 ----------
 
-osm\_configurator.model.parser.caclulation\_parser module
+osm\_configurator.model.parser.calculation\_parser module
 ---------------------------------------------------------
 
-.. automodule:: osm_configurator.model.parser.caclulation_parser
+.. automodule:: osm_configurator.model.parser.calculation_parser
    :members:
    :undoc-members:
    :show-inheritance:
