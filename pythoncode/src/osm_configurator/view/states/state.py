@@ -1,11 +1,12 @@
 from enum import Enum
-from src.osm_configurator.control.control_interface import IControl
-from src.osm_configurator.view.states.positioned_frame import PositionedFrame
+import src.osm_configurator.control.control_interface
+import src.osm_configurator.view.states.positioned_frame
 
-class State(Enum) :
+
+class State(Enum):
     """
     This Class models a State, that holds different Frames that shall be shown on a Window, if it gets activated.
-    Aswell defining what State is the default on its left and right.
+    As well defining what State is the default on its left and right.
     """
 
     MAIN_MENU = 1
@@ -19,23 +20,25 @@ class State(Enum) :
     CALCULATION = 9
     SETTINGS = 10
 
-    def __init__(self, active_frames, control):
-        """
-        This Method Creates a new State, with a List of Frames it shall hold and a Control the Frames shall call
-        to access the Model.
-
-        Args:
-            active_frames (PositionedFrame): A List of Frames that shall be shown if this State is activated.
-            control (IControl): The Control the Frames of this State shall call if they need to access the Model.
-        """
-        pass
+    # def __init__(self, active_frames, control):
+    #     """
+    #     This Method Creates a new State, with a List of Frames it shall hold and a Control the Frames shall call
+    #     to access the Model.
+    #
+    #     Args:
+    #         active_frames list[positioned_frame.PositionedFrame]: A List of Frames that shall be shown if this
+    #         State is activated.
+    #         control (control_interface.IControl): The Control the Frames of this State shall call if they need to
+    #         access the Model.
+    #     """
+    #     pass
 
     def get_active_frames(self):
         """
-        This Method Retunrs the List of the Frames this State holds.
+        This Method Returns the List of the Frames this State holds.
 
         Returns:
-            list[PositionedFrame]: a List of Frames, this State holds.
+            list[positioned_frame.PositionedFrame]: a List of Frames, this State holds.
         """
         pass
 

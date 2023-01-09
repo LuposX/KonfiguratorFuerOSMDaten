@@ -1,5 +1,5 @@
-from src.osm_configurator.view.states.state_manager import StateManager
-from src.osm_configurator.control.control_interface import IControl
+import src.osm_configurator.view.states.state_manager
+import src.osm_configurator.control.control_interface
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
@@ -14,9 +14,9 @@ class AggregationFrame(TopLevelFrame):
         This Method Creates an AggregationFrame, to edit the aggregation method.
 
         Args:
-            state_manager (StateManager): The StateManager the Frame will call, when it wants to change to
-            another State.
-            control (IControl): The Control the Frame will call, to get access to the Model.
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change
+            to another State.
+            control (control_interface.IControl): The Control the Frame will call, to get access to the Model.
         """
         super().__init__(state_manager, control)
         pass

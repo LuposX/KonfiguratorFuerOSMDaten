@@ -25,7 +25,7 @@ class TagListPriorityFrame:
             entries list[str]: The List of Strings, that shall be the Entries on the PriorityList.
 
         Returns:
-            bool: True, if the replacment was succsessfull, false if not.
+            bool: True, if the replacement was succsessfull, false if not.
         """
         pass
 

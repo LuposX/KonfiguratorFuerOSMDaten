@@ -1,5 +1,5 @@
-from src.osm_configurator.control.control_interface import IControl
-from src.osm_configurator.view.states.state import State
+import src.osm_configurator.control.control_interface
+import src.osm_configurator.view.states.state
 
 
 class MainWindow:
@@ -14,7 +14,7 @@ class MainWindow:
         This Method creates a MainWindow with a connection to the given Control.
 
         Args:
-            control (IControl): The Control the GUI shall be working with, to get access to Information on the Model.
+            control (control_interface.IControl): The Control the GUI shall be working with, to get access to Information on the Model.
         """
         pass
 
@@ -23,8 +23,8 @@ class MainWindow:
         This Method changes from an old given State to a new given State to show on the MainWindow.
 
         Args:
-            last_state (State): The State that needs to me removed from the MainWindow
-            new_state (State): The State that shall be shown by the MainWindow
+            last_state (state.State): The State that needs to me removed from the MainWindow
+            new_state (state.State): The State that shall be shown by the MainWindow
 
         Returns:
             bool: true, if the state change was succsessfull, false if not.
@@ -36,7 +36,7 @@ class MainWindow:
         This Method makes the given State visible on the MainWindow.
 
         Args:
-            state (State): The state that shall be made visible.
+            state (state.State): The state that shall be made visible.
 
         Returns:
             bool: true if the state could be made visible, false if not.
@@ -48,7 +48,7 @@ class MainWindow:
         This Method removes a given State from the MainWindo, so it cant be seen or interacted with anymore.
 
         Args:
-            state (State): The state that shall not be visible anymore.
+            state (state.State): The state that shall not be visible anymore.
 
         Returns:
             bool: true, if the given state could be made invisible, false if not.

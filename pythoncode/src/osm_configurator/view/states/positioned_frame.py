@@ -1,5 +1,5 @@
-from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-from src.osm_configurator.view.states.state_manager import StateManager
+import src.osm_configurator.view.toplevelframes.top_level_frame
+import src.osm_configurator.view.states.state_manager
 
 
 class PositionedFrame:
@@ -13,10 +13,10 @@ class PositionedFrame:
         This Method Creates a Positioned Frame, which is a Frame and Coordinates to its Position.
 
         Args:
-            frame (TopLevelFrame): The Frame you want to give a Position
+            frame (top_level_frame.TopLevelFrame): The Frame you want to give a Position
             colum (int): The Colum the Frame shall be placed in
             line (int): The Line the Frame shall be placed in
-            state_manager (StateManager): The StateManager the Frame will use to change States if needed
+            state_manager (state_manager.StateManager): The StateManager the Frame will use to change States if needed
         """
         pass
 
@@ -25,7 +25,7 @@ class PositionedFrame:
         This Method Returns the Frame this PositionedFrame holds.
 
         Returns:
-            (TopLevelFrame): The Frame this PositionedFrame holds
+            (top_level_frame.TopLevelFrame): The Frame this PositionedFrame holds
         """
         pass
 

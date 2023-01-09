@@ -1,6 +1,6 @@
-from src.osm_configurator.view.states.state import State
-from src.osm_configurator.control.control_interface import IControl
-from src.osm_configurator.view.states.main_window import MainWindow
+import src.osm_configurator.view.states.state
+import src.osm_configurator.control.control_interface
+import src.osm_configurator.view.states.main_window
 
 
 class StateManager:
@@ -15,8 +15,9 @@ class StateManager:
         the changes between States.
 
         Args:
-            control (IControl): The connection to the control, so the Frames of each state can access the Model.
-            main_window (MainWindow): The MainWindow, where the Frames of the State shall be shown on.
+            control (control_interface.IControl): The connection to the control, so the Frames of each
+            state can access the Model.
+            main_window (main_window.MainWindow): The MainWindow, where the Frames of the State shall be shown on.
         """
         pass
 
@@ -45,7 +46,7 @@ class StateManager:
         This Method changes to the given State and deactivate the old one.
 
         Args:
-            new_state (State): The State that shall be activated.
+            new_state (state.State): The State that shall be activated.
 
         Returns:
             bool: true if state change was succsessfull, false if not.
@@ -57,7 +58,7 @@ class StateManager:
         This Method returns the currently active State.
 
         Returns:
-            State: the currently active State.
+            state.State: the currently active State.
         """
         pass
 

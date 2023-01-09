@@ -1,6 +1,6 @@
 from abc import ABC
-from src.osm_configurator.control.control_interface import IControl
-from src.osm_configurator.view.states.state_manager import StateManager
+import src.osm_configurator.control.control_interface
+import src.osm_configurator.view.states.state_manager
 
 
 class TopLevelFrame(ABC):
@@ -14,8 +14,8 @@ class TopLevelFrame(ABC):
         This Method Creates there to define how a TopLevelFrame is created.
 
         Args:
-            state_manager (StateManager): The StateManager the Frame will call, when it wants to change to
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change to
             another State.
-            control (IControl): The Control the Frame will call, to get access to the Model.
+            control (control_interface.IControl): The Control the Frame will call, to get access to the Model.
         """
         pass
