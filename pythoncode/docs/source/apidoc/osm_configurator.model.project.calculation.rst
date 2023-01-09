@@ -20,10 +20,18 @@ osm\_configurator.model.project.calculation.calculation\_manager module
    :undoc-members:
    :show-inheritance:
 
-osm\_configurator.model.project.calculation.calculation\_phase module
----------------------------------------------------------------------
+osm\_configurator.model.project.calculation.calculation\_phase\_enum module
+---------------------------------------------------------------------------
 
-.. automodule:: osm_configurator.model.project.calculation.calculation_phase
+.. automodule:: osm_configurator.model.project.calculation.calculation_phase_enum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+osm\_configurator.model.project.calculation.calculation\_state\_enum module
+---------------------------------------------------------------------------
+
+.. automodule:: osm_configurator.model.project.calculation.calculation_state_enum
    :members:
    :undoc-members:
    :show-inheritance:

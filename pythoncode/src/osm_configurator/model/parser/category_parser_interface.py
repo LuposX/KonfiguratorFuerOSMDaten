@@ -19,7 +19,7 @@ class CategoryParserInterface(ABC):
             path (pathlib.Path): the path to the category file.
             
         Returns:
-           list(Category): A List of categories, that describe each category from the category file.
+           list[Category]: A List of categories, that describe each category from the category file.
         """
         pass
 

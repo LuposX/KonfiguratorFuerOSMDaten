@@ -20,7 +20,7 @@ class CutOutParserInterface(ABC):
             path (pathlib.Path):  The path pointing towards cut_out file we want to parse.
         
         Returns:
-           list(TrafficCell): Our cut_out file transformed into a list of TrafficCells.
+           list[TrafficCell]: Our cut_out file transformed into a list of TrafficCells.
             
         Examples:
             To see an example for a cut_out file check out the file `data/partOfKarlsruhe.geojson`.

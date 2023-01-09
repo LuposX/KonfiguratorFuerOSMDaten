@@ -1,5 +1,5 @@
 from src.osm_configurator.model.project.calculation.configuration_manager import ConfigurationManager
-from src.osm_configurator.model.project.calculation.calculation_phase import CalculationPhase
+from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
 
 
 class CalculationManager:
