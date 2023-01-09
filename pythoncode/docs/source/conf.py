@@ -26,8 +26,8 @@ sys.path.insert(0, os.path.abspath("../../src/osm_configurator"))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Konfigurator für OSM-Datenaufbereitungs-Prozesse für'
-copyright = '2022, Felix Weik, Jan-Phillip Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp'
+project = 'Konfigurator für OSM-Datenaufbereitungs-Prozesse'
+copyright = '2022, Felix Weik, Jan-Phillip Hansen, Karl Bernhard, Pascal Dawideit,Simon Schupp'
 author = 'Felix Weik, Jan-Phillip Hansen, Karl Bernhard, Pascal Dawideit, Simon Schupp'
 
 # The full version, including alpha/beta/rc tags
@@ -65,6 +65,7 @@ intersphinx_mapping = {
     'osmium': ('https://docs.osmcode.org/pyosmium/latest/', None),
     'shapely': ('https://shapely.readthedocs.io/en/stable/', None),
 }
+
 
 
 # Add any paths that contain templates here, relative to this directory.

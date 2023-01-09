@@ -28,6 +28,14 @@ osm\_configurator.model.project.calculation.calculation\_phase module
    :undoc-members:
    :show-inheritance:
 
+osm\_configurator.model.project.calculation.calculation\_state\_enum module
+---------------------------------------------------------------------------
+
+.. automodule:: osm_configurator.model.project.calculation.calculation_state_enum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 osm\_configurator.model.project.calculation.configuration\_manager module
 -------------------------------------------------------------------------
 
