@@ -1,4 +1,4 @@
-class ProjectSettings:
+class AttractivityAttribute:
 
     def __init__(self):
         """

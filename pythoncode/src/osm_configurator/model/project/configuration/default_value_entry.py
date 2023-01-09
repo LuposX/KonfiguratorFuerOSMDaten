@@ -1,4 +1,4 @@
-class ProjectSettings:
+class DefaultValueEntry:
 
     def __init__(self):
         """

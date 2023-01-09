@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from src.osm_configurator.model.project.calculation.calculation_phase import CalculationPhase
 
 
 class ApplicationInterface(ABC):

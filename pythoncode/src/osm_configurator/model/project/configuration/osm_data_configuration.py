@@ -1,4 +1,4 @@
-class ProjectSettings:
+class OSMDataConfiguration:
 
     def __init__(self):
         """

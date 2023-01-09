@@ -1,4 +1,4 @@
-class ProjectSettings:
+class ConfigurationManager:
 
     def __init__(self):
         """

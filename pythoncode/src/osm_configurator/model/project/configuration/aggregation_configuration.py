@@ -1,4 +1,4 @@
-class ProjectSettings:
+class AggregationConfiguration:
 
     def __init__(self):
         """

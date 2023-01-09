@@ -1,4 +1,4 @@
-class ProjectSettings:
+class DownloadData:
 
     def __init__(self):
         """

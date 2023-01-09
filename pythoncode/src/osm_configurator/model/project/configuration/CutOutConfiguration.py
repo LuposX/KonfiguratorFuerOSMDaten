@@ -1,4 +1,4 @@
-class ProjectSettings:
+class CutOutConfiguration:
 
     def __init__(self):
         """
