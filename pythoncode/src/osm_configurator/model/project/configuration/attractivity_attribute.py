@@ -14,7 +14,7 @@ class AttractivityAttribute:
 
     def __init__(self, attractivity_attributes, attribute_factor, base_factor):
         """
-        Creates a new instance of "AttractivityAttribute"
+        Creates a new instance of "AttractivityAttribute".
 
         Args:
             attractivity_attributes: list of the enum-elements

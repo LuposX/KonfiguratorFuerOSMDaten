@@ -2,7 +2,7 @@ from enum import Enum, unique
 
 
 @unique
-class AttractivityAttribute(Enum):
+class Attribute(Enum):
     """
     This enum provides a list of Attributes, the DefaultValueEntry and AttractivityAttributes can use.
     If you are interested how exactly these Attributes get used checkout AttractivityPhase.
