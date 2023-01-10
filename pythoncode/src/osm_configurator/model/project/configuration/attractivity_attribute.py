@@ -1,4 +1,4 @@
-import attractivity_attribute_enum
+import pythoncode.src.osm_configurator.model.project.configuration.attractivity_attribute_enum
 
 
 class AttractivityAttribute:
@@ -61,10 +61,10 @@ class AttractivityAttribute:
         :return: true, if changing was successful, else false
         """
         if attribute in self.attractivity_attributes and attribute in self.attribute_factor:
-            # TODO update entry in dictionary
+            self.attractivity_attributes[attribute] = factor
             return True
-        if attribute in self.attractivity_attributes:
-            # TODO add entry to dictionary
+        elif attribute in self.attractivity_attributes:
+            self.attractivity_attributes.update(attribute=factor)
             return True
         return False
 
