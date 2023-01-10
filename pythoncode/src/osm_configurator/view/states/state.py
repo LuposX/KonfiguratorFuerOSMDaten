@@ -6,7 +6,7 @@ import src.osm_configurator.view.states.positioned_frame
 class State(Enum):
     """
     This Class models a State, that holds different Frames that shall be shown on a Window, if it gets activated.
-    As well defining what State is the default on its left and right.
+    As well as defining what State (more specific, what Frames) is the default on its left and right.
     """
 
     MAIN_MENU = 1

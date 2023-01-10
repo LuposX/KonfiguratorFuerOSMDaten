@@ -7,6 +7,7 @@ class MainMenuFrame(TopLevelFrame):
     """
     This Frame shows the MainMenu of the Application.
     From where the User can create a new Project or load one.
+    For Project that are in the default project folder, will be shown in a List to select and open from.
     """
 
     def __init__(self, state_manager, control):

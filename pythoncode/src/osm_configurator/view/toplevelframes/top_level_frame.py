@@ -7,6 +7,7 @@ class TopLevelFrame(ABC):
     """
     This Class describes a Frame, that has a fully developed functionality and is a Frame that can be placed on a
     Window, to be shown.
+    A TopLevelFrame might have Frames below him, that it can manage.
     """
 
     def __init__(self, state_manager, control):

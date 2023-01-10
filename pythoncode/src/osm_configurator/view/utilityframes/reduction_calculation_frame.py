@@ -4,8 +4,9 @@ import src.osm_configurator.control.control_interface
 
 class ReductionCalculationFrame:
     """
-    This Frame provides the User the ability to set the calculation of the reduction on Categories, that will be shown
-    on the ReductionFrame.
+    This Frame provides the User the ability to set how the calculation of the reduction of a category
+    will be done.
+    This is a subframe from the ReductionFrame.
     """
 
     def __init__(self, parent, control):

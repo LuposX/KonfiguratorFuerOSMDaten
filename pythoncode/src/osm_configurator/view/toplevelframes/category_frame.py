@@ -7,7 +7,8 @@ class CategoryFrame(TopLevelFrame):
     """
     This Frame lets the User create Categories, delete them and edit them.
     It shows the name of a Category, as well as their Black- and White-List.
-    Categories also can be turned on and of with Checkboxes.
+    Categories also can be turned on and off with Checkboxes.
+    There will also be Key-Recommendations be shown for the Black- and White-List.
     """
 
     def __init__(self, state_manager, control):

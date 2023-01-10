@@ -2,7 +2,7 @@
 
 class AlertPopUp:
     """
-    This Class creates PopUps, that will Pop Up in front of the GUI. This here specific is an AlertPopUp, so it will
+    This class creates PopUps, that will pop up in front of the GUI. This here specific is an AlertPopUp, so it will
     provide a message and one 'OK' Button, to close the PopUp again.
     """
 
