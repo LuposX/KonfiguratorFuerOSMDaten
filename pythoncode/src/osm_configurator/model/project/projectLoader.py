@@ -1,4 +1,4 @@
-from src.osm_configurator.model.project.configuration.active_project import ActiveProject
+from src.osm_configurator.model.project.active_project import ActiveProject
 
 class ProjectLoader:
 
