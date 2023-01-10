@@ -4,10 +4,10 @@ osm\_configurator.model.project.configuration package
 Submodules
 ----------
 
-osm\_configurator.model.project.configuration.attractivity\_attribute module
-----------------------------------------------------------------------------
+osm\_configurator.model.project.configuration.attractivity\_attribute\_enum module
+----------------------------------------------------------------------------------
 
-.. automodule:: osm_configurator.model.project.configuration.attractivity_attribute
+.. automodule:: osm_configurator.model.project.configuration.attractivity_attribute_enum
    :members:
    :undoc-members:
    :show-inheritance:

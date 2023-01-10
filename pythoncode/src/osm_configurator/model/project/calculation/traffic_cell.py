@@ -1,4 +1,4 @@
-from shapely.geometry import Polygon
+import shapely.geometry
 
 
 class TrafficCell:
@@ -30,7 +30,6 @@ class TrafficCell:
         Getter for the bounding box of the TrafficCell.
 
         Returns:
-            Polygon: A list of coordinates that describe the bounding box of the TrafficCell.
+            shapely.Polygon: A list of coordinates that describe the bounding box of the TrafficCell.
         """
         pass
-

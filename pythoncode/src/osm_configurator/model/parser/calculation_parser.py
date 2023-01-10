@@ -3,10 +3,10 @@ from src.osm_configurator.model.parser.calculation_parser_interface import Calcu
 
 class CalculationParser(CalculationParserInterface):
     __doc__ = CalculationParserInterface.__doc__
-    
+
     def __init__(self):
         """
-        Creates a new instance of the CalculationParser.
+        Creates a new instance of the calculation_parser_interface.CalculationParser.
         """
         pass
     
