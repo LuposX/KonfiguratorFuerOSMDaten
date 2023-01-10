@@ -3,7 +3,6 @@ from enum import Enum, unique
 def _data_config_phase():
     pass
 
-
 def _category_config_phase():
     pass
 
