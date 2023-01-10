@@ -1,3 +1,7 @@
+import src.osm_configurator.model.application.application_interface
+import src.osm_configurator.model.project.calculation.aggregation_method_enum
+
+
 class AggregationController:
     """The AggregationController is responsible for consistently forwarding requests to the model, regarding the aggregation-calculations and the aggregation methods of the currently selected project.
     """
@@ -6,7 +10,7 @@ class AggregationController:
         """Creates a new instance of the AggregationCOntroller, with a association to the model.
 
         Args:
-            model (IApplication): The interface which is used to communicate with the model.
+            model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         pass
 
@@ -15,7 +19,7 @@ class AggregationController:
         This function returns all available aggregation methods, not just the ones that are active in the current project.
 
         Returns:
-            list[AggregationMethod]: The list of the available aggregation methods
+            list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods
         """
         pass
 
@@ -23,7 +27,7 @@ class AggregationController:
         """Checks, whether a aggregation method is active in the currently selected project.
 
         Args:
-            method (AggregationMethod): The aggregation method that is checked for.
+            method (aggregation_method_enum.AggregationMethod): The aggregation method that is checked for.
 
         Returns:
             bool: True, if there is currently a project selected and the given aggregation method is active in it; False otherwise.
@@ -35,7 +39,7 @@ class AggregationController:
         Activates the given method, if active=True and deactivates it otherwise.
 
         Args:
-            method (AggregationMethod): The aggregation method we want to deactivate/activate
+            method (aggregation_method_enum.AggregationMethod): The aggregation method we want to deactivate/activate
             active (bool): True, if we want to activate the given method; False, if we want to deactivate it.
 
         Returns:

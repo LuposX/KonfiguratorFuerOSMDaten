@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
-
+import src.osm_configurator.model.project.calculation.aggregation_method_enum
+import src.osm_configurator.model.project.calculation.calculation_state_enum
+import src.osm_configurator.model.project.calculation.calculation_phase_enum
 
 class IControl(ABC):
     """This class provides a consistent interface for access to the control-package. It is a facade, to make access easy.
@@ -260,7 +262,7 @@ class IControl(ABC):
         This function returns all available aggregation methods, not just the ones that are active in the current project.
 
         Returns:
-            list[AggregationMethod]: The list of the available aggregation methods
+            list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods
         """
         pass
 
@@ -269,7 +271,7 @@ class IControl(ABC):
         """Checks, whether a aggregation method is active in the currently selected project.
 
         Args:
-            method (AggregationMethod): The aggregation method that is checked for.
+            method (aggregation_method_enum.AggregationMethod): The aggregation method that is checked for.
 
         Returns:
             bool: True, if there is currently a project selected and the given aggregation method is active in it; False otherwise.
@@ -282,7 +284,7 @@ class IControl(ABC):
         Activates the given method, if active=True and deactivates it otherwise.
 
         Args:
-            method (AggregationMethod): The aggregation method we want to deactivate/activate
+            method (aggregation_method_enum.AggregationMethod): The aggregation method we want to deactivate/activate
             active (bool): True, if we want to activate the given method; False, if we want to deactivate it.
 
         Returns:
@@ -296,10 +298,10 @@ class IControl(ABC):
         The calculation process is devided in different calculation phases. This function starts the calculation in a given phase.
 
         Args:
-            starting_phase (CalculationPhase): The phase, in which the calculation should start
+            starting_phase (calculation_phase_enum.CalculationPhase): The phase, in which the calculation should start
 
         Returns:
-            CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState
+            calculation_state_enum.CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState
         """
         pass
 
@@ -308,7 +310,7 @@ class IControl(ABC):
         """Gives the current calculation state of the selected project.
 
         Returns:
-            CalculationState: Returns the current state of the calculation. For details see documentation of CalculationState.
+            calculation_state_enum.CalculationState: Returns the current state of the calculation. For details see documentation of CalculationState.
         """
         pass
 
@@ -317,7 +319,7 @@ class IControl(ABC):
         """Returns the calculation phase of the currently selected project.
 
         Returns:
-            CalculationPhase: The phase, that is currently running. NONE, if no phase is currently running.
+            calculation_phase_enum.CalculationPhase: The phase, that is currently running. NONE, if no phase is currently running.
         """
         pass
 

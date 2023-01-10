@@ -1,3 +1,8 @@
+import src.osm_configurator.model.application.application_interface
+import src.osm_configurator.model.project.calculation.calculation_state_enum
+import src.osm_configurator.model.project.calculation.calculation_phase_enum
+
+
 class CalculationController:
     """The CalculationController is responsible for forwarding requests to the model, regarding calculations.
     It may be used to gather information and to control the calculation-process of the currently selected project.
@@ -7,7 +12,7 @@ class CalculationController:
         """Creates a new instance of the CalculationController, with a association to the model.
 
         Args:
-            model (IApplication): The interface which is used to communicate with the model.
+            model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         pass
 
@@ -16,10 +21,10 @@ class CalculationController:
         The calculation process is devided in different calculation phases. This function starts the calculation in a given phase.
 
         Args:
-            starting_phase (CalculationPhase): The phase, in which the calculation should start
+            starting_phase (calculation_phase_enum.CalculationPhase): The phase, in which the calculation should start
 
         Returns:
-            CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState
+            calculation_state_enum.CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState
         """
         pass
 
@@ -27,7 +32,7 @@ class CalculationController:
         """Gives the current calculation state of the selected project.
 
         Returns:
-            CalculationState: Returns the current state of the calculation. For details see documentation of CalculationState.
+            calculation_state_enum.CalculationState: Returns the current state of the calculation. For details see documentation of CalculationState.
         """
         pass
 
@@ -35,7 +40,7 @@ class CalculationController:
         """Returns the calculation phase of the currently selected project.
 
         Returns:
-            CalculationPhase: The phase, that is currently running. NONE, if no phase is currently running.
+            calculation_phase_enum.CalculationPhase: The phase, that is currently running. NONE, if no phase is currently running.
         """
         pass
 
