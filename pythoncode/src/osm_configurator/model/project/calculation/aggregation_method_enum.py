@@ -1,7 +1,7 @@
 from enum import Enum, unique
 from typing import Tuple, Callable
 from geopandas import GeoDataFrame
-from src.osm_configurator.model.project.configuration.attractivity_attribute_enum import AttractivityAttribute
+from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 
 def _sum(data, attractivity):
