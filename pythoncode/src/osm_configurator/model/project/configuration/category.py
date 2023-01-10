@@ -1,3 +1,8 @@
+import pythoncode.src.osm_configurator.model.project.configuration.calculation_method_of_area as CMA
+import pythoncode.src.osm_configurator.model.project.configuration.attractivity_attribute as AttractivityAttribute
+import pythoncode.src.osm_configurator.model.project.configuration.default_value_entry as DefaultValueEntry
+
+
 class Category:
     """
     Models a category containing all its values and attributes
@@ -8,6 +13,12 @@ class Category:
     whitelist = []
     blacklist = []
     category_name = "Category Name"
+    calculate_area = False
+    calculate_floor_area = False
+    calculation_method_of_area = CMA.CalculationMethodOfArea  # TODO: Vervollständigen durch Methoden im Enum
+    strictly_use_default_values = False
+    attractivity_attributes = []
+    default_value_list = []
 
     def __init__(self, whitelist, blacklist, category_name):
         """
@@ -125,3 +136,196 @@ class Category:
             return True
         return False
 
+    def get_calculate_area(self):
+        """
+
+        Returns:
+             bool: value of calculate_area
+        """
+        return self.calculate_area
+
+    def set_calculate_area(self, new_calculate_area):
+        """
+        Overwrites current calculate_area with the given value
+
+        Args:
+            new_calculate_area (bool): new value that will overwrite the existing value
+        """
+        self.calculate_area = new_calculate_area
+
+    def get_calculation_method_of_area(self):
+        """
+
+        Returns:
+            CalculationMethodOfArea: the calculation method of the area
+        """
+        return self.calculation_method_of_area
+
+    def set_calculation_method_of_area(self, new_calculation_method):
+        """
+        Overwrites the already existing method to calculate the area
+
+        Args
+            new_calculation_method (CalculationMethodOfArea): new method that will overwrite the existing method
+        :return:
+        """
+        self.calculation_method_of_area = new_calculation_method
+        # TODO: Check if new-calculation-method is actually from CalculationMethodOfArea
+        return
+
+    def get_calculate_floor_area(self):
+        """
+
+        Returns:
+             bool: Value of calculate_floor_area
+        """
+        return self.calculate_floor_area
+
+    def set_calculate_floor_area(self, new_calculate_floor_area):
+        """
+        Overwrites the existing instance of calculate_floor_area
+
+        Args:
+            new_calculate_floor_area (bool): new value for calculate_floor_are
+
+        Returns:
+            bool: True, if the overwriting process was successful, else false
+        """
+        if self.calculate_floor_area != new_calculate_floor_area:
+            self.calculate_floor_area = new_calculate_floor_area
+            return True
+        return False
+
+    def get_strictly_use_default_values(self):
+        """
+
+        Returns:
+             bool: value of strictly_use_default_values
+        """
+        return self.strictly_use_default_values
+
+    def set_strictly_use_default_values(self, new_strictly_use_default_values):
+        """
+        Overwrites the already existing value of strictly_use_default_values
+
+        Args:
+            new_strictly_use_default_values (bool): new value for strictly_use_default_values
+
+        Return:
+            True if the overwriting process was successful, else False
+        """
+        if self.strictly_use_default_values != new_strictly_use_default_values:
+            self.strictly_use_default_values = new_strictly_use_default_values
+            return True
+        return False
+
+    def get_attractivity_attributes(self):
+        """
+        Returns:
+            List<AttractivityAttributes>: List of all used attractivity attributes
+        """
+        return self.attractivity_attributes
+
+    def add_attractivity_attribute(self, new_attractivity_attribute):
+        """
+        Adds a new attractivity attribute to the list
+
+        Args:
+            new_attractivity_attribute (AttractivityAttribute): new attractivityAttribute that will be added
+
+        Returns:
+            bool: True, if the attribute was added successfully, else False
+        """
+        if new_attractivity_attribute not in self.attractivity_attributes:
+            self.attractivity_attributes.append(new_attractivity_attribute)
+            return True
+        return False
+
+    def remove_attractivity_attribute(self, attractivity_attribute):
+        """
+        Removes an already existing attribute from the list
+
+        Args:
+            attractivity_attribute (AttractivityAttribute): attractivity attribute that will be removed from the list
+
+        Returns:
+            True, if the element was removed, else False
+        """
+        if attractivity_attribute in self.attractivity_attributes:
+            self.attractivity_attributes.remove(attractivity_attribute)
+            return True
+        return False
+
+    def get_default_value_list(self):
+        """
+
+        Returns:
+            List<DefaultValueEntry>: List of all used default values
+        """
+        return self.default_value_list
+
+    def add_default_value_entry(self, new_default_value_entry):
+        """
+        Adds a new value to the default_value_entry list
+
+        Args:
+            new_default_value_entry (DefaultValueEntry): element to add
+
+        Returns:
+            bool: True, if element was added successfully, else False
+        """
+        if new_default_value_entry not in self.default_value_list:
+            self.default_value_list.append(new_default_value_entry)
+            return True
+        return False
+
+    def remove_default_value_entry(self, default_value_entry):
+        """
+        Removes an already existing element from the default_value_entry list
+
+        Args:
+            default_value_entry (DefaultValueEntry): value that will be removed
+
+        Returns:
+            bool: True, if the element was removed successfully, else False
+        """
+        if default_value_entry in self.default_value_list:
+            self.default_value_list.remove(default_value_entry)
+            return True
+        return False
+
+    def move_default_value_entry_up(self, default_value_entry):
+        """
+        Moves an already existing default value from the list one element up
+
+        Args:
+            default_value_entry (DefaultValueEntry): element from the list, that will be incremented by one
+
+        Returns:
+            bool: True, if the change was successful, else False
+        """
+        if (default_value_entry not in self.default_value_list) \
+                or self.default_value_list.index(default_value_entry) <= 0:
+            return False
+        index = self.default_value_list.index(default_value_entry)
+        self.default_value_list[index - 1], self.default_value_list[index] \
+            = self.default_value_list[index], self.default_value_list[index - 1]
+        return True
+
+    def move_default_value_entry_down(self, default_value_entry):
+        """
+        Moves an already existing default value from list one element down
+
+        Args:
+            default_value_entry (DefaultValueEntry): element from the list, that will be decremented by one
+
+        Returns:
+            bool: True, if the change was successful, else false
+        """
+        if (default_value_entry not in self.default_value_list) \
+                or self.default_value_list.index(default_value_entry) <= 0:
+            return False
+        index = self.default_value_list.index(default_value_entry)
+        self.default_value_list[index + 1], self.default_value_list[index] \
+            = self.default_value_list[index], self.default_value_list[index + 1]
+        return True
