@@ -4,7 +4,8 @@ import src.osm_configurator.control.control_interface
 
 class ReductionDefaultValueFrame:
     """
-    This Frame lets the User edit Default Values on Tags for Categories, that the Calculation can later use.
+    This Frame shows a List of Tags, in a priority order, that can be expanded, by adding or removing tags.
+    Those Tags can be given default Values on attributes, so those can be potentially be used in the calculation.
     """
 
     def __init__(self, parent, control):

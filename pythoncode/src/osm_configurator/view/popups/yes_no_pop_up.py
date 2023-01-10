@@ -2,9 +2,9 @@ from typing import Callable
 
 class YesNoPopUp:
     """
-    This Class creates PopUps, that will Pop Up in front of the GUI. This specific one is a YesNoPopUp, so it will
+    This class creates PopUps, that will pop up in front of the GUI. This specific one is a YesNoPopUp, so it will
     provide a message and an 'OK' and an 'Cancel' Button. Pressing one of the Buttons will send a message back to the
-    Creater of the PopUp, giving it the Answer on what had been pressed and closing den Pop Up afterwards.
+    Creater of the PopUp, giving it the Answer on what had been pressed and then closing the PopUp afterwards.
     """
 
     def __init__(self, message, func):
