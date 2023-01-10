@@ -1,3 +1,7 @@
+import src.osm_configurator.model.application.application_interface
+import pathlib
+
+
 class SettingsController:
     """The SettingsController is responsible for forwarding requests to the model, regarding the settings of the application and the currently selcted project.
     """
@@ -6,7 +10,7 @@ class SettingsController:
         """Creates a new instance of the SettingsController, with a association to the model.
 
         Args:
-            model (IApplication): The interface which is used to communicate with the model.
+            model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         pass
 
@@ -53,7 +57,7 @@ class SettingsController:
         The project default folder is the folder, where projects are stored by default.
 
         Returns:
-            Path: The path to the project default folder
+            pathlib.Path: The path to the project default folder
         """
         pass
 
@@ -62,7 +66,7 @@ class SettingsController:
         The project default folder is the folder, where projects are stored by default.
 
         Args:
-            default_folder (Path): The path to the new project default folder
+            default_folder (pathlib.Path): The path to the new project default folder
 
         Returns:
             bool: True, if the default folder was set successfully; False if an error accured: The path is not valid or occupied.

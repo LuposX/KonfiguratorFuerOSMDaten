@@ -1,3 +1,8 @@
+import src.osm_configurator.model.application.application_interface
+import src.osm_configurator.model.project.configuration.cut_out_mode_enum
+import pathlib
+
+
 class CutOutController:
     """The CutOutController is responsible for consistently forwarding requests to the model, concerning the cut-out filter of the currently selected project.
     """
@@ -6,7 +11,7 @@ class CutOutController:
         """Creates a new instance of the CutOutController, with a association to the model.
 
         Args:
-            model (IApplication): The interface which is used to communicate with the model.
+            model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         pass
 
@@ -14,7 +19,7 @@ class CutOutController:
         """Gives the method of cutting out of the geofilter of the currently selected project.
 
         Returns:
-            CutOutMode: The cut-out-mode of the currently selected project.
+            cut_out_mode_enum.CutOutMode: The cut-out-mode of the currently selected project.
         """
         pass
 
@@ -22,7 +27,7 @@ class CutOutController:
         """Sets the method of cutting out of the geofilter of the currently selected project.
 
         Args:
-            mode (CutOutMode): The mode, to be set
+            mode (cut_out_mode_enum.CutOutMode): The mode, to be set
 
         Returns:
             bool: True, if the CutOutMode was set successfully; False, if an error accured or no project is currently selected.
@@ -34,7 +39,7 @@ class CutOutController:
         This file is later used to calculate the geofilter.
 
         Args:
-            path (Path): The path to the file containing the cut-out-geometries
+            path (pathlib.Path): The path to the file containing the cut-out-geometries
 
         Returns:
             bool: True, if the reference was set successfully; False, if an error accured. An error accures, if no project is currently selected or if the given path is not valid or occupied.
@@ -45,6 +50,6 @@ class CutOutController:
         """Gets the reference to the cut-out file of the currently selected project.
 
         Returns:
-            Path: The current reference to the cut-out file.
+            pathlib.Path: The current reference to the cut-out file.
         """ 
         pass

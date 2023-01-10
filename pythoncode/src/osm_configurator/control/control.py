@@ -1,4 +1,5 @@
 from src.osm_configurator.control.control_interface import IControl
+import src.osm_configurator.model.application.application_interface
 
 
 class Control(IControl):
@@ -12,7 +13,7 @@ class Control(IControl):
         """Creates a new instance of Control, with a association to the model.
 
         Args:
-            model (IApplication): The interface which is used to communicate with the model.
+            model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         pass
 

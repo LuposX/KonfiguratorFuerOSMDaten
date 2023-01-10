@@ -1,4 +1,8 @@
-from src.osm_configurator.control.control import Control
+import src.osm_configurator.model.application.application_interface
+import src.osm_configurator.model.application.passive_project
+import src.osm_configurator.model.project.config_phase_enum
+import pathlib
+
 
 
 class ProjectController:
@@ -10,7 +14,7 @@ class ProjectController:
         """Creates a new instance of the ProjectController, with a association to the model.
 
         Args:
-            model (IApplication): The interface which is used to communicate with the model.
+            model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         pass
 
@@ -18,7 +22,7 @@ class ProjectController:
         """Returns the list of (passive) projects, which are in the default project folder of the application.
 
         Returns:
-            list[PassiveProject]: The list of passive projects in the default project folder.
+            list[passive_project.PassiveProject]: The list of passive projects in the default project folder.
         """
         pass
 
@@ -27,7 +31,7 @@ class ProjectController:
         All relevant data of a project are verified and loaded in memory. All coming project-refering calls will be directed to the given project.
 
         Args:
-            path (Path): the path to the project folder of the project, to be loaded.
+            path (pathlib.Path): the path to the project folder of the project, to be loaded.
 
         Returns:
             bool: True, if the project was loaded succesfully; False if an error accured, while trying to load the project. An error accures, if the path is not pointing to a valid project folder or if the project has corrupted files.
@@ -41,7 +45,7 @@ class ProjectController:
         Args:
             name (str): The name of the to-be-created project, may not contain any line-breaks.
             description (str): The description of the to-be-created project. May contain line-breaks.
-            destination (Path): The path to the location, where the projectfolder of the project should be created.
+            destination (pathlib.Path): The path to the location, where the projectfolder of the project should be created.
 
         Returns:
             bool: True, if the project was created successfully; False if an error accured. An error accures, if the name of the project is not valid, if the destination-path is not valid or if the destination-location is already occupied.
@@ -52,7 +56,7 @@ class ProjectController:
         """Deletes a project out of the default project folder.
 
         Args:
-            project (PassiveProject): The project, that is going to be deleted.
+            project (passive_project.PassiveProject): The project, that is going to be deleted.
 
         Returns:
             bool: True, if the (passive) project has been deleted successfully; False otherwise: The project does not exist or the application has not the right permissions to delete the project.
@@ -72,7 +76,7 @@ class ProjectController:
         """Stores the current configuration phase in the model.
 
         Args:
-            config_phase (ConfigPhase): The new configuration phase.
+            config_phase (config_phase_enum.ConfigPhase): The new configuration phase.
 
         Returns:
             bool: True, if setting the configuration phase was successfull; False, otherwise.
@@ -83,7 +87,7 @@ class ProjectController:
         """Returns the configuration phase, that is currently stored in the model.
 
         Returns:
-            ConfigPhase: The configuration phase, that is currently stored in the model.
+            config_phase_enum.ConfigPhase: The configuration phase, that is currently stored in the model.
         """
         pass
 
