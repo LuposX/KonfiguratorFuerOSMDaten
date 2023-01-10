@@ -12,6 +12,18 @@ class DefaultValueListEntry:
     tag = "Tag"  # Tag of the list
     attributeDefaultValue = {}  # Dictionary, where each attribute gets mapped to a certain factor
 
+    def __init__(self, tag, attribute_default_values):
+        """
+        Constructor of the class
+
+        Args:
+            tag (str): Tag of the List
+            attribute_default_values ({attractivity_attribute_enum, double}):
+                dictionary holding the existing key-value pairs
+        """
+        self.tag = tag
+        self.attributeDefaultValue = attribute_default_values
+
     def get_default_value_entry_tag(self):
         """
         Gives the Tag of the class
