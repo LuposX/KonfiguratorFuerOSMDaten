@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+import src.osm_configurator.model.project.calculation.calculation_state_enum
+import src.osm_configurator.model.project.configuration.configuration_manager
 
 
 class ICalculationPhase(ABC):
@@ -17,9 +19,9 @@ class ICalculationPhase(ABC):
         3. Store the results of this computation phase, so the following execution phases can read it.\n
 
         Args:
-            configuration_manager (ConfigurationManager): The ConfigurationManager, where the information about the configuration of the configuration is stored.
+            configuration_manager (configuration_manager.ConfigurationManager): The ConfigurationManager, where the information about the configuration of the configuration is stored.
 
         Returns:
-            CalculationState: The state of the calculation, after this phase finished it's execution or failed trying so.
+            calculation_state_enum.CalculationState: The state of the calculation, after this phase finished it's execution or failed trying so.
         """
         pass

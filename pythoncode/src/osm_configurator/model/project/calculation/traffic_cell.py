@@ -10,7 +10,7 @@ class TrafficCell:
         The "Karlsruher Schloss" is a trafficCell with the name="Karlsruher Schloss" and its bounding box being
         a polygon of coordinates(latitude, longitude) which entail the area of the "Karlsruher Schloss".
     """
-    def __init__(self) -> None:
+    def __init__(self):
         """
         Creates a new instance of the TrafficCell.
         """
