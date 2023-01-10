@@ -1,4 +1,5 @@
-from src.osm_configurator.model.project.active_project import ActiveProject
+import src.osm_configurator.model.project.active_project
+import pathlib
 
 class ProjectSaver:
     def __init__(self, active_project):
@@ -7,7 +8,7 @@ class ProjectSaver:
         loaded if not newly created.
 
         Args:
-            active_project (ActiveProject): The project the ProjectSaver shall load.
+            active_project (active_project.ActiveProject): The project the ProjectSaver shall load.
         """
         pass
 
