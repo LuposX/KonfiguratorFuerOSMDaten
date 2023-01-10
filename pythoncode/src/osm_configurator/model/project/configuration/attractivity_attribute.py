@@ -15,9 +15,11 @@ class AttractivityAttribute:
     def __init__(self, attractivity_attributes, attribute_factor, base_factor):
         """
         Creates a new instance of "AttractivityAttribute"
-        :param attractivity_attributes: list of the enum-elements
-        :param attribute_factor: list of the factors used for calculation
-        :param base_factor: factor used for calculation if the given attribute has no factor
+
+        Args:
+            attractivity_attributes: list of the enum-elements
+            attribute_factor: list of the factors used for calculation
+            base_factor: factor used for calculation if the given attribute has no factor
         """
         self.attractivity_attributes = attractivity_attributes
         self.attribute_factor = attribute_factor
@@ -25,15 +27,20 @@ class AttractivityAttribute:
 
     def get_attractivity_attribute(self):
         """
-        :return: list of attractivity_attributes
+        Returns:
+            list: list of attractivity_attributes
         """
         return self.attractivity_attributes
 
     def set_attractivity_attribute(self, name):
         """
         Adds a new attractivity attribute with the given base factor to the list of attributes
-        :param name: name of the attribute that will be added
-        :return: true, if adding was successful, else false
+
+        Args:
+            name (str): name of the attribute that will be added
+
+        Returns:
+            bool: true, if adding was successful, else false
         """
 
         if name not in self.attractivity_attributes:
@@ -44,8 +51,12 @@ class AttractivityAttribute:
     def get_attribute_factor(self, attribute):
         """
         Returns the factor of a given attribute
-        :param attribute: defines the attribute whose factor will be searched for
-        :return: the given factor if the attribute exists, else -1
+
+        Args:
+            attribute (attractivity_attribute_enum): attribute whose factor will be searched for
+
+        Returns:
+             double: the given factor if the attribute exists, else -1
         """
         if attribute in self.attribute_factor and attribute in self.attractivity_attributes:
             return self.base_factor
@@ -56,9 +67,13 @@ class AttractivityAttribute:
     def set_attribute_factor(self, attribute, factor):
         """
         Changes the factor of the given attribute
-        :param attribute: is the attribute whose factor will be changed
-        :param factor: is the new factor
-        :return: true, if changing was successful, else false
+
+        Args:
+            attribute (attractivity_attribute_enum): is the attribute whose factor will be changed
+            factor (double) : is the new factor
+
+        Returns:
+            bool: true, if changing was successful, else false
         """
         if attribute in self.attractivity_attributes and attribute in self.attribute_factor:
             self.attractivity_attributes[attribute] = factor
@@ -70,13 +85,17 @@ class AttractivityAttribute:
 
     def get_base_factor(self):
         """
-        :return: the base factor
+        Returns:
+             double: the base factor
         """
         return self.base_factor
 
     def set_base_factor(self, new_base_factor):
         """
-        :param new_base_factor: new value for the already existing base factor
+        Args:
+            new_base_factor (double): new value for the already existing base factor
+
+        Returns:
+            void
         """
         self.base_factor = new_base_factor
-        return
