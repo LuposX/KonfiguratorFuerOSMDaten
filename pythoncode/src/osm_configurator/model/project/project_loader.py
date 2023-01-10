@@ -1,7 +1,6 @@
 from src.osm_configurator.model.project.active_project import ActiveProject
 
 class ProjectLoader:
-
     def __init__(self, active_project):
         """
         Creates a new instance of the ProjectLoader. Therefore, it gets the current active project, which should be
