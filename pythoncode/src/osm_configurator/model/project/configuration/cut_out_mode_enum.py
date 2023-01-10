@@ -8,5 +8,5 @@ def _total_coverage_requiered():
     pass
 
 @unique
-class AggregationMethod(Enum):
+class CutOutMode(Enum):
     pass
