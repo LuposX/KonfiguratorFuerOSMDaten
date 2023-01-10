@@ -5,9 +5,12 @@ class ConfigurationManager:
     It also makes this information available to the calculation
     """
 
-    def __init__(self):
+    def __init__(self, active_project_path):
         """
         Creates a new instance of the ConfigurationManager.
+
+        Args:
+            active_project_path (pathLib.Path): The path pointing towards the project folder.
         """
         pass
 
@@ -51,5 +54,14 @@ class ConfigurationManager:
         pass
 
     def merge_categories(self, category_input_list):
+        pass
+
+    def get_active_project(self):
+        """
+        This method gives back the active project.
+
+        Returns:
+            pathlib.Path: The path pointing towards the current project folder.
+        """
         pass
 

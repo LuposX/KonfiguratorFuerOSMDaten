@@ -1,4 +1,5 @@
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
 
 class ActiveProject:
 
@@ -25,6 +26,9 @@ class ActiveProject:
         Args:
             name (str): The name of the project.
             description (str): A description of the project.
+
+        Returns:
+            bool: True if creating the project works, otherwise false.
         """
         pass
 
@@ -43,7 +47,7 @@ class ActiveProject:
         This method is to start the calculation after the configuration is finished.
 
         Returns:
-            bool: True if the configuration is complete so the calculation can be started, otherwise false.
+            CalculationState: True if the configuration is complete so the calculation can be started, otherwise false.
         """
         pass
 
