@@ -1,16 +1,14 @@
 from abc import ABC, abstractmethod
 
-
 class ApplicationInterface(ABC):
     """
-    The ApplicationInterface job, is to...
-
+    The ApplicationInterface job, is to provide the functionality the application needs.
     """
 
     @abstractmethod
     def create_project(self, name, description, destination):
         """
-        ...
+        This method creates a new project with a name, a description and saves it at a given destination.
 
         Args:
             name (str): The name of the new project.
@@ -18,19 +16,20 @@ class ApplicationInterface(ABC):
             destination (Path): The path, where the new project should be saved.
 
         Returns:
-            bool: true when create_project completed successfully, otherwise false.
+            bool: True if create_project completed successfully, otherwise false.
         """
         pass
 
     @abstractmethod
     def load_project(self, path):
         """
-        ...
+        This method loads an existing project. This project can be internal or external ones. The path is pointing
+        towards the folder, where the project is saved.
 
         Args:
             path (str): The path of the new project.
         Returns:
-            bool: true when loading the project is working, otherwise false.
+            bool: True if loading the project is working, otherwise false.
         """
         pass
 

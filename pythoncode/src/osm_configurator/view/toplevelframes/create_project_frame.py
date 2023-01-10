@@ -5,8 +5,9 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 class CreateProjectFrame(TopLevelFrame):
     """
-    This Frame shows the user how to create a new Project.
-    As well as providing the feature to create the Project the user has defined.
+    This Frame shows the user the Project creation page.
+    Here can be a name and a description and a path for storing the project be set.
+    The user can also cancel a creation.
     """
 
     def __init__(self, state_manager, control):

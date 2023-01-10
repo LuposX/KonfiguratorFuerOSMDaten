@@ -3,7 +3,7 @@
 
 class TagListFrame:
     """
-    This Frame shows a TextBox with a List of Text, that can be edited.
+    This Frame shows a TextBox with a List of Strings, that can be edited.
     """
 
     def __init__(self, entries):

@@ -21,4 +21,8 @@ def _calculation_config_phase():
 
 @unique
 class ConfigPhase(Enum):
+    """
+    This enum stores the different phases of the configuration and is used to restores the last step the user
+    was working on.
+    """
     pass

@@ -1,5 +1,9 @@
 class RecommenderSystem:
 
+    """
+    This class job is to provide recommendations to different classes.
+    """
+
     def __init__(self):
         """
         Creates a new instance of the RecommenderSystem.
@@ -14,7 +18,7 @@ class RecommenderSystem:
             input (str): The input from which to generate suggestions.
 
         Returns:
-            List<String>: Returns a list of strings containing the recommendations depending on the input.
+            List<str>: Returns a list of strings containing the recommendations depending on the input.
         """
         pass
 

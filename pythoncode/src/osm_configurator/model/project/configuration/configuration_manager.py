@@ -1,5 +1,10 @@
 class ConfigurationManager:
 
+    """
+    This class job is to manage the configurations of the OSM data, aggregation, cut-out and categories.
+    It also makes this information available to the calculation
+    """
+
     def __init__(self):
         """
         Creates a new instance of the ConfigurationManager.
