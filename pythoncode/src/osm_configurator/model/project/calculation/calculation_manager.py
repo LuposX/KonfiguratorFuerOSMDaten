@@ -4,23 +4,20 @@ from src.osm_configurator.model.project.calculation.calculation_phase_enum impor
 
 class CalculationManager:
     """
-    The CalculationManager manages Calculation of the Project.
+    The CalculationManager manages the calculation of the Project. The Calculation are distributed on the calculation phases, which are also managed by the Calculation Controller.
     """
 
-    def __init__(self, starting_point, configuration_manager):
-        """
-        Gets called when we first create an object of this class, it saves all information it needs for
-        starting a calculation.
+    def __init__(self, configuration_manager):
+        """Gets called when we first create an object of this class, it saves all information it needs for
+        managing the calculations.
 
         Args:
-            starting_point (CalculationPhase): Describes in which calculation-phase we want to start the calculation.
             configuration_manager (ConfigurationManager): Saves all information required to configure the calculation.
         """
         pass
 
     def cancel_calculation(self):
-        """
-        This method will cancel an ongoing calculation.
+        """This method will cancel an ongoing calculation.
         A calculation consists of an :class:`<model.CalculationPhase>`, that will be interrupted.
 
         Returns:
@@ -28,18 +25,25 @@ class CalculationManager:
         """
         pass
 
-    def _validate_starting_point(self):
-        """
-        Validates the correctness of the Staring Point.
+    def _validate_starting_point(self, starting_point):
+        """Validates the correctness of the Staring Point.
+
+        Args:
+            starting_point (CalculationPhase): The starting point that is observed
 
         Returns:
-            bool: If true then the starting_point is valid, this means every calculation up to this point exist
-            and are saved in the project.
+            CalculationState: The state of the calculation, after the starting point was verified.
         """
         pass
 
-    def _start_calculation(self):
-        """
-        Starts the calculation.
+    def start_calculation(self, starting_point):
+        """Starts the calculation.
+        Distributes the calculations to the calculation phases.
+
+        Args:
+            starting_point (CalculationPhase): The starting phase of the calculation. The calculations wll start beginning in this phase
+
+        Returns:
+            CalculationState: The state of the calculation, after trying to start the calculations.
         """
         pass
