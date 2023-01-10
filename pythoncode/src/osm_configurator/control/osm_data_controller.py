@@ -29,3 +29,15 @@ class OSMDataController:
             Path: The path to the osm-data of the currently selected project.
         """
         pass
+
+    def download_osm_data(self, path):
+        """Downloads osm-data
+        The osm-data to be downloaded are defined by a geojson-file. The data is downloaded and the reference to the correct osm-files is stored.
+
+        Args:
+            path (Path): The path to the above mentioned gejson-file.
+
+        Returns:
+            boolean: True on success, False otherwise
+        """
+        pass
