@@ -1,7 +1,3 @@
-from abc import ABC
-from src.osm_configurator.model.application.application_interface import ApplicationInterface
-
-
 class PassiveProject:
 
     def __init__(self):

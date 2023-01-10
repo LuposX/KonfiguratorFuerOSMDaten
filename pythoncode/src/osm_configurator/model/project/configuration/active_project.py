@@ -1,11 +1,24 @@
-class ConfigurationManager:
+class ActiveProject:
 
-    def __init__(self):
+    def __init__(self, project_folder, is_newly_created):
         """
-        Creates a new instance of the ConfigurationManager.
+        Creates a new instance of the ActiveProject.
         """
         pass
 
+    def create(self, name, description):
+        pass
+
+    def get_last_step(self):
+        pass
+
+    def start_calculation(self):
+        pass
+
+    def get_project_path(self):
+        pass
+
+##From here on there are only methods to hand off
     def get_osm_data(self):
         pass
 
@@ -47,4 +60,3 @@ class ConfigurationManager:
 
     def merge_categories(self, category_input_list):
         pass
-
