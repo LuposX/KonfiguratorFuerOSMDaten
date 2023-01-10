@@ -1,4 +1,5 @@
 from pathlib import Path
+import src.osm_configurator.model.project
 
 
 class Export:
@@ -11,7 +12,7 @@ class Export:
         This method creates a new Export class which provides different export features based on the given project.
 
         Args:
-            project (HERE SHOULD BE SOMETHING): The project to make exports from
+            project (project.ActiveProject): The project to make exports from
         """
         pass
 

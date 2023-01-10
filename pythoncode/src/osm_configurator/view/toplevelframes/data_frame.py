@@ -8,6 +8,7 @@ class DataFrame(TopLevelFrame):
     This Frame lets the user edit various Data as follows:
     - Selecting the OSM-Data
     - Selecting the Cut-Out, also able to select, if Buildings on the edge shall be included or not
+    - A download button to download the OSM data after a Cut-Out was selected
     - Copy in Category Configurations
     """
 

@@ -1,3 +1,6 @@
+from pathlib import Path
+
+
 class ProjectSettings:
     """
     This class saves all the different settings of a project and provides methods to view and change them.
@@ -8,9 +11,9 @@ class ProjectSettings:
         This method creates a new ProjectSettings class with the given settings.
 
         Args:
-            location (str): The location, the project is stored
+            location (Path): The location, the project is stored
             project_name (str): The name of the project
-            description list[str]: A description of the project
+            description (str): A description of the project
         """
         pass
 
@@ -61,7 +64,7 @@ class ProjectSettings:
         This method changes the description of the project.
 
         Args:
-            new_description list[str]: The new description of the project
+            new_description (str): The new description of the project
 
         Returns:
             bool: true if change successful, false else
@@ -73,6 +76,6 @@ class ProjectSettings:
         This method returns the description of the project.
 
         Returns:
-            list[str]: The description of the project
+            (str): The description of the project
         """
         pass
