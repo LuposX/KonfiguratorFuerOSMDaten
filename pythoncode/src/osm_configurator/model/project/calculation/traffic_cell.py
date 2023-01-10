@@ -21,7 +21,7 @@ class TrafficCell:
         Getter for the name of the TrafficCell.
 
         Returns:
-            String: The name of the TrafficCell.
+            str: The name of the TrafficCell.
         """
         pass
 
