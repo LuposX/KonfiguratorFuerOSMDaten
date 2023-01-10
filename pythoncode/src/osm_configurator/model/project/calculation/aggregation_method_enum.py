@@ -55,7 +55,7 @@ class AggregationMethod(Enum):
 
         Args:
             data (geopandas.GeoDataFrame): The data on which we want to execute the function on, should be GeoDataFrame of osm elements.
-            attractivity_name (String): This is the name of the attractivity from over which we want to call the function,
+            attractivity_name (str): This is the name of the attractivity from over which we want to call the function,
                                         the attractivity_name should be the name of a column in the data GeoDataFrame
 
         Returns:
