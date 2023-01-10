@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
-class ApplicationInterface(ABC):
+class IApplication(ABC):
     """
-    The ApplicationInterface job, is to provide the functionality the application needs.
+    The IApplication job, is to provide the functionality the application needs.
     """
 
     @abstractmethod
