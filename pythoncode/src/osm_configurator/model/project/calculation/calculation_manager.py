@@ -1,5 +1,5 @@
-from src.osm_configurator.model.project.calculation.configuration_manager import ConfigurationManager
-from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
+import src.osm_configurator.model.project.calculation.configuration_manager
+import src.osm_configurator.model.project.calculation.calculation_phase_enum
 
 
 class CalculationManager:
@@ -12,7 +12,7 @@ class CalculationManager:
         managing the calculations.
 
         Args:
-            configuration_manager (ConfigurationManager): Saves all information required to configure the calculation.
+            configuration_manager (configuration_manager.ConfigurationManager): Saves all information required to configure the calculation.
         """
         pass
 
@@ -29,10 +29,10 @@ class CalculationManager:
         """Validates the correctness of the Staring Point.
 
         Args:
-            starting_point (CalculationPhase): The starting point that is observed
+            starting_point (calculation_phase_enum.CalculationPhase): The starting point that is observed
 
         Returns:
-            CalculationState: The state of the calculation, after the starting point was verified.
+            calculation_phase_enum.CalculationState: The state of the calculation, after the starting point was verified.
         """
         pass
 
@@ -41,9 +41,9 @@ class CalculationManager:
         Distributes the calculations to the calculation phases.
 
         Args:
-            starting_point (CalculationPhase): The starting phase of the calculation. The calculations wll start beginning in this phase
+            starting_point (calculation_phase_enum.CalculationPhase): The starting phase of the calculation. The calculations wll start beginning in this phase
 
         Returns:
-            CalculationState: The state of the calculation, after trying to start the calculations.
+            calculation_phase_enum.CalculationState: The state of the calculation, after trying to start the calculations.
         """
         pass
