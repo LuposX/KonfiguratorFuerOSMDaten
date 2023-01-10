@@ -102,3 +102,39 @@ class ActiveProject:
 
     def merge_categories(self, category_input_list):
         pass
+
+    def create_map(self, cut_out):
+        pass
+
+    def create_boxplot(self, data):
+        pass
+
+    def get_location(self):
+        pass
+
+    def change_location(self, new_location):
+        pass
+
+    def change_name(self, new_name):
+        pass
+
+    def get_name(self):
+        pass
+
+    def change_description(self, new_description):
+        pass
+
+    def get_description(self):
+        pass
+
+    def export_project(self, path):
+        pass
+
+    def export_configuration(self, path):
+        pass
+
+    def export_calculation(self, path):
+        pass
+
+    def export_map(self, path):
+        pass

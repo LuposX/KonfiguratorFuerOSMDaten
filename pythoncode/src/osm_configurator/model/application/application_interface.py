@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class IApplication(ABC):
     """
     The IApplication job, is to provide the functionality the application needs.
@@ -92,3 +93,52 @@ class IApplication(ABC):
     @abstractmethod
     def merge_categories(self, category_input_list):
         pass
+
+    @abstractmethod
+    def create_map(self, cut_out):
+        pass
+
+    @abstractmethod
+    def create_boxplot(self, data):
+        pass
+
+    @abstractmethod
+    def get_location(self):
+        pass
+
+    @abstractmethod
+    def change_location(self, new_location):
+        pass
+
+    @abstractmethod
+    def change_name(self, new_name):
+        pass
+
+    @abstractmethod
+    def get_name(self):
+        pass
+
+    @abstractmethod
+    def change_description(self, new_description):
+        pass
+
+    @abstractmethod
+    def get_description(self):
+        pass
+
+    @abstractmethod
+    def export_project(self, path):
+        pass
+
+    @abstractmethod
+    def export_configuration(self, path):
+        pass
+
+    @abstractmethod
+    def export_calculation(self, path):
+        pass
+
+    @abstractmethod
+    def export_map(self, path):
+        pass
+

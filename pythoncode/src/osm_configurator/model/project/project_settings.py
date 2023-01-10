@@ -11,7 +11,7 @@ class ProjectSettings:
         This method creates a new ProjectSettings class with the given settings.
 
         Args:
-            location (Path): The location, the project is stored
+            location (pathlib.Path): The location, the project is stored
             project_name (str): The name of the project
             description (str): A description of the project
         """
