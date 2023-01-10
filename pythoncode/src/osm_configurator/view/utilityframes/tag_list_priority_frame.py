@@ -2,7 +2,8 @@
 
 class TagListPriorityFrame:
     """
-    This Frame shows a List of Tags (Represented as Strings), that can be changed in order, to represent a Priority.
+    This Frame shows a List of Tags (Represented as Strings), that can be changed in order via Buttons with arrows,
+    to represent a Priority.
     The Higher an Entry is on the List, the Lower its Priority is.
     There will always be a DEFAULT Entry, that will have the lowest Priority, that can't be deleted.
     """

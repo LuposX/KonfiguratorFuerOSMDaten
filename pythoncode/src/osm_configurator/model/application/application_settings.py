@@ -1,8 +1,9 @@
-from abc import ABC
-from src.osm_configurator.model.application.application_interface import ApplicationInterface
-
-
 class ApplicationSettings:
+
+    """
+    This class job is to manage the settings apart from the project settings. In those settings the default-location
+    to save projects can be changed.
+    """
 
     def __init__(self):
         """
@@ -15,7 +16,7 @@ class ApplicationSettings:
         Gives back the path pointing towards the project.
 
         Returns:
-            String: Returns a String containing the path.
+            str: Returns a String containing the path.
         """
         pass
 
@@ -24,6 +25,6 @@ class ApplicationSettings:
         Sets the default path pointing towards the project to a new Location.
 
         Args:
-            new_location (str): The new Location, where the user wants to save projects.
+            new_location (str): The new Location, where the user wants to save new projects.
         """
         pass

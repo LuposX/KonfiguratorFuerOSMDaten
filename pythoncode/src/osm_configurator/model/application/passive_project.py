@@ -1,8 +1,9 @@
-from abc import ABC
-from src.osm_configurator.model.application.application_interface import ApplicationInterface
-
-
 class PassiveProject:
+
+    """
+    This class job is to manage the passive projects. Those are the all projects shown in the Main Menu. Therefore,
+    the class holds the name, description, last edit date and path of the projects.
+    """
 
     def __init__(self):
         """

@@ -27,7 +27,7 @@ class MainWindow:
             new_state (state.State): The State that shall be shown by the MainWindow
 
         Returns:
-            bool: true, if the state change was succsessfull, false if not.
+            bool: true, if the state change was successful, false if not.
         """
         pass
 

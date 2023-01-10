@@ -6,6 +6,10 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 class ReductionFrame(TopLevelFrame):
     """
     This Frame lets the User edit the reduction of all the Categories.
+    It will consist of a list on the left to choose a category and on the rigth will be two subframes to change
+    inbetween.
+    One for providing configuration options on how to calculate the reduction.
+    And one for providing default values to calculate with.
     """
 
     def __init__(self, state_manager, control):

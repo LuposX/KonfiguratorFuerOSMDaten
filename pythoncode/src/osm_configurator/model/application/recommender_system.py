@@ -1,8 +1,8 @@
-from abc import ABC
-from src.osm_configurator.model.application.application_interface import ApplicationInterface
-
-
 class RecommenderSystem:
+
+    """
+    This class job is to provide recommendations to different classes.
+    """
 
     def __init__(self):
         """
@@ -18,7 +18,7 @@ class RecommenderSystem:
             input (str): The input from which to generate suggestions.
 
         Returns:
-            List<String>: Returns a list of strings containing the recommendations depending on the input.
+            List<str>: Returns a list of strings containing the recommendations depending on the input.
         """
         pass
 
