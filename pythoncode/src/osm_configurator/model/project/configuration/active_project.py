@@ -1,21 +1,59 @@
+from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+
 class ActiveProject:
+
+    """
+    This class job is to manage the active project the user is working on.
+    """
 
     def __init__(self, project_folder, is_newly_created):
         """
-        Creates a new instance of the ActiveProject.
+        Creates a new instance of the ActiveProject. In this process it creates the ConfigurationManager and also
+        differentiate between the case that the project is new or loaded. In the case of an existing project it
+        calls the ProjectLoader, otherwise it creates a new project.
+
+        Args:
+            project_folder (pathLib.Path): This is path pointing towards the folder, where the project is saved.
+            is_newly_created (bool): This argument is true if the project is newly created, otherwise false.
         """
         pass
 
     def create(self, name, description):
+        """
+        This method creates a new project and adds a name and a description to it.
+
+        Args:
+            name (str): The name of the project.
+            description (str): A description of the project.
+        """
         pass
 
     def get_last_step(self):
+        """
+        This method is there so that the user can continue working in the same phase in an existing project
+        where he previously stopped.
+
+        Returns:
+            ConfigPhase: The last phase the user was working on.
+        """
         pass
 
     def start_calculation(self):
+        """
+        This method is to start the calculation after the configuration is finished.
+
+        Returns:
+            bool: True if the configuration is complete so the calculation can be started, otherwise false.
+        """
         pass
 
     def get_project_path(self):
+        """
+        This method is to give back the path pointing towards the project folder.
+
+        Returns:
+            pathlib.Path: The path pointing towards the project folder.
+        """
         pass
 
 ##From here on there are only methods to hand off
