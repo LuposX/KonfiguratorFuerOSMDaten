@@ -5,8 +5,8 @@ from geopandas import GeoDataFrame
 
 class OSMDataParserInterface(ABC):
     """
-    The OSMDataParser job, its to parse the OSMData into a human readible format.
-    This human readible format being a GeoDataFrame from GeoPandas.
+    The OSMDataParser job, is to parse the OSMData into a human-readable format.
+    This human-readable format being a GeoDataFrame from GeoPandas.
     """
     
     @abstractmethod
