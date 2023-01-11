@@ -1,5 +1,3 @@
-
-
 class AlertPopUp:
     """
     This class creates PopUps, that will pop up in front of the GUI.
@@ -12,6 +10,6 @@ class AlertPopUp:
         the PopUp again.
 
         Args:
-            message (String): The message that will be shown by the AlertPopUp
+            message (str): The message that will be shown by the AlertPopUp
         """
         pass
