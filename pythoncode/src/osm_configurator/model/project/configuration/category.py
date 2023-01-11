@@ -15,7 +15,7 @@ class Category:
     _category_name = "Category Name"
     _calculate_area = False
     _calculate_floor_area = False
-    _calculation_method_of_area = CMA.CalculationMethodOfArea  # TODO: Vervollständigen durch Methoden im Enum
+    # _calculation_method_of_area = CMA.CalculationMethodOfArea  # TODO: Vervollständigen durch Methoden im Enum
     _strictly_use_default_values = False
     _attractivity_attributes = []
     _default_value_list = []
