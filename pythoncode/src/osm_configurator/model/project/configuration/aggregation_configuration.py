@@ -21,7 +21,7 @@ class AggregationConfiguration:
         Gives back a List of all possible aggregation methods.
 
         Returns:
-            List<aggregation_method_enum.AggregationMethod>: A list containing all aggregation methods.
+            List[aggregation_method_enum.AggregationMethod]: A list containing all aggregation methods.
         """
         pass
 
