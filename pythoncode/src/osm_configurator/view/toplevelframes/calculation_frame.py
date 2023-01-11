@@ -17,8 +17,7 @@ class CalculationFrame(TopLevelFrame):
         and shows the Calculation-Progress.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it wants to switch to
-            another State.
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it wants to switch to another State.
             control (control_interface.IControl): The Frame will call the Control to gain access to the Model.
         """
         super().__init__(state_manager, control)
