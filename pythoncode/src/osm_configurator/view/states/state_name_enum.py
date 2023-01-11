@@ -6,7 +6,7 @@ import src.osm_configurator.view.states.positioned_frame
 class StateName(Enum):
     """
     This Enum saves the different State possibilities that exist, to define a state by this enum and not, by a number.
-    This Enum gives a State an id.
+    This Enum gives a State a name.
     """
 
     MAIN_MENU = 1
