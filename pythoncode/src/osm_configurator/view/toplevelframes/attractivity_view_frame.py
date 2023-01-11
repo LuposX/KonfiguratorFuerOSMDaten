@@ -1,6 +1,6 @@
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.control_interface
-from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+import pythoncode.src.osm_configurator.view.states.state_manager
+import pythoncode.src.osm_configurator.control.control_interface
+from pythoncode.src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
 class AttractivityViewFrame(TopLevelFrame):

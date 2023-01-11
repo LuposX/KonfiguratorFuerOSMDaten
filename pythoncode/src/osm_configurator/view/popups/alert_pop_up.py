@@ -8,7 +8,7 @@ class AlertPopUp:
 
     def __init__(self, message):
         """
-        This Constructor will create an AlertPopUp, that will show the given message and an 'OK' Button, to close
+        This Constructor will create an AlertPopUp. It will provide the given message and an 'OK' Button to close
         the PopUp again.
 
         Args:
