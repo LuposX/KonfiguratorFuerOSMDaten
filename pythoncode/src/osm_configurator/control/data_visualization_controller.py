@@ -4,11 +4,13 @@ import matplotlib
 
 
 class DataVisualizationController:
-    """The DataVisualizationController is responsible for forwarding requests to the model, regarding the visualization of data from the model.
+    """
+    The DataVisualizationController is responsible for forwarding requests to the model, regarding the visualization of data from the model.
     """
 
     def __init__(self):
-        """Creates a new instance of the DataVisualizationController, with a association to the model.
+        """
+        Creates a new instance of the DataVisualizationController, with a association to the model.
 
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
@@ -16,8 +18,10 @@ class DataVisualizationController:
         pass
 
     def generate_cut_out_map(self):
-        """Generates a map of the data of the currently selected project.
-        Using the cut-out file of the project, this function creates a map as a html-file of the project. The path to the html-file is returned.
+        """
+        Generates a map of the data of the currently selected project.
+        Using the cut-out file of the project, this function creates a map as a html-file of the project.
+        The path to the html-file is returned.
 
         Returns:
             pathlib.Path: The path to the file, where the map is stored.
