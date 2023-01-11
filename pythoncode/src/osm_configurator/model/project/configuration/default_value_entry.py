@@ -3,77 +3,57 @@ import src.osm_configurator.model.project.configuration.attribute_enum
 
 class DefaultValueEntry:
     """
-    DefaultValueListEntry holds a dictionary and a tag of the Default Values
-    A given Attribute (from the enum) holds a certain default attribute value
-
-    Default Values can be set and read
+    DefaultValueEntry stores a default value for every attribute.
+    Default values can be set and read.
     """
 
-    tag = "Tag"  # Tag of the list
-    attributeDefaultValue = {}  # Dictionary, where each attribute gets mapped to a certain factor
-
     def __init__(self, tag, attribute_default_values):
+        """Constructor of the class,
+        creates an empty DefaultValueEntry with 0 for all the factor values.
         """
-        Constructor of the class
-
-        Args:
-            tag (str): Tag of the List
-            attribute_default_values (float):
-                dictionary holding the existing key-value pairs
-        """
-        self.tag = tag
-        self.attributeDefaultValue = attribute_default_values
+        pass
 
     def get_default_value_entry_tag(self):
         """
-        Gives the Tag of the class
+        Returns the tag associated with this default value entry
         Returns:
-            st: tag
+            str: The tag of this entry
         """
-        return self.tag
+        pass
 
     def set_tag(self, new_tag):
         """
-        Sets a new Value for the Tag
+        Sets a new value for a given tag
 
         Args:
-            new_tag (str): value for overwriting the current tag
+            new_tag (str): value for overwriting the current tag, must be a valid OSM-tag
 
         Returns:
             bool: true if the overwriting process was successful, else false
         """
-        if self.tag != new_tag:
-            self.tag = new_tag
-            return True
-        return False
+        pass
 
     def set_attribute_default(self, attribute, value):
         """
-        Sets the attribute for a certain attribute, overwrites if necessary
+        Sets the default value of an attribute
 
         Args:
-            attribute (): Attribute whose value will be overwritten
-            value (float): new value
+            attribute (attribute_enum.Attribute): Attribute whose value will be overwritten
+            value (float): new default value
 
         Returns:
             bool: true, if overwriting process was successful, else false
         """
-        if attribute in self.attributeDefaultValue:
-            self.attributeDefaultValue[attribute] = value
-            return True
-        # TODO: Adding new Entries if entry does not exist yet?
-        return False
+        pass
 
     def get_attribute_default(self, attribute):
         """
-        Get Default Value of a certain Attribute
+        Gets the default value of a certain attribute
 
         Args:
-            attribute (): Attribute whose value is searched for
+            attribute (attribute_enum.Attribute): Attribute whose value is searched for
 
         Returns:
-            float: The value of the attribute, if the attribute exists, else -1
+            float: The default value of the attribute
         """
-        if attribute in self.attributeDefaultValue:
-            return self.attributeDefaultValue[attribute]
-        return -1
+        pass
