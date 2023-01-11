@@ -74,7 +74,7 @@ class Control(IControl):
     def delete_category(self, category):
         pass
 
-    def get_list_of_tag_recommendations(self, current_input):
+    def get_list_of_key_recommendations(self, current_input):
         pass
 
     def get_attractivities_of_category(self, category):
