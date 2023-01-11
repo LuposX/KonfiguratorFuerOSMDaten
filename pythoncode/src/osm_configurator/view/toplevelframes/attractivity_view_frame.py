@@ -15,8 +15,7 @@ class AttractivityViewFrame(TopLevelFrame):
         their according Attractivity-Attributes and how they are calculated.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it tries to switch to
-            another State.
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it tries to switch to another State.
             control (control_interface.IControl): The Frame will call the Control to gain access to the Model.
         """
         super().__init__(state_manager, control)
