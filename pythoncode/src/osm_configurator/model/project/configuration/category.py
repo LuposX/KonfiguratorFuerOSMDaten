@@ -6,7 +6,7 @@ import src.osm_configurator.model.project.configuration.calculation_method_of_ar
 
 class Category:
     """
-    An internal representation of a category containing values and attributes that describe a category.
+    Represents a category. A category is a collection of configurations for the calculation process. A category defines which OSM-elements are contained by it with a white- and a blacklist. All configurations of the category do only affect does OSM-elements.
     """
 
     _active = False
