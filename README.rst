@@ -29,7 +29,7 @@ This project was developed in the context of the lecture “Praxis der
 Softwareentwicklung(PSE)” at the University KIT in 2022,the waterfall
 model with feedback was used to develop the project.
 For each of this phase you can find the documentation in the
-corresponding subfolder, most of the documentation is in german.
+corresponding subfolder, in the `github <https://github.com/LuposX/KonfiguratorFuerOSMDaten>`_ , most of the documentation is in german.
 
 For a more specific description of the code, check the ``README.md`` in
 the subfolder `pythoncode`.
