@@ -1,7 +1,8 @@
 from typing import Callable
+from customtkinter import CTkToplevel
 
 
-class YesNoPopUp:
+class YesNoPopUp(CTkToplevel):
     """
     This class creates PopUps, that will pop up in front of the GUI.
     This instance is a YesNoPopUp: It will provide a message, an 'OK' and an 'Cancel' Button.
