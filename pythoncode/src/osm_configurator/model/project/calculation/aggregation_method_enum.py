@@ -58,7 +58,7 @@ class AggregationMethod(Enum):
                                         the attractivity_name should be the name of a column in the data GeoDataFrame.
 
         Returns:
-            (float): The aggregated value of the attractivity values from all osm elements.
+            float: The aggregated value of the attractivity values from all osm elements.
         """
         return self.value[0](data, attractivity_name)
 
@@ -67,6 +67,6 @@ class AggregationMethod(Enum):
         Getter for the name of the enum type.
 
         Returns:
-            (str): Name of the enum type
+            str: Name of the enum type
         """
         return self.value[1]
