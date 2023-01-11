@@ -14,8 +14,7 @@ class ReductionCalculationFrame:
         This Method Creates a ReductionCalculationFrame, that lets the User edit the calculation of the reduction of
         Categories.
         Args:
-            parent (reduction_frame.ReductionFrame): This is the Parent Frame of this Frame.
-                The Frame will be located here.
+            parent (reduction_frame.ReductionFrame): This is the Parent Frame of this Frame. The Frame will be located here.
             control (control_interface.IControl): The Frame calls the Control, to gain access to the Model.
         """
         pass
