@@ -5,21 +5,20 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 class ReductionFrame(TopLevelFrame):
     """
-    This Frame lets the User edit the Reduction of all the Categories.
+    This frame lets the user edit the reduction of all the categories.
     It will consist of a list on the left to choose a category.
-    On the right will be two sub-frames to change
-    inbetween.
-    On the right are two interchangeable sub-frames: One frame provides the configuration-Options on how to
-    Calculate the Reduction. The Other Frame Provides the default Calculation-Values.
+    On the right will be two sub-frames to change inbetween.
+    On the right are two interchangeable sub-frames: One frame provides the configuration-options on how to
+    calculate the Reduction. The other frame provides the default calculation-values.
     """
 
     def __init__(self, state_manager, control):
         """
-        This Method Creates a ReductionFrame, that lets the user edit the Reduction of all the Categories.
+        This method creates a ReductionFrame, that lets the user edit the reduction of all the categories.
 
         Args:
-            state_manager (state_manager.StateManager): The Frame will call the StateManager, if it wants to switch States.
-            control (control_interface.IControl): The Frame will call the Control, to gain access to the Model.
+            state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
+            control (control_interface.IControl): The control the frame will call to get access to the model.
         """
         super().__init__(state_manager, control)
         pass

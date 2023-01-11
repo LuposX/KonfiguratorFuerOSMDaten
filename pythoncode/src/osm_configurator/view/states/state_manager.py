@@ -7,45 +7,45 @@ import src.osm_configurator.view.states.main_window
 
 class StateManager:
     """
-    This Class manages the different States, that can be shown on a Window.
-    It knows what State is currently active and provides Methods to change the State.
+    This class manages the different states, that can be shown on a window.
+    It knows what state is currently active and provides methods to change the state.
     """
 
     def __init__(self, control, main_window):
         """
-        This Method creates a StateManager, that will control what State is currently active and manages
-        the changes between States.
+        This method creates a StateManager, that will control what state is currently active and manages
+        the changes between states.
         It will create all states, as well all the frames that exist and put them in the state they belong.
 
         Args:
-            control (control_interface.IControl): The connection to the control, so the Frames of each state can access the Model.
-            main_window (main_window.MainWindow): The MainWindow, where the Frames of the State shall be shown on.
+            control (control_interface.IControl): The connection to the control, so the frames of each state can access the model.
+            main_window (main_window.MainWindow): The MainWindow, where the frames of the state shall be shown on.
         """
         pass
 
     def default_go_right(self):
         """
-        This Method changes to the State that is the default_right State of the current one.
+        This method changes to the State that is the default_right state of the current one.
 
         Returns:
-            bool: true, if a Statechange was successfully made, false if there was no state change or something
+            bool: true, if a state change was successfully made, false if there was no state change or something
             went wrong
         """
         pass
 
     def default_go_left(self):
         """
-        This Method changes to the State that is the default_left State of the current one.
+        This method changes to the state that is the default_left State of the current one.
 
         Returns:
-            bool: true, if a Statechange was successfully made, false if there was no state change or something
+            bool: true, if a state change was successfully made, false if there was no state change or something
             went wrong
         """
         pass
 
     def change_state(self, new_state):
         """
-        This Method changes to the given State and deactivate the old one.
+        This method changes to the given state and deactivate the old one.
 
         Args:
             new_state (state_name_enum.StateName): The id of the new state that shall be activated.
@@ -57,15 +57,15 @@ class StateManager:
 
     def get_state(self):
         """
-        This Method returns the currently active State.
+        This method returns the currently active state.
 
         Returns:
-            state.State: the currently active State.
+            state.State: the currently active state.
         """
         pass
 
     def close_program(self):
         """
-        This Method closes the Program and shuts the whole Application down.
+        This method closes the program and shuts the whole application down.
         """
         pass

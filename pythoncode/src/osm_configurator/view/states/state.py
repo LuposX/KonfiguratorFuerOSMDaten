@@ -5,7 +5,7 @@ import src.osm_configurator.view.states.state
 
 class State:
     """
-    This class models a State.
+    This class models a state.
     A State consist of
     - a list of frames, that shall be visible on a window, when this state is active
     - a default state to its right
