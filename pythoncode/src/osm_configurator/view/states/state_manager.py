@@ -1,4 +1,4 @@
-import src.osm_configurator.view.states.state
+import src.osm_configurator.view.states.state_enum
 import src.osm_configurator.control.control_interface
 import src.osm_configurator.view.states.main_window
 
