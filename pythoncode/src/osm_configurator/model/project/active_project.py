@@ -1,11 +1,13 @@
 import src.osm_configurator.model.project.config_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum
-
+import pathlib
 
 class ActiveProject:
 
     """
     This class job is to manage the active project the user is working on.
+    Whereby an active project, a project is that got selected by the user in the project selected screen or
+    created.
     """
 
     def __init__(self, project_folder, is_newly_created):
@@ -15,7 +17,7 @@ class ActiveProject:
         calls the ProjectLoader, otherwise it creates a new project.
 
         Args:
-            project_folder (pathLib.Path): This is path pointing towards the folder, where the project is saved.
+            project_folder (pathlib.Path): This is path pointing towards the folder, where the project is saved.
             is_newly_created (bool): This argument is true if the project is newly created, otherwise false.
         """
         pass
