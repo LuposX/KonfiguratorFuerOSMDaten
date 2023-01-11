@@ -1,6 +1,4 @@
 
-
-
 class TagListFrame:
     """
     This Frame shows a Textbox with a List of editable Strings.

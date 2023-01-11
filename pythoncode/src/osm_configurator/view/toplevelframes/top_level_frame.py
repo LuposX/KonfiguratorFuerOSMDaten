@@ -1,6 +1,6 @@
 from abc import ABC
-import pythoncode.src.osm_configurator.control.control_interface
-import pythoncode.src.osm_configurator.view.states.state_manager
+import src.osm_configurator.control.control_interface
+import src.osm_configurator.view.states.state_manager
 
 
 class TopLevelFrame(ABC):

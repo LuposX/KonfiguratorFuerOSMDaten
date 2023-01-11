@@ -1,4 +1,5 @@
-import typing
+from typing import Callable
+
 
 class YesNoPopUp:
     """
