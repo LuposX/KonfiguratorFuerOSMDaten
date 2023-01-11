@@ -16,8 +16,7 @@ class CategoryFrame(TopLevelFrame):
         This Method Creates an CategoryFrame so the user can create, delete and edit Categories.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change to
-            another State.
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change to another State.
             control (control_interface.IControl): The Frame will call the Control, to gain access to the Model.
         """
         super().__init__(state_manager, control)

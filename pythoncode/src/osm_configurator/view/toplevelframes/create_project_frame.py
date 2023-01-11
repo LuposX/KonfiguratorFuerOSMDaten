@@ -15,8 +15,7 @@ class CreateProjectFrame(TopLevelFrame):
         This Method Creates a CreateProjectFrame where a User can create a new Project.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it wants to change to
-            another State.
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it wants to change to another State.
             control (control_interface.IControl): The Frame will call the Control, to gain access to the Model.
         """
         super().__init__(state_manager, control)
