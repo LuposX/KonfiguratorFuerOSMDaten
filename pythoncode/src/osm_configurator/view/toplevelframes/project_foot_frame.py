@@ -5,19 +5,16 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 class ProjectFootFrame(TopLevelFrame):
     """
-    This Frame shows two arrows on the Bottom of the Window, to let the User navigate the PipeLine, by going
-    left or right.
+    This Frame shows two arrows on the Bottom of the Window. The User can navigate the Pipeline by going left or right.
     """
 
     def __init__(self, state_manager, control):
         """
-        This Method Creates a ProjectFootFrame, that lets the User navigate throug the PipeLine through two
-        arrows, for left and right.
+        This Method creates a ProjectFootFrame, that lets the User navigate the PipeLine by going left or right.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change to
-            another State.
-            control (control_interface.IControl): The Control the Frame will call, to get access to the Model.
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it wants to switch States.
+            control (control_interface.IControl): The Frame will call the Control, to gain access to the Model.
         """
         super().__init__(state_manager, control)
         pass

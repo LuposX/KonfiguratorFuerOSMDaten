@@ -5,9 +5,10 @@ import src.osm_configurator.control.control_interface
 
 class DataFrame(TopLevelFrame):
     """
-    This Frame lets the user edit various Data as follows:
-    - Selecting the OSM-Data
-    - Selecting the Cut-Out, also able to select, if Buildings on the edge shall be included or not
+    This Frame lets the user edit various following Data:
+    - Selection of the OSM-Data
+    - Selection of the Cut-Out
+    - Select, if Buildings on the edge shall be included or not
     - A download button to download the OSM data after a Cut-Out was selected
     - Copy in Category Configurations
     """
@@ -17,9 +18,8 @@ class DataFrame(TopLevelFrame):
         This Method Creates a DataFrame, that lets the User input Data into the Project.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change to
-            another State.
-            control (control_interface.IControl): The Control the Frame will call, to get access to the Model.
+            state_manager (state_manager.StateManager): The Frame will call the StateManager, if it wants to switch States.
+            control (control_interface.IControl): The Frame will call the Control, to gain access to the Model.
         """
         super().__init__(state_manager, control)
         pass
