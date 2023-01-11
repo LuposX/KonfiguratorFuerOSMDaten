@@ -16,11 +16,11 @@ class AttractivityAttribute:
 
         Args:
             attractivity_attribute_name (str): The name of the Attractivity Attributes
-            attractivity_attribute_list (List[(attribute_enum.Attribute, int)]): A list of attributes each having its own factor.
-            base_attractivity (int) The base attractivity value.
+            attractivity_attribute_list (List[(attribute_enum.Attribute, float)]): A list of attributes each having its own factor.
+            base_attractivity (float): The base attractivity value.
 
         Examples:
-            An example for attractivity_attribute_list: [(AREA, 1), (NUMER_OF_FLOOR, 2), (GROUND_AREA, 3)]
+            An example for attractivity_attribute_list: [(AREA, 1.0), (NUMER_OF_FLOOR, 2.0), (GROUND_AREA, 6.9)]
         """
         pass
 
@@ -29,7 +29,7 @@ class AttractivityAttribute:
         Getter for attractivity attribute name.
 
         Returns:
-            attribute_enum.Attribute: The attractivity attribute name.
+            str: The attractivity attribute name.
         """
         pass
 
@@ -39,24 +39,27 @@ class AttractivityAttribute:
 
         Args:
             name (str): name of the attractivity attribute.
+
+        Returns:
+            bool: true, if the name was successfully set, false otherwise
         """
         pass
 
     def get_attractivity_attribute_list(self):
         """
-        Getter for the attractivity attribute name.
+        Getter for the list of attributes and factors.
 
         Returns:
-            List[(attribute_enum.Attribute, int)]: The list of attractivity attribute factor pairs.
+            List[(attribute_enum.Attribute, float)]: The list of attribute factor pairs.
         """
         pass
 
     def set_attractivity_attribute_list(self, attractivity_attribute_list):
         """
-         Setter for the attractivity attribute name.
+         Setter for the list of attributes and factors.
 
         Args:
-            attractivity_attribute_list (List[(attribute_enum.Attribute, int)]): A list of ttractivity attribute factor pairs we want to set as the new attractivity attribute list.
+            attractivity_attribute_list (List[(attribute_enum.Attribute, float)]): A list of attribute factor pairs we want to set as the new list of attributes and factors.
         """
         pass
 
@@ -65,7 +68,7 @@ class AttractivityAttribute:
         Getter for the base factor.
 
         Returns:
-             double: the base factor
+             float: the base factor
         """
         pass
 
@@ -74,9 +77,9 @@ class AttractivityAttribute:
         Setter for the base factor.
 
         Args:
-            new_base_factor (double): new value for the already existing base factor
+            new_base_factor (float): New value for the base factor
 
         Returns:
-            void
+            bool: true if the base factor eas successful set, false else
         """
         pass
