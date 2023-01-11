@@ -1,4 +1,4 @@
-from pathlib import Path
+import pathlib
 import src.osm_configurator.model.project
 
 

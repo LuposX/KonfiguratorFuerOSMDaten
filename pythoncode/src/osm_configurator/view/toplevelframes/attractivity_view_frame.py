@@ -1,23 +1,23 @@
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.control_interface
-from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+import pythoncode.src.osm_configurator.view.states.state_manager
+import pythoncode.src.osm_configurator.control.control_interface
+from pythoncode.src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
 class AttractivityViewFrame(TopLevelFrame):
     """
-    This Frame shows a List with all Categories and their Attractivity-Attributes and how they are calculated.
-    This is only a visualisation and a non edit Frame.
+    This Frame shows a List with all Categories, their Attractivity-Attributes and how they are calculated.
+    This is only a visualisation and therefore a non-edit Frame.
     """
 
     def __init__(self, state_manager, control):
         """
-        This Method Creates an AttractivityViewFrame that shows thze user a List of
-        all Categories and their Attractivity-Attributes and how they are calculated.
+        This Method Creates an AttractivityViewFrame showing a List of containing all Categories,
+        their according Attractivity-Attributes and how they are calculated.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change to
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it tries to switch to
             another State.
-            control (control_interface.IControl): The Control the Frame will call, to get access to the Model.
+            control (control_interface.IControl): The Frame will call the Control to gain access to the Model.
         """
         super().__init__(state_manager, control)
         pass

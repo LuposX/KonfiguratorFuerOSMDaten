@@ -1,8 +1,7 @@
-from abc import ABC
 from src.osm_configurator.model.application.application_interface import IApplication
 
 
-class Application(IApplication, ABC):
+class Application(IApplication):
     __doc__ = IApplication.__doc__
 
     def __init__(self):

@@ -1,6 +1,5 @@
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 
-
 class CutOutConfiguration:
 
     """
@@ -19,7 +18,7 @@ class CutOutConfiguration:
         Gives back the used cut-out mode.
 
         Returns:
-            cut_out_mode_enum.CutOutMode: The used cut-out mode.
+            CutOutMode: The used cut-out mode.
         """
         pass
 

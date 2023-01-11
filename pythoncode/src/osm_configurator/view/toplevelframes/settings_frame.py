@@ -1,6 +1,6 @@
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.control_interface
-from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+import pythoncode.src.osm_configurator.view.states.state_manager
+import pythoncode.src.osm_configurator.control.control_interface
+from pythoncode.src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
 class SettingsFrame(TopLevelFrame):
@@ -14,13 +14,11 @@ class SettingsFrame(TopLevelFrame):
 
     def __init__(self, state_manager, control):
         """
-        This Method Creates a SettingsFrame, that lets the user set the Settings, for Application
-        and the current Project.
+        This Method creates a SettingsFrame, that lets the user set the Application and Project-Settings.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change to
-            another State.
-            control (control_interface.IControl): The Control the Frame will call, to get access to the Model.
+            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it wants to switch States.
+            control (control_interface.IControl): The Control the Frame will call, to gain access to the Model.
         """
         super().__init__(state_manager, control)
         pass

@@ -1,10 +1,9 @@
-import abc
 import pathlib
-from abc import abstractmethod
-import pythoncode.src.osm_configurator.model.project.calculation.calculation_phase_enum
+from abc import abstractmethod, ABC
+import src.osm_configurator.model.project.calculation.calculation_phase_enum
 
 
-class CalculationParserInterface(abc.ABC):
+class CalculationParserInterface(ABC):
     """
     The CalculationParser job, is to parse the calculation files 
     that are created from the calculation process.

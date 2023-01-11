@@ -1,4 +1,4 @@
-import pythoncode.src.osm_configurator.model.project.configuration.category
+import src.osm_configurator.model.project.configuration.category
 
 
 class CategoryManager:

@@ -1,5 +1,4 @@
 from enum import Enum, unique
-import src.osm_configurator.model.parser.calculation_parser_interface
 
 
 @unique

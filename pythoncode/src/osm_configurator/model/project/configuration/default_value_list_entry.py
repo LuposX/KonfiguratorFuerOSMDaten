@@ -1,4 +1,4 @@
-import pythoncode.src.osm_configurator.model.project.configuration.attractivity_attribute_enum
+import src.osm_configurator.model.project.configuration.attribute_enum
 
 
 class DefaultValueListEntry:
@@ -18,7 +18,7 @@ class DefaultValueListEntry:
 
         Args:
             tag (str): Tag of the List
-            attribute_default_values ({attractivity_attribute_enum, double}):
+            attribute_default_values (double):
                 dictionary holding the existing key-value pairs
         """
         self.tag = tag
@@ -52,7 +52,7 @@ class DefaultValueListEntry:
         Sets the attribute for a certain attribute, overwrites if necessary
 
         Args:
-            attribute (attractivity_attribute_enum): Attribute whose value will be overwritten
+            attribute (): Attribute whose value will be overwritten
             value (double): new value
 
         Returns:
@@ -69,7 +69,7 @@ class DefaultValueListEntry:
         Get Default Value of a certain Attribute
 
         Args:
-            attribute (attractivity_attribute_enum): Attribute whose value is searched for
+            attribute (): Attribute whose value is searched for
 
         Returns:
             double: The value of the attribute, if the attribute exists, else -1
