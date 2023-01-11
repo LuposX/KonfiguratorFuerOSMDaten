@@ -1,7 +1,7 @@
 import src.osm_configurator.model.project.configuration.calculation_method_of_area as CMA
 import src.osm_configurator.model.project.configuration.attractivity_attribute as AttractivityAttribute
 import src.osm_configurator.model.project.configuration.default_value_entry as DefaultValueEntry
-
+import src.osm_configurator.model.project.configuration.calculation_method_of_area
 
 class Category:
     """
@@ -167,11 +167,13 @@ class Category:
 
         Args
             new_calculation_method (CalculationMethodOfArea): new method that will overwrite the existing method
-        :return:
+
+        Returns:
+            calculation_method_of_area.CalculationMethodOfArea: the method with which we calculate the area.
         """
         self.calculation_method_of_area = new_calculation_method
         # TODO: Check if new-calculation-method is actually from CalculationMethodOfArea
-        return
+        pass
 
     def get_calculate_floor_area(self):
         """

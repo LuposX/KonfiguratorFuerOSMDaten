@@ -19,26 +19,26 @@ class ProjectSettings:
 
     def get_location(self):
         """
-        This method returns the string, containing the project's location.
+        Getter for the location of the Project on the disk.
 
         Returns:
-            str: The location of the project
+            pathlib.Path: The location of the project
         """
         pass
 
-    def change_location(self, new_location):
+    def set_location(self, new_location):
         """
         This method changes the location where the project will be stored.
 
         Args:
-            new_location (str): The new location for the project
+            new_location (pathlib.Path): The new location for the project
 
         Returns:
             bool: true, if location change was successful, false else
         """
         pass
 
-    def change_name(self, new_name):
+    def set_name(self, new_name):
         """
         This method changes the name of the project.
 
@@ -59,7 +59,7 @@ class ProjectSettings:
         """
         pass
 
-    def change_description(self, new_description):
+    def set_description(self, new_description):
         """
         This method changes the description of the project.
 
@@ -76,6 +76,6 @@ class ProjectSettings:
         This method returns the description of the project.
 
         Returns:
-            (str): The description of the project
+            str: The description of the project
         """
         pass
