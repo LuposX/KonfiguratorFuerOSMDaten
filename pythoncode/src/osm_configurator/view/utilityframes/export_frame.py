@@ -15,9 +15,7 @@ class ExportFrame:
         This Method creates an ExportFrame, that provides the user with different Export-Options.
 
         Args:
-            parent_frame (project_head_frame.ProjectHeadFrame): The Parent of the ExportFrame is the HeadFrame,
-            where the Export Feature is located.
-            control (control_interface.IControl): The Control the Frame calls, to gain access to
-            the Model to export.
+            parent_frame (project_head_frame.ProjectHeadFrame): The Parent of the ExportFrame is the HeadFrame, where the Export Feature is located.
+            control (control_interface.IControl): The Control the Frame calls, to gain access to the Model to export.
         """
         pass
