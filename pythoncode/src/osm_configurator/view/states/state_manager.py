@@ -1,12 +1,12 @@
-import src.osm_configurator.view.states.state_enum
-import src.osm_configurator.control.control_interface
-import src.osm_configurator.view.states.main_window
+import pythoncode.src.osm_configurator.view.states.state_enum
+import pythoncode.src.osm_configurator.control.control_interface
+import pythoncode.src.osm_configurator.view.states.main_window
 
 
 class StateManager:
     """
     This Class manages the different States, that can be shown on a Window.
-    It knows what State is currently active and provides Methods to change the State.
+    It knows the current active State and provides Methods to change it.
     """
 
     def __init__(self, control, main_window):
