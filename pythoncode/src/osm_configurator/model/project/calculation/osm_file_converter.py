@@ -27,6 +27,6 @@ class OSMFileConverter:
             data_format (osm_file_format_enum.OSMFileFormat): In which osm file format we want to transform our file into.
 
         Returns:
-            (boolean): True if successful, otherwise false.
+            (bool): True if successful, otherwise false.
         """
         pass

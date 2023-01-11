@@ -48,6 +48,6 @@ class OSMDataController:
             path (pathlib.Path): The path to the geojson-file.
 
         Returns:
-            boolean: True on success, False otherwise
+            bool: True on success, False otherwise
         """
         pass

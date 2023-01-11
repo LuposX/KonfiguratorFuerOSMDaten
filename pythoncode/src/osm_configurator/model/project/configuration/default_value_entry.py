@@ -1,7 +1,7 @@
 import src.osm_configurator.model.project.configuration.attribute_enum
 
 
-class DefaultValueListEntry:
+class DefaultValueEntry:
     """
     DefaultValueListEntry holds a dictionary and a tag of the Default Values
     A given Attribute (from the enum) holds a certain default attribute value

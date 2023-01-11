@@ -6,7 +6,7 @@ import src.osm_configurator.model.project.configuration.calculation_method_of_ar
 
 class Category:
     """
-    An internal representation of a category containing all its values and attributes
+    An internal representation of a category containing values and attributes that describe a category.
     """
 
     _active = False
@@ -36,10 +36,10 @@ class Category:
 
     def is_active(self):
         """
-        Checks if value "active" is set
+        Checks if value "active" is set.
 
         Returns:
-            Value of self.active
+            (bool): True if active, false if inactive.
         """
         return self._active
 
