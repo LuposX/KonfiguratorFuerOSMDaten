@@ -2,22 +2,25 @@ from abc import ABC, abstractmethod
 import src.osm_configurator.model.project.calculation.aggregation_method_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum
 import src.osm_configurator.model.project.calculation.calculation_phase_enum
-#import src.osm_configurator.model.project.configuration.category
-#import src.osm_configurator.model.project.configuration.attractivity_attribute
+# import src.osm_configurator.model.project.configuration.category
+# import src.osm_configurator.model.project.configuration.attractivity_attribute
 import pathlib
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 import matplotlib
 import src.osm_configurator.model.application.passive_project
 import src.osm_configurator.model.project.config_phase_enum
 
+
 class IControl(ABC):
-    """This class provides a consistent interface for access to the control-package. It is a facade, to make access easy.
+    """
+    This class provides a consistent interface for access to the control-package. It is a facade, to make access easy.
     The control manages the access to the module. That's why this interface should give access to all the features provided by the model.
     """
 
     @abstractmethod
     def get_list_of_passive_projects(self):
-        """Returns the list of (passive) projects, which are in the default project folder of the application.
+        """
+        Returns the list of (passive) projects, which are in the default project folder of the application.
 
         Returns:
             list[passive_project.PassiveProject]: The list of passive projects in the default project folder.
@@ -26,35 +29,38 @@ class IControl(ABC):
 
     @abstractmethod
     def load_project(self, path):
-        """Loads a project
-        All relevant data of a project are verified and loaded in memory. All coming project-refering calls will be directed to the given project.
+        """
+        Loads a project
+        All relevant data of a project are verified and loaded in memory. All coming project-referring calls will be directed to the given project.
 
         Args:
-            path (pathlib.Path): the path to the project folder of the project, to be loaded.
+            path (pathlib.Path): The path to the project folder of the project, to be loaded.
 
         Returns:
-            bool: True, if the project was loaded succesfully; False if an error accured, while trying to load the project. An error accures, if the path is not pointing to a valid project folder or if the project has corrupted files.
+            bool: True, if the project was loaded successfully; False if an error occurred, while trying to load the project. An error happens, if the path is not pointing to a valid project folder or if the project has corrupted files.
         """
         pass
 
     @abstractmethod
     def create_project(self, name, description, destination):
-        """Creates a new project with the given attributes and loads it.
+        """
+        Creates a new project with the given attributes and loads it.
         The model creates a new project folder at the given destination, all relevant files are generated and the project is loaded into memory.
 
         Args:
             name (str): The name of the to-be-created project, may not contain any line-breaks.
             description (str): The description of the to-be-created project. May contain line-breaks.
-            destination (pathlib.Path): The path to the location, where the projectfolder of the project should be created.
+            destination (pathlib.Path): The path to the location, where the project-folder of the project should be created.
 
         Returns:
-            bool: True, if the project was created successfully; False if an error accured. An error accures, if the name of the project is not valid, if the destination-path is not valid or if the destination-location is already occupied.
+            bool: True, if the project was created successfully; False if an error occurred. An error occurs, if the name of the project is not valid, if the destination-path is not valid or if the destination-location is already occupied.
         """
         pass
 
     @abstractmethod
     def delete_passive_project(self, project):
-        """Deletes a project out of the default project folder.
+        """
+        Deletes a project out of the default project folder.
 
         Args:
             project (passive_project.PassiveProject): The project, that is going to be deleted.
@@ -66,29 +72,32 @@ class IControl(ABC):
 
     @abstractmethod
     def save_project(self):
-        """Saves the project.
+        """
+        Saves the project.
         The currently selected project is stored on the disk. All progress made since the last saving are saved.
 
         Returns:
-            bool: True, if the project was saved successfully; False if an error accured, while attempting to save the project or when there is no project selected.
+            bool: True, if the project was saved successfully; False if an error occurred, while attempting to save the project or when there is no project selected.
         """
         pass
 
     @abstractmethod
     def set_current_config_phase(self, config_phase):
-        """Stores the current configuration phase in the model.
+        """
+        Stores the current configuration phase in the model.
 
         Args:
             config_phase (config_phase_enum.ConfigPhase): The new configuration phase.
 
         Returns:
-            bool: True, if setting the configuration phase was successfull; False, otherwise.
+            bool: True, if setting the configuration phase was successful; False, otherwise.
         """
         pass
 
     @abstractmethod
     def get_current_config_phase(self):
-        """Returns the configuration phase, that is currently stored in the model.
+        """
+        Returns the configuration phase, that is currently stored in the model.
 
         Returns:
             config_phase_enum.ConfigPhase: The configuration phase, that is currently stored in the model.
@@ -97,7 +106,8 @@ class IControl(ABC):
 
     @abstractmethod
     def is_project_loaded(self):
-        """Checks, whether any project is currently loaded/selected.
+        """
+        Checks, whether any project is currently loaded/selected.
 
         Returns:
             bool: True, if a project is currently selected; False, otherwise.
@@ -106,20 +116,22 @@ class IControl(ABC):
 
     @abstractmethod
     def set_osm_data_reference(self, path):
-        """Sets the reference to the osm-data for the selected project.
+        """
+        Sets the reference to the osm-data for the selected project.
         The reference contains the osm-data used in the calculations of the project. This method does not check if the given data is valid.
 
         Args:
             path (pathlib.Path): The reference to the osm-data
 
         Returns:
-            bool: True, if the new reference was set successfully; False, if an error accured whie setting the reference.
+            bool: True, if the new reference was set successfully; False, if an error occurred while setting the reference.
         """
         pass
 
     @abstractmethod
     def get_osm_data_reference(self):
-        """Returns the path to the osm-data, that is used in the currently selected project.
+        """
+        Returns the path to the osm-data, that is used in the currently selected project.
 
         Returns:
             pathlib.Path: The path to the osm-data of the currently selected project.
@@ -128,11 +140,12 @@ class IControl(ABC):
 
     @abstractmethod
     def download_osm_data(self, path):
-        """Downloads osm-data
+        """
+        Downloads osm-data
         The osm-data to be downloaded are defined by a geojson-file. The data is downloaded and the reference to the correct osm-files is stored.
 
         Args:
-            path (pathlib.Path): The path to the above mentioned gejson-file.
+            path (pathlib.Path): The path to the geojson-file.
 
         Returns:
             boolean: True on success, False otherwise
@@ -141,7 +154,8 @@ class IControl(ABC):
 
     @abstractmethod
     def get_cut_out_mode(self):
-        """Gives the method of cutting out of the geofilter of the currently selected project.
+        """
+        Gets the method of how the geofilter shall cut out on the OSM-Data.
 
         Returns:
             cut_out_mode_enum.CutOutMode: The cut-out-mode of the currently selected project.
@@ -150,41 +164,45 @@ class IControl(ABC):
 
     @abstractmethod
     def set_cut_out_mode(self, mode):
-        """Sets the method of cutting out of the geofilter of the currently selected project.
+        """
+        Sets the method of how the geofilter shall cut out on the OSM-Data.
 
         Args:
             mode (cut_out_mode_enum.CutOutMode): The mode, to be set
 
         Returns:
-            bool: True, if the CutOutMode was set successfully; False, if an error accured or no project is currently selected.
+            bool: True, if the CutOutMode was set successfully; False, if an error occurred or no project is currently selected.
         """
         pass
 
     @abstractmethod
     def set_cut_out_reference(self, path):
-        """Sets the reference to the cut-out file of the currently selected project.
+        """
+        Sets the reference to the cut-out file of the currently selected project.
         This file is later used to calculate the geofilter.
 
         Args:
             path (pathlib.Path): The path to the file containing the cut-out-geometries
 
         Returns:
-            bool: True, if the reference was set successfully; False, if an error accured. An error accures, if no project is currently selected or if the given path is not valid or occupied.
+            bool: True, if the reference was set successfully; False, if an error occurred. An error occurs, if no project is currently selected or if the given path is not valid or occupied.
         """
         pass
 
     @abstractmethod
     def get_cut_out_reference(self):
-        """Gets the reference to the cut-out file of the currently selected project.
+        """
+        Gets the reference to the cut-out file of the currently selected project.
 
         Returns:
             pathlib.Path: The current reference to the cut-out file.
-        """ 
+        """
         pass
 
     @abstractmethod
     def check_conflicts_in_category_configuration(self, path):
-        """Checks for a given file, if it is a valid category-file and checks, whether there are naming conflicts with the categories of the currently selected project.
+        """
+        Checks for a given file, if it is a valid category-file and checks, whether there are naming conflicts with the categories of the currently selected project.
 
         Args:
             path (pathlib.Path): The path to the category-file
@@ -196,20 +214,22 @@ class IControl(ABC):
 
     @abstractmethod
     def import_category_configuration(self, path):
-        """Imports the given categories into the currently selected project.
+        """
+        Imports the given categories into the currently selected project.
         Adds the given categories to the category list of the project.
 
         Args:
             path (pathlib.Path): The path to the category file
 
         Returns:
-            bool: True, if the categories where added successfully; False, if an error accured: The project does not exists, The category file is corrupted or the category file does not exist.
+            bool: True, if the categories where added successfully; False, if there is no project loaded, the category file is corrupted or the category file does not exist.
         """
         pass
 
     @abstractmethod
     def get_list_of_categories(self):
-        """Returns the list of all categories, that are currently in the currently selected project.
+        """
+        Returns the list of all categories, that are currently in the currently selected project.
 
         Returns:
             list[category.Category]: A list of the categories of the project in no particular order.
@@ -218,17 +238,20 @@ class IControl(ABC):
 
     @abstractmethod
     def create_category(self):
-        """Creates a new category in the currently selected project.
+        """
+        Creates a new category in the currently selected project.
         A new category is added to the list of categories of the project. The category has empty properties, except for an arbitrary name.
+        If the creation fails, none will be returned and there won't be a category added.
 
         Returns:
-            category.Category: The newly created category
+            category.Category: The newly created category, none if there was an error
         """
         pass
 
     @abstractmethod
     def delete_category(self, category):
-        """Deletes the given category.
+        """
+        Deletes the given category.
         Removes the given category from the list of categories of the currently selected project
 
         Args:
@@ -240,20 +263,22 @@ class IControl(ABC):
         pass
 
     @abstractmethod
-    def get_list_of_tag_recommendations(self, current_input):
-        """Returns a list of recommended tags, based on the input that is already entered by the user.
+    def get_list_of_key_recommendations(self, current_input):
+        """
+        Returns a list of recommended keys, based on the input that is already entered by the user.
 
         Args:
             current_input (str): The input, that is currently written by the user.
 
         Returns:
-            list[str]: A list of recommendations, based on the current_input.
+            list[str]: A list of key recommendations, based on the current_input.
         """
         pass
 
     @abstractmethod
     def get_attractivities_of_category(self, category):
-        """Returns the attractivity attributes that are defined for the given category.
+        """
+        Returns the attractivity attributes that are defined for the given category.
 
         Args:
             category (category.Category): The category, whose attractivities are of interest.
@@ -264,8 +289,9 @@ class IControl(ABC):
         pass
 
     @abstractmethod
-    def get_aggregation_methods():
-        """Returns a list of all aggregation methods that are available. 
+    def get_aggregation_methods(self):
+        """
+        Returns a list of all aggregation methods that are available.
         This function returns all available aggregation methods, not just the ones that are active in the current project.
 
         Returns:
@@ -275,7 +301,8 @@ class IControl(ABC):
 
     @abstractmethod
     def is_aggregation_method_active(self, method):
-        """Checks, whether a aggregation method is active in the currently selected project.
+        """
+        Checks, whether an aggregation method is active in the currently selected project.
 
         Args:
             method (aggregation_method_enum.AggregationMethod): The aggregation method that is checked for.
@@ -287,7 +314,8 @@ class IControl(ABC):
 
     @abstractmethod
     def set_aggregation_method_active(self, method, active):
-        """Activates or deactivates an aggregation method (of the currently selected project).
+        """
+        Activates or deactivates an aggregation method (of the currently selected project).
         Activates the given method, if active=True and deactivates it otherwise.
 
         Args:
@@ -301,8 +329,9 @@ class IControl(ABC):
 
     @abstractmethod
     def start_calculations(self, starting_phase):
-        """Starts the calculations in the given calculation phase in the currently selected project.
-        The calculation process is devided in different calculation phases. This function starts the calculation in a given phase.
+        """
+        Starts the calculations in the given calculation phase in the currently selected project.
+        The calculation process is split in different calculation phases. This function starts the calculation in a given phase.
 
         Args:
             starting_phase (calculation_phase_enum.CalculationPhase): The phase, in which the calculation should start
@@ -314,7 +343,8 @@ class IControl(ABC):
 
     @abstractmethod
     def get_calculation_state(self):
-        """Gives the current calculation state of the selected project.
+        """
+        Gives the current calculation state of the selected project.
 
         Returns:
             calculation_state_enum.CalculationState: Returns the current state of the calculation. For details see documentation of CalculationState.
@@ -323,7 +353,8 @@ class IControl(ABC):
 
     @abstractmethod
     def get_current_calculation_phase(self):
-        """Returns the calculation phase of the currently selected project.
+        """
+        Returns the calculation phase of the currently selected project.
 
         Returns:
             calculation_phase_enum.CalculationPhase: The phase, that is currently running. NONE, if no phase is currently running.
@@ -332,7 +363,8 @@ class IControl(ABC):
 
     @abstractmethod
     def get_current_calculation_process(self):
-        """Returns an approximation of the progress of the calculations in the currently selected project.
+        """
+        Returns an approximation of the progress of the calculations in the currently selected project.
         The progress is given as a number between 0 and 1, where 0 indicates that the calculation has not started yet and 1 indicates, that the calculations are done.
 
         Returns:
@@ -342,7 +374,8 @@ class IControl(ABC):
 
     @abstractmethod
     def cancel_calculations(self):
-        """Cancels the calculations of the currently selected project.
+        """
+        Cancels the calculations of the currently selected project.
         The calculation phase that is currently running will be stopped.
 
         Returns:
@@ -352,56 +385,64 @@ class IControl(ABC):
 
     @abstractmethod
     def export_project(self, path):
-        """Exports the currently selected project.
-        The folders and files of he project are copied to the given destination.
+        """
+        Exports the currently selected project.
+        Before it will be exported, the project will be saved.
+        The folders and files of the project are copied to the given destination.
 
         Args:
             path (pathlib.Path): The place in storage, where the project should be exported to.
 
         Returns:
-            bool: True, if the export was successfull; False, if an error accured: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
         """
         pass
 
     @abstractmethod
     def export_calculations(self, path):
-        """Exports the result of the calculations of the currently selected project.
+        """
+        Exports the result of the calculations of the currently selected project.
         The folders and files regarding the results of the calculations are copied to the given destination.
 
         Args:
             path (pathlib.Path): The place in storage, where the results should be exported to.
 
         Returns:
-            bool: True, if the export was successfull; False, if an error accured: The path was not valid or occupied, there was not enought space in storage, the calculations have not produced results yet or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage, the calculations have not produced results yet or there was no project selected.
         """
         pass
 
     @abstractmethod
     def export_configurations(self, path):
-        """Exports the category file of the currently selected project.
+        """
+        Exports the category file of the currently selected project.
         A list of categories in the current project is stored at the given destination.
+
         Args:
             path (pathlib.Path): The place in storage, where the categories should be stored at.
 
         Returns:
-            bool: True, if the export was successfull; False, if an error accured: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
         """
         pass
 
     @abstractmethod
     def export_cut_out_map(self, path):
-        """Exports the map generated by the cut-out configuration.
+        """
+        Exports the map generated by the cut-out configuration.
+
         Args:
-            path (pathlib.Path): The place in storage, where the cut out map should be stored at.
+            path (pathlib.Path): The place in storage, where the cut-out-map should be stored at.
 
         Returns:
-            bool: True, if the export was successfull; False, if an error accured: The path was not valid or occupied, there was not enought space in storage, the application wasn't able to create the map or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage, the application wasn't able to create the map or there was no project selected.
         """
         pass
 
     @abstractmethod
     def get_project_name(self):
-        """Gets the name of the currently selected project.
+        """
+        Gets the name of the currently selected project.
 
         Returns:
             str: The name of the project
@@ -410,19 +451,21 @@ class IControl(ABC):
 
     @abstractmethod
     def set_project_name(self, name):
-        """Sets the name of the currently selected project
+        """
+        Sets the name of the currently selected project
 
         Args:
             name (str): The new name of the project, may not contain line breaks.
 
         Returns:
-            bool: True, if the name was changed successfully; False, if an error accured: The name is not valid or no project was selected.
+            bool: True, if the name was changed successfully; False, if an error occurred: The name is not valid or no project was selected.
         """
         pass
 
     @abstractmethod
     def get_project_description(self):
-        """Gets the description of the currently selected project.
+        """
+        Gets the description of the currently selected project.
 
         Returns:
             str: The description of the project
@@ -431,7 +474,8 @@ class IControl(ABC):
 
     @abstractmethod
     def set_project_description(self, description):
-        """Sets the description of the currently selected project
+        """
+        Sets the description of the currently selected project.
 
         Args:
             description (str): The new description of the project, may contain line breaks.
@@ -443,7 +487,8 @@ class IControl(ABC):
 
     @abstractmethod
     def get_project_default_folder(self):
-        """Gets the project default folder.
+        """
+        Gets the project default folder.
         The project default folder is the folder, where projects are stored by default.
 
         Returns:
@@ -453,20 +498,23 @@ class IControl(ABC):
 
     @abstractmethod
     def set_project_default_folder(self, default_folder):
-        """Sets the project default folder
+        """
+        Sets the project default folder.
         The project default folder is the folder, where projects are stored by default.
+        Projects of an old default folder will not be copied over.
 
         Args:
             default_folder (pathlib.Path): The path to the new project default folder
 
         Returns:
-            bool: True, if the default folder was set successfully; False if an error accured: The path is not valid or occupied.
+            bool: True, if the default folder was set successfully; False if an error occurred: The path is not valid or occupied.
         """
         pass
 
     @abstractmethod
     def generate_cut_out_map(self):
-        """Generates a map of the data of the currently selected project.
+        """
+        Generates a map of the data of the currently selected project.
         Using the cut-out file of the project, this function creates a map as a html-file of the project. The path to the html-file is returned.
 
         Returns:
@@ -476,7 +524,8 @@ class IControl(ABC):
 
     @abstractmethod
     def get_calculation_visualization(self):
-        """Generates a graphic that visualizes the results of the calculations of the currently selected project.
+        """
+        Generates a graphic that visualizes the results of the calculations of the currently selected project.
 
         Returns:
             matplotlib.Axes: The resulting visualization as axes of the matplotlib library.

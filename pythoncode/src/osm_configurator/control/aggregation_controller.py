@@ -3,19 +3,22 @@ import src.osm_configurator.model.project.calculation.aggregation_method_enum
 
 
 class AggregationController:
-    """The AggregationController is responsible for consistently forwarding requests to the model, regarding the aggregation-calculations and the aggregation methods of the currently selected project.
+    """
+    The AggregationController is responsible for consistently forwarding requests to the model, regarding the aggregation-calculations and the aggregation methods of the currently selected project.
     """
 
-    def __init__(self):
-        """Creates a new instance of the AggregationCOntroller, with a association to the model.
+    def __init__(self, model):
+        """
+        Creates a new instance of the AggregationController, with an association to the model.
 
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         pass
 
-    def get_aggregation_methods():
-        """Returns a list of all aggregation methods that are available. 
+    def get_aggregation_methods(self):
+        """
+        Returns a list of all aggregation methods that are available.
         This function returns all available aggregation methods, not just the ones that are active in the current project.
 
         Returns:
@@ -24,7 +27,8 @@ class AggregationController:
         pass
 
     def is_aggregation_method_active(self, method):
-        """Checks, whether a aggregation method is active in the currently selected project.
+        """
+        Checks, whether an aggregation method is active in the currently selected project.
 
         Args:
             method (aggregation_method_enum.AggregationMethod): The aggregation method that is checked for.
@@ -35,7 +39,8 @@ class AggregationController:
         pass
 
     def set_aggregation_method_active(self, method, active):
-        """Activates or deactivates an aggregation method (of the currently selected project).
+        """
+        Activates or deactivates an aggregation method (of the currently selected project).
         Activates the given method, if active=True and deactivates it otherwise.
 
         Args:
