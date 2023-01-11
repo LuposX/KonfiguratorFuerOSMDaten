@@ -6,7 +6,7 @@ class Application(IApplication):
 
     def __init__(self):
         """
-        Creates a new instance of the Application.
+        Creates a new instance of the application_interface.Application.
         """
         pass
 
