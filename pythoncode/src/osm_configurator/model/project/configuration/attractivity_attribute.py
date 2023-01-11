@@ -1,4 +1,4 @@
-import pythoncode.src.osm_configurator.model.project.configuration.attractivity_attribute_enum
+import src.osm_configurator.model.project.configuration.attribute_enum
 
 
 class AttractivityAttribute:
@@ -8,7 +8,7 @@ class AttractivityAttribute:
     and vice versa.
     """
 
-    attractivity_attributes = []  # list of attractivity attributes (values from attractivity_attribute_enum)
+    attractivity_attributes = []  # list of attractivity attributes (values from attribute_enum)
     attribute_factor = {}  # dictionary, that maps each attractivity attribute to its according factor
     base_factor = 1  # base factor, if no factor is given for a certain attribute
 
@@ -53,7 +53,7 @@ class AttractivityAttribute:
         Returns the factor of a given attribute
 
         Args:
-            attribute (attractivity_attribute_enum): attribute whose factor will be searched for
+            attribute (attribute_enum.Attribute): attribute whose factor will be searched for
 
         Returns:
              double: the given factor if the attribute exists, else -1
@@ -69,7 +69,7 @@ class AttractivityAttribute:
         Changes the factor of the given attribute
 
         Args:
-            attribute (attractivity_attribute_enum): is the attribute whose factor will be changed
+            attribute (attribute_enum.Attribute): is the attribute whose factor will be changed
             factor (double) : is the new factor
 
         Returns:

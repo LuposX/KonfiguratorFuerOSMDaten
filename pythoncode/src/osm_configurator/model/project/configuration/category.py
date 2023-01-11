@@ -1,6 +1,6 @@
-import pythoncode.src.osm_configurator.model.project.configuration.calculation_method_of_area as CMA
-import pythoncode.src.osm_configurator.model.project.configuration.attractivity_attribute as AttractivityAttribute
-import pythoncode.src.osm_configurator.model.project.configuration.default_value_entry as DefaultValueEntry
+import src.osm_configurator.model.project.configuration.calculation_method_of_area as CMA
+import src.osm_configurator.model.project.configuration.attractivity_attribute as AttractivityAttribute
+import src.osm_configurator.model.project.configuration.default_value_entry as DefaultValueEntry
 
 
 class Category:

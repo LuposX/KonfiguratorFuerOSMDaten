@@ -21,9 +21,7 @@ Class Descriptions
    :caption: API References:
    :hidden:
    
-   Control<apidoc/osm_configurator.control>
-   Model<apidoc/osm_configurator.model>
-   View<apidoc/osm_configurator.view>
+   apidoc/modules
 
 Indices and tables
 ==================

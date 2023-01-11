@@ -1,4 +1,4 @@
-from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 
 class CutOutConfiguration:
 

@@ -1,5 +1,5 @@
 import pathlib
-import osm_file_format_enum
+import src.osm_configurator.model.project.calculation.osm_file_format_enum
 
 class OSMFileConverter:
     """
@@ -23,7 +23,7 @@ class OSMFileConverter:
         Allowed format: ".pbf", ".osm.bz2", ".osm".
 
         Args:
-            data_format (calculation.OSMFileFormat): In which osm file format we want to transform our file into.
+            data_format (osm_file_format_enum.OSMFileFormat): In which osm file format we want to transform our file into.
 
         Returns:
             (boolean): true if successful, otherwise false

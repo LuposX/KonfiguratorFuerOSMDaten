@@ -6,8 +6,7 @@ class GeoDataPhase(ICalculationPhase):
     This Phase is responsible for three things:
     1. Converting the osm_data file into the right format
     2. Splitting the osm_data file into smaller pieces
-    3. If chosen so, then removing building which are on the border
-    of the traffic cell.
+    3. If chosen so, then removing building which are on the border of the traffic cell.
     For details see the method calculate().
     """
 
@@ -24,7 +23,7 @@ class GeoDataPhase(ICalculationPhase):
         2. After that it converts the osm data files into files with the #
         ".pbf" osm data file format, this is done because the library we use internally used ".pbf" formats.
         3. If the option "buildings on edge are in" didn't get selected,
-         it removes all building which lie on the edge/border.
+        it removes all building which lie on the edge/border.
 
         Args:
             configuration_manager (configuration_manager.ConfigurationManager): The object containing all

@@ -1,5 +1,6 @@
-from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+import src.osm_configurator.model.project.config_phase_enum
+import src.osm_configurator.model.project.calculation.calculation_state_enum
+
 
 class ActiveProject:
 

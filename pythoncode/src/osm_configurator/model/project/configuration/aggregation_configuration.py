@@ -1,4 +1,5 @@
-from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+import src.osm_configurator.model.project.calculation.aggregation_method_enum
+
 
 class AggregationConfiguration:
 
@@ -20,7 +21,7 @@ class AggregationConfiguration:
         Gives back a List of all possible aggregation methods.
 
         Returns:
-            List<AggregationMethod>: A list containing all aggregation methods.
+            List<aggregation_method_enum.AggregationMethod>: A list containing all aggregation methods.
         """
         pass
 
@@ -29,7 +30,7 @@ class AggregationConfiguration:
         Checks, if a given aggregation method is active.
 
         Args:
-            method (AggregationMethod): The new method, which is to be checked.
+            method (aggregation_method_enum.AggregationMethod): The new method, which is to be checked.
 
         Returns:
             bool: True if the aggregation method is active, otherwise false.
@@ -42,7 +43,7 @@ class AggregationConfiguration:
         method should be activated, it stays active. The same applies to inactive aggregation methods, which should be deactivated.
 
         Args:
-            method (AggregationMethod): The method, which state should be changed.
+            method (aggregation_method_enum.AggregationMethod): The method, which state should be changed.
             active (bool): This is the new state of the aggregation method.
 
         Returns:

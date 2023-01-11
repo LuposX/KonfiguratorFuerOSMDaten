@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from pathlib import Path
-from geopandas import GeoDataFrame
+import pathlib
+import geopandas
 
 
 class OSMDataParserInterface(ABC):

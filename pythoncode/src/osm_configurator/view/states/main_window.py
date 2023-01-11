@@ -23,8 +23,8 @@ class MainWindow:
         This Method changes from an old given State to a new given State to show on the MainWindow.
 
         Args:
-            last_state (state.State): The State that needs to me removed from the MainWindow
-            new_state (state.State): The State that shall be shown by the MainWindow
+            last_state (state_enum.State): The State that needs to me removed from the MainWindow
+            new_state (state_enum.State): The State that shall be shown by the MainWindow
 
         Returns:
             bool: true, if the state change was successful, false if not.

@@ -21,6 +21,9 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join('..', '..')))
 sys.path.insert(0, os.path.abspath("../../src"))
 sys.path.insert(0, os.path.abspath("../../src/osm_configurator"))
+sys.path.insert(0, os.path.abspath("../../src/osm_configurator/model"))
+sys.path.insert(0, os.path.abspath("../../src/osm_configurator/view"))
+sys.path.insert(0, os.path.abspath("../../src/osm_configurator/control"))
 #sys.path.insert(0, os.path.abspath("../../src"))
 
 
