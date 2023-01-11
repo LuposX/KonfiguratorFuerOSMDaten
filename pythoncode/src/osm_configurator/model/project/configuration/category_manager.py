@@ -36,7 +36,7 @@ class CategoryManager:
         Getter for all the Categories.
 
         Returns:
-            List[Category]: List of the chosen categories.
+            list[Category]: List of the chosen categories.
         """
         return self._categories
 
@@ -75,7 +75,7 @@ class CategoryManager:
         Overwrites the list of categories with the given list, if both lists are not identical.
 
         Args:
-            new_category_list (List[Categories]): List of categories, that will overwrite the already existing list.
+            new_category_list (list[Categories]): List of categories, that will overwrite the already existing list.
 
         Returns:
             bool: True, if the replacement was successful, else False.
@@ -90,7 +90,7 @@ class CategoryManager:
         Merges the existing category list with the given list if both lists are not identical.
 
         Args:
-            category_input_list (Lis[Category]): New list of categories that will be merged into the existing list.
+            category_input_list (list[Category]): New list of categories that will be merged into the existing list.
 
         Returns:
             bool: True, if the merging was successful, else False.

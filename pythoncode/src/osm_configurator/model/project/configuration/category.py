@@ -211,7 +211,7 @@ class Category:
         Getter for the AttractivityAttributes of the category.
 
         Returns:
-            list[attractivity_attribute.AttractivityAttributes]: List of all used attractivity attributes
+            list[attractivity_attribute.AttractivityAttribute]: List of all used attractivity attributes
         """
         return self._attractivity_attributes
 
@@ -250,7 +250,7 @@ class Category:
         Getter for the default values of the category.
 
         Returns:
-            List<DefaultValueEntry>: List of all used default values.
+            list[DefaultValueEntry]: List of all used default values.
         """
         return self._default_value_list
 

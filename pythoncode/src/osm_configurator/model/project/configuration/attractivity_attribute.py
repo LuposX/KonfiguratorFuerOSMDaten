@@ -50,7 +50,7 @@ class AttractivityAttribute:
         Getter for the list of attributes and factors.
 
         Returns:
-            List[(attribute_enum.Attribute, float)]: The list of attribute factor pairs.
+            list[(attribute_enum.Attribute, float)]: The list of attribute factor pairs.
         """
         pass
 
@@ -59,7 +59,7 @@ class AttractivityAttribute:
          Setter for the list of attributes and factors.
 
         Args:
-            attractivity_attribute_list (List[(attribute_enum.Attribute, float)]): A list of attribute factor pairs we want to set as the new list of attributes and factors.
+            attractivity_attribute_list (list[(attribute_enum.Attribute, float)]): A list of attribute factor pairs we want to set as the new list of attributes and factors.
         """
         pass
 
