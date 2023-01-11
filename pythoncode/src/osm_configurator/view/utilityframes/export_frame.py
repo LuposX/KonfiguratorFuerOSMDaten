@@ -4,20 +4,18 @@ import src.osm_configurator.control.control_interface
 
 class ExportFrame:
     """
-    The Export Frame provides a Dropdown Menu that providing the following Options:
-    - Project Export
-    - Calculation Export
+    The ExportFrame provides a dropdown menu that providing the following Options:
+    - project export
+    - calculation export
     - Configurations Export
     """
 
     def __init__(self, parent_frame, control):
         """
-        This Method creates an ExportFrame, that provides the user with different Export-Options.
+        This method creates an ExportFrame, that provides the user with different export options.
 
         Args:
-            parent_frame (project_head_frame.ProjectHeadFrame): The Parent of the ExportFrame is the HeadFrame,
-            where the Export Feature is located.
-            control (control_interface.IControl): The Control the Frame calls, to gain access to
-            the Model to export.
+            parent_frame (project_head_frame.ProjectHeadFrame): The parent of the ExportFrame is the HeadFrame, where the export feature is located.
+            control (control_interface.IControl): The control the frame calls, to gain access to the model to export.
         """
         pass

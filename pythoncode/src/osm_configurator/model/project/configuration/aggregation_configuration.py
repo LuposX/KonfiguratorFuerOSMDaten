@@ -7,7 +7,6 @@ class AggregationConfiguration:
     This class manages the different aggregation methods stored in an enum. Therefore, it activates and deactivates
     those methods. Activating means that this aggregation methods should be used during the aggregation phase in the
     calculation. Deactivating means the opposite.
-    To do this the class holds a complete list of aggregation methods and assigns a bool to each of it.
     """
 
     def __init__(self):
@@ -21,7 +20,7 @@ class AggregationConfiguration:
         Gives back a List of all possible aggregation methods.
 
         Returns:
-            List<aggregation_method_enum.AggregationMethod>: A list containing all aggregation methods.
+            List[aggregation_method_enum.AggregationMethod]: A list containing all aggregation methods.
         """
         pass
 
@@ -30,7 +29,7 @@ class AggregationConfiguration:
         Checks, if a given aggregation method is active.
 
         Args:
-            method (aggregation_method_enum.AggregationMethod): The new method, which is to be checked.
+            method (aggregation_method_enum.AggregationMethod): The method, which is to be checked.
 
         Returns:
             bool: True if the aggregation method is active, otherwise false.

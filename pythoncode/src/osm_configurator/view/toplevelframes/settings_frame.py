@@ -5,20 +5,20 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 class SettingsFrame(TopLevelFrame):
     """
-    This Frame shows the User the Settings for:
-    - The Application
-    - The current Project
+    This frame shows the user the settings for:
+    - The application
+    - The current project
 
-    It either can be both or only the Application Settings.
+    It either can be both or only the application settings.
     """
 
     def __init__(self, state_manager, control):
         """
-        This Method creates a SettingsFrame, that lets the user set the Application and Project-Settings.
+        This method creates a SettingsFrame, that lets the user set the application and  project settings.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, if it wants to switch States.
-            control (control_interface.IControl): The Control the Frame will call, to gain access to the Model.
+            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
+            control (control_interface.IControl): The control the frame will call to get access to the model.
         """
         super().__init__(state_manager, control)
         pass

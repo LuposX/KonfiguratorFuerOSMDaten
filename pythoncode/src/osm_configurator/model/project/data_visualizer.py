@@ -1,5 +1,5 @@
 import src.osm_configurator.model.project.configuration.cut_out_configuration
-import seaborn
+import matplotlib
 
 
 class DataVisualizer:
@@ -31,7 +31,7 @@ class DataVisualizer:
         It is used to visualize the calculated end result via a boxplot.
 
         Args:
-            data (seaborn.boxplot): A plot of the data which we want to visualize.
+            data (matplotlib.axes.Axes): A plot of the data which we want to visualize.
 
         Returns:
             bool: True if creating the boxplot works, otherwise false.

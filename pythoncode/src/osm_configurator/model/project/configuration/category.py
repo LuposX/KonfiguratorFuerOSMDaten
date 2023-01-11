@@ -3,26 +3,26 @@ import src.osm_configurator.model.project.configuration.attractivity_attribute a
 import src.osm_configurator.model.project.configuration.default_value_entry as DefaultValueEntry
 import src.osm_configurator.model.project.configuration.calculation_method_of_area
 
+
 class Category:
     """
-    Models a category containing all its values and attributes
-    TODO: document more clearly
+    An internal representation of a category containing all its values and attributes
     """
 
-    active = False
-    whitelist = []
-    blacklist = []
-    category_name = "Category Name"
-    calculate_area = False
-    calculate_floor_area = False
-    calculation_method_of_area = CMA.CalculationMethodOfArea  # TODO: Vervollständigen durch Methoden im Enum
-    strictly_use_default_values = False
-    attractivity_attributes = []
-    default_value_list = []
+    _active = False
+    _whitelist = []
+    _blacklist = []
+    _category_name = "Category Name"
+    _calculate_area = False
+    _calculate_floor_area = False
+    _calculation_method_of_area = CMA.CalculationMethodOfArea  # TODO: Vervollständigen durch Methoden im Enum
+    _strictly_use_default_values = False
+    _attractivity_attributes = []
+    _default_value_list = []
 
     def __init__(self, whitelist, blacklist, category_name):
         """
-        Constructor of the class
+        Creates a new instance of a "Category" class.
 
         Args:
             whitelist ([str]): list of the whitelist attributes
@@ -30,9 +30,9 @@ class Category:
             category_name (str): name of the category
         """
         self.activate()
-        self.whitelist = whitelist
-        self.blacklist = blacklist
-        self.category_name = category_name
+        self._whitelist = whitelist
+        self._blacklist = blacklist
+        self._category_name = category_name
 
     def is_active(self):
         """
@@ -41,7 +41,7 @@ class Category:
         Returns:
             Value of self.active
         """
-        return self.active
+        return self._active
 
     def activate(self):
         """
@@ -50,8 +50,8 @@ class Category:
         Returns:
              bool: True, if value was set correctly, False if value was already True
         """
-        if not self.active:
-            self.active = True
+        if not self._active:
+            self._active = True
             return True
         return False
 
@@ -62,8 +62,8 @@ class Category:
         Returns:
             bool: True, if value was set correctly, False if value was already False
         """
-        if self.active:
-            self.active = False
+        if self._active:
+            self._active = False
             return True
         return False
 
@@ -73,7 +73,7 @@ class Category:
         Returns:
             [str]: List containing all whitelist values of the class
         """
-        return self.whitelist
+        return self._whitelist
 
     def set_whitelist(self, new_whitelist):
         """
@@ -85,8 +85,8 @@ class Category:
         Returns:
              bool: True, if the whitelist was overwritten successfully, else False
         """
-        if self.whitelist != new_whitelist:
-            self.whitelist = new_whitelist
+        if self._whitelist != new_whitelist:
+            self._whitelist = new_whitelist
             return True
         return False
 
@@ -96,7 +96,7 @@ class Category:
         Returns
             [str]: list containing all blacklist attributes of the class
         """
-        return self.blacklist
+        return self._blacklist
 
     def set_blacklist(self, new_blacklist):
         """
@@ -108,8 +108,8 @@ class Category:
         Returns:
             bool: True, if the blacklist was overwritten successfully, else False
         """
-        if self.blacklist != new_blacklist:
-            self.blacklist = new_blacklist
+        if self._blacklist != new_blacklist:
+            self._blacklist = new_blacklist
             return True
         return False
 
@@ -119,7 +119,7 @@ class Category:
         Returns:
              str: name of the category
         """
-        return self.category_name
+        return self._category_name
 
     def set_category_name(self, new_category_name):
         """
@@ -131,8 +131,8 @@ class Category:
         Returns:
             bool: True, if the overwriting process concluded successfully, else False
         """
-        if self.category_name != new_category_name:
-            self.category_name = new_category_name
+        if self._category_name != new_category_name:
+            self._category_name = new_category_name
             return True
         return False
 
@@ -142,7 +142,7 @@ class Category:
         Returns:
              bool: value of calculate_area
         """
-        return self.calculate_area
+        return self._calculate_area
 
     def set_calculate_area(self, new_calculate_area):
         """
@@ -151,7 +151,7 @@ class Category:
         Args:
             new_calculate_area (bool): new value that will overwrite the existing value
         """
-        self.calculate_area = new_calculate_area
+        self._calculate_area = new_calculate_area
 
     def get_calculation_method_of_area(self):
         """
@@ -159,7 +159,7 @@ class Category:
         Returns:
             CalculationMethodOfArea: the calculation method of the area
         """
-        return self.calculation_method_of_area
+        return self._calculation_method_of_area
 
     def set_calculation_method_of_area(self, new_calculation_method):
         """
@@ -171,7 +171,7 @@ class Category:
         Returns:
             calculation_method_of_area.CalculationMethodOfArea: the method with which we calculate the area.
         """
-        self.calculation_method_of_area = new_calculation_method
+        self._calculation_method_of_area = new_calculation_method
         # TODO: Check if new-calculation-method is actually from CalculationMethodOfArea
         pass
 
@@ -181,7 +181,7 @@ class Category:
         Returns:
              bool: Value of calculate_floor_area
         """
-        return self.calculate_floor_area
+        return self._calculate_floor_area
 
     def set_calculate_floor_area(self, new_calculate_floor_area):
         """
@@ -193,8 +193,8 @@ class Category:
         Returns:
             bool: True, if the overwriting process was successful, else false
         """
-        if self.calculate_floor_area != new_calculate_floor_area:
-            self.calculate_floor_area = new_calculate_floor_area
+        if self._calculate_floor_area != new_calculate_floor_area:
+            self._calculate_floor_area = new_calculate_floor_area
             return True
         return False
 
@@ -204,7 +204,7 @@ class Category:
         Returns:
              bool: value of strictly_use_default_values
         """
-        return self.strictly_use_default_values
+        return self._strictly_use_default_values
 
     def set_strictly_use_default_values(self, new_strictly_use_default_values):
         """
@@ -216,8 +216,8 @@ class Category:
         Return:
             True if the overwriting process was successful, else False
         """
-        if self.strictly_use_default_values != new_strictly_use_default_values:
-            self.strictly_use_default_values = new_strictly_use_default_values
+        if self._strictly_use_default_values != new_strictly_use_default_values:
+            self._strictly_use_default_values = new_strictly_use_default_values
             return True
         return False
 
@@ -226,7 +226,7 @@ class Category:
         Returns:
             List<AttractivityAttributes>: List of all used attractivity attributes
         """
-        return self.attractivity_attributes
+        return self._attractivity_attributes
 
     def add_attractivity_attribute(self, new_attractivity_attribute):
         """
@@ -238,8 +238,8 @@ class Category:
         Returns:
             bool: True, if the attribute was added successfully, else False
         """
-        if new_attractivity_attribute not in self.attractivity_attributes:
-            self.attractivity_attributes.append(new_attractivity_attribute)
+        if new_attractivity_attribute not in self._attractivity_attributes:
+            self._attractivity_attributes.append(new_attractivity_attribute)
             return True
         return False
 
@@ -253,8 +253,8 @@ class Category:
         Returns:
             True, if the element was removed, else False
         """
-        if attractivity_attribute in self.attractivity_attributes:
-            self.attractivity_attributes.remove(attractivity_attribute)
+        if attractivity_attribute in self._attractivity_attributes:
+            self._attractivity_attributes.remove(attractivity_attribute)
             return True
         return False
 
@@ -264,7 +264,7 @@ class Category:
         Returns:
             List<DefaultValueEntry>: List of all used default values
         """
-        return self.default_value_list
+        return self._default_value_list
 
     def add_default_value_entry(self, new_default_value_entry):
         """
@@ -276,8 +276,8 @@ class Category:
         Returns:
             bool: True, if element was added successfully, else False
         """
-        if new_default_value_entry not in self.default_value_list:
-            self.default_value_list.append(new_default_value_entry)
+        if new_default_value_entry not in self._default_value_list:
+            self._default_value_list.append(new_default_value_entry)
             return True
         return False
 
@@ -291,8 +291,8 @@ class Category:
         Returns:
             bool: True, if the element was removed successfully, else False
         """
-        if default_value_entry in self.default_value_list:
-            self.default_value_list.remove(default_value_entry)
+        if default_value_entry in self._default_value_list:
+            self._default_value_list.remove(default_value_entry)
             return True
         return False
 
@@ -306,12 +306,12 @@ class Category:
         Returns:
             bool: True, if the change was successful, else False
         """
-        if (default_value_entry not in self.default_value_list) \
-                or self.default_value_list.index(default_value_entry) <= 0:
+        if (default_value_entry not in self._default_value_list) \
+                or self._default_value_list.index(default_value_entry) <= 0:
             return False
-        index = self.default_value_list.index(default_value_entry)
-        self.default_value_list[index - 1], self.default_value_list[index] \
-            = self.default_value_list[index], self.default_value_list[index - 1]
+        index = self._default_value_list.index(default_value_entry)
+        self._default_value_list[index - 1], self._default_value_list[index] \
+            = self._default_value_list[index], self._default_value_list[index - 1]
         return True
 
     def move_default_value_entry_down(self, default_value_entry):
@@ -324,10 +324,10 @@ class Category:
         Returns:
             bool: True, if the change was successful, else false
         """
-        if (default_value_entry not in self.default_value_list) \
-                or self.default_value_list.index(default_value_entry) <= 0:
+        if (default_value_entry not in self._default_value_list) \
+                or self._default_value_list.index(default_value_entry) <= 0:
             return False
-        index = self.default_value_list.index(default_value_entry)
-        self.default_value_list[index + 1], self.default_value_list[index] \
-            = self.default_value_list[index], self.default_value_list[index + 1]
+        index = self._default_value_list.index(default_value_entry)
+        self._default_value_list[index + 1], self._default_value_list[index] \
+            = self._default_value_list[index], self._default_value_list[index + 1]
         return True

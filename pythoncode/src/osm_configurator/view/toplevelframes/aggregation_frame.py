@@ -5,18 +5,17 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 class AggregationFrame(TopLevelFrame):
     """
-    This Frame shows the Aggregation page the user will interact on.
-    This window provides the checkboxes to choose calculation methods and methods on how the Aggregation will be calculated.
+    This frame shows the aggregation page the user will interact on.
+    This window provides the checkboxes to choose calculation methods and methods on how the aggregation will be calculated.
     """
 
     def __init__(self, state_manager, control):
         """
-        This Method Creates an AggregationFrame, that will be used to edit the aggregation method.
+        This method creates an AggregationFrame, that will be used to edit the aggregation method.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the Frame will call, when it wants to change
-            to another State.
-            control (control_interface.IControl): The Control the Frame will call, to get access to the Model.
+            state_manager (state_manager.StateManager): The StateManager, the frame will call, when it wants to change to another state.
+            control (control_interface.IControl): The control, the Frame will call, to get access to the model.
         """
         super().__init__(state_manager, control)
         pass

@@ -4,17 +4,17 @@ import src.osm_configurator.control.control_interface
 
 class ReductionCalculationFrame:
     """
-    This Frame provides the ability to the User to set how the calculation of the reduction of a category
+    This frame provides the ability to the user to set how the calculation of the reduction of a category
     will be done.
     This is a subframe from the ReductionFrame.
     """
 
     def __init__(self, parent, control):
         """
-        This Method Creates a ReductionCalculationFrame, that lets the User edit the calculation of the reduction of
+        This method creates a ReductionCalculationFrame, that lets the user edit the calculation of the reduction of
         Categories.
         Args:
-            parent (reduction_frame.ReductionFrame): This is the Parent Frame of this Frame. The Frame will be located here.
-            control (control_interface.IControl): The Frame calls the Control, to gain access to the Model.
+            parent (reduction_frame.ReductionFrame): This is the parent frame of this frame. The frame will be located here.
+            control (control_interface.IControl): The control the frame will call to get access to the model.
         """
         pass

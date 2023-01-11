@@ -11,40 +11,40 @@ class PositionedFrame:
 
     def __init__(self, frame, colum, line, state_manager, control):
         """
-        This Method Creates a Positioned Frame, which is a Frame and Coordinates to its Position.
+        This method creates a PositionedFrame, which is a Frame and coordinates to its Position.
 
         Args:
-            frame (top_level_frame.TopLevelFrame): The Frame you want to give a Position
+            frame (top_level_frame.TopLevelFrame): The frame you want to give a position
             colum (int): The Colum the Frame shall be placed in
             line (int): The Line the Frame shall be placed in
-            state_manager (state_manager.StateManager): The StateManager the Frame will use to change States if needed
+            state_manager (state_manager.StateManager): The StateManager the frame will use to change states if needed
             control (control_interface.IControl): The control that a frame shall call, if it needs access to the model
         """
         pass
 
     def get_frame(self):
         """
-        This Method Returns the Frame this PositionedFrame holds.
+        This method returns the frame this PositionedFrame holds.
 
         Returns:
             (top_level_frame.TopLevelFrame): The Frame this PositionedFrame holds
         """
         pass
 
-    def get_colum(self):
+    def get_column(self):
         """
-        This Method Returns the Colum the Frame is placed in.
+        This method Returns the column the frame is placed in.
 
         Returns:
-            (int): The Colum the Frame is placed in.
+            (int): The Column the Frame is placed in.
         """
         pass
 
     def get_line(self):
         """
-        This Method Returns the Line the Frame is placed in.
+        This method returns the line the frame is placed in.
 
         Returns:
-            (int): The Line the Frame is placed in
+            (int): The Line the frame is placed in
         """
         pass
