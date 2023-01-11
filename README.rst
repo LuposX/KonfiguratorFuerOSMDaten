@@ -46,9 +46,7 @@ for example using ``pip`` or ``conda``:
 
 .. code-block:: console
 
-    $ pip install KonfiguratorFuerOSMDaten
-    # or using conda
-    $ conda install KonfiguratorFuerOSMDaten --channel conda-forge
+    $ here will stand sth. in the future
 
 
 Usage
