@@ -1,5 +1,6 @@
 import src.osm_configurator.view.toplevelframes.top_level_frame
 import src.osm_configurator.view.states.state_manager
+import src.osm_configurator.control.control_interface
 
 
 class PositionedFrame:
@@ -8,7 +9,7 @@ class PositionedFrame:
     it is shown on a Window.
     """
 
-    def __init__(self, frame, colum, line, state_manager):
+    def __init__(self, frame, colum, line, state_manager, control):
         """
         This Method Creates a Positioned Frame, which is a Frame and Coordinates to its Position.
 
@@ -17,6 +18,7 @@ class PositionedFrame:
             colum (int): The Colum the Frame shall be placed in
             line (int): The Line the Frame shall be placed in
             state_manager (state_manager.StateManager): The StateManager the Frame will use to change States if needed
+            control (control_interface.IControl): The control that a frame shall call, if it needs access to the model
         """
         pass
 

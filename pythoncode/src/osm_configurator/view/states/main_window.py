@@ -1,5 +1,5 @@
 import src.osm_configurator.control.control_interface
-import src.osm_configurator.view.states.state_enum
+import src.osm_configurator.view.states.state_name_enum
 
 
 class MainWindow:

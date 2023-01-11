@@ -1,4 +1,6 @@
-import src.osm_configurator.view.states.state_enum
+import src.osm_configurator.view.states.state_name_enum
+import src.osm_configurator.view.states.state
+import src.osm_configurator.view.states.positioned_frame
 import src.osm_configurator.control.control_interface
 import src.osm_configurator.view.states.main_window
 
@@ -13,6 +15,7 @@ class StateManager:
         """
         This Method creates a StateManager, that will control what State is currently active and manages
         the changes between States.
+        It will create all states, as well all the frames that exist and put them in the state they belong.
 
         Args:
             control (control_interface.IControl): The connection to the control, so the Frames of each
@@ -46,10 +49,10 @@ class StateManager:
         This Method changes to the given State and deactivate the old one.
 
         Args:
-            new_state (state.State): The State that shall be activated.
+            new_state (state_name_enum.StateName): The id of the new state that shall be activated.
 
         Returns:
-            bool: true if state change was succsessfull, false if not.
+            bool: true if state change was successful, false if not.
         """
         pass
 
