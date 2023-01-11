@@ -65,7 +65,7 @@ class AttractivityAttribute:
         Getter for the base factor.
 
         Returns:
-             double: the base factor
+             float: the base factor
         """
         pass
 
@@ -74,9 +74,6 @@ class AttractivityAttribute:
         Setter for the base factor.
 
         Args:
-            new_base_factor (double): new value for the already existing base factor
-
-        Returns:
-            void
+            new_base_factor (float): new value for the already existing base factor
         """
         pass
