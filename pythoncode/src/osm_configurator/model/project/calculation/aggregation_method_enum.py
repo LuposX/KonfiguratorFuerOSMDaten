@@ -35,7 +35,7 @@ def _minimum(data, attractivity_name):
 class AggregationMethod(Enum):
     """
     This enum describes all the available aggregation methods that are possible to use.
-    Whereby an aggregation methods is a method, that takes in data and an attractivity attribute and outputs
+    Whereby an aggregation methods is a method, that takes in data and an attractivity attribute. Finally, it outputs
     and calculates a function on these parameters.
     The first argument points towards the function, while the second argument is the name of the method.
     """

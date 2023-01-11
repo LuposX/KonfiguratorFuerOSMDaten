@@ -5,7 +5,7 @@ import src.osm_configurator.model.project.calculation.calculation_phase_enum
 class CalculationManager:
     """
     The CalculationManager manages the calculation of the Project. The Calculation are distributed on the calculation
-    phases which are also managed by the Calculation Controller.
+    phases which are also managed by the CalculationController.
     """
 
     def __init__(self, configuration_manager):
@@ -21,7 +21,7 @@ class CalculationManager:
     def cancel_calculation(self):
         """
         This method will cancel an ongoing calculation.
-        A calculation consists of an :class:`<model.CalculationPhase>`, that will be interrupted.
+        A calculation consists of an CalculationPhase, that will be interrupted.
 
         Returns:
             bool: True if it is successful and false if something goes wrong, or no calculation is going on.
