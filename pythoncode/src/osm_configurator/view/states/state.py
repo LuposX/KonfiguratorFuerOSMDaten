@@ -1,5 +1,6 @@
 import src.osm_configurator.view.states.positioned_frame
 import src.osm_configurator.view.states.state_name_enum
+import src.osm_configurator.view.states.state
 
 
 class State:
@@ -19,7 +20,7 @@ class State:
         and has a default left and right.
 
         Args:
-            active_frames list[positioned_frame.PositionedFrame]: A list of frames, that this state holds
+            active_frames (list[positioned_frame.PositionedFrame]): A list of frames, that this state holds
             own_state_name (state_name_enum.StateName): The name that defines this state
             default_left (state_name_enum.StateName): The name of the state on this states left
             default_right (state_name_enum.StateName): The name of the state on this states right
@@ -68,7 +69,7 @@ class State:
         Two states are defined as equal, if their name is equal.
 
         Args:
-            state (State): The state you want to know if it is equal to this one
+            state (state.State): The state you want to know if it is equal to this one
 
         Returns:
             bool: true if the given state and this state ist equal. false if not
