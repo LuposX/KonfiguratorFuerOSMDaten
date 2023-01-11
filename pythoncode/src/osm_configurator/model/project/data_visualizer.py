@@ -17,7 +17,7 @@ class DataVisualizer:
         This method to create a map from to given cut-out.
 
         Args:
-            cut_out (cut_out_configuration.CutOutCOnfiguration): The cut-out from which the map should be created.
+            cut_out (cut_out_configuration.CutOutConfiguration): The cut-out from which the map should be created.
 
         Returns:
             bool: True if creating the map works, otherwise false.

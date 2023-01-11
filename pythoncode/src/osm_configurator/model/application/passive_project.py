@@ -43,6 +43,6 @@ class PassiveProject:
         Gives back the path pointing towards the passive project.
 
         Returns:
-            str: The path.
+            pathlib.Path: The path pointing towards the passive project.
         """
         pass

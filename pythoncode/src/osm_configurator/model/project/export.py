@@ -21,10 +21,10 @@ class Export:
         Exports the whole project to the given path.
 
         Args:
-            path (Path): The path where the project shall be exported to
+            path (pathlib.Path): The path where the project shall be exported to
 
         Returns:
-            bool: true, if export was successful, false esle
+            bool: true, if export was successful, otherwise false.
         """
         pass
 
@@ -34,10 +34,10 @@ class Export:
         to the given path.
 
         Args:
-            path (Path): The path where the configurations shall be exported to
+            path (pathlib.Path): The path where the configurations shall be exported to
 
         Returns:
-            bool: true, if export was successful, false else
+            bool: true, if export was successful, otherwise false.
         """
         pass
 
@@ -49,7 +49,7 @@ class Export:
             path (Path): The path where the results of the calculation shall be exported to
 
         Returns:
-            bool: true, if export was successful, false else
+            bool: true, if export was successful, otherwise false.
         """
         pass
 
@@ -61,6 +61,6 @@ class Export:
             path (Path): The path, where the map shall be exported to
 
         Returns:
-            bool: true, if export was successful, false else
+            bool: true, if export was successful, otherwise false.
         """
         pass
