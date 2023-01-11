@@ -1,7 +1,9 @@
-class DownloadData:
+import shapely
 
+
+class DownloadData:
     """
-    This class is to manage the download of OSM data depending on the coordinates.
+    This class manages the download of OSM data depending on a list of coordinates.
     """
 
     def __init__(self):
@@ -12,10 +14,10 @@ class DownloadData:
 
     def download_data(self, coordinates):
         """
-        Downloads OSM data addicted to the coordinates.
+        Downloads the OSM data which the coordinates dictate.
 
         Args:
-            coordinates (Polygon): The new area, which should be downloaded
+            coordinates (shapely.Polygon): The new area, which should be downloaded
 
         Returns:
             bool: True when the download works, otherwise false.
