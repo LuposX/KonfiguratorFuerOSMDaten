@@ -14,7 +14,7 @@ class IApplication(ABC):
         Args:
             name (str): The name of the new project.
             description (str): The description of the new project.
-            destination (Path): The path, where the new project should be saved.
+            destination (pathlib.Path): The path, where the new project should be saved.
 
         Returns:
             bool: True if create_project completed successfully, otherwise false.
@@ -28,7 +28,7 @@ class IApplication(ABC):
         towards the folder, where the project is saved.
 
         Args:
-            path (str): The path of the new project.
+            path (pathlib.Path): The path of the new project.
         Returns:
             bool: True if loading the project is working, otherwise false.
         """

@@ -1,8 +1,8 @@
-from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+import src.osm_configurator.model.project.config_phase_enum
+import src.osm_configurator.model.project.calculation.calculation_state_enum
+
 
 class ActiveProject:
-
     """
     This class job is to manage the active project the user is working on.
     """
@@ -38,7 +38,7 @@ class ActiveProject:
         where he previously stopped.
 
         Returns:
-            ConfigPhase: The last phase the user was working on.
+            config_phase_enum.ConfigPhase: The last phase the user was working on.
         """
         pass
 
@@ -47,7 +47,7 @@ class ActiveProject:
         This method is to start the calculation after the configuration is finished.
 
         Returns:
-            CalculationState: True if the configuration is complete so the calculation can be started, otherwise false.
+            calculation_state_enum.CalculationState: True if the configuration is complete so the calculation can be started, otherwise false.
         """
         pass
 
@@ -60,7 +60,7 @@ class ActiveProject:
         """
         pass
 
-##From here on there are only methods to hand off
+    ##From here on there are only methods to hand off
     def get_osm_data(self):
         pass
 

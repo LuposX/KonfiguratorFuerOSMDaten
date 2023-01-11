@@ -25,6 +25,6 @@ class ApplicationSettings:
         Sets the default path pointing towards the project to a new Location.
 
         Args:
-            new_location (str): The new Location, where the user wants to save new projects.
+            new_location (pathlib.Path): The new Location, where the user wants to save new projects.
         """
         pass
