@@ -12,8 +12,6 @@ class SettingsApplicationFrame:
         This Method Creates a SettingsApplicationFrame, showing the Application-Settings.
 
         Args:
-            parent (settings_frame.SettingsFrame): The Parent of this Frame, where this Frame will be located.
-            control (control_interface.IControl): The Control the Frame will call,
-            to gain access to the Model and Application Settings.
+            parent (settings_frame.SettingsFrame): The Parent of this Frame, where this Frame will be located.control (control_interface.IControl): The Control the Frame will call, to gain access to the Model and Application Settings.
         """
         pass
