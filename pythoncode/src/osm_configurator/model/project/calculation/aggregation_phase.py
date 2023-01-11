@@ -12,9 +12,9 @@ class AggregationPhase(ICalculationPhase):
     def calculate(self, configuration_manager):
         """
         Aggregates the attractivity attributes in the given traffic cells.
-        The calculation phase reads the data of the previous calculation phase. Now for every traffic cell, every
-        attractivity attribute and every aggregation method selected, the aggregation method is performed on the traffic
-        cell with the attractivity attribute. For details on the different aggregation methods, see AggregationMethod.
+        The calculation phase reads the data of the previous calculation phase. Now for every traffic cell all selected
+        aggregation methods are performed for all attractivity attributes. For details on the different aggregation
+        methods, see AggregationMethod.
         After the calculations are done, the results are stored on the hard-drive.
 
         Args:

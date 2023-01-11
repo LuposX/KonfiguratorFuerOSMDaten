@@ -14,8 +14,7 @@ class ReductionDefaultValueFrame:
         Categories.
 
         Args:
-            parent (reduction_frame.ReductionFrame): This is the Parent Frame of this Frame.
-                The Frame will be located here.
+            parent (reduction_frame.ReductionFrame): This is the Parent Frame of this Frame. The Frame will be located here.
             control (control_interface.IControl): The Control the Frame calls, to gain access to the Model.
         """
         pass
