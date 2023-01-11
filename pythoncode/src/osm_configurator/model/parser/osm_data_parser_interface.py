@@ -12,7 +12,7 @@ class OSMDataParserInterface(ABC):
     @abstractmethod
     def parse_osm_data_file(self, path):
         """
-        It gets a path pointing towards an OSM data in Protocolbuffer Binary Format(pbf) and transforms it into an
+        It gets a path pointing towards an OSM data in protocol buffer Binary Format(pbf) and transforms it into an
         GeoDataFrame.
         Each row in the GeoDataFrame is a single data entry, which is an osm element from the read osm data.
         Each column in the GeoDataFrame is a feature of the osm element from the osm_data, such as the location of the

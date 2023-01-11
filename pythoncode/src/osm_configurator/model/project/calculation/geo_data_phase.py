@@ -20,9 +20,9 @@ class GeoDataPhase(ICalculationPhase):
         parallelization, since every thread/process can work with one file.
         - RAM usage: RAM capacity is limited. We can't load one big file into the memory at once,
         so we need to split up the file.
-        2. After that it converts the osm data files into files with the #
-        ".pbf" osm data file format, which is done since the library we use internally uses ".pbf" formats.
-        3. If the option "buildings on edge are in" didn't get selected,
+        2. After that it converts the osm data files into files with the ".pbf" osm data file format, which is done
+        since the library we use internally uses ".pbf" formats.
+        3. If the option "buildings on edge are in" didn't get selected.
         It removes all buildings which are on the edge/border.
 
         Args:
