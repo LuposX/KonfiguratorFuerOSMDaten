@@ -1,4 +1,4 @@
-import src.osm_configurator.model.project.calculation.configuration_manager
+import src.osm_configurator.model.project.configuration.configuration_manager
 import src.osm_configurator.model.project.calculation.calculation_phase_enum
 
 
