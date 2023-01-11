@@ -4,17 +4,17 @@ import src.osm_configurator.control.control_interface
 
 class ReductionDefaultValueFrame:
     """
-    This Frame shows a List of Tags in a priority order, that can be expanded by adding or removing tags.
-    These Tags can hold default Values on attributes, that can be used in the Calculation.
+    This frame shows a list of tags in a priority order, that can be expanded by adding or removing tags.
+    These tags can hold default values on attributes, that can be used in the calculation.
     """
 
     def __init__(self, parent, control):
         """
-        This Method Creates a ReductionDefaultValueFrame where the User can edit Default-Values on Tags for
-        Categories.
+        This method creates a ReductionDefaultValueFrame where the User can edit default-values on tags for
+        categories.
 
         Args:
-            parent (reduction_frame.ReductionFrame): This is the Parent Frame of this Frame. The Frame will be located here.
-            control (control_interface.IControl): The Control the Frame calls, to gain access to the Model.
+            parent (reduction_frame.ReductionFrame): This is the parent frame of this frame. The frame will be located here.
+            control (control_interface.IControl): The control the frame calls, to gain access to the model.
         """
         pass
