@@ -22,4 +22,3 @@ class CalculationFrame(TopLevelFrame):
             control (control_interface.IControl): The Frame will call the Control to gain access to the Model.
         """
         super().__init__(state_manager, control)
-        pass
