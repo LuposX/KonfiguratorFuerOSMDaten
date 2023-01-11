@@ -20,6 +20,6 @@ class YesNoPopUp(CTkToplevel):
 
         Args:
             message (str): The message to be shown in the PopUp.
-            func (Callable): A Function that takes one Boolean and has no return, for the PopUp to send a message back.
+            func (typing.Callable): A Function that takes one Boolean and has no return, for the PopUp to send a message back.
         """
         pass
