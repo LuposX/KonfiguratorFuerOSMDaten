@@ -18,8 +18,7 @@ class StateManager:
         It will create all states, as well all the frames that exist and put them in the state they belong.
 
         Args:
-            control (control_interface.IControl): The connection to the control, so the Frames of each
-            state can access the Model.
+            control (control_interface.IControl): The connection to the control, so the Frames of each state can access the Model.
             main_window (main_window.MainWindow): The MainWindow, where the Frames of the State shall be shown on.
         """
         pass
