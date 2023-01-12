@@ -528,6 +528,6 @@ class IControl(ABC):
         Generates a graphic that visualizes the results of the calculations of the currently selected project.
 
         Returns:
-            matplotlib.Axes: The resulting visualization as axes of the matplotlib library.
+            matplotlib.axes.Axes: The resulting visualization as axes of the matplotlib library.
         """
         pass
