@@ -2,8 +2,8 @@ from abc import ABC, abstractmethod
 import src.osm_configurator.model.project.calculation.aggregation_method_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum
 import src.osm_configurator.model.project.calculation.calculation_phase_enum
-# import src.osm_configurator.model.project.configuration.category
-# import src.osm_configurator.model.project.configuration.attractivity_attribute
+import src.osm_configurator.model.project.configuration.category
+import src.osm_configurator.model.project.configuration.attractivity_attribute
 import pathlib
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 import matplotlib
