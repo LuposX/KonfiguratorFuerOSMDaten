@@ -1,7 +1,7 @@
 from pathlib import Path
 
-class ApplicationSettings:
 
+class ApplicationSettings:
     """
     This class job is to manage the settings apart from the project settings. In those settings the default-location
     to save projects can be changed.

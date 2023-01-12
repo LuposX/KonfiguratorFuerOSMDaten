@@ -41,7 +41,7 @@ class ActiveProject:
         where he previously stopped.
 
         Returns:
-            ConfigPhase: The last phase the user was working on.
+            config_phase_enum.ConfigPhase: The last phase the user was working on.
         """
         pass
 
@@ -53,7 +53,7 @@ class ActiveProject:
             calculation_phase (calculation_phase_enum.CalculationPhase): The calculation phase, where the calculation shall start.
 
         Returns:
-            CalculationState: The calculation state where the calculation started. Can be an error state, so signify an error, that prevents the start of the calculation.
+            calculation_state_enum.CalculationState: The calculation state where the calculation started. Can be an error state, so signify an error, that prevented the start of the calculation.
         """
         pass
 
@@ -157,7 +157,7 @@ class ActiveProject:
         Changes the path pointing towards the cut-out file.
 
         Args:
-            path (pathlib.Path): The new path.
+            path (pathlib.Path): The new path, towards a cut-out file.
 
         Returns:
             bool: True if changing the cut-out path works, otherwise false.
@@ -172,7 +172,7 @@ class ActiveProject:
             index (int): Index in the categories-list, that will be returned.
 
         Returns:
-            category.Category: The Category we wanted.
+            category.Category: The Category we wanted, NONE if the index is out of bounds of the list.
         """
         pass
 
@@ -181,7 +181,7 @@ class ActiveProject:
         Getter for all the Categories.
 
         Returns:
-            list[Category]: List of the chosen categories.
+            list[category.Category]: List of the chosen categories.
         """
         pass
 
@@ -199,7 +199,7 @@ class ActiveProject:
         Removes the given category from the categories list, if element is inside the List.
 
         Args:
-            category (Category): Category that will be removed.
+            category (category.Category): Category that will be removed.
 
         Returns:
             bool: True, if the element was removed correctly, else false.
@@ -211,19 +211,20 @@ class ActiveProject:
         Overwrites the list of categories with the given list, if both lists are not identical.
 
         Args:
-            new_category_list (list[Categories]): List of categories, that will overwrite the already existing list.
+            new_category_list (list[category.Category]): List of categories, that will overwrite the already existing list.
 
         Returns:
-            bool: True, if the replacement was successful, else False.
+            bool: True, if the replacement was successful, else false.
         """
         pass
 
     def merge_categories(self, category_input_list):
         """
         Merges the existing category list with the given list if both lists are not identical.
+        If two categories conflict in their name, the newer category will be used.
 
         Args:
-            category_input_list (list[Category]): New list of categories that will be merged into the existing list.
+            category_input_list (list[category.Category]): New list of categories that will be merged into the existing list.
 
         Returns:
             bool: True, if the merging was successful, else False.
@@ -257,22 +258,10 @@ class ActiveProject:
 
     def get_location(self):
         """
-        Getter for the location of the Project on the disk.
+        Getter for the location of the active project on the disk.
 
         Returns:
-            pathlib.Path: The location of the project
-        """
-        pass
-
-    def set_location(self, new_location):
-        """
-        This method changes the location where the project will be stored.
-
-        Args:
-            new_location (pathlib.Path): The new location for the project
-
-        Returns:
-            bool: true, if location change was successful, false else
+            pathlib.Path: The location of the active project
         """
         pass
 

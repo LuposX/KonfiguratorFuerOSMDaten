@@ -1,12 +1,37 @@
 from abc import ABC, abstractmethod
+from pathlib import Path
 import src.osm_configurator.model.project.calculation.calculation_phase_enum
 import src.osm_configurator.model.project.configuration.category
+import src.osm_configurator.model.application.passive_project
 
 
 class IApplication(ABC):
     """
     The IApplication job, is to provide the functionality the application needs.
     """
+
+    @abstractmethod
+    def get_passive_project_list(self):
+        """
+        Returns the list of all passive project in the current project default folder.
+
+        Returns:
+            list[passive_project.PassiveProject]: The list of the passive projects.
+        """
+        pass
+
+    @abstractmethod
+    def get_key_recommendation(self, input):
+        """
+        Creates recommendations based on user input
+
+        Args:
+            input (str): The input from which to generate suggestions.
+
+        Returns:
+            list<str>: Returns a list of strings containing the recommendations depending on the input.
+        """
+        pass
 
     @abstractmethod
     def create_project(self, name, description, destination):
