@@ -16,3 +16,12 @@ class SettingsProjectFrame:
             control (control_interface.IControl): The control the frame will call, to gain access to the model.
         """
         pass
+
+    def activate(self):
+        """
+        Tells the current frame to activate and collect all the data it needs.
+
+        Returns:
+            bool: True, if activation was successful, false else
+        """
+        pass

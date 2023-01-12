@@ -1,4 +1,4 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 import src.osm_configurator.control.control_interface
 import src.osm_configurator.view.states.state_manager
 
@@ -16,5 +16,15 @@ class TopLevelFrame(ABC):
         Args:
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
             control (control_interface.IControl): The control the frame will call, to gain access to the model.
+        """
+        pass
+
+    @abstractmethod
+    def activate(self):
+        """
+        Tells the current frame to activate and collect all the data it needs.
+
+        Returns:
+            bool: True, if activation was successful, false else
         """
         pass

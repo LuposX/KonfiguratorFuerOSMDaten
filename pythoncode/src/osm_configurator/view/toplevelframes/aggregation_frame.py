@@ -19,3 +19,6 @@ class AggregationFrame(TopLevelFrame):
         """
         super().__init__(state_manager, control)
         pass
+
+    def activate(self):
+        pass
