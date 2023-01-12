@@ -25,7 +25,7 @@ easily generate the right data for their traffic forecasting models.
 
 
 
-This project was developed in the context of the lecture “Praxis der
+This project is getting in the context of the lecture “Praxis der
 Softwareentwicklung(PSE)” at the University KIT in 2022,the waterfall
 model with feedback was used to develop the project.
 For each of this phase you can find the documentation in the
