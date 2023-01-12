@@ -18,7 +18,7 @@ class ApplicationSettings:
         Gives back the path pointing towards the project.
 
         Returns:
-            Path: Returns the path of the default location.
+            pathlib.Path: Returns the path of the default location.
         """
         pass
 

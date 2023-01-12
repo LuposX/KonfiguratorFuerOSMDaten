@@ -29,7 +29,7 @@ class IApplication(ABC):
             input (str): The input from which to generate suggestions.
 
         Returns:
-            list<str>: Returns a list of strings containing the recommendations depending on the input.
+            list[str]: Returns a list of strings containing the recommendations depending on the input.
         """
         pass
 
@@ -296,7 +296,7 @@ class IApplication(ABC):
         Gives back the path pointing towards the project.
 
         Returns:
-            Path: Returns the path of the default location.
+            pathlib.Path: Returns the path of the default location.
         """
         pass
 
@@ -390,7 +390,7 @@ class IApplication(ABC):
         calculation step in it.
 
         Args:
-            path (Path): The path where the results of the calculation shall be exported to
+            path (pathlib.Path): The path where the results of the calculation shall be exported to
 
         Returns:
             bool: true, if export was successful, otherwise false.
@@ -403,7 +403,7 @@ class IApplication(ABC):
         Exports an HTML-Data with the map in it, to the given path.
 
         Args:
-            path (Path): The path, where the map shall be exported to
+            path (pathlib.Path): The path, where the map shall be exported to
 
         Returns:
             bool: true, if export was successful, otherwise false.

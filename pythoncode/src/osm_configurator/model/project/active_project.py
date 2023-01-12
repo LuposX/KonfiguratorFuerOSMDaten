@@ -1,6 +1,6 @@
 import src.osm_configurator.model.project.config_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum
-import pathlib
+from pathlib import Path
 
 
 class ActiveProject:
@@ -339,7 +339,7 @@ class ActiveProject:
         calculation step in it.
 
         Args:
-            path (Path): The path where the results of the calculation shall be exported to
+            path (pathlib.Path): The path where the results of the calculation shall be exported to
 
         Returns:
             bool: true, if export was successful, otherwise false.
@@ -351,7 +351,7 @@ class ActiveProject:
         Exports an HTML-Data with the map in it, to the given path.
 
         Args:
-            path (Path): The path, where the map shall be exported to
+            path (pathlib.Path): The path, where the map shall be exported to
 
         Returns:
             bool: true, if export was successful, otherwise false.
