@@ -135,15 +135,12 @@ class ConfigurationManager:
         """
         pass
 
-    def create_category(self, new_category):
+    def create_category(self):
         """
-        Adds a new category to the list of categories, if element does not exist already.
-
-        Args:
-            new_category (Category): Category, that will be added to the list.
+        Creates a new category, that will be empty.
 
         Returns:
-            bool: True, if the category was added successfully, else False.
+            category.Category: The newly created category.
         """
         pass
 

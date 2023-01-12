@@ -1,4 +1,6 @@
 from abc import ABC, abstractmethod
+import src.osm_configurator.model.project.calculation.calculation_phase_enum
+import src.osm_configurator.model.project.configuration.category
 
 
 class IApplication(ABC):
@@ -28,19 +30,22 @@ class IApplication(ABC):
         towards the folder, where the project is saved.
 
         Args:
-            path (pathlib.Path): The path of the new project.
+            path (pathlib.Path): The path of the project, to be loaded.
         Returns:
             bool: True if loading the project is working, otherwise false.
         """
         pass
 
     @abstractmethod
-    def start_calculation(self):
+    def start_calculation(self, calculation_phase):
         """
-        This method is to start the calculation after the configuration is finished.
+        This method is to start the calculation (after the configuration is finished).
+
+        Args:
+            calculation_phase (calculation_phase_enum.CalculationPhase): The calculation phase, where the calculation shall start.
 
         Returns:
-            CalculationState: True if the configuration is complete so the calculation can be started, otherwise false.
+            CalculationState: The calculation state where the calculation started. Can be an error state, so signify an error, that prevents the start of the calculation.
         """
         pass
 
@@ -144,7 +149,7 @@ class IApplication(ABC):
         Changes the path pointing towards the cut-out file.
 
         Args:
-            path (pathlib.Path): The new path.
+            path (pathlib.Path): The new path, towards a cut-out file.
 
         Returns:
             bool: True if changing the cut-out path works, otherwise false.
@@ -160,7 +165,7 @@ class IApplication(ABC):
             index (int): Index in the categories-list, that will be returned.
 
         Returns:
-            category.Category: The Category we wanted.
+            category.Category: The Category we wanted, NONE if the index is out of bounds of the list.
         """
         pass
 
@@ -170,20 +175,17 @@ class IApplication(ABC):
         Getter for all the Categories.
 
         Returns:
-            list[Category]: List of the chosen categories.
+            list[category.Category]: List of the chosen categories.
         """
         pass
 
     @abstractmethod
-    def create_category(self, new_category):
+    def create_category(self):
         """
-        Adds a new category to the list of categories, if element does not exist already.
-
-        Args:
-            new_category (Category): Category, that will be added to the list.
+        Creates a new category, that will be empty.
 
         Returns:
-            bool: True, if the category was added successfully, else False.
+            category.Category: The newly created category.
         """
         pass
 
@@ -193,7 +195,7 @@ class IApplication(ABC):
         Removes the given category from the categories list, if element is inside the List.
 
         Args:
-            category (Category): Category that will be removed.
+            category (category.Category): Category that will be removed.
 
         Returns:
             bool: True, if the element was removed correctly, else false.
@@ -206,10 +208,10 @@ class IApplication(ABC):
         Overwrites the list of categories with the given list, if both lists are not identical.
 
         Args:
-            new_category_list (list[Categories]): List of categories, that will overwrite the already existing list.
+            new_category_list (list[category.Category]): List of categories, that will overwrite the already existing list.
 
         Returns:
-            bool: True, if the replacement was successful, else False.
+            bool: True, if the replacement was successful, else false.
         """
         pass
 
@@ -217,9 +219,10 @@ class IApplication(ABC):
     def merge_categories(self, category_input_list):
         """
         Merges the existing category list with the given list if both lists are not identical.
+        If two categories conflict in their name, the newer category will be used.
 
         Args:
-            category_input_list (list[Category]): New list of categories that will be merged into the existing list.
+            category_input_list (list[category.Category]): New list of categories that will be merged into the existing list.
 
         Returns:
             bool: True, if the merging was successful, else False.
@@ -256,23 +259,28 @@ class IApplication(ABC):
     @abstractmethod
     def get_location(self):
         """
-        Getter for the location of the Project on the disk.
+        Getter for the location of the active project on the disk.
 
         Returns:
-            pathlib.Path: The location of the project
+            pathlib.Path: The location of the active project
         """
         pass
 
-    @abstractmethod
-    def set_location(self, new_location):
+    def get_default_location(self):
         """
-        This method changes the location where the project will be stored.
-
-        Args:
-            new_location (pathlib.Path): The new location for the project
+        Gives back the path pointing towards the project.
 
         Returns:
-            bool: true, if location change was successful, false else
+            Path: Returns the path of the default location.
+        """
+        pass
+
+    def set_default_location(self, new_location):
+        """
+        Sets the default path pointing towards the project to a new Location.
+
+        Args:
+            new_location (pathlib.Path): The new Location, where the user wants to save new projects.
         """
         pass
 

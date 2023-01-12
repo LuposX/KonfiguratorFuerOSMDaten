@@ -1,3 +1,5 @@
+from pathlib import Path
+
 class ApplicationSettings:
 
     """
@@ -11,16 +13,16 @@ class ApplicationSettings:
         """
         pass
 
-    def get_location(self):
+    def get_default_location(self):
         """
         Gives back the path pointing towards the project.
 
         Returns:
-            str: Returns a String containing the path.
+            Path: Returns the path of the default location.
         """
         pass
 
-    def set_location(self, new_location):
+    def set_default_location(self, new_location):
         """
         Sets the default path pointing towards the project to a new Location.
 

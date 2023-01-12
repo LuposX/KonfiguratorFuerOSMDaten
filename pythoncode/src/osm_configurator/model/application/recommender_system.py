@@ -21,4 +21,3 @@ class RecommenderSystem:
             list<str>: Returns a list of strings containing the recommendations depending on the input.
         """
         pass
-

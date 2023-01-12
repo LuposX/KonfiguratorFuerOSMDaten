@@ -45,12 +45,15 @@ class ActiveProject:
         """
         pass
 
-    def start_calculation(self):
+    def start_calculation(self, calculation_phase):
         """
-        This method is to start the calculation after the configuration is finished.
+        This method is to start the calculation (after the configuration is finished).
+
+        Args:
+            calculation_phase (calculation_phase_enum.CalculationPhase): The calculation phase, where the calculation shall start.
 
         Returns:
-            CalculationState: True if the configuration is complete so the calculation can be started, otherwise false.
+            CalculationState: The calculation state where the calculation started. Can be an error state, so signify an error, that prevents the start of the calculation.
         """
         pass
 
@@ -182,15 +185,12 @@ class ActiveProject:
         """
         pass
 
-    def create_category(self, new_category):
+    def create_category(self):
         """
-        Adds a new category to the list of categories, if element does not exist already.
-
-        Args:
-            new_category (Category): Category, that will be added to the list.
+        Creates a new category, that will be empty.
 
         Returns:
-            bool: True, if the category was added successfully, else False.
+            category.Category: The newly created category.
         """
         pass
 
