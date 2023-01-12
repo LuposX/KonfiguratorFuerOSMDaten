@@ -1,0 +1,3903 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2022.8.10)  12 JAN 2023 19:53
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**konfiguratorfrosm-datenaufbereitungs-prozesse.tex
+(./konfiguratorfrosm-datenaufbereitungs-prozesse.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-01-21> (./sphinxmanual.cls
+Document Class: sphinxmanual 2019/12/01 v2.3.0 Document class (Sphinx manual)
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+LaTeX Info: Redefining \and on input line 35.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks16
+\inpenc@posthook=\toks17
+)
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+2500 (decimal 9472)
+   defining Unicode char U+2502 (decimal 9474)
+   defining Unicode char U+2514 (decimal 9492)
+   defining Unicode char U+251C (decimal 9500)
+   defining Unicode char U+2572 (decimal 9586)
+
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty
+Package: cmap 2021/02/06 v1.0j CMap support: searchable PDF
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
+<<t1.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks18
+\ex@=\dimen139
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen140
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count194
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count195
+\leftroot@=\count196
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count197
+\DOTSCASE@=\count198
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen141
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count199
+\c@MaxMatrixCols=\count266
+\dotsspace@=\muskip16
+\c@parentequation=\count267
+\dspbrk@lvl=\count268
+\tag@help=\toks19
+\row@=\count269
+\column@=\count270
+\maxfields@=\count271
+\andhelp@=\toks20
+\eqnshift@=\dimen142
+\alignsep@=\dimen143
+\tagshift@=\dimen144
+\tagwidth@=\dimen145
+\totwidth@=\dimen146
+\lineht@=\dimen147
+\@envbody=\toks21
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/01/26 3.70 The Babel package
+\babel@savecnt=\count272
+\U@D=\dimen148
+\l@unhyphenated=\language87
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count273
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+Package babel Info: Hyphen rules for 'canadian' set to \l@english
+(babel)             (\language0). Reported on input line 102.
+Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
+(babel)             (\language17). Reported on input line 105.
+Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
+(babel)             (\language17). Reported on input line 108.
+))
+(/usr/share/texmf/tex/latex/tex-gyre/tgtermes.sty
+Package: tgtermes 2009/09/27 v1.2 TeX Gyre Termes as default roman family
+
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks23
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)))
+(/usr/share/texmf/tex/latex/tex-gyre/tgheros.sty
+Package: tgheros 2009/09/27 v1.2 TeX Gyre Heros as default sans serif family
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fncychap/fncychap.sty
+Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
+\RW=\skip52
+\mylen=\skip53
+\myhi=\skip54
+\px=\skip55
+\py=\skip56
+\pyy=\skip57
+\pxx=\skip58
+\c@AlphaCnt=\count274
+\c@AlphaDecCnt=\count275
+) (./sphinx.sty
+Package: sphinx 2023/01/03 v6.1.0 LaTeX package (Sphinx markup)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 227.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1356.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
+)
+\sphinxverbatimsep=\dimen149
+\sphinxverbatimborder=\dimen150
+\sphinxshadowsep=\dimen151
+\sphinxshadowsize=\dimen152
+\sphinxshadowrule=\dimen153
+\spx@notice@border=\dimen154
+
+(./sphinxoptionshyperref.sty
+File: sphinxoptionshyperref.sty 2021/01/27 hyperref
+) (./sphinxoptionsgeometry.sty
+File: sphinxoptionsgeometry.sty 2021/01/27 geometry
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count276
+\float@exts=\toks24
+\float@box=\box52
+\@float@everytoks=\toks25
+\@floatcapt=\box53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen155
+\WF@size=\dimen156
+\c@WF@wrappedlines=\count277
+\WF@box=\box54
+\WF@everypar=\toks26
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/capt-of/capt-of.sty
+Package: capt-of 2009/12/29 v0.2 standard captions outside of floats
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2021/10/28 v1.9b multicolumn formatting (FMi)
+\c@tracingmulticols=\count278
+\mult@box=\box55
+\multicol@leftmargin=\dimen157
+\c@unbalance=\count279
+\c@collectmore=\count280
+\doublecol@number=\count281
+\multicoltolerance=\count282
+\multicolpretolerance=\count283
+\full@width=\dimen158
+\page@free=\dimen159
+\premulticols=\dimen160
+\postmulticols=\dimen161
+\multicolsep=\skip59
+\multicolbaselineskip=\skip60
+\partial@page=\box56
+\last@line=\box57
+\maxbalancingoverflow=\dimen162
+\mult@rightbox=\box58
+\mult@grightbox=\box59
+\mult@firstbox=\box60
+\mult@gfirstbox=\box61
+\@tempa=\box62
+\@tempa=\box63
+\@tempa=\box64
+\@tempa=\box65
+\@tempa=\box66
+\@tempa=\box67
+\@tempa=\box68
+\@tempa=\box69
+\@tempa=\box70
+\@tempa=\box71
+\@tempa=\box72
+\@tempa=\box73
+\@tempa=\box74
+\@tempa=\box75
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\@tempa=\box87
+\@tempa=\box88
+\@tempa=\box89
+\@tempa=\box90
+\@tempa=\box91
+\@tempa=\box92
+\@tempa=\box93
+\@tempa=\box94
+\@tempa=\box95
+\@tempa=\box96
+\@tempa=\box97
+\c@minrows=\count284
+\c@columnbadness=\count285
+\c@finalcolumnbadness=\count286
+\last@try=\dimen163
+\multicolovershoot=\dimen164
+\multicolundershoot=\dimen165
+\mult@nat@firstbox=\box98
+\colbreak@box=\box99
+\mc@col@check@num=\count287
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+)
+\Gin@req@height=\dimen166
+\Gin@req@width=\dimen167
+)
+(./sphinxlatexgraphics.sty
+File: sphinxlatexgraphics.sty 2021/01/27 graphics
+\spx@image@maxheight=\dimen168
+\spx@image@box=\box100
+) (./sphinxpackageboxes.sty
+Package: sphinxpackageboxes 2022/07/04 v5.1.0 advanced colored boxes
+\spx@tempboxa=\box101
+\spx@tempboxb=\box102
+\spx@boxes@border=\dimen169
+\spx@boxes@border@top=\dimen170
+\spx@boxes@border@right=\dimen171
+\spx@boxes@border@bottom=\dimen172
+\spx@boxes@border@left=\dimen173
+\spx@boxes@padding@top=\dimen174
+\spx@boxes@padding@right=\dimen175
+\spx@boxes@padding@bottom=\dimen176
+\spx@boxes@padding@left=\dimen177
+\spx@boxes@shadow@xoffset=\dimen178
+\spx@boxes@shadow@yoffset=\dimen179
+\spx@boxes@radius@topleft=\dimen180
+\spx@boxes@radius@topright=\dimen181
+\spx@boxes@radius@bottomright=\dimen182
+\spx@boxes@radius@bottomleft=\dimen183
+)
+(./sphinxlatexadmonitions.sty
+File: sphinxlatexadmonitions.sty 2023/01/03 admonitions
+
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip61
+\fb@frw=\dimen184
+\fb@frh=\dimen185
+\FrameRule=\dimen186
+\FrameSep=\dimen187
+))
+(./sphinxlatexliterals.sty
+File: sphinxlatexliterals.sty 2022/07/29 code-blocks and parsed literals
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2021/12/21 4.1b verbatim text (tvz,hv)
+\FV@CodeLineNo=\count288
+\FV@InFile=\read3
+\FV@TabBox=\box103
+\c@FancyVerbLine=\count289
+\FV@StepNumber=\count290
+\FV@OutFile=\write3
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 2021/01/29 v2.0g defines alltt environment
+)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+)
+(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+)
+\sphinxcontinuationbox=\box104
+\sphinxvisiblespacebox=\box105
+\sphinxVerbatim@TitleBox=\box106
+\sphinxVerbatim@ContentsBox=\box107
+)
+(./sphinxlatexshadowbox.sty
+File: sphinxlatexshadowbox.sty 2022/07/03 sphinxShadowBox
+) (./sphinxlatexcontainers.sty
+File: sphinxlatexcontainers.sty 2021/05/03 containers
+)
+(./sphinxhighlight.sty
+Package: sphinxhighlight 2022/06/30 stylesheet for highlighting with pygments
+) (./sphinxlatextables.sty
+File: sphinxlatextables.sty 2022/08/15 tables
+
+(/usr/share/texlive/texmf-dist/tex/latex/tabulary/tabulary.sty
+Package: tabulary 2014/06/11 v0.10 tabulary package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen188
+\ar@mcellbox=\box108
+\extrarowheight=\dimen189
+\NC@list=\toks27
+\extratabsurround=\skip62
+\backup@length=\skip63
+\ar@cellbox=\box109
+)
+\TY@count=\count291
+\TY@linewidth=\dimen190
+\tymin=\dimen191
+\tymax=\dimen192
+\TY@tablewidth=\dimen193
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
+\LTleft=\skip64
+\LTright=\skip65
+\LTpre=\skip66
+\LTpost=\skip67
+\LTchunksize=\count292
+\LTcapwidth=\dimen194
+\LT@head=\box110
+\LT@firsthead=\box111
+\LT@foot=\box112
+\LT@lastfoot=\box113
+\LT@gbox=\box114
+\LT@cols=\count293
+\LT@rows=\count294
+\c@LT@tables=\count295
+\c@LT@chunks=\count296
+\LT@p@ftn=\toks28
+)
+(/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box115
+\sift@deathcycles=\count297
+\@vwid@loff=\dimen195
+\@vwid@roff=\dimen196
+)
+\sphinx@TY@tablewidth=\dimen197
+
+(/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2020/01/04 v1.0e Color table columns (DPC)
+\everycr=\toks29
+\minrowclearance=\skip68
+)
+\rownum=\count298
+
+(/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen198
+\lightrulewidth=\dimen199
+\cmidrulewidth=\dimen256
+\belowrulesep=\dimen257
+\belowbottomsep=\dimen258
+\aboverulesep=\dimen259
+\abovetopsep=\dimen260
+\cmidrulesep=\dimen261
+\cmidrulekern=\dimen262
+\defaultaddspace=\dimen263
+\@cmidla=\count299
+\@cmidlb=\count300
+\@aboverulesep=\dimen264
+\@belowrulesep=\dimen265
+\@thisruleclass=\count301
+\@lastruleclass=\count302
+\@thisrulewidth=\dimen266
+))
+(./sphinxlatexnumfig.sty
+File: sphinxlatexnumfig.sty 2021/01/27 numbering
+) (./sphinxlatexlists.sty
+File: sphinxlatexlists.sty 2021/12/20 lists
+\spx@lineitemlabel=\toks30
+)
+\c@sphinxscope=\count303
+ (./sphinxpackagefootnote.sty
+Package: sphinxpackagefootnote 2022/08/15 v5.3.0 Sphinx custom footnotehyper pa
+ckage (Sphinx team)
+\FNH@notes=\box116
+\FNH@toks=\toks31
+\FNH@width=\dimen267
+\c@sphinxfootnotemark=\count304
+) (./sphinxlatexindbibtoc.sty
+File: sphinxlatexindbibtoc.sty 2021/01/27 index, bib., toc
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2021/10/04 v1.0m Standard LaTeX package
+))
+(./sphinxlatexstylepage.sty
+File: sphinxlatexstylepage.sty 2021/01/27 page styling
+
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Rollback for package 'parskip' requested -> version 'v1'.
+         This corresponds to the release introduced on 2001-04-09.
+
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip-2001-04-09.sty
+Package: parskip 2001/04/09 non-zero parskip adjustments
+))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2021/01/28 v4.0.1 Extensive control of page headers and foote
+rs
+\f@nch@headwidth=\skip69
+\f@nch@O@elh=\skip70
+\f@nch@O@erh=\skip71
+\f@nch@O@olh=\skip72
+\f@nch@O@orh=\skip73
+\f@nch@O@elf=\skip74
+\f@nch@O@erf=\skip75
+\f@nch@O@olf=\skip76
+\f@nch@O@orf=\skip77
+))
+(./sphinxlatexstyleheadings.sty
+File: sphinxlatexstyleheadings.sty 2022/08/15 headings
+
+(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box117
+\beforetitleunit=\skip78
+\aftertitleunit=\skip79
+\ttl@plus=\dimen268
+\ttl@minus=\dimen269
+\ttl@toksa=\toks32
+\titlewidth=\dimen270
+\titlewidthlast=\dimen271
+\titlewidthfirst=\dimen272
+))
+(./sphinxlatexstyletext.sty
+File: sphinxlatexstyletext.sty 2022/07/02 text styling
+) (./sphinxlatexobjects.sty
+File: sphinxlatexobjects.sty 2022/01/13 documentation environments
+\sphinxsignaturesep=\skip80
+\py@argswidth=\skip81
+\lineblockindentation=\skip82
+\DUlineblockindent=\skip83
+))
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+\Gm@cnth=\count305
+\Gm@cntv=\count306
+\c@Gm@tempcnt=\count307
+\Gm@bindingoffset=\dimen273
+\Gm@wd@mp=\dimen274
+\Gm@odd@mp=\dimen275
+\Gm@even@mp=\dimen276
+\Gm@layoutwidth=\dimen277
+\Gm@layoutheight=\dimen278
+\Gm@layouthoffset=\dimen279
+\Gm@layoutvoffset=\dimen280
+\Gm@dimlist=\toks33
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+\@linkdim=\dimen281
+\Hy@linkcounter=\count308
+\Hy@pagecounter=\count309
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel la
+nguages
+)
+(/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count310
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Option `unicode' set `true' on input line 4073.
+Package hyperref Info: Option `colorlinks' set `true' on input line 4073.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4073.
+Package hyperref Info: Hyper figures OFF on input line 4192.
+Package hyperref Info: Link nesting OFF on input line 4197.
+Package hyperref Info: Hyper index ON on input line 4200.
+Package hyperref Info: Plain pages OFF on input line 4207.
+Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4445.
+\c@Hy@tempcnt=\count311
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4804.
+\XeTeXLinkMargin=\dimen282
+
+(/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count312
+\Field@Width=\dimen283
+\Fld@charsize=\dimen284
+Package hyperref Info: Hyper figures OFF on input line 6076.
+Package hyperref Info: Link nesting OFF on input line 6081.
+Package hyperref Info: Hyper index ON on input line 6084.
+Package hyperref Info: backreferencing OFF on input line 6091.
+Package hyperref Info: Link coloring ON on input line 6094.
+Package hyperref Info: Link coloring with OCG OFF on input line 6101.
+Package hyperref Info: PDF/A mode OFF on input line 6106.
+LaTeX Info: Redefining \ref on input line 6146.
+LaTeX Info: Redefining \pageref on input line 6150.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count313
+\c@Item=\count314
+\c@Hfootnote=\count315
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
+with kernel methods
+)
+\Fld@listcount=\count316
+\c@bookmark@seq@number=\count317
+
+(/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip84
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty
+Package: hypcap 2016/05/16 v1.12 Adjusting the anchors of captions (HO)
+)
+(./sphinxmessages.sty
+Package: sphinxmessages 2019/01/04 v2.0 Localized LaTeX macros (Sphinx team)
+)
+\@indexfile=\write4
+\openout4 = `konfiguratorfrosm-datenaufbereitungs-prozesse.idx'.
+
+
+Writing index file konfiguratorfrosm-datenaufbereitungs-prozesse.idx
+LaTeX Font Info:    Trying to load font information for T1+qtm on input line 73
+.
+(/usr/share/texmf/tex/latex/tex-gyre/t1qtm.fd
+File: t1qtm.fd 2009/09/25 v1.2 font definition file for T1/qtm
+)
+(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count318
+\l__pdf_internal_box=\box118
+)
+(./konfiguratorfrosm-datenaufbereitungs-prozesse.aux)
+\openout1 = `konfiguratorfrosm-datenaufbereitungs-prozesse.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count319
+\scratchdimen=\dimen285
+\scratchbox=\box119
+\nofMPsegments=\count320
+\nofMParguments=\count321
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count322
+\MPscratchDim=\dimen286
+\MPnumerator=\count323
+\makeMPintoPDFobject=\count324
+\everyMPtoPDFconversion=\toks35
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pict2e/pict2e.sty
+Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/pict2e/pict2e.cfg
+File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
+)
+Package pict2e Info: Driver file: pdftex.def on input line 112.
+Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pict2e/p2e-pdftex.def
+File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
+)
+\pIIe@GRAPH=\toks36
+\@arclen=\dimen287
+\@arcrad=\dimen288
+\pIIe@tempdima=\dimen289
+\pIIe@tempdimb=\dimen290
+\pIIe@tempdimc=\dimen291
+\pIIe@tempdimd=\dimen292
+\pIIe@tempdime=\dimen293
+\pIIe@tempdimf=\dimen294
+)
+\c@literalblock=\count325
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: twoside 
+* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=469.75502pt
+* \textheight=650.43001pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=36.135pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidetrue
+* \@mparswitchtrue
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+Package hyperref Info: Link coloring ON on input line 73.
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count326
+)
+LaTeX Info: Redefining \ref on input line 73.
+LaTeX Info: Redefining \pageref on input line 73.
+LaTeX Info: Redefining \nameref on input line 73.
+
+(./konfiguratorfrosm-datenaufbereitungs-prozesse.out)
+(./konfiguratorfrosm-datenaufbereitungs-prozesse.out)
+\@outlinefile=\write5
+\openout5 = `konfiguratorfrosm-datenaufbereitungs-prozesse.out'.
+
+Package hyperref Info: Option `pageanchor' set `false' on input line 81.
+LaTeX Font Info:    Trying to load font information for T1+qhv on input line 81
+.
+
+(/usr/share/texmf/tex/latex/tex-gyre/t1qhv.fd
+File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
+)<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 81.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 81.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (179.83783pt too wide) in paragraph at lines 81--81
+ [][]
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
+
+
+]
+(./konfiguratorfrosm-datenaufbereitungs-prozesse.toc)
+\tf@toc=\write6
+\openout6 = `konfiguratorfrosm-datenaufbereitungs-prozesse.toc'.
+
+ [1
+
+] [2
+
+]
+Chapter 1.
+<license_MIT.png, id=626, 58.71938pt x 15.05624pt>
+LaTeX Font Info:    Trying to load font information for T1+txtt on input line 2
+.
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+)
+File: license_MIT.png Graphic file (type png)
+<use license_MIT.png>
+Package pdftex.def Info: license_MIT.png  used on input line 2.
+(pdftex.def)             Requested size: 58.71921pt x 15.0562pt.
+<Project_Screen.png, id=627, 565.36218pt x 401.24907pt>
+File: Project_Screen.png Graphic file (type png)
+<use Project_Screen.png>
+Package pdftex.def Info: Project_Screen.png  used on input line 102.
+(pdftex.def)             Requested size: 211.38832pt x 150.02107pt.
+<Inside_Project_Screen.png, id=629, 566.86781pt x 400.49625pt>
+File: Inside_Project_Screen.png Graphic file (type png)
+<use Inside_Project_Screen.png>
+Package pdftex.def Info: Inside_Project_Screen.png  used on input line 102.
+(pdftex.def)             Requested size: 211.38832pt x 149.3485pt.
+LaTeX Font Info:    Font shape `T1/txtt/b/n' in size <10> not available
+(Font)              Font shape `T1/txtt/bx/n' tried instead on input line 124.
+ [1
+
+ <./license_MIT.png> <./Project_Screen.png> <./Inside_Project_Screen.png>]
+LaTeX Font Info:    Trying to load font information for TS1+txtt on input line 
+1.
+
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txtt.fd
+File: ts1txtt.fd 2000/12/15 v3.1
+) [2]
+Chapter 2.
+[3
+
+] [4]
+Chapter 3.
+[5
+
+]
+LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 4
+04.
+ (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd
+File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
+)
+Underfull \hbox (badness 10000) in paragraph at lines 405--407
+[]\T1/txtt/bx/n/10 method \T1/qtm/m/n/10 ([][]\T1/txtt/m/n/10 aggregation_metho
+d_enum.AggregationMethod[][]\T1/qtm/m/n/10 ) ^^U The ag-gre-ga-tion
+ []
+
+LaTeX Font Info:    Font shape `T1/txtt/m/it' in size <10> not available
+(Font)              Font shape `T1/txtt/m/sl' tried instead on input line 2.
+[6] [7] [8] [9] [10] [11] [12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 1473--1475
+[]\T1/txtt/bx/n/10 method \T1/qtm/m/n/10 ([][]\T1/txtt/m/n/10 aggregation_metho
+d_enum.AggregationMethod[][]\T1/qtm/m/n/10 ) ^^U The ag-gre-ga-tion
+ []
+
+[14] [15] [16] [17] [18] [19] [20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 2523--2525
+[]\T1/txtt/bx/n/10 method \T1/qtm/m/n/10 ([][]\T1/txtt/m/n/10 aggregation_metho
+d_enum.AggregationMethod[][]\T1/qtm/m/n/10 ) ^^U The ag-gre-ga-tion
+ []
+
+[22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36]
+[37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50]
+LaTeX Font Info:    Font shape `TS1/txtt/b/n' in size <10> not available
+(Font)              Font shape `TS1/txtt/bx/n' tried instead on input line 1.
+ [51]
+[52] [53]
+Underfull \hbox (badness 10000) in paragraph at lines 6649--6651
+\T1/txtt/bx/n/10 configuration_manager \T1/qtm/m/n/10 ([][]\T1/txtt/m/n/10 conf
+iguration_manager.ConfigurationManager[][]\T1/qtm/m/n/10 ) ^^U
+ []
+
+[54] [55] [56] [57] [58] [59] [60] [61]
+Underfull \hbox (badness 10000) in paragraph at lines 7674--7676
+\T1/qtm/m/n/10 An ex-am-ple for at-trac-tiv-ity_attribute_list: [(AREA, 1.0), (
+NU-MER_OF_FLOOR, 2.0),
+ []
+
+[62] [63] [64] [65]
+Underfull \hbox (badness 10000) in paragraph at lines 8375--8377
+\T1/txtt/bx/n/10 new_attractivity_attribute \T1/qtm/m/n/10 ([][]\T1/txtt/m/n/10
+ attractivity_attribute.
+ []
+
+[66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79] [80]
+[81] [82] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95]
+[96] [97] [98] [99] [100] [101] [102]
+Chapter 4.
+[103
+
+] [104
+
+]
+Overfull \hbox (40.37172pt too wide) in paragraph at lines 13312--13313
+[]\T1/txtt/m/n/10 src.osm_configurator.control.aggregation_controller\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (40.37172pt too wide) in paragraph at lines 13313--13314
+[]\T1/txtt/m/n/10 src.osm_configurator.control.application_controller\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (40.37172pt too wide) in paragraph at lines 13314--13315
+[]\T1/txtt/m/n/10 src.osm_configurator.control.calculation_controller\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (24.62177pt too wide) in paragraph at lines 13315--13316
+[]\T1/txtt/m/n/10 src.osm_configurator.control.category_controller\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (14.1218pt too wide) in paragraph at lines 13317--13318
+[]\T1/txtt/m/n/10 src.osm_configurator.control.control_interface\T1/qtm/m/n/10 
+,
+ []
+
+
+Overfull \hbox (19.37178pt too wide) in paragraph at lines 13318--13319
+[]\T1/txtt/m/n/10 src.osm_configurator.control.cut_out_controller\T1/qtm/m/n/10
+ ,
+ []
+
+
+Overfull \hbox (77.12161pt too wide) in paragraph at lines 13319--13320
+[]\T1/txtt/m/n/10 src.osm_configurator.control.data_visualization_controller\T1
+/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (14.1218pt too wide) in paragraph at lines 13320--13321
+[]\T1/txtt/m/n/10 src.osm_configurator.control.export_controller\T1/qtm/m/n/10 
+,
+ []
+
+
+Overfull \hbox (24.62177pt too wide) in paragraph at lines 13321--13322
+[]\T1/txtt/m/n/10 src.osm_configurator.control.osm_data_controller\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (19.37178pt too wide) in paragraph at lines 13322--13323
+[]\T1/txtt/m/n/10 src.osm_configurator.control.project_controller\T1/qtm/m/n/10
+ ,
+ []
+
+
+Overfull \hbox (24.62177pt too wide) in paragraph at lines 13323--13324
+[]\T1/txtt/m/n/10 src.osm_configurator.control.settings_controller\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (35.12173pt too wide) in paragraph at lines 13326--13327
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.application\T1/qtm/m/n
+/10 ,
+ []
+
+
+Overfull \hbox (87.62158pt too wide) in paragraph at lines 13327--13328
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.application_interface\
+T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (82.3716pt too wide) in paragraph at lines 13328--13329
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.application_settings\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (56.12167pt too wide) in paragraph at lines 13329--13330
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.passive_project\T1/qtm
+/m/n/10 ,
+ []
+
+
+Overfull \hbox (71.93161pt too wide) in paragraph at lines 13330--13331
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.recommender_system\T1/
+qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (45.6217pt too wide) in paragraph at lines 13332--13333
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.calculation_parser\T1/qtm/m
+/n/10 ,
+ []
+
+
+Overfull \hbox (98.12155pt too wide) in paragraph at lines 13333--13334
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.calculation_parser_interfac
+e\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (29.87175pt too wide) in paragraph at lines 13334--13335
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.category_parser\T1/qtm/m/n/
+10 ,
+ []
+
+
+Overfull \hbox (82.3716pt too wide) in paragraph at lines 13335--13336
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.category_parser_interface\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (19.37178pt too wide) in paragraph at lines 13336--13337
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.cutOut_parser\T1/qtm/m/n/10
+ ,
+ []
+
+
+Overfull \hbox (71.87163pt too wide) in paragraph at lines 13337--13338
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.cutOut_parser_interface\T1/
+qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (29.87175pt too wide) in paragraph at lines 13338--13339
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.osm_data_parser\T1/qtm/m/n/
+10 ,
+ []
+
+
+Overfull \hbox (82.3716pt too wide) in paragraph at lines 13339--13340
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.osm_data_parser_interface\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (29.87175pt too wide) in paragraph at lines 13341--13342
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.active_project\T1/qtm/m/n/
+10 ,
+ []
+
+
+Overfull \hbox (14.1218pt too wide) in paragraph at lines 13342--13343
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation\T1/qtm/m/n/10 
+,
+ []
+
+
+Overfull \hbox (140.18141pt too wide) in paragraph at lines 13343--13344
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.aggregation_me
+thod_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (108.62152pt too wide) in paragraph at lines 13344--13345
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.aggregation_ph
+ase\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (113.8715pt too wide) in paragraph at lines 13345--13346
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.attractivity_p
+hase\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (145.37141pt too wide) in paragraph at lines 13346--13347
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.building_on_ed
+ge_manager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (119.12149pt too wide) in paragraph at lines 13347--13348
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_ma
+nager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (134.93143pt too wide) in paragraph at lines 13348--13349
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_ph
+ase_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (161.12137pt too wide) in paragraph at lines 13349--13350
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_ph
+ase_interface\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (134.93143pt too wide) in paragraph at lines 13350--13351
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_st
+ate_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (92.87157pt too wide) in paragraph at lines 13351--13352
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.geo_data_phase
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (113.8715pt too wide) in paragraph at lines 13352--13353
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.osm_file_conve
+rter\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (124.43146pt too wide) in paragraph at lines 13353--13354
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.osm_file_forma
+t_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (98.12155pt too wide) in paragraph at lines 13354--13355
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.reduction_phas
+e\T1/qtm/m/n/10 ,
+ []
+
+[105
+
+]
+Overfull \hbox (92.87157pt too wide) in paragraph at lines 13355--13356
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.split_up_files
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (103.37154pt too wide) in paragraph at lines 13356--13357
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.tag_filter_pha
+se\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (82.3716pt too wide) in paragraph at lines 13357--13358
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.traffic_cell\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (45.68169pt too wide) in paragraph at lines 13358--13359
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.config_phase_enum\T1/qtm/m
+/n/10 ,
+ []
+
+
+Overfull \hbox (24.62177pt too wide) in paragraph at lines 13359--13360
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (161.12137pt too wide) in paragraph at lines 13360--13361
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.aggregation_
+configuration\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (145.37141pt too wide) in paragraph at lines 13361--13362
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.attractivity
+_attribute\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (103.43152pt too wide) in paragraph at lines 13362--13363
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.attribute_en
+um\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (192.68126pt too wide) in paragraph at lines 13363--13364
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.calculation_
+method_of_area_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (71.87163pt too wide) in paragraph at lines 13364--13365
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.category\T1/
+qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (113.8715pt too wide) in paragraph at lines 13365--13366
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.category_man
+ager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (140.12143pt too wide) in paragraph at lines 13366--13367
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.configuratio
+n_manager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (140.12143pt too wide) in paragraph at lines 13367--13368
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.cut_out_conf
+iguration\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (119.18147pt too wide) in paragraph at lines 13368--13369
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.cut_out_mode
+_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (129.62146pt too wide) in paragraph at lines 13369--13370
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.default_valu
+e_entry\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (98.12155pt too wide) in paragraph at lines 13370--13371
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.download_dat
+a\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (145.37141pt too wide) in paragraph at lines 13371--13372
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.osm_data_con
+figuration\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (35.12173pt too wide) in paragraph at lines 13372--13373
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.data_visualizer\T1/qtm/m/n
+/10 ,
+ []
+
+
+Overfull \hbox (50.87169pt too wide) in paragraph at lines 13374--13375
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.project_io_handler\T1/qtm/
+m/n/10 ,
+ []
+
+
+Overfull \hbox (24.62177pt too wide) in paragraph at lines 13375--13376
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.project_saver\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (40.37172pt too wide) in paragraph at lines 13376--13377
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.project_settings\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (8.87181pt too wide) in paragraph at lines 13379--13380
+[]\T1/txtt/m/n/10 src.osm_configurator.view.popups.alert_pop_up\T1/qtm/m/n/10 ,
+
+ []
+
+
+Overfull \hbox (14.1218pt too wide) in paragraph at lines 13380--13381
+[]\T1/txtt/m/n/10 src.osm_configurator.view.popups.yes_no_pop_up\T1/qtm/m/n/10 
+,
+ []
+
+
+Overfull \hbox (3.62183pt too wide) in paragraph at lines 13382--13383
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.main_window\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (29.87175pt too wide) in paragraph at lines 13383--13384
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.positioned_frame\T1/qtm/m/n/
+10 ,
+ []
+
+
+Overfull \hbox (14.1218pt too wide) in paragraph at lines 13385--13386
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.state_manager\T1/qtm/m/n/10 
+,
+ []
+
+
+Overfull \hbox (24.68175pt too wide) in paragraph at lines 13386--13387
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.state_name_enum\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (77.12161pt too wide) in paragraph at lines 13388--13389
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.aggregation_frame\T1
+/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (108.62152pt too wide) in paragraph at lines 13389--13390
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.attractivity_edit_fr
+ame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (108.62152pt too wide) in paragraph at lines 13390--13391
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.attractivity_view_fr
+ame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (77.12161pt too wide) in paragraph at lines 13391--13392
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.calculation_frame\T1
+/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (61.37166pt too wide) in paragraph at lines 13392--13393
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.category_frame\T1/qt
+m/m/n/10 ,
+ []
+
+
+Overfull \hbox (92.87157pt too wide) in paragraph at lines 13393--13394
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.create_project_frame
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (40.37172pt too wide) in paragraph at lines 13394--13395
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.data_frame\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (66.62164pt too wide) in paragraph at lines 13395--13396
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.main_menu_frame\T1/q
+tm/m/n/10 ,
+ []
+
+
+Overfull \hbox (82.3716pt too wide) in paragraph at lines 13396--13397
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.project_foot_frame\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (82.3716pt too wide) in paragraph at lines 13397--13398
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.project_head_frame\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (66.62164pt too wide) in paragraph at lines 13398--13399
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.reduction_frame\T1/q
+tm/m/n/10 ,
+ []
+
+
+Overfull \hbox (61.37166pt too wide) in paragraph at lines 13399--13400
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.settings_frame\T1/qt
+m/m/n/10 ,
+ []
+
+
+Overfull \hbox (66.62164pt too wide) in paragraph at lines 13400--13401
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.top_level_frame\T1/q
+tm/m/n/10 ,
+ []
+
+
+Overfull \hbox (45.6217pt too wide) in paragraph at lines 13402--13403
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.export_frame\T1/qtm/m
+/n/10 ,
+ []
+
+
+Overfull \hbox (124.37148pt too wide) in paragraph at lines 13403--13404
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.reduction_calculation
+_frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (134.87144pt too wide) in paragraph at lines 13404--13405
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.reduction_default_val
+ue_frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (119.12149pt too wide) in paragraph at lines 13405--13406
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.settings_application_
+frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (98.12155pt too wide) in paragraph at lines 13406--13407
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.settings_project_fram
+e\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (56.12167pt too wide) in paragraph at lines 13407--13408
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.tag_list_frame\T1/qtm
+/m/n/10 ,
+ []
+
+
+Overfull \hbox (103.37154pt too wide) in paragraph at lines 13408--13409
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.tag_list_priority_fra
+me\T1/qtm/m/n/10 ,
+ []
+
+[106] (./konfiguratorfrosm-datenaufbereitungs-prozesse.ind
+Underfull \hbox (badness 10000) in paragraph at lines 57--58
+[]\T1/txtt/m/n/10 __init__() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Re-duc-tion-De-fau
+lt-Val-ue-Frame method\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+[]\T1/txtt/m/n/10 activate() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Re-duc-tion-De-fau
+lt-Val-ue-Frame method\T1/qtm/m/n/10 ),
+ []
+
+[107
+
+
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
+[]\T1/txtt/m/n/10 ActiveProject \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (17.62248pt too wide) in paragraph at lines 92--94
+\T1/qtm/m/it/10 src.osm_configurator.model.project.active_project\T1/qtm/m/n/10
+ ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--101
+[]\T1/txtt/m/n/10 AggregationConfiguration \T1/qtm/m/n/10 (\T1/qtm/m/it/10 clas
+s in
+ []
+
+
+Overfull \hbox (123.27249pt too wide) in paragraph at lines 99--101
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.aggregation_co
+nfiguration\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--103
+[]\T1/txtt/m/n/10 AggregationController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (27.37248pt too wide) in paragraph at lines 101--103
+\T1/qtm/m/it/10 src.osm_configurator.control.aggregation_controller\T1/qtm/m/n/
+10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--105
+[]\T1/txtt/m/n/10 AggregationFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (60.11246pt too wide) in paragraph at lines 103--105
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.aggregation_frame\T1/q
+tm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--107
+[]\T1/txtt/m/n/10 AggregationMethod \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (116.9475pt too wide) in paragraph at lines 105--107
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.aggregation_meth
+od_enum\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 107--109
+[]\T1/txtt/m/n/10 AggregationPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (84.3225pt too wide) in paragraph at lines 107--109
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.aggregation_phas
+e\T1/qtm/m/n/10 ),
+ []
+
+
+Overfull \hbox (57.31232pt too wide) in paragraph at lines 109--111
+[]\T1/txtt/m/n/10 AlertPopUp \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_c
+onfigurator.view.popups.alert_pop_up\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--113
+[]\T1/txtt/m/n/10 Application \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (23.5425pt too wide) in paragraph at lines 111--113
+\T1/qtm/m/it/10 src.osm_configurator.model.application.application\T1/qtm/m/n/1
+0 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--115
+[]\T1/txtt/m/n/10 ApplicationController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (24.94249pt too wide) in paragraph at lines 113--115
+\T1/qtm/m/it/10 src.osm_configurator.control.application_controller\T1/qtm/m/n/
+10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 115--117
+[]\T1/txtt/m/n/10 ApplicationSettings \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (59.00748pt too wide) in paragraph at lines 115--117
+\T1/qtm/m/it/10 src.osm_configurator.model.application.application_settings\T1/
+qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
+[]\T1/txtt/m/n/10 AttractivityAttribute \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (99.5825pt too wide) in paragraph at lines 121--123
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.attractivity_a
+ttribute\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 123--125
+[]\T1/txtt/m/n/10 AttractivityEditFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (75.76247pt too wide) in paragraph at lines 123--125
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.attractivity_edit_fram
+e\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--127
+[]\T1/txtt/m/n/10 AttractivityPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (79.9725pt too wide) in paragraph at lines 125--127
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.attractivity_pha
+se\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--129
+[]\T1/txtt/m/n/10 AttractivityViewFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (79.09247pt too wide) in paragraph at lines 127--129
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.attractivity_view_fram
+e\T1/qtm/m/n/10 ),
+ []
+
+
+Overfull \hbox (121.07736pt too wide) in paragraph at lines 129--131
+[]\T1/txtt/m/n/10 Attribute \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_co
+nfigurator.model.project.configuration.attribute_enum\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 136--138
+[]\T1/txtt/m/n/10 BuildingOnEdgeManager \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (120.38248pt too wide) in paragraph at lines 136--138
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.building_on_edge
+_manager\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
+[]\T1/txtt/m/n/10 BUILDINGS_ON_EDGE_ACCEPTED \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cu
+tOut-Mode at-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
+[]\T1/txtt/m/n/10 calculate_aggregation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Ag-gr
+e-ga-tion-Method
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--154
+[]\T1/txtt/m/n/10 CALCULATE_BUILDING_AREA \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cal-c
+u-la-tion-Method-O-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--160
+[]\T1/txtt/m/n/10 CalculationController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (24.38249pt too wide) in paragraph at lines 158--160
+\T1/qtm/m/it/10 src.osm_configurator.control.calculation_controller\T1/qtm/m/n/
+10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 160--162
+[]\T1/txtt/m/n/10 CalculationFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (57.12247pt too wide) in paragraph at lines 160--162
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.calculation_frame\T1/q
+tm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 162--164
+[]\T1/txtt/m/n/10 CalculationManager \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (93.61249pt too wide) in paragraph at lines 162--164
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.calculation_mana
+ger\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 164--166
+[]\T1/txtt/m/n/10 CalculationMethodOfArea \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class
+ in
+ []
+
+
+Overfull \hbox (158.40749pt too wide) in paragraph at lines 164--166
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.calculation_me
+thod_of_area_enum\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 166--168
+[]\T1/txtt/m/n/10 CalculationParser \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (34.15251pt too wide) in paragraph at lines 166--168
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.calculation_parser\T1/qtm/m/n
+/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 168--170
+[]\T1/txtt/m/n/10 CalculationParserInterface \T1/qtm/m/n/10 (\T1/qtm/m/it/10 cl
+ass in
+ []
+
+
+Overfull \hbox (74.04251pt too wide) in paragraph at lines 168--170
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.calculation_parser_interface\
+T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
+[]\T1/txtt/m/n/10 CalculationPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (108.0975pt too wide) in paragraph at lines 170--172
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.calculation_phas
+e_enum\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--174
+[]\T1/txtt/m/n/10 CalculationState \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (103.4075pt too wide) in paragraph at lines 172--174
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.calculation_stat
+e_enum\T1/qtm/m/n/10 ),
+ []
+
+[108]
+Underfull \hbox (badness 10000) in paragraph at lines 174--175
+[]\T1/txtt/m/n/10 cancel_calculation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cal-cu-l
+a-tion-Man-ager
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
+[]\T1/txtt/m/n/10 cancel_calculations() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cal-cu-
+la-tion-Con-troller
+ []
+
+
+Overfull \hbox (90.00739pt too wide) in paragraph at lines 178--180
+[]\T1/txtt/m/n/10 Category \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_con
+figurator.model.project.configuration.category\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 182--184
+[]\T1/txtt/m/n/10 CategoryController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (14.5225pt too wide) in paragraph at lines 182--184
+\T1/qtm/m/it/10 src.osm_configurator.control.category_controller\T1/qtm/m/n/10 
+),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--186
+[]\T1/txtt/m/n/10 CategoryFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (47.26248pt too wide) in paragraph at lines 184--186
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.category_frame\T1/qtm/
+m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 186--188
+[]\T1/txtt/m/n/10 CategoryManager \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (92.3925pt too wide) in paragraph at lines 186--188
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.category_manag
+er\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--190
+[]\T1/txtt/m/n/10 CategoryParser \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (24.29253pt too wide) in paragraph at lines 188--190
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.category_parser\T1/qtm/m/n/10
+ ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
+[]\T1/txtt/m/n/10 CategoryParser \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (28.04251pt too wide) in paragraph at lines 190--192
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.osm_data_parser\T1/qtm/m/n/10
+ ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 192--194
+[]\T1/txtt/m/n/10 CategoryParserInterface \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class
+ in
+ []
+
+
+Overfull \hbox (64.18253pt too wide) in paragraph at lines 192--194
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.category_parser_interface\T1/
+qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
+[]\T1/txtt/m/n/10 check_conflicts_in_category_configuration()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 198--200
+[]\T1/txtt/m/n/10 check_conflicts_in_category_configuration()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--202
+[]\T1/txtt/m/n/10 check_conflicts_in_category_configuration()
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
+[]\T1/txtt/m/n/10 ConfigPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (40.0375pt too wide) in paragraph at lines 207--209
+\T1/qtm/m/it/10 src.osm_configurator.model.project.config_phase_enum\T1/qtm/m/n
+/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 209--211
+[]\T1/txtt/m/n/10 ConfigurationManager \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+
+ []
+
+
+Overfull \hbox (110.89249pt too wide) in paragraph at lines 209--211
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.configuration_
+manager\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--238
+[]\T1/txtt/m/n/10 CreateProjectFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (69.74246pt too wide) in paragraph at lines 236--238
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.create_project_frame\T
+1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 238--240
+[]\T1/txtt/m/n/10 CutOutConfiguration \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (105.2825pt too wide) in paragraph at lines 238--240
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.cut_out_config
+uration\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--242
+[]\T1/txtt/m/n/10 CutOutController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (9.38249pt too wide) in paragraph at lines 240--242
+\T1/qtm/m/it/10 src.osm_configurator.control.cut_out_controller\T1/qtm/m/n/10 )
+,
+ []
+
+
+Overfull \hbox (148.68735pt too wide) in paragraph at lines 242--244
+[]\T1/txtt/m/n/10 CutOutMode \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_c
+onfigurator.model.project.configuration.cut_out_mode_enum\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 244--246
+[]\T1/txtt/m/n/10 CutOutParser \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (16.37251pt too wide) in paragraph at lines 244--246
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.cutOut_parser\T1/qtm/m/n/10 )
+,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 246--248
+[]\T1/txtt/m/n/10 CutOutParserInterface \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class i
+n
+ []
+
+
+Overfull \hbox (56.26251pt too wide) in paragraph at lines 246--248
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.cutOut_parser_interface\T1/qt
+m/m/n/10 ),
+ []
+
+
+Overfull \hbox (73.27232pt too wide) in paragraph at lines 253--255
+[]\T1/txtt/m/n/10 DataFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_co
+nfigurator.view.toplevelframes.data_frame\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--257
+[]\T1/txtt/m/n/10 DataVisualizationController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 c
+lass in
+ []
+
+
+Overfull \hbox (53.28249pt too wide) in paragraph at lines 255--257
+\T1/qtm/m/it/10 src.osm_configurator.control.data_visualization_controller\T1/q
+tm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--259
+[]\T1/txtt/m/n/10 DataVisualizer \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (22.6825pt too wide) in paragraph at lines 257--259
+\T1/qtm/m/it/10 src.osm_configurator.model.project.data_visualizer\T1/qtm/m/n/1
+0 ),
+ []
+
+[109]
+Underfull \hbox (badness 10000) in paragraph at lines 262--264
+[]\T1/txtt/m/n/10 DefaultValueEntry \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (96.5375pt too wide) in paragraph at lines 262--264
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.default_value_
+entry\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 269--270
+[]\T1/txtt/m/n/10 delete_passive_project() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Pro-
+ject-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 274--276
+[]\T1/txtt/m/n/10 DownloadData \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (78.75749pt too wide) in paragraph at lines 274--276
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.download_data\
+T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 281--282
+[]\T1/txtt/m/n/10 ERROR_INVALID_CATEGORIES \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cal-
+cu-la-tion-State at-
+ []
+
+
+Underfull \hbox (badness 7631) in paragraph at lines 285--287
+[]\T1/txtt/m/n/10 ERROR_INVALID_PREVIOUS_CALCULATIONS \T1/qtm/m/n/10 (\T1/qtm/m
+/it/10 Cal-cu-la-
+ []
+
+
+Overfull \hbox (14.23239pt too wide) in paragraph at lines 287--289
+[]\T1/txtt/m/n/10 Export \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_confi
+gurator.model.project.export\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
+[]\T1/txtt/m/n/10 export_configurations() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Ex-po
+rt-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 316--318
+[]\T1/txtt/m/n/10 ExportController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (5.03249pt too wide) in paragraph at lines 316--318
+\T1/qtm/m/it/10 src.osm_configurator.control.export_controller\T1/qtm/m/n/10 ),
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--320
+[]\T1/txtt/m/n/10 ExportFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (29.85248pt too wide) in paragraph at lines 318--320
+\T1/qtm/m/it/10 src.osm_configurator.view.utilityframes.export_frame\T1/qtm/m/n
+/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--330
+[]\T1/txtt/m/n/10 generate_cut_out_map() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 DataVi
+-su-al-iza-tion-Con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--334
+[]\T1/txtt/m/n/10 GeoDataPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (73.1025pt too wide) in paragraph at lines 332--334
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.geo_data_phase\T
+1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 335--336
+[]\T1/txtt/m/n/10 get_active_project() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Con-fig-
+u-ra-tion-Man-ager
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 340--341
+[]\T1/txtt/m/n/10 get_all_aggregation_methods() \T1/qtm/m/n/10 (\T1/qtm/m/it/10
+ Ac-tive-Pro-ject
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 343--344
+[]\T1/txtt/m/n/10 get_all_aggregation_methods() \T1/qtm/m/n/10 (\T1/qtm/m/it/10
+ Ap-pli-ca-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 344--346
+[]\T1/txtt/m/n/10 get_all_aggregation_methods() \T1/qtm/m/n/10 (\T1/qtm/m/it/10
+ Con-fig-u-ra-tion-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
+[]\T1/txtt/m/n/10 get_all_aggregation_methods() \T1/qtm/m/n/10 (\T1/qtm/m/it/10
+ IAp-pli-ca-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 347--349
+[]\T1/txtt/m/n/10 get_attractivities_of_category() \T1/qtm/m/n/10 (\T1/qtm/m/it
+/10 Cat-e-go-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 349--350
+[]\T1/txtt/m/n/10 get_attractivities_of_category() \T1/qtm/m/n/10 (\T1/qtm/m/it
+/10 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 350--351
+[]\T1/txtt/m/n/10 get_attractivities_of_category() \T1/qtm/m/n/10 (\T1/qtm/m/it
+/10 ICon-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 355--356
+[]\T1/txtt/m/n/10 get_attractivity_attributes() \T1/qtm/m/n/10 (\T1/qtm/m/it/10
+ Cat-e-gory
+ []
+
+[110]
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+[]\T1/txtt/m/n/10 get_attribute_default() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 De-fa
+ult-Val-ueEn-try
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 362--364
+[]\T1/txtt/m/n/10 get_calculation_method() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cal-
+cu-la-tion-Method-O-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
+[]\T1/txtt/m/n/10 get_calculation_method_of_area() \T1/qtm/m/n/10 (\T1/qtm/m/it
+/10 Cat-e-gory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 365--366
+[]\T1/txtt/m/n/10 get_calculation_state() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cal-c
+u-la-tion-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
+[]\T1/txtt/m/n/10 get_calculation_visualization() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
+[]\T1/txtt/m/n/10 get_calculation_visualization() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 ICon-trol
+ []
+
+
+Underfull \hbox (badness 6188) in paragraph at lines 375--376
+[]\T1/txtt/m/n/10 get_categories() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Con-fig-u-ra
+-tion-Man-ager method\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 384--386
+[]\T1/txtt/m/n/10 get_current_calculation_phase() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Cal-cu-la-tion-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
+[]\T1/txtt/m/n/10 get_current_calculation_phase() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 387--388
+[]\T1/txtt/m/n/10 get_current_calculation_phase() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 ICon-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 390--391
+[]\T1/txtt/m/n/10 get_current_calculation_process() \T1/qtm/m/n/10 (\T1/qtm/m/i
+t/10 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
+[]\T1/txtt/m/n/10 get_current_calculation_process() \T1/qtm/m/n/10 (\T1/qtm/m/i
+t/10 ICon-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 394--395
+[]\T1/txtt/m/n/10 get_current_config_phase() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Pr
+o-ject-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
+[]\T1/txtt/m/n/10 get_cut_out_reference() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 CutOu
+t-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
+[]\T1/txtt/m/n/10 get_default_location() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Ap-pli
+-ca-tion-Set-tings
+ []
+
+
+Underfull \hbox (badness 6110) in paragraph at lines 415--417
+[]\T1/txtt/m/n/10 get_default_value_entry_tag() \T1/qtm/m/n/10 (\T1/qtm/m/it/10
+ De-fault-Val-ueEn-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 429--431
+[]\T1/txtt/m/n/10 get_is_data_downloaded() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Con-
+fig-u-ra-tion-Man-ager
+ []
+
+
+Underfull \hbox (badness 6332) in paragraph at lines 432--433
+[]\T1/txtt/m/n/10 get_key_recommendation() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 IAp-
+pli-ca-tion method\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
+[]\T1/txtt/m/n/10 get_list_of_categories() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cat-
+e-go-ryCon-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 438--440
+[]\T1/txtt/m/n/10 get_list_of_key_recommendations() \T1/qtm/m/n/10 (\T1/qtm/m/i
+t/10 Cat-e-go-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 440--441
+[]\T1/txtt/m/n/10 get_list_of_key_recommendations() \T1/qtm/m/n/10 (\T1/qtm/m/i
+t/10 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 441--442
+[]\T1/txtt/m/n/10 get_list_of_key_recommendations() \T1/qtm/m/n/10 (\T1/qtm/m/i
+t/10 ICon-trol
+ []
+
+[111]
+Underfull \hbox (badness 10000) in paragraph at lines 442--443
+[]\T1/txtt/m/n/10 get_list_of_passive_projects() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 443--444
+[]\T1/txtt/m/n/10 get_list_of_passive_projects() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 ICon-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 444--446
+[]\T1/txtt/m/n/10 get_list_of_passive_projects() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Pro-ject-Con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 470--471
+[]\T1/txtt/m/n/10 get_osm_data_reference() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 OS-M
+-Dat-a-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 479--480
+[]\T1/txtt/m/n/10 get_project_description() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Set
+-tingsCon-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 480--481
+[]\T1/txtt/m/n/10 get_project_folder_path() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Pas
+-sive-Pro-ject
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 487--488
+[]\T1/txtt/m/n/10 get_strictly_use_default_values() \T1/qtm/m/n/10 (\T1/qtm/m/i
+t/10 Cat-e-gory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 494--496
+[]\T1/txtt/m/n/10 IApplication \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (63.94249pt too wide) in paragraph at lines 494--496
+\T1/qtm/m/it/10 src.osm_configurator.model.application.application_interface\T1
+/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--498
+[]\T1/txtt/m/n/10 ICalculationPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (121.7325pt too wide) in paragraph at lines 496--498
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.calculation_phas
+e_interface\T1/qtm/m/n/10 ),
+ []
+
+
+Overfull \hbox (41.28236pt too wide) in paragraph at lines 498--500
+[]\T1/txtt/m/n/10 IControl \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_con
+figurator.control.control_interface\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 502--503
+[]\T1/txtt/m/n/10 import_category_configuration() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 503--504
+[]\T1/txtt/m/n/10 import_category_configuration() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 ICon-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 505--506
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Ac-tive-Pro-ject
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 506--508
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Ag-gre-ga-tion-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 508--510
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Ag-gre-ga-tion-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 510--511
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Ap-pli-ca-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 511--513
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Con-fig-u-ra-tion-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--514
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 514--515
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 IAp-pli-ca-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 515--516
+[]\T1/txtt/m/n/10 is_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/1
+0 ICon-trol
+ []
+
+[112]
+Underfull \hbox (badness 10000) in paragraph at lines 534--536
+[]\T1/txtt/m/n/10 MainMenuFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (58.78247pt too wide) in paragraph at lines 534--536
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.main_menu_frame\T1/qtm
+/m/n/10 ),
+ []
+
+
+Overfull \hbox (53.02232pt too wide) in paragraph at lines 536--538
+[]\T1/txtt/m/n/10 MainWindow \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_c
+onfigurator.view.states.main_window\T1/qtm/m/n/10 ),
+ []
+
+
+Overfull \hbox (60.37172pt too wide) in paragraph at lines 550--551
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.aggregation_controller\T1/qtm/
+m/n/10 ,
+ []
+
+
+Overfull \hbox (60.37172pt too wide) in paragraph at lines 551--552
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.application_controller\T1/qtm/
+m/n/10 ,
+ []
+
+
+Overfull \hbox (60.37172pt too wide) in paragraph at lines 552--553
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.calculation_controller\T1/qtm/
+m/n/10 ,
+ []
+
+
+Overfull \hbox (44.62177pt too wide) in paragraph at lines 553--554
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.category_controller\T1/qtm/m/n
+/10 ,
+ []
+
+
+Overfull \hbox (34.1218pt too wide) in paragraph at lines 555--556
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.control_interface\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (39.37178pt too wide) in paragraph at lines 556--557
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.cut_out_controller\T1/qtm/m/n/
+10 ,
+ []
+
+
+Overfull \hbox (97.12161pt too wide) in paragraph at lines 557--559
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.data_visualization_controller\
+T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (34.1218pt too wide) in paragraph at lines 559--560
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.export_controller\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (44.62177pt too wide) in paragraph at lines 560--561
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.osm_data_controller\T1/qtm/m/n
+/10 ,
+ []
+
+
+Overfull \hbox (39.37178pt too wide) in paragraph at lines 561--562
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.project_controller\T1/qtm/m/n/
+10 ,
+ []
+
+
+Overfull \hbox (44.62177pt too wide) in paragraph at lines 562--563
+[]| \T1/txtt/m/n/10 src.osm_configurator.control.settings_controller\T1/qtm/m/n
+/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--565
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.application\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (55.12173pt too wide) in paragraph at lines 565--566
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.application.application\T1/qtm/m
+/n/10 ,
+ []
+
+
+Overfull \hbox (107.62158pt too wide) in paragraph at lines 566--568
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.application.application_interfac
+e\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (102.3716pt too wide) in paragraph at lines 568--570
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.application.application_settings
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (76.12167pt too wide) in paragraph at lines 570--571
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.application.passive_project\T1/q
+tm/m/n/10 ,
+ []
+
+
+Overfull \hbox (91.87163pt too wide) in paragraph at lines 571--572
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.application.recommender_system\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (65.6217pt too wide) in paragraph at lines 573--574
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.calculation_parser\T1/qtm
+/m/n/10 ,
+ []
+
+
+Overfull \hbox (118.12155pt too wide) in paragraph at lines 574--576
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.calculation_parser_interf
+ace\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (49.87175pt too wide) in paragraph at lines 576--577
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.category_parser\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (102.3716pt too wide) in paragraph at lines 577--579
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.category_parser_interface
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (39.37178pt too wide) in paragraph at lines 579--580
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.cutOut_parser\T1/qtm/m/n/
+10 ,
+ []
+
+
+Overfull \hbox (91.87163pt too wide) in paragraph at lines 580--582
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.cutOut_parser_interface\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (49.87175pt too wide) in paragraph at lines 582--583
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.osm_data_parser\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (102.3716pt too wide) in paragraph at lines 583--585
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.parser.osm_data_parser_interface
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (49.87175pt too wide) in paragraph at lines 586--587
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.active_project\T1/qtm/m/
+n/10 ,
+ []
+
+
+Overfull \hbox (34.1218pt too wide) in paragraph at lines 587--588
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (160.12143pt too wide) in paragraph at lines 588--590
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.aggregation_
+method_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (128.62152pt too wide) in paragraph at lines 590--592
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.aggregation_
+phase\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (133.8715pt too wide) in paragraph at lines 592--594
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.attractivity
+_phase\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (165.37141pt too wide) in paragraph at lines 594--596
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.building_on_
+edge_manager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (139.12149pt too wide) in paragraph at lines 596--598
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_
+manager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (154.87144pt too wide) in paragraph at lines 598--600
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_
+phase_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (181.12137pt too wide) in paragraph at lines 600--602
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_
+phase_interface\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (154.87144pt too wide) in paragraph at lines 602--604
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_
+state_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (112.87157pt too wide) in paragraph at lines 604--606
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.geo_data_pha
+se\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (133.8715pt too wide) in paragraph at lines 606--608
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.osm_file_con
+verter\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (144.37148pt too wide) in paragraph at lines 608--610
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.osm_file_for
+mat_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (118.12155pt too wide) in paragraph at lines 610--612
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.reduction_ph
+ase\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (112.87157pt too wide) in paragraph at lines 612--614
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.split_up_fil
+es\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (123.37154pt too wide) in paragraph at lines 614--616
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.tag_filter_p
+hase\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (102.3716pt too wide) in paragraph at lines 616--618
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.traffic_cell
+\T1/qtm/m/n/10 ,
+ []
+
+[113]
+Overfull \hbox (65.6217pt too wide) in paragraph at lines 618--619
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.config_phase_enum\T1/qtm
+/m/n/10 ,
+ []
+
+
+Overfull \hbox (44.62177pt too wide) in paragraph at lines 619--620
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration\T1/qtm/m/n
+/10 ,
+ []
+
+
+Overfull \hbox (181.12137pt too wide) in paragraph at lines 620--622
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.aggregatio
+n_configuration\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (165.37141pt too wide) in paragraph at lines 622--624
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.attractivi
+ty_attribute\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (123.37154pt too wide) in paragraph at lines 624--626
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.attribute_
+enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (212.62128pt too wide) in paragraph at lines 626--628
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.calculatio
+n_method_of_area_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (91.87163pt too wide) in paragraph at lines 628--629
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.category\T
+1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (133.8715pt too wide) in paragraph at lines 629--631
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.category_m
+anager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (160.12143pt too wide) in paragraph at lines 631--633
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.configurat
+ion_manager\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (160.12143pt too wide) in paragraph at lines 633--635
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.cut_out_co
+nfiguration\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (139.12149pt too wide) in paragraph at lines 635--637
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.cut_out_mo
+de_enum\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (149.62146pt too wide) in paragraph at lines 637--639
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.default_va
+lue_entry\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (118.12155pt too wide) in paragraph at lines 639--641
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.download_d
+ata\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (165.37141pt too wide) in paragraph at lines 641--643
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.osm_data_c
+onfiguration\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (55.12173pt too wide) in paragraph at lines 643--644
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.data_visualizer\T1/qtm/m
+/n/10 ,
+ []
+
+
+Overfull \hbox (7.87187pt too wide) in paragraph at lines 644--645
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.export\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (70.87169pt too wide) in paragraph at lines 645--646
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.project_io_handler\T1/qt
+m/m/n/10 ,
+ []
+
+
+Overfull \hbox (44.62177pt too wide) in paragraph at lines 646--647
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.project_saver\T1/qtm/m/n
+/10 ,
+ []
+
+
+Overfull \hbox (60.37172pt too wide) in paragraph at lines 647--648
+[]| \T1/txtt/m/n/10 src.osm_configurator.model.project.project_settings\T1/qtm/
+m/n/10 ,
+ []
+
+
+Overfull \hbox (28.87181pt too wide) in paragraph at lines 650--651
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.popups.alert_pop_up\T1/qtm/m/n/10
+ ,
+ []
+
+
+Overfull \hbox (34.1218pt too wide) in paragraph at lines 651--652
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.popups.yes_no_pop_up\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (23.62183pt too wide) in paragraph at lines 653--654
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.states.main_window\T1/qtm/m/n/10 
+,
+ []
+
+
+Overfull \hbox (49.87175pt too wide) in paragraph at lines 654--655
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.states.positioned_frame\T1/qtm/m/
+n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 655--656
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.states.state\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (34.1218pt too wide) in paragraph at lines 656--657
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.states.state_manager\T1/qtm/m/n/1
+0 ,
+ []
+
+
+Overfull \hbox (44.62177pt too wide) in paragraph at lines 657--658
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.states.state_name_enum\T1/qtm/m/n
+/10 ,
+ []
+
+
+Overfull \hbox (2.62189pt too wide) in paragraph at lines 658--659
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (97.12161pt too wide) in paragraph at lines 659--661
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.aggregation_frame\
+T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (128.62152pt too wide) in paragraph at lines 661--663
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.attractivity_edit_
+frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (128.62152pt too wide) in paragraph at lines 663--665
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.attractivity_view_
+frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (97.12161pt too wide) in paragraph at lines 665--667
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.calculation_frame\
+T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (81.37166pt too wide) in paragraph at lines 667--668
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.category_frame\T1/
+qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (112.87157pt too wide) in paragraph at lines 668--670
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.create_project_fra
+me\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (60.37172pt too wide) in paragraph at lines 670--671
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.data_frame\T1/qtm/
+m/n/10 ,
+ []
+
+
+Overfull \hbox (86.62164pt too wide) in paragraph at lines 671--672
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.main_menu_frame\T1
+/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (102.3716pt too wide) in paragraph at lines 672--674
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.project_foot_frame
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (102.3716pt too wide) in paragraph at lines 674--676
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.project_head_frame
+\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (86.62164pt too wide) in paragraph at lines 676--677
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.reduction_frame\T1
+/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (81.37166pt too wide) in paragraph at lines 677--678
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.settings_frame\T1/
+qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (86.62164pt too wide) in paragraph at lines 678--679
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.top_level_frame\T1
+/qtm/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 679--680
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (65.6217pt too wide) in paragraph at lines 680--681
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.export_frame\T1/qtm
+/m/n/10 ,
+ []
+
+
+Overfull \hbox (144.37148pt too wide) in paragraph at lines 681--683
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.reduction_calculati
+on_frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (154.87144pt too wide) in paragraph at lines 683--685
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.reduction_default_v
+alue_frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (139.12149pt too wide) in paragraph at lines 685--687
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.settings_applicatio
+n_frame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (118.12155pt too wide) in paragraph at lines 687--689
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.settings_project_fr
+ame\T1/qtm/m/n/10 ,
+ []
+
+
+Overfull \hbox (76.12167pt too wide) in paragraph at lines 689--690
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.tag_list_frame\T1/q
+tm/m/n/10 ,
+ []
+
+
+Overfull \hbox (123.37154pt too wide) in paragraph at lines 690--692
+[]| \T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.tag_list_priority_f
+rame\T1/qtm/m/n/10 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 692--693
+[]\T1/txtt/m/n/10 move_default_value_entry_down() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Cat-e-gory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
+[]\T1/txtt/m/n/10 move_default_value_entry_up() \T1/qtm/m/n/10 (\T1/qtm/m/it/10
+ Cat-e-gory
+ []
+
+[114]
+Underfull \hbox (badness 10000) in paragraph at lines 704--706
+[]\T1/txtt/m/n/10 OSMDataConfiguration \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+
+ []
+
+
+Overfull \hbox (114.1725pt too wide) in paragraph at lines 704--706
+\T1/qtm/m/it/10 src.osm_configurator.model.project.configuration.osm_data_confi
+guration\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 706--708
+[]\T1/txtt/m/n/10 OSMDataController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (18.27249pt too wide) in paragraph at lines 706--708
+\T1/qtm/m/it/10 src.osm_configurator.control.osm_data_controller\T1/qtm/m/n/10 
+),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 708--710
+[]\T1/txtt/m/n/10 OSMDataParserInterface \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class 
+in
+ []
+
+
+Overfull \hbox (67.93251pt too wide) in paragraph at lines 708--710
+\T1/qtm/m/it/10 src.osm_configurator.model.parser.osm_data_parser_interface\T1/
+qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 710--712
+[]\T1/txtt/m/n/10 OSMFileConverter \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (84.81248pt too wide) in paragraph at lines 710--712
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.osm_file_convert
+er\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 712--714
+[]\T1/txtt/m/n/10 OSMFileFormat \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (99.61748pt too wide) in paragraph at lines 712--714
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.osm_file_format_
+enum\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 717--718
+[]\T1/txtt/m/n/10 override_categories() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Con-fig
+-u-ra-tion-Man-ager
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--724
+[]\T1/txtt/m/n/10 parse_category_file() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cat-e-g
+o-ry-Parser-In-ter-face
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 725--726
+[]\T1/txtt/m/n/10 parse_cutout_file() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 CutOut-Pa
+rser-In-ter-face
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 727--728
+[]\T1/txtt/m/n/10 parse_osm_data_file() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 OS-M-Da
+t-a-Parser-In-ter-face
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 728--730
+[]\T1/txtt/m/n/10 PassiveProject \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (40.66248pt too wide) in paragraph at lines 728--730
+\T1/qtm/m/it/10 src.osm_configurator.model.application.passive_project\T1/qtm/m
+/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 731--733
+[]\T1/txtt/m/n/10 PositionedFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (18.09248pt too wide) in paragraph at lines 731--733
+\T1/qtm/m/it/10 src.osm_configurator.view.states.positioned_frame\T1/qtm/m/n/10
+ ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 733--735
+[]\T1/txtt/m/n/10 ProjectController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (7.4625pt too wide) in paragraph at lines 733--735
+\T1/qtm/m/it/10 src.osm_configurator.control.project_controller\T1/qtm/m/n/10 )
+,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 735--737
+[]\T1/txtt/m/n/10 ProjectFootFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (60.31245pt too wide) in paragraph at lines 735--737
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.project_foot_frame\T1/
+qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 737--739
+[]\T1/txtt/m/n/10 ProjectHeadFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (64.64247pt too wide) in paragraph at lines 737--739
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.project_head_frame\T1/
+qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 739--741
+[]\T1/txtt/m/n/10 ProjectIOHandler \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (37.9825pt too wide) in paragraph at lines 739--741
+\T1/qtm/m/it/10 src.osm_configurator.model.project.project_io_handler\T1/qtm/m/
+n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 741--743
+[]\T1/txtt/m/n/10 ProjectSaver \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (15.45248pt too wide) in paragraph at lines 741--743
+\T1/qtm/m/it/10 src.osm_configurator.model.project.project_saver\T1/qtm/m/n/10 
+),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 743--745
+[]\T1/txtt/m/n/10 ProjectSettings \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (24.04749pt too wide) in paragraph at lines 743--745
+\T1/qtm/m/it/10 src.osm_configurator.model.project.project_settings\T1/qtm/m/n/
+10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 750--752
+[]\T1/txtt/m/n/10 RecommenderSystem \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (63.9775pt too wide) in paragraph at lines 750--752
+\T1/qtm/m/it/10 src.osm_configurator.model.application.recommender_system\T1/qt
+m/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 755--757
+[]\T1/txtt/m/n/10 ReductionCalculationFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 cla
+ss in
+ []
+
+
+Overfull \hbox (92.23247pt too wide) in paragraph at lines 755--757
+\T1/qtm/m/it/10 src.osm_configurator.view.utilityframes.reduction_calculation_f
+rame\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 757--759
+[]\T1/txtt/m/n/10 ReductionDefaultValueFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 cl
+ass in
+ []
+
+
+Overfull \hbox (101.17247pt too wide) in paragraph at lines 757--759
+\T1/qtm/m/it/10 src.osm_configurator.view.utilityframes.reduction_default_value
+_frame\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 759--761
+[]\T1/txtt/m/n/10 ReductionFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (50.15245pt too wide) in paragraph at lines 759--761
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.reduction_frame\T1/qtm
+/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 761--763
+[]\T1/txtt/m/n/10 ReductionPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (74.36249pt too wide) in paragraph at lines 761--763
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.reduction_phase\
+T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 763--764
+[]\T1/txtt/m/n/10 remove_attractivity_attribute() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Cat-e-gory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 764--766
+[]\T1/txtt/m/n/10 remove_buildings_on_edge() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Bu
+ildin-gOnEdge-M-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 780--782
+[]\T1/txtt/m/n/10 set_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Ac-tive-Pro-ject
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 782--784
+[]\T1/txtt/m/n/10 set_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Ag-gre-ga-tion-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 784--786
+[]\T1/txtt/m/n/10 set_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Ag-gre-ga-tion-
+ []
+
+[115]
+Underfull \hbox (badness 10000) in paragraph at lines 786--787
+[]\T1/txtt/m/n/10 set_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Ap-pli-ca-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 789--790
+[]\T1/txtt/m/n/10 set_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 Con-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 790--791
+[]\T1/txtt/m/n/10 set_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 IAp-pli-ca-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 791--792
+[]\T1/txtt/m/n/10 set_aggregation_method_active() \T1/qtm/m/n/10 (\T1/qtm/m/it/
+10 ICon-trol
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 796--797
+[]\T1/txtt/m/n/10 set_attribute_default() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 De-fa
+ult-Val-ueEn-try
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 800--801
+[]\T1/txtt/m/n/10 set_calculation_method_of_area() \T1/qtm/m/n/10 (\T1/qtm/m/it
+/10 Cat-e-gory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 804--805
+[]\T1/txtt/m/n/10 set_current_config_phase() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Pr
+o-ject-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 819--820
+[]\T1/txtt/m/n/10 set_cut_out_reference() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 CutOu
+t-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 821--822
+[]\T1/txtt/m/n/10 set_default_location() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Ap-pli
+-ca-tion-Set-tings
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 839--840
+[]\T1/txtt/m/n/10 set_osm_data_reference() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 OS-M
+-Dat-a-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 846--847
+[]\T1/txtt/m/n/10 set_project_description() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Set
+-tingsCon-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 850--851
+[]\T1/txtt/m/n/10 set_strictly_use_default_values() \T1/qtm/m/n/10 (\T1/qtm/m/i
+t/10 Cat-e-gory
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 856--858
+[]\T1/txtt/m/n/10 SettingsApplicationFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 clas
+s in
+ []
+
+
+Overfull \hbox (85.17249pt too wide) in paragraph at lines 856--858
+\T1/qtm/m/it/10 src.osm_configurator.view.utilityframes.settings_application_fr
+ame\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 858--860
+[]\T1/txtt/m/n/10 SettingsController \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (9.7925pt too wide) in paragraph at lines 858--860
+\T1/qtm/m/it/10 src.osm_configurator.control.settings_controller\T1/qtm/m/n/10 
+),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 860--862
+[]\T1/txtt/m/n/10 SettingsFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (42.53247pt too wide) in paragraph at lines 860--862
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.settings_frame\T1/qtm/
+m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 862--864
+[]\T1/txtt/m/n/10 SettingsProjectFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+
+ []
+
+
+Overfull \hbox (67.69249pt too wide) in paragraph at lines 862--864
+\T1/qtm/m/it/10 src.osm_configurator.view.utilityframes.settings_project_frame\
+T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 865--867
+[]\T1/txtt/m/n/10 SplitUpFile \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (61.39748pt too wide) in paragraph at lines 865--867
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.split_up_files\T
+1/qtm/m/n/10 ),
+ []
+
+[116]
+Overfull \hbox (37.87172pt too wide) in paragraph at lines 873--874
+[]\T1/txtt/m/n/10 src.osm_configurator.control.aggregation_controller 
+ []
+
+
+Overfull \hbox (37.87172pt too wide) in paragraph at lines 875--876
+[]\T1/txtt/m/n/10 src.osm_configurator.control.application_controller 
+ []
+
+
+Overfull \hbox (37.87172pt too wide) in paragraph at lines 877--878
+[]\T1/txtt/m/n/10 src.osm_configurator.control.calculation_controller 
+ []
+
+
+Overfull \hbox (22.12177pt too wide) in paragraph at lines 879--880
+[]\T1/txtt/m/n/10 src.osm_configurator.control.category_controller 
+ []
+
+
+Overfull \hbox (11.6218pt too wide) in paragraph at lines 883--884
+[]\T1/txtt/m/n/10 src.osm_configurator.control.control_interface 
+ []
+
+
+Overfull \hbox (16.87178pt too wide) in paragraph at lines 885--886
+[]\T1/txtt/m/n/10 src.osm_configurator.control.cut_out_controller 
+ []
+
+
+Overfull \hbox (74.62161pt too wide) in paragraph at lines 887--888
+[]\T1/txtt/m/n/10 src.osm_configurator.control.data_visualization_controller 
+ []
+
+
+Overfull \hbox (11.6218pt too wide) in paragraph at lines 889--890
+[]\T1/txtt/m/n/10 src.osm_configurator.control.export_controller 
+ []
+
+
+Overfull \hbox (22.12177pt too wide) in paragraph at lines 891--892
+[]\T1/txtt/m/n/10 src.osm_configurator.control.osm_data_controller 
+ []
+
+
+Overfull \hbox (16.87178pt too wide) in paragraph at lines 893--894
+[]\T1/txtt/m/n/10 src.osm_configurator.control.project_controller 
+ []
+
+
+Overfull \hbox (22.12177pt too wide) in paragraph at lines 895--896
+[]\T1/txtt/m/n/10 src.osm_configurator.control.settings_controller 
+ []
+
+
+Overfull \hbox (32.62173pt too wide) in paragraph at lines 901--902
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.application 
+ []
+
+
+Overfull \hbox (85.12158pt too wide) in paragraph at lines 903--904
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.application_interface 
+
+ []
+
+
+Overfull \hbox (79.8716pt too wide) in paragraph at lines 905--906
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.application_settings 
+ []
+
+
+Overfull \hbox (53.62167pt too wide) in paragraph at lines 907--908
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.passive_project 
+ []
+
+
+Overfull \hbox (69.43161pt too wide) in paragraph at lines 909--910
+[]\T1/txtt/m/n/10 src.osm_configurator.model.application.recommender_system 
+ []
+
+
+Overfull \hbox (43.1217pt too wide) in paragraph at lines 913--914
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.calculation_parser 
+ []
+
+
+Overfull \hbox (95.62155pt too wide) in paragraph at lines 915--916
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.calculation_parser_interfac
+e 
+ []
+
+
+Overfull \hbox (27.37175pt too wide) in paragraph at lines 917--918
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.category_parser 
+ []
+
+
+Overfull \hbox (79.8716pt too wide) in paragraph at lines 919--920
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.category_parser_interface 
+ []
+
+
+Overfull \hbox (16.87178pt too wide) in paragraph at lines 921--922
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.cutOut_parser 
+ []
+
+
+Overfull \hbox (69.37163pt too wide) in paragraph at lines 923--924
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.cutOut_parser_interface 
+ []
+
+
+Overfull \hbox (27.37175pt too wide) in paragraph at lines 925--926
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.osm_data_parser 
+ []
+
+
+Overfull \hbox (79.8716pt too wide) in paragraph at lines 927--928
+[]\T1/txtt/m/n/10 src.osm_configurator.model.parser.osm_data_parser_interface 
+ []
+
+
+Overfull \hbox (27.37175pt too wide) in paragraph at lines 931--932
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.active_project 
+ []
+
+
+Overfull \hbox (11.6218pt too wide) in paragraph at lines 933--934
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation 
+ []
+
+
+Overfull \hbox (137.68141pt too wide) in paragraph at lines 935--936
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.aggregation_me
+thod_enum 
+ []
+
+
+Overfull \hbox (106.12152pt too wide) in paragraph at lines 937--938
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.aggregation_ph
+ase 
+ []
+
+
+Overfull \hbox (111.3715pt too wide) in paragraph at lines 939--940
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.attractivity_p
+hase 
+ []
+
+
+Overfull \hbox (142.87141pt too wide) in paragraph at lines 941--942
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.building_on_ed
+ge_manager 
+ []
+
+
+Overfull \hbox (116.62149pt too wide) in paragraph at lines 943--944
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_ma
+nager 
+ []
+
+
+Overfull \hbox (132.43143pt too wide) in paragraph at lines 945--946
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_ph
+ase_enum 
+ []
+
+
+Overfull \hbox (158.62137pt too wide) in paragraph at lines 947--948
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_ph
+ase_interface 
+ []
+
+
+Overfull \hbox (132.43143pt too wide) in paragraph at lines 949--950
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.calculation_st
+ate_enum 
+ []
+
+
+Overfull \hbox (90.37157pt too wide) in paragraph at lines 951--952
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.geo_data_phase
+ 
+ []
+
+
+Overfull \hbox (111.3715pt too wide) in paragraph at lines 953--954
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.osm_file_conve
+rter 
+ []
+
+
+Overfull \hbox (121.93146pt too wide) in paragraph at lines 955--956
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.osm_file_forma
+t_enum 
+ []
+
+
+Overfull \hbox (95.62155pt too wide) in paragraph at lines 957--958
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.reduction_phas
+e 
+ []
+
+
+Overfull \hbox (90.37157pt too wide) in paragraph at lines 959--960
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.split_up_files
+ 
+ []
+
+
+Overfull \hbox (100.87154pt too wide) in paragraph at lines 961--962
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.tag_filter_pha
+se 
+ []
+
+
+Overfull \hbox (79.8716pt too wide) in paragraph at lines 963--964
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.calculation.traffic_cell 
+ []
+
+
+Overfull \hbox (43.18169pt too wide) in paragraph at lines 965--966
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.config_phase_enum 
+ []
+
+
+Overfull \hbox (22.12177pt too wide) in paragraph at lines 967--968
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration 
+ []
+
+
+Overfull \hbox (158.62137pt too wide) in paragraph at lines 969--970
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.aggregation_
+configuration 
+ []
+
+
+Overfull \hbox (142.87141pt too wide) in paragraph at lines 971--972
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.attractivity
+_attribute 
+ []
+
+
+Overfull \hbox (100.93152pt too wide) in paragraph at lines 973--974
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.attribute_en
+um 
+ []
+
+
+Overfull \hbox (190.18126pt too wide) in paragraph at lines 975--976
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.calculation_
+method_of_area_enum 
+ []
+
+
+Overfull \hbox (69.37163pt too wide) in paragraph at lines 977--978
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.category 
+ []
+
+[117]
+Overfull \hbox (111.3715pt too wide) in paragraph at lines 979--980
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.category_man
+ager 
+ []
+
+
+Overfull \hbox (137.62143pt too wide) in paragraph at lines 981--982
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.configuratio
+n_manager 
+ []
+
+
+Overfull \hbox (137.62143pt too wide) in paragraph at lines 983--984
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.cut_out_conf
+iguration 
+ []
+
+
+Overfull \hbox (116.68147pt too wide) in paragraph at lines 985--986
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.cut_out_mode
+_enum 
+ []
+
+
+Overfull \hbox (127.12146pt too wide) in paragraph at lines 987--988
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.default_valu
+e_entry 
+ []
+
+
+Overfull \hbox (95.62155pt too wide) in paragraph at lines 989--990
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.download_dat
+a 
+ []
+
+
+Overfull \hbox (142.87141pt too wide) in paragraph at lines 991--992
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.configuration.osm_data_con
+figuration 
+ []
+
+
+Overfull \hbox (32.62173pt too wide) in paragraph at lines 993--994
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.data_visualizer 
+ []
+
+
+Overfull \hbox (48.37169pt too wide) in paragraph at lines 997--998
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.project_io_handler 
+ []
+
+
+Overfull \hbox (22.12177pt too wide) in paragraph at lines 999--1000
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.project_saver 
+ []
+
+
+Overfull \hbox (37.87172pt too wide) in paragraph at lines 1001--1002
+[]\T1/txtt/m/n/10 src.osm_configurator.model.project.project_settings 
+ []
+
+
+Overfull \hbox (6.37181pt too wide) in paragraph at lines 1007--1008
+[]\T1/txtt/m/n/10 src.osm_configurator.view.popups.alert_pop_up 
+ []
+
+
+Overfull \hbox (11.6218pt too wide) in paragraph at lines 1009--1010
+[]\T1/txtt/m/n/10 src.osm_configurator.view.popups.yes_no_pop_up 
+ []
+
+
+Overfull \hbox (1.12183pt too wide) in paragraph at lines 1013--1014
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.main_window 
+ []
+
+
+Overfull \hbox (27.37175pt too wide) in paragraph at lines 1015--1016
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.positioned_frame 
+ []
+
+
+Overfull \hbox (11.6218pt too wide) in paragraph at lines 1019--1020
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.state_manager 
+ []
+
+
+Overfull \hbox (22.18175pt too wide) in paragraph at lines 1021--1022
+[]\T1/txtt/m/n/10 src.osm_configurator.view.states.state_name_enum 
+ []
+
+
+Overfull \hbox (74.62161pt too wide) in paragraph at lines 1025--1026
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.aggregation_frame 
+ []
+
+
+Overfull \hbox (106.12152pt too wide) in paragraph at lines 1027--1028
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.attractivity_edit_fr
+ame 
+ []
+
+
+Overfull \hbox (106.12152pt too wide) in paragraph at lines 1029--1030
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.attractivity_view_fr
+ame 
+ []
+
+
+Overfull \hbox (74.62161pt too wide) in paragraph at lines 1031--1032
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.calculation_frame 
+ []
+
+
+Overfull \hbox (58.87166pt too wide) in paragraph at lines 1033--1034
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.category_frame 
+ []
+
+
+Overfull \hbox (90.37157pt too wide) in paragraph at lines 1035--1036
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.create_project_frame
+ 
+ []
+
+
+Overfull \hbox (37.87172pt too wide) in paragraph at lines 1037--1038
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.data_frame 
+ []
+
+
+Overfull \hbox (64.12164pt too wide) in paragraph at lines 1039--1040
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.main_menu_frame 
+ []
+
+
+Overfull \hbox (79.8716pt too wide) in paragraph at lines 1041--1042
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.project_foot_frame 
+ []
+
+
+Overfull \hbox (79.8716pt too wide) in paragraph at lines 1043--1044
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.project_head_frame 
+ []
+
+
+Overfull \hbox (64.12164pt too wide) in paragraph at lines 1045--1046
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.reduction_frame 
+ []
+
+
+Overfull \hbox (58.87166pt too wide) in paragraph at lines 1047--1048
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.settings_frame 
+ []
+
+
+Overfull \hbox (64.12164pt too wide) in paragraph at lines 1049--1050
+[]\T1/txtt/m/n/10 src.osm_configurator.view.toplevelframes.top_level_frame 
+ []
+
+
+Overfull \hbox (43.1217pt too wide) in paragraph at lines 1053--1054
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.export_frame 
+ []
+
+
+Overfull \hbox (121.87148pt too wide) in paragraph at lines 1055--1056
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.reduction_calculation
+_frame 
+ []
+
+
+Overfull \hbox (132.37144pt too wide) in paragraph at lines 1057--1058
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.reduction_default_val
+ue_frame 
+ []
+
+
+Overfull \hbox (116.62149pt too wide) in paragraph at lines 1059--1060
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.settings_application_
+frame 
+ []
+
+
+Overfull \hbox (95.62155pt too wide) in paragraph at lines 1061--1062
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.settings_project_fram
+e 
+ []
+
+
+Overfull \hbox (53.62167pt too wide) in paragraph at lines 1063--1064
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.tag_list_frame 
+ []
+
+
+Overfull \hbox (100.87154pt too wide) in paragraph at lines 1065--1066
+[]\T1/txtt/m/n/10 src.osm_configurator.view.utilityframes.tag_list_priority_fra
+me 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1071--1072
+[]\T1/txtt/m/n/10 start_calculations() \T1/qtm/m/n/10 (\T1/qtm/m/it/10 Cal-cu-l
+a-tion-Con-troller
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1075--1077
+[]\T1/txtt/m/n/10 StateManager \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (7.59247pt too wide) in paragraph at lines 1075--1077
+\T1/qtm/m/it/10 src.osm_configurator.view.states.state_manager\T1/qtm/m/n/10 ),
+
+ []
+
+
+Overfull \hbox (63.77734pt too wide) in paragraph at lines 1077--1079
+[]\T1/txtt/m/n/10 StateName \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_co
+nfigurator.view.states.state_name_enum\T1/qtm/m/n/10 ),
+ []
+
+[118]
+Underfull \hbox (badness 10000) in paragraph at lines 1084--1086
+[]\T1/txtt/m/n/10 TagFilterPhase \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (72.85251pt too wide) in paragraph at lines 1084--1086
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.tag_filter_phase
+\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1086--1088
+[]\T1/txtt/m/n/10 TagListFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (34.11247pt too wide) in paragraph at lines 1086--1088
+\T1/qtm/m/it/10 src.osm_configurator.view.utilityframes.tag_list_frame\T1/qtm/m
+/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1088--1090
+[]\T1/txtt/m/n/10 TagListPriorityFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+
+ []
+
+
+Overfull \hbox (69.67247pt too wide) in paragraph at lines 1088--1090
+\T1/qtm/m/it/10 src.osm_configurator.view.utilityframes.tag_list_priority_frame
+\T1/qtm/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1090--1092
+[]\T1/txtt/m/n/10 TopLevelFrame \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (48.38245pt too wide) in paragraph at lines 1090--1092
+\T1/qtm/m/it/10 src.osm_configurator.view.toplevelframes.top_level_frame\T1/qtm
+/m/n/10 ),
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1092--1094
+[]\T1/txtt/m/n/10 TrafficCell \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in
+ []
+
+
+Overfull \hbox (51.26747pt too wide) in paragraph at lines 1092--1094
+\T1/qtm/m/it/10 src.osm_configurator.model.project.calculation.traffic_cell\T1/
+qtm/m/n/10 ),
+ []
+
+
+Overfull \hbox (65.89233pt too wide) in paragraph at lines 1101--1103
+[]\T1/txtt/m/n/10 YesNoPopUp \T1/qtm/m/n/10 (\T1/qtm/m/it/10 class in src.osm_c
+onfigurator.view.popups.yes_no_pop_up\T1/qtm/m/n/10 ),
+ []
+
+[119
+
+]) (./konfiguratorfrosm-datenaufbereitungs-prozesse.aux)
+Package rerunfilecheck Info: File `konfiguratorfrosm-datenaufbereitungs-prozess
+e.out' has not changed.
+(rerunfilecheck)             Checksum: ADE1E980BA3CEFEBE24294A9A5E2AFEC;43799.
+ ) 
+Here is how much of TeX's memory you used:
+ 17337 strings out of 478287
+ 367883 string characters out of 5849289
+ 648899 words of memory out of 5000000
+ 34290 multiletter control sequences out of 15000+600000
+ 521142 words of font info for 71 fonts, out of 8000000 for 9000
+ 1142 hyphenation exceptions out of 8191
+ 70i,12n,76p,1086b,708s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/tex-gyre/q-ec.enc}{/usr/share/texmf/fonts/e
+nc/dvips/tex-gyre/q-ts1.enc}</usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.
+pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/f
+onts/type1/public/tex-gyre/qhvr.pfb></usr/share/texmf/fonts/type1/public/tex-gy
+re/qtmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/
+texmf/fonts/type1/public/tex-gyre/qtmri.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/txfonts/t1xbtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/txfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfont
+s/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxbtt.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/tcxtt.pfb>
+Output written on konfiguratorfrosm-datenaufbereitungs-prozesse.pdf (123 pages,
+ 502199 bytes).
+PDF statistics:
+ 3652 PDF objects out of 4296 (max. 8388607)
+ 3467 compressed objects within 35 object streams
+ 853 named destinations out of 1000 (max. 500000)
+ 1196 words of extra memory for PDF output out of 10000 (max. 10000000)
+
