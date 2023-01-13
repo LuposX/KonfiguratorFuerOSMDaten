@@ -16,7 +16,7 @@ class CreateProjectFrame(TopLevelFrame):
 
         Args:
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to change to another State.
-            control (control_interface.IControl): The frame will call the control, to gain access to the model.
+            control (control_interface.IControl): The frame will call the control to gain access to the model.
         """
         super().__init__(state_manager, control)
         pass

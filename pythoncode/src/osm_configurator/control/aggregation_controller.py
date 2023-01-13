@@ -9,7 +9,7 @@ class AggregationController:
 
     def __init__(self, model):
         """
-        Creates a new instance of the AggregationController, with an association to the model.
+        Creates a new instance of the AggregationController with an association to the model.
 
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
@@ -22,7 +22,7 @@ class AggregationController:
         This function returns all available aggregation methods, not just the ones that are active in the current project.
 
         Returns:
-            list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods
+            list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods.
         """
         pass
 
@@ -44,7 +44,7 @@ class AggregationController:
         Activates the given method, if active=True and deactivates it otherwise.
 
         Args:
-            method (aggregation_method_enum.AggregationMethod): The aggregation method we want to deactivate/activate
+            method (aggregation_method_enum.AggregationMethod): The aggregation method we want to deactivate/activate.
             active (bool): True, if we want to activate the given method; False, if we want to deactivate it.
 
         Returns:

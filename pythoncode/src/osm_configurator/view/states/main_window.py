@@ -23,11 +23,11 @@ class MainWindow:
         This method changes from an old given state to a new given state to show on the MainWindow.
 
         Args:
-            last_state (state.State): The state that needs to me removed from the MainWindow
-            new_state (state.State): The state that shall be shown by the MainWindow
+            last_state (state.State): The state that needs to me removed from the MainWindow.
+            new_state (state.State): The state that shall be shown by the MainWindow.
 
         Returns:
-            bool: true, if the state change was successful, false if not.
+            bool: True, if the state change was successful, false if not.
         """
         pass
 
@@ -39,18 +39,18 @@ class MainWindow:
             state (state.State): The state that shall be made visible.
 
         Returns:
-            bool: true if the state could be made visible, false if not.
+            bool: True if the state could be made visible, false if not.
         """
         pass
 
     def _make_invisible(self, state):
         """
-        This method removes a given State from the MainWindo, so it cant be seen or interacted with anymore.
+        This method removes a given State from the MainWindow, so it cant be seen or interacted with anymore.
 
         Args:
             state (state.State): The state that shall not be visible anymore.
 
         Returns:
-            bool: true, if the given state could be made invisible, false if not.
+            bool: True, if the given state could be made invisible, false if not.
         """
         pass

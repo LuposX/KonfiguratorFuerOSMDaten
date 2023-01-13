@@ -24,7 +24,7 @@ class CategoryController:
         Checks for a given file, if it is a valid category-file and checks, whether there are naming conflicts with the categories of the currently selected project.
 
         Args:
-            path (pathlib.Path): The path to the category-file
+            path (pathlib.Path): The path to the category-file.
 
         Returns:
             bool: True, if there is currently a project selected and there are no naming conflicts; False, otherwise.
@@ -37,7 +37,7 @@ class CategoryController:
         Adds the given categories to the category list of the project.
 
         Args:
-            path (pathlib.Path): The path to the category file
+            path (pathlib.Path): The path to the category file.
 
         Returns:
             bool: True, if the categories where added successfully; False, if there is no project loaded, the category file is corrupted or the category file does not exist.
@@ -60,20 +60,20 @@ class CategoryController:
         If the creation fails, none will be returned and there won't be a category added.
 
         Returns:
-            category.Category: The newly created category, none if there was an error
+            category.Category: The newly created category, none if there was an error.
         """
         pass
 
     def delete_category(self, category):
         """
         Deletes the given category.
-        Removes the given category from the list of categories of the currently selected project
+        Removes the given category from the list of categories of the currently selected project.
 
         Args:
-            category (category.Category): The category, to be deleted
+            category (category.Category): The category to be deleted.
 
         Returns:
-            bool: True, if the category was deleted successfully; False, otherwise
+            bool: True, if the category was deleted successfully; False, otherwise.
         """
         pass
 
@@ -82,10 +82,10 @@ class CategoryController:
         Returns a list of recommended keys, based on the input that is already entered by the user.
 
         Args:
-            current_input (str): The input, that is currently written by the user.
+            current_input (str): The input that is currently written by the user.
 
         Returns:
-            list[str]: A list of key recommendations, based on the current_input.
+            list[str]: A list of key recommendations based on the current_input.
         """
         pass
 
@@ -97,6 +97,6 @@ class CategoryController:
             category (category.Category): The category, whose attractivities are of interest.
 
         Returns:
-            list[attractivity_attribute.AttractivityAttribute]: The list of attractivity attributes of the given category
+            list[attractivity_attribute.AttractivityAttribute]: The list of attractivity attributes of the given category.
         """
         pass

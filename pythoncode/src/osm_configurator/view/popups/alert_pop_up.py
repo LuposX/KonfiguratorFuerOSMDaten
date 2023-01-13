@@ -13,6 +13,6 @@ class AlertPopUp(CTkToplevel):
         the PopUp again.
 
         Args:
-            message (str): The message that will be shown by the AlertPopUp
+            message (str): The message that will be shown by the AlertPopUp.
         """
         pass

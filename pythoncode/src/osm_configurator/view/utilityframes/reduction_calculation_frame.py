@@ -11,7 +11,7 @@ class ReductionCalculationFrame:
 
     def __init__(self, parent, control):
         """
-        This method creates a ReductionCalculationFrame, that lets the user edit the calculation of the reduction of
+        This method creates a ReductionCalculationFrame that lets the user edit the calculation of the reduction of
         Categories.
         Args:
             parent (reduction_frame.ReductionFrame): This is the parent frame of this frame. The frame will be located here.
@@ -24,6 +24,6 @@ class ReductionCalculationFrame:
         Tells the current frame to activate and collect all the data it needs.
 
         Returns:
-            bool: True, if activation was successful, false else
+            bool: True, if activation was successful, otherwise false.
         """
         pass

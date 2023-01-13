@@ -5,7 +5,7 @@ import src.osm_configurator.view.states.state_manager
 
 class TopLevelFrame(ABC):
     """
-    This class describes a frame, that has a fully developed functionality and that can be placed on a window.
+    This class describes a frame that has a fully developed functionality and that can be placed on a window.
     A TopLevelFrame might have manageable frames below him.
     """
 
@@ -15,7 +15,7 @@ class TopLevelFrame(ABC):
 
         Args:
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
-            control (control_interface.IControl): The control the frame will call, to gain access to the model.
+            control (control_interface.IControl): The control the frame will call to gain access to the model.
         """
         pass
 
@@ -25,6 +25,6 @@ class TopLevelFrame(ABC):
         Tells the current frame to activate and collect all the data it needs.
 
         Returns:
-            bool: True, if activation was successful, false else
+            bool: True, if activation was successful, otherwise false.
         """
         pass

@@ -23,7 +23,7 @@ class OSMDataController:
         The reference contains the osm-data used in the calculations of the project. This method does not check if the given data is valid.
 
         Args:
-            path (pathlib.Path): The reference to the osm-data
+            path (pathlib.Path): The reference to the osm-data.
 
         Returns:
             bool: True, if the new reference was set successfully; False, if an error occurred while setting the reference.

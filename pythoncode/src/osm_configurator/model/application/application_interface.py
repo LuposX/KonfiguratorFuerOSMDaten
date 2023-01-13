@@ -23,7 +23,7 @@ class IApplication(ABC):
     @abstractmethod
     def get_key_recommendation(self, input):
         """
-        Creates recommendations based on user input
+        Creates recommendations based on user input.
 
         Args:
             input (str): The input from which to generate suggestions.
@@ -174,7 +174,7 @@ class IApplication(ABC):
         Changes the path pointing towards the cut-out file.
 
         Args:
-            path (pathlib.Path): The new path, towards a cut-out file.
+            path (pathlib.Path): The new path towards a cut-out file.
 
         Returns:
             bool: True if changing the cut-out path works, otherwise false.
@@ -187,7 +187,7 @@ class IApplication(ABC):
         Gets a category based on the index.
 
         Args:
-            index (int): Index in the categories-list, that will be returned.
+            index (int): Index in the categories-list that will be returned.
 
         Returns:
             category.Category: The Category we wanted, NONE if the index is out of bounds of the list.
@@ -233,7 +233,7 @@ class IApplication(ABC):
         Overwrites the list of categories with the given list, if both lists are not identical.
 
         Args:
-            new_category_list (list[category.Category]): List of categories, that will overwrite the already existing list.
+            new_category_list (list[category.Category]): List of categories that will overwrite the already existing list.
 
         Returns:
             bool: True, if the replacement was successful, else false.
@@ -250,7 +250,7 @@ class IApplication(ABC):
             category_input_list (list[category.Category]): New list of categories that will be merged into the existing list.
 
         Returns:
-            bool: True, if the merging was successful, else False.
+            bool: True, if the merging was successful, else false.
         """
         pass
 
@@ -287,7 +287,7 @@ class IApplication(ABC):
         Getter for the location of the active project on the disk.
 
         Returns:
-            pathlib.Path: The location of the active project
+            pathlib.Path: The location of the active project.
         """
         pass
 
@@ -305,7 +305,7 @@ class IApplication(ABC):
         Sets the default path pointing towards the project to a new Location.
 
         Args:
-            new_location (pathlib.Path): The new Location, where the user wants to save new projects.
+            new_location (pathlib.Path): The new Location where the user wants to save new projects.
         """
         pass
 
@@ -315,10 +315,10 @@ class IApplication(ABC):
         This method changes the name of the project.
 
         Args:
-            new_name (str): The new name of the project
+            new_name (str): The new name of the project.
 
         Returns:
-            bool: true if change was successful, false else
+            bool: True if change was successful, false else.
         """
         pass
 
@@ -328,7 +328,7 @@ class IApplication(ABC):
         This method returns the name of the project.
 
         Returns:
-            str: name of the project
+            str: The name of the project.
         """
         pass
 
@@ -338,10 +338,10 @@ class IApplication(ABC):
         This method changes the description of the project.
 
         Args:
-            new_description (str): The new description of the project
+            new_description (str): The new description of the project.
 
         Returns:
-            bool: true if change successful, false else
+            bool: True if change successful, otherwise false.
         """
         pass
 
@@ -351,7 +351,7 @@ class IApplication(ABC):
         This method returns the description of the project.
 
         Returns:
-            str: The description of the project
+            str: The description of the project.
         """
         pass
 
@@ -361,10 +361,10 @@ class IApplication(ABC):
         Exports the whole project to the given path.
 
         Args:
-            path (pathlib.Path): The path where the project shall be exported to
+            path (pathlib.Path): The path where the project shall be exported to.
 
         Returns:
-            bool: true, if export was successful, otherwise false.
+            bool: True, if export was successful, otherwise false.
         """
         pass
 
@@ -375,10 +375,10 @@ class IApplication(ABC):
         to the given path.
 
         Args:
-            path (pathlib.Path): The path where the configurations shall be exported to
+            path (pathlib.Path): The path where the configurations shall be exported to.
 
         Returns:
-            bool: true, if export was successful, otherwise false.
+            bool: True, if export was successful, otherwise false.
         """
         pass
 
@@ -390,10 +390,10 @@ class IApplication(ABC):
         calculation step in it.
 
         Args:
-            path (pathlib.Path): The path where the results of the calculation shall be exported to
+            path (pathlib.Path): The path where the results of the calculation shall be exported to.
 
         Returns:
-            bool: true, if export was successful, otherwise false.
+            bool: True, if export was successful, otherwise false.
         """
         pass
 
@@ -403,9 +403,9 @@ class IApplication(ABC):
         Exports an HTML-Data with the map in it, to the given path.
 
         Args:
-            path (pathlib.Path): The path, where the map shall be exported to
+            path (pathlib.Path): The path where the map shall be exported to.
 
         Returns:
-            bool: true, if export was successful, otherwise false.
+            bool: True, if export was successful, otherwise false.
         """
         pass

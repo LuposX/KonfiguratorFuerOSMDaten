@@ -14,7 +14,7 @@ class ReductionFrame(TopLevelFrame):
 
     def __init__(self, state_manager, control):
         """
-        This method creates a ReductionFrame, that lets the user edit the reduction of all the categories.
+        This method creates a ReductionFrame that lets the user edit the reduction of all the categories.
 
         Args:
             state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.

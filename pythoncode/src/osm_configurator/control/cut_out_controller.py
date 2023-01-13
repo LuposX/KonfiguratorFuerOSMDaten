@@ -32,7 +32,7 @@ class CutOutController:
         Sets the method of how the geofilter shall cut out on the OSM-Data.
 
         Args:
-            mode (cut_out_mode_enum.CutOutMode): The mode, to be set
+            mode (cut_out_mode_enum.CutOutMode): The mode to be set.
 
         Returns:
             bool: True, if the CutOutMode was set successfully; False, if an error occurred or no project is currently selected.
@@ -45,7 +45,7 @@ class CutOutController:
         This file is later used to calculate the geofilter.
 
         Args:
-            path (pathlib.Path): The path to the file containing the cut-out-geometries
+            path (pathlib.Path): The path to the file containing the cut-out-geometries.
 
         Returns:
             bool: True, if the reference was set successfully; False, if an error occurred. An error occurs, if no project is currently selected or if the given path is not valid or occupied.

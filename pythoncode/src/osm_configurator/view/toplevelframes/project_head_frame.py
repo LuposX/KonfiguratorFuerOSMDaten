@@ -13,8 +13,8 @@ class ProjectHeadFrame(TopLevelFrame):
     - Change between different frames to edit configurations
     - Use exports
 
-    This frame is always on the top of the window. below it will be presented a frame to edit some part of the project
-    and below that Frame will be a FootFrame.
+    This frame is always on the top of the window. Below it there will be presented a frame to edit some part of the project
+    and below that one there will be a FootFrame.
     Exceptions are the MainMenu and the creation of a new project without this header.
     """
 
@@ -25,7 +25,7 @@ class ProjectHeadFrame(TopLevelFrame):
 
         Args:
             state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
-            control (control_interface.IControl): The frame will call the control, to gain access to the model.
+            control (control_interface.IControl): The frame will call the control to gain access to the model.
         """
         super().__init__(state_manager, control)
         pass

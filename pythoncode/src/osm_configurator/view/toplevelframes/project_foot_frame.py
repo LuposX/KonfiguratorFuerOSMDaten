@@ -10,7 +10,7 @@ class ProjectFootFrame(TopLevelFrame):
 
     def __init__(self, state_manager, control):
         """
-        This method creates a ProjectFootFrame, that lets the user navigate the pipeline by going left or right.
+        This method creates a ProjectFootFrame that lets the user navigate the pipeline by going left or right.
 
         Args:
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
