@@ -22,7 +22,7 @@ class OSMDataParserInterface(ABC):
             path (pathlib.Path):  The path pointing towards the OSM data we want to parse in the ".pbf" format.
         
         Returns:
-            GeoDataFrame: The parsed OSM data as a GeoDataFrame.
+            geopandas.GeoDataFrame: The parsed OSM data as a GeoDataFrame.
         """
         pass
 

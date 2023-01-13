@@ -6,7 +6,7 @@ import src.osm_configurator.view.states.state
 class State:
     """
     This class models a state.
-    A State consist of:
+    A State consist of
     - a list of frames, that shall be visible on a window, when this state is active
     - a default state to its right
     - a default state to its left
@@ -20,10 +20,10 @@ class State:
         and has a default left and right.
 
         Args:
-            active_frames (list[positioned_frame.PositionedFrame]): A list of frames that this state holds.
-            own_state_name (state_name_enum.StateName): The name that defines this state.
-            default_left (state_name_enum.StateName): The name of the state on this states left.
-            default_right (state_name_enum.StateName): The name of the state on this states right.
+            active_frames (list[positioned_frame.PositionedFrame]): A list of frames, that this state holds
+            own_state_name (state_name_enum.StateName): The name that defines this state
+            default_left (state_name_enum.StateName): The name of the state on this states left
+            default_right (state_name_enum.StateName): The name of the state on this states right
         """
         pass
 
@@ -32,7 +32,7 @@ class State:
         The list of frames this state holds and shall be shown on a window, if it is active.
 
         Returns:
-            list[positioned_frame.PositionedFrame]: List of frames this state holds.
+            list[positioned_frame.PositionedFrame]: List of frames this state holds
         """
         pass
 
@@ -41,7 +41,7 @@ class State:
         The name of the state on this states left.
 
         Returns:
-            (state_name_enum.StateName): This states left state name.
+            state_name_enum.StateName: This states left state name
         """
         pass
 
@@ -50,7 +50,7 @@ class State:
         The id of the state on this states right.
 
         Returns:
-            (state_name_enum.StateName): This states right state name.
+            state_name_enum.StateName: This states right state name
         """
         pass
 
@@ -59,7 +59,7 @@ class State:
         The name of this state.
 
         Returns:
-            (state_name_enum.StateName): The name of this state.
+            state_name_enum.StateName: The name of this state
         """
         pass
 
@@ -69,9 +69,9 @@ class State:
         Two states are defined as equal, if their name is equal.
 
         Args:
-            state (state.State): The state you want to know if it is equal to this one.
+            state (state.State): The state you want to know if it is equal to this one
 
         Returns:
-            bool: True if the given state and this state ist equal. False if not.
+            bool: true if the given state and this state ist equal. false if not
         """
         pass

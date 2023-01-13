@@ -25,6 +25,6 @@ class SplitUpFile:
             coordinates (List[shapely.Polygon]): A list of polygon. Each polygon ist the bounding box of one traffic cell we want to split up.
 
         Returns:
-            (bool): True if successful, otherwise false.
+            bool: True if successful, otherwise false.
         """
         pass

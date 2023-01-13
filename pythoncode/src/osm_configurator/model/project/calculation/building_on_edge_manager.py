@@ -28,6 +28,6 @@ class BuildingOnEdgeManager:
         This means building which are on the edge, half in half out.
 
         Returns:
-            (bool): True when successful, otherwise false.
+            bool: True when successful, otherwise false.
         """
         pass
