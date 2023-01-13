@@ -1,13 +1,18 @@
-class PassiveProject:
+from pathlib import Path
 
+
+class PassiveProject:
     """
     This class job is to manage the passive projects. Those are the all projects shown in the Main Menu. Therefore,
     the class holds the name, description, last edit date and path of the projects.
     """
 
-    def __init__(self):
+    def __init__(self, project_folder_path):
         """
         Creates a new instance of the PassiveProject.
+
+        Args:
+            project_folder_path (Path): The path to the project you want to make a PassiveProject on.
         """
         pass
 

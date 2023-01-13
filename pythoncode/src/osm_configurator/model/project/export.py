@@ -4,12 +4,13 @@ import src.osm_configurator.model.project
 
 class Export:
     """
-    This class provides different export features based on a current project.
+    This class provides different export features based on the current project.
+    Whereby exporting means, saving data from the currently active project somewhere else on the system on the disk.
     """
 
     def __init__(self, project):
         """
-        This method creates a new Export class which provides different export features based on the given project.
+        Creates a new instance of the "Export" class.
 
         Args:
             project (project.ActiveProject): The project to make exports from
@@ -44,6 +45,8 @@ class Export:
     def export_calculation(self, path):
         """
         Exports the results of the calculation to the given path.
+        Whereby the calculation are a folder with all the different results from each
+        calculation step in it.
 
         Args:
             path (Path): The path where the results of the calculation shall be exported to

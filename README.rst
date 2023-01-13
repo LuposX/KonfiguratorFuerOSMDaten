@@ -6,11 +6,11 @@ KonfiguratorFuerOSMDaten
    :target: https://opensource.org/licenses/MIT
 
 Whether it’s biking to college or driving to the supermarket, traffic
-affects us all. all. This product generates from geodata of the free
-project ‘OpenStreetMap’ (OSM) a numerical ranking of the
-attractiveness of geographic locations. A main focus is the
-configurability of the generation of this score. Traffic planners can
-easily generate the right data for their traffic forecasting models.
+effects us all. This product uses generated geodata from the free
+project ‘OpenStreetMap’ (OSM) and creates a numerical ranking of the attractiveness of geographic locations. A main focus is the
+configurability of the generation of this score. 
+Traffic planners can easily use this attractiveness score
+for their traffic forecasting models.
 
 
 |pic1| |pic2|
@@ -25,11 +25,10 @@ easily generate the right data for their traffic forecasting models.
 
 
 
-This project was developed in the context of the lecture “Praxis der
-Softwareentwicklung(PSE)” at the University KIT in 2022,the waterfall
-model with feedback was used to develop the project.
-For each of this phase you can find the documentation in the
-corresponding subfolder, most of the documentation is in german.
+This project is getting developed in the context of the lecture “Praxis der Softwareentwicklung(PSE)” at the University KIT in 2022,the waterfall model with feedback is used to develop this project.
+For each of the phases of the watferfall model you can find the documentation in the corresponding subfolder, in the 
+\href{https://github.com/LuposX/KonfiguratorFuerOSMDaten}{github} , most of the documentation is in german.
+
 
 For a more specific description of the code, check the ``README.md`` in
 the subfolder `pythoncode`.

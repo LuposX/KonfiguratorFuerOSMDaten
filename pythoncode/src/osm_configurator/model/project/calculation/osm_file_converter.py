@@ -1,11 +1,12 @@
 import pathlib
 import src.osm_configurator.model.project.calculation.osm_file_format_enum
 
+
 class OSMFileConverter:
     """
     This class handles osm file conversion, it is used to transform an osm data file
     from one format to the others.
-    For more on the different file format check: calculation.OSMFileFormat out.
+    For more on the different file format check "calculation.OSMFileFormat" out.
     """
 
     def __init__(self, file_path):
@@ -13,7 +14,7 @@ class OSMFileConverter:
         Creates a new instance of "OSMFileConverter".
 
         Args:
-            file_path (pathlib.Path): The path toward the file which format we want to transform into another format
+            file_path (pathlib.Path): The path pointing towards the file which format we want to transform into another format.
         """
         pass
 
@@ -26,6 +27,6 @@ class OSMFileConverter:
             data_format (osm_file_format_enum.OSMFileFormat): In which osm file format we want to transform our file into.
 
         Returns:
-            (boolean): true if successful, otherwise false
+            bool: True if successful, otherwise false.
         """
         pass

@@ -3,101 +3,99 @@ import src.osm_configurator.model.project.configuration.category
 
 class CategoryManager:
     """
-    Category Manager holds a list of categories and changes them according to the given needs
-
+    Category Manager holds a list of categories and changes them according to the given needs.
     """
 
-    categories = [] # List of categories
+    _categories = [] # List of categories
 
     def __init__(self, categories):
         """
-        Constructor of the class
+        Constructor of the class.
 
         Args:
-            categories (Category): Starting list of categories
+            categories (Category): Starting list of categories.
         """
-        self.categories = categories
+        self._categories = categories
 
     def get_category(self, index):
         """
+        Gets a category based on the index.
 
         Args:
-            index (int): Index in the categories-list, that will be returned
+            index (int): Index in the categories-list, that will be returned.
 
         Returns:
-            Index of the element, if index is correct, else -1
+            category.Category: The Category we wanted.
         """
-        if index < 0 or index > len(self.categories):
+        if index < 0 or index > len(self._categories):
             return -1
-        return self.categories[index]
+        return self._categories[index]
 
     def get_categories(self):
         """
+        Getter for all the Categories.
 
         Returns:
-            List<Category>: List of the chosen categories
+            list[Category]: List of the chosen categories.
         """
-        return self.categories
+        return self._categories
 
     def create_category(self, new_category):
         """
-        Adds a new category to the list of categories, if element does not exist already
-
-        Args:
-            new_category (Category): Category, that will be added to the list
+        Creates a new category, that will be empty.
 
         Returns:
-            bool: True, if the category was added successfully, else False
+            category.Category: The newly created category.
         """
-        if new_category not in self.categories:
-            self.categories.append(new_category)
+        if new_category not in self._categories:
+            self._categories.append(new_category)
             return True
         return False
 
     def remove_category(self, category):
         """
-        Removes the given category from the categories list, if element already exists
+        Removes the given category from the categories list, if element is inside the List.
 
         Args:
-            category (Category): Category that will be removed
+            category (Category): Category that will be removed.
 
         Returns:
-            bool: True, if the element was removed correctly, else false
+            bool: True, if the element was removed correctly, else false.
         """
-        if category in self.categories:
-            self.categories.remove(category)
+        if category in self._categories:
+            self._categories.remove(category)
             return True
         return False
 
     def override_categories(self, new_category_list):
         """
-        Overwrites the list of categories with the given list, if both lists are not identical
+        Overwrites the list of categories with the given list, if both lists are not identical.
 
         Args:
-            new_category_list (List<Categories>): List of categories, that will overwrite the already existing list
+            new_category_list (list[Categories]): List of categories, that will overwrite the already existing list.
 
         Returns:
-            bool: True, if the replacement was successful, else False
+            bool: True, if the replacement was successful, else False.
         """
-        if self.categories != new_category_list:
-            self.categories = new_category_list
+        if self._categories != new_category_list:
+            self._categories = new_category_list
             return True
         return False
 
     def merge_categories(self, category_input_list):
         """
-        Merges the existing category list with the given list if both lists are not identical
+        Merges the existing category list with the given list if both lists are not identical.
 
         Args:
-            category_input_list (List<Category>): New list of categories that will be merged into the existing list
+            category_input_list (list[Category]): New list of categories that will be merged into the existing list.
 
         Returns:
-            bool: True, if the merging was successful, else False
+            bool: True, if the merging was successful, else False.
         """
-        if self.categories == category_input_list:
+        if self._categories == category_input_list:
             return False
 
         for category in category_input_list:
-            if category not in self.categories:
-                self.categories.append(category)
+            if category not in self._categories:
+                self._categories.append(category)
         return True

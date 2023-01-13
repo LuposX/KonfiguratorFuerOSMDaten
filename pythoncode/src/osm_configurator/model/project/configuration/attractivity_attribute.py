@@ -3,99 +3,83 @@ import src.osm_configurator.model.project.configuration.attribute_enum
 
 class AttractivityAttribute:
     """
-    AttractivityAttribute models multiple Attractivity Attributes
-    and their factors. Each factor is mapped to an according attractivity attribute
-    and vice versa.
+    AttractivityAttribute models a single Attractivity Attributes to its factors.
+    Each AttractivityAttribute consists of the following elements:
+    - A name, which describes the AttractivityAttribute
+    - A List of attributes factor pairs, which describe the attractivity attribute
+    - A base factor
     """
 
-    attractivity_attributes = []  # list of attractivity attributes (values from attribute_enum)
-    attribute_factor = {}  # dictionary, that maps each attractivity attribute to its according factor
-    base_factor = 1  # base factor, if no factor is given for a certain attribute
-
-    def __init__(self, attractivity_attributes, attribute_factor, base_factor):
+    def __init__(self, attractivity_attribute_name, attractivity_attribute_list, base_attractivity):
         """
-        Creates a new instance of "AttractivityAttribute".
+        Creates a new instance of a "AttractivityAttribute" class.
 
         Args:
-            attractivity_attributes: list of the enum-elements
-            attribute_factor: list of the factors used for calculation
-            base_factor: factor used for calculation if the given attribute has no factor
-        """
-        self.attractivity_attributes = attractivity_attributes
-        self.attribute_factor = attribute_factor
-        self.base_factor = base_factor
+            attractivity_attribute_name (str): The name of the Attractivity Attributes
+            attractivity_attribute_list (List[(attribute_enum.Attribute, float)]): A list of attributes each having its own factor.
+            base_attractivity (float): The base attractivity value.
 
-    def get_attractivity_attribute(self):
+        Examples:
+            An example for attractivity_attribute_list: [(AREA, 1.0), (NUMER_OF_FLOOR, 2.0), (GROUND_AREA, 6.9)]
         """
+        pass
+
+    def get_attractivity_attribute_name(self):
+        """
+        Getter for attractivity attribute name.
+
         Returns:
-            list: list of attractivity_attributes
+            str: The attractivity attribute name.
         """
-        return self.attractivity_attributes
+        pass
 
-    def set_attractivity_attribute(self, name):
+    def set_attractivity_attribute_name(self, name):
         """
-        Adds a new attractivity attribute with the given base factor to the list of attributes
+        Setter for the attractivity attribute name.
 
         Args:
-            name (str): name of the attribute that will be added
+            name (str): name of the attractivity attribute.
 
         Returns:
-            bool: true, if adding was successful, else false
+            bool: true, if the name was successfully set, false otherwise
         """
+        pass
 
-        if name not in self.attractivity_attributes:
-            self.attractivity_attributes.append(name)
-            return True
-        return False
-
-    def get_attribute_factor(self, attribute):
+    def get_attractivity_attribute_list(self):
         """
-        Returns the factor of a given attribute
+        Getter for the list of attributes and factors.
+
+        Returns:
+            list[(attribute_enum.Attribute, float)]: The list of attribute factor pairs.
+        """
+        pass
+
+    def set_attractivity_attribute_list(self, attractivity_attribute_list):
+        """
+         Setter for the list of attributes and factors.
 
         Args:
-            attribute (attribute_enum.Attribute): attribute whose factor will be searched for
-
-        Returns:
-             double: the given factor if the attribute exists, else -1
+            attractivity_attribute_list (list[(attribute_enum.Attribute, float)]): A list of attribute factor pairs we want to set as the new list of attributes and factors.
         """
-        if attribute in self.attribute_factor and attribute in self.attractivity_attributes:
-            return self.base_factor
-        elif attribute in self.attribute_factor:
-            return self.attribute_factor[attribute]
-        return -1
-
-    def set_attribute_factor(self, attribute, factor):
-        """
-        Changes the factor of the given attribute
-
-        Args:
-            attribute (attribute_enum.Attribute): is the attribute whose factor will be changed
-            factor (double) : is the new factor
-
-        Returns:
-            bool: true, if changing was successful, else false
-        """
-        if attribute in self.attractivity_attributes and attribute in self.attribute_factor:
-            self.attractivity_attributes[attribute] = factor
-            return True
-        elif attribute in self.attractivity_attributes:
-            self.attractivity_attributes.update(attribute=factor)
-            return True
-        return False
+        pass
 
     def get_base_factor(self):
         """
+        Getter for the base factor.
+
         Returns:
-             double: the base factor
+             float: the base factor
         """
-        return self.base_factor
+        pass
 
     def set_base_factor(self, new_base_factor):
         """
+        Setter for the base factor.
+
         Args:
-            new_base_factor (double): new value for the already existing base factor
+            new_base_factor (float): New value for the base factor
 
         Returns:
-            void
+            bool: true if the base factor eas successful set, false else
         """
-        self.base_factor = new_base_factor
+        pass

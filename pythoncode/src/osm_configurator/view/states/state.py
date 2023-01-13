@@ -1,10 +1,11 @@
 import src.osm_configurator.view.states.positioned_frame
 import src.osm_configurator.view.states.state_name_enum
+import src.osm_configurator.view.states.state
 
 
 class State:
     """
-    This class models a State.
+    This class models a state.
     A State consist of
     - a list of frames, that shall be visible on a window, when this state is active
     - a default state to its right
@@ -15,14 +16,14 @@ class State:
 
     def __init__(self, active_frames, own_state_name, default_left, default_right):
         """
-        This method creates a new state, that holds the given frames, has the given state id (the own_state_name),
+        This method creates a new state, that holds the given frames, has the given state name,
         and has a default left and right.
 
         Args:
-            active_frames list[positioned_frame.PositionedFrame]: A list of frames, that this state holds
-            own_state_name (state_name_enum.StateName): The id that defines this state
-            default_left (state_name_enum.StateName): The id of the state on this states left
-            default_right (state_name_enum.StateName): The id of the state on this states right
+            active_frames (list[positioned_frame.PositionedFrame]): A list of frames, that this state holds
+            own_state_name (state_name_enum.StateName): The name that defines this state
+            default_left (state_name_enum.StateName): The name of the state on this states left
+            default_right (state_name_enum.StateName): The name of the state on this states right
         """
         pass
 
@@ -37,10 +38,10 @@ class State:
 
     def get_default_left(self):
         """
-        The id of the state on this states left.
+        The name of the state on this states left.
 
         Returns:
-            (state_name_enum.StateName): This states left state id
+            state_name_enum.StateName: This states left state name
         """
         pass
 
@@ -49,26 +50,26 @@ class State:
         The id of the state on this states right.
 
         Returns:
-            (state_name_enum.StateName): This states right state id
+            state_name_enum.StateName: This states right state name
         """
         pass
 
     def get_state_name(self):
         """
-        The id of this state.
+        The name of this state.
 
         Returns:
-            (state_name_enum.StateName): The id of this state
+            state_name_enum.StateName: The name of this state
         """
         pass
 
     def equals(self, state):
         """
         Test if two states are equal.
-        Two states are defined as equal, if their id is equal.
+        Two states are defined as equal, if their name is equal.
 
         Args:
-            state (State): The state you want to know if it is equal to this one
+            state (state.State): The state you want to know if it is equal to this one
 
         Returns:
             bool: true if the given state and this state ist equal. false if not

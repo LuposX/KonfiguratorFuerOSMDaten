@@ -5,27 +5,30 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 class ProjectHeadFrame(TopLevelFrame):
     """
-    This Frame shows the Header-PipeLine of the Application, if a Project is opened.
-    Functionality the User can use:
-    - Exit to the MainMenu
-    - Save Project
-    - Go to Settings
-    - Change between different Frames to edit Configurations
-    - Use Exports
+    This frame shows the header pipeLine of the application, if a project is opened.
+    Functionality the user can use:
+    - Exit to the main menu
+    - Save the project
+    - Go to the settings
+    - Change between different frames to edit configurations
+    - Use exports
 
-    This Frame is always on the top of the Window. Below it will be presented a Frame to edit some part of the Project
-    and below that Frame will be a FootFrame.
-    Exceptions are the MainMenu and the Creation of a new Project without this header.
+    This frame is always on the top of the window. Below it there will be presented a frame to edit some part of the project
+    and below that one there will be a FootFrame.
+    Exceptions are the MainMenu and the creation of a new project without this header.
     """
 
     def __init__(self, state_manager, control):
         """
-        This Method creates a ProjectHeadFrame, letting the User navigate the Pipeline and exit back to the Main Menu.
-        The User can also open the Settings, save the Project or export the Project.
+        This method creates a ProjectHeadFrame, letting the user navigate the pipeline and exit back to the main menu.
+        The user can also open the settings, save the project or export the project.
 
         Args:
-            state_manager (state_manager.StateManager): The Frame will call the StateManager, if it wants to switch States.
-            control (control_interface.IControl): The Frame will call the Control, to gain access to the Model.
+            state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
+            control (control_interface.IControl): The frame will call the control to gain access to the model.
         """
         super().__init__(state_manager, control)
+        pass
+
+    def activate(self):
         pass

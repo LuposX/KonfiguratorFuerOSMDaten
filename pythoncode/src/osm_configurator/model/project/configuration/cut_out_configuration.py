@@ -1,15 +1,15 @@
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 
-class CutOutConfiguration:
 
+class CutOutConfiguration:
     """
-    This class job is to store the cut-out mode and the cut-out itself. Both are required during the reduction-phase
+    This class job is to store the cut-out mode and the cut-out file path. Both are required during the reduction-phase
     in the calculation.
     """
 
     def __init__(self):
         """
-        Creates a new instance of the CutOutConfiguration.
+        Creates a new instance of the "CutOutConfiguration" class.
         """
         pass
 
@@ -18,7 +18,7 @@ class CutOutConfiguration:
         Gives back the used cut-out mode.
 
         Returns:
-            CutOutMode: The used cut-out mode.
+            cut_out_mode_enum.CutOutMode: The used cut-out mode.
         """
         pass
 
@@ -27,7 +27,7 @@ class CutOutConfiguration:
         Changes the cut-out mode used during the reduction phase in the calculation.
 
         Args:
-            new_cut_out_mode (CutOutMode): The new cut-out mode for the calculation.
+            new_cut_out_mode (cut_out_mode_enum.CutOutMode): The new cut-out mode for the calculation.
 
         Returns:
             bool: True if changing the cut-out mode works, otherwise false.
@@ -36,16 +36,16 @@ class CutOutConfiguration:
 
     def get_cut_out_path(self):
         """
-        Gives back the path pointing towards the cut-out.
+        Gives back the path pointing towards the cut-out file.
 
         Returns:
-            pathlib.Path: The path pointing towards the cut-out .
+            pathlib.Path: The path pointing towards the cut-out.
         """
         pass
 
     def set_cut_out_path(self, path):
         """
-        Changes the path pointing towards the cut-out.
+        Changes the path pointing towards the cut-out file.
 
         Args:
             path (pathlib.Path): The new path.

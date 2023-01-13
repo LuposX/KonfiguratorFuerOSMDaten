@@ -13,7 +13,7 @@ class CalculationPhase(Enum):
 
     Each enum consists of three variables: (name, folder_name, order).
     The name of the phase is used in the GUI, to display the correct name of the phase.
-    The folder_name ist used to save the results of each phase in it.
+    The folder_name is used to save the results of each phase in it.
     The order is used to differentiate in which order the phases get called.
     """
 
@@ -29,17 +29,16 @@ class CalculationPhase(Enum):
         Getter for the name of the enum type.
 
         Returns:
-            (str): Name of the Phase.
+            str: Name of the Phase.
         """
         return self.value[0]
 
-
     def get_folder_name_for_results(self):
         """
-        Getter for the folder name of the enum type
+        Getter for the folder name of the enum type.
 
         Returns:
-            (str): The folder name of the enum
+            str: The folder name of the enum.
         """
         return self.value[1]
 
@@ -48,6 +47,6 @@ class CalculationPhase(Enum):
         Getter for the order of the enum type.
 
         Returns:
-            (int): order of the enum.
+            int: order of the enum.
         """
         return self.value[2]

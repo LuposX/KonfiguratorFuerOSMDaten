@@ -18,7 +18,6 @@ class RecommenderSystem:
             input (str): The input from which to generate suggestions.
 
         Returns:
-            list<str>: Returns a list of strings containing the recommendations depending on the input.
+            list|str]: Returns a list of strings containing the recommendations depending on the input.
         """
         pass
-
