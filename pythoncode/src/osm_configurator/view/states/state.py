@@ -41,7 +41,7 @@ class State:
         The name of the state on this states left.
 
         Returns:
-            (state_name_enum.StateName): This states left state name
+            state_name_enum.StateName: This states left state name
         """
         pass
 
@@ -50,7 +50,7 @@ class State:
         The id of the state on this states right.
 
         Returns:
-            (state_name_enum.StateName): This states right state name
+            state_name_enum.StateName: This states right state name
         """
         pass
 
@@ -59,7 +59,7 @@ class State:
         The name of this state.
 
         Returns:
-            (state_name_enum.StateName): The name of this state
+            state_name_enum.StateName: The name of this state
         """
         pass
 

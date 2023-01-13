@@ -17,6 +17,6 @@ class OSMFileFormat(Enum):
         Getter for the file extension of an enum type.
 
         Returns:
-            (str): The File extension the osm file format uses.
+            str: The File extension the osm file format uses.
         """
         pass

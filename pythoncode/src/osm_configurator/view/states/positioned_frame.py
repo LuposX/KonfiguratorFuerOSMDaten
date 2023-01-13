@@ -27,7 +27,7 @@ class PositionedFrame:
         This method returns the frame this PositionedFrame holds.
 
         Returns:
-            (top_level_frame.TopLevelFrame): The Frame this PositionedFrame holds
+            top_level_frame.TopLevelFrame: The Frame this PositionedFrame holds
         """
         pass
 
@@ -36,7 +36,7 @@ class PositionedFrame:
         This method Returns the column the frame is placed in.
 
         Returns:
-            (int): The Column the Frame is placed in.
+            int: The Column the Frame is placed in.
         """
         pass
 
@@ -45,6 +45,6 @@ class PositionedFrame:
         This method returns the line the frame is placed in.
 
         Returns:
-            (int): The Line the frame is placed in
+            int: The Line the frame is placed in
         """
         pass
