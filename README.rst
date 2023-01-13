@@ -6,7 +6,7 @@ KonfiguratorFuerOSMDaten
    :target: https://opensource.org/licenses/MIT
 
 Whether it’s biking to college or driving to the supermarket, traffic
-affects us all. all. This product generates from geodata of the free
+affects us all. This product generates from geodata of the free
 project ‘OpenStreetMap’ (OSM) a numerical ranking of the
 attractiveness of geographic locations. A main focus is the
 configurability of the generation of this score. Traffic planners can
