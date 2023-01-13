@@ -45,7 +45,7 @@ for example using ``pip`` or ``conda``:
 
 .. code-block:: console
 
-    $ here will stand sth. in the future
+    Here will stand sth. in the future
 
 
 Usage
