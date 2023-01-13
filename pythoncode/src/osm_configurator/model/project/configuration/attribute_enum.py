@@ -16,7 +16,7 @@ class Attribute(Enum):
         Getter for the name of the enum type.
 
         Returns:
-            (str): Name of the Phase.
+            str: Name of the Phase.
         """
         return self.value
 
