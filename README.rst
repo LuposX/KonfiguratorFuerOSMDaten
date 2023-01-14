@@ -27,7 +27,7 @@ for their traffic forecasting models.
 
 This project is getting developed in the context of the lecture “Praxis der Softwareentwicklung(PSE)” at the University KIT in 2022,the waterfall model with feedback is used to develop this project.
 For each of the phases of the watferfall model you can find the documentation in the corresponding subfolder, in the 
-\href{https://github.com/LuposX/KonfiguratorFuerOSMDaten}{github} , most of the documentation is in german.
+`github <https://github.com/LuposX/KonfiguratorFuerOSMDaten>`_ , most of the documentation is in german.
 
 
 For a more specific description of the code, check the ``README.md`` in
@@ -59,7 +59,7 @@ License
 -------
 
 KonfiguratorFuerOSMDaten is licensed under the MIT `License 
-<https://github.com/LuposX/KonfiguratorFuerOSMDaten/blob/dev/LICENSE>`__.
+<https://github.com/LuposX/KonfiguratorFuerOSMDaten/blob/main/LICENSE>`__.
 
 Contribution
 ------------
