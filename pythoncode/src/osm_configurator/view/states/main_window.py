@@ -1,4 +1,14 @@
-import src.osm_configurator.control.control_interface
+import src.osm_configurator.control.export_controller
+import src.osm_configurator.control.category_controller
+import src.osm_configurator.control.project_controller
+import src.osm_configurator.control.settings_controller
+import src.osm_configurator.control.aggregation_controller
+import src.osm_configurator.control.application_controller
+import src.osm_configurator.control.calculation_controller
+import src.osm_configurator.control.cut_out_controller
+import src.osm_configurator.control.data_visualization_controller
+import src.osm_configurator.control.osm_data_controller
+
 import src.osm_configurator.view.states.state_name_enum
 
 
@@ -9,14 +19,27 @@ class MainWindow:
     Its job is to just show the frames of different states and create the window the GUI will be used on.
     """
 
-    def __init__(self, control):
+    def __init__(self, export_controller, category_controller, project_controller, settings_controller,
+                 aggregation_controller, application_controller, calculation_controller, cut_out_controller,
+                 data_visualization_controller, osm_data_controller):
         """
         This method creates a MainWindow with a connection to the given control.
 
         Args:
-            control (control_interface.IControl): The control the GUI shall be working with, to get access to information on the model.
+            export_controller (export_controller.ExportController): Respective controller
+            category_controller (category_controller.CategoryController): Respective controller
+            project_controller (project_controller.ProjectController): Respective controller
+            settings_controller (settings_controller.SettingsController): Respective controller
+            aggregation_controller (aggregation_controller.AggregationController): Respective controller
+            application_controller (application_controller.ApplicationController): Respective controller
+            calculation_controller (calculation_controller.CalculationController): Respective controller
+            cut_out_controller (cut_out_controller.CutOutController): Respective controller
+            data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
+            osm_data_controller (osm_data_controller.OSMDataController): Respective controller
         """
         pass
+
+
 
     def change_state(self, last_state, new_state):
         """
