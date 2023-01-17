@@ -1,8 +1,10 @@
 import src.osm_configurator.view.toplevelframes.settings_frame
 import src.osm_configurator.control.settings_controller
 
+from src.osm_configurator.view.activatable import Activatable
 
-class SettingsProjectFrame:
+
+class SettingsProjectFrame(Activatable):
     """
     This frame shows the current project settings.
     """
@@ -13,7 +15,7 @@ class SettingsProjectFrame:
 
         Args:
             parent (settings_frame.SettingsFrame): The parent of this frame where this frame will be located.
-             settings_controller (settings_controller.SettingsController): Respective controller.
+            settings_controller (settings_controller.SettingsController): Respective controller.
         """
         pass
 
