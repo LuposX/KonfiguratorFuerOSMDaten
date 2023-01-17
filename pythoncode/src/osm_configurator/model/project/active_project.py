@@ -46,6 +46,7 @@ class ActiveProject:
         """
         pass
 
+
     def get_project_path(self):
         """
         This method is to give back the path pointing towards the project folder.
