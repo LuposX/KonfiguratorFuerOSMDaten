@@ -39,7 +39,6 @@ class MainWindow:
         pass
 
 
-
     def change_state(self, last_state, new_state):
         """
         This method changes from an old given state to a new given state to show on the MainWindow.

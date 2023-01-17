@@ -1,4 +1,7 @@
 import src.osm_configurator.view.states.state_manager
+import src.osm_configurator.control.export_controller
+import src.osm_configurator.control.project_controller
+
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
@@ -17,14 +20,15 @@ class ProjectHeadFrame(TopLevelFrame):
     Exceptions are the MainMenu and the creation of a new project without this header.
     """
 
-    def __init__(self, state_manager, control):
+    def __init__(self, state_manager, export_controller, project_controller):
         """
         This method creates a ProjectHeadFrame, letting the user navigate the pipeline and exit back to the main menu.
         The user can also open the settings, save the project or export the project.
 
         Args:
             state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
-            control (control_interface.IControl): The frame will call the control to gain access to the model.
+            export_controller (export_controller.ExportController): Respective controller
+            project_controller (project_controller.ProjectController): Respective controller
         """
         super().__init__(state_manager, control)
         pass
