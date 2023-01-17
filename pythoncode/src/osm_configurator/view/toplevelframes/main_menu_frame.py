@@ -1,5 +1,7 @@
 import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.control_interface
+import src.osm_configurator.control.project_controller
+
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
@@ -10,12 +12,13 @@ class MainMenuFrame(TopLevelFrame):
     will be shown in a list and can be selected / opened.
     """
 
-    def __init__(self, state_manager, control):
+    def __init__(self, state_manager, project_controller):
         """
         This method creates a MainMenuFrame showing the MainMenu of the application.
 
         Args:
             state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
+            project_controller (project_controller.ProjectController): Respective controller
             control (control_interface.IControl): The frame will call the control to gain access to the model.
         """
         super().__init__(state_manager, control)
