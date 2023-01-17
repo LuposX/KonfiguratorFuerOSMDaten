@@ -10,7 +10,7 @@ class ActiveProject:
     created.
     """
 
-    def __init__(self, project_folder, is_newly_created):
+    def __init__(self, project_folder, is_newly_created, project_name=None, project_describtion=None):
         """
         Creates a new instance of the ActiveProject. In this process it creates the ConfigurationManager and also
         differentiate between the case that the project is new or loaded. In the case of an existing project it
@@ -19,19 +19,8 @@ class ActiveProject:
         Args:
             project_folder (pathlib.Path): This is path pointing towards the folder, where the project is saved.
             is_newly_created (bool): This argument is true if the project is newly created, otherwise false.
-        """
-        pass
-
-    def create(self, name, description):
-        """
-        This method creates a new project and adds a name and a description to it.
-
-        Args:
-            name (str): The name of the project.
-            description (str): A description of the project.
-
-        Returns:
-            bool: True if creating the project works, otherwise false.
+            project_name (str): How we want to name the project.
+            project_describtion (str): The description of our project.
         """
         pass
 
