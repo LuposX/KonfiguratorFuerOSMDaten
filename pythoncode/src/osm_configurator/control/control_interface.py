@@ -34,7 +34,7 @@ class IControl(ABC):
         All relevant data of a project are verified and loaded in memory. All coming project-referring calls will be directed to the given project.
 
         Args:
-            path (pathlib.Path): The path to the project folder of the project, to be loaded.
+            path (pathlib.Path): The path to the project folder of the project to be loaded.
 
         Returns:
             bool: True, if the project was loaded successfully; False if an error occurred, while trying to load the project. An error happens, if the path is not pointing to a valid project folder or if the project has corrupted files.
@@ -63,7 +63,7 @@ class IControl(ABC):
         Deletes a project out of the default project folder.
 
         Args:
-            project (passive_project.PassiveProject): The project, that is going to be deleted.
+            project (passive_project.PassiveProject): The project that is going to be deleted.
 
         Returns:
             bool: True, if the (passive) project has been deleted successfully; False otherwise: The project does not exist or the application has not the right permissions to delete the project.
@@ -121,7 +121,7 @@ class IControl(ABC):
         The reference contains the osm-data used in the calculations of the project. This method does not check if the given data is valid.
 
         Args:
-            path (pathlib.Path): The reference to the osm-data
+            path (pathlib.Path): The reference to the osm-data.
 
         Returns:
             bool: True, if the new reference was set successfully; False, if an error occurred while setting the reference.
@@ -148,7 +148,7 @@ class IControl(ABC):
             path (pathlib.Path): The path to the geojson-file.
 
         Returns:
-            bool: True on success, False otherwise
+            bool: True on success, False otherwise.
         """
         pass
 
@@ -168,7 +168,7 @@ class IControl(ABC):
         Sets the method of how the geofilter shall cut out on the OSM-Data.
 
         Args:
-            mode (cut_out_mode_enum.CutOutMode): The mode, to be set
+            mode (cut_out_mode_enum.CutOutMode): The mode to be set.
 
         Returns:
             bool: True, if the CutOutMode was set successfully; False, if an error occurred or no project is currently selected.
@@ -182,7 +182,7 @@ class IControl(ABC):
         This file is later used to calculate the geofilter.
 
         Args:
-            path (pathlib.Path): The path to the file containing the cut-out-geometries
+            path (pathlib.Path): The path to the file containing the cut-out-geometries.
 
         Returns:
             bool: True, if the reference was set successfully; False, if an error occurred. An error occurs, if no project is currently selected or if the given path is not valid or occupied.
@@ -205,7 +205,7 @@ class IControl(ABC):
         Checks for a given file, if it is a valid category-file and checks, whether there are naming conflicts with the categories of the currently selected project.
 
         Args:
-            path (pathlib.Path): The path to the category-file
+            path (pathlib.Path): The path to the category-file.
 
         Returns:
             bool: True, if there is currently a project selected and there are no naming conflicts; False, otherwise.
@@ -219,7 +219,7 @@ class IControl(ABC):
         Adds the given categories to the category list of the project.
 
         Args:
-            path (pathlib.Path): The path to the category file
+            path (pathlib.Path): The path to the category file.
 
         Returns:
             bool: True, if the categories where added successfully; False, if there is no project loaded, the category file is corrupted or the category file does not exist.
@@ -244,7 +244,7 @@ class IControl(ABC):
         If the creation fails, none will be returned and there won't be a category added.
 
         Returns:
-            category.Category: The newly created category, none if there was an error
+            category.Category: The newly created category, none if there was an error.
         """
         pass
 
@@ -252,13 +252,13 @@ class IControl(ABC):
     def delete_category(self, category):
         """
         Deletes the given category.
-        Removes the given category from the list of categories of the currently selected project
+        Removes the given category from the list of categories of the currently selected project.
 
         Args:
-            category (category.Category): The category, to be deleted
+            category (category.Category): The category to be deleted.
 
         Returns:
-            bool: True, if the category was deleted successfully; False, otherwise
+            bool: True, if the category was deleted successfully; False, otherwise.
         """
         pass
 
@@ -268,10 +268,10 @@ class IControl(ABC):
         Returns a list of recommended keys, based on the input that is already entered by the user.
 
         Args:
-            current_input (str): The input, that is currently written by the user.
+            current_input (str): The input that is currently written by the user.
 
         Returns:
-            list[str]: A list of key recommendations, based on the current_input.
+            list[str]: A list of key recommendations based on the current_input.
         """
         pass
 
@@ -281,10 +281,10 @@ class IControl(ABC):
         Returns the attractivity attributes that are defined for the given category.
 
         Args:
-            category (category.Category): The category, whose attractivities are of interest.
+            category (category.Category): The category whose attractivities are of interest.
 
         Returns:
-            list[attractivity_attribute.AttractivityAttribute]: The list of attractivity attributes of the given category
+            list[attractivity_attribute.AttractivityAttribute]: The list of attractivity attributes of the given category.
         """
         pass
 
@@ -295,7 +295,7 @@ class IControl(ABC):
         This function returns all available aggregation methods, not just the ones that are active in the current project.
 
         Returns:
-            list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods
+            list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods.
         """
         pass
 
@@ -334,10 +334,10 @@ class IControl(ABC):
         The calculation process is split in different calculation phases. This function starts the calculation in a given phase.
 
         Args:
-            starting_phase (calculation_phase_enum.CalculationPhase): The phase, in which the calculation should start
+            starting_phase (calculation_phase_enum.CalculationPhase): The phase in which the calculation should start.
 
         Returns:
-            calculation_state_enum.CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState
+            calculation_state_enum.CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState.
         """
         pass
 
@@ -357,7 +357,7 @@ class IControl(ABC):
         Returns the calculation phase of the currently selected project.
 
         Returns:
-            calculation_phase_enum.CalculationPhase: The phase, that is currently running. NONE, if no phase is currently running.
+            calculation_phase_enum.CalculationPhase: The phase that is currently running. NONE, if no phase is currently running.
         """
         pass
 
@@ -391,7 +391,7 @@ class IControl(ABC):
         The folders and files of the project are copied to the given destination.
 
         Args:
-            path (pathlib.Path): The place in storage, where the project should be exported to.
+            path (pathlib.Path): The place in storage where the project should be exported to.
 
         Returns:
             bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
@@ -405,7 +405,7 @@ class IControl(ABC):
         The folders and files regarding the results of the calculations are copied to the given destination.
 
         Args:
-            path (pathlib.Path): The place in storage, where the results should be exported to.
+            path (pathlib.Path): The place in storage where the results should be exported to.
 
         Returns:
             bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage, the calculations have not produced results yet or there was no project selected.
@@ -419,7 +419,7 @@ class IControl(ABC):
         A list of categories in the current project is stored at the given destination.
 
         Args:
-            path (pathlib.Path): The place in storage, where the categories should be stored at.
+            path (pathlib.Path): The place in storage where the categories should be stored at.
 
         Returns:
             bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
@@ -432,7 +432,7 @@ class IControl(ABC):
         Exports the map generated by the cut-out configuration.
 
         Args:
-            path (pathlib.Path): The place in storage, where the cut-out-map should be stored at.
+            path (pathlib.Path): The place in storage where the cut-out-map should be stored at.
 
         Returns:
             bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage, the application wasn't able to create the map or there was no project selected.
@@ -445,14 +445,14 @@ class IControl(ABC):
         Gets the name of the currently selected project.
 
         Returns:
-            str: The name of the project
+            str: The name of the project.
         """
         pass
 
     @abstractmethod
     def set_project_name(self, name):
         """
-        Sets the name of the currently selected project
+        Sets the name of the currently selected project.
 
         Args:
             name (str): The new name of the project, may not contain line breaks.
@@ -468,7 +468,7 @@ class IControl(ABC):
         Gets the description of the currently selected project.
 
         Returns:
-            str: The description of the project
+            str: The description of the project.
         """
         pass
 
@@ -492,7 +492,7 @@ class IControl(ABC):
         The project default folder is the folder, where projects are stored by default.
 
         Returns:
-            pathlib.Path: The path to the project default folder
+            pathlib.Path: The path to the project default folder.
         """
         pass
 
@@ -504,7 +504,7 @@ class IControl(ABC):
         Projects of an old default folder will not be copied over.
 
         Args:
-            default_folder (pathlib.Path): The path to the new project default folder
+            default_folder (pathlib.Path): The path to the new project default folder.
 
         Returns:
             bool: True, if the default folder was set successfully; False if an error occurred: The path is not valid or occupied.

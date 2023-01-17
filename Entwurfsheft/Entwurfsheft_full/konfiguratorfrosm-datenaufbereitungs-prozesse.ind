@@ -1,0 +1,1104 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter {\sphinxsymbolsname}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ActiveProject method}, \hyperpage{76}
+  \item \spxentry{\_\_init\_\_()}\spxextra{AggregationConfiguration method}, \hyperpage{60}
+  \item \spxentry{\_\_init\_\_()}\spxextra{AggregationController method}, \hyperpage{5}
+  \item \spxentry{\_\_init\_\_()}\spxextra{AggregationFrame method}, \hyperpage{92}
+  \item \spxentry{\_\_init\_\_()}\spxextra{AlertPopUp method}, \hyperpage{87}
+  \item \spxentry{\_\_init\_\_()}\spxextra{Application method}, \hyperpage{33}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ApplicationController method}, \hyperpage{6}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ApplicationSettings method}, \hyperpage{45}
+  \item \spxentry{\_\_init\_\_()}\spxextra{AttractivityAttribute method}, \hyperpage{61}
+  \item \spxentry{\_\_init\_\_()}\spxextra{AttractivityEditFrame method}, \hyperpage{93}
+  \item \spxentry{\_\_init\_\_()}\spxextra{AttractivityViewFrame method}, \hyperpage{93}
+  \item \spxentry{\_\_init\_\_()}\spxextra{BuildingOnEdgeManager method}, \hyperpage{53}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CalculationController method}, \hyperpage{7}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CalculationFrame method}, \hyperpage{94}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CalculationManager method}, \hyperpage{54}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CalculationParser method}, \hyperpage{47}
+  \item \spxentry{\_\_init\_\_()}\spxextra{Category method}, \hyperpage{64}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CategoryController method}, \hyperpage{8}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CategoryFrame method}, \hyperpage{94}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CategoryManager method}, \hyperpage{68}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CategoryParser method}, \hyperpage{48}, \hyperpage{50}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ConfigurationManager method}, \hyperpage{69}
+  \item \spxentry{\_\_init\_\_()}\spxextra{Control method}, \hyperpage{9}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CreateProjectFrame method}, \hyperpage{95}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CutOutConfiguration method}, \hyperpage{72}
+  \item \spxentry{\_\_init\_\_()}\spxextra{CutOutController method}, \hyperpage{26}
+  \item \spxentry{\_\_init\_\_()}\spxextra{DataFrame method}, \hyperpage{95}
+  \item \spxentry{\_\_init\_\_()}\spxextra{DataVisualizationController method}, \hyperpage{27}
+  \item \spxentry{\_\_init\_\_()}\spxextra{DataVisualizer method}, \hyperpage{82}
+  \item \spxentry{\_\_init\_\_()}\spxextra{DefaultValueEntry method}, \hyperpage{74}
+  \item \spxentry{\_\_init\_\_()}\spxextra{DownloadData method}, \hyperpage{75}
+  \item \spxentry{\_\_init\_\_()}\spxextra{Export method}, \hyperpage{83}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ExportController method}, \hyperpage{28}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ExportFrame method}, \hyperpage{99}
+  \item \spxentry{\_\_init\_\_()}\spxextra{MainMenuFrame method}, \hyperpage{96}
+  \item \spxentry{\_\_init\_\_()}\spxextra{MainWindow method}, \hyperpage{88}
+  \item \spxentry{\_\_init\_\_()}\spxextra{OSMDataConfiguration method}, \hyperpage{75}
+  \item \spxentry{\_\_init\_\_()}\spxextra{OSMDataController method}, \hyperpage{29}
+  \item \spxentry{\_\_init\_\_()}\spxextra{OSMFileConverter method}, \hyperpage{57}
+  \item \spxentry{\_\_init\_\_()}\spxextra{PassiveProject method}, \hyperpage{46}
+  \item \spxentry{\_\_init\_\_()}\spxextra{PositionedFrame method}, \hyperpage{88}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ProjectController method}, \hyperpage{30}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ProjectFootFrame method}, \hyperpage{96}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ProjectHeadFrame method}, \hyperpage{97}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ProjectIOHandler method}, \hyperpage{84}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ProjectSaver method}, \hyperpage{85}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ProjectSettings method}, \hyperpage{85}
+  \item \spxentry{\_\_init\_\_()}\spxextra{RecommenderSystem method}, \hyperpage{47}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ReductionCalculationFrame method}, \hyperpage{99}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ReductionDefaultValueFrame method}, \hyperpage{100}
+  \item \spxentry{\_\_init\_\_()}\spxextra{ReductionFrame method}, \hyperpage{97}
+  \item \spxentry{\_\_init\_\_()}\spxextra{SettingsApplicationFrame method}, \hyperpage{100}
+  \item \spxentry{\_\_init\_\_()}\spxextra{SettingsController method}, \hyperpage{32}
+  \item \spxentry{\_\_init\_\_()}\spxextra{SettingsFrame method}, \hyperpage{98}
+  \item \spxentry{\_\_init\_\_()}\spxextra{SettingsProjectFrame method}, \hyperpage{101}
+  \item \spxentry{\_\_init\_\_()}\spxextra{SplitUpFile method}, \hyperpage{59}
+  \item \spxentry{\_\_init\_\_()}\spxextra{State method}, \hyperpage{89}
+  \item \spxentry{\_\_init\_\_()}\spxextra{StateManager method}, \hyperpage{90}
+  \item \spxentry{\_\_init\_\_()}\spxextra{TagListFrame method}, \hyperpage{101}
+  \item \spxentry{\_\_init\_\_()}\spxextra{TagListPriorityFrame method}, \hyperpage{102}
+  \item \spxentry{\_\_init\_\_()}\spxextra{TopLevelFrame method}, \hyperpage{98}
+  \item \spxentry{\_\_init\_\_()}\spxextra{TrafficCell method}, \hyperpage{60}
+  \item \spxentry{\_\_init\_\_()}\spxextra{YesNoPopUp method}, \hyperpage{87}
+
+  \indexspace
+  \bigletter A
+  \item \spxentry{activate()}\spxextra{AggregationFrame method}, \hyperpage{92}
+  \item \spxentry{activate()}\spxextra{AttractivityEditFrame method}, \hyperpage{93}
+  \item \spxentry{activate()}\spxextra{AttractivityViewFrame method}, \hyperpage{93}
+  \item \spxentry{activate()}\spxextra{CalculationFrame method}, \hyperpage{94}
+  \item \spxentry{activate()}\spxextra{Category method}, \hyperpage{64}
+  \item \spxentry{activate()}\spxextra{CategoryFrame method}, \hyperpage{94}
+  \item \spxentry{activate()}\spxextra{CreateProjectFrame method}, \hyperpage{95}
+  \item \spxentry{activate()}\spxextra{DataFrame method}, \hyperpage{95}
+  \item \spxentry{activate()}\spxextra{MainMenuFrame method}, \hyperpage{96}
+  \item \spxentry{activate()}\spxextra{ProjectFootFrame method}, \hyperpage{96}
+  \item \spxentry{activate()}\spxextra{ProjectHeadFrame method}, \hyperpage{97}
+  \item \spxentry{activate()}\spxextra{ReductionCalculationFrame method}, \hyperpage{99}
+  \item \spxentry{activate()}\spxextra{ReductionDefaultValueFrame method}, \hyperpage{100}
+  \item \spxentry{activate()}\spxextra{ReductionFrame method}, \hyperpage{97}
+  \item \spxentry{activate()}\spxextra{SettingsApplicationFrame method}, \hyperpage{100}
+  \item \spxentry{activate()}\spxextra{SettingsFrame method}, \hyperpage{98}
+  \item \spxentry{activate()}\spxextra{SettingsProjectFrame method}, \hyperpage{101}
+  \item \spxentry{activate()}\spxextra{TopLevelFrame method}, \hyperpage{98}
+  \item \spxentry{ActiveProject}\spxextra{class in src.osm\_configurator.model.project.active\_project}, 
+		\hyperpage{76}
+  \item \spxentry{add\_attractivity\_attribute()}\spxextra{Category method}, \hyperpage{66}
+  \item \spxentry{add\_default\_value\_entry()}\spxextra{Category method}, \hyperpage{67}
+  \item \spxentry{AGGREGATION}\spxextra{StateName attribute}, \hyperpage{92}
+  \item \spxentry{AGGREGATION\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}, \hyperpage{82}
+  \item \spxentry{AGGREGATION\_PHASE}\spxextra{CalculationPhase attribute}, \hyperpage{55}
+  \item \spxentry{AggregationConfiguration}\spxextra{class in src.osm\_configurator.model.project.configuration.aggregation\_configuration}, 
+		\hyperpage{60}
+  \item \spxentry{AggregationController}\spxextra{class in src.osm\_configurator.control.aggregation\_controller}, 
+		\hyperpage{5}
+  \item \spxentry{AggregationFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.aggregation\_frame}, 
+		\hyperpage{92}
+  \item \spxentry{AggregationMethod}\spxextra{class in src.osm\_configurator.model.project.calculation.aggregation\_method\_enum}, 
+		\hyperpage{51}
+  \item \spxentry{AggregationPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.aggregation\_phase}, 
+		\hyperpage{52}
+  \item \spxentry{AlertPopUp}\spxextra{class in src.osm\_configurator.view.popups.alert\_pop\_up}, 
+		\hyperpage{87}
+  \item \spxentry{Application}\spxextra{class in src.osm\_configurator.model.application.application}, 
+		\hyperpage{33}
+  \item \spxentry{ApplicationController}\spxextra{class in src.osm\_configurator.control.application\_controller}, 
+		\hyperpage{6}
+  \item \spxentry{ApplicationSettings}\spxextra{class in src.osm\_configurator.model.application.application\_settings}, 
+		\hyperpage{45}
+  \item \spxentry{ATTRACTIVITY\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}, \hyperpage{82}
+  \item \spxentry{ATTRACTIVITY\_EDIT}\spxextra{StateName attribute}, \hyperpage{92}
+  \item \spxentry{ATTRACTIVITY\_PHASE}\spxextra{CalculationPhase attribute}, \hyperpage{55}
+  \item \spxentry{ATTRACTIVITY\_VIEW}\spxextra{StateName attribute}, \hyperpage{92}
+  \item \spxentry{AttractivityAttribute}\spxextra{class in src.osm\_configurator.model.project.configuration.attractivity\_attribute}, 
+		\hyperpage{61}
+  \item \spxentry{AttractivityEditFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame}, 
+		\hyperpage{93}
+  \item \spxentry{AttractivityPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.attractivity\_phase}, 
+		\hyperpage{53}
+  \item \spxentry{AttractivityViewFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame}, 
+		\hyperpage{93}
+  \item \spxentry{Attribute}\spxextra{class in src.osm\_configurator.model.project.configuration.attribute\_enum}, 
+		\hyperpage{63}
+  \item \spxentry{AVERAGE}\spxextra{AggregationMethod attribute}, \hyperpage{51}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{build\_project()}\spxextra{ProjectIOHandler method}, \hyperpage{84}
+  \item \spxentry{BuildingOnEdgeManager}\spxextra{class in src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager}, 
+		\hyperpage{53}
+  \item \spxentry{BUILDINGS\_ON\_EDGE\_ACCEPTED}\spxextra{CutOutMode attribute}, \hyperpage{73}
+  \item \spxentry{BUILDINGS\_ON\_EDGE\_NOT\_ACCEPTED}\spxextra{CutOutMode attribute}, 
+		\hyperpage{73}
+  \item \spxentry{BZ2}\spxextra{OSMFileFormat attribute}, \hyperpage{58}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{calculate()}\spxextra{AggregationPhase method}, \hyperpage{52}
+  \item \spxentry{calculate()}\spxextra{AttractivityPhase method}, \hyperpage{53}
+  \item \spxentry{calculate()}\spxextra{GeoDataPhase method}, \hyperpage{57}
+  \item \spxentry{calculate()}\spxextra{ICalculationPhase method}, \hyperpage{55}
+  \item \spxentry{calculate()}\spxextra{ReductionPhase method}, \hyperpage{58}
+  \item \spxentry{calculate()}\spxextra{TagFilterPhase method}, \hyperpage{59}
+  \item \spxentry{calculate\_aggregation()}\spxextra{AggregationMethod method}, \hyperpage{52}
+  \item \spxentry{CALCULATE\_BUILDING\_AREA}\spxextra{CalculationMethodOfArea attribute}, 
+		\hyperpage{63}
+  \item \spxentry{CALCULATE\_SITE\_AREA}\spxextra{CalculationMethodOfArea attribute}, 
+		\hyperpage{63}
+  \item \spxentry{CALCULATION}\spxextra{StateName attribute}, \hyperpage{92}
+  \item \spxentry{CALCULATION\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}, \hyperpage{82}
+  \item \spxentry{CalculationController}\spxextra{class in src.osm\_configurator.control.calculation\_controller}, 
+		\hyperpage{7}
+  \item \spxentry{CalculationFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.calculation\_frame}, 
+		\hyperpage{94}
+  \item \spxentry{CalculationManager}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_manager}, 
+		\hyperpage{54}
+  \item \spxentry{CalculationMethodOfArea}\spxextra{class in src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum}, 
+		\hyperpage{63}
+  \item \spxentry{CalculationParser}\spxextra{class in src.osm\_configurator.model.parser.calculation\_parser}, 
+		\hyperpage{47}
+  \item \spxentry{CalculationParserInterface}\spxextra{class in src.osm\_configurator.model.parser.calculation\_parser\_interface}, 
+		\hyperpage{48}
+  \item \spxentry{CalculationPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_phase\_enum}, 
+		\hyperpage{54}
+  \item \spxentry{CalculationState}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_state\_enum}, 
+		\hyperpage{56}
+  \item \spxentry{cancel\_calculation()}\spxextra{CalculationManager method}, \hyperpage{54}
+  \item \spxentry{cancel\_calculations()}\spxextra{CalculationController method}, \hyperpage{7}
+  \item \spxentry{cancel\_calculations()}\spxextra{Control method}, \hyperpage{15}
+  \item \spxentry{cancel\_calculations()}\spxextra{IControl method}, \hyperpage{23}
+  \item \spxentry{Category}\spxextra{class in src.osm\_configurator.model.project.configuration.category}, 
+		\hyperpage{64}
+  \item \spxentry{CATEGORY}\spxextra{StateName attribute}, \hyperpage{92}
+  \item \spxentry{CATEGORY\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}, \hyperpage{82}
+  \item \spxentry{CategoryController}\spxextra{class in src.osm\_configurator.control.category\_controller}, 
+		\hyperpage{8}
+  \item \spxentry{CategoryFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.category\_frame}, 
+		\hyperpage{94}
+  \item \spxentry{CategoryManager}\spxextra{class in src.osm\_configurator.model.project.configuration.category\_manager}, 
+		\hyperpage{68}
+  \item \spxentry{CategoryParser}\spxextra{class in src.osm\_configurator.model.parser.category\_parser}, 
+		\hyperpage{48}
+  \item \spxentry{CategoryParser}\spxextra{class in src.osm\_configurator.model.parser.osm\_data\_parser}, 
+		\hyperpage{50}
+  \item \spxentry{CategoryParserInterface}\spxextra{class in src.osm\_configurator.model.parser.category\_parser\_interface}, 
+		\hyperpage{49}
+  \item \spxentry{change\_state()}\spxextra{MainWindow method}, \hyperpage{88}
+  \item \spxentry{change\_state()}\spxextra{StateManager method}, \hyperpage{91}
+  \item \spxentry{check\_conflicts\_in\_category\_configuration()}\spxextra{CategoryController method}, 
+		\hyperpage{8}
+  \item \spxentry{check\_conflicts\_in\_category\_configuration()}\spxextra{Control method}, 
+		\hyperpage{12}
+  \item \spxentry{check\_conflicts\_in\_category\_configuration()}\spxextra{IControl method}, 
+		\hyperpage{21}
+  \item \spxentry{check\_validity\_of\_calculation\_step()}\spxextra{CalculationParser method}, 
+		\hyperpage{47}
+  \item \spxentry{check\_validity\_of\_calculation\_step()}\spxextra{CalculationParserInterface method}, 
+		\hyperpage{48}
+  \item \spxentry{close\_program()}\spxextra{StateManager method}, \hyperpage{91}
+  \item \spxentry{ConfigPhase}\spxextra{class in src.osm\_configurator.model.project.config\_phase\_enum}, 
+		\hyperpage{82}
+  \item \spxentry{ConfigurationManager}\spxextra{class in src.osm\_configurator.model.project.configuration.configuration\_manager}, 
+		\hyperpage{69}
+  \item \spxentry{Control}\spxextra{class in src.osm\_configurator.control.control}, \hyperpage{9}
+  \item \spxentry{convert\_file()}\spxextra{OSMFileConverter method}, \hyperpage{57}
+  \item \spxentry{create()}\spxextra{ActiveProject method}, \hyperpage{76}
+  \item \spxentry{create\_boxplot()}\spxextra{ActiveProject method}, \hyperpage{80}
+  \item \spxentry{create\_boxplot()}\spxextra{Application method}, \hyperpage{37}
+  \item \spxentry{create\_boxplot()}\spxextra{DataVisualizer method}, \hyperpage{83}
+  \item \spxentry{create\_boxplot()}\spxextra{IApplication method}, \hyperpage{43}
+  \item \spxentry{create\_category()}\spxextra{ActiveProject method}, \hyperpage{79}
+  \item \spxentry{create\_category()}\spxextra{Application method}, \hyperpage{36}
+  \item \spxentry{create\_category()}\spxextra{CategoryController method}, \hyperpage{9}
+  \item \spxentry{create\_category()}\spxextra{CategoryManager method}, \hyperpage{68}
+  \item \spxentry{create\_category()}\spxextra{ConfigurationManager method}, \hyperpage{71}
+  \item \spxentry{create\_category()}\spxextra{Control method}, \hyperpage{13}
+  \item \spxentry{create\_category()}\spxextra{IApplication method}, \hyperpage{42}
+  \item \spxentry{create\_category()}\spxextra{IControl method}, \hyperpage{21}
+  \item \spxentry{create\_map()}\spxextra{ActiveProject method}, \hyperpage{80}
+  \item \spxentry{create\_map()}\spxextra{Application method}, \hyperpage{37}
+  \item \spxentry{create\_map()}\spxextra{DataVisualizer method}, \hyperpage{82}
+  \item \spxentry{create\_map()}\spxextra{IApplication method}, \hyperpage{43}
+  \item \spxentry{CREATE\_PROJECT}\spxextra{StateName attribute}, \hyperpage{91}
+  \item \spxentry{create\_project()}\spxextra{Application method}, \hyperpage{34}
+  \item \spxentry{create\_project()}\spxextra{Control method}, \hyperpage{10}
+  \item \spxentry{create\_project()}\spxextra{IApplication method}, \hyperpage{39}
+  \item \spxentry{create\_project()}\spxextra{IControl method}, \hyperpage{18}
+  \item \spxentry{create\_project()}\spxextra{ProjectController method}, \hyperpage{30}
+  \item \spxentry{CreateProjectFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.create\_project\_frame}, 
+		\hyperpage{95}
+  \item \spxentry{CutOutConfiguration}\spxextra{class in src.osm\_configurator.model.project.configuration.cut\_out\_configuration}, 
+		\hyperpage{72}
+  \item \spxentry{CutOutController}\spxextra{class in src.osm\_configurator.control.cut\_out\_controller}, 
+		\hyperpage{26}
+  \item \spxentry{CutOutMode}\spxextra{class in src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum}, 
+		\hyperpage{73}
+  \item \spxentry{CutOutParser}\spxextra{class in src.osm\_configurator.model.parser.cutOut\_parser}, 
+		\hyperpage{49}
+  \item \spxentry{CutOutParserInterface}\spxextra{class in src.osm\_configurator.model.parser.cutOut\_parser\_interface}, 
+		\hyperpage{50}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{DATA}\spxextra{StateName attribute}, \hyperpage{91}
+  \item \spxentry{DATA\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}, \hyperpage{82}
+  \item \spxentry{DataFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.data\_frame}, 
+		\hyperpage{95}
+  \item \spxentry{DataVisualizationController}\spxextra{class in src.osm\_configurator.control.data\_visualization\_controller}, 
+		\hyperpage{27}
+  \item \spxentry{DataVisualizer}\spxextra{class in src.osm\_configurator.model.project.data\_visualizer}, 
+		\hyperpage{82}
+  \item \spxentry{deactivate()}\spxextra{Category method}, \hyperpage{64}
+  \item \spxentry{default\_go\_left()}\spxextra{StateManager method}, \hyperpage{91}
+  \item \spxentry{default\_go\_right()}\spxextra{StateManager method}, \hyperpage{91}
+  \item \spxentry{DefaultValueEntry}\spxextra{class in src.osm\_configurator.model.project.configuration.default\_value\_entry}, 
+		\hyperpage{74}
+  \item \spxentry{delete\_category()}\spxextra{CategoryController method}, \hyperpage{9}
+  \item \spxentry{delete\_category()}\spxextra{Control method}, \hyperpage{13}
+  \item \spxentry{delete\_category()}\spxextra{IControl method}, \hyperpage{21}
+  \item \spxentry{delete\_passive\_project()}\spxextra{Control method}, \hyperpage{10}
+  \item \spxentry{delete\_passive\_project()}\spxextra{IControl method}, \hyperpage{18}
+  \item \spxentry{delete\_passive\_project()}\spxextra{ProjectController method}, \hyperpage{31}
+  \item \spxentry{download\_data()}\spxextra{DownloadData method}, \hyperpage{75}
+  \item \spxentry{download\_data()}\spxextra{OSMDataConfiguration method}, \hyperpage{75}
+  \item \spxentry{download\_osm\_data()}\spxextra{IControl method}, \hyperpage{20}
+  \item \spxentry{download\_osm\_data()}\spxextra{OSMDataController method}, \hyperpage{29}
+  \item \spxentry{DownloadData}\spxextra{class in src.osm\_configurator.model.project.configuration.download\_data}, 
+		\hyperpage{75}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{ENDED\_SUCCESSFULLY}\spxextra{CalculationState attribute}, \hyperpage{56}
+  \item \spxentry{equals()}\spxextra{State method}, \hyperpage{90}
+  \item \spxentry{ERROR\_INVALID\_CATEGORIES}\spxextra{CalculationState attribute}, \hyperpage{56}
+  \item \spxentry{ERROR\_INVALID\_CUT\_OUT\_DATA}\spxextra{CalculationState attribute}, 
+		\hyperpage{56}
+  \item \spxentry{ERROR\_INVALID\_OSM\_DATA}\spxextra{CalculationState attribute}, \hyperpage{56}
+  \item \spxentry{ERROR\_INVALID\_PREVIOUS\_CALCULATIONS}\spxextra{CalculationState attribute}, 
+		\hyperpage{56}
+  \item \spxentry{Export}\spxextra{class in src.osm\_configurator.model.project.export}, 
+		\hyperpage{83}
+  \item \spxentry{export\_calculation()}\spxextra{ActiveProject method}, \hyperpage{81}
+  \item \spxentry{export\_calculation()}\spxextra{Application method}, \hyperpage{39}
+  \item \spxentry{export\_calculation()}\spxextra{Export method}, \hyperpage{83}
+  \item \spxentry{export\_calculation()}\spxextra{IApplication method}, \hyperpage{45}
+  \item \spxentry{export\_calculations()}\spxextra{Control method}, \hyperpage{15}
+  \item \spxentry{export\_calculations()}\spxextra{ExportController method}, \hyperpage{28}
+  \item \spxentry{export\_calculations()}\spxextra{IControl method}, \hyperpage{24}
+  \item \spxentry{export\_configuration()}\spxextra{ActiveProject method}, \hyperpage{81}
+  \item \spxentry{export\_configuration()}\spxextra{Application method}, \hyperpage{38}
+  \item \spxentry{export\_configuration()}\spxextra{Export method}, \hyperpage{83}
+  \item \spxentry{export\_configuration()}\spxextra{IApplication method}, \hyperpage{45}
+  \item \spxentry{export\_configurations()}\spxextra{Control method}, \hyperpage{16}
+  \item \spxentry{export\_configurations()}\spxextra{ExportController method}, \hyperpage{28}
+  \item \spxentry{export\_configurations()}\spxextra{IControl method}, \hyperpage{24}
+  \item \spxentry{export\_cut\_out\_map()}\spxextra{ExportController method}, \hyperpage{28}
+  \item \spxentry{export\_cut\_out\_map()}\spxextra{IControl method}, \hyperpage{24}
+  \item \spxentry{export\_map()}\spxextra{ActiveProject method}, \hyperpage{81}
+  \item \spxentry{export\_map()}\spxextra{Application method}, \hyperpage{39}
+  \item \spxentry{export\_map()}\spxextra{Export method}, \hyperpage{84}
+  \item \spxentry{export\_map()}\spxextra{IApplication method}, \hyperpage{45}
+  \item \spxentry{export\_project()}\spxextra{ActiveProject method}, \hyperpage{81}
+  \item \spxentry{export\_project()}\spxextra{Application method}, \hyperpage{38}
+  \item \spxentry{export\_project()}\spxextra{Control method}, \hyperpage{15}
+  \item \spxentry{export\_project()}\spxextra{Export method}, \hyperpage{83}
+  \item \spxentry{export\_project()}\spxextra{ExportController method}, \hyperpage{28}
+  \item \spxentry{export\_project()}\spxextra{IApplication method}, \hyperpage{44}
+  \item \spxentry{export\_project()}\spxextra{IControl method}, \hyperpage{23}
+  \item \spxentry{ExportController}\spxextra{class in src.osm\_configurator.control.export\_controller}, 
+		\hyperpage{28}
+  \item \spxentry{ExportFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.export\_frame}, 
+		\hyperpage{99}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{FIRST\_FLOOR\_AREA}\spxextra{Attribute attribute}, \hyperpage{63}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{generate\_cut\_out\_map()}\spxextra{Control method}, \hyperpage{17}
+  \item \spxentry{generate\_cut\_out\_map()}\spxextra{DataVisualizationController method}, 
+		\hyperpage{27}
+  \item \spxentry{generate\_cut\_out\_map()}\spxextra{IControl method}, \hyperpage{25}
+  \item \spxentry{GEO\_DATA\_PHASE}\spxextra{CalculationPhase attribute}, \hyperpage{55}
+  \item \spxentry{GeoDataPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.geo\_data\_phase}, 
+		\hyperpage{57}
+  \item \spxentry{get\_active\_frames()}\spxextra{State method}, \hyperpage{89}
+  \item \spxentry{get\_active\_project()}\spxextra{ConfigurationManager method}, \hyperpage{72}
+  \item \spxentry{get\_aggregation\_methods()}\spxextra{AggregationController method}, 
+		\hyperpage{5}
+  \item \spxentry{get\_aggregation\_methods()}\spxextra{Control method}, \hyperpage{14}
+  \item \spxentry{get\_aggregation\_methods()}\spxextra{IControl method}, \hyperpage{22}
+  \item \spxentry{get\_all\_aggregation\_methods()}\spxextra{ActiveProject method}, \hyperpage{77}
+  \item \spxentry{get\_all\_aggregation\_methods()}\spxextra{AggregationConfiguration method}, 
+		\hyperpage{60}
+  \item \spxentry{get\_all\_aggregation\_methods()}\spxextra{Application method}, \hyperpage{35}
+  \item \spxentry{get\_all\_aggregation\_methods()}\spxextra{ConfigurationManager method}, 
+		\hyperpage{70}
+  \item \spxentry{get\_all\_aggregation\_methods()}\spxextra{IApplication method}, \hyperpage{41}
+  \item \spxentry{get\_attractivities\_of\_category()}\spxextra{CategoryController method}, 
+		\hyperpage{9}
+  \item \spxentry{get\_attractivities\_of\_category()}\spxextra{Control method}, \hyperpage{13}
+  \item \spxentry{get\_attractivities\_of\_category()}\spxextra{IControl method}, \hyperpage{22}
+  \item \spxentry{get\_attractivity\_attribute\_list()}\spxextra{AttractivityAttribute method}, 
+		\hyperpage{62}
+  \item \spxentry{get\_attractivity\_attribute\_name()}\spxextra{AttractivityAttribute method}, 
+		\hyperpage{62}
+  \item \spxentry{get\_attractivity\_attributes()}\spxextra{Category method}, \hyperpage{66}
+  \item \spxentry{get\_attribute\_default()}\spxextra{DefaultValueEntry method}, \hyperpage{74}
+  \item \spxentry{get\_base\_factor()}\spxextra{AttractivityAttribute method}, \hyperpage{62}
+  \item \spxentry{get\_blacklist()}\spxextra{Category method}, \hyperpage{64}
+  \item \spxentry{get\_bounding\_box()}\spxextra{TrafficCell method}, \hyperpage{60}
+  \item \spxentry{get\_calculate\_area()}\spxextra{Category method}, \hyperpage{65}
+  \item \spxentry{get\_calculate\_floor\_area()}\spxextra{Category method}, \hyperpage{65}
+  \item \spxentry{get\_calculation\_method()}\spxextra{CalculationMethodOfArea method}, 
+		\hyperpage{63}
+  \item \spxentry{get\_calculation\_method\_of\_area()}\spxextra{Category method}, \hyperpage{65}
+  \item \spxentry{get\_calculation\_state()}\spxextra{CalculationController method}, \hyperpage{7}
+  \item \spxentry{get\_calculation\_state()}\spxextra{Control method}, \hyperpage{15}
+  \item \spxentry{get\_calculation\_state()}\spxextra{IControl method}, \hyperpage{23}
+  \item \spxentry{get\_calculation\_visualization()}\spxextra{Control method}, \hyperpage{17}
+  \item \spxentry{get\_calculation\_visualization()}\spxextra{DataVisualizationController method}, 
+		\hyperpage{27}
+  \item \spxentry{get\_calculation\_visualization()}\spxextra{IControl method}, \hyperpage{26}
+  \item \spxentry{get\_categories()}\spxextra{ActiveProject method}, \hyperpage{79}
+  \item \spxentry{get\_categories()}\spxextra{Application method}, \hyperpage{36}
+  \item \spxentry{get\_categories()}\spxextra{CategoryManager method}, \hyperpage{68}
+  \item \spxentry{get\_categories()}\spxextra{ConfigurationManager method}, \hyperpage{71}
+  \item \spxentry{get\_categories()}\spxextra{IApplication method}, \hyperpage{42}
+  \item \spxentry{get\_category()}\spxextra{ActiveProject method}, \hyperpage{78}
+  \item \spxentry{get\_category()}\spxextra{Application method}, \hyperpage{36}
+  \item \spxentry{get\_category()}\spxextra{CategoryManager method}, \hyperpage{68}
+  \item \spxentry{get\_category()}\spxextra{ConfigurationManager method}, \hyperpage{71}
+  \item \spxentry{get\_category()}\spxextra{IApplication method}, \hyperpage{42}
+  \item \spxentry{get\_category\_name()}\spxextra{Category method}, \hyperpage{65}
+  \item \spxentry{get\_column()}\spxextra{PositionedFrame method}, \hyperpage{89}
+  \item \spxentry{get\_current\_calculation\_phase()}\spxextra{CalculationController method}, 
+		\hyperpage{7}
+  \item \spxentry{get\_current\_calculation\_phase()}\spxextra{Control method}, \hyperpage{15}
+  \item \spxentry{get\_current\_calculation\_phase()}\spxextra{IControl method}, \hyperpage{23}
+  \item \spxentry{get\_current\_calculation\_process()}\spxextra{CalculationController method}, 
+		\hyperpage{7}
+  \item \spxentry{get\_current\_calculation\_process()}\spxextra{Control method}, \hyperpage{15}
+  \item \spxentry{get\_current\_calculation\_process()}\spxextra{IControl method}, \hyperpage{23}
+  \item \spxentry{get\_current\_config\_phase()}\spxextra{Control method}, \hyperpage{11}
+  \item \spxentry{get\_current\_config\_phase()}\spxextra{IControl method}, \hyperpage{19}
+  \item \spxentry{get\_current\_config\_phase()}\spxextra{ProjectController method}, \hyperpage{31}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{ActiveProject method}, \hyperpage{78}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{Application method}, \hyperpage{35}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{ConfigurationManager method}, \hyperpage{70}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{Control method}, \hyperpage{12}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{CutOutConfiguration method}, \hyperpage{72}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{CutOutController method}, \hyperpage{26}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{IApplication method}, \hyperpage{41}
+  \item \spxentry{get\_cut\_out\_mode()}\spxextra{IControl method}, \hyperpage{20}
+  \item \spxentry{get\_cut\_out\_path()}\spxextra{ActiveProject method}, \hyperpage{78}
+  \item \spxentry{get\_cut\_out\_path()}\spxextra{Application method}, \hyperpage{36}
+  \item \spxentry{get\_cut\_out\_path()}\spxextra{ConfigurationManager method}, \hyperpage{71}
+  \item \spxentry{get\_cut\_out\_path()}\spxextra{CutOutConfiguration method}, \hyperpage{73}
+  \item \spxentry{get\_cut\_out\_path()}\spxextra{IApplication method}, \hyperpage{42}
+  \item \spxentry{get\_cut\_out\_reference()}\spxextra{Control method}, \hyperpage{12}
+  \item \spxentry{get\_cut\_out\_reference()}\spxextra{CutOutController method}, \hyperpage{27}
+  \item \spxentry{get\_cut\_out\_reference()}\spxextra{IControl method}, \hyperpage{20}
+  \item \spxentry{get\_default\_left()}\spxextra{State method}, \hyperpage{90}
+  \item \spxentry{get\_default\_location()}\spxextra{ApplicationSettings method}, \hyperpage{45}
+  \item \spxentry{get\_default\_location()}\spxextra{IApplication method}, \hyperpage{44}
+  \item \spxentry{get\_default\_right()}\spxextra{State method}, \hyperpage{90}
+  \item \spxentry{get\_default\_value\_entry\_tag()}\spxextra{DefaultValueEntry method}, 
+		\hyperpage{74}
+  \item \spxentry{get\_default\_value\_list()}\spxextra{Category method}, \hyperpage{67}
+  \item \spxentry{get\_description()}\spxextra{ActiveProject method}, \hyperpage{81}
+  \item \spxentry{get\_description()}\spxextra{Application method}, \hyperpage{38}
+  \item \spxentry{get\_description()}\spxextra{CalculationState method}, \hyperpage{56}
+  \item \spxentry{get\_description()}\spxextra{IApplication method}, \hyperpage{44}
+  \item \spxentry{get\_description()}\spxextra{PassiveProject method}, \hyperpage{46}
+  \item \spxentry{get\_description()}\spxextra{ProjectSettings method}, \hyperpage{86}
+  \item \spxentry{get\_edit\_date()}\spxextra{PassiveProject method}, \hyperpage{46}
+  \item \spxentry{get\_file\_extension()}\spxextra{OSMFileFormat method}, \hyperpage{58}
+  \item \spxentry{get\_folder\_name\_for\_results()}\spxextra{CalculationPhase method}, 
+		\hyperpage{55}
+  \item \spxentry{get\_frame()}\spxextra{PositionedFrame method}, \hyperpage{89}
+  \item \spxentry{get\_is\_data\_downloaded()}\spxextra{ConfigurationManager method}, 
+		\hyperpage{72}
+  \item \spxentry{get\_key\_recommendation()}\spxextra{Application method}, \hyperpage{33}
+  \item \spxentry{get\_key\_recommendation()}\spxextra{IApplication method}, \hyperpage{39}
+  \item \spxentry{get\_last\_step()}\spxextra{ActiveProject method}, \hyperpage{76}
+  \item \spxentry{get\_line()}\spxextra{PositionedFrame method}, \hyperpage{89}
+  \item \spxentry{get\_list\_of\_categories()}\spxextra{CategoryController method}, \hyperpage{8}
+  \item \spxentry{get\_list\_of\_categories()}\spxextra{Control method}, \hyperpage{13}
+  \item \spxentry{get\_list\_of\_categories()}\spxextra{IControl method}, \hyperpage{21}
+  \item \spxentry{get\_list\_of\_key\_recommendations()}\spxextra{CategoryController method}, 
+		\hyperpage{9}
+  \item \spxentry{get\_list\_of\_key\_recommendations()}\spxextra{Control method}, \hyperpage{13}
+  \item \spxentry{get\_list\_of\_key\_recommendations()}\spxextra{IControl method}, \hyperpage{22}
+  \item \spxentry{get\_list\_of\_passive\_projects()}\spxextra{Control method}, \hyperpage{10}
+  \item \spxentry{get\_list\_of\_passive\_projects()}\spxextra{IControl method}, \hyperpage{18}
+  \item \spxentry{get\_list\_of\_passive\_projects()}\spxextra{ProjectController method}, 
+		\hyperpage{30}
+  \item \spxentry{get\_location()}\spxextra{ActiveProject method}, \hyperpage{80}
+  \item \spxentry{get\_location()}\spxextra{Application method}, \hyperpage{37}
+  \item \spxentry{get\_location()}\spxextra{IApplication method}, \hyperpage{43}
+  \item \spxentry{get\_location()}\spxextra{ProjectSettings method}, \hyperpage{85}
+  \item \spxentry{get\_name()}\spxextra{ActiveProject method}, \hyperpage{80}
+  \item \spxentry{get\_name()}\spxextra{AggregationMethod method}, \hyperpage{52}
+  \item \spxentry{get\_name()}\spxextra{Application method}, \hyperpage{38}
+  \item \spxentry{get\_name()}\spxextra{Attribute method}, \hyperpage{63}
+  \item \spxentry{get\_name()}\spxextra{CalculationPhase method}, \hyperpage{55}
+  \item \spxentry{get\_name()}\spxextra{CalculationState method}, \hyperpage{56}
+  \item \spxentry{get\_name()}\spxextra{ConfigPhase method}, \hyperpage{82}
+  \item \spxentry{get\_name()}\spxextra{CutOutMode method}, \hyperpage{73}
+  \item \spxentry{get\_name()}\spxextra{IApplication method}, \hyperpage{44}
+  \item \spxentry{get\_name()}\spxextra{PassiveProject method}, \hyperpage{46}
+  \item \spxentry{get\_name()}\spxextra{ProjectSettings method}, \hyperpage{86}
+  \item \spxentry{get\_name()}\spxextra{TrafficCell method}, \hyperpage{60}
+  \item \spxentry{get\_order()}\spxextra{CalculationPhase method}, \hyperpage{55}
+  \item \spxentry{get\_osm\_data()}\spxextra{ActiveProject method}, \hyperpage{77}
+  \item \spxentry{get\_osm\_data()}\spxextra{Application method}, \hyperpage{34}
+  \item \spxentry{get\_osm\_data()}\spxextra{ConfigurationManager method}, \hyperpage{69}
+  \item \spxentry{get\_osm\_data()}\spxextra{IApplication method}, \hyperpage{40}
+  \item \spxentry{get\_osm\_data()}\spxextra{OSMDataConfiguration method}, \hyperpage{75}
+  \item \spxentry{get\_osm\_data\_reference()}\spxextra{Control method}, \hyperpage{11}
+  \item \spxentry{get\_osm\_data\_reference()}\spxextra{IControl method}, \hyperpage{19}
+  \item \spxentry{get\_osm\_data\_reference()}\spxextra{OSMDataController method}, \hyperpage{29}
+  \item \spxentry{get\_passive\_project\_list()}\spxextra{Application method}, \hyperpage{33}
+  \item \spxentry{get\_passive\_project\_list()}\spxextra{IApplication method}, \hyperpage{39}
+  \item \spxentry{get\_project\_default\_folder()}\spxextra{Control method}, \hyperpage{17}
+  \item \spxentry{get\_project\_default\_folder()}\spxextra{IControl method}, \hyperpage{25}
+  \item \spxentry{get\_project\_default\_folder()}\spxextra{SettingsController method}, 
+		\hyperpage{32}
+  \item \spxentry{get\_project\_description()}\spxextra{Control method}, \hyperpage{16}
+  \item \spxentry{get\_project\_description()}\spxextra{IControl method}, \hyperpage{25}
+  \item \spxentry{get\_project\_description()}\spxextra{SettingsController method}, \hyperpage{32}
+  \item \spxentry{get\_project\_folder\_path()}\spxextra{PassiveProject method}, \hyperpage{46}
+  \item \spxentry{get\_project\_name()}\spxextra{Control method}, \hyperpage{16}
+  \item \spxentry{get\_project\_name()}\spxextra{IControl method}, \hyperpage{24}
+  \item \spxentry{get\_project\_name()}\spxextra{SettingsController method}, \hyperpage{32}
+  \item \spxentry{get\_project\_path()}\spxextra{ActiveProject method}, \hyperpage{77}
+  \item \spxentry{get\_state()}\spxextra{StateManager method}, \hyperpage{91}
+  \item \spxentry{get\_state\_name()}\spxextra{State method}, \hyperpage{90}
+  \item \spxentry{get\_strictly\_use\_default\_values()}\spxextra{Category method}, \hyperpage{66}
+  \item \spxentry{get\_tag\_list()}\spxextra{TagListPriorityFrame method}, \hyperpage{102}
+  \item \spxentry{get\_text\_list()}\spxextra{TagListFrame method}, \hyperpage{101}
+  \item \spxentry{get\_whitelist()}\spxextra{Category method}, \hyperpage{64}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{IApplication}\spxextra{class in src.osm\_configurator.model.application.application\_interface}, 
+		\hyperpage{39}
+  \item \spxentry{ICalculationPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_phase\_interface}, 
+		\hyperpage{55}
+  \item \spxentry{IControl}\spxextra{class in src.osm\_configurator.control.control\_interface}, 
+		\hyperpage{18}
+  \item \spxentry{import\_category\_configuration()}\spxextra{CategoryController method}, 
+		\hyperpage{8}
+  \item \spxentry{import\_category\_configuration()}\spxextra{Control method}, \hyperpage{13}
+  \item \spxentry{import\_category\_configuration()}\spxextra{IControl method}, \hyperpage{21}
+  \item \spxentry{is\_active()}\spxextra{Category method}, \hyperpage{64}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{ActiveProject method}, \hyperpage{77}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{AggregationConfiguration method}, 
+		\hyperpage{61}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{AggregationController method}, 
+		\hyperpage{5}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{Application method}, \hyperpage{35}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{ConfigurationManager method}, 
+		\hyperpage{70}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{Control method}, \hyperpage{14}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{IApplication method}, \hyperpage{41}
+  \item \spxentry{is\_aggregation\_method\_active()}\spxextra{IControl method}, \hyperpage{22}
+  \item \spxentry{is\_project\_loaded()}\spxextra{Control method}, \hyperpage{11}
+  \item \spxentry{is\_project\_loaded()}\spxextra{IControl method}, \hyperpage{19}
+  \item \spxentry{is\_project\_loaded()}\spxextra{ProjectController method}, \hyperpage{31}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{load\_project()}\spxextra{Application method}, \hyperpage{34}
+  \item \spxentry{load\_project()}\spxextra{Control method}, \hyperpage{10}
+  \item \spxentry{load\_project()}\spxextra{IApplication method}, \hyperpage{40}
+  \item \spxentry{load\_project()}\spxextra{IControl method}, \hyperpage{18}
+  \item \spxentry{load\_project()}\spxextra{ProjectController method}, \hyperpage{30}
+  \item \spxentry{load\_project()}\spxextra{ProjectIOHandler method}, \hyperpage{84}
+  \item \spxentry{LOWER\_QUARTILE}\spxextra{AggregationMethod attribute}, \hyperpage{52}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{main()}\spxextra{ApplicationController method}, \hyperpage{6}
+  \item \spxentry{MAIN\_MENU}\spxextra{StateName attribute}, \hyperpage{91}
+  \item \spxentry{MainMenuFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.main\_menu\_frame}, 
+		\hyperpage{96}
+  \item \spxentry{MainWindow}\spxextra{class in src.osm\_configurator.view.states.main\_window}, 
+		\hyperpage{88}
+  \item \spxentry{MAXIMUM}\spxextra{AggregationMethod attribute}, \hyperpage{52}
+  \item \spxentry{MEAN}\spxextra{AggregationMethod attribute}, \hyperpage{51}
+  \item \spxentry{merge\_categories()}\spxextra{ActiveProject method}, \hyperpage{79}
+  \item \spxentry{merge\_categories()}\spxextra{Application method}, \hyperpage{37}
+  \item \spxentry{merge\_categories()}\spxextra{CategoryManager method}, \hyperpage{69}
+  \item \spxentry{merge\_categories()}\spxextra{ConfigurationManager method}, \hyperpage{72}
+  \item \spxentry{merge\_categories()}\spxextra{IApplication method}, \hyperpage{43}
+  \item \spxentry{MINIMUM}\spxextra{AggregationMethod attribute}, \hyperpage{52}
+  \item \spxentry{module}
+    \subitem \spxentry{src}, \hyperpage{102}
+    \subitem \spxentry{src.osm\_configurator}, \hyperpage{102}
+    \subitem \spxentry{src.osm\_configurator.control}, \hyperpage{33}
+    \subitem \spxentry{src.osm\_configurator.control.aggregation\_controller}, \hyperpage{5}
+    \subitem \spxentry{src.osm\_configurator.control.application\_controller}, \hyperpage{6}
+    \subitem \spxentry{src.osm\_configurator.control.calculation\_controller}, \hyperpage{7}
+    \subitem \spxentry{src.osm\_configurator.control.category\_controller}, \hyperpage{8}
+    \subitem \spxentry{src.osm\_configurator.control.control}, \hyperpage{9}
+    \subitem \spxentry{src.osm\_configurator.control.control\_interface}, \hyperpage{18}
+    \subitem \spxentry{src.osm\_configurator.control.cut\_out\_controller}, \hyperpage{26}
+    \subitem \spxentry{src.osm\_configurator.control.data\_visualization\_controller}, 
+		\hyperpage{27}
+    \subitem \spxentry{src.osm\_configurator.control.export\_controller}, \hyperpage{28}
+    \subitem \spxentry{src.osm\_configurator.control.osm\_data\_controller}, \hyperpage{29}
+    \subitem \spxentry{src.osm\_configurator.control.project\_controller}, \hyperpage{30}
+    \subitem \spxentry{src.osm\_configurator.control.settings\_controller}, \hyperpage{32}
+    \subitem \spxentry{src.osm\_configurator.model}, \hyperpage{87}
+    \subitem \spxentry{src.osm\_configurator.model.application}, \hyperpage{47}
+    \subitem \spxentry{src.osm\_configurator.model.application.application}, \hyperpage{33}
+    \subitem \spxentry{src.osm\_configurator.model.application.application\_interface}, 
+		\hyperpage{39}
+    \subitem \spxentry{src.osm\_configurator.model.application.application\_settings}, 
+		\hyperpage{45}
+    \subitem \spxentry{src.osm\_configurator.model.application.passive\_project}, \hyperpage{46}
+    \subitem \spxentry{src.osm\_configurator.model.application.recommender\_system}, \hyperpage{47}
+    \subitem \spxentry{src.osm\_configurator.model.parser}, \hyperpage{51}
+    \subitem \spxentry{src.osm\_configurator.model.parser.calculation\_parser}, \hyperpage{47}
+    \subitem \spxentry{src.osm\_configurator.model.parser.calculation\_parser\_interface}, 
+		\hyperpage{48}
+    \subitem \spxentry{src.osm\_configurator.model.parser.category\_parser}, \hyperpage{48}
+    \subitem \spxentry{src.osm\_configurator.model.parser.category\_parser\_interface}, 
+		\hyperpage{49}
+    \subitem \spxentry{src.osm\_configurator.model.parser.cutOut\_parser}, \hyperpage{49}
+    \subitem \spxentry{src.osm\_configurator.model.parser.cutOut\_parser\_interface}, 
+		\hyperpage{50}
+    \subitem \spxentry{src.osm\_configurator.model.parser.osm\_data\_parser}, \hyperpage{50}
+    \subitem \spxentry{src.osm\_configurator.model.parser.osm\_data\_parser\_interface}, 
+		\hyperpage{51}
+    \subitem \spxentry{src.osm\_configurator.model.project}, \hyperpage{87}
+    \subitem \spxentry{src.osm\_configurator.model.project.active\_project}, \hyperpage{76}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation}, \hyperpage{60}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.aggregation\_method\_enum}, 
+		\hyperpage{51}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.aggregation\_phase}, 
+		\hyperpage{52}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.attractivity\_phase}, 
+		\hyperpage{53}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager}, 
+		\hyperpage{53}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.calculation\_manager}, 
+		\hyperpage{54}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_enum}, 
+		\hyperpage{54}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_interface}, 
+		\hyperpage{55}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.calculation\_state\_enum}, 
+		\hyperpage{56}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.geo\_data\_phase}, 
+		\hyperpage{57}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_converter}, 
+		\hyperpage{57}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum}, 
+		\hyperpage{58}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.reduction\_phase}, 
+		\hyperpage{58}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.split\_up\_files}, 
+		\hyperpage{59}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.tag\_filter\_phase}, 
+		\hyperpage{59}
+    \subitem \spxentry{src.osm\_configurator.model.project.calculation.traffic\_cell}, 
+		\hyperpage{60}
+    \subitem \spxentry{src.osm\_configurator.model.project.config\_phase\_enum}, \hyperpage{82}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration}, \hyperpage{76}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.aggregation\_configuration}, 
+		\hyperpage{60}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.attractivity\_attribute}, 
+		\hyperpage{61}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.attribute\_enum}, 
+		\hyperpage{63}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum}, 
+		\hyperpage{63}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.category}, \hyperpage{64}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.category\_manager}, 
+		\hyperpage{68}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.configuration\_manager}, 
+		\hyperpage{69}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_configuration}, 
+		\hyperpage{72}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum}, 
+		\hyperpage{73}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.default\_value\_entry}, 
+		\hyperpage{74}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.download\_data}, 
+		\hyperpage{75}
+    \subitem \spxentry{src.osm\_configurator.model.project.configuration.osm\_data\_configuration}, 
+		\hyperpage{75}
+    \subitem \spxentry{src.osm\_configurator.model.project.data\_visualizer}, \hyperpage{82}
+    \subitem \spxentry{src.osm\_configurator.model.project.export}, \hyperpage{83}
+    \subitem \spxentry{src.osm\_configurator.model.project.project\_io\_handler}, \hyperpage{84}
+    \subitem \spxentry{src.osm\_configurator.model.project.project\_saver}, \hyperpage{85}
+    \subitem \spxentry{src.osm\_configurator.model.project.project\_settings}, \hyperpage{85}
+    \subitem \spxentry{src.osm\_configurator.view}, \hyperpage{102}
+    \subitem \spxentry{src.osm\_configurator.view.popups}, \hyperpage{88}
+    \subitem \spxentry{src.osm\_configurator.view.popups.alert\_pop\_up}, \hyperpage{87}
+    \subitem \spxentry{src.osm\_configurator.view.popups.yes\_no\_pop\_up}, \hyperpage{87}
+    \subitem \spxentry{src.osm\_configurator.view.states}, \hyperpage{92}
+    \subitem \spxentry{src.osm\_configurator.view.states.main\_window}, \hyperpage{88}
+    \subitem \spxentry{src.osm\_configurator.view.states.positioned\_frame}, \hyperpage{88}
+    \subitem \spxentry{src.osm\_configurator.view.states.state}, \hyperpage{89}
+    \subitem \spxentry{src.osm\_configurator.view.states.state\_manager}, \hyperpage{90}
+    \subitem \spxentry{src.osm\_configurator.view.states.state\_name\_enum}, \hyperpage{91}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes}, \hyperpage{99}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.aggregation\_frame}, 
+		\hyperpage{92}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame}, 
+		\hyperpage{93}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame}, 
+		\hyperpage{93}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.calculation\_frame}, 
+		\hyperpage{94}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.category\_frame}, \hyperpage{94}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.create\_project\_frame}, 
+		\hyperpage{95}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.data\_frame}, \hyperpage{95}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.main\_menu\_frame}, \hyperpage{96}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.project\_foot\_frame}, 
+		\hyperpage{96}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.project\_head\_frame}, 
+		\hyperpage{97}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.reduction\_frame}, \hyperpage{97}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.settings\_frame}, \hyperpage{98}
+    \subitem \spxentry{src.osm\_configurator.view.toplevelframes.top\_level\_frame}, \hyperpage{98}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes}, \hyperpage{102}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes.export\_frame}, \hyperpage{99}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame}, 
+		\hyperpage{99}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame}, 
+		\hyperpage{100}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes.settings\_application\_frame}, 
+		\hyperpage{100}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes.settings\_project\_frame}, 
+		\hyperpage{101}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_frame}, \hyperpage{101}
+    \subitem \spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame}, 
+		\hyperpage{102}
+  \item \spxentry{move\_default\_value\_entry\_down()}\spxextra{Category method}, \hyperpage{67}
+  \item \spxentry{move\_default\_value\_entry\_up()}\spxextra{Category method}, \hyperpage{67}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{NONE}\spxextra{CalculationPhase attribute}, \hyperpage{54}
+  \item \spxentry{NOT\_STARTED\_YET}\spxextra{CalculationState attribute}, \hyperpage{56}
+  \item \spxentry{NUMER\_OF\_FLOOR}\spxextra{Attribute attribute}, \hyperpage{63}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{OSM}\spxextra{OSMFileFormat attribute}, \hyperpage{58}
+  \item \spxentry{OSMDataConfiguration}\spxextra{class in src.osm\_configurator.model.project.configuration.osm\_data\_configuration}, 
+		\hyperpage{75}
+  \item \spxentry{OSMDataController}\spxextra{class in src.osm\_configurator.control.osm\_data\_controller}, 
+		\hyperpage{29}
+  \item \spxentry{OSMDataParserInterface}\spxextra{class in src.osm\_configurator.model.parser.osm\_data\_parser\_interface}, 
+		\hyperpage{51}
+  \item \spxentry{OSMFileConverter}\spxextra{class in src.osm\_configurator.model.project.calculation.osm\_file\_converter}, 
+		\hyperpage{57}
+  \item \spxentry{OSMFileFormat}\spxextra{class in src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum}, 
+		\hyperpage{58}
+  \item \spxentry{override\_categories()}\spxextra{ActiveProject method}, \hyperpage{79}
+  \item \spxentry{override\_categories()}\spxextra{Application method}, \hyperpage{37}
+  \item \spxentry{override\_categories()}\spxextra{CategoryManager method}, \hyperpage{69}
+  \item \spxentry{override\_categories()}\spxextra{ConfigurationManager method}, \hyperpage{72}
+  \item \spxentry{override\_categories()}\spxextra{IApplication method}, \hyperpage{43}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{parse\_category\_file()}\spxextra{CategoryParser method}, \hyperpage{48}
+  \item \spxentry{parse\_category\_file()}\spxextra{CategoryParserInterface method}, \hyperpage{49}
+  \item \spxentry{parse\_cutout\_file()}\spxextra{CutOutParser method}, \hyperpage{49}
+  \item \spxentry{parse\_cutout\_file()}\spxextra{CutOutParserInterface method}, \hyperpage{50}
+  \item \spxentry{parse\_osm\_data\_file()}\spxextra{CategoryParser method}, \hyperpage{50}
+  \item \spxentry{parse\_osm\_data\_file()}\spxextra{OSMDataParserInterface method}, \hyperpage{51}
+  \item \spxentry{PassiveProject}\spxextra{class in src.osm\_configurator.model.application.passive\_project}, 
+		\hyperpage{46}
+  \item \spxentry{PBF}\spxextra{OSMFileFormat attribute}, \hyperpage{58}
+  \item \spxentry{PositionedFrame}\spxextra{class in src.osm\_configurator.view.states.positioned\_frame}, 
+		\hyperpage{88}
+  \item \spxentry{ProjectController}\spxextra{class in src.osm\_configurator.control.project\_controller}, 
+		\hyperpage{30}
+  \item \spxentry{ProjectFootFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.project\_foot\_frame}, 
+		\hyperpage{96}
+  \item \spxentry{ProjectHeadFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.project\_head\_frame}, 
+		\hyperpage{97}
+  \item \spxentry{ProjectIOHandler}\spxextra{class in src.osm\_configurator.model.project.project\_io\_handler}, 
+		\hyperpage{84}
+  \item \spxentry{ProjectSaver}\spxextra{class in src.osm\_configurator.model.project.project\_saver}, 
+		\hyperpage{85}
+  \item \spxentry{ProjectSettings}\spxextra{class in src.osm\_configurator.model.project.project\_settings}, 
+		\hyperpage{85}
+  \item \spxentry{PROPERTY\_AREA}\spxextra{Attribute attribute}, \hyperpage{63}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{recommend()}\spxextra{RecommenderSystem method}, \hyperpage{47}
+  \item \spxentry{RecommenderSystem}\spxextra{class in src.osm\_configurator.model.application.recommender\_system}, 
+		\hyperpage{47}
+  \item \spxentry{REDUCTION}\spxextra{StateName attribute}, \hyperpage{92}
+  \item \spxentry{REDUCTION\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}, \hyperpage{82}
+  \item \spxentry{REDUCTION\_PHASE}\spxextra{CalculationPhase attribute}, \hyperpage{55}
+  \item \spxentry{ReductionCalculationFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame}, 
+		\hyperpage{99}
+  \item \spxentry{ReductionDefaultValueFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame}, 
+		\hyperpage{100}
+  \item \spxentry{ReductionFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.reduction\_frame}, 
+		\hyperpage{97}
+  \item \spxentry{ReductionPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.reduction\_phase}, 
+		\hyperpage{58}
+  \item \spxentry{remove\_attractivity\_attribute()}\spxextra{Category method}, \hyperpage{66}
+  \item \spxentry{remove\_buildings\_on\_edge()}\spxextra{BuildingOnEdgeManager method}, 
+		\hyperpage{53}
+  \item \spxentry{remove\_category()}\spxextra{ActiveProject method}, \hyperpage{79}
+  \item \spxentry{remove\_category()}\spxextra{Application method}, \hyperpage{36}
+  \item \spxentry{remove\_category()}\spxextra{CategoryManager method}, \hyperpage{68}
+  \item \spxentry{remove\_category()}\spxextra{ConfigurationManager method}, \hyperpage{71}
+  \item \spxentry{remove\_category()}\spxextra{IApplication method}, \hyperpage{42}
+  \item \spxentry{remove\_default\_value\_entry()}\spxextra{Category method}, \hyperpage{67}
+  \item \spxentry{RUNNING}\spxextra{CalculationState attribute}, \hyperpage{56}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{save\_project()}\spxextra{Control method}, \hyperpage{11}
+  \item \spxentry{save\_project()}\spxextra{IControl method}, \hyperpage{19}
+  \item \spxentry{save\_project()}\spxextra{ProjectController method}, \hyperpage{31}
+  \item \spxentry{save\_project()}\spxextra{ProjectSaver method}, \hyperpage{85}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{ActiveProject method}, 
+		\hyperpage{77}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{AggregationConfiguration method}, 
+		\hyperpage{61}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{AggregationController method}, 
+		\hyperpage{6}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{Application method}, \hyperpage{35}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{ConfigurationManager method}, 
+		\hyperpage{70}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{Control method}, \hyperpage{14}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{IApplication method}, \hyperpage{41}
+  \item \spxentry{set\_aggregation\_method\_active()}\spxextra{IControl method}, \hyperpage{22}
+  \item \spxentry{set\_attractivity\_attribute\_list()}\spxextra{AttractivityAttribute method}, 
+		\hyperpage{62}
+  \item \spxentry{set\_attractivity\_attribute\_name()}\spxextra{AttractivityAttribute method}, 
+		\hyperpage{62}
+  \item \spxentry{set\_attribute\_default()}\spxextra{DefaultValueEntry method}, \hyperpage{74}
+  \item \spxentry{set\_base\_factor()}\spxextra{AttractivityAttribute method}, \hyperpage{62}
+  \item \spxentry{set\_blacklist()}\spxextra{Category method}, \hyperpage{65}
+  \item \spxentry{set\_calculate\_floor\_area()}\spxextra{Category method}, \hyperpage{66}
+  \item \spxentry{set\_calculation\_method\_of\_area()}\spxextra{Category method}, \hyperpage{65}
+  \item \spxentry{set\_category\_name()}\spxextra{Category method}, \hyperpage{65}
+  \item \spxentry{set\_current\_config\_phase()}\spxextra{Control method}, \hyperpage{11}
+  \item \spxentry{set\_current\_config\_phase()}\spxextra{IControl method}, \hyperpage{19}
+  \item \spxentry{set\_current\_config\_phase()}\spxextra{ProjectController method}, \hyperpage{31}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{ActiveProject method}, \hyperpage{78}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{Application method}, \hyperpage{35}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{ConfigurationManager method}, \hyperpage{70}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{Control method}, \hyperpage{12}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{CutOutConfiguration method}, \hyperpage{73}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{CutOutController method}, \hyperpage{26}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{IApplication method}, \hyperpage{41}
+  \item \spxentry{set\_cut\_out\_mode()}\spxextra{IControl method}, \hyperpage{20}
+  \item \spxentry{set\_cut\_out\_path()}\spxextra{ActiveProject method}, \hyperpage{78}
+  \item \spxentry{set\_cut\_out\_path()}\spxextra{Application method}, \hyperpage{36}
+  \item \spxentry{set\_cut\_out\_path()}\spxextra{ConfigurationManager method}, \hyperpage{71}
+  \item \spxentry{set\_cut\_out\_path()}\spxextra{CutOutConfiguration method}, \hyperpage{73}
+  \item \spxentry{set\_cut\_out\_path()}\spxextra{IApplication method}, \hyperpage{42}
+  \item \spxentry{set\_cut\_out\_reference()}\spxextra{Control method}, \hyperpage{12}
+  \item \spxentry{set\_cut\_out\_reference()}\spxextra{CutOutController method}, \hyperpage{26}
+  \item \spxentry{set\_cut\_out\_reference()}\spxextra{IControl method}, \hyperpage{20}
+  \item \spxentry{set\_default\_location()}\spxextra{ApplicationSettings method}, \hyperpage{46}
+  \item \spxentry{set\_default\_location()}\spxextra{IApplication method}, \hyperpage{44}
+  \item \spxentry{set\_description()}\spxextra{ActiveProject method}, \hyperpage{80}
+  \item \spxentry{set\_description()}\spxextra{Application method}, \hyperpage{38}
+  \item \spxentry{set\_description()}\spxextra{IApplication method}, \hyperpage{44}
+  \item \spxentry{set\_description()}\spxextra{ProjectSettings method}, \hyperpage{86}
+  \item \spxentry{set\_location()}\spxextra{ProjectSettings method}, \hyperpage{85}
+  \item \spxentry{set\_name()}\spxextra{ActiveProject method}, \hyperpage{80}
+  \item \spxentry{set\_name()}\spxextra{Application method}, \hyperpage{38}
+  \item \spxentry{set\_name()}\spxextra{IApplication method}, \hyperpage{44}
+  \item \spxentry{set\_name()}\spxextra{ProjectSettings method}, \hyperpage{86}
+  \item \spxentry{set\_osm\_data()}\spxextra{ActiveProject method}, \hyperpage{77}
+  \item \spxentry{set\_osm\_data()}\spxextra{Application method}, \hyperpage{34}
+  \item \spxentry{set\_osm\_data()}\spxextra{ConfigurationManager method}, \hyperpage{69}
+  \item \spxentry{set\_osm\_data()}\spxextra{IApplication method}, \hyperpage{40}
+  \item \spxentry{set\_osm\_data()}\spxextra{OSMDataConfiguration method}, \hyperpage{75}
+  \item \spxentry{set\_osm\_data\_reference()}\spxextra{Control method}, \hyperpage{11}
+  \item \spxentry{set\_osm\_data\_reference()}\spxextra{IControl method}, \hyperpage{19}
+  \item \spxentry{set\_osm\_data\_reference()}\spxextra{OSMDataController method}, \hyperpage{29}
+  \item \spxentry{set\_project\_default\_folder()}\spxextra{Control method}, \hyperpage{17}
+  \item \spxentry{set\_project\_default\_folder()}\spxextra{IControl method}, \hyperpage{25}
+  \item \spxentry{set\_project\_default\_folder()}\spxextra{SettingsController method}, 
+		\hyperpage{33}
+  \item \spxentry{set\_project\_description()}\spxextra{Control method}, \hyperpage{16}
+  \item \spxentry{set\_project\_description()}\spxextra{IControl method}, \hyperpage{25}
+  \item \spxentry{set\_project\_description()}\spxextra{SettingsController method}, \hyperpage{32}
+  \item \spxentry{set\_project\_name()}\spxextra{Control method}, \hyperpage{16}
+  \item \spxentry{set\_project\_name()}\spxextra{IControl method}, \hyperpage{25}
+  \item \spxentry{set\_project\_name()}\spxextra{SettingsController method}, \hyperpage{32}
+  \item \spxentry{set\_strictly\_use\_default\_values()}\spxextra{Category method}, \hyperpage{66}
+  \item \spxentry{set\_tag()}\spxextra{DefaultValueEntry method}, \hyperpage{74}
+  \item \spxentry{set\_tag\_list()}\spxextra{TagListPriorityFrame method}, \hyperpage{102}
+  \item \spxentry{set\_text\_list()}\spxextra{TagListFrame method}, \hyperpage{101}
+  \item \spxentry{set\_whitelist()}\spxextra{Category method}, \hyperpage{64}
+  \item \spxentry{SETTINGS}\spxextra{StateName attribute}, \hyperpage{92}
+  \item \spxentry{SettingsApplicationFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.settings\_application\_frame}, 
+		\hyperpage{100}
+  \item \spxentry{SettingsController}\spxextra{class in src.osm\_configurator.control.settings\_controller}, 
+		\hyperpage{32}
+  \item \spxentry{SettingsFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.settings\_frame}, 
+		\hyperpage{98}
+  \item \spxentry{SettingsProjectFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.settings\_project\_frame}, 
+		\hyperpage{101}
+  \item \spxentry{split\_up\_files()}\spxextra{SplitUpFile method}, \hyperpage{59}
+  \item \spxentry{SplitUpFile}\spxextra{class in src.osm\_configurator.model.project.calculation.split\_up\_files}, 
+		\hyperpage{59}
+  \item \spxentry{src}
+    \subitem \spxentry{module}, \hyperpage{102}
+  \item \spxentry{src.osm\_configurator}
+    \subitem \spxentry{module}, \hyperpage{102}
+  \item \spxentry{src.osm\_configurator.control}
+    \subitem \spxentry{module}, \hyperpage{33}
+  \item \spxentry{src.osm\_configurator.control.aggregation\_controller}
+    \subitem \spxentry{module}, \hyperpage{5}
+  \item \spxentry{src.osm\_configurator.control.application\_controller}
+    \subitem \spxentry{module}, \hyperpage{6}
+  \item \spxentry{src.osm\_configurator.control.calculation\_controller}
+    \subitem \spxentry{module}, \hyperpage{7}
+  \item \spxentry{src.osm\_configurator.control.category\_controller}
+    \subitem \spxentry{module}, \hyperpage{8}
+  \item \spxentry{src.osm\_configurator.control.control}
+    \subitem \spxentry{module}, \hyperpage{9}
+  \item \spxentry{src.osm\_configurator.control.control\_interface}
+    \subitem \spxentry{module}, \hyperpage{18}
+  \item \spxentry{src.osm\_configurator.control.cut\_out\_controller}
+    \subitem \spxentry{module}, \hyperpage{26}
+  \item \spxentry{src.osm\_configurator.control.data\_visualization\_controller}
+    \subitem \spxentry{module}, \hyperpage{27}
+  \item \spxentry{src.osm\_configurator.control.export\_controller}
+    \subitem \spxentry{module}, \hyperpage{28}
+  \item \spxentry{src.osm\_configurator.control.osm\_data\_controller}
+    \subitem \spxentry{module}, \hyperpage{29}
+  \item \spxentry{src.osm\_configurator.control.project\_controller}
+    \subitem \spxentry{module}, \hyperpage{30}
+  \item \spxentry{src.osm\_configurator.control.settings\_controller}
+    \subitem \spxentry{module}, \hyperpage{32}
+  \item \spxentry{src.osm\_configurator.model}
+    \subitem \spxentry{module}, \hyperpage{87}
+  \item \spxentry{src.osm\_configurator.model.application}
+    \subitem \spxentry{module}, \hyperpage{47}
+  \item \spxentry{src.osm\_configurator.model.application.application}
+    \subitem \spxentry{module}, \hyperpage{33}
+  \item \spxentry{src.osm\_configurator.model.application.application\_interface}
+    \subitem \spxentry{module}, \hyperpage{39}
+  \item \spxentry{src.osm\_configurator.model.application.application\_settings}
+    \subitem \spxentry{module}, \hyperpage{45}
+  \item \spxentry{src.osm\_configurator.model.application.passive\_project}
+    \subitem \spxentry{module}, \hyperpage{46}
+  \item \spxentry{src.osm\_configurator.model.application.recommender\_system}
+    \subitem \spxentry{module}, \hyperpage{47}
+  \item \spxentry{src.osm\_configurator.model.parser}
+    \subitem \spxentry{module}, \hyperpage{51}
+  \item \spxentry{src.osm\_configurator.model.parser.calculation\_parser}
+    \subitem \spxentry{module}, \hyperpage{47}
+  \item \spxentry{src.osm\_configurator.model.parser.calculation\_parser\_interface}
+    \subitem \spxentry{module}, \hyperpage{48}
+  \item \spxentry{src.osm\_configurator.model.parser.category\_parser}
+    \subitem \spxentry{module}, \hyperpage{48}
+  \item \spxentry{src.osm\_configurator.model.parser.category\_parser\_interface}
+    \subitem \spxentry{module}, \hyperpage{49}
+  \item \spxentry{src.osm\_configurator.model.parser.cutOut\_parser}
+    \subitem \spxentry{module}, \hyperpage{49}
+  \item \spxentry{src.osm\_configurator.model.parser.cutOut\_parser\_interface}
+    \subitem \spxentry{module}, \hyperpage{50}
+  \item \spxentry{src.osm\_configurator.model.parser.osm\_data\_parser}
+    \subitem \spxentry{module}, \hyperpage{50}
+  \item \spxentry{src.osm\_configurator.model.parser.osm\_data\_parser\_interface}
+    \subitem \spxentry{module}, \hyperpage{51}
+  \item \spxentry{src.osm\_configurator.model.project}
+    \subitem \spxentry{module}, \hyperpage{87}
+  \item \spxentry{src.osm\_configurator.model.project.active\_project}
+    \subitem \spxentry{module}, \hyperpage{76}
+  \item \spxentry{src.osm\_configurator.model.project.calculation}
+    \subitem \spxentry{module}, \hyperpage{60}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.aggregation\_method\_enum}
+    \subitem \spxentry{module}, \hyperpage{51}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.aggregation\_phase}
+    \subitem \spxentry{module}, \hyperpage{52}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.attractivity\_phase}
+    \subitem \spxentry{module}, \hyperpage{53}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager}
+    \subitem \spxentry{module}, \hyperpage{53}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.calculation\_manager}
+    \subitem \spxentry{module}, \hyperpage{54}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_enum}
+    \subitem \spxentry{module}, \hyperpage{54}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_interface}
+    \subitem \spxentry{module}, \hyperpage{55}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.calculation\_state\_enum}
+    \subitem \spxentry{module}, \hyperpage{56}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.geo\_data\_phase}
+    \subitem \spxentry{module}, \hyperpage{57}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_converter}
+    \subitem \spxentry{module}, \hyperpage{57}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum}
+    \subitem \spxentry{module}, \hyperpage{58}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.reduction\_phase}
+    \subitem \spxentry{module}, \hyperpage{58}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.split\_up\_files}
+    \subitem \spxentry{module}, \hyperpage{59}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.tag\_filter\_phase}
+    \subitem \spxentry{module}, \hyperpage{59}
+  \item \spxentry{src.osm\_configurator.model.project.calculation.traffic\_cell}
+    \subitem \spxentry{module}, \hyperpage{60}
+  \item \spxentry{src.osm\_configurator.model.project.config\_phase\_enum}
+    \subitem \spxentry{module}, \hyperpage{82}
+  \item \spxentry{src.osm\_configurator.model.project.configuration}
+    \subitem \spxentry{module}, \hyperpage{76}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.aggregation\_configuration}
+    \subitem \spxentry{module}, \hyperpage{60}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.attractivity\_attribute}
+    \subitem \spxentry{module}, \hyperpage{61}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.attribute\_enum}
+    \subitem \spxentry{module}, \hyperpage{63}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum}
+    \subitem \spxentry{module}, \hyperpage{63}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.category}
+    \subitem \spxentry{module}, \hyperpage{64}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.category\_manager}
+    \subitem \spxentry{module}, \hyperpage{68}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.configuration\_manager}
+    \subitem \spxentry{module}, \hyperpage{69}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_configuration}
+    \subitem \spxentry{module}, \hyperpage{72}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum}
+    \subitem \spxentry{module}, \hyperpage{73}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.default\_value\_entry}
+    \subitem \spxentry{module}, \hyperpage{74}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.download\_data}
+    \subitem \spxentry{module}, \hyperpage{75}
+  \item \spxentry{src.osm\_configurator.model.project.configuration.osm\_data\_configuration}
+    \subitem \spxentry{module}, \hyperpage{75}
+  \item \spxentry{src.osm\_configurator.model.project.data\_visualizer}
+    \subitem \spxentry{module}, \hyperpage{82}
+  \item \spxentry{src.osm\_configurator.model.project.export}
+    \subitem \spxentry{module}, \hyperpage{83}
+  \item \spxentry{src.osm\_configurator.model.project.project\_io\_handler}
+    \subitem \spxentry{module}, \hyperpage{84}
+  \item \spxentry{src.osm\_configurator.model.project.project\_saver}
+    \subitem \spxentry{module}, \hyperpage{85}
+  \item \spxentry{src.osm\_configurator.model.project.project\_settings}
+    \subitem \spxentry{module}, \hyperpage{85}
+  \item \spxentry{src.osm\_configurator.view}
+    \subitem \spxentry{module}, \hyperpage{102}
+  \item \spxentry{src.osm\_configurator.view.popups}
+    \subitem \spxentry{module}, \hyperpage{88}
+  \item \spxentry{src.osm\_configurator.view.popups.alert\_pop\_up}
+    \subitem \spxentry{module}, \hyperpage{87}
+  \item \spxentry{src.osm\_configurator.view.popups.yes\_no\_pop\_up}
+    \subitem \spxentry{module}, \hyperpage{87}
+  \item \spxentry{src.osm\_configurator.view.states}
+    \subitem \spxentry{module}, \hyperpage{92}
+  \item \spxentry{src.osm\_configurator.view.states.main\_window}
+    \subitem \spxentry{module}, \hyperpage{88}
+  \item \spxentry{src.osm\_configurator.view.states.positioned\_frame}
+    \subitem \spxentry{module}, \hyperpage{88}
+  \item \spxentry{src.osm\_configurator.view.states.state}
+    \subitem \spxentry{module}, \hyperpage{89}
+  \item \spxentry{src.osm\_configurator.view.states.state\_manager}
+    \subitem \spxentry{module}, \hyperpage{90}
+  \item \spxentry{src.osm\_configurator.view.states.state\_name\_enum}
+    \subitem \spxentry{module}, \hyperpage{91}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes}
+    \subitem \spxentry{module}, \hyperpage{99}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.aggregation\_frame}
+    \subitem \spxentry{module}, \hyperpage{92}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame}
+    \subitem \spxentry{module}, \hyperpage{93}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame}
+    \subitem \spxentry{module}, \hyperpage{93}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.calculation\_frame}
+    \subitem \spxentry{module}, \hyperpage{94}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.category\_frame}
+    \subitem \spxentry{module}, \hyperpage{94}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.create\_project\_frame}
+    \subitem \spxentry{module}, \hyperpage{95}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.data\_frame}
+    \subitem \spxentry{module}, \hyperpage{95}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.main\_menu\_frame}
+    \subitem \spxentry{module}, \hyperpage{96}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.project\_foot\_frame}
+    \subitem \spxentry{module}, \hyperpage{96}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.project\_head\_frame}
+    \subitem \spxentry{module}, \hyperpage{97}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.reduction\_frame}
+    \subitem \spxentry{module}, \hyperpage{97}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.settings\_frame}
+    \subitem \spxentry{module}, \hyperpage{98}
+  \item \spxentry{src.osm\_configurator.view.toplevelframes.top\_level\_frame}
+    \subitem \spxentry{module}, \hyperpage{98}
+  \item \spxentry{src.osm\_configurator.view.utilityframes}
+    \subitem \spxentry{module}, \hyperpage{102}
+  \item \spxentry{src.osm\_configurator.view.utilityframes.export\_frame}
+    \subitem \spxentry{module}, \hyperpage{99}
+  \item \spxentry{src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame}
+    \subitem \spxentry{module}, \hyperpage{99}
+  \item \spxentry{src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame}
+    \subitem \spxentry{module}, \hyperpage{100}
+  \item \spxentry{src.osm\_configurator.view.utilityframes.settings\_application\_frame}
+    \subitem \spxentry{module}, \hyperpage{100}
+  \item \spxentry{src.osm\_configurator.view.utilityframes.settings\_project\_frame}
+    \subitem \spxentry{module}, \hyperpage{101}
+  \item \spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_frame}
+    \subitem \spxentry{module}, \hyperpage{101}
+  \item \spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame}
+    \subitem \spxentry{module}, \hyperpage{102}
+  \item \spxentry{start\_calculation()}\spxextra{ActiveProject method}, \hyperpage{76}
+  \item \spxentry{start\_calculation()}\spxextra{Application method}, \hyperpage{34}
+  \item \spxentry{start\_calculation()}\spxextra{CalculationManager method}, \hyperpage{54}
+  \item \spxentry{start\_calculation()}\spxextra{IApplication method}, \hyperpage{40}
+  \item \spxentry{start\_calculations()}\spxextra{CalculationController method}, \hyperpage{7}
+  \item \spxentry{start\_calculations()}\spxextra{Control method}, \hyperpage{14}
+  \item \spxentry{start\_calculations()}\spxextra{IControl method}, \hyperpage{23}
+  \item \spxentry{State}\spxextra{class in src.osm\_configurator.view.states.state}, \hyperpage{89}
+  \item \spxentry{StateManager}\spxextra{class in src.osm\_configurator.view.states.state\_manager}, 
+		\hyperpage{90}
+  \item \spxentry{StateName}\spxextra{class in src.osm\_configurator.view.states.state\_name\_enum}, 
+		\hyperpage{91}
+  \item \spxentry{SUM}\spxextra{AggregationMethod attribute}, \hyperpage{51}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{TAG\_FILTER\_PHASE}\spxextra{CalculationPhase attribute}, \hyperpage{55}
+  \item \spxentry{TagFilterPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.tag\_filter\_phase}, 
+		\hyperpage{59}
+  \item \spxentry{TagListFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.tag\_list\_frame}, 
+		\hyperpage{101}
+  \item \spxentry{TagListPriorityFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame}, 
+		\hyperpage{102}
+  \item \spxentry{TopLevelFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.top\_level\_frame}, 
+		\hyperpage{98}
+  \item \spxentry{TrafficCell}\spxextra{class in src.osm\_configurator.model.project.calculation.traffic\_cell}, 
+		\hyperpage{60}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{UPPER\_QUARTILE}\spxextra{AggregationMethod attribute}, \hyperpage{51}
+
+  \indexspace
+  \bigletter Y
+  \item \spxentry{YesNoPopUp}\spxextra{class in src.osm\_configurator.view.popups.yes\_no\_pop\_up}, 
+		\hyperpage{87}
+
+\end{sphinxtheindex}

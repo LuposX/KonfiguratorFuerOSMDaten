@@ -12,7 +12,7 @@ class TagListPriorityFrame:
         This method will create a TagListPriorityFrame, showing a list of the given entries, ordered like the priorities.
 
         Args:
-            entries list[str]: List of strings, that shall be the entries on the priority list.
+            entries list[str]: List of strings that shall be the entries on the priority list.
         """
         pass
 
@@ -21,7 +21,7 @@ class TagListPriorityFrame:
         Replaces all the entries with the new given entries, ordered in priority as the given List of strings is.
 
         Args:
-            entries list[str]: The list of strings, that shall be the entries on the priority list.
+            entries list[str]: The list of strings that shall be the entries on the priority list.
 
         Returns:
             bool: True, if the replacement was successful, false if not.
@@ -30,9 +30,9 @@ class TagListPriorityFrame:
 
     def get_tag_list(self):
         """
-        Returns the current list of entries the priority list holds, ordered from lowest to highest.
+        Returns the current list of entries the priority list holds ordered from lowest to highest.
 
         Returns:
-            list[str]: The entry list of strings on the list, ordered from the lowest to highest priority.
+            list[str]: The entry list of strings on the list ordered from the lowest to the highest priority.
         """
         pass

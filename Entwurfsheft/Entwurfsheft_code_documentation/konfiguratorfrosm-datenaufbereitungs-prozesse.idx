@@ -1,0 +1,773 @@
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.aggregation\_controller@\spxentry{src.osm\_configurator.control.aggregation\_controller}|hyperpage}{5}
+\indexentry{src.osm\_configurator.control.aggregation\_controller@\spxentry{src.osm\_configurator.control.aggregation\_controller}!module@\spxentry{module}|hyperpage}{5}
+\indexentry{AggregationController (class in src.osm\_configurator.control.aggregation\_controller)@\spxentry{AggregationController}\spxextra{class in src.osm\_configurator.control.aggregation\_controller}|hyperpage}{5}
+\indexentry{\_\_init\_\_() (AggregationController method)@\spxentry{\_\_init\_\_()}\spxextra{AggregationController method}|hyperpage}{5}
+\indexentry{get\_aggregation\_methods() (AggregationController method)@\spxentry{get\_aggregation\_methods()}\spxextra{AggregationController method}|hyperpage}{5}
+\indexentry{is\_aggregation\_method\_active() (AggregationController method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{AggregationController method}|hyperpage}{5}
+\indexentry{set\_aggregation\_method\_active() (AggregationController method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{AggregationController method}|hyperpage}{6}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.application\_controller@\spxentry{src.osm\_configurator.control.application\_controller}|hyperpage}{6}
+\indexentry{src.osm\_configurator.control.application\_controller@\spxentry{src.osm\_configurator.control.application\_controller}!module@\spxentry{module}|hyperpage}{6}
+\indexentry{ApplicationController (class in src.osm\_configurator.control.application\_controller)@\spxentry{ApplicationController}\spxextra{class in src.osm\_configurator.control.application\_controller}|hyperpage}{6}
+\indexentry{main() (ApplicationController method)@\spxentry{main()}\spxextra{ApplicationController method}|hyperpage}{6}
+\indexentry{\_\_init\_\_() (ApplicationController method)@\spxentry{\_\_init\_\_()}\spxextra{ApplicationController method}|hyperpage}{6}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.calculation\_controller@\spxentry{src.osm\_configurator.control.calculation\_controller}|hyperpage}{7}
+\indexentry{src.osm\_configurator.control.calculation\_controller@\spxentry{src.osm\_configurator.control.calculation\_controller}!module@\spxentry{module}|hyperpage}{7}
+\indexentry{CalculationController (class in src.osm\_configurator.control.calculation\_controller)@\spxentry{CalculationController}\spxextra{class in src.osm\_configurator.control.calculation\_controller}|hyperpage}{7}
+\indexentry{\_\_init\_\_() (CalculationController method)@\spxentry{\_\_init\_\_()}\spxextra{CalculationController method}|hyperpage}{7}
+\indexentry{start\_calculations() (CalculationController method)@\spxentry{start\_calculations()}\spxextra{CalculationController method}|hyperpage}{7}
+\indexentry{get\_calculation\_state() (CalculationController method)@\spxentry{get\_calculation\_state()}\spxextra{CalculationController method}|hyperpage}{7}
+\indexentry{get\_current\_calculation\_phase() (CalculationController method)@\spxentry{get\_current\_calculation\_phase()}\spxextra{CalculationController method}|hyperpage}{7}
+\indexentry{get\_current\_calculation\_process() (CalculationController method)@\spxentry{get\_current\_calculation\_process()}\spxextra{CalculationController method}|hyperpage}{7}
+\indexentry{cancel\_calculations() (CalculationController method)@\spxentry{cancel\_calculations()}\spxextra{CalculationController method}|hyperpage}{7}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.category\_controller@\spxentry{src.osm\_configurator.control.category\_controller}|hyperpage}{8}
+\indexentry{src.osm\_configurator.control.category\_controller@\spxentry{src.osm\_configurator.control.category\_controller}!module@\spxentry{module}|hyperpage}{8}
+\indexentry{CategoryController (class in src.osm\_configurator.control.category\_controller)@\spxentry{CategoryController}\spxextra{class in src.osm\_configurator.control.category\_controller}|hyperpage}{8}
+\indexentry{\_\_init\_\_() (CategoryController method)@\spxentry{\_\_init\_\_()}\spxextra{CategoryController method}|hyperpage}{8}
+\indexentry{check\_conflicts\_in\_category\_configuration() (CategoryController method)@\spxentry{check\_conflicts\_in\_category\_configuration()}\spxextra{CategoryController method}|hyperpage}{8}
+\indexentry{import\_category\_configuration() (CategoryController method)@\spxentry{import\_category\_configuration()}\spxextra{CategoryController method}|hyperpage}{8}
+\indexentry{get\_list\_of\_categories() (CategoryController method)@\spxentry{get\_list\_of\_categories()}\spxextra{CategoryController method}|hyperpage}{8}
+\indexentry{create\_category() (CategoryController method)@\spxentry{create\_category()}\spxextra{CategoryController method}|hyperpage}{9}
+\indexentry{delete\_category() (CategoryController method)@\spxentry{delete\_category()}\spxextra{CategoryController method}|hyperpage}{9}
+\indexentry{get\_list\_of\_key\_recommendations() (CategoryController method)@\spxentry{get\_list\_of\_key\_recommendations()}\spxextra{CategoryController method}|hyperpage}{9}
+\indexentry{get\_attractivities\_of\_category() (CategoryController method)@\spxentry{get\_attractivities\_of\_category()}\spxextra{CategoryController method}|hyperpage}{9}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.control@\spxentry{src.osm\_configurator.control.control}|hyperpage}{9}
+\indexentry{src.osm\_configurator.control.control@\spxentry{src.osm\_configurator.control.control}!module@\spxentry{module}|hyperpage}{9}
+\indexentry{Control (class in src.osm\_configurator.control.control)@\spxentry{Control}\spxextra{class in src.osm\_configurator.control.control}|hyperpage}{9}
+\indexentry{\_\_init\_\_() (Control method)@\spxentry{\_\_init\_\_()}\spxextra{Control method}|hyperpage}{9}
+\indexentry{get\_list\_of\_passive\_projects() (Control method)@\spxentry{get\_list\_of\_passive\_projects()}\spxextra{Control method}|hyperpage}{10}
+\indexentry{load\_project() (Control method)@\spxentry{load\_project()}\spxextra{Control method}|hyperpage}{10}
+\indexentry{create\_project() (Control method)@\spxentry{create\_project()}\spxextra{Control method}|hyperpage}{10}
+\indexentry{delete\_passive\_project() (Control method)@\spxentry{delete\_passive\_project()}\spxextra{Control method}|hyperpage}{10}
+\indexentry{save\_project() (Control method)@\spxentry{save\_project()}\spxextra{Control method}|hyperpage}{11}
+\indexentry{set\_current\_config\_phase() (Control method)@\spxentry{set\_current\_config\_phase()}\spxextra{Control method}|hyperpage}{11}
+\indexentry{get\_current\_config\_phase() (Control method)@\spxentry{get\_current\_config\_phase()}\spxextra{Control method}|hyperpage}{11}
+\indexentry{is\_project\_loaded() (Control method)@\spxentry{is\_project\_loaded()}\spxextra{Control method}|hyperpage}{11}
+\indexentry{set\_osm\_data\_reference() (Control method)@\spxentry{set\_osm\_data\_reference()}\spxextra{Control method}|hyperpage}{11}
+\indexentry{get\_osm\_data\_reference() (Control method)@\spxentry{get\_osm\_data\_reference()}\spxextra{Control method}|hyperpage}{11}
+\indexentry{get\_cut\_out\_mode() (Control method)@\spxentry{get\_cut\_out\_mode()}\spxextra{Control method}|hyperpage}{12}
+\indexentry{set\_cut\_out\_mode() (Control method)@\spxentry{set\_cut\_out\_mode()}\spxextra{Control method}|hyperpage}{12}
+\indexentry{set\_cut\_out\_reference() (Control method)@\spxentry{set\_cut\_out\_reference()}\spxextra{Control method}|hyperpage}{12}
+\indexentry{get\_cut\_out\_reference() (Control method)@\spxentry{get\_cut\_out\_reference()}\spxextra{Control method}|hyperpage}{12}
+\indexentry{check\_conflicts\_in\_category\_configuration() (Control method)@\spxentry{check\_conflicts\_in\_category\_configuration()}\spxextra{Control method}|hyperpage}{12}
+\indexentry{import\_category\_configuration() (Control method)@\spxentry{import\_category\_configuration()}\spxextra{Control method}|hyperpage}{13}
+\indexentry{get\_list\_of\_categories() (Control method)@\spxentry{get\_list\_of\_categories()}\spxextra{Control method}|hyperpage}{13}
+\indexentry{create\_category() (Control method)@\spxentry{create\_category()}\spxextra{Control method}|hyperpage}{13}
+\indexentry{delete\_category() (Control method)@\spxentry{delete\_category()}\spxextra{Control method}|hyperpage}{13}
+\indexentry{get\_list\_of\_key\_recommendations() (Control method)@\spxentry{get\_list\_of\_key\_recommendations()}\spxextra{Control method}|hyperpage}{13}
+\indexentry{get\_attractivities\_of\_category() (Control method)@\spxentry{get\_attractivities\_of\_category()}\spxextra{Control method}|hyperpage}{13}
+\indexentry{get\_aggregation\_methods() (Control method)@\spxentry{get\_aggregation\_methods()}\spxextra{Control method}|hyperpage}{14}
+\indexentry{is\_aggregation\_method\_active() (Control method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{Control method}|hyperpage}{14}
+\indexentry{set\_aggregation\_method\_active() (Control method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{Control method}|hyperpage}{14}
+\indexentry{start\_calculations() (Control method)@\spxentry{start\_calculations()}\spxextra{Control method}|hyperpage}{14}
+\indexentry{get\_calculation\_state() (Control method)@\spxentry{get\_calculation\_state()}\spxextra{Control method}|hyperpage}{15}
+\indexentry{get\_current\_calculation\_phase() (Control method)@\spxentry{get\_current\_calculation\_phase()}\spxextra{Control method}|hyperpage}{15}
+\indexentry{get\_current\_calculation\_process() (Control method)@\spxentry{get\_current\_calculation\_process()}\spxextra{Control method}|hyperpage}{15}
+\indexentry{cancel\_calculations() (Control method)@\spxentry{cancel\_calculations()}\spxextra{Control method}|hyperpage}{15}
+\indexentry{export\_project() (Control method)@\spxentry{export\_project()}\spxextra{Control method}|hyperpage}{15}
+\indexentry{export\_calculations() (Control method)@\spxentry{export\_calculations()}\spxextra{Control method}|hyperpage}{15}
+\indexentry{export\_configurations() (Control method)@\spxentry{export\_configurations()}\spxextra{Control method}|hyperpage}{16}
+\indexentry{get\_project\_name() (Control method)@\spxentry{get\_project\_name()}\spxextra{Control method}|hyperpage}{16}
+\indexentry{set\_project\_name() (Control method)@\spxentry{set\_project\_name()}\spxextra{Control method}|hyperpage}{16}
+\indexentry{get\_project\_description() (Control method)@\spxentry{get\_project\_description()}\spxextra{Control method}|hyperpage}{16}
+\indexentry{set\_project\_description() (Control method)@\spxentry{set\_project\_description()}\spxextra{Control method}|hyperpage}{16}
+\indexentry{get\_project\_default\_folder() (Control method)@\spxentry{get\_project\_default\_folder()}\spxextra{Control method}|hyperpage}{17}
+\indexentry{set\_project\_default\_folder() (Control method)@\spxentry{set\_project\_default\_folder()}\spxextra{Control method}|hyperpage}{17}
+\indexentry{generate\_cut\_out\_map() (Control method)@\spxentry{generate\_cut\_out\_map()}\spxextra{Control method}|hyperpage}{17}
+\indexentry{get\_calculation\_visualization() (Control method)@\spxentry{get\_calculation\_visualization()}\spxextra{Control method}|hyperpage}{17}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.control\_interface@\spxentry{src.osm\_configurator.control.control\_interface}|hyperpage}{18}
+\indexentry{src.osm\_configurator.control.control\_interface@\spxentry{src.osm\_configurator.control.control\_interface}!module@\spxentry{module}|hyperpage}{18}
+\indexentry{IControl (class in src.osm\_configurator.control.control\_interface)@\spxentry{IControl}\spxextra{class in src.osm\_configurator.control.control\_interface}|hyperpage}{18}
+\indexentry{get\_list\_of\_passive\_projects() (IControl method)@\spxentry{get\_list\_of\_passive\_projects()}\spxextra{IControl method}|hyperpage}{18}
+\indexentry{load\_project() (IControl method)@\spxentry{load\_project()}\spxextra{IControl method}|hyperpage}{18}
+\indexentry{create\_project() (IControl method)@\spxentry{create\_project()}\spxextra{IControl method}|hyperpage}{18}
+\indexentry{delete\_passive\_project() (IControl method)@\spxentry{delete\_passive\_project()}\spxextra{IControl method}|hyperpage}{18}
+\indexentry{save\_project() (IControl method)@\spxentry{save\_project()}\spxextra{IControl method}|hyperpage}{19}
+\indexentry{set\_current\_config\_phase() (IControl method)@\spxentry{set\_current\_config\_phase()}\spxextra{IControl method}|hyperpage}{19}
+\indexentry{get\_current\_config\_phase() (IControl method)@\spxentry{get\_current\_config\_phase()}\spxextra{IControl method}|hyperpage}{19}
+\indexentry{is\_project\_loaded() (IControl method)@\spxentry{is\_project\_loaded()}\spxextra{IControl method}|hyperpage}{19}
+\indexentry{set\_osm\_data\_reference() (IControl method)@\spxentry{set\_osm\_data\_reference()}\spxextra{IControl method}|hyperpage}{19}
+\indexentry{get\_osm\_data\_reference() (IControl method)@\spxentry{get\_osm\_data\_reference()}\spxextra{IControl method}|hyperpage}{19}
+\indexentry{download\_osm\_data() (IControl method)@\spxentry{download\_osm\_data()}\spxextra{IControl method}|hyperpage}{20}
+\indexentry{get\_cut\_out\_mode() (IControl method)@\spxentry{get\_cut\_out\_mode()}\spxextra{IControl method}|hyperpage}{20}
+\indexentry{set\_cut\_out\_mode() (IControl method)@\spxentry{set\_cut\_out\_mode()}\spxextra{IControl method}|hyperpage}{20}
+\indexentry{set\_cut\_out\_reference() (IControl method)@\spxentry{set\_cut\_out\_reference()}\spxextra{IControl method}|hyperpage}{20}
+\indexentry{get\_cut\_out\_reference() (IControl method)@\spxentry{get\_cut\_out\_reference()}\spxextra{IControl method}|hyperpage}{20}
+\indexentry{check\_conflicts\_in\_category\_configuration() (IControl method)@\spxentry{check\_conflicts\_in\_category\_configuration()}\spxextra{IControl method}|hyperpage}{21}
+\indexentry{import\_category\_configuration() (IControl method)@\spxentry{import\_category\_configuration()}\spxextra{IControl method}|hyperpage}{21}
+\indexentry{get\_list\_of\_categories() (IControl method)@\spxentry{get\_list\_of\_categories()}\spxextra{IControl method}|hyperpage}{21}
+\indexentry{create\_category() (IControl method)@\spxentry{create\_category()}\spxextra{IControl method}|hyperpage}{21}
+\indexentry{delete\_category() (IControl method)@\spxentry{delete\_category()}\spxextra{IControl method}|hyperpage}{21}
+\indexentry{get\_list\_of\_key\_recommendations() (IControl method)@\spxentry{get\_list\_of\_key\_recommendations()}\spxextra{IControl method}|hyperpage}{22}
+\indexentry{get\_attractivities\_of\_category() (IControl method)@\spxentry{get\_attractivities\_of\_category()}\spxextra{IControl method}|hyperpage}{22}
+\indexentry{get\_aggregation\_methods() (IControl method)@\spxentry{get\_aggregation\_methods()}\spxextra{IControl method}|hyperpage}{22}
+\indexentry{is\_aggregation\_method\_active() (IControl method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{IControl method}|hyperpage}{22}
+\indexentry{set\_aggregation\_method\_active() (IControl method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{IControl method}|hyperpage}{22}
+\indexentry{start\_calculations() (IControl method)@\spxentry{start\_calculations()}\spxextra{IControl method}|hyperpage}{23}
+\indexentry{get\_calculation\_state() (IControl method)@\spxentry{get\_calculation\_state()}\spxextra{IControl method}|hyperpage}{23}
+\indexentry{get\_current\_calculation\_phase() (IControl method)@\spxentry{get\_current\_calculation\_phase()}\spxextra{IControl method}|hyperpage}{23}
+\indexentry{get\_current\_calculation\_process() (IControl method)@\spxentry{get\_current\_calculation\_process()}\spxextra{IControl method}|hyperpage}{23}
+\indexentry{cancel\_calculations() (IControl method)@\spxentry{cancel\_calculations()}\spxextra{IControl method}|hyperpage}{23}
+\indexentry{export\_project() (IControl method)@\spxentry{export\_project()}\spxextra{IControl method}|hyperpage}{23}
+\indexentry{export\_calculations() (IControl method)@\spxentry{export\_calculations()}\spxextra{IControl method}|hyperpage}{24}
+\indexentry{export\_configurations() (IControl method)@\spxentry{export\_configurations()}\spxextra{IControl method}|hyperpage}{24}
+\indexentry{export\_cut\_out\_map() (IControl method)@\spxentry{export\_cut\_out\_map()}\spxextra{IControl method}|hyperpage}{24}
+\indexentry{get\_project\_name() (IControl method)@\spxentry{get\_project\_name()}\spxextra{IControl method}|hyperpage}{24}
+\indexentry{set\_project\_name() (IControl method)@\spxentry{set\_project\_name()}\spxextra{IControl method}|hyperpage}{25}
+\indexentry{get\_project\_description() (IControl method)@\spxentry{get\_project\_description()}\spxextra{IControl method}|hyperpage}{25}
+\indexentry{set\_project\_description() (IControl method)@\spxentry{set\_project\_description()}\spxextra{IControl method}|hyperpage}{25}
+\indexentry{get\_project\_default\_folder() (IControl method)@\spxentry{get\_project\_default\_folder()}\spxextra{IControl method}|hyperpage}{25}
+\indexentry{set\_project\_default\_folder() (IControl method)@\spxentry{set\_project\_default\_folder()}\spxextra{IControl method}|hyperpage}{25}
+\indexentry{generate\_cut\_out\_map() (IControl method)@\spxentry{generate\_cut\_out\_map()}\spxextra{IControl method}|hyperpage}{25}
+\indexentry{get\_calculation\_visualization() (IControl method)@\spxentry{get\_calculation\_visualization()}\spxextra{IControl method}|hyperpage}{26}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.cut\_out\_controller@\spxentry{src.osm\_configurator.control.cut\_out\_controller}|hyperpage}{26}
+\indexentry{src.osm\_configurator.control.cut\_out\_controller@\spxentry{src.osm\_configurator.control.cut\_out\_controller}!module@\spxentry{module}|hyperpage}{26}
+\indexentry{CutOutController (class in src.osm\_configurator.control.cut\_out\_controller)@\spxentry{CutOutController}\spxextra{class in src.osm\_configurator.control.cut\_out\_controller}|hyperpage}{26}
+\indexentry{\_\_init\_\_() (CutOutController method)@\spxentry{\_\_init\_\_()}\spxextra{CutOutController method}|hyperpage}{26}
+\indexentry{get\_cut\_out\_mode() (CutOutController method)@\spxentry{get\_cut\_out\_mode()}\spxextra{CutOutController method}|hyperpage}{26}
+\indexentry{set\_cut\_out\_mode() (CutOutController method)@\spxentry{set\_cut\_out\_mode()}\spxextra{CutOutController method}|hyperpage}{26}
+\indexentry{set\_cut\_out\_reference() (CutOutController method)@\spxentry{set\_cut\_out\_reference()}\spxextra{CutOutController method}|hyperpage}{26}
+\indexentry{get\_cut\_out\_reference() (CutOutController method)@\spxentry{get\_cut\_out\_reference()}\spxextra{CutOutController method}|hyperpage}{27}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.data\_visualization\_controller@\spxentry{src.osm\_configurator.control.data\_visualization\_controller}|hyperpage}{27}
+\indexentry{src.osm\_configurator.control.data\_visualization\_controller@\spxentry{src.osm\_configurator.control.data\_visualization\_controller}!module@\spxentry{module}|hyperpage}{27}
+\indexentry{DataVisualizationController (class in src.osm\_configurator.control.data\_visualization\_controller)@\spxentry{DataVisualizationController}\spxextra{class in src.osm\_configurator.control.data\_visualization\_controller}|hyperpage}{27}
+\indexentry{\_\_init\_\_() (DataVisualizationController method)@\spxentry{\_\_init\_\_()}\spxextra{DataVisualizationController method}|hyperpage}{27}
+\indexentry{generate\_cut\_out\_map() (DataVisualizationController method)@\spxentry{generate\_cut\_out\_map()}\spxextra{DataVisualizationController method}|hyperpage}{27}
+\indexentry{get\_calculation\_visualization() (DataVisualizationController method)@\spxentry{get\_calculation\_visualization()}\spxextra{DataVisualizationController method}|hyperpage}{27}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.export\_controller@\spxentry{src.osm\_configurator.control.export\_controller}|hyperpage}{28}
+\indexentry{src.osm\_configurator.control.export\_controller@\spxentry{src.osm\_configurator.control.export\_controller}!module@\spxentry{module}|hyperpage}{28}
+\indexentry{ExportController (class in src.osm\_configurator.control.export\_controller)@\spxentry{ExportController}\spxextra{class in src.osm\_configurator.control.export\_controller}|hyperpage}{28}
+\indexentry{\_\_init\_\_() (ExportController method)@\spxentry{\_\_init\_\_()}\spxextra{ExportController method}|hyperpage}{28}
+\indexentry{export\_project() (ExportController method)@\spxentry{export\_project()}\spxextra{ExportController method}|hyperpage}{28}
+\indexentry{export\_calculations() (ExportController method)@\spxentry{export\_calculations()}\spxextra{ExportController method}|hyperpage}{28}
+\indexentry{export\_configurations() (ExportController method)@\spxentry{export\_configurations()}\spxextra{ExportController method}|hyperpage}{28}
+\indexentry{export\_cut\_out\_map() (ExportController method)@\spxentry{export\_cut\_out\_map()}\spxextra{ExportController method}|hyperpage}{28}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.osm\_data\_controller@\spxentry{src.osm\_configurator.control.osm\_data\_controller}|hyperpage}{29}
+\indexentry{src.osm\_configurator.control.osm\_data\_controller@\spxentry{src.osm\_configurator.control.osm\_data\_controller}!module@\spxentry{module}|hyperpage}{29}
+\indexentry{OSMDataController (class in src.osm\_configurator.control.osm\_data\_controller)@\spxentry{OSMDataController}\spxextra{class in src.osm\_configurator.control.osm\_data\_controller}|hyperpage}{29}
+\indexentry{\_\_init\_\_() (OSMDataController method)@\spxentry{\_\_init\_\_()}\spxextra{OSMDataController method}|hyperpage}{29}
+\indexentry{set\_osm\_data\_reference() (OSMDataController method)@\spxentry{set\_osm\_data\_reference()}\spxextra{OSMDataController method}|hyperpage}{29}
+\indexentry{get\_osm\_data\_reference() (OSMDataController method)@\spxentry{get\_osm\_data\_reference()}\spxextra{OSMDataController method}|hyperpage}{29}
+\indexentry{download\_osm\_data() (OSMDataController method)@\spxentry{download\_osm\_data()}\spxextra{OSMDataController method}|hyperpage}{29}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.project\_controller@\spxentry{src.osm\_configurator.control.project\_controller}|hyperpage}{30}
+\indexentry{src.osm\_configurator.control.project\_controller@\spxentry{src.osm\_configurator.control.project\_controller}!module@\spxentry{module}|hyperpage}{30}
+\indexentry{ProjectController (class in src.osm\_configurator.control.project\_controller)@\spxentry{ProjectController}\spxextra{class in src.osm\_configurator.control.project\_controller}|hyperpage}{30}
+\indexentry{\_\_init\_\_() (ProjectController method)@\spxentry{\_\_init\_\_()}\spxextra{ProjectController method}|hyperpage}{30}
+\indexentry{get\_list\_of\_passive\_projects() (ProjectController method)@\spxentry{get\_list\_of\_passive\_projects()}\spxextra{ProjectController method}|hyperpage}{30}
+\indexentry{load\_project() (ProjectController method)@\spxentry{load\_project()}\spxextra{ProjectController method}|hyperpage}{30}
+\indexentry{create\_project() (ProjectController method)@\spxentry{create\_project()}\spxextra{ProjectController method}|hyperpage}{30}
+\indexentry{delete\_passive\_project() (ProjectController method)@\spxentry{delete\_passive\_project()}\spxextra{ProjectController method}|hyperpage}{31}
+\indexentry{save\_project() (ProjectController method)@\spxentry{save\_project()}\spxextra{ProjectController method}|hyperpage}{31}
+\indexentry{set\_current\_config\_phase() (ProjectController method)@\spxentry{set\_current\_config\_phase()}\spxextra{ProjectController method}|hyperpage}{31}
+\indexentry{get\_current\_config\_phase() (ProjectController method)@\spxentry{get\_current\_config\_phase()}\spxextra{ProjectController method}|hyperpage}{31}
+\indexentry{is\_project\_loaded() (ProjectController method)@\spxentry{is\_project\_loaded()}\spxextra{ProjectController method}|hyperpage}{31}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control.settings\_controller@\spxentry{src.osm\_configurator.control.settings\_controller}|hyperpage}{32}
+\indexentry{src.osm\_configurator.control.settings\_controller@\spxentry{src.osm\_configurator.control.settings\_controller}!module@\spxentry{module}|hyperpage}{32}
+\indexentry{SettingsController (class in src.osm\_configurator.control.settings\_controller)@\spxentry{SettingsController}\spxextra{class in src.osm\_configurator.control.settings\_controller}|hyperpage}{32}
+\indexentry{\_\_init\_\_() (SettingsController method)@\spxentry{\_\_init\_\_()}\spxextra{SettingsController method}|hyperpage}{32}
+\indexentry{get\_project\_name() (SettingsController method)@\spxentry{get\_project\_name()}\spxextra{SettingsController method}|hyperpage}{32}
+\indexentry{set\_project\_name() (SettingsController method)@\spxentry{set\_project\_name()}\spxextra{SettingsController method}|hyperpage}{32}
+\indexentry{get\_project\_description() (SettingsController method)@\spxentry{get\_project\_description()}\spxextra{SettingsController method}|hyperpage}{32}
+\indexentry{set\_project\_description() (SettingsController method)@\spxentry{set\_project\_description()}\spxextra{SettingsController method}|hyperpage}{32}
+\indexentry{get\_project\_default\_folder() (SettingsController method)@\spxentry{get\_project\_default\_folder()}\spxextra{SettingsController method}|hyperpage}{32}
+\indexentry{set\_project\_default\_folder() (SettingsController method)@\spxentry{set\_project\_default\_folder()}\spxextra{SettingsController method}|hyperpage}{33}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.control@\spxentry{src.osm\_configurator.control}|hyperpage}{33}
+\indexentry{src.osm\_configurator.control@\spxentry{src.osm\_configurator.control}!module@\spxentry{module}|hyperpage}{33}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.application.application@\spxentry{src.osm\_configurator.model.application.application}|hyperpage}{33}
+\indexentry{src.osm\_configurator.model.application.application@\spxentry{src.osm\_configurator.model.application.application}!module@\spxentry{module}|hyperpage}{33}
+\indexentry{Application (class in src.osm\_configurator.model.application.application)@\spxentry{Application}\spxextra{class in src.osm\_configurator.model.application.application}|hyperpage}{33}
+\indexentry{\_\_init\_\_() (Application method)@\spxentry{\_\_init\_\_()}\spxextra{Application method}|hyperpage}{33}
+\indexentry{get\_passive\_project\_list() (Application method)@\spxentry{get\_passive\_project\_list()}\spxextra{Application method}|hyperpage}{33}
+\indexentry{get\_key\_recommendation() (Application method)@\spxentry{get\_key\_recommendation()}\spxextra{Application method}|hyperpage}{33}
+\indexentry{create\_project() (Application method)@\spxentry{create\_project()}\spxextra{Application method}|hyperpage}{34}
+\indexentry{load\_project() (Application method)@\spxentry{load\_project()}\spxextra{Application method}|hyperpage}{34}
+\indexentry{start\_calculation() (Application method)@\spxentry{start\_calculation()}\spxextra{Application method}|hyperpage}{34}
+\indexentry{get\_osm\_data() (Application method)@\spxentry{get\_osm\_data()}\spxextra{Application method}|hyperpage}{34}
+\indexentry{set\_osm\_data() (Application method)@\spxentry{set\_osm\_data()}\spxextra{Application method}|hyperpage}{34}
+\indexentry{get\_all\_aggregation\_methods() (Application method)@\spxentry{get\_all\_aggregation\_methods()}\spxextra{Application method}|hyperpage}{35}
+\indexentry{is\_aggregation\_method\_active() (Application method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{Application method}|hyperpage}{35}
+\indexentry{set\_aggregation\_method\_active() (Application method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{Application method}|hyperpage}{35}
+\indexentry{get\_cut\_out\_mode() (Application method)@\spxentry{get\_cut\_out\_mode()}\spxextra{Application method}|hyperpage}{35}
+\indexentry{set\_cut\_out\_mode() (Application method)@\spxentry{set\_cut\_out\_mode()}\spxextra{Application method}|hyperpage}{35}
+\indexentry{get\_cut\_out\_path() (Application method)@\spxentry{get\_cut\_out\_path()}\spxextra{Application method}|hyperpage}{36}
+\indexentry{set\_cut\_out\_path() (Application method)@\spxentry{set\_cut\_out\_path()}\spxextra{Application method}|hyperpage}{36}
+\indexentry{get\_category() (Application method)@\spxentry{get\_category()}\spxextra{Application method}|hyperpage}{36}
+\indexentry{get\_categories() (Application method)@\spxentry{get\_categories()}\spxextra{Application method}|hyperpage}{36}
+\indexentry{create\_category() (Application method)@\spxentry{create\_category()}\spxextra{Application method}|hyperpage}{36}
+\indexentry{remove\_category() (Application method)@\spxentry{remove\_category()}\spxextra{Application method}|hyperpage}{36}
+\indexentry{override\_categories() (Application method)@\spxentry{override\_categories()}\spxextra{Application method}|hyperpage}{37}
+\indexentry{merge\_categories() (Application method)@\spxentry{merge\_categories()}\spxextra{Application method}|hyperpage}{37}
+\indexentry{create\_map() (Application method)@\spxentry{create\_map()}\spxextra{Application method}|hyperpage}{37}
+\indexentry{create\_boxplot() (Application method)@\spxentry{create\_boxplot()}\spxextra{Application method}|hyperpage}{37}
+\indexentry{get\_location() (Application method)@\spxentry{get\_location()}\spxextra{Application method}|hyperpage}{37}
+\indexentry{set\_name() (Application method)@\spxentry{set\_name()}\spxextra{Application method}|hyperpage}{38}
+\indexentry{get\_name() (Application method)@\spxentry{get\_name()}\spxextra{Application method}|hyperpage}{38}
+\indexentry{set\_description() (Application method)@\spxentry{set\_description()}\spxextra{Application method}|hyperpage}{38}
+\indexentry{get\_description() (Application method)@\spxentry{get\_description()}\spxextra{Application method}|hyperpage}{38}
+\indexentry{export\_project() (Application method)@\spxentry{export\_project()}\spxextra{Application method}|hyperpage}{38}
+\indexentry{export\_configuration() (Application method)@\spxentry{export\_configuration()}\spxextra{Application method}|hyperpage}{38}
+\indexentry{export\_calculation() (Application method)@\spxentry{export\_calculation()}\spxextra{Application method}|hyperpage}{39}
+\indexentry{export\_map() (Application method)@\spxentry{export\_map()}\spxextra{Application method}|hyperpage}{39}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.application.application\_interface@\spxentry{src.osm\_configurator.model.application.application\_interface}|hyperpage}{39}
+\indexentry{src.osm\_configurator.model.application.application\_interface@\spxentry{src.osm\_configurator.model.application.application\_interface}!module@\spxentry{module}|hyperpage}{39}
+\indexentry{IApplication (class in src.osm\_configurator.model.application.application\_interface)@\spxentry{IApplication}\spxextra{class in src.osm\_configurator.model.application.application\_interface}|hyperpage}{39}
+\indexentry{get\_passive\_project\_list() (IApplication method)@\spxentry{get\_passive\_project\_list()}\spxextra{IApplication method}|hyperpage}{39}
+\indexentry{get\_key\_recommendation() (IApplication method)@\spxentry{get\_key\_recommendation()}\spxextra{IApplication method}|hyperpage}{39}
+\indexentry{create\_project() (IApplication method)@\spxentry{create\_project()}\spxextra{IApplication method}|hyperpage}{39}
+\indexentry{load\_project() (IApplication method)@\spxentry{load\_project()}\spxextra{IApplication method}|hyperpage}{40}
+\indexentry{start\_calculation() (IApplication method)@\spxentry{start\_calculation()}\spxextra{IApplication method}|hyperpage}{40}
+\indexentry{get\_osm\_data() (IApplication method)@\spxentry{get\_osm\_data()}\spxextra{IApplication method}|hyperpage}{40}
+\indexentry{set\_osm\_data() (IApplication method)@\spxentry{set\_osm\_data()}\spxextra{IApplication method}|hyperpage}{40}
+\indexentry{get\_all\_aggregation\_methods() (IApplication method)@\spxentry{get\_all\_aggregation\_methods()}\spxextra{IApplication method}|hyperpage}{41}
+\indexentry{is\_aggregation\_method\_active() (IApplication method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{IApplication method}|hyperpage}{41}
+\indexentry{set\_aggregation\_method\_active() (IApplication method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{IApplication method}|hyperpage}{41}
+\indexentry{get\_cut\_out\_mode() (IApplication method)@\spxentry{get\_cut\_out\_mode()}\spxextra{IApplication method}|hyperpage}{41}
+\indexentry{set\_cut\_out\_mode() (IApplication method)@\spxentry{set\_cut\_out\_mode()}\spxextra{IApplication method}|hyperpage}{41}
+\indexentry{get\_cut\_out\_path() (IApplication method)@\spxentry{get\_cut\_out\_path()}\spxextra{IApplication method}|hyperpage}{42}
+\indexentry{set\_cut\_out\_path() (IApplication method)@\spxentry{set\_cut\_out\_path()}\spxextra{IApplication method}|hyperpage}{42}
+\indexentry{get\_category() (IApplication method)@\spxentry{get\_category()}\spxextra{IApplication method}|hyperpage}{42}
+\indexentry{get\_categories() (IApplication method)@\spxentry{get\_categories()}\spxextra{IApplication method}|hyperpage}{42}
+\indexentry{create\_category() (IApplication method)@\spxentry{create\_category()}\spxextra{IApplication method}|hyperpage}{42}
+\indexentry{remove\_category() (IApplication method)@\spxentry{remove\_category()}\spxextra{IApplication method}|hyperpage}{42}
+\indexentry{override\_categories() (IApplication method)@\spxentry{override\_categories()}\spxextra{IApplication method}|hyperpage}{43}
+\indexentry{merge\_categories() (IApplication method)@\spxentry{merge\_categories()}\spxextra{IApplication method}|hyperpage}{43}
+\indexentry{create\_map() (IApplication method)@\spxentry{create\_map()}\spxextra{IApplication method}|hyperpage}{43}
+\indexentry{create\_boxplot() (IApplication method)@\spxentry{create\_boxplot()}\spxextra{IApplication method}|hyperpage}{43}
+\indexentry{get\_location() (IApplication method)@\spxentry{get\_location()}\spxextra{IApplication method}|hyperpage}{43}
+\indexentry{get\_default\_location() (IApplication method)@\spxentry{get\_default\_location()}\spxextra{IApplication method}|hyperpage}{44}
+\indexentry{set\_default\_location() (IApplication method)@\spxentry{set\_default\_location()}\spxextra{IApplication method}|hyperpage}{44}
+\indexentry{set\_name() (IApplication method)@\spxentry{set\_name()}\spxextra{IApplication method}|hyperpage}{44}
+\indexentry{get\_name() (IApplication method)@\spxentry{get\_name()}\spxextra{IApplication method}|hyperpage}{44}
+\indexentry{set\_description() (IApplication method)@\spxentry{set\_description()}\spxextra{IApplication method}|hyperpage}{44}
+\indexentry{get\_description() (IApplication method)@\spxentry{get\_description()}\spxextra{IApplication method}|hyperpage}{44}
+\indexentry{export\_project() (IApplication method)@\spxentry{export\_project()}\spxextra{IApplication method}|hyperpage}{44}
+\indexentry{export\_configuration() (IApplication method)@\spxentry{export\_configuration()}\spxextra{IApplication method}|hyperpage}{45}
+\indexentry{export\_calculation() (IApplication method)@\spxentry{export\_calculation()}\spxextra{IApplication method}|hyperpage}{45}
+\indexentry{export\_map() (IApplication method)@\spxentry{export\_map()}\spxextra{IApplication method}|hyperpage}{45}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.application.application\_settings@\spxentry{src.osm\_configurator.model.application.application\_settings}|hyperpage}{45}
+\indexentry{src.osm\_configurator.model.application.application\_settings@\spxentry{src.osm\_configurator.model.application.application\_settings}!module@\spxentry{module}|hyperpage}{45}
+\indexentry{ApplicationSettings (class in src.osm\_configurator.model.application.application\_settings)@\spxentry{ApplicationSettings}\spxextra{class in src.osm\_configurator.model.application.application\_settings}|hyperpage}{45}
+\indexentry{\_\_init\_\_() (ApplicationSettings method)@\spxentry{\_\_init\_\_()}\spxextra{ApplicationSettings method}|hyperpage}{45}
+\indexentry{get\_default\_location() (ApplicationSettings method)@\spxentry{get\_default\_location()}\spxextra{ApplicationSettings method}|hyperpage}{45}
+\indexentry{set\_default\_location() (ApplicationSettings method)@\spxentry{set\_default\_location()}\spxextra{ApplicationSettings method}|hyperpage}{46}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.application.passive\_project@\spxentry{src.osm\_configurator.model.application.passive\_project}|hyperpage}{46}
+\indexentry{src.osm\_configurator.model.application.passive\_project@\spxentry{src.osm\_configurator.model.application.passive\_project}!module@\spxentry{module}|hyperpage}{46}
+\indexentry{PassiveProject (class in src.osm\_configurator.model.application.passive\_project)@\spxentry{PassiveProject}\spxextra{class in src.osm\_configurator.model.application.passive\_project}|hyperpage}{46}
+\indexentry{\_\_init\_\_() (PassiveProject method)@\spxentry{\_\_init\_\_()}\spxextra{PassiveProject method}|hyperpage}{46}
+\indexentry{get\_name() (PassiveProject method)@\spxentry{get\_name()}\spxextra{PassiveProject method}|hyperpage}{46}
+\indexentry{get\_description() (PassiveProject method)@\spxentry{get\_description()}\spxextra{PassiveProject method}|hyperpage}{46}
+\indexentry{get\_edit\_date() (PassiveProject method)@\spxentry{get\_edit\_date()}\spxextra{PassiveProject method}|hyperpage}{46}
+\indexentry{get\_project\_folder\_path() (PassiveProject method)@\spxentry{get\_project\_folder\_path()}\spxextra{PassiveProject method}|hyperpage}{46}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.application.recommender\_system@\spxentry{src.osm\_configurator.model.application.recommender\_system}|hyperpage}{47}
+\indexentry{src.osm\_configurator.model.application.recommender\_system@\spxentry{src.osm\_configurator.model.application.recommender\_system}!module@\spxentry{module}|hyperpage}{47}
+\indexentry{RecommenderSystem (class in src.osm\_configurator.model.application.recommender\_system)@\spxentry{RecommenderSystem}\spxextra{class in src.osm\_configurator.model.application.recommender\_system}|hyperpage}{47}
+\indexentry{\_\_init\_\_() (RecommenderSystem method)@\spxentry{\_\_init\_\_()}\spxextra{RecommenderSystem method}|hyperpage}{47}
+\indexentry{recommend() (RecommenderSystem method)@\spxentry{recommend()}\spxextra{RecommenderSystem method}|hyperpage}{47}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.application@\spxentry{src.osm\_configurator.model.application}|hyperpage}{47}
+\indexentry{src.osm\_configurator.model.application@\spxentry{src.osm\_configurator.model.application}!module@\spxentry{module}|hyperpage}{47}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.calculation\_parser@\spxentry{src.osm\_configurator.model.parser.calculation\_parser}|hyperpage}{47}
+\indexentry{src.osm\_configurator.model.parser.calculation\_parser@\spxentry{src.osm\_configurator.model.parser.calculation\_parser}!module@\spxentry{module}|hyperpage}{47}
+\indexentry{CalculationParser (class in src.osm\_configurator.model.parser.calculation\_parser)@\spxentry{CalculationParser}\spxextra{class in src.osm\_configurator.model.parser.calculation\_parser}|hyperpage}{47}
+\indexentry{\_\_init\_\_() (CalculationParser method)@\spxentry{\_\_init\_\_()}\spxextra{CalculationParser method}|hyperpage}{47}
+\indexentry{check\_validity\_of\_calculation\_step() (CalculationParser method)@\spxentry{check\_validity\_of\_calculation\_step()}\spxextra{CalculationParser method}|hyperpage}{47}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.calculation\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.calculation\_parser\_interface}|hyperpage}{48}
+\indexentry{src.osm\_configurator.model.parser.calculation\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.calculation\_parser\_interface}!module@\spxentry{module}|hyperpage}{48}
+\indexentry{CalculationParserInterface (class in src.osm\_configurator.model.parser.calculation\_parser\_interface)@\spxentry{CalculationParserInterface}\spxextra{class in src.osm\_configurator.model.parser.calculation\_parser\_interface}|hyperpage}{48}
+\indexentry{check\_validity\_of\_calculation\_step() (CalculationParserInterface method)@\spxentry{check\_validity\_of\_calculation\_step()}\spxextra{CalculationParserInterface method}|hyperpage}{48}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.category\_parser@\spxentry{src.osm\_configurator.model.parser.category\_parser}|hyperpage}{48}
+\indexentry{src.osm\_configurator.model.parser.category\_parser@\spxentry{src.osm\_configurator.model.parser.category\_parser}!module@\spxentry{module}|hyperpage}{48}
+\indexentry{CategoryParser (class in src.osm\_configurator.model.parser.category\_parser)@\spxentry{CategoryParser}\spxextra{class in src.osm\_configurator.model.parser.category\_parser}|hyperpage}{48}
+\indexentry{\_\_init\_\_() (CategoryParser method)@\spxentry{\_\_init\_\_()}\spxextra{CategoryParser method}|hyperpage}{48}
+\indexentry{parse\_category\_file() (CategoryParser method)@\spxentry{parse\_category\_file()}\spxextra{CategoryParser method}|hyperpage}{48}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.category\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.category\_parser\_interface}|hyperpage}{49}
+\indexentry{src.osm\_configurator.model.parser.category\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.category\_parser\_interface}!module@\spxentry{module}|hyperpage}{49}
+\indexentry{CategoryParserInterface (class in src.osm\_configurator.model.parser.category\_parser\_interface)@\spxentry{CategoryParserInterface}\spxextra{class in src.osm\_configurator.model.parser.category\_parser\_interface}|hyperpage}{49}
+\indexentry{parse\_category\_file() (CategoryParserInterface method)@\spxentry{parse\_category\_file()}\spxextra{CategoryParserInterface method}|hyperpage}{49}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.cutOut\_parser@\spxentry{src.osm\_configurator.model.parser.cutOut\_parser}|hyperpage}{49}
+\indexentry{src.osm\_configurator.model.parser.cutOut\_parser@\spxentry{src.osm\_configurator.model.parser.cutOut\_parser}!module@\spxentry{module}|hyperpage}{49}
+\indexentry{CutOutParser (class in src.osm\_configurator.model.parser.cutOut\_parser)@\spxentry{CutOutParser}\spxextra{class in src.osm\_configurator.model.parser.cutOut\_parser}|hyperpage}{49}
+\indexentry{parse\_cutout\_file() (CutOutParser method)@\spxentry{parse\_cutout\_file()}\spxextra{CutOutParser method}|hyperpage}{49}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.cutOut\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.cutOut\_parser\_interface}|hyperpage}{50}
+\indexentry{src.osm\_configurator.model.parser.cutOut\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.cutOut\_parser\_interface}!module@\spxentry{module}|hyperpage}{50}
+\indexentry{CutOutParserInterface (class in src.osm\_configurator.model.parser.cutOut\_parser\_interface)@\spxentry{CutOutParserInterface}\spxextra{class in src.osm\_configurator.model.parser.cutOut\_parser\_interface}|hyperpage}{50}
+\indexentry{parse\_cutout\_file() (CutOutParserInterface method)@\spxentry{parse\_cutout\_file()}\spxextra{CutOutParserInterface method}|hyperpage}{50}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.osm\_data\_parser@\spxentry{src.osm\_configurator.model.parser.osm\_data\_parser}|hyperpage}{50}
+\indexentry{src.osm\_configurator.model.parser.osm\_data\_parser@\spxentry{src.osm\_configurator.model.parser.osm\_data\_parser}!module@\spxentry{module}|hyperpage}{50}
+\indexentry{CategoryParser (class in src.osm\_configurator.model.parser.osm\_data\_parser)@\spxentry{CategoryParser}\spxextra{class in src.osm\_configurator.model.parser.osm\_data\_parser}|hyperpage}{50}
+\indexentry{\_\_init\_\_() (CategoryParser method)@\spxentry{\_\_init\_\_()}\spxextra{CategoryParser method}|hyperpage}{50}
+\indexentry{parse\_osm\_data\_file() (CategoryParser method)@\spxentry{parse\_osm\_data\_file()}\spxextra{CategoryParser method}|hyperpage}{50}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser.osm\_data\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.osm\_data\_parser\_interface}|hyperpage}{51}
+\indexentry{src.osm\_configurator.model.parser.osm\_data\_parser\_interface@\spxentry{src.osm\_configurator.model.parser.osm\_data\_parser\_interface}!module@\spxentry{module}|hyperpage}{51}
+\indexentry{OSMDataParserInterface (class in src.osm\_configurator.model.parser.osm\_data\_parser\_interface)@\spxentry{OSMDataParserInterface}\spxextra{class in src.osm\_configurator.model.parser.osm\_data\_parser\_interface}|hyperpage}{51}
+\indexentry{parse\_osm\_data\_file() (OSMDataParserInterface method)@\spxentry{parse\_osm\_data\_file()}\spxextra{OSMDataParserInterface method}|hyperpage}{51}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.parser@\spxentry{src.osm\_configurator.model.parser}|hyperpage}{51}
+\indexentry{src.osm\_configurator.model.parser@\spxentry{src.osm\_configurator.model.parser}!module@\spxentry{module}|hyperpage}{51}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.aggregation\_method\_enum@\spxentry{src.osm\_configurator.model.project.calculation.aggregation\_method\_enum}|hyperpage}{51}
+\indexentry{src.osm\_configurator.model.project.calculation.aggregation\_method\_enum@\spxentry{src.osm\_configurator.model.project.calculation.aggregation\_method\_enum}!module@\spxentry{module}|hyperpage}{51}
+\indexentry{AggregationMethod (class in src.osm\_configurator.model.project.calculation.aggregation\_method\_enum)@\spxentry{AggregationMethod}\spxextra{class in src.osm\_configurator.model.project.calculation.aggregation\_method\_enum}|hyperpage}{51}
+\indexentry{SUM (AggregationMethod attribute)@\spxentry{SUM}\spxextra{AggregationMethod attribute}|hyperpage}{51}
+\indexentry{AVERAGE (AggregationMethod attribute)@\spxentry{AVERAGE}\spxextra{AggregationMethod attribute}|hyperpage}{51}
+\indexentry{MEAN (AggregationMethod attribute)@\spxentry{MEAN}\spxextra{AggregationMethod attribute}|hyperpage}{51}
+\indexentry{UPPER\_QUARTILE (AggregationMethod attribute)@\spxentry{UPPER\_QUARTILE}\spxextra{AggregationMethod attribute}|hyperpage}{51}
+\indexentry{LOWER\_QUARTILE (AggregationMethod attribute)@\spxentry{LOWER\_QUARTILE}\spxextra{AggregationMethod attribute}|hyperpage}{52}
+\indexentry{MAXIMUM (AggregationMethod attribute)@\spxentry{MAXIMUM}\spxextra{AggregationMethod attribute}|hyperpage}{52}
+\indexentry{MINIMUM (AggregationMethod attribute)@\spxentry{MINIMUM}\spxextra{AggregationMethod attribute}|hyperpage}{52}
+\indexentry{calculate\_aggregation() (AggregationMethod method)@\spxentry{calculate\_aggregation()}\spxextra{AggregationMethod method}|hyperpage}{52}
+\indexentry{get\_name() (AggregationMethod method)@\spxentry{get\_name()}\spxextra{AggregationMethod method}|hyperpage}{52}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.aggregation\_phase@\spxentry{src.osm\_configurator.model.project.calculation.aggregation\_phase}|hyperpage}{52}
+\indexentry{src.osm\_configurator.model.project.calculation.aggregation\_phase@\spxentry{src.osm\_configurator.model.project.calculation.aggregation\_phase}!module@\spxentry{module}|hyperpage}{52}
+\indexentry{AggregationPhase (class in src.osm\_configurator.model.project.calculation.aggregation\_phase)@\spxentry{AggregationPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.aggregation\_phase}|hyperpage}{52}
+\indexentry{calculate() (AggregationPhase method)@\spxentry{calculate()}\spxextra{AggregationPhase method}|hyperpage}{52}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.attractivity\_phase@\spxentry{src.osm\_configurator.model.project.calculation.attractivity\_phase}|hyperpage}{53}
+\indexentry{src.osm\_configurator.model.project.calculation.attractivity\_phase@\spxentry{src.osm\_configurator.model.project.calculation.attractivity\_phase}!module@\spxentry{module}|hyperpage}{53}
+\indexentry{AttractivityPhase (class in src.osm\_configurator.model.project.calculation.attractivity\_phase)@\spxentry{AttractivityPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.attractivity\_phase}|hyperpage}{53}
+\indexentry{calculate() (AttractivityPhase method)@\spxentry{calculate()}\spxextra{AttractivityPhase method}|hyperpage}{53}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager@\spxentry{src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager}|hyperpage}{53}
+\indexentry{src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager@\spxentry{src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager}!module@\spxentry{module}|hyperpage}{53}
+\indexentry{BuildingOnEdgeManager (class in src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager)@\spxentry{BuildingOnEdgeManager}\spxextra{class in src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager}|hyperpage}{53}
+\indexentry{\_\_init\_\_() (BuildingOnEdgeManager method)@\spxentry{\_\_init\_\_()}\spxextra{BuildingOnEdgeManager method}|hyperpage}{53}
+\indexentry{remove\_buildings\_on\_edge() (BuildingOnEdgeManager method)@\spxentry{remove\_buildings\_on\_edge()}\spxextra{BuildingOnEdgeManager method}|hyperpage}{53}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.calculation\_manager@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_manager}|hyperpage}{54}
+\indexentry{src.osm\_configurator.model.project.calculation.calculation\_manager@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_manager}!module@\spxentry{module}|hyperpage}{54}
+\indexentry{CalculationManager (class in src.osm\_configurator.model.project.calculation.calculation\_manager)@\spxentry{CalculationManager}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_manager}|hyperpage}{54}
+\indexentry{\_\_init\_\_() (CalculationManager method)@\spxentry{\_\_init\_\_()}\spxextra{CalculationManager method}|hyperpage}{54}
+\indexentry{cancel\_calculation() (CalculationManager method)@\spxentry{cancel\_calculation()}\spxextra{CalculationManager method}|hyperpage}{54}
+\indexentry{start\_calculation() (CalculationManager method)@\spxentry{start\_calculation()}\spxextra{CalculationManager method}|hyperpage}{54}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.calculation\_phase\_enum@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_enum}|hyperpage}{54}
+\indexentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_enum@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_enum}!module@\spxentry{module}|hyperpage}{54}
+\indexentry{CalculationPhase (class in src.osm\_configurator.model.project.calculation.calculation\_phase\_enum)@\spxentry{CalculationPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_phase\_enum}|hyperpage}{54}
+\indexentry{NONE (CalculationPhase attribute)@\spxentry{NONE}\spxextra{CalculationPhase attribute}|hyperpage}{54}
+\indexentry{GEO\_DATA\_PHASE (CalculationPhase attribute)@\spxentry{GEO\_DATA\_PHASE}\spxextra{CalculationPhase attribute}|hyperpage}{55}
+\indexentry{TAG\_FILTER\_PHASE (CalculationPhase attribute)@\spxentry{TAG\_FILTER\_PHASE}\spxextra{CalculationPhase attribute}|hyperpage}{55}
+\indexentry{REDUCTION\_PHASE (CalculationPhase attribute)@\spxentry{REDUCTION\_PHASE}\spxextra{CalculationPhase attribute}|hyperpage}{55}
+\indexentry{ATTRACTIVITY\_PHASE (CalculationPhase attribute)@\spxentry{ATTRACTIVITY\_PHASE}\spxextra{CalculationPhase attribute}|hyperpage}{55}
+\indexentry{AGGREGATION\_PHASE (CalculationPhase attribute)@\spxentry{AGGREGATION\_PHASE}\spxextra{CalculationPhase attribute}|hyperpage}{55}
+\indexentry{get\_name() (CalculationPhase method)@\spxentry{get\_name()}\spxextra{CalculationPhase method}|hyperpage}{55}
+\indexentry{get\_folder\_name\_for\_results() (CalculationPhase method)@\spxentry{get\_folder\_name\_for\_results()}\spxextra{CalculationPhase method}|hyperpage}{55}
+\indexentry{get\_order() (CalculationPhase method)@\spxentry{get\_order()}\spxextra{CalculationPhase method}|hyperpage}{55}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.calculation\_phase\_interface@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_interface}|hyperpage}{55}
+\indexentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_interface@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_phase\_interface}!module@\spxentry{module}|hyperpage}{55}
+\indexentry{ICalculationPhase (class in src.osm\_configurator.model.project.calculation.calculation\_phase\_interface)@\spxentry{ICalculationPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_phase\_interface}|hyperpage}{55}
+\indexentry{calculate() (ICalculationPhase method)@\spxentry{calculate()}\spxextra{ICalculationPhase method}|hyperpage}{55}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.calculation\_state\_enum@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_state\_enum}|hyperpage}{56}
+\indexentry{src.osm\_configurator.model.project.calculation.calculation\_state\_enum@\spxentry{src.osm\_configurator.model.project.calculation.calculation\_state\_enum}!module@\spxentry{module}|hyperpage}{56}
+\indexentry{CalculationState (class in src.osm\_configurator.model.project.calculation.calculation\_state\_enum)@\spxentry{CalculationState}\spxextra{class in src.osm\_configurator.model.project.calculation.calculation\_state\_enum}|hyperpage}{56}
+\indexentry{NOT\_STARTED\_YET (CalculationState attribute)@\spxentry{NOT\_STARTED\_YET}\spxextra{CalculationState attribute}|hyperpage}{56}
+\indexentry{RUNNING (CalculationState attribute)@\spxentry{RUNNING}\spxextra{CalculationState attribute}|hyperpage}{56}
+\indexentry{ENDED\_SUCCESSFULLY (CalculationState attribute)@\spxentry{ENDED\_SUCCESSFULLY}\spxextra{CalculationState attribute}|hyperpage}{56}
+\indexentry{ERROR\_INVALID\_OSM\_DATA (CalculationState attribute)@\spxentry{ERROR\_INVALID\_OSM\_DATA}\spxextra{CalculationState attribute}|hyperpage}{56}
+\indexentry{ERROR\_INVALID\_CUT\_OUT\_DATA (CalculationState attribute)@\spxentry{ERROR\_INVALID\_CUT\_OUT\_DATA}\spxextra{CalculationState attribute}|hyperpage}{56}
+\indexentry{ERROR\_INVALID\_CATEGORIES (CalculationState attribute)@\spxentry{ERROR\_INVALID\_CATEGORIES}\spxextra{CalculationState attribute}|hyperpage}{56}
+\indexentry{ERROR\_INVALID\_PREVIOUS\_CALCULATIONS (CalculationState attribute)@\spxentry{ERROR\_INVALID\_PREVIOUS\_CALCULATIONS}\spxextra{CalculationState attribute}|hyperpage}{56}
+\indexentry{get\_name() (CalculationState method)@\spxentry{get\_name()}\spxextra{CalculationState method}|hyperpage}{56}
+\indexentry{get\_description() (CalculationState method)@\spxentry{get\_description()}\spxextra{CalculationState method}|hyperpage}{56}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.geo\_data\_phase@\spxentry{src.osm\_configurator.model.project.calculation.geo\_data\_phase}|hyperpage}{57}
+\indexentry{src.osm\_configurator.model.project.calculation.geo\_data\_phase@\spxentry{src.osm\_configurator.model.project.calculation.geo\_data\_phase}!module@\spxentry{module}|hyperpage}{57}
+\indexentry{GeoDataPhase (class in src.osm\_configurator.model.project.calculation.geo\_data\_phase)@\spxentry{GeoDataPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.geo\_data\_phase}|hyperpage}{57}
+\indexentry{calculate() (GeoDataPhase method)@\spxentry{calculate()}\spxextra{GeoDataPhase method}|hyperpage}{57}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.osm\_file\_converter@\spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_converter}|hyperpage}{57}
+\indexentry{src.osm\_configurator.model.project.calculation.osm\_file\_converter@\spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_converter}!module@\spxentry{module}|hyperpage}{57}
+\indexentry{OSMFileConverter (class in src.osm\_configurator.model.project.calculation.osm\_file\_converter)@\spxentry{OSMFileConverter}\spxextra{class in src.osm\_configurator.model.project.calculation.osm\_file\_converter}|hyperpage}{57}
+\indexentry{\_\_init\_\_() (OSMFileConverter method)@\spxentry{\_\_init\_\_()}\spxextra{OSMFileConverter method}|hyperpage}{57}
+\indexentry{convert\_file() (OSMFileConverter method)@\spxentry{convert\_file()}\spxextra{OSMFileConverter method}|hyperpage}{57}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum@\spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum}|hyperpage}{58}
+\indexentry{src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum@\spxentry{src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum}!module@\spxentry{module}|hyperpage}{58}
+\indexentry{OSMFileFormat (class in src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum)@\spxentry{OSMFileFormat}\spxextra{class in src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum}|hyperpage}{58}
+\indexentry{PBF (OSMFileFormat attribute)@\spxentry{PBF}\spxextra{OSMFileFormat attribute}|hyperpage}{58}
+\indexentry{BZ2 (OSMFileFormat attribute)@\spxentry{BZ2}\spxextra{OSMFileFormat attribute}|hyperpage}{58}
+\indexentry{OSM (OSMFileFormat attribute)@\spxentry{OSM}\spxextra{OSMFileFormat attribute}|hyperpage}{58}
+\indexentry{get\_file\_extension() (OSMFileFormat method)@\spxentry{get\_file\_extension()}\spxextra{OSMFileFormat method}|hyperpage}{58}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.reduction\_phase@\spxentry{src.osm\_configurator.model.project.calculation.reduction\_phase}|hyperpage}{58}
+\indexentry{src.osm\_configurator.model.project.calculation.reduction\_phase@\spxentry{src.osm\_configurator.model.project.calculation.reduction\_phase}!module@\spxentry{module}|hyperpage}{58}
+\indexentry{ReductionPhase (class in src.osm\_configurator.model.project.calculation.reduction\_phase)@\spxentry{ReductionPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.reduction\_phase}|hyperpage}{58}
+\indexentry{calculate() (ReductionPhase method)@\spxentry{calculate()}\spxextra{ReductionPhase method}|hyperpage}{58}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.split\_up\_files@\spxentry{src.osm\_configurator.model.project.calculation.split\_up\_files}|hyperpage}{59}
+\indexentry{src.osm\_configurator.model.project.calculation.split\_up\_files@\spxentry{src.osm\_configurator.model.project.calculation.split\_up\_files}!module@\spxentry{module}|hyperpage}{59}
+\indexentry{SplitUpFile (class in src.osm\_configurator.model.project.calculation.split\_up\_files)@\spxentry{SplitUpFile}\spxextra{class in src.osm\_configurator.model.project.calculation.split\_up\_files}|hyperpage}{59}
+\indexentry{\_\_init\_\_() (SplitUpFile method)@\spxentry{\_\_init\_\_()}\spxextra{SplitUpFile method}|hyperpage}{59}
+\indexentry{split\_up\_files() (SplitUpFile method)@\spxentry{split\_up\_files()}\spxextra{SplitUpFile method}|hyperpage}{59}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.tag\_filter\_phase@\spxentry{src.osm\_configurator.model.project.calculation.tag\_filter\_phase}|hyperpage}{59}
+\indexentry{src.osm\_configurator.model.project.calculation.tag\_filter\_phase@\spxentry{src.osm\_configurator.model.project.calculation.tag\_filter\_phase}!module@\spxentry{module}|hyperpage}{59}
+\indexentry{TagFilterPhase (class in src.osm\_configurator.model.project.calculation.tag\_filter\_phase)@\spxentry{TagFilterPhase}\spxextra{class in src.osm\_configurator.model.project.calculation.tag\_filter\_phase}|hyperpage}{59}
+\indexentry{calculate() (TagFilterPhase method)@\spxentry{calculate()}\spxextra{TagFilterPhase method}|hyperpage}{59}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation.traffic\_cell@\spxentry{src.osm\_configurator.model.project.calculation.traffic\_cell}|hyperpage}{60}
+\indexentry{src.osm\_configurator.model.project.calculation.traffic\_cell@\spxentry{src.osm\_configurator.model.project.calculation.traffic\_cell}!module@\spxentry{module}|hyperpage}{60}
+\indexentry{TrafficCell (class in src.osm\_configurator.model.project.calculation.traffic\_cell)@\spxentry{TrafficCell}\spxextra{class in src.osm\_configurator.model.project.calculation.traffic\_cell}|hyperpage}{60}
+\indexentry{\_\_init\_\_() (TrafficCell method)@\spxentry{\_\_init\_\_()}\spxextra{TrafficCell method}|hyperpage}{60}
+\indexentry{get\_name() (TrafficCell method)@\spxentry{get\_name()}\spxextra{TrafficCell method}|hyperpage}{60}
+\indexentry{get\_bounding\_box() (TrafficCell method)@\spxentry{get\_bounding\_box()}\spxextra{TrafficCell method}|hyperpage}{60}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.calculation@\spxentry{src.osm\_configurator.model.project.calculation}|hyperpage}{60}
+\indexentry{src.osm\_configurator.model.project.calculation@\spxentry{src.osm\_configurator.model.project.calculation}!module@\spxentry{module}|hyperpage}{60}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.aggregation\_configuration@\spxentry{src.osm\_configurator.model.project.configuration.aggregation\_configuration}|hyperpage}{60}
+\indexentry{src.osm\_configurator.model.project.configuration.aggregation\_configuration@\spxentry{src.osm\_configurator.model.project.configuration.aggregation\_configuration}!module@\spxentry{module}|hyperpage}{60}
+\indexentry{AggregationConfiguration (class in src.osm\_configurator.model.project.configuration.aggregation\_configuration)@\spxentry{AggregationConfiguration}\spxextra{class in src.osm\_configurator.model.project.configuration.aggregation\_configuration}|hyperpage}{60}
+\indexentry{\_\_init\_\_() (AggregationConfiguration method)@\spxentry{\_\_init\_\_()}\spxextra{AggregationConfiguration method}|hyperpage}{60}
+\indexentry{get\_all\_aggregation\_methods() (AggregationConfiguration method)@\spxentry{get\_all\_aggregation\_methods()}\spxextra{AggregationConfiguration method}|hyperpage}{60}
+\indexentry{is\_aggregation\_method\_active() (AggregationConfiguration method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{AggregationConfiguration method}|hyperpage}{61}
+\indexentry{set\_aggregation\_method\_active() (AggregationConfiguration method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{AggregationConfiguration method}|hyperpage}{61}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.attractivity\_attribute@\spxentry{src.osm\_configurator.model.project.configuration.attractivity\_attribute}|hyperpage}{61}
+\indexentry{src.osm\_configurator.model.project.configuration.attractivity\_attribute@\spxentry{src.osm\_configurator.model.project.configuration.attractivity\_attribute}!module@\spxentry{module}|hyperpage}{61}
+\indexentry{AttractivityAttribute (class in src.osm\_configurator.model.project.configuration.attractivity\_attribute)@\spxentry{AttractivityAttribute}\spxextra{class in src.osm\_configurator.model.project.configuration.attractivity\_attribute}|hyperpage}{61}
+\indexentry{\_\_init\_\_() (AttractivityAttribute method)@\spxentry{\_\_init\_\_()}\spxextra{AttractivityAttribute method}|hyperpage}{61}
+\indexentry{get\_attractivity\_attribute\_name() (AttractivityAttribute method)@\spxentry{get\_attractivity\_attribute\_name()}\spxextra{AttractivityAttribute method}|hyperpage}{62}
+\indexentry{set\_attractivity\_attribute\_name() (AttractivityAttribute method)@\spxentry{set\_attractivity\_attribute\_name()}\spxextra{AttractivityAttribute method}|hyperpage}{62}
+\indexentry{get\_attractivity\_attribute\_list() (AttractivityAttribute method)@\spxentry{get\_attractivity\_attribute\_list()}\spxextra{AttractivityAttribute method}|hyperpage}{62}
+\indexentry{set\_attractivity\_attribute\_list() (AttractivityAttribute method)@\spxentry{set\_attractivity\_attribute\_list()}\spxextra{AttractivityAttribute method}|hyperpage}{62}
+\indexentry{get\_base\_factor() (AttractivityAttribute method)@\spxentry{get\_base\_factor()}\spxextra{AttractivityAttribute method}|hyperpage}{62}
+\indexentry{set\_base\_factor() (AttractivityAttribute method)@\spxentry{set\_base\_factor()}\spxextra{AttractivityAttribute method}|hyperpage}{62}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.attribute\_enum@\spxentry{src.osm\_configurator.model.project.configuration.attribute\_enum}|hyperpage}{63}
+\indexentry{src.osm\_configurator.model.project.configuration.attribute\_enum@\spxentry{src.osm\_configurator.model.project.configuration.attribute\_enum}!module@\spxentry{module}|hyperpage}{63}
+\indexentry{Attribute (class in src.osm\_configurator.model.project.configuration.attribute\_enum)@\spxentry{Attribute}\spxextra{class in src.osm\_configurator.model.project.configuration.attribute\_enum}|hyperpage}{63}
+\indexentry{PROPERTY\_AREA (Attribute attribute)@\spxentry{PROPERTY\_AREA}\spxextra{Attribute attribute}|hyperpage}{63}
+\indexentry{NUMER\_OF\_FLOOR (Attribute attribute)@\spxentry{NUMER\_OF\_FLOOR}\spxextra{Attribute attribute}|hyperpage}{63}
+\indexentry{FIRST\_FLOOR\_AREA (Attribute attribute)@\spxentry{FIRST\_FLOOR\_AREA}\spxextra{Attribute attribute}|hyperpage}{63}
+\indexentry{get\_name() (Attribute method)@\spxentry{get\_name()}\spxextra{Attribute method}|hyperpage}{63}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum@\spxentry{src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum}|hyperpage}{63}
+\indexentry{src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum@\spxentry{src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum}!module@\spxentry{module}|hyperpage}{63}
+\indexentry{CalculationMethodOfArea (class in src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum)@\spxentry{CalculationMethodOfArea}\spxextra{class in src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum}|hyperpage}{63}
+\indexentry{CALCULATE\_SITE\_AREA (CalculationMethodOfArea attribute)@\spxentry{CALCULATE\_SITE\_AREA}\spxextra{CalculationMethodOfArea attribute}|hyperpage}{63}
+\indexentry{CALCULATE\_BUILDING\_AREA (CalculationMethodOfArea attribute)@\spxentry{CALCULATE\_BUILDING\_AREA}\spxextra{CalculationMethodOfArea attribute}|hyperpage}{63}
+\indexentry{get\_calculation\_method() (CalculationMethodOfArea method)@\spxentry{get\_calculation\_method()}\spxextra{CalculationMethodOfArea method}|hyperpage}{63}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.category@\spxentry{src.osm\_configurator.model.project.configuration.category}|hyperpage}{64}
+\indexentry{src.osm\_configurator.model.project.configuration.category@\spxentry{src.osm\_configurator.model.project.configuration.category}!module@\spxentry{module}|hyperpage}{64}
+\indexentry{Category (class in src.osm\_configurator.model.project.configuration.category)@\spxentry{Category}\spxextra{class in src.osm\_configurator.model.project.configuration.category}|hyperpage}{64}
+\indexentry{\_\_init\_\_() (Category method)@\spxentry{\_\_init\_\_()}\spxextra{Category method}|hyperpage}{64}
+\indexentry{is\_active() (Category method)@\spxentry{is\_active()}\spxextra{Category method}|hyperpage}{64}
+\indexentry{activate() (Category method)@\spxentry{activate()}\spxextra{Category method}|hyperpage}{64}
+\indexentry{deactivate() (Category method)@\spxentry{deactivate()}\spxextra{Category method}|hyperpage}{64}
+\indexentry{get\_whitelist() (Category method)@\spxentry{get\_whitelist()}\spxextra{Category method}|hyperpage}{64}
+\indexentry{set\_whitelist() (Category method)@\spxentry{set\_whitelist()}\spxextra{Category method}|hyperpage}{64}
+\indexentry{get\_blacklist() (Category method)@\spxentry{get\_blacklist()}\spxextra{Category method}|hyperpage}{64}
+\indexentry{set\_blacklist() (Category method)@\spxentry{set\_blacklist()}\spxextra{Category method}|hyperpage}{65}
+\indexentry{get\_category\_name() (Category method)@\spxentry{get\_category\_name()}\spxextra{Category method}|hyperpage}{65}
+\indexentry{set\_category\_name() (Category method)@\spxentry{set\_category\_name()}\spxextra{Category method}|hyperpage}{65}
+\indexentry{get\_calculate\_area() (Category method)@\spxentry{get\_calculate\_area()}\spxextra{Category method}|hyperpage}{65}
+\indexentry{get\_calculation\_method\_of\_area() (Category method)@\spxentry{get\_calculation\_method\_of\_area()}\spxextra{Category method}|hyperpage}{65}
+\indexentry{set\_calculation\_method\_of\_area() (Category method)@\spxentry{set\_calculation\_method\_of\_area()}\spxextra{Category method}|hyperpage}{65}
+\indexentry{get\_calculate\_floor\_area() (Category method)@\spxentry{get\_calculate\_floor\_area()}\spxextra{Category method}|hyperpage}{65}
+\indexentry{set\_calculate\_floor\_area() (Category method)@\spxentry{set\_calculate\_floor\_area()}\spxextra{Category method}|hyperpage}{66}
+\indexentry{get\_strictly\_use\_default\_values() (Category method)@\spxentry{get\_strictly\_use\_default\_values()}\spxextra{Category method}|hyperpage}{66}
+\indexentry{set\_strictly\_use\_default\_values() (Category method)@\spxentry{set\_strictly\_use\_default\_values()}\spxextra{Category method}|hyperpage}{66}
+\indexentry{get\_attractivity\_attributes() (Category method)@\spxentry{get\_attractivity\_attributes()}\spxextra{Category method}|hyperpage}{66}
+\indexentry{add\_attractivity\_attribute() (Category method)@\spxentry{add\_attractivity\_attribute()}\spxextra{Category method}|hyperpage}{66}
+\indexentry{remove\_attractivity\_attribute() (Category method)@\spxentry{remove\_attractivity\_attribute()}\spxextra{Category method}|hyperpage}{66}
+\indexentry{get\_default\_value\_list() (Category method)@\spxentry{get\_default\_value\_list()}\spxextra{Category method}|hyperpage}{67}
+\indexentry{add\_default\_value\_entry() (Category method)@\spxentry{add\_default\_value\_entry()}\spxextra{Category method}|hyperpage}{67}
+\indexentry{remove\_default\_value\_entry() (Category method)@\spxentry{remove\_default\_value\_entry()}\spxextra{Category method}|hyperpage}{67}
+\indexentry{move\_default\_value\_entry\_up() (Category method)@\spxentry{move\_default\_value\_entry\_up()}\spxextra{Category method}|hyperpage}{67}
+\indexentry{move\_default\_value\_entry\_down() (Category method)@\spxentry{move\_default\_value\_entry\_down()}\spxextra{Category method}|hyperpage}{67}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.category\_manager@\spxentry{src.osm\_configurator.model.project.configuration.category\_manager}|hyperpage}{68}
+\indexentry{src.osm\_configurator.model.project.configuration.category\_manager@\spxentry{src.osm\_configurator.model.project.configuration.category\_manager}!module@\spxentry{module}|hyperpage}{68}
+\indexentry{CategoryManager (class in src.osm\_configurator.model.project.configuration.category\_manager)@\spxentry{CategoryManager}\spxextra{class in src.osm\_configurator.model.project.configuration.category\_manager}|hyperpage}{68}
+\indexentry{\_\_init\_\_() (CategoryManager method)@\spxentry{\_\_init\_\_()}\spxextra{CategoryManager method}|hyperpage}{68}
+\indexentry{get\_category() (CategoryManager method)@\spxentry{get\_category()}\spxextra{CategoryManager method}|hyperpage}{68}
+\indexentry{get\_categories() (CategoryManager method)@\spxentry{get\_categories()}\spxextra{CategoryManager method}|hyperpage}{68}
+\indexentry{create\_category() (CategoryManager method)@\spxentry{create\_category()}\spxextra{CategoryManager method}|hyperpage}{68}
+\indexentry{remove\_category() (CategoryManager method)@\spxentry{remove\_category()}\spxextra{CategoryManager method}|hyperpage}{68}
+\indexentry{override\_categories() (CategoryManager method)@\spxentry{override\_categories()}\spxextra{CategoryManager method}|hyperpage}{69}
+\indexentry{merge\_categories() (CategoryManager method)@\spxentry{merge\_categories()}\spxextra{CategoryManager method}|hyperpage}{69}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.configuration\_manager@\spxentry{src.osm\_configurator.model.project.configuration.configuration\_manager}|hyperpage}{69}
+\indexentry{src.osm\_configurator.model.project.configuration.configuration\_manager@\spxentry{src.osm\_configurator.model.project.configuration.configuration\_manager}!module@\spxentry{module}|hyperpage}{69}
+\indexentry{ConfigurationManager (class in src.osm\_configurator.model.project.configuration.configuration\_manager)@\spxentry{ConfigurationManager}\spxextra{class in src.osm\_configurator.model.project.configuration.configuration\_manager}|hyperpage}{69}
+\indexentry{\_\_init\_\_() (ConfigurationManager method)@\spxentry{\_\_init\_\_()}\spxextra{ConfigurationManager method}|hyperpage}{69}
+\indexentry{get\_osm\_data() (ConfigurationManager method)@\spxentry{get\_osm\_data()}\spxextra{ConfigurationManager method}|hyperpage}{69}
+\indexentry{set\_osm\_data() (ConfigurationManager method)@\spxentry{set\_osm\_data()}\spxextra{ConfigurationManager method}|hyperpage}{69}
+\indexentry{get\_all\_aggregation\_methods() (ConfigurationManager method)@\spxentry{get\_all\_aggregation\_methods()}\spxextra{ConfigurationManager method}|hyperpage}{70}
+\indexentry{is\_aggregation\_method\_active() (ConfigurationManager method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{ConfigurationManager method}|hyperpage}{70}
+\indexentry{set\_aggregation\_method\_active() (ConfigurationManager method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{ConfigurationManager method}|hyperpage}{70}
+\indexentry{get\_cut\_out\_mode() (ConfigurationManager method)@\spxentry{get\_cut\_out\_mode()}\spxextra{ConfigurationManager method}|hyperpage}{70}
+\indexentry{set\_cut\_out\_mode() (ConfigurationManager method)@\spxentry{set\_cut\_out\_mode()}\spxextra{ConfigurationManager method}|hyperpage}{70}
+\indexentry{get\_cut\_out\_path() (ConfigurationManager method)@\spxentry{get\_cut\_out\_path()}\spxextra{ConfigurationManager method}|hyperpage}{71}
+\indexentry{set\_cut\_out\_path() (ConfigurationManager method)@\spxentry{set\_cut\_out\_path()}\spxextra{ConfigurationManager method}|hyperpage}{71}
+\indexentry{get\_category() (ConfigurationManager method)@\spxentry{get\_category()}\spxextra{ConfigurationManager method}|hyperpage}{71}
+\indexentry{get\_categories() (ConfigurationManager method)@\spxentry{get\_categories()}\spxextra{ConfigurationManager method}|hyperpage}{71}
+\indexentry{create\_category() (ConfigurationManager method)@\spxentry{create\_category()}\spxextra{ConfigurationManager method}|hyperpage}{71}
+\indexentry{remove\_category() (ConfigurationManager method)@\spxentry{remove\_category()}\spxextra{ConfigurationManager method}|hyperpage}{71}
+\indexentry{override\_categories() (ConfigurationManager method)@\spxentry{override\_categories()}\spxextra{ConfigurationManager method}|hyperpage}{72}
+\indexentry{merge\_categories() (ConfigurationManager method)@\spxentry{merge\_categories()}\spxextra{ConfigurationManager method}|hyperpage}{72}
+\indexentry{get\_active\_project() (ConfigurationManager method)@\spxentry{get\_active\_project()}\spxextra{ConfigurationManager method}|hyperpage}{72}
+\indexentry{get\_is\_data\_downloaded() (ConfigurationManager method)@\spxentry{get\_is\_data\_downloaded()}\spxextra{ConfigurationManager method}|hyperpage}{72}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.cut\_out\_configuration@\spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_configuration}|hyperpage}{72}
+\indexentry{src.osm\_configurator.model.project.configuration.cut\_out\_configuration@\spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_configuration}!module@\spxentry{module}|hyperpage}{72}
+\indexentry{CutOutConfiguration (class in src.osm\_configurator.model.project.configuration.cut\_out\_configuration)@\spxentry{CutOutConfiguration}\spxextra{class in src.osm\_configurator.model.project.configuration.cut\_out\_configuration}|hyperpage}{72}
+\indexentry{\_\_init\_\_() (CutOutConfiguration method)@\spxentry{\_\_init\_\_()}\spxextra{CutOutConfiguration method}|hyperpage}{72}
+\indexentry{get\_cut\_out\_mode() (CutOutConfiguration method)@\spxentry{get\_cut\_out\_mode()}\spxextra{CutOutConfiguration method}|hyperpage}{72}
+\indexentry{set\_cut\_out\_mode() (CutOutConfiguration method)@\spxentry{set\_cut\_out\_mode()}\spxextra{CutOutConfiguration method}|hyperpage}{73}
+\indexentry{get\_cut\_out\_path() (CutOutConfiguration method)@\spxentry{get\_cut\_out\_path()}\spxextra{CutOutConfiguration method}|hyperpage}{73}
+\indexentry{set\_cut\_out\_path() (CutOutConfiguration method)@\spxentry{set\_cut\_out\_path()}\spxextra{CutOutConfiguration method}|hyperpage}{73}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum@\spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum}|hyperpage}{73}
+\indexentry{src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum@\spxentry{src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum}!module@\spxentry{module}|hyperpage}{73}
+\indexentry{CutOutMode (class in src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum)@\spxentry{CutOutMode}\spxextra{class in src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum}|hyperpage}{73}
+\indexentry{BUILDINGS\_ON\_EDGE\_ACCEPTED (CutOutMode attribute)@\spxentry{BUILDINGS\_ON\_EDGE\_ACCEPTED}\spxextra{CutOutMode attribute}|hyperpage}{73}
+\indexentry{BUILDINGS\_ON\_EDGE\_NOT\_ACCEPTED (CutOutMode attribute)@\spxentry{BUILDINGS\_ON\_EDGE\_NOT\_ACCEPTED}\spxextra{CutOutMode attribute}|hyperpage}{73}
+\indexentry{get\_name() (CutOutMode method)@\spxentry{get\_name()}\spxextra{CutOutMode method}|hyperpage}{73}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.default\_value\_entry@\spxentry{src.osm\_configurator.model.project.configuration.default\_value\_entry}|hyperpage}{74}
+\indexentry{src.osm\_configurator.model.project.configuration.default\_value\_entry@\spxentry{src.osm\_configurator.model.project.configuration.default\_value\_entry}!module@\spxentry{module}|hyperpage}{74}
+\indexentry{DefaultValueEntry (class in src.osm\_configurator.model.project.configuration.default\_value\_entry)@\spxentry{DefaultValueEntry}\spxextra{class in src.osm\_configurator.model.project.configuration.default\_value\_entry}|hyperpage}{74}
+\indexentry{\_\_init\_\_() (DefaultValueEntry method)@\spxentry{\_\_init\_\_()}\spxextra{DefaultValueEntry method}|hyperpage}{74}
+\indexentry{get\_default\_value\_entry\_tag() (DefaultValueEntry method)@\spxentry{get\_default\_value\_entry\_tag()}\spxextra{DefaultValueEntry method}|hyperpage}{74}
+\indexentry{set\_tag() (DefaultValueEntry method)@\spxentry{set\_tag()}\spxextra{DefaultValueEntry method}|hyperpage}{74}
+\indexentry{set\_attribute\_default() (DefaultValueEntry method)@\spxentry{set\_attribute\_default()}\spxextra{DefaultValueEntry method}|hyperpage}{74}
+\indexentry{get\_attribute\_default() (DefaultValueEntry method)@\spxentry{get\_attribute\_default()}\spxextra{DefaultValueEntry method}|hyperpage}{74}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.download\_data@\spxentry{src.osm\_configurator.model.project.configuration.download\_data}|hyperpage}{75}
+\indexentry{src.osm\_configurator.model.project.configuration.download\_data@\spxentry{src.osm\_configurator.model.project.configuration.download\_data}!module@\spxentry{module}|hyperpage}{75}
+\indexentry{DownloadData (class in src.osm\_configurator.model.project.configuration.download\_data)@\spxentry{DownloadData}\spxextra{class in src.osm\_configurator.model.project.configuration.download\_data}|hyperpage}{75}
+\indexentry{\_\_init\_\_() (DownloadData method)@\spxentry{\_\_init\_\_()}\spxextra{DownloadData method}|hyperpage}{75}
+\indexentry{download\_data() (DownloadData method)@\spxentry{download\_data()}\spxextra{DownloadData method}|hyperpage}{75}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration.osm\_data\_configuration@\spxentry{src.osm\_configurator.model.project.configuration.osm\_data\_configuration}|hyperpage}{75}
+\indexentry{src.osm\_configurator.model.project.configuration.osm\_data\_configuration@\spxentry{src.osm\_configurator.model.project.configuration.osm\_data\_configuration}!module@\spxentry{module}|hyperpage}{75}
+\indexentry{OSMDataConfiguration (class in src.osm\_configurator.model.project.configuration.osm\_data\_configuration)@\spxentry{OSMDataConfiguration}\spxextra{class in src.osm\_configurator.model.project.configuration.osm\_data\_configuration}|hyperpage}{75}
+\indexentry{\_\_init\_\_() (OSMDataConfiguration method)@\spxentry{\_\_init\_\_()}\spxextra{OSMDataConfiguration method}|hyperpage}{75}
+\indexentry{get\_osm\_data() (OSMDataConfiguration method)@\spxentry{get\_osm\_data()}\spxextra{OSMDataConfiguration method}|hyperpage}{75}
+\indexentry{set\_osm\_data() (OSMDataConfiguration method)@\spxentry{set\_osm\_data()}\spxextra{OSMDataConfiguration method}|hyperpage}{75}
+\indexentry{download\_data() (OSMDataConfiguration method)@\spxentry{download\_data()}\spxextra{OSMDataConfiguration method}|hyperpage}{75}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.configuration@\spxentry{src.osm\_configurator.model.project.configuration}|hyperpage}{76}
+\indexentry{src.osm\_configurator.model.project.configuration@\spxentry{src.osm\_configurator.model.project.configuration}!module@\spxentry{module}|hyperpage}{76}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.active\_project@\spxentry{src.osm\_configurator.model.project.active\_project}|hyperpage}{76}
+\indexentry{src.osm\_configurator.model.project.active\_project@\spxentry{src.osm\_configurator.model.project.active\_project}!module@\spxentry{module}|hyperpage}{76}
+\indexentry{ActiveProject (class in src.osm\_configurator.model.project.active\_project)@\spxentry{ActiveProject}\spxextra{class in src.osm\_configurator.model.project.active\_project}|hyperpage}{76}
+\indexentry{\_\_init\_\_() (ActiveProject method)@\spxentry{\_\_init\_\_()}\spxextra{ActiveProject method}|hyperpage}{76}
+\indexentry{create() (ActiveProject method)@\spxentry{create()}\spxextra{ActiveProject method}|hyperpage}{76}
+\indexentry{get\_last\_step() (ActiveProject method)@\spxentry{get\_last\_step()}\spxextra{ActiveProject method}|hyperpage}{76}
+\indexentry{start\_calculation() (ActiveProject method)@\spxentry{start\_calculation()}\spxextra{ActiveProject method}|hyperpage}{76}
+\indexentry{get\_project\_path() (ActiveProject method)@\spxentry{get\_project\_path()}\spxextra{ActiveProject method}|hyperpage}{77}
+\indexentry{get\_osm\_data() (ActiveProject method)@\spxentry{get\_osm\_data()}\spxextra{ActiveProject method}|hyperpage}{77}
+\indexentry{set\_osm\_data() (ActiveProject method)@\spxentry{set\_osm\_data()}\spxextra{ActiveProject method}|hyperpage}{77}
+\indexentry{get\_all\_aggregation\_methods() (ActiveProject method)@\spxentry{get\_all\_aggregation\_methods()}\spxextra{ActiveProject method}|hyperpage}{77}
+\indexentry{is\_aggregation\_method\_active() (ActiveProject method)@\spxentry{is\_aggregation\_method\_active()}\spxextra{ActiveProject method}|hyperpage}{77}
+\indexentry{set\_aggregation\_method\_active() (ActiveProject method)@\spxentry{set\_aggregation\_method\_active()}\spxextra{ActiveProject method}|hyperpage}{77}
+\indexentry{get\_cut\_out\_mode() (ActiveProject method)@\spxentry{get\_cut\_out\_mode()}\spxextra{ActiveProject method}|hyperpage}{78}
+\indexentry{set\_cut\_out\_mode() (ActiveProject method)@\spxentry{set\_cut\_out\_mode()}\spxextra{ActiveProject method}|hyperpage}{78}
+\indexentry{get\_cut\_out\_path() (ActiveProject method)@\spxentry{get\_cut\_out\_path()}\spxextra{ActiveProject method}|hyperpage}{78}
+\indexentry{set\_cut\_out\_path() (ActiveProject method)@\spxentry{set\_cut\_out\_path()}\spxextra{ActiveProject method}|hyperpage}{78}
+\indexentry{get\_category() (ActiveProject method)@\spxentry{get\_category()}\spxextra{ActiveProject method}|hyperpage}{78}
+\indexentry{get\_categories() (ActiveProject method)@\spxentry{get\_categories()}\spxextra{ActiveProject method}|hyperpage}{79}
+\indexentry{create\_category() (ActiveProject method)@\spxentry{create\_category()}\spxextra{ActiveProject method}|hyperpage}{79}
+\indexentry{remove\_category() (ActiveProject method)@\spxentry{remove\_category()}\spxextra{ActiveProject method}|hyperpage}{79}
+\indexentry{override\_categories() (ActiveProject method)@\spxentry{override\_categories()}\spxextra{ActiveProject method}|hyperpage}{79}
+\indexentry{merge\_categories() (ActiveProject method)@\spxentry{merge\_categories()}\spxextra{ActiveProject method}|hyperpage}{79}
+\indexentry{create\_map() (ActiveProject method)@\spxentry{create\_map()}\spxextra{ActiveProject method}|hyperpage}{80}
+\indexentry{create\_boxplot() (ActiveProject method)@\spxentry{create\_boxplot()}\spxextra{ActiveProject method}|hyperpage}{80}
+\indexentry{get\_location() (ActiveProject method)@\spxentry{get\_location()}\spxextra{ActiveProject method}|hyperpage}{80}
+\indexentry{set\_name() (ActiveProject method)@\spxentry{set\_name()}\spxextra{ActiveProject method}|hyperpage}{80}
+\indexentry{get\_name() (ActiveProject method)@\spxentry{get\_name()}\spxextra{ActiveProject method}|hyperpage}{80}
+\indexentry{set\_description() (ActiveProject method)@\spxentry{set\_description()}\spxextra{ActiveProject method}|hyperpage}{80}
+\indexentry{get\_description() (ActiveProject method)@\spxentry{get\_description()}\spxextra{ActiveProject method}|hyperpage}{81}
+\indexentry{export\_project() (ActiveProject method)@\spxentry{export\_project()}\spxextra{ActiveProject method}|hyperpage}{81}
+\indexentry{export\_configuration() (ActiveProject method)@\spxentry{export\_configuration()}\spxextra{ActiveProject method}|hyperpage}{81}
+\indexentry{export\_calculation() (ActiveProject method)@\spxentry{export\_calculation()}\spxextra{ActiveProject method}|hyperpage}{81}
+\indexentry{export\_map() (ActiveProject method)@\spxentry{export\_map()}\spxextra{ActiveProject method}|hyperpage}{81}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.config\_phase\_enum@\spxentry{src.osm\_configurator.model.project.config\_phase\_enum}|hyperpage}{82}
+\indexentry{src.osm\_configurator.model.project.config\_phase\_enum@\spxentry{src.osm\_configurator.model.project.config\_phase\_enum}!module@\spxentry{module}|hyperpage}{82}
+\indexentry{ConfigPhase (class in src.osm\_configurator.model.project.config\_phase\_enum)@\spxentry{ConfigPhase}\spxextra{class in src.osm\_configurator.model.project.config\_phase\_enum}|hyperpage}{82}
+\indexentry{DATA\_CONFIG\_PHASE (ConfigPhase attribute)@\spxentry{DATA\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}|hyperpage}{82}
+\indexentry{CATEGORY\_CONFIG\_PHASE (ConfigPhase attribute)@\spxentry{CATEGORY\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}|hyperpage}{82}
+\indexentry{REDUCTION\_CONFIG\_PHASE (ConfigPhase attribute)@\spxentry{REDUCTION\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}|hyperpage}{82}
+\indexentry{ATTRACTIVITY\_CONFIG\_PHASE (ConfigPhase attribute)@\spxentry{ATTRACTIVITY\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}|hyperpage}{82}
+\indexentry{AGGREGATION\_CONFIG\_PHASE (ConfigPhase attribute)@\spxentry{AGGREGATION\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}|hyperpage}{82}
+\indexentry{CALCULATION\_CONFIG\_PHASE (ConfigPhase attribute)@\spxentry{CALCULATION\_CONFIG\_PHASE}\spxextra{ConfigPhase attribute}|hyperpage}{82}
+\indexentry{get\_name() (ConfigPhase method)@\spxentry{get\_name()}\spxextra{ConfigPhase method}|hyperpage}{82}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.data\_visualizer@\spxentry{src.osm\_configurator.model.project.data\_visualizer}|hyperpage}{82}
+\indexentry{src.osm\_configurator.model.project.data\_visualizer@\spxentry{src.osm\_configurator.model.project.data\_visualizer}!module@\spxentry{module}|hyperpage}{82}
+\indexentry{DataVisualizer (class in src.osm\_configurator.model.project.data\_visualizer)@\spxentry{DataVisualizer}\spxextra{class in src.osm\_configurator.model.project.data\_visualizer}|hyperpage}{82}
+\indexentry{\_\_init\_\_() (DataVisualizer method)@\spxentry{\_\_init\_\_()}\spxextra{DataVisualizer method}|hyperpage}{82}
+\indexentry{create\_map() (DataVisualizer method)@\spxentry{create\_map()}\spxextra{DataVisualizer method}|hyperpage}{82}
+\indexentry{create\_boxplot() (DataVisualizer method)@\spxentry{create\_boxplot()}\spxextra{DataVisualizer method}|hyperpage}{83}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.export@\spxentry{src.osm\_configurator.model.project.export}|hyperpage}{83}
+\indexentry{src.osm\_configurator.model.project.export@\spxentry{src.osm\_configurator.model.project.export}!module@\spxentry{module}|hyperpage}{83}
+\indexentry{Export (class in src.osm\_configurator.model.project.export)@\spxentry{Export}\spxextra{class in src.osm\_configurator.model.project.export}|hyperpage}{83}
+\indexentry{\_\_init\_\_() (Export method)@\spxentry{\_\_init\_\_()}\spxextra{Export method}|hyperpage}{83}
+\indexentry{export\_project() (Export method)@\spxentry{export\_project()}\spxextra{Export method}|hyperpage}{83}
+\indexentry{export\_configuration() (Export method)@\spxentry{export\_configuration()}\spxextra{Export method}|hyperpage}{83}
+\indexentry{export\_calculation() (Export method)@\spxentry{export\_calculation()}\spxextra{Export method}|hyperpage}{83}
+\indexentry{export\_map() (Export method)@\spxentry{export\_map()}\spxextra{Export method}|hyperpage}{84}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.project\_io\_handler@\spxentry{src.osm\_configurator.model.project.project\_io\_handler}|hyperpage}{84}
+\indexentry{src.osm\_configurator.model.project.project\_io\_handler@\spxentry{src.osm\_configurator.model.project.project\_io\_handler}!module@\spxentry{module}|hyperpage}{84}
+\indexentry{ProjectIOHandler (class in src.osm\_configurator.model.project.project\_io\_handler)@\spxentry{ProjectIOHandler}\spxextra{class in src.osm\_configurator.model.project.project\_io\_handler}|hyperpage}{84}
+\indexentry{\_\_init\_\_() (ProjectIOHandler method)@\spxentry{\_\_init\_\_()}\spxextra{ProjectIOHandler method}|hyperpage}{84}
+\indexentry{build\_project() (ProjectIOHandler method)@\spxentry{build\_project()}\spxextra{ProjectIOHandler method}|hyperpage}{84}
+\indexentry{load\_project() (ProjectIOHandler method)@\spxentry{load\_project()}\spxextra{ProjectIOHandler method}|hyperpage}{84}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.project\_saver@\spxentry{src.osm\_configurator.model.project.project\_saver}|hyperpage}{85}
+\indexentry{src.osm\_configurator.model.project.project\_saver@\spxentry{src.osm\_configurator.model.project.project\_saver}!module@\spxentry{module}|hyperpage}{85}
+\indexentry{ProjectSaver (class in src.osm\_configurator.model.project.project\_saver)@\spxentry{ProjectSaver}\spxextra{class in src.osm\_configurator.model.project.project\_saver}|hyperpage}{85}
+\indexentry{\_\_init\_\_() (ProjectSaver method)@\spxentry{\_\_init\_\_()}\spxextra{ProjectSaver method}|hyperpage}{85}
+\indexentry{save\_project() (ProjectSaver method)@\spxentry{save\_project()}\spxextra{ProjectSaver method}|hyperpage}{85}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project.project\_settings@\spxentry{src.osm\_configurator.model.project.project\_settings}|hyperpage}{85}
+\indexentry{src.osm\_configurator.model.project.project\_settings@\spxentry{src.osm\_configurator.model.project.project\_settings}!module@\spxentry{module}|hyperpage}{85}
+\indexentry{ProjectSettings (class in src.osm\_configurator.model.project.project\_settings)@\spxentry{ProjectSettings}\spxextra{class in src.osm\_configurator.model.project.project\_settings}|hyperpage}{85}
+\indexentry{\_\_init\_\_() (ProjectSettings method)@\spxentry{\_\_init\_\_()}\spxextra{ProjectSettings method}|hyperpage}{85}
+\indexentry{get\_location() (ProjectSettings method)@\spxentry{get\_location()}\spxextra{ProjectSettings method}|hyperpage}{85}
+\indexentry{set\_location() (ProjectSettings method)@\spxentry{set\_location()}\spxextra{ProjectSettings method}|hyperpage}{85}
+\indexentry{set\_name() (ProjectSettings method)@\spxentry{set\_name()}\spxextra{ProjectSettings method}|hyperpage}{86}
+\indexentry{get\_name() (ProjectSettings method)@\spxentry{get\_name()}\spxextra{ProjectSettings method}|hyperpage}{86}
+\indexentry{set\_description() (ProjectSettings method)@\spxentry{set\_description()}\spxextra{ProjectSettings method}|hyperpage}{86}
+\indexentry{get\_description() (ProjectSettings method)@\spxentry{get\_description()}\spxextra{ProjectSettings method}|hyperpage}{86}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model.project@\spxentry{src.osm\_configurator.model.project}|hyperpage}{87}
+\indexentry{src.osm\_configurator.model.project@\spxentry{src.osm\_configurator.model.project}!module@\spxentry{module}|hyperpage}{87}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.model@\spxentry{src.osm\_configurator.model}|hyperpage}{87}
+\indexentry{src.osm\_configurator.model@\spxentry{src.osm\_configurator.model}!module@\spxentry{module}|hyperpage}{87}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.popups.alert\_pop\_up@\spxentry{src.osm\_configurator.view.popups.alert\_pop\_up}|hyperpage}{87}
+\indexentry{src.osm\_configurator.view.popups.alert\_pop\_up@\spxentry{src.osm\_configurator.view.popups.alert\_pop\_up}!module@\spxentry{module}|hyperpage}{87}
+\indexentry{AlertPopUp (class in src.osm\_configurator.view.popups.alert\_pop\_up)@\spxentry{AlertPopUp}\spxextra{class in src.osm\_configurator.view.popups.alert\_pop\_up}|hyperpage}{87}
+\indexentry{\_\_init\_\_() (AlertPopUp method)@\spxentry{\_\_init\_\_()}\spxextra{AlertPopUp method}|hyperpage}{87}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.popups.yes\_no\_pop\_up@\spxentry{src.osm\_configurator.view.popups.yes\_no\_pop\_up}|hyperpage}{87}
+\indexentry{src.osm\_configurator.view.popups.yes\_no\_pop\_up@\spxentry{src.osm\_configurator.view.popups.yes\_no\_pop\_up}!module@\spxentry{module}|hyperpage}{87}
+\indexentry{YesNoPopUp (class in src.osm\_configurator.view.popups.yes\_no\_pop\_up)@\spxentry{YesNoPopUp}\spxextra{class in src.osm\_configurator.view.popups.yes\_no\_pop\_up}|hyperpage}{87}
+\indexentry{\_\_init\_\_() (YesNoPopUp method)@\spxentry{\_\_init\_\_()}\spxextra{YesNoPopUp method}|hyperpage}{87}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.popups@\spxentry{src.osm\_configurator.view.popups}|hyperpage}{88}
+\indexentry{src.osm\_configurator.view.popups@\spxentry{src.osm\_configurator.view.popups}!module@\spxentry{module}|hyperpage}{88}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.states.main\_window@\spxentry{src.osm\_configurator.view.states.main\_window}|hyperpage}{88}
+\indexentry{src.osm\_configurator.view.states.main\_window@\spxentry{src.osm\_configurator.view.states.main\_window}!module@\spxentry{module}|hyperpage}{88}
+\indexentry{MainWindow (class in src.osm\_configurator.view.states.main\_window)@\spxentry{MainWindow}\spxextra{class in src.osm\_configurator.view.states.main\_window}|hyperpage}{88}
+\indexentry{\_\_init\_\_() (MainWindow method)@\spxentry{\_\_init\_\_()}\spxextra{MainWindow method}|hyperpage}{88}
+\indexentry{change\_state() (MainWindow method)@\spxentry{change\_state()}\spxextra{MainWindow method}|hyperpage}{88}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.states.positioned\_frame@\spxentry{src.osm\_configurator.view.states.positioned\_frame}|hyperpage}{88}
+\indexentry{src.osm\_configurator.view.states.positioned\_frame@\spxentry{src.osm\_configurator.view.states.positioned\_frame}!module@\spxentry{module}|hyperpage}{88}
+\indexentry{PositionedFrame (class in src.osm\_configurator.view.states.positioned\_frame)@\spxentry{PositionedFrame}\spxextra{class in src.osm\_configurator.view.states.positioned\_frame}|hyperpage}{88}
+\indexentry{\_\_init\_\_() (PositionedFrame method)@\spxentry{\_\_init\_\_()}\spxextra{PositionedFrame method}|hyperpage}{88}
+\indexentry{get\_frame() (PositionedFrame method)@\spxentry{get\_frame()}\spxextra{PositionedFrame method}|hyperpage}{89}
+\indexentry{get\_column() (PositionedFrame method)@\spxentry{get\_column()}\spxextra{PositionedFrame method}|hyperpage}{89}
+\indexentry{get\_line() (PositionedFrame method)@\spxentry{get\_line()}\spxextra{PositionedFrame method}|hyperpage}{89}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.states.state@\spxentry{src.osm\_configurator.view.states.state}|hyperpage}{89}
+\indexentry{src.osm\_configurator.view.states.state@\spxentry{src.osm\_configurator.view.states.state}!module@\spxentry{module}|hyperpage}{89}
+\indexentry{State (class in src.osm\_configurator.view.states.state)@\spxentry{State}\spxextra{class in src.osm\_configurator.view.states.state}|hyperpage}{89}
+\indexentry{\_\_init\_\_() (State method)@\spxentry{\_\_init\_\_()}\spxextra{State method}|hyperpage}{89}
+\indexentry{get\_active\_frames() (State method)@\spxentry{get\_active\_frames()}\spxextra{State method}|hyperpage}{89}
+\indexentry{get\_default\_left() (State method)@\spxentry{get\_default\_left()}\spxextra{State method}|hyperpage}{90}
+\indexentry{get\_default\_right() (State method)@\spxentry{get\_default\_right()}\spxextra{State method}|hyperpage}{90}
+\indexentry{get\_state\_name() (State method)@\spxentry{get\_state\_name()}\spxextra{State method}|hyperpage}{90}
+\indexentry{equals() (State method)@\spxentry{equals()}\spxextra{State method}|hyperpage}{90}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.states.state\_manager@\spxentry{src.osm\_configurator.view.states.state\_manager}|hyperpage}{90}
+\indexentry{src.osm\_configurator.view.states.state\_manager@\spxentry{src.osm\_configurator.view.states.state\_manager}!module@\spxentry{module}|hyperpage}{90}
+\indexentry{StateManager (class in src.osm\_configurator.view.states.state\_manager)@\spxentry{StateManager}\spxextra{class in src.osm\_configurator.view.states.state\_manager}|hyperpage}{90}
+\indexentry{\_\_init\_\_() (StateManager method)@\spxentry{\_\_init\_\_()}\spxextra{StateManager method}|hyperpage}{90}
+\indexentry{default\_go\_right() (StateManager method)@\spxentry{default\_go\_right()}\spxextra{StateManager method}|hyperpage}{91}
+\indexentry{default\_go\_left() (StateManager method)@\spxentry{default\_go\_left()}\spxextra{StateManager method}|hyperpage}{91}
+\indexentry{change\_state() (StateManager method)@\spxentry{change\_state()}\spxextra{StateManager method}|hyperpage}{91}
+\indexentry{get\_state() (StateManager method)@\spxentry{get\_state()}\spxextra{StateManager method}|hyperpage}{91}
+\indexentry{close\_program() (StateManager method)@\spxentry{close\_program()}\spxextra{StateManager method}|hyperpage}{91}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.states.state\_name\_enum@\spxentry{src.osm\_configurator.view.states.state\_name\_enum}|hyperpage}{91}
+\indexentry{src.osm\_configurator.view.states.state\_name\_enum@\spxentry{src.osm\_configurator.view.states.state\_name\_enum}!module@\spxentry{module}|hyperpage}{91}
+\indexentry{StateName (class in src.osm\_configurator.view.states.state\_name\_enum)@\spxentry{StateName}\spxextra{class in src.osm\_configurator.view.states.state\_name\_enum}|hyperpage}{91}
+\indexentry{MAIN\_MENU (StateName attribute)@\spxentry{MAIN\_MENU}\spxextra{StateName attribute}|hyperpage}{91}
+\indexentry{CREATE\_PROJECT (StateName attribute)@\spxentry{CREATE\_PROJECT}\spxextra{StateName attribute}|hyperpage}{91}
+\indexentry{DATA (StateName attribute)@\spxentry{DATA}\spxextra{StateName attribute}|hyperpage}{91}
+\indexentry{CATEGORY (StateName attribute)@\spxentry{CATEGORY}\spxextra{StateName attribute}|hyperpage}{92}
+\indexentry{REDUCTION (StateName attribute)@\spxentry{REDUCTION}\spxextra{StateName attribute}|hyperpage}{92}
+\indexentry{ATTRACTIVITY\_EDIT (StateName attribute)@\spxentry{ATTRACTIVITY\_EDIT}\spxextra{StateName attribute}|hyperpage}{92}
+\indexentry{ATTRACTIVITY\_VIEW (StateName attribute)@\spxentry{ATTRACTIVITY\_VIEW}\spxextra{StateName attribute}|hyperpage}{92}
+\indexentry{AGGREGATION (StateName attribute)@\spxentry{AGGREGATION}\spxextra{StateName attribute}|hyperpage}{92}
+\indexentry{CALCULATION (StateName attribute)@\spxentry{CALCULATION}\spxextra{StateName attribute}|hyperpage}{92}
+\indexentry{SETTINGS (StateName attribute)@\spxentry{SETTINGS}\spxextra{StateName attribute}|hyperpage}{92}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.states@\spxentry{src.osm\_configurator.view.states}|hyperpage}{92}
+\indexentry{src.osm\_configurator.view.states@\spxentry{src.osm\_configurator.view.states}!module@\spxentry{module}|hyperpage}{92}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.aggregation\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.aggregation\_frame}|hyperpage}{92}
+\indexentry{src.osm\_configurator.view.toplevelframes.aggregation\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.aggregation\_frame}!module@\spxentry{module}|hyperpage}{92}
+\indexentry{AggregationFrame (class in src.osm\_configurator.view.toplevelframes.aggregation\_frame)@\spxentry{AggregationFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.aggregation\_frame}|hyperpage}{92}
+\indexentry{\_\_init\_\_() (AggregationFrame method)@\spxentry{\_\_init\_\_()}\spxextra{AggregationFrame method}|hyperpage}{92}
+\indexentry{activate() (AggregationFrame method)@\spxentry{activate()}\spxextra{AggregationFrame method}|hyperpage}{92}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame}|hyperpage}{93}
+\indexentry{src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame}!module@\spxentry{module}|hyperpage}{93}
+\indexentry{AttractivityEditFrame (class in src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame)@\spxentry{AttractivityEditFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame}|hyperpage}{93}
+\indexentry{\_\_init\_\_() (AttractivityEditFrame method)@\spxentry{\_\_init\_\_()}\spxextra{AttractivityEditFrame method}|hyperpage}{93}
+\indexentry{activate() (AttractivityEditFrame method)@\spxentry{activate()}\spxextra{AttractivityEditFrame method}|hyperpage}{93}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame}|hyperpage}{93}
+\indexentry{src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame}!module@\spxentry{module}|hyperpage}{93}
+\indexentry{AttractivityViewFrame (class in src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame)@\spxentry{AttractivityViewFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame}|hyperpage}{93}
+\indexentry{\_\_init\_\_() (AttractivityViewFrame method)@\spxentry{\_\_init\_\_()}\spxextra{AttractivityViewFrame method}|hyperpage}{93}
+\indexentry{activate() (AttractivityViewFrame method)@\spxentry{activate()}\spxextra{AttractivityViewFrame method}|hyperpage}{93}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.calculation\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.calculation\_frame}|hyperpage}{94}
+\indexentry{src.osm\_configurator.view.toplevelframes.calculation\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.calculation\_frame}!module@\spxentry{module}|hyperpage}{94}
+\indexentry{CalculationFrame (class in src.osm\_configurator.view.toplevelframes.calculation\_frame)@\spxentry{CalculationFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.calculation\_frame}|hyperpage}{94}
+\indexentry{\_\_init\_\_() (CalculationFrame method)@\spxentry{\_\_init\_\_()}\spxextra{CalculationFrame method}|hyperpage}{94}
+\indexentry{activate() (CalculationFrame method)@\spxentry{activate()}\spxextra{CalculationFrame method}|hyperpage}{94}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.category\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.category\_frame}|hyperpage}{94}
+\indexentry{src.osm\_configurator.view.toplevelframes.category\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.category\_frame}!module@\spxentry{module}|hyperpage}{94}
+\indexentry{CategoryFrame (class in src.osm\_configurator.view.toplevelframes.category\_frame)@\spxentry{CategoryFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.category\_frame}|hyperpage}{94}
+\indexentry{\_\_init\_\_() (CategoryFrame method)@\spxentry{\_\_init\_\_()}\spxextra{CategoryFrame method}|hyperpage}{94}
+\indexentry{activate() (CategoryFrame method)@\spxentry{activate()}\spxextra{CategoryFrame method}|hyperpage}{94}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.create\_project\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.create\_project\_frame}|hyperpage}{95}
+\indexentry{src.osm\_configurator.view.toplevelframes.create\_project\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.create\_project\_frame}!module@\spxentry{module}|hyperpage}{95}
+\indexentry{CreateProjectFrame (class in src.osm\_configurator.view.toplevelframes.create\_project\_frame)@\spxentry{CreateProjectFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.create\_project\_frame}|hyperpage}{95}
+\indexentry{\_\_init\_\_() (CreateProjectFrame method)@\spxentry{\_\_init\_\_()}\spxextra{CreateProjectFrame method}|hyperpage}{95}
+\indexentry{activate() (CreateProjectFrame method)@\spxentry{activate()}\spxextra{CreateProjectFrame method}|hyperpage}{95}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.data\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.data\_frame}|hyperpage}{95}
+\indexentry{src.osm\_configurator.view.toplevelframes.data\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.data\_frame}!module@\spxentry{module}|hyperpage}{95}
+\indexentry{DataFrame (class in src.osm\_configurator.view.toplevelframes.data\_frame)@\spxentry{DataFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.data\_frame}|hyperpage}{95}
+\indexentry{\_\_init\_\_() (DataFrame method)@\spxentry{\_\_init\_\_()}\spxextra{DataFrame method}|hyperpage}{95}
+\indexentry{activate() (DataFrame method)@\spxentry{activate()}\spxextra{DataFrame method}|hyperpage}{95}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.main\_menu\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.main\_menu\_frame}|hyperpage}{96}
+\indexentry{src.osm\_configurator.view.toplevelframes.main\_menu\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.main\_menu\_frame}!module@\spxentry{module}|hyperpage}{96}
+\indexentry{MainMenuFrame (class in src.osm\_configurator.view.toplevelframes.main\_menu\_frame)@\spxentry{MainMenuFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.main\_menu\_frame}|hyperpage}{96}
+\indexentry{\_\_init\_\_() (MainMenuFrame method)@\spxentry{\_\_init\_\_()}\spxextra{MainMenuFrame method}|hyperpage}{96}
+\indexentry{activate() (MainMenuFrame method)@\spxentry{activate()}\spxextra{MainMenuFrame method}|hyperpage}{96}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.project\_foot\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.project\_foot\_frame}|hyperpage}{96}
+\indexentry{src.osm\_configurator.view.toplevelframes.project\_foot\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.project\_foot\_frame}!module@\spxentry{module}|hyperpage}{96}
+\indexentry{ProjectFootFrame (class in src.osm\_configurator.view.toplevelframes.project\_foot\_frame)@\spxentry{ProjectFootFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.project\_foot\_frame}|hyperpage}{96}
+\indexentry{\_\_init\_\_() (ProjectFootFrame method)@\spxentry{\_\_init\_\_()}\spxextra{ProjectFootFrame method}|hyperpage}{96}
+\indexentry{activate() (ProjectFootFrame method)@\spxentry{activate()}\spxextra{ProjectFootFrame method}|hyperpage}{96}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.project\_head\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.project\_head\_frame}|hyperpage}{97}
+\indexentry{src.osm\_configurator.view.toplevelframes.project\_head\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.project\_head\_frame}!module@\spxentry{module}|hyperpage}{97}
+\indexentry{ProjectHeadFrame (class in src.osm\_configurator.view.toplevelframes.project\_head\_frame)@\spxentry{ProjectHeadFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.project\_head\_frame}|hyperpage}{97}
+\indexentry{\_\_init\_\_() (ProjectHeadFrame method)@\spxentry{\_\_init\_\_()}\spxextra{ProjectHeadFrame method}|hyperpage}{97}
+\indexentry{activate() (ProjectHeadFrame method)@\spxentry{activate()}\spxextra{ProjectHeadFrame method}|hyperpage}{97}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.reduction\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.reduction\_frame}|hyperpage}{97}
+\indexentry{src.osm\_configurator.view.toplevelframes.reduction\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.reduction\_frame}!module@\spxentry{module}|hyperpage}{97}
+\indexentry{ReductionFrame (class in src.osm\_configurator.view.toplevelframes.reduction\_frame)@\spxentry{ReductionFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.reduction\_frame}|hyperpage}{97}
+\indexentry{\_\_init\_\_() (ReductionFrame method)@\spxentry{\_\_init\_\_()}\spxextra{ReductionFrame method}|hyperpage}{97}
+\indexentry{activate() (ReductionFrame method)@\spxentry{activate()}\spxextra{ReductionFrame method}|hyperpage}{97}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.settings\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.settings\_frame}|hyperpage}{98}
+\indexentry{src.osm\_configurator.view.toplevelframes.settings\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.settings\_frame}!module@\spxentry{module}|hyperpage}{98}
+\indexentry{SettingsFrame (class in src.osm\_configurator.view.toplevelframes.settings\_frame)@\spxentry{SettingsFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.settings\_frame}|hyperpage}{98}
+\indexentry{\_\_init\_\_() (SettingsFrame method)@\spxentry{\_\_init\_\_()}\spxextra{SettingsFrame method}|hyperpage}{98}
+\indexentry{activate() (SettingsFrame method)@\spxentry{activate()}\spxextra{SettingsFrame method}|hyperpage}{98}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes.top\_level\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.top\_level\_frame}|hyperpage}{98}
+\indexentry{src.osm\_configurator.view.toplevelframes.top\_level\_frame@\spxentry{src.osm\_configurator.view.toplevelframes.top\_level\_frame}!module@\spxentry{module}|hyperpage}{98}
+\indexentry{TopLevelFrame (class in src.osm\_configurator.view.toplevelframes.top\_level\_frame)@\spxentry{TopLevelFrame}\spxextra{class in src.osm\_configurator.view.toplevelframes.top\_level\_frame}|hyperpage}{98}
+\indexentry{\_\_init\_\_() (TopLevelFrame method)@\spxentry{\_\_init\_\_()}\spxextra{TopLevelFrame method}|hyperpage}{98}
+\indexentry{activate() (TopLevelFrame method)@\spxentry{activate()}\spxextra{TopLevelFrame method}|hyperpage}{98}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes@\spxentry{src.osm\_configurator.view.toplevelframes}|hyperpage}{99}
+\indexentry{src.osm\_configurator.view.toplevelframes@\spxentry{src.osm\_configurator.view.toplevelframes}!module@\spxentry{module}|hyperpage}{99}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.export\_frame@\spxentry{src.osm\_configurator.view.utilityframes.export\_frame}|hyperpage}{99}
+\indexentry{src.osm\_configurator.view.utilityframes.export\_frame@\spxentry{src.osm\_configurator.view.utilityframes.export\_frame}!module@\spxentry{module}|hyperpage}{99}
+\indexentry{ExportFrame (class in src.osm\_configurator.view.utilityframes.export\_frame)@\spxentry{ExportFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.export\_frame}|hyperpage}{99}
+\indexentry{\_\_init\_\_() (ExportFrame method)@\spxentry{\_\_init\_\_()}\spxextra{ExportFrame method}|hyperpage}{99}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame@\spxentry{src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame}|hyperpage}{99}
+\indexentry{src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame@\spxentry{src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame}!module@\spxentry{module}|hyperpage}{99}
+\indexentry{ReductionCalculationFrame (class in src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame)@\spxentry{ReductionCalculationFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame}|hyperpage}{99}
+\indexentry{\_\_init\_\_() (ReductionCalculationFrame method)@\spxentry{\_\_init\_\_()}\spxextra{ReductionCalculationFrame method}|hyperpage}{99}
+\indexentry{activate() (ReductionCalculationFrame method)@\spxentry{activate()}\spxextra{ReductionCalculationFrame method}|hyperpage}{99}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame@\spxentry{src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame}|hyperpage}{100}
+\indexentry{src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame@\spxentry{src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame}!module@\spxentry{module}|hyperpage}{100}
+\indexentry{ReductionDefaultValueFrame (class in src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame)@\spxentry{ReductionDefaultValueFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame}|hyperpage}{100}
+\indexentry{\_\_init\_\_() (ReductionDefaultValueFrame method)@\spxentry{\_\_init\_\_()}\spxextra{ReductionDefaultValueFrame method}|hyperpage}{100}
+\indexentry{activate() (ReductionDefaultValueFrame method)@\spxentry{activate()}\spxextra{ReductionDefaultValueFrame method}|hyperpage}{100}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.settings\_application\_frame@\spxentry{src.osm\_configurator.view.utilityframes.settings\_application\_frame}|hyperpage}{100}
+\indexentry{src.osm\_configurator.view.utilityframes.settings\_application\_frame@\spxentry{src.osm\_configurator.view.utilityframes.settings\_application\_frame}!module@\spxentry{module}|hyperpage}{100}
+\indexentry{SettingsApplicationFrame (class in src.osm\_configurator.view.utilityframes.settings\_application\_frame)@\spxentry{SettingsApplicationFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.settings\_application\_frame}|hyperpage}{100}
+\indexentry{\_\_init\_\_() (SettingsApplicationFrame method)@\spxentry{\_\_init\_\_()}\spxextra{SettingsApplicationFrame method}|hyperpage}{100}
+\indexentry{activate() (SettingsApplicationFrame method)@\spxentry{activate()}\spxextra{SettingsApplicationFrame method}|hyperpage}{100}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.settings\_project\_frame@\spxentry{src.osm\_configurator.view.utilityframes.settings\_project\_frame}|hyperpage}{101}
+\indexentry{src.osm\_configurator.view.utilityframes.settings\_project\_frame@\spxentry{src.osm\_configurator.view.utilityframes.settings\_project\_frame}!module@\spxentry{module}|hyperpage}{101}
+\indexentry{SettingsProjectFrame (class in src.osm\_configurator.view.utilityframes.settings\_project\_frame)@\spxentry{SettingsProjectFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.settings\_project\_frame}|hyperpage}{101}
+\indexentry{\_\_init\_\_() (SettingsProjectFrame method)@\spxentry{\_\_init\_\_()}\spxextra{SettingsProjectFrame method}|hyperpage}{101}
+\indexentry{activate() (SettingsProjectFrame method)@\spxentry{activate()}\spxextra{SettingsProjectFrame method}|hyperpage}{101}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.tag\_list\_frame@\spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_frame}|hyperpage}{101}
+\indexentry{src.osm\_configurator.view.utilityframes.tag\_list\_frame@\spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_frame}!module@\spxentry{module}|hyperpage}{101}
+\indexentry{TagListFrame (class in src.osm\_configurator.view.utilityframes.tag\_list\_frame)@\spxentry{TagListFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.tag\_list\_frame}|hyperpage}{101}
+\indexentry{\_\_init\_\_() (TagListFrame method)@\spxentry{\_\_init\_\_()}\spxextra{TagListFrame method}|hyperpage}{101}
+\indexentry{set\_text\_list() (TagListFrame method)@\spxentry{set\_text\_list()}\spxextra{TagListFrame method}|hyperpage}{101}
+\indexentry{get\_text\_list() (TagListFrame method)@\spxentry{get\_text\_list()}\spxextra{TagListFrame method}|hyperpage}{101}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame@\spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame}|hyperpage}{102}
+\indexentry{src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame@\spxentry{src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame}!module@\spxentry{module}|hyperpage}{102}
+\indexentry{TagListPriorityFrame (class in src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame)@\spxentry{TagListPriorityFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame}|hyperpage}{102}
+\indexentry{\_\_init\_\_() (TagListPriorityFrame method)@\spxentry{\_\_init\_\_()}\spxextra{TagListPriorityFrame method}|hyperpage}{102}
+\indexentry{set\_tag\_list() (TagListPriorityFrame method)@\spxentry{set\_tag\_list()}\spxextra{TagListPriorityFrame method}|hyperpage}{102}
+\indexentry{get\_tag\_list() (TagListPriorityFrame method)@\spxentry{get\_tag\_list()}\spxextra{TagListPriorityFrame method}|hyperpage}{102}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view.utilityframes@\spxentry{src.osm\_configurator.view.utilityframes}|hyperpage}{102}
+\indexentry{src.osm\_configurator.view.utilityframes@\spxentry{src.osm\_configurator.view.utilityframes}!module@\spxentry{module}|hyperpage}{102}
+\indexentry{module@\spxentry{module}!src.osm\_configurator.view@\spxentry{src.osm\_configurator.view}|hyperpage}{102}
+\indexentry{src.osm\_configurator.view@\spxentry{src.osm\_configurator.view}!module@\spxentry{module}|hyperpage}{102}
+\indexentry{module@\spxentry{module}!src.osm\_configurator@\spxentry{src.osm\_configurator}|hyperpage}{102}
+\indexentry{src.osm\_configurator@\spxentry{src.osm\_configurator}!module@\spxentry{module}|hyperpage}{102}
+\indexentry{module@\spxentry{module}!src@\spxentry{src}|hyperpage}{102}
+\indexentry{src@\spxentry{src}!module@\spxentry{module}|hyperpage}{102}

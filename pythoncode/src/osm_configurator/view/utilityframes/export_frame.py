@@ -12,10 +12,10 @@ class ExportFrame:
 
     def __init__(self, parent_frame, control):
         """
-        This method creates an ExportFrame, that provides the user with different export options.
+        This method creates an ExportFrame that provides the user with different export options.
 
         Args:
-            parent_frame (project_head_frame.ProjectHeadFrame): The parent of the ExportFrame is the HeadFrame, where the export feature is located.
-            control (control_interface.IControl): The control the frame calls, to gain access to the model to export.
+            parent_frame (project_head_frame.ProjectHeadFrame): The parent of the ExportFrame is the HeadFrame where the export feature is located.
+            control (control_interface.IControl): The control the frame calls to gain access to the model to export.
         """
         pass

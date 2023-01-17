@@ -5,7 +5,7 @@ import src.osm_configurator.control.control_interface
 class ReductionDefaultValueFrame:
     """
     This frame shows a list of tags in a priority order, that can be expanded by adding or removing tags.
-    These tags can hold default values on attributes, that can be used in the calculation.
+    These tags can hold default values on attributes that can be used in the calculation.
     """
 
     def __init__(self, parent, control):
@@ -15,7 +15,7 @@ class ReductionDefaultValueFrame:
 
         Args:
             parent (reduction_frame.ReductionFrame): This is the parent frame of this frame. The frame will be located here.
-            control (control_interface.IControl): The control the frame calls, to gain access to the model.
+            control (control_interface.IControl): The control the frame calls to gain access to the model.
         """
         pass
 
@@ -24,6 +24,6 @@ class ReductionDefaultValueFrame:
         Tells the current frame to activate and collect all the data it needs.
 
         Returns:
-            bool: True, if activation was successful, false else
+            bool: True, if activation was successful, otherwise false.
         """
         pass

@@ -24,10 +24,10 @@ class CalculationController:
         The calculation process is split in different calculation phases. This function starts the calculation in a given phase.
 
         Args:
-            starting_phase (calculation_phase_enum.CalculationPhase): The phase, in which the calculation should start
+            starting_phase (calculation_phase_enum.CalculationPhase): The phase in which the calculation should start.
 
         Returns:
-            calculation_state_enum.CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState
+            calculation_state_enum.CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState.
         """
         pass
 
@@ -45,7 +45,7 @@ class CalculationController:
         Returns the calculation phase of the currently selected project.
 
         Returns:
-            calculation_phase_enum.CalculationPhase: The phase, that is currently running. NONE, if no phase is currently running.
+            calculation_phase_enum.CalculationPhase: The phase that is currently running. NONE, if no phase is currently running.
         """
         pass
 

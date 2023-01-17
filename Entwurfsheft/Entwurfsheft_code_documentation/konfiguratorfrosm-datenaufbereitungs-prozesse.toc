@@ -1,0 +1,146 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{\numberline {1}KonfiguratorFuerOSMDaten}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Installation}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Usage}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}License}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Contribution}{2}{section.1.4}%
+\contentsline {chapter}{\numberline {2}User Manual}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Installation}{3}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Installation for local development}{3}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Testing KonfiguratorFuerOSMDaten}{3}{subsection.2.1.2}%
+\contentsline {section}{\numberline {2.2}The KonfiguratorFuerOSMDaten Manual}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Introduction}{4}{subsection.2.2.1}%
+\contentsline {chapter}{\numberline {3}Class Descriptions}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}src}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}src package}{5}{subsection.3.1.1}%
+\contentsline {subsubsection}{Subpackages}{5}{subsubsection*.3}%
+\contentsline {paragraph}{src.osm\_configurator package}{5}{paragraph*.4}%
+\contentsline {subparagraph}{Subpackages}{5}{subparagraph*.5}%
+\contentsline {subparagraph}{src.osm\_configurator.control package}{5}{subparagraph*.6}%
+\contentsline {subparagraph}{Submodules}{5}{subparagraph*.7}%
+\contentsline {subparagraph}{src.osm\_configurator.control.aggregation\_controller module}{5}{subparagraph*.8}%
+\contentsline {subparagraph}{src.osm\_configurator.control.application\_controller module}{6}{subparagraph*.14}%
+\contentsline {subparagraph}{src.osm\_configurator.control.calculation\_controller module}{7}{subparagraph*.18}%
+\contentsline {subparagraph}{src.osm\_configurator.control.category\_controller module}{8}{subparagraph*.26}%
+\contentsline {subparagraph}{src.osm\_configurator.control.control module}{9}{subparagraph*.36}%
+\contentsline {subparagraph}{src.osm\_configurator.control.control\_interface module}{18}{subparagraph*.79}%
+\contentsline {subparagraph}{src.osm\_configurator.control.cut\_out\_controller module}{26}{subparagraph*.123}%
+\contentsline {subparagraph}{src.osm\_configurator.control.data\_visualization\_controller module}{27}{subparagraph*.130}%
+\contentsline {subparagraph}{src.osm\_configurator.control.export\_controller module}{28}{subparagraph*.135}%
+\contentsline {subparagraph}{src.osm\_configurator.control.osm\_data\_controller module}{29}{subparagraph*.142}%
+\contentsline {subparagraph}{src.osm\_configurator.control.project\_controller module}{30}{subparagraph*.148}%
+\contentsline {subparagraph}{src.osm\_configurator.control.settings\_controller module}{32}{subparagraph*.159}%
+\contentsline {subparagraph}{Module contents}{33}{subparagraph*.168}%
+\contentsline {subparagraph}{src.osm\_configurator.model package}{33}{subparagraph*.169}%
+\contentsline {subparagraph}{Subpackages}{33}{subparagraph*.170}%
+\contentsline {subparagraph}{src.osm\_configurator.model.application package}{33}{subparagraph*.171}%
+\contentsline {subparagraph}{Submodules}{33}{subparagraph*.172}%
+\contentsline {subparagraph}{src.osm\_configurator.model.application.application module}{33}{subparagraph*.173}%
+\contentsline {subparagraph}{src.osm\_configurator.model.application.application\_interface module}{39}{subparagraph*.207}%
+\contentsline {subparagraph}{src.osm\_configurator.model.application.application\_settings module}{45}{subparagraph*.242}%
+\contentsline {subparagraph}{src.osm\_configurator.model.application.passive\_project module}{46}{subparagraph*.247}%
+\contentsline {subparagraph}{src.osm\_configurator.model.application.recommender\_system module}{47}{subparagraph*.254}%
+\contentsline {subparagraph}{Module contents}{47}{subparagraph*.258}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser package}{47}{subparagraph*.259}%
+\contentsline {subparagraph}{Submodules}{47}{subparagraph*.260}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.calculation\_parser module}{47}{subparagraph*.261}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.calculation\_parser\_interface module}{48}{subparagraph*.265}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.category\_parser module}{48}{subparagraph*.268}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.category\_parser\_interface module}{49}{subparagraph*.272}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.cutOut\_parser module}{49}{subparagraph*.275}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.cutOut\_parser\_interface module}{50}{subparagraph*.278}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.osm\_data\_parser module}{50}{subparagraph*.281}%
+\contentsline {subparagraph}{src.osm\_configurator.model.parser.osm\_data\_parser\_interface module}{51}{subparagraph*.285}%
+\contentsline {subparagraph}{Module contents}{51}{subparagraph*.288}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project package}{51}{subparagraph*.289}%
+\contentsline {subparagraph}{Subpackages}{51}{subparagraph*.290}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation package}{51}{subparagraph*.291}%
+\contentsline {subparagraph}{Submodules}{51}{subparagraph*.292}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.aggregation\_method\_enum module}{51}{subparagraph*.293}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.aggregation\_phase module}{52}{subparagraph*.304}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.attractivity\_phase module}{53}{subparagraph*.307}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.building\_on\_edge\_manager module}{53}{subparagraph*.310}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.calculation\_manager module}{54}{subparagraph*.314}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.calculation\_phase\_enum module}{54}{subparagraph*.319}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.calculation\_phase\_interface module}{55}{subparagraph*.330}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.calculation\_state\_enum module}{56}{subparagraph*.333}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.geo\_data\_phase module}{57}{subparagraph*.344}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.osm\_file\_converter module}{57}{subparagraph*.347}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.osm\_file\_format\_enum module}{58}{subparagraph*.351}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.reduction\_phase module}{58}{subparagraph*.357}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.split\_up\_files module}{59}{subparagraph*.360}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.tag\_filter\_phase module}{59}{subparagraph*.364}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.calculation.traffic\_cell module}{60}{subparagraph*.367}%
+\contentsline {subparagraph}{Module contents}{60}{subparagraph*.372}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration package}{60}{subparagraph*.373}%
+\contentsline {subparagraph}{Submodules}{60}{subparagraph*.374}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.aggregation\_configuration module}{60}{subparagraph*.375}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.attractivity\_attribute module}{61}{subparagraph*.381}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.attribute\_enum module}{63}{subparagraph*.390}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.calculation\_method\_of\_area\_enum module}{63}{subparagraph*.396}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.category module}{64}{subparagraph*.401}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.category\_manager module}{68}{subparagraph*.428}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.configuration\_manager module}{69}{subparagraph*.437}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.cut\_out\_configuration module}{72}{subparagraph*.457}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.cut\_out\_mode\_enum module}{73}{subparagraph*.464}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.default\_value\_entry module}{74}{subparagraph*.469}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.download\_data module}{75}{subparagraph*.476}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.configuration.osm\_data\_configuration module}{75}{subparagraph*.480}%
+\contentsline {subparagraph}{Module contents}{76}{subparagraph*.486}%
+\contentsline {subparagraph}{Submodules}{76}{subparagraph*.487}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.active\_project module}{76}{subparagraph*.488}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.config\_phase\_enum module}{82}{subparagraph*.521}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.data\_visualizer module}{82}{subparagraph*.530}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.export module}{83}{subparagraph*.535}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.project\_io\_handler module}{84}{subparagraph*.542}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.project\_saver module}{85}{subparagraph*.547}%
+\contentsline {subparagraph}{src.osm\_configurator.model.project.project\_settings module}{85}{subparagraph*.551}%
+\contentsline {subparagraph}{Module contents}{87}{subparagraph*.560}%
+\contentsline {subparagraph}{Module contents}{87}{subparagraph*.561}%
+\contentsline {subparagraph}{src.osm\_configurator.view package}{87}{subparagraph*.562}%
+\contentsline {subparagraph}{Subpackages}{87}{subparagraph*.563}%
+\contentsline {subparagraph}{src.osm\_configurator.view.popups package}{87}{subparagraph*.564}%
+\contentsline {subparagraph}{Submodules}{87}{subparagraph*.565}%
+\contentsline {subparagraph}{src.osm\_configurator.view.popups.alert\_pop\_up module}{87}{subparagraph*.566}%
+\contentsline {subparagraph}{src.osm\_configurator.view.popups.yes\_no\_pop\_up module}{87}{subparagraph*.569}%
+\contentsline {subparagraph}{Module contents}{88}{subparagraph*.572}%
+\contentsline {subparagraph}{src.osm\_configurator.view.states package}{88}{subparagraph*.573}%
+\contentsline {subparagraph}{Submodules}{88}{subparagraph*.574}%
+\contentsline {subparagraph}{src.osm\_configurator.view.states.main\_window module}{88}{subparagraph*.575}%
+\contentsline {subparagraph}{src.osm\_configurator.view.states.positioned\_frame module}{88}{subparagraph*.579}%
+\contentsline {subparagraph}{src.osm\_configurator.view.states.state module}{89}{subparagraph*.585}%
+\contentsline {subparagraph}{src.osm\_configurator.view.states.state\_manager module}{90}{subparagraph*.593}%
+\contentsline {subparagraph}{src.osm\_configurator.view.states.state\_name\_enum module}{91}{subparagraph*.601}%
+\contentsline {subparagraph}{Module contents}{92}{subparagraph*.613}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes package}{92}{subparagraph*.614}%
+\contentsline {subparagraph}{Submodules}{92}{subparagraph*.615}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.aggregation\_frame module}{92}{subparagraph*.616}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.attractivity\_edit\_frame module}{93}{subparagraph*.620}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.attractivity\_view\_frame module}{93}{subparagraph*.624}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.calculation\_frame module}{94}{subparagraph*.628}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.category\_frame module}{94}{subparagraph*.632}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.create\_project\_frame module}{95}{subparagraph*.636}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.data\_frame module}{95}{subparagraph*.640}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.main\_menu\_frame module}{96}{subparagraph*.644}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.project\_foot\_frame module}{96}{subparagraph*.648}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.project\_head\_frame module}{97}{subparagraph*.652}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.reduction\_frame module}{97}{subparagraph*.656}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.settings\_frame module}{98}{subparagraph*.660}%
+\contentsline {subparagraph}{src.osm\_configurator.view.toplevelframes.top\_level\_frame module}{98}{subparagraph*.664}%
+\contentsline {subparagraph}{Module contents}{99}{subparagraph*.668}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes package}{99}{subparagraph*.669}%
+\contentsline {subparagraph}{Submodules}{99}{subparagraph*.670}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes.export\_frame module}{99}{subparagraph*.671}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes.reduction\_calculation\_frame module}{99}{subparagraph*.674}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes.reduction\_default\_value\_frame module}{100}{subparagraph*.678}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes.settings\_application\_frame module}{100}{subparagraph*.682}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes.settings\_project\_frame module}{101}{subparagraph*.686}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes.tag\_list\_frame module}{101}{subparagraph*.690}%
+\contentsline {subparagraph}{src.osm\_configurator.view.utilityframes.tag\_list\_priority\_frame module}{102}{subparagraph*.695}%
+\contentsline {subparagraph}{Module contents}{102}{subparagraph*.700}%
+\contentsline {subparagraph}{Module contents}{102}{subparagraph*.701}%
+\contentsline {subparagraph}{Module contents}{102}{subparagraph*.702}%
+\contentsline {subsubsection}{Module contents}{102}{subsubsection*.703}%
+\contentsline {chapter}{\numberline {4}Indices and tables}{103}{chapter.4}%
+\contentsline {chapter}{Python Module Index}{105}{section*.704}%
+\contentsline {chapter}{Index}{107}{section*.705}%

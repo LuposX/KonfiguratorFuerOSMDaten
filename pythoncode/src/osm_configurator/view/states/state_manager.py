@@ -18,8 +18,8 @@ class StateManager:
         It will create all states, as well all the frames that exist and put them in the state they belong.
 
         Args:
-            control (control_interface.IControl): The connection to the control, so the frames of each state can access the model.
-            main_window (main_window.MainWindow): The MainWindow, where the frames of the state shall be shown on.
+            control (control_interface.IControl): The connection to the control so the frames of each state can access the model.
+            main_window (main_window.MainWindow): The MainWindow where the frames of the state shall be shown on.
         """
         pass
 
@@ -28,8 +28,8 @@ class StateManager:
         This method changes to the State that is the default_right state of the current one.
 
         Returns:
-            bool: true, if a state change was successfully made, false if there was no state change or something
-            went wrong
+            bool: True, if a state change was successfully made, false if there was no state change or something
+            went wrong.
         """
         pass
 
@@ -38,8 +38,8 @@ class StateManager:
         This method changes to the state that is the default_left State of the current one.
 
         Returns:
-            bool: true, if a state change was successfully made, false if there was no state change or something
-            went wrong
+            bool: True, if a state change was successfully made, false if there was no state change or something
+            went wrong.
         """
         pass
 
@@ -51,7 +51,7 @@ class StateManager:
             new_state (state_name_enum.StateName): The id of the new state that shall be activated.
 
         Returns:
-            bool: true if state change was successful, false if not.
+            bool: True if state change was successful, false if not.
         """
         pass
 
@@ -60,7 +60,7 @@ class StateManager:
         This method returns the currently active state.
 
         Returns:
-            state.State: the currently active state.
+            state.State: The currently active state.
         """
         pass
 

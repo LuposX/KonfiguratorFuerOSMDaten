@@ -24,7 +24,7 @@ class DataVisualizationController:
         Using the cut-out file of the project, this function creates a map as a html-file of the project. The path to the html-file is returned.
 
         Returns:
-            pathlib.Path: The path to the file, where the map is stored.
+            pathlib.Path: The path to the file where the map is stored.
         """
         pass
 

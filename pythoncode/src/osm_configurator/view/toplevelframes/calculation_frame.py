@@ -9,7 +9,7 @@ class CalculationFrame(TopLevelFrame):
     Once a calculation is started, there will be a progressbar shown, the different buttons will be deactivated
     and the current calculation-phase will be shown.
     A cancel-Button is provided to stop the calculation.
-    The CalculationFrame shows popups, if an error accures in the calculations.
+    The CalculationFrame shows popups, if an error occurs in the calculations.
     """
 
     def __init__(self, state_manager, control):

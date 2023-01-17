@@ -22,13 +22,13 @@ class SettingsController:
         Gets the name of the currently selected project.
 
         Returns:
-            str: The name of the project
+            str: The name of the project.
         """
         pass
 
     def set_project_name(self, name):
         """
-        Sets the name of the currently selected project
+        Sets the name of the currently selected project.
 
         Args:
             name (str): The new name of the project, may not contain line breaks.
@@ -43,7 +43,7 @@ class SettingsController:
         Gets the description of the currently selected project.
 
         Returns:
-            str: The description of the project
+            str: The description of the project.
         """
         pass
 
@@ -62,10 +62,10 @@ class SettingsController:
     def get_project_default_folder(self):
         """
         Gets the project default folder.
-        The project default folder is the folder, where projects are stored by default.
+        The project default folder is the folder where projects are stored by default.
 
         Returns:
-            pathlib.Path: The path to the project default folder
+            pathlib.Path: The path to the project default folder.
         """
         pass
 
@@ -76,7 +76,7 @@ class SettingsController:
         Projects of an old default folder will not be copied over.
 
         Args:
-            default_folder (pathlib.Path): The path to the new project default folder
+            default_folder (pathlib.Path): The path to the new project default folder.
 
         Returns:
             bool: True, if the default folder was set successfully; False if an error occurred: The path is not valid or occupied.

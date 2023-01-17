@@ -11,7 +11,7 @@ class AggregationFrame(TopLevelFrame):
 
     def __init__(self, state_manager, control):
         """
-        This method creates an AggregationFrame, that will be used to edit the aggregation method.
+        This method creates an AggregationFrame that will be used to edit the aggregation method.
 
         Args:
             state_manager (state_manager.StateManager): The StateManager, the frame will call, when it wants to change to another state.
