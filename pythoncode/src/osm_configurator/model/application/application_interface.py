@@ -1,8 +1,5 @@
 from abc import ABC, abstractmethod
 from pathlib import Path
-import src.osm_configurator.model.project.calculation.calculation_phase_enum
-import src.osm_configurator.model.project.configuration.category
-import src.osm_configurator.model.application.passive_project
 
 import src.osm_configurator.model.application.recommender_system
 import src.osm_configurator.model.project.active_project
