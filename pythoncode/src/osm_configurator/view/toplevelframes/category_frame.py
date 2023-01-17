@@ -1,4 +1,6 @@
 import src.osm_configurator.view.states.state_manager
+import src.osm_configurator.control.category_controller
+
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
@@ -10,13 +12,13 @@ class CategoryFrame(TopLevelFrame):
     There will also be key-recommendations be shown for the black- and white-List.
     """
 
-    def __init__(self, state_manager, control):
+    def __init__(self, state_manager, category_controller):
         """
         This method creates an CategoryFrame so the user can create, delete and edit categories.
 
         Args:
             state_manager (state_manager.StateManager): The StateManager the frame will call, when it wants to change to another state.
-            control (control_interface.IControl): The control the frame will call to get access to the model.
+            category_controller (category_controller.CategoryController): Respective controller
         """
         super().__init__(state_manager, control)
         pass
