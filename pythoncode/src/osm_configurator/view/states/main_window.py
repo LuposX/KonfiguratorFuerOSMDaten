@@ -8,7 +8,6 @@ import src.osm_configurator.control.calculation_controller
 import src.osm_configurator.control.cut_out_controller
 import src.osm_configurator.control.data_visualization_controller
 import src.osm_configurator.control.osm_data_controller
-
 import src.osm_configurator.view.states.state_name_enum
 
 

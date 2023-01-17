@@ -11,15 +11,26 @@ class StateManager:
     It knows what state is currently active and provides methods to change the state.
     """
 
-    def __init__(self, control, main_window):
+    def __init__(self, main_window, export_controller, category_controller, project_controller, settings_controller,
+                 aggregation_controller, application_controller, calculation_controller, cut_out_controller,
+                 data_visualization_controller, osm_data_controller):
         """
         This method creates a StateManager, that will control what state is currently active and manages
         the changes between states.
         It will create all states, as well all the frames that exist and put them in the state they belong.
 
         Args:
-            control (control_interface.IControl): The connection to the control so the frames of each state can access the model.
             main_window (main_window.MainWindow): The MainWindow where the frames of the state shall be shown on.
+            export_controller (export_controller.ExportController): Respective controller
+            category_controller (category_controller.CategoryController): Respective controller
+            project_controller (project_controller.ProjectController): Respective controller
+            settings_controller (settings_controller.SettingsController): Respective controller
+            aggregation_controller (aggregation_controller.AggregationController): Respective controller
+            application_controller (application_controller.ApplicationController): Respective controller
+            calculation_controller (calculation_controller.CalculationController): Respective controller
+            cut_out_controller (cut_out_controller.CutOutController): Respective controller
+            data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
+            osm_data_controller (osm_data_controller.OSMDataController): Respective controller
         """
         pass
 
