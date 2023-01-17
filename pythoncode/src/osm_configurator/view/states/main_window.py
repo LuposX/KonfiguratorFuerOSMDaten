@@ -25,16 +25,16 @@ class MainWindow:
         This method creates a MainWindow with a connection to the given control.
 
         Args:
-            export_controller (export_controller.ExportController): Respective controller
-            category_controller (category_controller.CategoryController): Respective controller
-            project_controller (project_controller.ProjectController): Respective controller
-            settings_controller (settings_controller.SettingsController): Respective controller
-            aggregation_controller (aggregation_controller.AggregationController): Respective controller
-            application_controller (application_controller.ApplicationController): Respective controller
-            calculation_controller (calculation_controller.CalculationController): Respective controller
-            cut_out_controller (cut_out_controller.CutOutController): Respective controller
-            data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
-            osm_data_controller (osm_data_controller.OSMDataController): Respective controller
+            export_controller (export_controller.ExportController): Respective controller.
+            category_controller (category_controller.CategoryController): Respective controller.
+            project_controller (project_controller.ProjectController): Respective controller.
+            settings_controller (settings_controller.SettingsController): Respective controller.
+            aggregation_controller (aggregation_controller.AggregationController): Respective controller.
+            application_controller (application_controller.ApplicationController): Respective controller.
+            calculation_controller (calculation_controller.CalculationController): Respective controller.
+            cut_out_controller (cut_out_controller.CutOutController): Respective controller.
+            data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller.
+            osm_data_controller (osm_data_controller.OSMDataController): Respective controller.
         """
         pass
 
