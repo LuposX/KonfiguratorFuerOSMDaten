@@ -1,6 +1,6 @@
-from abc import ABC, abstractmethod
-
 import src.osm_configurator.view.states.state_manager
+
+from abc import ABC, abstractmethod
 from src.osm_configurator.view.activatable import Activatable
 
 

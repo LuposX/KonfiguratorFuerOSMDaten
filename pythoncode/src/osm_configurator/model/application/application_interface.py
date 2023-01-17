@@ -1,9 +1,9 @@
-from abc import ABC, abstractmethod
-from pathlib import Path
-
 import src.osm_configurator.model.application.recommender_system
 import src.osm_configurator.model.project.active_project
 import src.osm_configurator.model.application.application_settings
+
+from abc import ABC, abstractmethod
+from pathlib import Path
 
 
 class IApplication(ABC):

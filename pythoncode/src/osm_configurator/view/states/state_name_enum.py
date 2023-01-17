@@ -1,5 +1,6 @@
-from enum import Enum
 import src.osm_configurator.view.states.positioned_frame
+
+from enum import Enum
 
 
 class StateName(Enum):
