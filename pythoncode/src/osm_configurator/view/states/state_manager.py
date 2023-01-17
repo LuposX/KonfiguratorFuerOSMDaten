@@ -1,7 +1,6 @@
 import src.osm_configurator.view.states.state_name_enum
 import src.osm_configurator.view.states.state
 import src.osm_configurator.view.states.positioned_frame
-import src.osm_configurator.control.control_interface
 import src.osm_configurator.view.states.main_window
 
 

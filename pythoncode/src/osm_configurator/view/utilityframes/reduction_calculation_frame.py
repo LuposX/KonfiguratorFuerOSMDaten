@@ -1,5 +1,4 @@
 import src.osm_configurator.view.toplevelframes.reduction_frame
-import src.osm_configurator.control.control_interface
 
 
 class ReductionCalculationFrame:
