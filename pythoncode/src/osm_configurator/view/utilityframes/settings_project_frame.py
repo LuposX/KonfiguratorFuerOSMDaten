@@ -1,4 +1,5 @@
 import src.osm_configurator.view.toplevelframes.settings_frame
+import src.osm_configurator.control.settings_controller
 
 
 class SettingsProjectFrame:
@@ -6,13 +7,13 @@ class SettingsProjectFrame:
     This frame shows the current project settings.
     """
 
-    def __init__(self, parent, control):
+    def __init__(self, parent, settings_controller):
         """
         This method creates a SettingsProjectFrame, showing the current project settings.
 
         Args:
             parent (settings_frame.SettingsFrame): The parent of this frame where this frame will be located.
-            control (control_interface.IControl): The control the frame will call to gain access to the model.
+             settings_controller (settings_controller.SettingsController): Respective controller.
         """
         pass
 
