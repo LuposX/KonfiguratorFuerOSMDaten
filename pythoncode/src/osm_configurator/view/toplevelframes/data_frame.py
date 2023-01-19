@@ -26,7 +26,7 @@ class DataFrame(TopLevelFrame):
             cut_out_controller (cut_out_controller.CutOutController): Respective controller
             category_controller (category_controller.CategoryController): Respective controller
         """
-        super().__init__(state_manager, control)
+        #super().__init__(state_manager, control)
         pass
 
     def activate(self):

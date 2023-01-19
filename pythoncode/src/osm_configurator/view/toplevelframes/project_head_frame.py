@@ -30,7 +30,7 @@ class ProjectHeadFrame(TopLevelFrame):
             export_controller (export_controller.ExportController): Respective controller
             project_controller (project_controller.ProjectController): Respective controller
         """
-        super().__init__(state_manager, control)
+       # super().__init__(state_manager, control)
         pass
 
     def activate(self):

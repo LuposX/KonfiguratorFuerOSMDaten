@@ -19,7 +19,7 @@ class CreateProjectFrame(TopLevelFrame):
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to change to another State.
             project_controller (project_controller.ProjectController): Respective controller
         """
-        super().__init__(state_manager, control)
+       # super().__init__(state_manager, control)
         pass
 
     def activate(self):

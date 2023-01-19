@@ -22,7 +22,7 @@ class AttractivityEditFrame(TopLevelFrame):
             state_manager (state_manager.StateManager): The StateManager the frame will call, when it wants to change to another state.
             category_controller (category_controller.CategoryController): Respective controller
         """
-        super().__init__(state_manager, control)
+       # super().__init__(state_manager, control)
         pass
 
     def activate(self):

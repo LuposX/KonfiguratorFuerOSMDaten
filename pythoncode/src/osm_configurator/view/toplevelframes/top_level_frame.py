@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from src.osm_configurator.view.activatable import Activatable
 
 
-class TopLevelFrame(ABC, Activatable):
+class TopLevelFrame(Activatable):
     """
     This class describes a frame that has a fully developed functionality and that can be placed on a window.
     A TopLevelFrame might have manageable frames below him.

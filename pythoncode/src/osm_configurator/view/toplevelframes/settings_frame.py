@@ -21,7 +21,7 @@ class SettingsFrame(TopLevelFrame):
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
             settings_controller (settings_controller.SettingsController): Respective controller
         """
-        super().__init__(state_manager, control)
+        #super().__init__(state_manager, control)
         pass
 
     def activate(self):
