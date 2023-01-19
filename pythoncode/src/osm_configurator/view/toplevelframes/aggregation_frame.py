@@ -18,7 +18,7 @@ class AggregationFrame(TopLevelFrame):
             state_manager (state_manager.StateManager): The StateManager, the frame will call, when it wants to change to another state.
            aggregation_controller (aggregation_controller.AggregationController): Respective controller
         """
-        #super().__init__(state_manager, control)
+        # super().__init__(state_manager, control)
         pass
 
     def activate(self):

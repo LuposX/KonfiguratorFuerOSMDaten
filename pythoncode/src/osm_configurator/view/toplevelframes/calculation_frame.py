@@ -24,7 +24,7 @@ class CalculationFrame(TopLevelFrame):
              calculation_controller (calculation_controller.CalculationController): Respective controller.
              data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller.
         """
-        #super().__init__(state_manager, control)
+        # super().__init__(state_manager, control)
         pass
 
     def activate(self):

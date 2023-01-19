@@ -20,7 +20,7 @@ class MainMenuFrame(TopLevelFrame):
             project_controller (project_controller.ProjectController): Respective controller
             control (control_interface.IControl): The frame will call the control to gain access to the model.
         """
-       # super().__init__(state_manager, control)
+        # super().__init__(state_manager, control)
         pass
 
     def activate(self):
