@@ -36,7 +36,6 @@
 
 \usepackage{rotating}
 
-
 \usepackage{tgtermes}
 \usepackage{tgheros}
 \renewcommand{\ttdefault}{txtt}
@@ -63,9 +62,9 @@
 
 
 
-\title{Configurator for
-OSM\sphinxhyphen{}data preparation\sphinxhyphen{}processes}
-\date{Jan 12, 2023}
+
+\title{Configurator for OSM\sphinxhyphen{}Data Preparation\sphinxhyphen{}Processes}
+\date{Jan 13, 2023}
 \release{1.0.0}
 \author{Felix Weik, Jan\sphinxhyphen{}Phillip Hansen, Karl Bernhard, \\ Pascal Dawideit, Simon Schupp}
 \newcommand{\sphinxlogo}{\vbox{}}
@@ -87,80 +86,88 @@ OSM\sphinxhyphen{}data preparation\sphinxhyphen{}processes}
 
 
 
-\chapter{Introduction}
-\label{\detokenize{index:Introduction}}
 
-\section{Introduction to the product}
+
+
+\chapter{Introduction}
+\label{\detokenize{index:konfiguratorfuerosmdaten}}
+
+\section{Introduction to the Product}
 \sphinxAtStartPar
 Whether it’s biking to college or driving to the supermarket, traffic
-affects us all. all. This product generates from geodata of the free
-project ‘OpenStreetMap’ (OSM) a numerical ranking of the
-attractiveness of geographic locations. A main focus is the
-configurability of the generation of this score. Traffic planners can
-easily generate the right data for their traffic forecasting models.
+effects us all. This product uses generated geodata from the free
+project ‘OpenStreetMap’ (OSM) and creates a numerical ranking of the attractiveness of geographic locations. A main focus is the
+configurability of the generation of this score. 
+Traffic planners can easily use this attractiveness score
+for their traffic forecasting models.
 
 \sphinxAtStartPar
-\sphinxincludegraphics[width=0.450\linewidth]{{Project_Screen}.png} \sphinxincludegraphics[width=0.450\linewidth]{{Inside_Project_Screen}.png}
+\sphinxincludegraphics[width=0.450\linewidth]{{pictures/Project_Screen}.png} \sphinxincludegraphics[width=0.450\linewidth]{{pictures/Inside_Project_Screen}.png}
+
 
 \sphinxAtStartPar
-This project is getting developed in the context of the lecture “Praxis der
-Softwareentwicklung(PSE)” at the University KIT in 2022,the waterfall
-model with feedback was used to develop the project.
-For each of this phase you can find the documentation in the
-corresponding subfolder, in the \sphinxhref{https://github.com/LuposX/KonfiguratorFuerOSMDaten}{github} , most of the documentation is in german.
+This project is getting developed in the context of the lecture “Praxis der Softwareentwicklung (PSE)” at the University KIT in 2022, the waterfall model with feedback is used to develop this project.
+For each of the phases of the watferfall model you can find the documentation in the corresponding subfolder, in the 
+\href{https://github.com/LuposX/KonfiguratorFuerOSMDaten}{github}, most of the documentation is in german.
 
 
-\section{Introduction to the the design booklet}
+\section{Introduction to the Design Booklet}
 \sphinxAtStartPar
 The purpose of this document is to communicate our design for the product described above. It describes and justifies the design decisions made in the design phase. The design booklet lays the foundation for the implementation phase.\\
-Firstly in the chapter 'Requirement Changes' we lay down how our requirements changed since the submission of our specifications sheet. In 'Package Structure' the structure of the packages and classes is presented using class-diagrams. The chapter 'Software Patterns' explains the software patterns used in the class diagrams mentioned above. The chapter 'Sequence Diagrams' uses a sequence diagram as an example to show how the model, view and control packages work together. The details of the design presented in 'Package Structure' are shown in the chapter 'Class Descriptions'. It contains a description of all classes and public methods. The chapter 'Libraries' lists the libraries used in our drafts and justifies there usage.
+Firstly in the chapter 'Requirement Changes' we lay down how our requirements changed since the submission of our specifications sheet. In 'Package Structure' the structure of the packages and classes is presented using class-diagrams. The chapter 'Software Patterns' explains the software patterns used in the class diagrams mentioned above. The chapter 'Sequence Diagram' uses a sequence diagram as an example to show how the model, view and control packages work together. The details of the design presented in 'Package Structure' are shown in the chapter 'Class Descriptions'. It contains a description of all classes and their public methods. The chapter 'Libraries' lists the libraries used in our drafts and justifies there usage.
 
-\chapter{Requirement changes}
+
+
+
+\chapter{Requirement Changes}
 \label{\detokenize{index:requirement-changes}}
 \sphinxstepscope
 The specification sheet defined the requirements of our product. Because of changes in our knowledge about the feasibility of some of the requirements, we made some changes to them. In this chapter we will list and explain those changes.
 
-\section{Cut-Out Map}
+\section*{Cut-Out Map}
 A map is added to the application. The map visualizes the cut-out data given by the user. The user can press a button and the map is displayed afterwards. The user can also export this map to the computer. Those features can be defined as follows:
 \begin{itemize}
     \item <WK9> The user can open a map to visualize the cut-out files
     \item <WK10> The user can export the cut-out map
 \end{itemize}
-Those feature have the priority ''desired criterion''. We decided to ass those features, because add a lot to the user experience, while not adding much changes in the design.
+Those feature have the priority ''desired criterion''. We decided to add this feature, because it adds a lot to the user experience, while not adding much changes in the design.
 
-\section{Download Repository}
+\section*{Download Repository}
 The user can decide to download OSM-data from a repository. In the specifications we decided, the user defines which OSM-data he wants to download by entering a URL. This is technically unpractical. Therefore we decided to automatically download the OSM-data, that is surrounded by the already given cut-out files. This change does only affect the alternative 2a in the use case A6 in the specifications.
 
-\section{Delete Project}
+\section*{Delete Project}
 In the specifications there is never mentioned, that the user can delete projects. Because this is a fundamental feature of our product, we decided to add it. This change of requirements is a extension of the criterion MK1 in the specifications.
 
-\section{Calculation of Attractivity with Tags}
+\section*{Calculation of Attractivity with Tags}
 WK7 of the specifications states as a desired criterion that attractivity attributes may be calculated in dependency to OSM-tags. The problem is, that tags come in more variants than we thought. For instance it is hard to give a value to the tag ''wheelchair=limited''. Hence we decided to remove this feature and not cover it in our designs.
 
-\section{Arbitrary Tag-Filters}
+\section*{Arbitrary Tag-Filters}
 WK2 of the specifications states, that the user might use arbitrary logical statements to define the tag filters of the categories. This criterion was not supposed to be in the specifications, but was left there accidentally.
 
-\chapter{Package Structure}
-\label{\detokenize{index:requirement-changes}}
-\sphinxstepscope
 
-In this chapter we will go over and explain the structure of the product. Firstly the package structure is explained. This is done using package and class diagrams. Those diagrams do also contain the complete structure of all the classes used in our design. The class diagrams form the foundation for all the upcoming chapters. In chapter \ref{sec::descriptions} the classes and methods of the class diagrams will be described in more detail.
+\newpage% for dupelx printing
+
+
+\chapter{Package Structure}
+\label{\detokenize{index:package-structure}}
+\sphinxstepscope
+In this chapter we will go over and explain the structure of the product. Firstly the package structure is explained, using the  package-diagram and class-diagrams. Those diagrams do also contain the complete structure of all the classes used in our design. The class diagrams form the foundation for all the upcoming chapters. In chapter \ref{sec::descriptions} the classes and methods of the class diagrams will be described in more detail.
 
 \section{Model-View-Controller} \label{sec::mvc}
 This project is organized in three underlying units: Model, view and control. This structure is based on the architectural "Model-View-Controller" pattern (short MVC). 
-The model is responsible for the organisation of the data of the application. The view manages the user interface (UI). The task of the control-unit is to allow a consistent communication between the two above mentioned units. The communication is always initialized by the view. It sends requests to the control and the control forwards them to the model after checking.\\
+The model is responsible for the organisation of the data of the application. The view manages the user interface (GUI). The task of the control-unit is to allow a consistent communication between the two above mentioned units. The communication is always initialized by the view. It sends requests to the control and the control forwards them to the model after checking.\\
 We decided to use this variant of the MVC, because it makes our project easily changeable. For instance, building in a totally new view could be easily done.\\
 In figure \ref{fig:mvc} you can see the structure of the packages. It shows the associations between them.
 
 
 \section{Package View}
-The \hyperlink{view}{view} is then further divided into four subpackages: \hyperlink{popups}{popups}, \hyperlink{states}{states}, \hyperlink{toplevelframes}{toplevelframes} and \hyperlink{utilityframes}{utilityframes}. The last three all have access to pupup. In addition, states has access to the toplevelframes package and toplevelframes itself has access to utilityframes. Overall, the view is responsible for displaying data for the user and let him edit those. Popup displays pop-ups that occur during usage. States is responsible for which phases should be displayed and when it should be displayed. Toplevelframes includes the phases to be displayed themselves and utilityframes is responsible for displaying sub-frames. For more information about the packages, read the documentation of the classes within the packages.
+The \hyperref[fig:view]{view} is then further divided into four subpackages: \hyperref[fig:popups]{popups}, \hyperref[fig:states]{states}, \hyperref[fig:toplevelframes]{toplevelframes} and \hyperref[fig:utilityframes]{utilityframes}. The last three all have access to popups. In addition, states has access to the toplevelframes package and toplevelframes itself has access to utilityframes. Overall, the view is responsible for displaying data for the user and let him edit those. Popup displays pop-ups that occur during usage. States is responsible for which phases should be displayed and when it should be displayed. Toplevelframes includes the phases to be displayed themselves and utilityframes is responsible for displaying sub-frames. For more information about the packages, read the documentation of the classes within the packages.
 
 \section{Package Controller}
-The \hyperlink{controller}{controller} is not further subdivided and takes care of the communication between view and model and initializes the other packages.
+The \hyperref[fig:controller]{controller} is not further subdivided and takes care of the communication between view and model and initializes the other packages.
 
 \section{Package Model}
-The \hyperlink{model}{model} is divided into \hyperlink{application}{application}, \hyperlink{project}{project} and \hyperlink{parser}{parser}, with project being further subdivided into \hyperlink{configuration}{configuration} and \hyperlink{calculation}{calculation}. The application has access to the project and the project has access to the parser. In addition, calculation has access to the configuration. The model is overall responsible for storing the data. The application package is responsible for project-independent data and the parser for importing data. The configuration saves the data that arises during the individual phases and the calculation in turn saves those that occur during the calculation. For more information about the packages, read the documentation of the classes within the packages.
+The \hyperref[fig:model]{model} is divided into \hyperref[fig:application]{application}, \hyperref[fig:project]{project} and \hyperref[fig:parser]{parser}, with project being further subdivided into \hyperref[fig:configuration]{configuration} and \hyperref[fig:calculation]{calculation}. The application has access to the project and the project has access to the parser. In addition, calculation has access to the configuration. The model is overall responsible for storing the data. The application package is responsible for project-independent data and the parser for importing data. The configuration saves the data that arises during the individual phases and the calculation in turn saves those that occur during the calculation. For more information about the packages, read the documentation of the classes within the packages.
 
 \section{Diagrams}
 
@@ -180,7 +187,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/controller.png}
   \caption{Package: controller}
-  \label{fig:mvc}
+  \label{fig:controller}
 \end{figure}
 }
 
@@ -190,7 +197,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/view.png}
   \caption{Package: view}
-  \label{fig:mvc}
+  \label{fig:view}
 \end{figure}
 }
 
@@ -200,7 +207,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/model.png}
   \caption{Package: model}
-  \label{fig:mvc}
+  \label{fig:model}
 \end{figure}
 }
 
@@ -210,7 +217,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.5\textwidth]
         {pictures/popups.png}
   \caption{Package: popups}
-  \label{fig:mvc}
+  \label{fig:popups}
 \end{figure}
 }
 
@@ -220,7 +227,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/states.png}
   \caption{Package: states}
-  \label{fig:mvc}
+  \label{fig:states}
 \end{figure}
 }
 
@@ -230,7 +237,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/toplevelframes.png}
   \caption{Package: toplevelframes}
-  \label{fig:mvc}
+  \label{fig:toplevelframes}
 \end{figure}
 }
 
@@ -239,8 +246,8 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
   \centering
 \includegraphics[width=0.8\textwidth]
         {pictures/utilityframes.png}
-  \caption{Package: states}
-  \label{fig:mvc}
+  \caption{Package: utilityframes}
+  \label{fig:utilityframes}
 \end{figure}
 }
 
@@ -250,7 +257,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/application.png}
   \caption{Package: application}
-  \label{fig:mvc}
+  \label{fig:application}
 \end{figure}
 }
 
@@ -260,7 +267,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.7\textwidth]
         {pictures/parser.png}
   \caption{Package: parser}
-  \label{fig:mvc}
+  \label{fig:parser}
 \end{figure}
 }
 
@@ -270,7 +277,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/project.png}
   \caption{Package: project}
-  \label{fig:mvc}
+  \label{fig:project}
 \end{figure}
 }
 
@@ -280,7 +287,7 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/configuration.png}
   \caption{Package: configuration}
-  \label{fig:mvc}
+  \label{fig:configuration}
 \end{figure}
 }
 
@@ -290,25 +297,30 @@ The \hyperlink{model}{model} is divided into \hyperlink{application}{application
 \includegraphics[width=0.8\textwidth]
         {pictures/calculation.png}
   \caption{Package: calculation}
-  \label{fig:mvc}
+  \label{fig:calculation}
 \end{figure}
 }
-\newpage
 
+
+\newpage% for dupelx printing
 
 
 \chapter{Software Patterns}
 \label{\detokenize{index:software-patterns}}
 \sphinxstepscope
+
 \section{MVC}
 This project uses the Model-View-Controller pattern as described in \ref{sec::mvc}.
 
 \section{Facade}
+
 \subsection{Definition}
 The Facade-Pattern hides the complexities of the system providing an abstract class to the client that can access the system. This interface is implemented by using a single class providing the necessary functionality. This helps fighting code redundancy, makes creating new frames easier and therefore reduces debugging efforts.
+
 \subsection{Usage}
 This project uses the facade-pattern in the view-package. By implementing a parent providing basic-functionality to its children, code duplications implementing the same functionality can be avoided. Child classes can overwrite the given methods if necessary and implement new features and attributes.
 A lot of view-classes implement only small tweaks in a default-functionality-environment while creating new windows. The AggregationFrame for example only has small functionality-tweaks to the SettingsFrame. The different appearance of the frames is implemented separately, but the base-functionality of e.g. pressing a button is implemented only once.
+
 
 
 \chapter{Sequence Diagram}
@@ -318,8 +330,6 @@ The sequence diagram below (figure \ref{fig:sequencediagram}) shows how the appl
 Firstly, it shows how switching states works in the view. The StateManager is informed, when the state needs to be changed. It decides which frames must be shown to the user and forwards the request to the MainWindow. When a frame is activated, it's activate() method is invoked. \\
 Secondly, the communication between the view, the control and the model is shown. Frames of the view message requests to the control. The control forwards the message to the model. The request is answered via return values.
 
-\newpage
-
 \begin{sidewaysfigure}
 \centering
 \includegraphics[width=1\textwidth]
@@ -328,7 +338,8 @@ Secondly, the communication between the view, the control and the model is shown
   \label{fig:sequencediagram}
 \end{sidewaysfigure}
 
-\newpage
+
+\newpage% for dupelx printing
 
 
 \chapter{Libraries}
@@ -340,13 +351,13 @@ Secondly, the communication between the view, the control and the model is shown
 \subsection{CustomTkinter}
 
 \paragraph{What is CustomTkinter?}
-\href{https://github.com/TomSchimansky/CustomTkinter}{CustomTkinter} is a python UI-library based on Tkinter, which provides new, modern and fully customizable widgets. They are created and used like normal Tkinter widgets and can also be used in combination with normal Tkinter elements. 
+\href{https://github.com/TomSchimansky/CustomTkinter}{CustomTkinter} is a python GUI-library based on Tkinter, which provides new, modern and fully customizable widgets. They are created and used like normal Tkinter widgets and can also be used in combination with normal Tkinter elements. 
 
 \paragraph{Why use CustomTkinter?}
-We decided to use CustomTkinter as a UI-library, because TKinter is an easy to use library, which is standard in Python ecosystem.
+We decided to use CustomTkinter as a GUI-library, because TKinter is an easy to use library, which is standard in Python ecosystem.
 But Tkinter alone looks a bit outdated, CustomTkinter provides Tkinter in a more modern look.
 
-\paragraph{Why not use <insert Library name here>?}
+\paragraph{Why not use other libararies?}
 CustomTkinter had a couple of alternatives that could have been used but all of them had disadvantages that made them worse in our use case than CustomTkinter. 
   
 \textbf{Tkinter}
@@ -364,7 +375,6 @@ CustomTkinter had a couple of alternatives that could have been used but all of 
     \item Offers more features compared to CustomTkinter, but is more complicated and these additional features are not needed in our project. 
 \end{itemize}
 
-\newpage
 
 \subsection{Seaborn}
 \paragraph{What is Seaborn?}
@@ -373,8 +383,11 @@ CustomTkinter had a couple of alternatives that could have been used but all of 
 \paragraph{Why use Seaborn?}
 In our application we use Seaborn to visualize the endresult of the calculation.
 
-\paragraph{Why not use <insert Library name here>?}
+\paragraph{Why not use other libararies?}
 The only really other alternative to Seaborn is matplotlib which can do the same as Seaborn, but Seaborn is more easily usable then matplotlib, furthermore Seaborn uses matplotlib in the background to create and visualize their results.
+
+
+
 
 \section{Backend}
 % Ist es besser hier nach Model, View und Controller zu sortieren?
@@ -391,7 +404,7 @@ The osmium-tool allows us to convert from one OSM-Data file format to another on
 Furthermore it can be used to split large OSM-Data files into multiple smaller ones, which we will use to split the OSM-Data into the previously defined 
 \hyperref[sec:Glossary]{traffic cells}.
 
-\paragraph{Why not use <insert Library name here>?}
+\paragraph{Why not use other libararies?}
 Osmium-tool doesn't really have competitors in it's space, there aren't any mature python libraries which can cut OSM-data files like osmium-tool.
 Though there are libraries/application written in different languages that can do what Osmium-tool does, such as Osmosis or osmfilter.
 But they are slower or require additional software such as java.
@@ -405,7 +418,7 @@ The \href{https://osmcode.org/libosmium/}{Osmium} Library has extensive support 
 \paragraph{Why use Osmium?}
 In out application we use Osmium to parse buildings out of the OSM-Data file.
 
-\paragraph{Why not use <insert Library name here>?}
+\paragraph{Why not use other libararies?}
 Osmium had a couple of alternatives that could have been used but all of them had disadvantages that made them worse in our use case than Osmium. 
   
 \textbf{OSMnx}
@@ -423,37 +436,33 @@ Osmium had a couple of alternatives that could have been used but all of them ha
 
 \subsection{Psutil}
 \paragraph{What is Psutil?}
-Psutil (process and system utilities) is a cross-platform library for retrieving information on running processes and system utilization (CPU, memory, disks, network, sensors) in Python. It is useful mainly for system monitoring, profiling and limiting process resources and management of running processes. 
+\href{https://pypi.org/project/psutil/}{Psutil}(process and system utilities) is a cross-platform library for retrieving information on running processes and system utilization (CPU, memory, disks, network, sensors) in Python. It is useful mainly for system monitoring, profiling and limiting process resources and management of running processes. 
 
 \paragraph{Why use Psutil?}
 In our Project we use Psutil to monitor the RAM usage, this is required for decision like: how much OSM-Data do we load simultaneous in the RAM?
 
-\paragraph{Why not use <insert Library name here>?}
+\paragraph{Why not use other libararies?}
 Psutil is a small  library, that does what it promises to do, it is not needed to find a "better" library.
-
-
 
 \subsection{Sphinx}
 
 \paragraph{What is Sphinx?}
-Sphinx is a documentation generator written and used by the Python community, it makes it easy to create intelligent and beautiful documentation.
-It can generate web pages, printable PDFs, documents for e-readers (ePub), and more all from the same sources
+\href{https://www.sphinx-doc.org/en/master/}{Sphinx} is a documentation generator written and used by the Python community, it makes it easy to create intelligent and beautiful documentation.
+It can generate web pages, printable PDFs, documents for e-readers (ePub), and more all from the same sources.
 
 \paragraph{Why use Sphinx?}
 Sphinx allows us to easily document our code and make this beautiful document.
 
-\paragraph{Why not use <insert Library name here>?}
+\paragraph{Why not use other libararies?}
 Sphinx is industry standard when it comes to generating documenting from your code.
 
 \subsection{osmnx}
 
 \paragraph{What is osmnx?}
-OSMnx is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. You can download and model walkable, drivable, or bikeable urban networks with a single line of Python code then easily analyze and visualize them. You can just as easily download and work with other infrastructure types, amenities/points of interest, building footprints, elevation data, street bearings/orientations, and speed/travel time.
+\href{https://osmnx.readthedocs.io/en/stable/}{OSMnx} is a Python package that lets you download geospatial data from OpenStreetMap and model, project, visualize, and analyze real-world street networks and any other geospatial geometries. You can download and model walkable, drivable, or bikeable urban networks with a single line of Python code then easily analyze and visualize them. You can just as easily download and work with other infrastructure types, amenities/points of interest, building footprints, elevation data, street bearings/orientations, and speed/travel time.
 
 \paragraph{Why use osmnx?}
-In our project we use use osmnx to download OSM Data to the project(Desirable criterion).
-
-\newpage
+In our project we use use osmnx to download OSM Data to the project (Desirable criterion).
 
 \section{Miscellaneous}
 The Previously described libraries have many dependencies, that may also be used such as:
@@ -463,10 +472,13 @@ The Previously described libraries have many dependencies, that may also be used
     \item numpy
     \item shapely
     \item folium
-    \item sphinx-enum-extend
-    \item sphinx-book-theme 
     \item etc.
 \end{itemize}
+
+
+% for duplex printing
+\newpage
+
 
 
 \chapter{Class Descriptions}
@@ -474,31 +486,9 @@ The Previously described libraries have many dependencies, that may also be used
 \sphinxstepscope
 
 
-\section{src}
-\label{\detokenize{apidoc/modules:src}}\label{\detokenize{apidoc/modules::doc}}
-\sphinxstepscope
+\section{Control Package}
 
-
-\subsection{src package}
-\label{\detokenize{apidoc/src:src-package}}\label{\detokenize{apidoc/src::doc}}
-
-\subsubsection{Subpackages}
-\label{\detokenize{apidoc/src:subpackages}}
-\sphinxstepscope
-
-
-\paragraph{src.osm\_configurator package}
-\label{\detokenize{apidoc/src.osm_configurator:src-osm-configurator-package}}\label{\detokenize{apidoc/src.osm_configurator::doc}}
-
-\subparagraph{Subpackages}
-\label{\detokenize{apidoc/src.osm_configurator:subpackages}}
-\sphinxstepscope
-
-
-\subparagraph{src.osm\_configurator.control package}
-\label{\detokenize{apidoc/src.osm_configurator.control:src-osm-configurator-control-package}}\label{\detokenize{apidoc/src.osm_configurator.control::doc}}
-
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.control:submodules}}
 
 \subparagraph{src.osm\_configurator.control.aggregation\_controller module}
@@ -4058,23 +4048,15 @@ True, if the default folder was set successfully; False if an error occurred: Th
 
 
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.control:module-src.osm_configurator.control}}\label{\detokenize{apidoc/src.osm_configurator.control:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.control@\spxentry{src.osm\_configurator.control}}\index{src.osm\_configurator.control@\spxentry{src.osm\_configurator.control}!module@\spxentry{module}}
-\sphinxstepscope
+\section{Model Package}
 
 
-\subparagraph{src.osm\_configurator.model package}
-\label{\detokenize{apidoc/src.osm_configurator.model:src-osm-configurator-model-package}}\label{\detokenize{apidoc/src.osm_configurator.model::doc}}
-
-\subparagraph{Subpackages}
+\subsection{Model.application Module}
 \label{\detokenize{apidoc/src.osm_configurator.model:subpackages}}
 \sphinxstepscope
 
 
-\subparagraph{src.osm\_configurator.model.application package}
-\label{\detokenize{apidoc/src.osm_configurator.model.application:src-osm-configurator-model-application-package}}\label{\detokenize{apidoc/src.osm_configurator.model.application::doc}}
-
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.model.application:submodules}}
 
 \subparagraph{src.osm\_configurator.model.application.application module}
@@ -5988,7 +5970,7 @@ Returns a list of strings containing the recommendations depending on the input.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-list\textless{}str\textgreater{}
+\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#list}{list}|\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str}{]}
 
 \end{description}\end{quote}
 
@@ -5999,15 +5981,11 @@ list\textless{}str\textgreater{}
 
 
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.model.application:module-src.osm_configurator.model.application}}\label{\detokenize{apidoc/src.osm_configurator.model.application:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.model.application@\spxentry{src.osm\_configurator.model.application}}\index{src.osm\_configurator.model.application@\spxentry{src.osm\_configurator.model.application}!module@\spxentry{module}}
-\sphinxstepscope
+
+\subsection{Model.parser Module}
 
 
-\subparagraph{src.osm\_configurator.model.parser package}
-\label{\detokenize{apidoc/src.osm_configurator.model.parser:src-osm-configurator-model-parser-package}}\label{\detokenize{apidoc/src.osm_configurator.model.parser::doc}}
-
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.model.parser:submodules}}
 
 \subparagraph{src.osm\_configurator.model.parser.calculation\_parser module}
@@ -6285,7 +6263,9 @@ Our cut\_out file transformed into a list of TrafficCells.
 \sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#list}{list}{[}{\hyperref[\detokenize{apidoc/src.osm_configurator.model.project.calculation:src.osm_configurator.model.project.calculation.traffic_cell.TrafficCell}]{\sphinxcrossref{traffic\_cell.TrafficCell}}}{]}
 
 \end{description}\end{quote}
-\subsubsection*{Examples}
+
+\textbf{Examples:}
+\sphinxAtStartPar
 
 \sphinxAtStartPar
 To see an example for a cut\_out file check out the file \sphinxtitleref{data/partOfKarlsruhe.geojson}.
@@ -6338,7 +6318,7 @@ Our cut\_out file transformed into a list of TrafficCells.
 \sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#list}{list}{[}{\hyperref[\detokenize{apidoc/src.osm_configurator.model.project.calculation:src.osm_configurator.model.project.calculation.traffic_cell.TrafficCell}]{\sphinxcrossref{traffic\_cell.TrafficCell}}}{]}
 
 \end{description}\end{quote}
-\subsubsection*{Examples}
+\textbf{Examples}
 
 \sphinxAtStartPar
 To see an example for a cut\_out file check out the file \sphinxtitleref{data/partOfKarlsruhe.geojson}.
@@ -6400,7 +6380,7 @@ The parsed OSM data as a GeoDataFrame.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-GeoDataFrame
+\sphinxhref{https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html\#geopandas.GeoDataFrame}{geopandas.GeoDataFrame}
 
 \end{description}\end{quote}
 
@@ -6449,7 +6429,7 @@ The parsed OSM data as a GeoDataFrame.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-GeoDataFrame
+\sphinxhref{https://geopandas.org/en/stable/docs/reference/api/geopandas.GeoDataFrame.html\#geopandas.GeoDataFrame}{geopandas.GeoDataFrame}
 
 \end{description}\end{quote}
 
@@ -6460,21 +6440,12 @@ GeoDataFrame
 
 
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.model.parser:module-src.osm_configurator.model.parser}}\label{\detokenize{apidoc/src.osm_configurator.model.parser:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.model.parser@\spxentry{src.osm\_configurator.model.parser}}\index{src.osm\_configurator.model.parser@\spxentry{src.osm\_configurator.model.parser}!module@\spxentry{module}}
-\sphinxstepscope
 
 
-\subparagraph{src.osm\_configurator.model.project package}
-\label{\detokenize{apidoc/src.osm_configurator.model.project:src-osm-configurator-model-project-package}}\label{\detokenize{apidoc/src.osm_configurator.model.project::doc}}
+\subsection{Model.project Module}
 
-\subparagraph{Subpackages}
-\label{\detokenize{apidoc/src.osm_configurator.model.project:subpackages}}
-\sphinxstepscope
+\subsubsection{Model.project.calculation Module}
 
-
-\subparagraph{src.osm\_configurator.model.project.calculation package}
-\label{\detokenize{apidoc/src.osm_configurator.model.project.calculation:src-osm-configurator-model-project-calculation-package}}\label{\detokenize{apidoc/src.osm_configurator.model.project.calculation::doc}}
 
 \subparagraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.model.project.calculation:submodules}}
@@ -6801,7 +6772,7 @@ True when successful, otherwise false.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/functions.html\#bool}{bool})
+\sphinxhref{https://docs.python.org/3.11/library/functions.html\#bool}{bool}
 
 \end{description}\end{quote}
 
@@ -6994,7 +6965,7 @@ Name of the Phase.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str})
+\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str}
 
 \end{description}\end{quote}
 
@@ -7016,7 +6987,7 @@ The folder name of the enum.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str})
+\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str}
 
 \end{description}\end{quote}
 
@@ -7038,7 +7009,7 @@ order of the enum.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/functions.html\#int}{int})
+\sphinxhref{https://docs.python.org/3.11/library/functions.html\#int}{int}
 
 \end{description}\end{quote}
 
@@ -7366,7 +7337,7 @@ True if successful, otherwise false.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/functions.html\#bool}{bool})
+\sphinxhref{https://docs.python.org/3.11/library/functions.html\#bool}{bool}
 
 \end{description}\end{quote}
 
@@ -7434,7 +7405,7 @@ The File extension the osm file format uses.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str})
+\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str}
 
 \end{description}\end{quote}
 
@@ -7550,7 +7521,7 @@ True if successful, otherwise false.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/functions.html\#bool}{bool})
+\sphinxhref{https://docs.python.org/3.11/library/functions.html\#bool}{bool}
 
 \end{description}\end{quote}
 
@@ -7627,8 +7598,8 @@ Bases: \sphinxhref{https://docs.python.org/3.11/library/functions.html\#object}{
 \sphinxAtStartPar
 A TrafficCell is an object which describes an area on the earth, it has a name and a bounding box which
 entail the described area from the name.
-\subsubsection*{Examples}
-
+\newline
+\textbf{Examples:}
 \sphinxAtStartPar
 The “Karlsruher Schloss” is a trafficCell with the name=”Karlsruher Schloss” and its bounding box being
 a polygon of coordinates(latitude, longitude) which entail the area of the “Karlsruher Schloss”.
@@ -7692,16 +7663,9 @@ A list of coordinates that describe the bounding box of the TrafficCell.
 \end{fulllineitems}
 
 
+\subsubsection{Model.project.configuration Module}
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.model.project.calculation:module-src.osm_configurator.model.project.calculation}}\label{\detokenize{apidoc/src.osm_configurator.model.project.calculation:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.model.project.calculation@\spxentry{src.osm\_configurator.model.project.calculation}}\index{src.osm\_configurator.model.project.calculation@\spxentry{src.osm\_configurator.model.project.calculation}!module@\spxentry{module}}
-\sphinxstepscope
-
-
-\subparagraph{src.osm\_configurator.model.project.configuration package}
-\label{\detokenize{apidoc/src.osm_configurator.model.project.configuration:src-osm-configurator-model-project-configuration-package}}\label{\detokenize{apidoc/src.osm_configurator.model.project.configuration::doc}}
-
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.model.project.configuration:submodules}}
 
 \subparagraph{src.osm\_configurator.model.project.configuration.aggregation\_configuration module}
@@ -7861,7 +7825,8 @@ Creates a new instance of a “AttractivityAttribute” class.
 \end{itemize}
 
 \end{description}\end{quote}
-\subsubsection*{Examples}
+\textbf{Examples:}
+\sphinxAtStartPar
 
 \sphinxAtStartPar
 An example for attractivity\_attribute\_list: {[}(AREA, 1.0), (NUMER\_OF\_FLOOR, 2.0), (GROUND\_AREA, 6.9){]}
@@ -8077,7 +8042,7 @@ Name of the Phase.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str})
+\sphinxhref{https://docs.python.org/3.11/library/stdtypes.html\#str}{str}
 
 \end{description}\end{quote}
 
@@ -9849,10 +9814,10 @@ True when the download works, otherwise false.
 
 
 
-\subparagraph{Module contents}
+\subsubsection{Module contents}
 \label{\detokenize{apidoc/src.osm_configurator.model.project.configuration:module-src.osm_configurator.model.project.configuration}}\label{\detokenize{apidoc/src.osm_configurator.model.project.configuration:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.model.project.configuration@\spxentry{src.osm\_configurator.model.project.configuration}}\index{src.osm\_configurator.model.project.configuration@\spxentry{src.osm\_configurator.model.project.configuration}!module@\spxentry{module}}
 
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.model.project:submodules}}
 
 \subparagraph{src.osm\_configurator.model.project.active\_project module}
@@ -11331,26 +11296,14 @@ The description of the project
 
 
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.model.project:module-src.osm_configurator.model.project}}\label{\detokenize{apidoc/src.osm_configurator.model.project:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.model.project@\spxentry{src.osm\_configurator.model.project}}\index{src.osm\_configurator.model.project@\spxentry{src.osm\_configurator.model.project}!module@\spxentry{module}}
-
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.model:module-src.osm_configurator.model}}\label{\detokenize{apidoc/src.osm_configurator.model:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.model@\spxentry{src.osm\_configurator.model}}\index{src.osm\_configurator.model@\spxentry{src.osm\_configurator.model}!module@\spxentry{module}}
-\sphinxstepscope
 
 
-\subparagraph{src.osm\_configurator.view package}
-\label{\detokenize{apidoc/src.osm_configurator.view:src-osm-configurator-view-package}}\label{\detokenize{apidoc/src.osm_configurator.view::doc}}
 
-\subparagraph{Subpackages}
-\label{\detokenize{apidoc/src.osm_configurator.view:subpackages}}
-\sphinxstepscope
+\section{View Package}
 
+\subsection{View.popups Package}
 
-\subparagraph{src.osm\_configurator.view.popups package}
-\label{\detokenize{apidoc/src.osm_configurator.view.popups:src-osm-configurator-view-popups-package}}\label{\detokenize{apidoc/src.osm_configurator.view.popups::doc}}
-
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.view.popups:submodules}}
 
 \subparagraph{src.osm\_configurator.view.popups.alert\_pop\_up module}
@@ -11441,15 +11394,11 @@ a boolean = false.
 
 
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.view.popups:module-src.osm_configurator.view.popups}}\label{\detokenize{apidoc/src.osm_configurator.view.popups:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.view.popups@\spxentry{src.osm\_configurator.view.popups}}\index{src.osm\_configurator.view.popups@\spxentry{src.osm\_configurator.view.popups}!module@\spxentry{module}}
-\sphinxstepscope
 
 
-\subparagraph{src.osm\_configurator.view.states package}
-\label{\detokenize{apidoc/src.osm_configurator.view.states:src-osm-configurator-view-states-package}}\label{\detokenize{apidoc/src.osm_configurator.view.states::doc}}
+\subsection{View.states Package}
 
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.view.states:submodules}}
 
 \subparagraph{src.osm\_configurator.view.states.main\_window module}
@@ -11590,7 +11539,7 @@ The Frame this PositionedFrame holds
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-({\hyperref[\detokenize{apidoc/src.osm_configurator.view.toplevelframes:src.osm_configurator.view.toplevelframes.top_level_frame.TopLevelFrame}]{\sphinxcrossref{top\_level\_frame.TopLevelFrame}}})
+{\hyperref[\detokenize{apidoc/src.osm_configurator.view.toplevelframes:src.osm_configurator.view.toplevelframes.top_level_frame.TopLevelFrame}]{\sphinxcrossref{top\_level\_frame.TopLevelFrame}}}
 
 \end{description}\end{quote}
 
@@ -11612,7 +11561,7 @@ The Column the Frame is placed in.
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/functions.html\#int}{int})
+\sphinxhref{https://docs.python.org/3.11/library/functions.html\#int}{int}
 
 \end{description}\end{quote}
 
@@ -11634,7 +11583,7 @@ The Line the frame is placed in
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-(\sphinxhref{https://docs.python.org/3.11/library/functions.html\#int}{int})
+\sphinxhref{https://docs.python.org/3.11/library/functions.html\#int}{int}
 
 \end{description}\end{quote}
 
@@ -11736,7 +11685,7 @@ This states left state name
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-({\hyperref[\detokenize{apidoc/src.osm_configurator.view.states:src.osm_configurator.view.states.state_name_enum.StateName}]{\sphinxcrossref{state\_name\_enum.StateName}}})
+{\hyperref[\detokenize{apidoc/src.osm_configurator.view.states:src.osm_configurator.view.states.state_name_enum.StateName}]{\sphinxcrossref{state\_name\_enum.StateName}}}
 
 \end{description}\end{quote}
 
@@ -11758,7 +11707,7 @@ This states right state name
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-({\hyperref[\detokenize{apidoc/src.osm_configurator.view.states:src.osm_configurator.view.states.state_name_enum.StateName}]{\sphinxcrossref{state\_name\_enum.StateName}}})
+{\hyperref[\detokenize{apidoc/src.osm_configurator.view.states:src.osm_configurator.view.states.state_name_enum.StateName}]{\sphinxcrossref{state\_name\_enum.StateName}}}
 
 \end{description}\end{quote}
 
@@ -11780,7 +11729,7 @@ The name of this state
 
 \sphinxlineitem{Return type}
 \sphinxAtStartPar
-({\hyperref[\detokenize{apidoc/src.osm_configurator.view.states:src.osm_configurator.view.states.state_name_enum.StateName}]{\sphinxcrossref{state\_name\_enum.StateName}}})
+{\hyperref[\detokenize{apidoc/src.osm_configurator.view.states:src.osm_configurator.view.states.state_name_enum.StateName}]{\sphinxcrossref{state\_name\_enum.StateName}}}
 
 \end{description}\end{quote}
 
@@ -12078,16 +12027,9 @@ This enum gives a state a name.
 \end{fulllineitems}
 
 
+\subsection{View.toplevelframes Package}
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.view.states:module-src.osm_configurator.view.states}}\label{\detokenize{apidoc/src.osm_configurator.view.states:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.view.states@\spxentry{src.osm\_configurator.view.states}}\index{src.osm\_configurator.view.states@\spxentry{src.osm\_configurator.view.states}!module@\spxentry{module}}
-\sphinxstepscope
-
-
-\subparagraph{src.osm\_configurator.view.toplevelframes package}
-\label{\detokenize{apidoc/src.osm_configurator.view.toplevelframes:src-osm-configurator-view-toplevelframes-package}}\label{\detokenize{apidoc/src.osm_configurator.view.toplevelframes::doc}}
-
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.view.toplevelframes:submodules}}
 
 \subparagraph{src.osm\_configurator.view.toplevelframes.aggregation\_frame module}
@@ -12982,16 +12924,14 @@ True, if activation was successful, false else
 
 
 
-\subparagraph{Module contents}
-\label{\detokenize{apidoc/src.osm_configurator.view.toplevelframes:module-src.osm_configurator.view.toplevelframes}}\label{\detokenize{apidoc/src.osm_configurator.view.toplevelframes:module-contents}}\index{module@\spxentry{module}!src.osm\_configurator.view.toplevelframes@\spxentry{src.osm\_configurator.view.toplevelframes}}\index{src.osm\_configurator.view.toplevelframes@\spxentry{src.osm\_configurator.view.toplevelframes}!module@\spxentry{module}}
-\sphinxstepscope
 
 
-\subparagraph{src.osm\_configurator.view.utilityframes package}
-\label{\detokenize{apidoc/src.osm_configurator.view.utilityframes:src-osm-configurator-view-utilityframes-package}}\label{\detokenize{apidoc/src.osm_configurator.view.utilityframes::doc}}
+\subsection{View.utilityframes Package}
 
-\subparagraph{Submodules}
+\paragraph{Submodules}
 \label{\detokenize{apidoc/src.osm_configurator.view.utilityframes:submodules}}
+
+
 
 \subparagraph{src.osm\_configurator.view.utilityframes.export\_frame module}
 \label{\detokenize{apidoc/src.osm_configurator.view.utilityframes:module-src.osm_configurator.view.utilityframes.export_frame}}\label{\detokenize{apidoc/src.osm_configurator.view.utilityframes:src-osm-configurator-view-utilityframes-export-frame-module}}\index{module@\spxentry{module}!src.osm\_configurator.view.utilityframes.export\_frame@\spxentry{src.osm\_configurator.view.utilityframes.export\_frame}}\index{src.osm\_configurator.view.utilityframes.export\_frame@\spxentry{src.osm\_configurator.view.utilityframes.export\_frame}!module@\spxentry{module}}\index{ExportFrame (class in src.osm\_configurator.view.utilityframes.export\_frame)@\spxentry{ExportFrame}\spxextra{class in src.osm\_configurator.view.utilityframes.export\_frame}}
@@ -13459,53 +13399,74 @@ The entry list of strings on the list, ordered from the lowest to highest priori
 \end{description}\end{quote}
 
 \end{fulllineitems}
+
 \end{fulllineitems}
+
 
 \chapter{Glossary}
 \label{\detokenize{index:Glossary}}
 \sphinxstepscope
 
-\section*{Aggregation}
-Process summarizing multiple attractivity-attributes from a single traffic-zone
 
-\section*{Aggregation-Process}
+\section*{aggregation}
+Process summarizing multiple attractivity-attributes from a single traffic-zone.
+
+\section*{aggregation process}
 Maps a set of attractivity-attributes onto a number, e.g. by adding or multiplying.
 
-\section*{Attractivity-Attribute}
+\section*{attractivity attribute}
 Attribute of a geographical object. Describes the attractivity of a place in terms of a certain action. Is calculated by using attributes.
 
-\section*{Attribute}
+\section*{attribute}
 Attribute of an OSM-Element. Is calculated during the point-reduction-phase by using OSM-Tags.
 
-\section*{Calculation-Phase}
+\section*{button}
+Component of the GUI providing reactions and general interaction with the user.
+
+\section*{calculation phase}
 Continuous phase of the calculation-process. Different phases: OSM-Data, local filtering, tag filtering, point-reduction, attractivity-calculation and aggregation.
 
-\section*{Checkbox}
+\section*{category}
+Organises OSM-elements. A category defines a set of OSM-elements with their according characteristics.
+
+\section*{checkbox}
 Box representing a binary. By ticking the box, the according option is chosen.
 
-\section*{Dropdown}
+\section*{configuration phase}
+Part of the Configuration of a project.
+
+\section*{default category}
+Each project has these categories by default.
+
+\section*{default project folder}
+Directory that stores projects file by default.
+
+\section*{dropdown menu}
 Describes a graphical element to navigate a GUI. An element or function can be chosen from the given list.
 
-\section*{Explorer}
+\section*{explorer}
 OS-tool to navigate and choose data from the disc.
 
-\section*{Geofilter}
+\section*{geofilter}
 Process matching OSM-objects to geographical zones.
 
 \section*{GUI}
 GUI is the abbreviation for "Graphical User Interface".
 
-\section*{Instance}
+\section*{instance}
 Differentiates between smaller and larger instances. Small instances describe data reaching 250 MB at max. Larger instances exceed this value.
 
-\section*{Category}
-Organises OSM-elements. A category defines a set of OSM-elements with their according characteristics.
+\section*{investigated area}
+Zone investigated by the application. Joined set of disjunct traffic-cells. Is defined by using a local-filter.
 
-\section*{Button}
-Component of the GUI providing reactions and general interaction with the user.
+\section*{local filter}
+Method describing a geofilter. Decides if OSM-elements at the edge of zones belong to the chosen area.
 
-\section*{Configuration-Phase}
-Part of the Configuration of a project.
+\section*{page}
+Part of the GUI, that is shown at once.
+
+\section*{project}
+Organisational unit. Contains all related configurations.
 
 \section*{OSM}
 Abbreviation for "Open Street Map". OSM is an open-source project collecting and publishing geodata for free.
@@ -13516,40 +13477,22 @@ File containing OSM-objects.
 \section*{OSM-object}
 Entry of the OSM-database. Defined by its tags.
 
-\section*{Project}
-Organisational unit. Contains all related configurations.
-
-\section*{Project-Folder}
+\section*{project folder}
 Directory. Organises the configuration-files of a project.
 
-\section*{Default folder}
-Directory that stores projects file by default.
+\section*{point reduction}
+Process mapping buildings to points. Each point has a certain set of attributes. 
 
-\section*{Point-Reduction}
-Process mapping buildings to points. Each point has a certain set of attributes.
-
-\section*{Local Filter}
-Method describing a geofilter. Decides if OSM-elements at the edge of zones belong to the chosen area. 
-
-\section*{Repository}
+\section*{repository}
 Server storing and managing objects, datasets, files and code.
 
-\section*{Page}
-Part of the GUI, that is shown at once.
-
-\section*{Default-Category}
-Each project has these categories by default.
-
-\section*{Tag}
+\section*{tag}
 Characteristic of an OSM-object. Contains a 'key' and 'value'.
 
-\section*{Tag-Filter}
+\section*{tag filter}
 Process separating OSM-Elements into certain group by checking their tags.
 
-\section*{Investigated Area}
-Zone investigated by the application. Joined set of disjunct traffic-cells. Is defined by using a local-filter.
-
-\section*{Traffic Cell}
+\section*{traffic cell}
 Refers to a spatially defined part of an investigated area that serves as a reference unit in traffic analysis and traffic forecasting.
 
 \section*{Windows}
