@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
 import src.osm_configurator.model.project.calculation.calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager
+
+from abc import ABC, abstractmethod
 
 
 class ICalculationPhase(ABC):

@@ -1,5 +1,7 @@
 import pathlib
 
+import src.osm_configurator.model.project.configuration.download_data
+
 
 class OSMDataConfiguration:
     """
@@ -33,14 +35,11 @@ class OSMDataConfiguration:
         """
         pass
 
-    def download_data(self, coordinates):
+    def get_download_data(self, coordinates):
         """
-        Downloads the OSM data which the coordinates dictate.
-
-        Args:
-            coordinates (shapely.Polygon): The new area, which should be downloaded
+        Getter for the download data class.
 
         Returns:
-            bool: True when the download works, otherwise false.
+            download_data.DownloadData: The download data class.
         """
         pass

@@ -1,6 +1,5 @@
 import src.osm_configurator.view.toplevelframes.top_level_frame
 import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.control_interface
 
 
 class PositionedFrame:
