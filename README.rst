@@ -1,9 +1,9 @@
 KonfiguratorFuerOSMDaten
 ========================
 
-.. image:: pictures/license_MIT.png
+.. image:: https://img.shields.io/badge/license-GPLv3-blue
    :alt: License status
-   :target: https://www.gnu.org/licenses/gpl-3.0.en.html
+   :target: https://www.gnu.org/licenses/gpl-3.0
 
 Whether it’s biking to college or driving to the supermarket, traffic
 effects us all. This product uses generated geodata from the free
