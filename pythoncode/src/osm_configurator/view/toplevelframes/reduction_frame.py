@@ -1,5 +1,5 @@
 import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.control_interface
+
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
@@ -20,7 +20,7 @@ class ReductionFrame(TopLevelFrame):
             state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
             control (control_interface.IControl): The control the frame will call to get access to the model.
         """
-        super().__init__(state_manager, control)
+        # super().__init__(state_manager, control)
         pass
 
     def activate(self):

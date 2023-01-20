@@ -1,6 +1,7 @@
 import pathlib
-from abc import abstractmethod, ABC
 import src.osm_configurator.model.project.calculation.calculation_phase_enum
+
+from abc import abstractmethod, ABC
 
 
 class CalculationParserInterface(ABC):

@@ -1,5 +1,5 @@
 import src.osm_configurator.view.toplevelframes.project_head_frame
-import src.osm_configurator.control.control_interface
+import src.osm_configurator.control.export_controller
 
 
 class ExportFrame:
@@ -10,12 +10,12 @@ class ExportFrame:
     - Configurations Export
     """
 
-    def __init__(self, parent_frame, control):
+    def __init__(self, parent_frame, export_controller):
         """
         This method creates an ExportFrame that provides the user with different export options.
 
         Args:
             parent_frame (project_head_frame.ProjectHeadFrame): The parent of the ExportFrame is the HeadFrame where the export feature is located.
-            control (control_interface.IControl): The control the frame calls to gain access to the model to export.
+            export_controller (export_controller.ExportController): Respective controller.
         """
         pass

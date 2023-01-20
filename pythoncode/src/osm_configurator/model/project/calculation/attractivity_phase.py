@@ -1,6 +1,7 @@
-from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 import src.osm_configurator.model.project.configuration.configuration_manager
 import src.osm_configurator.model.project.calculation.calculation_state_enum
+
+from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 
 
 class AttractivityPhase(ICalculationPhase):

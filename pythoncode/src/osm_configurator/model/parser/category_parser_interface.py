@@ -1,6 +1,7 @@
-from abc import ABC, abstractmethod
 import pathlib
 import src.osm_configurator.model.project.configuration.category
+
+from abc import ABC, abstractmethod
 
 
 class CategoryParserInterface(ABC):
