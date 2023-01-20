@@ -3,7 +3,7 @@ KonfiguratorFuerOSMDaten
 
 .. image:: pictures/license_MIT.png
    :alt: License status
-   :target: https://opensource.org/licenses/MIT
+   :target: https://www.gnu.org/licenses/gpl-3.0.en.html
 
 Whether it’s biking to college or driving to the supermarket, traffic
 effects us all. This product uses generated geodata from the free
@@ -58,7 +58,7 @@ For an description about how the application works check out the folder
 License
 -------
 
-KonfiguratorFuerOSMDaten is licensed under the MIT `License 
+KonfiguratorFuerOSMDaten is licensed under the GPLv3 `License 
 <https://github.com/LuposX/KonfiguratorFuerOSMDaten/blob/main/LICENSE>`__.
 
 Contribution
