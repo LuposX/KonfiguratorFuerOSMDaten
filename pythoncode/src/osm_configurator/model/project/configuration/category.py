@@ -3,6 +3,12 @@ import src.osm_configurator.model.project.configuration.attractivity_attribute
 import src.osm_configurator.model.project.configuration.default_value_entry
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import List
+
+
 
 class Category:
     """
@@ -83,7 +89,7 @@ class Category:
             return True
         return False
 
-    def get_blacklist(self):
+    def get_blacklist(self) -> List[str]:
         """
         Getter for the blacklist of the category.
 

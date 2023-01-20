@@ -16,6 +16,7 @@ class CalculationState(Enum):
     ERROR_INVALID_CUT_OUT_DATA = ("Invalid Cut Out Data", "Error: The cut out data are not valid.")
     ERROR_INVALID_CATEGORIES = ("Invalid Categories", "Error: The category configuration is not valid.")
     ERROR_INVALID_PREVIOUS_CALCULATIONS = ("Invalid calculation phase", "Error: This calculation phase can not be calculated, because a previous calculation has invalid results or wasn't run.")
+    ERROR_PROJECT_NOT_SET_UP_CORRECTLY = ("Project did not got set up Correctly", "Error: The project folder structure did not get set up correctly.")
 
     def get_name(self):
         """

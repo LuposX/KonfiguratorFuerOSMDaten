@@ -1,7 +1,7 @@
 from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataParserInterface
 
 
-class CategoryParser(OSMDataParserInterface):
+class OSMDataParser(OSMDataParserInterface):
     __doc__ = OSMDataParserInterface.__doc__
 
     def __init__(self):

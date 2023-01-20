@@ -19,7 +19,6 @@ class ConfigurationManager:
         Args:
             active_project_path (pathLib.Path): The path pointing towards the project folder.
         """
-        pass
 
     def get_osm_data_configuration(self):
         """
@@ -57,12 +56,21 @@ class ConfigurationManager:
         """
         pass
 
-    def get_active_project_path(self):
+    def get_active_project_path(self) -> pathlib.Path:
         """
         Getter for the active project path
 
         Returns:
             pathlib.Path: the project path.
+        """
+        pass
+
+    def get_calculation_phase_checkpoints_folder(self) -> str:
+        """
+        This method is used to get the name of the folder in which the results will be saved.
+
+        Returns:
+            str: the name of the folder
         """
         pass
 
