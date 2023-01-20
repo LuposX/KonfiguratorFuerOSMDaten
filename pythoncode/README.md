@@ -48,11 +48,9 @@ If you get problems with Step *4*, try the following command and then do step *6
 - `sudo apt-get install build-essential cmake libboost-dev libexpat1-dev zlib1g-dev libbz2-dev`
 
 **Way2(Automatically):**  
-Should work on windows 10.
-1. Update conda: `conda update conda`.
-2. create the enviroment `conda create --name PSE python=3.10`.
-3. activate the enviroment `conda activate PSE`.
-4. `pip install -r /path/to/requirements.txt`
+Tested on windows 10(64Bit), might take a while.  
+1. Update conda: `conda update conda`.  
+2. `conda env create --name PSE --file PSE.yml`  
 
 ### How to check if the Installation worked  
 
