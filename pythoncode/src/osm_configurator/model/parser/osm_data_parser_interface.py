@@ -29,7 +29,7 @@ class OSMDataParserInterface(ABC):
         osm element, whereby a feature is a tag or something otherwise that describes the osm-element e.g. location.
 
         Args:
-            path (pathlib.Path):  The path pointing towards the OSM data we want to parse in the ".pbf" format.
+            path (pathlib.Path):  The path pointing towards the OSM data we want to parse in the ".pbf" format. As an absolute path.
             activated_attributes (List[Attribute]): A list of attributes tha are activated and will be used in the calculation.
             category_manager_o (CategoryManager): The CategoryManager, used to figure out which categories apply to an osm element.
         

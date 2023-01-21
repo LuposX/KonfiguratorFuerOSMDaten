@@ -31,7 +31,7 @@ class OSMDataParser(OSMDataParserInterface):
         osm_handler: DataOSMHandler = osm_data_handler.DataOSMHandler(categories, activated_attributes)
 
         # Process the data
-        osm_handler.apply_file(path.absolute())
+        osm_handler.apply_file(path)
 
         # transform the data from osm_handler into  geoDataFrame
         # TODO: not final, check what we need to save
