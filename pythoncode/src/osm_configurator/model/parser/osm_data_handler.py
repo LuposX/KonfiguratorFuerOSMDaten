@@ -173,3 +173,12 @@ class DataOSMHandler(osm.SimpleHandler):
             self._tag_inventory(r, "relation", _categories_of_osm_element)
 
         del r
+
+    def get_osm_data(self):
+        """
+        Getter for the osm data.
+
+        Returns:
+            List: A list of osm Data
+        """
+        return self._osm_data
