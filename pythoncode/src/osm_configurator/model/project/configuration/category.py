@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 import src.osm_configurator.model.project.configuration.attractivity_attribute
 import src.osm_configurator.model.project.configuration.default_value_entry
