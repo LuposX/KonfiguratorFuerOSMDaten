@@ -5,6 +5,8 @@ import geopandas as gpd
 import osm_configurator.model.parser.osm_data_handler as osm_data_handler
 from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataParserInterface
 
+import osm_configurator.model.parser.dataframe_column_names as dataframe_column_names
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -32,7 +34,11 @@ class OSMDataParser(OSMDataParserInterface):
         osm_handler.apply_file(path.absolute())
 
         # transform the data from osm_handler into  geoDataFrame
-        data_col_names = ['osm_type', 'ntags', 'tags', 'categories']
+        data_col_names = [dataframe_column_names.OSM_TYPE,
+                          dataframe_column_names.NUMBER_TAGS,
+                          dataframe_column_names.TAGS,
+                          dataframe_column_names.CATEGORIES]
+
         df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=data_col_names)
 
         return df_osm
