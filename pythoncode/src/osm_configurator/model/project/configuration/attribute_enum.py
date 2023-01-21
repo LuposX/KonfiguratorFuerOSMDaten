@@ -8,15 +8,15 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category
 
 
-def _calculate_property_area(category, tags) -> float:
+def _calculate_property_area(category: Category, tags: Dict[str, str]) -> float:
     pass
 
 
-def _calculate_number_of_floors(category, tags) -> float:
+def _calculate_number_of_floors(category: Category, tags: Dict[str, str]) -> float:
     pass
 
 
-def _calculate_first_floor_area(category, tags) -> float:
+def _calculate_first_floor_area(category: Category, tags: Dict[str, str]) -> float:
     pass
 
 
@@ -52,7 +52,7 @@ class Attribute(Enum):
         """
         return self.value[1]
 
-    def calculate_attribute_value(self, category, tags) -> float:
+    def calculate_attribute_value(self, category: Category, tags: Dict[str, str]) -> float:
         """
         Calculates the value of the attribute based on the provided data
 
