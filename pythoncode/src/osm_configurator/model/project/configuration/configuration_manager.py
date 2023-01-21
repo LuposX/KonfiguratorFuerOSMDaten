@@ -21,6 +21,8 @@ class ConfigurationManager:
         Args:
             active_project_path (pathLib.Path): The path pointing towards the project folder.
         """
+        self._active_project_path = active_project_path
+        self._calculation_phase_checkpoints_folder_name = "Results"  # TODO: remove Magic String
 
     def get_osm_data_configuration(self):
         """
@@ -65,14 +67,14 @@ class ConfigurationManager:
         Returns:
             pathlib.Path: the project path.
         """
-        pass
+        return self._active_project_path
 
-    def get_calculation_phase_checkpoints_folder(self) -> str:
+    def get_calculation_phase_checkpoints_folder_name(self) -> str:
         """
         This method is used to get the name of the folder in which the results will be saved.
 
         Returns:
             str: the name of the folder
         """
-        pass
+        return self._calculation_phase_checkpoints_folder_name
 
