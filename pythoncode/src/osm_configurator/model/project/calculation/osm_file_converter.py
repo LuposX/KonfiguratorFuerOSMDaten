@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pathlib
 import src.osm_configurator.model.project.calculation.osm_file_format_enum
 

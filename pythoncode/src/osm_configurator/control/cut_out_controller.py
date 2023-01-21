@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.model.application.application_interface
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 import pathlib

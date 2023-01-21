@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from enum import Enum, unique
 
 
@@ -33,7 +35,7 @@ class CalculationPhase(Enum):
         """
         return self.value[0]
 
-    def get_folder_name_for_results(self):
+    def get_folder_name_for_results(self) -> str:
         """
         Getter for the folder name of the enum type.
 

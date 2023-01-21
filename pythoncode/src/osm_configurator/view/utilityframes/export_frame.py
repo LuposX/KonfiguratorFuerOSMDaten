@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.view.toplevelframes.project_head_frame
 import src.osm_configurator.control.export_controller
 

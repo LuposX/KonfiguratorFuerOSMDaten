@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import pathlib
 
 
@@ -79,3 +81,22 @@ class ProjectSettings:
             str: The description of the project
         """
         pass
+
+    def set_calculation_phase_checkpoints_folder(self, folder_name: str):
+        """
+        This method is used to set the name of the folder in which the results will be saved.
+
+        Args:
+            folder_name (str): the name of the folder
+        """
+        pass
+
+    def get_calculation_phase_checkpoints_folder(self) -> str:
+        """
+        This method is used to get the name of the folder in which the results will be saved.
+
+        Returns:
+            str: the name of the folder
+        """
+        pass
+

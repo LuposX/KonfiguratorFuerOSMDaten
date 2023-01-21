@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.model.application.application_interface import IApplication
 
 

@@ -1,4 +1,11 @@
+from __future__ import annotations
+
 import src.osm_configurator.model.project.configuration.category
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import List
 
 
 class CategoryManager:
@@ -31,7 +38,7 @@ class CategoryManager:
             return -1
         return self._categories[index]
 
-    def get_categories(self):
+    def get_categories(self) -> List:
         """
         Getter for all the Categories.
 

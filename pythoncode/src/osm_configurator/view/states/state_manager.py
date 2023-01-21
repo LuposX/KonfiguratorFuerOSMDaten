@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.view.states.state_name_enum
 import src.osm_configurator.view.states.state
 import src.osm_configurator.view.states.positioned_frame

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.view.states.state_manager
 
 from abc import ABC, abstractmethod

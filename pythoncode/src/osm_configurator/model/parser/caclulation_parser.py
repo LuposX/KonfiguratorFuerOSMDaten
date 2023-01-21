@@ -1,4 +1,7 @@
+from __future__ import annotations
+
 from src.osm_configurator.model.parser.calculation_parser_interface import CalculationParserInterface
+
 
 class CalculationParser(CalculationParserInterface):
     # to inherit the documentation

@@ -1,7 +1,16 @@
+from __future__ import annotations
+
 import pathlib
 import geopandas
 
 from abc import ABC, abstractmethod
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import List
+    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 
 class OSMDataParserInterface(ABC):
@@ -11,7 +20,7 @@ class OSMDataParserInterface(ABC):
     """
     
     @abstractmethod
-    def parse_osm_data_file(self, path):
+    def parse_osm_data_file(self, path, category_manager_o: CategoryManager, activated_attributes: List[Attribute]):
         """
         It gets a path pointing towards an OSM data in protocol buffer Binary Format(pbf) and transforms it into an
         GeoDataFrame.
@@ -21,6 +30,8 @@ class OSMDataParserInterface(ABC):
 
         Args:
             path (pathlib.Path):  The path pointing towards the OSM data we want to parse in the ".pbf" format.
+            activated_attributes (List[Attribute]): A list of attributes tha are activated and will be used in the calculation.
+            category_manager_o (CategoryManager): The CategoryManager, used to figure out which categories apply to an osm element.
         
         Returns:
             geopandas.GeoDataFrame: The parsed OSM data as a GeoDataFrame.
