@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 
 

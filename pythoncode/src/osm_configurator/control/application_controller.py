@@ -1,3 +1,6 @@
+from __future__ import annotations
+
+
 class ApplicationController:
     """
     The application controller is responsible for creating the model, the view and the control. It is the start of the

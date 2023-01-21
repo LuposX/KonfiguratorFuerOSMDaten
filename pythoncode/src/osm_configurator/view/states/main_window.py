@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.control.export_controller
 import src.osm_configurator.control.category_controller
 import src.osm_configurator.control.project_controller

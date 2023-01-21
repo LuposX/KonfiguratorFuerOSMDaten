@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.model.application.application_interface
 import src.osm_configurator.model.application.passive_project
 import src.osm_configurator.model.project.config_phase_enum

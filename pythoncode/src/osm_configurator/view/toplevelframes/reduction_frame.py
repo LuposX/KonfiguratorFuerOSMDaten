@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.view.states.state_manager
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame

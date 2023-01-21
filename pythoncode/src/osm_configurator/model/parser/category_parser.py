@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.model.parser.category_parser_interface import CategoryParserInterface
 
 

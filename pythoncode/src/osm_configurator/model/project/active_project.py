@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import src.osm_configurator.model.project.configuration.configuration_manager
 import src.osm_configurator.model.project.data_visualizer
 import src.osm_configurator.model.project.project_settings

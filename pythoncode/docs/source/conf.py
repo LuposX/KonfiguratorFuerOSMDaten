@@ -49,6 +49,8 @@ extensions = [
     'sphinx.ext.napoleon', # support for google docstring style
 ]
 
+autodoc_typehints = "none"
+
 add_module_names = False
 
 autodoc_default_options = {
