@@ -34,8 +34,9 @@ class OSMDataParser(OSMDataParserInterface):
         osm_handler.apply_file(path.absolute())
 
         # transform the data from osm_handler into  geoDataFrame
+        # TODO: not final, check what we need to save
         data_col_names = [dataframe_column_names.OSM_TYPE,
-                          dataframe_column_names.NUMBER_TAGS,
+                          dataframe_column_names.LOCATION,
                           dataframe_column_names.TAGS,
                           dataframe_column_names.CATEGORIES]
 
