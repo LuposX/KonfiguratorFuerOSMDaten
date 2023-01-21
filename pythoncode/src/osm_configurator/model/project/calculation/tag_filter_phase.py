@@ -14,17 +14,19 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.parser.osm_data_parser import OSMDataParser
+    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
     from typing import List
     from geopandas import GeoDataFrame
     from geopandas import geoseries
 
 
-def _get_checkpoints_folder_path(configuration_manager_o):
+def _get_checkpoints_folder_path_from_phase(configuration_manager_o: ConfigurationManager, phase: CalculationPhase):
     # Get the path to the project path and the name of the folder where we save the results and add them together
     project_path: Path = configuration_manager_o.get_active_project_path()
-    folder_name: str = calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE.get_folder_name_for_results()
+    folder_name: str = phase.get_folder_name_for_results()
     checkpoint_folder_path: Path = project_path.joinpath(folder_name)
+
     return checkpoint_folder_path
 
 
@@ -33,6 +35,7 @@ class TagFilterPhase(ICalculationPhase):
     This calculation phase is responsible for sorting OSM-elements into their corresponding categories.
     For details see the method calculate().
     """
+
     def calculate(self, configuration_manager_o: ConfigurationManager):
         """
         Sorts OSM-elements into their corresponding categories.
@@ -50,11 +53,17 @@ class TagFilterPhase(ICalculationPhase):
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
         """
-        checkpoint_folder_path: Path = _get_checkpoints_folder_path(configuration_manager_o)
+        # Get path to the results of the last Phase
+        checkpoint_folder_path_last_phase: Path = _get_checkpoints_folder_path_from_phase(configuration_manager_o,
+                                                                                        calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE)
+
+        # Get path to the results of the current Phase
+        checkpoint_folder_path_current_phase: Path = _get_checkpoints_folder_path_from_phase(configuration_manager_o,
+                                                                                             calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
 
         # check if the folder exist
-        if checkpoint_folder_path.exists():
-            list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path.iterdir())
+        if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
+            list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
         else:
             return calculation_state_enum.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY
 
@@ -65,21 +74,15 @@ class TagFilterPhase(ICalculationPhase):
         osm_data_parser_o: OSMDataParser = osm_data_parser.OSMDataParser()
 
         # parse the osm data  with the parser
+        file_path: Path
         for file_path in list_of_traffic_cell_checkpoints:
             traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path)
 
-            # TODO: magic string set corrects column name
-            # This should be a pandas series
-            traffic_cell_data_frame["tags"]: geoseries
+            # name of the file
+            file_name = file_path.name
 
-            # Add a new column to the dataframe which says the category per element
-            # TODO: another magic string
-            # traffic_cell_data_frame["Categories"]: geoseries = category_data
-
-            # Check each category how they apply to the GeoDataframe
-            for category in category_manager_o.get_categories():
-                category_name: str = category.get_category_name()
-                category_blacklist: List[str] = category.get_blacklist()
-                category_whitelist: List[str] = category.get_whitelist()
-
-                traffic_cell_data_frame["tags"].get
+            # save the parsed osm data
+            try:
+                traffic_cell_data_frame.to_csv(checkpoint_folder_path_current_phase.joinpath(file_name))
+            except Exception:  # TODO: This is probably bad style
+                return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
