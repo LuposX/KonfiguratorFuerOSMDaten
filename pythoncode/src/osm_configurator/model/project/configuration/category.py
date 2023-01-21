@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
-
+    from typing import Tuple
 
 
 class Category:
@@ -18,7 +18,7 @@ class Category:
     """
 
     _active = False
-    _whitelist = []
+    _whitelist = [] # this should be List[Tuple[str, str]], a list of key,value pairs
     _blacklist = []
     _category_name = "Category Name"
     _calculate_area = False
@@ -72,7 +72,7 @@ class Category:
         Getter for the whitelist of the category.
 
         Returns:
-            list[str]: List containing all whitelist values of the class.
+            List[Tuple[str, str]]: List containing all tags in the form of key,value pairs.
         """
         return self._whitelist
 
@@ -96,7 +96,7 @@ class Category:
         Getter for the blacklist of the category.
 
         Returns
-            list[str]: list containing all blacklist attributes of the class.
+           List[Tuple[str, str]]: List containing all tags in the form of key,value pairs.
         """
         return self._blacklist
 
