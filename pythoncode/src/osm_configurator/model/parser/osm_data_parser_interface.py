@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+    from pathlib import Path
 
 
 class OSMDataParserInterface(ABC):
@@ -21,7 +22,8 @@ class OSMDataParserInterface(ABC):
     """
     
     @abstractmethod
-    def parse_osm_data_file(self, path, category_manager_o: CategoryManager, cut_out_mode: CutOutMode):
+    def parse_osm_data_file(self, path, category_manager_o: CategoryManager,
+                            cut_out_mode: CutOutMode, cut_out_path: Path):
         """
         It gets a path pointing towards an OSM data in protocol buffer Binary Format(pbf) and transforms it into an
         GeoDataFrame.
@@ -34,6 +36,7 @@ class OSMDataParserInterface(ABC):
             path (pathlib.Path):  The path pointing towards the OSM data we want to parse in the ".pbf" format.
             category_manager_o (CategoryManager): The CategoryManager, used to figure out which categories apply to an osm element.
             cut_out_mode (CutOutMode): This sets if we want to remove building on the edge or not.
+            cut_out_path (Path) The path which points toward the cut_out_file, sued when removing building which are on the edge.
         
         Returns:
             geopandas.GeoDataFrame: The parsed OSM data as a GeoDataFrame.

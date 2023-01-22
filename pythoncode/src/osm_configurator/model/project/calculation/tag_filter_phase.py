@@ -70,7 +70,13 @@ class TagFilterPhase(ICalculationPhase):
         file_path: Path
         for file_path in list_of_traffic_cell_checkpoints:
             traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
-                                                                                          category_manager_o)
+                                                                                          category_manager_o,
+                                                                                          configuration_manager_o
+                                                                                          .get_cut_out_configuration()
+                                                                                          .get_cut_out_mode(),
+                                                                                          configuration_manager_o
+                                                                                          .get_cut_out_configuration()
+                                                                                          .get_cut_out_path())
 
             # name of the file
             file_name = file_path.name
