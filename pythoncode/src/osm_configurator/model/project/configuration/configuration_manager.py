@@ -7,6 +7,11 @@ import src.osm_configurator.model.project.configuration.aggregation_configuratio
 import src.osm_configurator.model.project.configuration.cut_out_configuration
 import src.osm_configurator.model.project.configuration.category_manager
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
+
 
 class ConfigurationManager:
     """
@@ -40,7 +45,7 @@ class ConfigurationManager:
         """
         pass
 
-    def get_cut_out_configuration(self):
+    def get_cut_out_configuration(self) -> CutOutConfiguration:
         """
         Getter for the cut-out configuration.
 
