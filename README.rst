@@ -45,7 +45,7 @@ for example using ``pip`` or ``conda``:
 
 .. code-block:: console
 
-    Here will stand sth. in the future
+      ``pip install -e .``    
 
 
 Usage
