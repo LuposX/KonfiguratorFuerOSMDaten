@@ -66,13 +66,3 @@ class ConfigurationManager:
             pathlib.Path: the project path.
         """
         pass
-
-    def get_calculation_phase_checkpoints_folder(self) -> str:
-        """
-        This method is used to get the name of the folder in which the results will be saved.
-
-        Returns:
-            str: the name of the folder
-        """
-        pass
-
