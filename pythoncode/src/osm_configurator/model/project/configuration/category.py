@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import List
     from typing import Tuple
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 
 class Category:
@@ -31,6 +32,16 @@ class Category:
     def __init__(self):
         """
         Creates a new instance of a "Category" class.
+        """
+        pass
+
+    def get_activated_attribute(self) -> List[Attribute]:
+        """
+        Return a list of all used attributes, of the categories.
+        This is used to know which tags we need to save.
+
+        Returns:
+            List[Attribute]: A list that contains all used attributes
         """
         pass
 

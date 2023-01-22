@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 
 class CategoryManager:
@@ -23,6 +24,16 @@ class CategoryManager:
             categories (Category): Starting list of categories.
         """
         self._categories = categories
+
+    def get_activated_attribute(self) -> List[Attribute]:
+        """
+        Return a list of all used attributes, of all categories.
+        This is used to know which tags we need to save.
+
+        Returns:
+            List[Attribute]: A list that contains all used attributes
+        """
+        pass
 
     def get_category(self, index):
         """
