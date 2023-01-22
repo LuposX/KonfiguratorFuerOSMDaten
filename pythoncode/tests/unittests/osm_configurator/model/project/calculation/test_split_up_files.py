@@ -6,7 +6,11 @@ from pathlib import Path
 import src.osm_configurator.model.project.calculation.split_up_files as suf
 
 
-def _clean_up(result_folder):
+def _prepare(result_folder):
+    # Create output folders
+    if not os.path.exists(result_folder):
+        os.makedirs(result_folder)
+
     # Delete old build files
     delete_path = str(result_folder) + '//'
     for file_name in os.listdir(delete_path):
@@ -47,11 +51,7 @@ def test_no_name_column():
     geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
 
     # Clean up last tests
-    # Create build directory
-    if not os.path.exists(result_folder):
-        os.makedirs(result_folder)
-
-    _clean_up(result_folder)
+    _prepare(result_folder)
 
     # Begin test
     df = gpd.read_file(geojson_path)
@@ -69,7 +69,7 @@ def test_correct_split_up():
     test_file_path1 = os.path.join(TEST_DIR, "build/split_up_files/3.pbf")
     test_file_path2 = os.path.join(TEST_DIR, "build/split_up_files/cell_with_a_name.pbf")
 
-    _clean_up(result_folder)
+    _prepare(result_folder)
 
     # Begin test
     df = gpd.read_file(geojson_path)
