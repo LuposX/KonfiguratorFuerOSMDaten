@@ -24,15 +24,18 @@ class DataOSMHandler(osm.SimpleHandler):
     This class is responsible for parsing osm data files into a dataframe format.
     """
 
-    def __init__(self, categories: CategoryManager, activated_attributes: List[Attribute]):
+    def __init__(self, categories: CategoryManager, activated_attributes: List[Attribute], building_on_the_edge_allowed):
         """
         Creates a new "DataOSMHandler" object.
 
         Args:
             categories (CategoryManager): Needed to check if an osm object belongs to a specific category.
             activated_attributes (List[Attribute]): Used to know which tags we want to save.
+              building_on_the_edge_allowed (bool): If this is true then buildings which are on the edge are allowed, if its false osm elements which are on the edge will be removed.
         """
         osm.SimpleHandler.__init__(self)
+
+        self._building_on_the_edge_allowed = building_on_the_edge_allowed
 
         # This will be the list in which we save the output.
         self._osm_data: List = []

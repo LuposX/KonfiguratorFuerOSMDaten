@@ -26,12 +26,18 @@ class OSMDataParser(OSMDataParserInterface):
         """
         pass
 
-    def parse_osm_data_file(self, path, categories: CategoryManager, activated_attributes: List[Attribute]) -> GeoDataFrame:
+    def parse_osm_data_file(self, path, categories: CategoryManager,
+                            activated_attributes: List[Attribute], building_on_the_edge: bool) -> GeoDataFrame:
+        """
+        This method also implements the functionality when building are on the edge.
+        """
         # Creating our osm_handler which converts the osm-data file into a list of data
-        osm_handler: DataOSMHandler = osm_data_handler.DataOSMHandler(categories, activated_attributes)
+        osm_handler: DataOSMHandler = osm_data_handler.DataOSMHandler(categories,
+                                                                      activated_attributes,
+                                                                      building_on_the_edge)
 
         # Process the data
-        osm_handler.apply_file(path)
+        osm_handler.apply_file(path, locations=True)
 
         # transform the data from osm_handler into  geoDataFrame
         # TODO: not final, check what we need to save

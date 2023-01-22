@@ -20,7 +20,8 @@ class OSMDataParserInterface(ABC):
     """
     
     @abstractmethod
-    def parse_osm_data_file(self, path, category_manager_o: CategoryManager, activated_attributes: List[Attribute]):
+    def parse_osm_data_file(self, path, category_manager_o: CategoryManager,
+                            activated_attributes: List[Attribute], building_on_the_edge_allowed: bool):
         """
         It gets a path pointing towards an OSM data in protocol buffer Binary Format(pbf) and transforms it into an
         GeoDataFrame.
@@ -32,6 +33,7 @@ class OSMDataParserInterface(ABC):
             path (pathlib.Path):  The path pointing towards the OSM data we want to parse in the ".pbf" format. As an absolute path.
             activated_attributes (List[Attribute]): A list of attributes tha are activated and will be used in the calculation.
             category_manager_o (CategoryManager): The CategoryManager, used to figure out which categories apply to an osm element.
+            building_on_the_edge_allowed (bool): If this is true then buildings which are on the edge are allowed, if its false osm elements which are on the edge will be removed.
         
         Returns:
             geopandas.GeoDataFrame: The parsed OSM data as a GeoDataFrame.
