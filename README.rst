@@ -45,7 +45,7 @@ for example using ``pip`` or ``conda``:
 
 .. code-block:: console
 
-      ``pip install -e .``    
+      pip install -e .   
 
 
 Usage
