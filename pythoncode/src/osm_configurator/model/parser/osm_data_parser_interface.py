@@ -23,6 +23,7 @@ class OSMDataParserInterface(ABC):
     
     @abstractmethod
     def parse_osm_data_file(self, path, category_manager_o: CategoryManager,
+
                             cut_out_mode: CutOutMode, cut_out_path: Path):
         """
         It gets a path pointing towards an OSM data in protocol buffer Binary Format(pbf) and transforms it into an

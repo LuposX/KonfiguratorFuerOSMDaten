@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import osmium as osm
 import numpy as np
+import shapely as shp
 
 from typing import TYPE_CHECKING
 
@@ -16,6 +17,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from osmium import Node
     from osmium import Way
+    from osmium import Area
     from osmium import Relation
     from osmium.osm import OSMObject
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
@@ -36,6 +38,8 @@ class DataOSMHandler(osm.SimpleHandler):
             cut_out_data (GeoDataFrame): This files defines the coordinates of the different traffic cell and is used when we need to remove buildings which are on the edge.
         """
         osm.SimpleHandler.__init__(self)
+
+        self._building_on_the_edge_allowed = building_on_the_edge_allowed
 
         # This will be the list in which we save the output.
         self._osm_data: List = []
@@ -58,6 +62,11 @@ class DataOSMHandler(osm.SimpleHandler):
         else:
             self._remove_building_on_edge = True
 
+        self._wkbfab = osm.geom.WKBFactory()  # with this we create geometries for areas
+        self._shapely_location = 0  # the location we save per osm element
+        self._tmp_tag_list: List = []  # this is a temporary list that is used to save the tags for one osm element.
+        self._categories_of_osm_element = []
+
     def _attributes_to_tag_list(self) -> List:
         """
         This method is used to extract all the tags that are needed for the calculation from the Attributes.
@@ -70,7 +79,7 @@ class DataOSMHandler(osm.SimpleHandler):
             _needed_tags.extend(attribute.get_needed_tags())
         return _needed_tags
 
-    def _tag_inventory(self, elem: OSMObject, elem_type: str, categories_of_osm_element) -> None:
+    def _tag_inventory(self, elem: OSMObject, elem_type: str) -> None:
         """
         This method is responsible to save the information about the osm elements.
 
@@ -88,9 +97,9 @@ class DataOSMHandler(osm.SimpleHandler):
 
         # save the osm object data that we need.
         self._osm_data.append([elem_type,
-                               len(self._tmp_tag_list),
+                               self._shapely_location,
                                np.asarray(self._tmp_tag_list, dtype=str),
-                               np.asarray(categories_of_osm_element, dtype=np.uint16)])
+                               np.asarray(self._categories_of_osm_element, dtype=np.uint16)])
 
     def _get_list_of_categories_of_the_osm_element(self, n: OSMObject) -> List[str]:
         """
@@ -148,45 +157,38 @@ class DataOSMHandler(osm.SimpleHandler):
             n (Node): The node we found
         """
         # Get all the categories that apply to the current osm element
-        _categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(n)
+        self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(n)
 
         # check that the categories aren't empty
-        if _categories_of_osm_element:
-            self._tag_inventory(n, "node", _categories_of_osm_element)
+        if self._categories_of_osm_element:
+            self._shapely_location = shp.Point((n.location.x, n.location.y))
+            self._tag_inventory(n, "node")
 
         del n
 
-    def way(self, w: Way) -> None:
+    def area(self, a: Area) -> None:
         """
-        This method gets called when reading the osm data file a way was found.
+        This method gets called when reading the osm data file an area was found.
+        An Area is an OSMObject that is encircled, this means sth like a way or relation.
 
         Args:
-            w (Way): The way we found.
+            a (Area): The node we found
         """
         # Get all the categories that apply to the current osm element
-        _categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(w)
+        self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(n)
 
         # check that the categories aren't empty
-        if _categories_of_osm_element:
-            self._tag_inventory(w, "way", _categories_of_osm_element)
+        if self._categories_of_osm_element:
+            # create location/multipolygon
+            wkbshape = self._wkbfab.create_multipolygon(a)
+            self._shapely_location = shp.wkb.loads(wkbshape, hex=True)
 
-        del w
+            if a.from_way:
+                self._tag_inventory(a, "area-way")
+            else:
+                self._tag_inventory(a, "area-relation")
 
-    def relation(self, r: Relation) -> None:
-        """
-        This method gets called when reading the osm data file a node was found.
-
-        Args:
-            r (Relation): The node we found
-        """
-        # Get all the categories that apply to the current osm element
-        _categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(r)
-
-        # check that the categories aren't empty
-        if _categories_of_osm_element:
-            self._tag_inventory(r, "relation", _categories_of_osm_element)
-
-        del r
+        del a
 
     def get_osm_data(self):
         """
