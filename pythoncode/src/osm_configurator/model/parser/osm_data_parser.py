@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from osm_configurator.model.parser.osm_data_handler import DataOSMHandler
     from geopandas import GeoDataFrame
+    from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 
 
 class OSMDataParser(OSMDataParserInterface):
@@ -26,7 +27,7 @@ class OSMDataParser(OSMDataParserInterface):
         """
         pass
 
-    def parse_osm_data_file(self, path, categories: CategoryManager, activated_attributes: List[Attribute]) -> GeoDataFrame:
+    def parse_osm_data_file(self, path, categories: CategoryManager, cut_out_mode: CutOutMode) -> GeoDataFrame:
         # Creating our osm_handler which converts the osm-data file into a list of data
         osm_handler: DataOSMHandler = osm_data_handler.DataOSMHandler(categories)
 
