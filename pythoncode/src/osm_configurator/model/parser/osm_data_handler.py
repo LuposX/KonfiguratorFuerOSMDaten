@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import List
     from typing import Tuple
+    from typing import Set
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
@@ -42,7 +43,9 @@ class DataOSMHandler(osm.SimpleHandler):
         self._activated_attributes: List = activated_attributes
 
         # Get a list of tags that are needed, the rest we can throw away.
-        self._needed_tags: List = self._attributes_to_tag_list()
+        self._needed_tags: Set
+        for category in categories.get_categories():
+            self._needed_tags.add(category.get_activated_attribute())
 
     def _attributes_to_tag_list(self) -> List:
         """
