@@ -41,24 +41,16 @@ class OSMDataParser(OSMDataParserInterface):
             # get the name of the file without the suffix
             current_traffic_cell_name: str = data_file_path.stem
 
-            # create a new cutout parser and parse the cut out file
+            # create a new cutout parser and parse the cutout file
             cut_out_parser_o = cut_out_parser.CutOutParser()
             cut_out_data: GeoDataFrame = cut_out_parser_o.parse_cutout_file(cut_out_path)
 
-            # TODO: not a good solution because of double
             # get the entry in tha dataframe which corresponds to the file we are currently working on
-            found_current_traffic_cell: GeoDataFrame = cut_out_data[
+            # get the index the file references, naming scheme: "index_name"
+            idx: int = int(current_traffic_cell_name.split("_")[0])
 
-
-            # TODO: throw error if multiple traffic cells were found with the same name
-            if len(found_current_traffic_cell) > 1:
-                pass
-            elif len(found_current_traffic_cell) == 0:
-                pass
-            else:
-                osm_handler = osm_data_handler.DataOSMHandler(categories,
-                                                              found_current_traffic_cell.iloc[0]
-                                                              [dataframe_column_names.LOCATION])
+            osm_handler = osm_data_handler.DataOSMHandler(categories,
+                                                          cut_out_data[dataframe_column_names.GEOMETRY].loc[idx])
 
         elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED:
             osm_handler = osm_data_handler.DataOSMHandler(categories)
@@ -68,7 +60,7 @@ class OSMDataParser(OSMDataParserInterface):
             # TODO: throw error here?
 
         # Process the data
-        osm_handler.apply_file(data_file_path.absolute())
+        osm_handler.apply_file(data_file_path.resolve())
 
         # transform the data from osm_handler into  geoDataFrame
         # TODO: not final, check what we need to save
@@ -80,5 +72,3 @@ class OSMDataParser(OSMDataParserInterface):
         df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=data_col_names)
 
         return df_osm
-
-

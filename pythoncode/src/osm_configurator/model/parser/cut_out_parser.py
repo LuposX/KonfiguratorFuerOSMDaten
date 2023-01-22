@@ -28,7 +28,7 @@ class CutOutParser(CutOutParserInterface):
     def parse_cutout_file(self, path) -> GeoDataFrame:
         df = gpd.read_file(path)
 
-        # Create names for the traffic cells which don't have one and add idx befor name
+        # Create names for the traffic cells which don't have one and add idx before name
         # e.g. what function does "None" -> "0_traffic_cell" and "berlin_is_cool" -> "1_berlin_is_cool"
         traffic_cell_name_list: List = []
         if dataframe_column_names.TRAFFIC_CELL_NAME in df.columns:
@@ -42,7 +42,5 @@ class CutOutParser(CutOutParserInterface):
                 traffic_cell_name_list.append(str(idx) + "_" + CutOutParser.TRAFFIC_CELL_STANDARD_NAME)
 
         df[dataframe_column_names.TRAFFIC_CELL_NAME] = traffic_cell_name_list
-
-
 
         return df
