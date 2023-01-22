@@ -26,4 +26,6 @@ class CutOutParser(CutOutParserInterface):
         if dataframe_column_names.TRAFFIC_CELL_NAME not in df.columns:
             df[dataframe_column_names.TRAFFIC_CELL_NAME] = "traffic_cell_" + str(df.index)
 
+
+
         return df

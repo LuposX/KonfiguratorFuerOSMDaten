@@ -48,7 +48,7 @@ class OSMDataParser(OSMDataParserInterface):
             # TODO: not a good solution because of double
             # get the entry in tha dataframe which corresponds to the file we are currently working on
             found_current_traffic_cell: GeoDataFrame = cut_out_data[
-                cut_out_data[dataframe_column_names.TRAFFIC_CELL_NAME] == current_traffic_cell_name]
+
 
             # TODO: throw error if multiple traffic cells were found with the same name
             if len(found_current_traffic_cell) > 1:
