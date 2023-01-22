@@ -21,4 +21,4 @@ class OSMFileFormat(Enum):
         Returns:
             str: The File extension the osm file format uses.
         """
-        pass
+        return self.value
