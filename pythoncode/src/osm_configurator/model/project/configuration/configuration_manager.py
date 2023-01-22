@@ -77,4 +77,3 @@ class ConfigurationManager:
             str: the name of the folder
         """
         return self._calculation_phase_checkpoints_folder_name
-
