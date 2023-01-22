@@ -5,7 +5,6 @@ import geopandas as gpd
 import osm_configurator.model.parser.osm_data_handler as osm_data_handler
 from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataParserInterface
 
-import osm_configurator.model.parser.dataframe_column_names as dataframe_column_names
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 import src.osm_configurator.model.parser.dataframe_column_names as dataframe_column_names
@@ -13,9 +12,7 @@ import src.osm_configurator.model.parser.dataframe_column_names as dataframe_col
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
-    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from osm_configurator.model.parser.osm_data_handler import DataOSMHandler
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode

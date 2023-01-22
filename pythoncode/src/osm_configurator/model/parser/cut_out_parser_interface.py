@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import pathlib
-import src.osm_configurator.model.project.calculation.traffic_cell
 
 from abc import ABC, abstractmethod
 
@@ -30,4 +29,3 @@ class CutOutParserInterface(ABC):
             To see an example for a cut_out file check out the file `data/partOfKarlsruhe.geojson`.
         """
         pass
-

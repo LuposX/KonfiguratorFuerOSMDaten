@@ -6,7 +6,6 @@ import shapely as shp
 
 from typing import TYPE_CHECKING
 
-import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 
 if TYPE_CHECKING:
     from typing import List
@@ -20,8 +19,6 @@ if TYPE_CHECKING:
     from osmium import Area
     from osmium import Relation
     from osmium.osm import OSMObject
-    from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
-    from geopandas import GeoDataFrame
     from shapely import Polygon
 
 
@@ -87,7 +84,6 @@ class DataOSMHandler(osm.SimpleHandler):
         Args:
             elem (OSMObject): The osm element we want to save.
             elem_type (str): The type of the element we got passed as string.
-            categories_of_osm_element: List: A list of categories the osm element belongs to.
         """
         # Get a temporary list of tags from the osm object.
         self._tmp_tag_list: List = []
@@ -102,12 +98,12 @@ class DataOSMHandler(osm.SimpleHandler):
                                np.asarray(self._tmp_tag_list, dtype=str),
                                np.asarray(self._categories_of_osm_element, dtype=np.uint16)])
 
-    def _get_list_of_categories_of_the_osm_element(self, n: OSMObject) -> List[str]:
+    def _get_list_of_categories_of_the_osm_element(self, osm_object: OSMObject) -> List[str]:
         """
         This class checks for a specific osm_element which categories apply to it.
 
         Args:
-            n (OSMObject): The  osm object which we want to check.
+            osm_object (OSMObject): The  osm object which we want to check.
 
         Returns:
             List[str]: A list of categories that apply to the osm element.
@@ -127,7 +123,7 @@ class DataOSMHandler(osm.SimpleHandler):
             for _tag_in_whitelist in _whitelist:
 
                 # If we find a single tag from the whitelist which the node doesn't correctly have, don't add category.
-                if n.tags.get(_tag_in_whitelist[0]) != _tag_in_whitelist[1]:
+                if osm_object.tags.get(_tag_in_whitelist[0]) != _tag_in_whitelist[1]:
                     _all_tags_from_whitelist_correct = False
                     break
 
@@ -141,7 +137,7 @@ class DataOSMHandler(osm.SimpleHandler):
 
                     # If we find a single tag from the blacklist which the node doesn't adhere to,
                     # then the category doesn't apply to the osm_element.
-                    if n.tags.get(_tag_in_blacklist[0]) == _tag_in_blacklist[1]:
+                    if osm_object.tags.get(_tag_in_blacklist[0]) == _tag_in_blacklist[1]:
                         _all_tags_from_whitelist_correct = False
                         break
 
@@ -163,7 +159,7 @@ class DataOSMHandler(osm.SimpleHandler):
         # check that the categories aren't empty
         if self._categories_of_osm_element:
 
-            # If building on the edge should be removed check whether the building is on the egde or not
+            # If building on the edge should be removed check whether the building is on the edge or not
             self._shapely_location = shp.Point((n.location.x, n.location.y))
             if self._remove_building_on_edge:
                 if self._cut_out_data.contains(self._shapely_location):
@@ -183,7 +179,7 @@ class DataOSMHandler(osm.SimpleHandler):
             a (Area): The node we found
         """
         # Get all the categories that apply to the current osm element
-        self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(n)
+        self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(a)
 
         # check that the categories aren't empty
         if self._categories_of_osm_element:
@@ -197,7 +193,7 @@ class DataOSMHandler(osm.SimpleHandler):
             else:
                 _origin_name = "area-relation"
 
-            # If building on the edge should be removed check whether the building is on the egde or not
+            # If building on the edge should be removed check whether the building is on the edge or not
             if self._remove_building_on_edge:
                 if self._cut_out_data.contains(self._shapely_location):
                     self._tag_inventory(a, _origin_name)
