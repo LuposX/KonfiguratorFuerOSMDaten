@@ -6,6 +6,8 @@ import src.osm_configurator.model.project.calculation.calculation_phase_enum as 
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
 
+import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
+
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 
 from typing import TYPE_CHECKING
@@ -19,15 +21,6 @@ if TYPE_CHECKING:
     from typing import List
     from geopandas import GeoDataFrame
     from geopandas import geoseries
-
-
-def _get_checkpoints_folder_path_from_phase(configuration_manager_o: ConfigurationManager, phase: CalculationPhase):
-    # Get the path to the project path and the name of the folder where we save the results and add them together
-    project_path: Path = configuration_manager_o.get_active_project_path()
-    folder_name: str = phase.get_folder_name_for_results()
-    checkpoint_folder_path: Path = project_path.joinpath(folder_name)
-
-    return checkpoint_folder_path
 
 
 class TagFilterPhase(ICalculationPhase):
@@ -54,11 +47,11 @@ class TagFilterPhase(ICalculationPhase):
             calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
         """
         # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = _get_checkpoints_folder_path_from_phase(configuration_manager_o,
+        checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(configuration_manager_o,
                                                                                         calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE)
 
         # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = _get_checkpoints_folder_path_from_phase(configuration_manager_o,
+        checkpoint_folder_path_current_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(configuration_manager_o,
                                                                                              calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
 
         # check if the folder exist
@@ -76,7 +69,8 @@ class TagFilterPhase(ICalculationPhase):
         # parse the osm data  with the parser
         file_path: Path
         for file_path in list_of_traffic_cell_checkpoints:
-            traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path)
+            traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
+                                                                                          category_manager_o)
 
             # name of the file
             file_name = file_path.name
