@@ -10,6 +10,6 @@ This file is used, to name the columns in the Dataframe.
 """
 
 OSM_TYPE: Final = "osm_type"
-NUMBER_TAGS: Final = "ntags"
 TAGS: Final = "tags"
 CATEGORIES: Final = "categories"
+LOCATION: Final = "location"
