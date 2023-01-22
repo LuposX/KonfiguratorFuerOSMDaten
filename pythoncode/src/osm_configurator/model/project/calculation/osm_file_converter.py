@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os.path
+import subprocess
 import pathlib
 import src.osm_configurator.model.project.calculation.osm_file_format_enum
 
@@ -11,14 +13,16 @@ class OSMFileConverter:
     For more on the different file format check "calculation.OSMFileFormat" out.
     """
 
-    def __init__(self, file_path):
+    def __init__(self, origin_path, target_path):
         """
         Creates a new instance of "OSMFileConverter".
 
         Args:
-            file_path (pathlib.Path): The path pointing towards the file which format we want to transform into another format.
+            origin_path (pathlib.Path): The path pointing towards the file which format we want to transform into another format.
+            target_path (pathlib.Path): The path pointing towards the place, where we want the translated file o be
         """
-        pass
+        self.origin_path = origin_path
+        self.target_path = target_path
 
     def convert_file(self, data_format):
         """
@@ -31,4 +35,19 @@ class OSMFileConverter:
         Returns:
             bool: True if successful, otherwise false.
         """
-        pass
+
+        # Return false, if origin does not exist; target does exist or suffix of target is wrong
+        if not os.path.exists(self.origin_path) or os.path.exists(self.target_path):
+            print("l")
+            return False
+        if self.target_path.suffix != data_format.get_file_extension():
+            print(self.target_path.suffix + " " + data_format.get_file_extension())
+            return False
+
+        # Create subprocess to call osmium and convert the file
+        result = subprocess.run(
+            ["osmium", "cat", str(self.origin_path), "-o", str(self.target_path)],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        print("rt: " + str(result.returncode), " stout: " + str(result.stdout), " stderr: " + str(result.stderr))
+
+        return result.returncode == 0

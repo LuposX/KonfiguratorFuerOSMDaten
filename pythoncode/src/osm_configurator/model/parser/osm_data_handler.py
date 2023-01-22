@@ -6,9 +6,12 @@ import shapely as shp
 
 from typing import TYPE_CHECKING
 
+import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
+
 if TYPE_CHECKING:
     from typing import List
     from typing import Tuple
+    from typing import Set
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
@@ -17,6 +20,8 @@ if TYPE_CHECKING:
     from osmium import Area
     from osmium import Relation
     from osmium.osm import OSMObject
+    from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+    from geopandas import GeoDataFrame
 
 
 class DataOSMHandler(osm.SimpleHandler):
@@ -24,14 +29,13 @@ class DataOSMHandler(osm.SimpleHandler):
     This class is responsible for parsing osm data files into a dataframe format.
     """
 
-    def __init__(self, categories: CategoryManager, activated_attributes: List[Attribute], building_on_the_edge_allowed):
+    def __init__(self, category_manager_p: CategoryManager, cut_out_data: GeoDataFrame = None):
         """
         Creates a new "DataOSMHandler" object.
 
         Args:
-            categories (CategoryManager): Needed to check if an osm object belongs to a specific category.
-            activated_attributes (List[Attribute]): Used to know which tags we want to save.
-              building_on_the_edge_allowed (bool): If this is true then buildings which are on the edge are allowed, if its false osm elements which are on the edge will be removed.
+            category_manager_p (CategoryManager): Needed to check if an osm object belongs to a specific category.
+            cut_out_data (GeoDataFrame): This files defines the coordinates of the different traffic cell and is used when we need to remove buildings which are on the edge.
         """
         osm.SimpleHandler.__init__(self)
 
@@ -40,11 +44,23 @@ class DataOSMHandler(osm.SimpleHandler):
         # This will be the list in which we save the output.
         self._osm_data: List = []
 
-        self._category_manager: CategoryManager = categories
-        self._activated_attributes: List = activated_attributes
+        # this is a temporary list that is used to save the tags for one osm element.
+        self._tmp_tag_list: List = []
+
+        self._category_manager: CategoryManager = category_manager_p
+        self._activated_attributes: List = self._category_manager.get_activated_attribute()
 
         # Get a list of tags that are needed, the rest we can throw away.
-        self._needed_tags: List = self._attributes_to_tag_list()
+        self._needed_tags: Set = {}
+        _attribute: Attribute
+        for _attribute in self._activated_attributes:
+            self._needed_tags.update(_attribute.get_needed_tags())
+
+        # when cut_out_data is set we need to remove building which are on the edge
+        if cut_out_data is None:
+            self._remove_building_on_edge = False
+        else:
+            self._remove_building_on_edge = True
 
         self._wkbfab = osm.geom.WKBFactory()  # with this we create geometries for areas
         self._shapely_location = 0  # the location we save per osm element

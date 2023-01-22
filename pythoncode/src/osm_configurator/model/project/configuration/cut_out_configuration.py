@@ -2,6 +2,11 @@ from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+
 
 class CutOutConfiguration:
     """
@@ -24,7 +29,7 @@ class CutOutConfiguration:
         """
         pass
 
-    def set_cut_out_mode(self, new_cut_out_mode):
+    def set_cut_out_mode(self, new_cut_out_mode) -> CutOutMode:
         """
         Changes the cut-out mode used during the reduction phase in the calculation.
 
