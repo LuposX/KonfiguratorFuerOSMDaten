@@ -22,6 +22,7 @@ if TYPE_CHECKING:
     from osmium.osm import OSMObject
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
     from geopandas import GeoDataFrame
+    from shapely import Polygon
 
 
 class DataOSMHandler(osm.SimpleHandler):
@@ -29,17 +30,15 @@ class DataOSMHandler(osm.SimpleHandler):
     This class is responsible for parsing osm data files into a dataframe format.
     """
 
-    def __init__(self, category_manager_p: CategoryManager, cut_out_data: GeoDataFrame = None):
+    def __init__(self, category_manager_p: CategoryManager, cut_out_data_p: Polygon = None):
         """
         Creates a new "DataOSMHandler" object.
 
         Args:
             category_manager_p (CategoryManager): Needed to check if an osm object belongs to a specific category.
-            cut_out_data (GeoDataFrame): This files defines the coordinates of the different traffic cell and is used when we need to remove buildings which are on the edge.
+            cut_out_data_p (Polygon): This is a polygon which describe the border of the traffic cell.
         """
         osm.SimpleHandler.__init__(self)
-
-        self._building_on_the_edge_allowed = building_on_the_edge_allowed
 
         # This will be the list in which we save the output.
         self._osm_data: List = []
@@ -57,10 +56,12 @@ class DataOSMHandler(osm.SimpleHandler):
             self._needed_tags.update(_attribute.get_needed_tags())
 
         # when cut_out_data is set we need to remove building which are on the edge
-        if cut_out_data is None:
+        self._cut_out_data: Polygon
+        if cut_out_data_p is None:
             self._remove_building_on_edge = False
         else:
             self._remove_building_on_edge = True
+            self._cut_out_data = cut_out_data_p
 
         self._wkbfab = osm.geom.WKBFactory()  # with this we create geometries for areas
         self._shapely_location = 0  # the location we save per osm element
@@ -161,8 +162,15 @@ class DataOSMHandler(osm.SimpleHandler):
 
         # check that the categories aren't empty
         if self._categories_of_osm_element:
+
+            # If building on the edge should be removed check whether the building is on the egde or not
             self._shapely_location = shp.Point((n.location.x, n.location.y))
-            self._tag_inventory(n, "node")
+            if self._remove_building_on_edge:
+                if self._cut_out_data.contains(self._shapely_location):
+                    self._tag_inventory(n, "node")
+
+            else:
+                self._tag_inventory(n, "node")
 
         del n
 
@@ -183,10 +191,19 @@ class DataOSMHandler(osm.SimpleHandler):
             wkbshape = self._wkbfab.create_multipolygon(a)
             self._shapely_location = shp.wkb.loads(wkbshape, hex=True)
 
+            _origin_name: str
             if a.from_way:
-                self._tag_inventory(a, "area-way")
+                _origin_name = "area-way"
             else:
-                self._tag_inventory(a, "area-relation")
+                _origin_name = "area-relation"
+
+            # If building on the edge should be removed check whether the building is on the egde or not
+            if self._remove_building_on_edge:
+                if self._cut_out_data.contains(self._shapely_location):
+                    self._tag_inventory(a, _origin_name)
+
+            else:
+                self._tag_inventory(a,  _origin_name)
 
         del a
 

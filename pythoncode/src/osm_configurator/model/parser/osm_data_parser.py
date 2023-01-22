@@ -8,6 +8,7 @@ from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataP
 import osm_configurator.model.parser.dataframe_column_names as dataframe_column_names
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
+import src.osm_configurator.model.parser.dataframe_column_names as dataframe_column_names
 
 from typing import TYPE_CHECKING
 
@@ -37,14 +38,27 @@ class OSMDataParser(OSMDataParserInterface):
         # depending on if we want building on edges removed we initialize the object differently
         osm_handler: DataOSMHandler
         if cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
-            current_traffic_cell_name: str = data_file_path.name
+            # get the name of the file without the suffix
+            current_traffic_cell_name: str = data_file_path.stem
 
+            # create a new cutout parser and parse the cut out file
             cut_out_parser_o = cut_out_parser.CutOutParser()
             cut_out_data: GeoDataFrame = cut_out_parser_o.parse_cutout_file(cut_out_path)
 
-            cut_out_data["n"]
+            # TODO: not a good solution because of double
+            # get the entry in tha dataframe which corresponds to the file we are currently working on
+            found_current_traffic_cell: GeoDataFrame = cut_out_data[
+                cut_out_data[dataframe_column_names.TRAFFIC_CELL_NAME] == current_traffic_cell_name]
 
-            osm_handler = osm_data_handler.DataOSMHandler(categories, cut_out_data)
+            # TODO: throw error if multiple traffic cells were found with the same name
+            if len(found_current_traffic_cell) > 1:
+                pass
+            elif len(found_current_traffic_cell) == 0:
+                pass
+            else:
+                osm_handler = osm_data_handler.DataOSMHandler(categories,
+                                                              found_current_traffic_cell.iloc[0]
+                                                              [dataframe_column_names.LOCATION])
 
         elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED:
             osm_handler = osm_data_handler.DataOSMHandler(categories)
