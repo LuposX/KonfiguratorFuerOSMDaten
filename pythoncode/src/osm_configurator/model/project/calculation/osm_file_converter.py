@@ -11,12 +11,13 @@ class OSMFileConverter:
     For more on the different file format check "calculation.OSMFileFormat" out.
     """
 
-    def __init__(self, file_path):
+    def __init__(self, origin_path, target_path):
         """
         Creates a new instance of "OSMFileConverter".
 
         Args:
-            file_path (pathlib.Path): The path pointing towards the file which format we want to transform into another format.
+            origin_path (pathlib.Path): The path pointing towards the file which format we want to transform into another format.
+            target_path (pathlib.Path): The path pointing towards the place, where we want the translated file o be
         """
         pass
 
