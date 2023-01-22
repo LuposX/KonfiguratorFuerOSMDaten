@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from src.osm_configurator.model.parser.cutOut_parser_interface import CutOutParserInterface
+from src.osm_configurator.model.parser.cut_out_parser_interface import CutOutParserInterface
+import geopandas as gpd
+import os
 
 
 class CutOutParser(CutOutParserInterface):
@@ -13,4 +15,8 @@ class CutOutParser(CutOutParserInterface):
         pass
 
     def parse_cutout_file(self, path):
-        pass
+        df = gpd.read_file(path)
+        if 'name' not in df.columns:
+            df["name"] = df.index
+
+        return df
