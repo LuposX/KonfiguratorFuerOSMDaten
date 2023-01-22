@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParserInterface
     from pathlib import Path
     from geopandas.geodataframe import GeoDataFrame
+    from src.osm_configurator.model.project.calculation.split_up_files import SplitUpFile
 
 
 class GeoDataPhase(ICalculationPhase):
@@ -45,7 +46,7 @@ class GeoDataPhase(ICalculationPhase):
 
         # Get folder, where to store the files
         cp_folder: Path = calc_util.get_checkpoints_folder_path_from_phase(configuration_manager,
-                                                                     phase_enum.CalculationPhase.GEO_DATA_PHASE)
+                                                                           phase_enum.CalculationPhase.GEO_DATA_PHASE)
 
         # Get folder, where to read the OSM-data from
         osm_path: Path = configuration_manager.get_cut_out_configuration().get_osm_data_configuration().get_osm_data()
@@ -54,5 +55,5 @@ class GeoDataPhase(ICalculationPhase):
 
 
         # Split up files
-        splitter = split_up_files.SplitUpFile(osm_path, cp_folder)
-        result = splitter.split_up_files(dataframe)
+        splitter: SplitUpFile = split_up_files.SplitUpFile(osm_path, cp_folder)
+        result: bool = splitter.split_up_files(dataframe)
