@@ -1,4 +1,4 @@
-tox==4.3.5
-pytest==7.2.1
-pytest-cov==4.0.0
-mypy===0.991
+tox==3.27.1
+pytest==7.1.2
+pytest-cov==3.0.0
+mypy===0.981
