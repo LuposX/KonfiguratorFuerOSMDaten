@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-def _get_checkpoints_folder_path_from_phase(configuration_manager_o: ConfigurationManager, phase: CalculationPhase):
+def get_checkpoints_folder_path_from_phase(configuration_manager_o: ConfigurationManager, phase: CalculationPhase):
     # Get the path to the project path and the name of the folder where we save the results and add them together
     project_path: Path = configuration_manager_o.get_active_project_path()
 
