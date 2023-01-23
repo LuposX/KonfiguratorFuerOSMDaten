@@ -184,7 +184,7 @@ dependencies:
       - chardet==5.1.0
       - charset-normalizer==3.0.1
       - comm==0.1.2
-      - customtkinter==5.0.3
+      - customtkinter==5.0.5
       - darkdetect==0.3.1
       - debugpy==1.6.5
       - decorator==5.1.1

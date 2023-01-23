@@ -1,7 +1,7 @@
 pytest==7.2.1
 pytest-cov==3.0.0
 mypy===0.991
-customtkinter==5.0.3
+customtkinter==5.0.5
 shapely==2.0.0
 geopandas==0.12.2
 osmium==3.5.0
