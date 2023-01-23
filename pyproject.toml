@@ -7,6 +7,9 @@ addopts = "-ra -q"
 testpaths = [
     "tests",
 ]
+filterwarnings = [
+     "ignore::DeprecationWarning"
+]
 
 [tool.mypy]
 mypy_path = "src"
