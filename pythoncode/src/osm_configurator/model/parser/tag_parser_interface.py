@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import pathlib
-import geopandas
 
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
@@ -29,4 +27,3 @@ class TagParserInterface(ABC):
            List[Tuple[str, str]]: A list of key,value tag pairs.
         """
         pass
-

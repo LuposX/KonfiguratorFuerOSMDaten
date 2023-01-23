@@ -8,9 +8,7 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
-    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
     from pathlib import Path
 
@@ -43,4 +41,3 @@ class OSMDataParserInterface(ABC):
             geopandas.GeoDataFrame: The parsed OSM data as a GeoDataFrame.
         """
         pass
-

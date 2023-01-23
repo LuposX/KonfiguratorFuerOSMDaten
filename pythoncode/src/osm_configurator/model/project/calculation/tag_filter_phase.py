@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-import pandas
-
+import src.osm_configurator.model.parser.osm_data_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
@@ -10,17 +9,16 @@ import src.osm_configurator.model.project.calculation.calculation_phase_utility 
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.parser.osm_data_parser import OSMDataParser
-    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
     from typing import List
     from geopandas import GeoDataFrame
-    from geopandas import geoseries
 
 
 class TagFilterPhase(ICalculationPhase):
@@ -47,12 +45,14 @@ class TagFilterPhase(ICalculationPhase):
             calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
         """
         # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(configuration_manager_o,
-                                                                                        calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE)
+        checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+            configuration_manager_o,
+            calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE)
 
         # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(configuration_manager_o,
-                                                                                             calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
+        checkpoint_folder_path_current_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+            configuration_manager_o,
+            calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
 
         # check if the folder exist
         if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
