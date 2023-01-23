@@ -10,3 +10,4 @@ osmium==3.6.0
 seaborn==0.12.2
 psutil==5.9.4
 jupyterlab==3.5.2
+osmium==3.6.0
