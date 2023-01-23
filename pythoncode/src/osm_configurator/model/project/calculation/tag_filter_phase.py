@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import src.osm_configurator.model.parser.osm_data_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
@@ -7,6 +8,7 @@ import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
+
 
 from typing import TYPE_CHECKING
 
