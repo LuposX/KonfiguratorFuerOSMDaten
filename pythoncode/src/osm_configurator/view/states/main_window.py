@@ -1,15 +1,15 @@
 from __future__ import annotations
 
-import src.osm_configurator.control.export_controller
-import src.osm_configurator.control.category_controller
-import src.osm_configurator.control.project_controller
-import src.osm_configurator.control.settings_controller
-import src.osm_configurator.control.aggregation_controller
+import src.osm_configurator.control.export_controller_interface
+import src.osm_configurator.control.category_controller_interface
+import src.osm_configurator.control.project_controller_interface
+import src.osm_configurator.control.settings_controller_interface
+import src.osm_configurator.control.aggregation_controller_interface
 import src.osm_configurator.control.application_controller
-import src.osm_configurator.control.calculation_controller
-import src.osm_configurator.control.cut_out_controller
-import src.osm_configurator.control.data_visualization_controller
-import src.osm_configurator.control.osm_data_controller
+import src.osm_configurator.control.calculation_controller_interface
+import src.osm_configurator.control.cut_out_controller_interface
+import src.osm_configurator.control.data_visualization_controller_interface
+import src.osm_configurator.control.osm_data_controller_interface
 import src.osm_configurator.view.states.state_name_enum
 
 

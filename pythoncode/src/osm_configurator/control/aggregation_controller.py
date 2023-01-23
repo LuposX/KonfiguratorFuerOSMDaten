@@ -1,15 +1,16 @@
-from __future__ import annotations
+from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
 
-import src.osm_configurator.model.application.application_interface
-import src.osm_configurator.model.project.calculation.aggregation_method_enum
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.application.application_interface import IApplication
+    from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 
 
-class AggregationController:
-    """
-    The AggregationController is responsible for consistently forwarding requests to the model, regarding the aggregation-calculations and the aggregation methods of the currently selected project.
-    """
+class AggregationController(IAggregationController):
+    __doc__ = IAggregationController.__doc__
 
-    def __init__(self, model):
+    def __init__(self, model: IApplication):
         """
         Creates a new instance of the AggregationController with an association to the model.
 
@@ -19,37 +20,10 @@ class AggregationController:
         pass
 
     def get_aggregation_methods(self):
-        """
-        Returns a list of all aggregation methods that are available.
-        This function returns all available aggregation methods, not just the ones that are active in the current project.
-
-        Returns:
-            list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods.
-        """
         pass
 
-    def is_aggregation_method_active(self, method):
-        """
-        Checks, whether an aggregation method is active in the currently selected project.
-
-        Args:
-            method (aggregation_method_enum.AggregationMethod): The aggregation method that is checked for.
-
-        Returns:
-            bool: True, if there is currently a project selected and the given aggregation method is active in it; False otherwise.
-        """
+    def is_aggregation_method_active(self, method: AggregationMethod):
         pass
 
-    def set_aggregation_method_active(self, method, active):
-        """
-        Activates or deactivates an aggregation method (of the currently selected project).
-        Activates the given method, if active=True and deactivates it otherwise.
-
-        Args:
-            method (aggregation_method_enum.AggregationMethod): The aggregation method we want to deactivate/activate.
-            active (bool): True, if we want to activate the given method; False, if we want to deactivate it.
-
-        Returns:
-            bool: True, if a project is currently selected and the aggregation method was (de-)activated successfully; False, otherwise.
-        """
+    def set_aggregation_method_active(self, method: AggregationMethod, active: bool):
         pass
