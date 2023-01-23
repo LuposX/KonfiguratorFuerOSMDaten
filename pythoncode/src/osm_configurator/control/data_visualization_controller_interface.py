@@ -18,7 +18,7 @@ class IDataVisualizationController(ABC):
     """
 
     @abstractmethod
-    def generate_cut_out_map(self):
+    def generate_cut_out_map(self) -> pathlib.Path:
         """
         Generates a map of the data of the currently selected project.
         Using the cut-out file of the project, this function creates a map as a html-file of the project. The path to the html-file is returned.
@@ -29,7 +29,7 @@ class IDataVisualizationController(ABC):
         pass
 
     @abstractmethod
-    def get_calculation_visualization(self):
+    def get_calculation_visualization(self) -> matplotlib.axes.Axes:
         """
         Generates a graphic that visualizes the results of the calculations of the currently selected project.
 

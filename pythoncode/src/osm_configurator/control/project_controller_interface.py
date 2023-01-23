@@ -20,7 +20,7 @@ class IProjectController(ABC):
     """
 
     @abstractmethod
-    def get_list_of_passive_projects(self):
+    def get_list_of_passive_projects(self) -> list[PassiveProject]:
         """
         Returns the list of (passive) projects, which are in the default project folder of the application.
 
@@ -30,7 +30,7 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def load_project(self, path: pathlib.Path):
+    def load_project(self, path: pathlib.Path) -> bool:
         """
         Loads a project
         All relevant data of a project are verified and loaded in memory. All coming project-referring calls will be directed to the given project.
@@ -44,7 +44,7 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def create_project(self, name: str, description: str, destination: pathlib.Path):
+    def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
         """
         Creates a new project with the given attributes and loads it.
         The model creates a new project folder at the given destination, all relevant files are generated and the project is loaded into memory.
@@ -60,7 +60,7 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def delete_passive_project(self, project: PassiveProject):
+    def delete_passive_project(self, project: PassiveProject) -> bool:
         """
         Deletes a project out of the default project folder.
 
@@ -73,7 +73,7 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def save_project(self):
+    def save_project(self) -> bool:
         """
         Saves the project.
         The currently selected project is stored on the disk. All progress made since the last saving are saved.
@@ -84,7 +84,7 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def set_current_config_phase(self, config_phase: ConfigPhase):
+    def set_current_config_phase(self, config_phase: ConfigPhase) -> bool:
         """
         Stores the current configuration phase in the model.
 
@@ -97,7 +97,7 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def get_current_config_phase(self):
+    def get_current_config_phase(self) -> ConfigPhase:
         """
         Returns the configuration phase, that is currently stored in the model.
 
@@ -107,7 +107,7 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def is_project_loaded(self):
+    def is_project_loaded(self) -> bool:
         """
         Checks, whether any project is currently loaded/selected.
 

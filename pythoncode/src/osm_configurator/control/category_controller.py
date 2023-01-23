@@ -21,23 +21,23 @@ class CategoryController(ICategoryController):
         """
         pass
 
-    def check_conflicts_in_category_configuration(self, path: pathlib.Path):
+    def check_conflicts_in_category_configuration(self, path: pathlib.Path) -> bool:
         pass
 
-    def import_category_configuration(self, path: pathlib.Path):
+    def import_category_configuration(self, path: pathlib.Path) -> bool:
         pass
 
-    def get_list_of_categories(self):
+    def get_list_of_categories(self) -> list[Category]:
         pass
 
-    def create_category(self):
+    def create_category(self) -> Category:
         pass
 
-    def delete_category(self, category: Category):
+    def delete_category(self, category: Category) -> bool:
         pass
 
-    def get_list_of_key_recommendations(self, current_input: str):
+    def get_list_of_key_recommendations(self, current_input: str) -> list[str]:
         pass
 
-    def get_attractivities_of_category(self, category: Category):
+    def get_attractivities_of_category(self, category: Category) -> list[AttractivityAttribute]:
         pass

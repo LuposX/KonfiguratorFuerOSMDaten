@@ -20,17 +20,17 @@ class CalculationController(ICalculationController):
         """
         pass
 
-    def start_calculations(self, starting_phase: CalculationPhase):
+    def start_calculations(self, starting_phase: CalculationPhase) -> CalculationState:
         pass
 
-    def get_calculation_state(self):
+    def get_calculation_state(self) -> CalculationState:
         pass
 
-    def get_current_calculation_phase(self):
+    def get_current_calculation_phase(self) -> CalculationPhase:
         pass
 
-    def get_current_calculation_process(self):
+    def get_current_calculation_process(self) -> float:
         pass
 
-    def cancel_calculations(self):
+    def cancel_calculations(self) -> bool:
         pass

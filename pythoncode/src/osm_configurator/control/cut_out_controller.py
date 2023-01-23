@@ -20,14 +20,14 @@ class CutOutController(ICutOutController):
         """
         pass
 
-    def get_cut_out_mode(self):
+    def get_cut_out_mode(self) -> CutOutMode:
         pass
 
-    def set_cut_out_mode(self, mode: CutOutMode):
+    def set_cut_out_mode(self, mode: CutOutMode) -> bool:
         pass
 
-    def set_cut_out_reference(self, path: pathlib.Path):
+    def set_cut_out_reference(self, path: pathlib.Path) -> bool:
         pass
 
-    def get_cut_out_reference(self):
+    def get_cut_out_reference(self) -> pathlib.Path:
         pass

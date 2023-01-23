@@ -20,14 +20,14 @@ class ExportController(IExportController):
         """
         pass
 
-    def export_project(self, path: pathlib.Path):
+    def export_project(self, path: pathlib.Path) -> bool:
         pass
 
-    def export_calculations(self, path: pathlib.Path):
+    def export_calculations(self, path: pathlib.Path) -> bool:
         pass
 
-    def export_configurations(self, path: pathlib.Path):
+    def export_configurations(self, path: pathlib.Path) -> bool:
         pass
 
-    def export_cut_out_map(self, path: pathlib.Path):
+    def export_cut_out_map(self, path: pathlib.Path) -> bool:
         pass

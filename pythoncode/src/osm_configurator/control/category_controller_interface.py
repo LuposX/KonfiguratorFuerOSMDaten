@@ -19,7 +19,7 @@ class ICategoryController(ABC):
     """
 
     @abstractmethod
-    def check_conflicts_in_category_configuration(self, path: pathlib.Path):
+    def check_conflicts_in_category_configuration(self, path: pathlib.Path) -> bool:
         """
         Checks for a given file, if it is a valid category-file and checks, whether there are naming conflicts with the categories of the currently selected project.
 
@@ -32,7 +32,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def import_category_configuration(self, path: pathlib.Path):
+    def import_category_configuration(self, path: pathlib.Path) -> bool:
         """
         Imports the given categories into the currently selected project.
         Adds the given categories to the category list of the project.
@@ -46,7 +46,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def get_list_of_categories(self):
+    def get_list_of_categories(self) -> list[Category]:
         """
         Returns the list of all categories, that are currently in the currently selected project.
 
@@ -56,7 +56,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def create_category(self):
+    def create_category(self) -> Category:
         """
         Creates a new category in the currently selected project.
         A new category is added to the list of categories of the project. The category has empty properties, except for an arbitrary name.
@@ -68,7 +68,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def delete_category(self, category: Category):
+    def delete_category(self, category: Category) -> bool:
         """
         Deletes the given category.
         Removes the given category from the list of categories of the currently selected project.
@@ -82,7 +82,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def get_list_of_key_recommendations(self, current_input: str):
+    def get_list_of_key_recommendations(self, current_input: str) -> list[str]:
         """
         Returns a list of recommended keys, based on the input that is already entered by the user.
 
@@ -95,7 +95,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def get_attractivities_of_category(self, category: Category):
+    def get_attractivities_of_category(self, category: Category) -> list[AttractivityAttribute]:
         """
         Returns the attractivity attributes that are defined for the given category.
 

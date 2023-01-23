@@ -14,7 +14,7 @@ class ApplicationController:
         """
         pass
 
-    def main(self):
+    def main(self) -> None:
         """
         Starts the application.
         This class method's only job is, to give control to an instance of the ApplicationController.

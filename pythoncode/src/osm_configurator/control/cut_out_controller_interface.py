@@ -18,7 +18,7 @@ class ICutOutController(ABC):
     """
 
     @abstractmethod
-    def get_cut_out_mode(self):
+    def get_cut_out_mode(self) -> CutOutMode:
         """
         Gets the method of how the geofilter shall cut out on the OSM-Data.
 
@@ -28,7 +28,7 @@ class ICutOutController(ABC):
         pass
 
     @abstractmethod
-    def set_cut_out_mode(self, mode: CutOutMode):
+    def set_cut_out_mode(self, mode: CutOutMode) -> bool:
         """
         Sets the method of how the geofilter shall cut out on the OSM-Data.
 
@@ -41,7 +41,7 @@ class ICutOutController(ABC):
         pass
 
     @abstractmethod
-    def set_cut_out_reference(self, path: pathlib.Path):
+    def set_cut_out_reference(self, path: pathlib.Path) -> bool:
         """
         Sets the reference to the cut-out file of the currently selected project.
         This file is later used to calculate the geofilter.
@@ -55,7 +55,7 @@ class ICutOutController(ABC):
         pass
 
     @abstractmethod
-    def get_cut_out_reference(self):
+    def get_cut_out_reference(self) -> pathlib.Path:
         """"
         Gets the reference to the cut-out file of the currently selected project.
 

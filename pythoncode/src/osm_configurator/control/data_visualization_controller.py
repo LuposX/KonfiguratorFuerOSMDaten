@@ -21,8 +21,8 @@ class DataVisualizationController(IDataVisualizationController):
         """
         pass
 
-    def generate_cut_out_map(self):
+    def generate_cut_out_map(self) -> pathlib.Path:
         pass
 
-    def get_calculation_visualization(self):
+    def get_calculation_visualization(self) -> matplotlib.axes.Axes:
         pass

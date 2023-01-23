@@ -20,11 +20,11 @@ class OSMDataController(IOSMDataController):
         """
         pass
 
-    def set_osm_data_reference(self, path: pathlib.Path):
+    def set_osm_data_reference(self, path: pathlib.Path) -> bool:
         pass
 
-    def get_osm_data_reference(self):
+    def get_osm_data_reference(self) -> pathlib.Path:
         pass
 
-    def download_osm_data(self, path: pathlib.Path):
+    def download_osm_data(self, path: pathlib.Path) -> bool:
         pass

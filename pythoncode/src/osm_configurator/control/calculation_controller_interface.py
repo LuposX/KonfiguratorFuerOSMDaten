@@ -17,7 +17,7 @@ class ICalculationController(ABC):
     """
 
     @abstractmethod
-    def start_calculations(self, starting_phase: CalculationPhase):
+    def start_calculations(self, starting_phase: CalculationPhase) -> CalculationState:
         """
         Starts the calculations in the given calculation phase in the currently selected project.
         The calculation process is split in different calculation phases. This function starts the calculation in a given phase.
@@ -31,7 +31,7 @@ class ICalculationController(ABC):
         pass
 
     @abstractmethod
-    def get_calculation_state(self):
+    def get_calculation_state(self) -> CalculationState:
         """
         Gives the current calculation state of the selected project.
 
@@ -41,7 +41,7 @@ class ICalculationController(ABC):
         pass
 
     @abstractmethod
-    def get_current_calculation_phase(self):
+    def get_current_calculation_phase(self) -> CalculationPhase:
         """
         Returns the calculation phase of the currently selected project.
 
@@ -51,7 +51,7 @@ class ICalculationController(ABC):
         pass
 
     @abstractmethod
-    def get_current_calculation_process(self):
+    def get_current_calculation_process(self) -> float:
         """
         Returns an approximation of the progress of the calculations in the currently selected project.
         The progress is given as a number between 0 and 1, where 0 indicates that the calculation has not started yet and 1 indicates, that the calculations are done.
@@ -62,7 +62,7 @@ class ICalculationController(ABC):
         pass
 
     @abstractmethod
-    def cancel_calculations(self):
+    def cancel_calculations(self) -> bool:
         """
         Cancels the calculations of the currently selected project.
         The calculation phase that is currently running will be stopped.

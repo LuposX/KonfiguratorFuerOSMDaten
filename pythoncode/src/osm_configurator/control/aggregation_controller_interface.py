@@ -14,7 +14,7 @@ class IAggregationController(ABC):
     """
 
     @abstractmethod
-    def get_aggregation_methods(self):
+    def get_aggregation_methods(self) -> list[AggregationMethod]:
         """
         Returns a list of all aggregation methods that are available.
         This function returns all available aggregation methods, not just the ones that are active in the current project.
@@ -25,7 +25,7 @@ class IAggregationController(ABC):
         pass
 
     @abstractmethod
-    def is_aggregation_method_active(self, method: AggregationMethod):
+    def is_aggregation_method_active(self, method: AggregationMethod) -> bool:
         """
         Checks, whether an aggregation method is active in the currently selected project.
 
@@ -38,7 +38,7 @@ class IAggregationController(ABC):
         pass
 
     @abstractmethod
-    def set_aggregation_method_active(self, method: AggregationMethod, active: bool):
+    def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
         """
         Activates or deactivates an aggregation method (of the currently selected project).
         Activates the given method, if active=True and deactivates it otherwise.

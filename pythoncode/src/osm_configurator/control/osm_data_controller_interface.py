@@ -17,7 +17,7 @@ class IOSMDataController(ABC):
     """
 
     @abstractmethod
-    def set_osm_data_reference(self, path: pathlib.Path):
+    def set_osm_data_reference(self, path: pathlib.Path) -> bool:
         """
         Sets the reference to the osm-data for the selected project.
         The reference contains the osm-data used in the calculations of the project. This method does not check if the given data is valid.
@@ -31,7 +31,7 @@ class IOSMDataController(ABC):
         pass
 
     @abstractmethod
-    def get_osm_data_reference(self):
+    def get_osm_data_reference(self) -> pathlib.Path:
         """
         Returns the path to the osm-data, that is used in the currently selected project.
 
@@ -41,7 +41,7 @@ class IOSMDataController(ABC):
         pass
 
     @abstractmethod
-    def download_osm_data(self, path: pathlib.Path):
+    def download_osm_data(self, path: pathlib.Path) -> bool:
         """
         Downloads osm-data
         The osm-data to be downloaded are defined by a geojson-file. The data is downloaded and the reference to the correct osm-files is stored.

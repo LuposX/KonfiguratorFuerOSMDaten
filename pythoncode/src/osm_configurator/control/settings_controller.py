@@ -20,20 +20,20 @@ class SettingsController(ISettingsController):
         """
         pass
 
-    def get_project_name(self):
+    def get_project_name(self) -> str:
         pass
 
-    def set_project_name(self, name: str):
+    def set_project_name(self, name: str) -> bool:
         pass
 
-    def get_project_description(self):
+    def get_project_description(self) -> str:
         pass
 
-    def set_project_description(self, description: str):
+    def set_project_description(self, description: str) -> bool:
         pass
 
-    def get_project_default_folder(self):
+    def get_project_default_folder(self) -> pathlib.Path:
         pass
 
-    def set_project_default_folder(self, default_folder: pathlib.Path):
+    def set_project_default_folder(self, default_folder: pathlib.Path) -> bool:
         pass

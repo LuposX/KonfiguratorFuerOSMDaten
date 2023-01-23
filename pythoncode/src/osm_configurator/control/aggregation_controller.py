@@ -19,11 +19,11 @@ class AggregationController(IAggregationController):
         """
         pass
 
-    def get_aggregation_methods(self):
+    def get_aggregation_methods(self) -> list[AggregationMethod]:
         pass
 
-    def is_aggregation_method_active(self, method: AggregationMethod):
+    def is_aggregation_method_active(self, method: AggregationMethod) -> bool:
         pass
 
-    def set_aggregation_method_active(self, method: AggregationMethod, active: bool):
+    def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
         pass

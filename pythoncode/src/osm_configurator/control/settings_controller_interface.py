@@ -17,7 +17,7 @@ class ISettingsController(ABC):
     """
 
     @abstractmethod
-    def get_project_name(self):
+    def get_project_name(self) -> str:
         """
         Gets the name of the currently selected project.
 
@@ -27,7 +27,7 @@ class ISettingsController(ABC):
         pass
 
     @abstractmethod
-    def set_project_name(self, name: str):
+    def set_project_name(self, name: str) -> bool:
         """
         Sets the name of the currently selected project.
 
@@ -40,7 +40,7 @@ class ISettingsController(ABC):
         pass
 
     @abstractmethod
-    def get_project_description(self):
+    def get_project_description(self) -> str:
         """
         Gets the description of the currently selected project.
 
@@ -50,7 +50,7 @@ class ISettingsController(ABC):
         pass
 
     @abstractmethod
-    def set_project_description(self, description: str):
+    def set_project_description(self, description: str) -> bool:
         """
         Sets the description of the currently selected project.
 
@@ -63,7 +63,7 @@ class ISettingsController(ABC):
         pass
 
     @abstractmethod
-    def get_project_default_folder(self):
+    def get_project_default_folder(self) -> pathlib.Path:
         """
         Gets the project default folder.
         The project default folder is the folder where projects are stored by default.
@@ -74,7 +74,7 @@ class ISettingsController(ABC):
         pass
 
     @abstractmethod
-    def set_project_default_folder(self, default_folder: pathlib.Path):
+    def set_project_default_folder(self, default_folder: pathlib.Path) -> bool:
         """
         Sets the project default folder.
         The project default folder is the folder, where projects are stored by default.
