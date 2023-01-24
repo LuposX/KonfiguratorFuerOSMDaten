@@ -44,6 +44,7 @@ How to set up the develoment enviroment:
 14. `pip install jupyterlab`  # only needed for libary tests.
 15. `conda install -c conda-forge osmium-tool`, used to split up data.
 15. `pip install pytest-cov`, used for coevrage calculation 
+16. `pip install pylint`, to use pylint
 
 If you get problems with Step *4*, try the following command and then do step *6* again:
 - `sudo apt-get install build-essential cmake libboost-dev libexpat1-dev zlib1g-dev libbz2-dev`
