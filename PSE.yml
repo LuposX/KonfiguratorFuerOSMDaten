@@ -236,6 +236,7 @@ dependencies:
       - psutil==5.9.4
       - pure-eval==0.2.2
       - pydata-sphinx-theme==0.8.1
+      - pylint==2.15.10
       - pyproject-api==1.5.0
       - pyrsistent==0.19.3
       - pytest==7.2.1

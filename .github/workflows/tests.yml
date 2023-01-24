@@ -28,3 +28,6 @@ jobs:
     - name: Run pytest
       run: |
         pytest
+    - name: Run pylint
+      run: |
+        pylint src
