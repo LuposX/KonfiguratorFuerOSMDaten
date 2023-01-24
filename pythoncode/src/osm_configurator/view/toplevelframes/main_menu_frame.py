@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.project_controller
+import src.osm_configurator.control.project_controller_interface
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
