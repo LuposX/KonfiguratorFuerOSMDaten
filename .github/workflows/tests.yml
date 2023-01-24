@@ -25,3 +25,6 @@ jobs:
         miniforge-version: latest
         miniforge-variant: Mambaforge
         use-mamba: true
+    - name: Run pytest
+      run: |
+        pytest
