@@ -43,14 +43,16 @@ How to set up the develoment enviroment:
 13. `pip install mypy`, used for checking static typing.
 14. `pip install jupyterlab`  # only needed for libary tests.
 15. `conda install -c conda-forge osmium-tool`, used to split up data.
+15. `pip install pytest-cov`, used for coevrage calculation 
 
 If you get problems with Step *4*, try the following command and then do step *6* again:
 - `sudo apt-get install build-essential cmake libboost-dev libexpat1-dev zlib1g-dev libbz2-dev`
 
 **Way2(Automatically):**  
-Tested on windows 10(64Bit), might take a while.  
+Tested on windows 10 and 11(64Bit), might take a while.  
 1. Update conda: `conda update conda`.  
 2. `conda env create --name PSE --file PSE.yml`  
+To update your already existing conda environment, use `conda env update --file PSE.yml --prune`
 
 ### How to check if the Installation worked  
 

@@ -184,8 +184,8 @@ dependencies:
       - chardet==5.1.0
       - charset-normalizer==3.0.1
       - comm==0.1.2
-      - customtkinter==5.0.3
-      - darkdetect==0.8.0
+      - customtkinter==5.0.5
+      - darkdetect==0.3.1
       - debugpy==1.6.5
       - decorator==5.1.1
       - defusedxml==0.7.1
@@ -236,9 +236,11 @@ dependencies:
       - psutil==5.9.4
       - pure-eval==0.2.2
       - pydata-sphinx-theme==0.8.1
+      - pylint==2.15.10
       - pyproject-api==1.5.0
       - pyrsistent==0.19.3
       - pytest==7.2.1
+      - pytest-cov==3.0.0
       - python-json-logger==2.0.4
       - pywin32==305
       - pywinpty==2.0.10
@@ -257,7 +259,6 @@ dependencies:
       - tinycss2==1.2.1
       - tomli==2.0.1
       - tornado==6.2
-      - tox==4.3.5
       - traitlets==5.8.1
       - typing-extensions==4.4.0
       - uri-template==1.2.0
