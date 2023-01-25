@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.configuration.attribute_enum
+from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 
 class DefaultValueEntry:
@@ -9,11 +9,19 @@ class DefaultValueEntry:
     Default values can be set and read.
     """
 
-    def __init__(self, tag, attribute_default_values):
-        """Constructor of the class,
-        creates an empty DefaultValueEntry with 0 for all the factor values.
+    tag = ""
+    _length = 3
+    _attribute_default_values = [[] for x in range(_length)]
+
+    def __init__(self, tag):
         """
-        pass
+        Constructor of the class.
+        Creates an empty DefaultValueEntry with 0 for all the factor values.
+        """
+        self.tag = tag
+        self._attribute_default_values[0] = [Attribute.PROPERTY_AREA, 0]
+        self._attribute_default_values[0] = [Attribute.NUMER_OF_FLOOR, 0]
+        self._attribute_default_values[0] = [Attribute.FIRST_FLOOR_AREA, 0]
 
     def get_default_value_entry_tag(self):
         """
@@ -21,7 +29,7 @@ class DefaultValueEntry:
         Returns:
             str: The tag of this entry
         """
-        pass
+        return self.tag
 
     def set_tag(self, new_tag):
         """
@@ -33,7 +41,8 @@ class DefaultValueEntry:
         Returns:
             bool: true if the overwriting process was successful, else false
         """
-        pass
+        self.tag = new_tag
+        return True
 
     def set_attribute_default(self, attribute, value):
         """
@@ -44,9 +53,13 @@ class DefaultValueEntry:
             value (float): new default value
 
         Returns:
-            bool: true, if overwriting process was successful, else false
+            bool: True, if overwriting process was successful, else false
         """
-        pass
+        for item in range(self._length):
+            if self._attribute_default_values[item][0] == attribute:
+                self._attribute_default_values[item][1] = [item, value]
+                return True
+        return False
 
     def get_attribute_default(self, attribute):
         """
@@ -58,4 +71,6 @@ class DefaultValueEntry:
         Returns:
             float: The default value of the attribute
         """
-        pass
+        for item in range(self._length):
+            if self._attribute_default_values[item][0] == attribute:
+                return self._attribute_default_values[item][1]
