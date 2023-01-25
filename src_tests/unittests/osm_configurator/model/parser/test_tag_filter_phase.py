@@ -1,9 +1,9 @@
 
-import src.osm_configurator.model.project.calculation.tag_filter_phase as tag_filter_phase
-import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
-import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
-
-import pathlib
+# import src.osm_configurator.model.project.calculation.tag_filter_phase as tag_filter_phase
+# import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
+# import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+#
+# import pathlib
 
 
 class TestTagFilterPhase:

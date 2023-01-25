@@ -1,11 +1,11 @@
 
-import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
-import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
-import src.osm_configurator.model.project.configuration.category_manager as category_manager
-import src.osm_configurator.model.project.configuration.category as category
-
-import pathlib
-import geopandas as gpd
+# import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
+# import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
+# import src.osm_configurator.model.project.configuration.category_manager as category_manager
+# import src.osm_configurator.model.project.configuration.category as category
+#
+# import pathlib
+# import geopandas as gpd
 
 
 class TestOSMDataParser:

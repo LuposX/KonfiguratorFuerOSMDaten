@@ -1,5 +1,5 @@
 import os.path
-from tests.definitions import TEST_DIR
+from src_tests.definitions import TEST_DIR
 
 import geopandas as gpd
 from pathlib import Path
