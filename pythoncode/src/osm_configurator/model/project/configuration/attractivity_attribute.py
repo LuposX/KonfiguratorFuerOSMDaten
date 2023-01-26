@@ -12,10 +12,6 @@ class AttractivityAttribute:
     - A base factor
     """
 
-    _attractivity_attribute_name = ""
-    attractivity_attribute_list = []
-    base_attractivity = 0
-
     def __init__(self, attractivity_attribute_name, attractivity_attribute_list, base_attractivity):
         """
         Creates a new instance of a "AttractivityAttribute" class.
@@ -30,8 +26,8 @@ class AttractivityAttribute:
             An example for attractivity_attribute_list: [(AREA, 1.0), (NUMER_OF_FLOOR, 2.0), (GROUND_AREA, 6.9)]
         """
         self._attractivity_attribute_name = attractivity_attribute_name
-        self.attractivity_attribute_list = attractivity_attribute_list
-        self.base_attractivity = base_attractivity
+        self._attractivity_attribute_list = attractivity_attribute_list
+        self._base_attractivity = base_attractivity
 
     def get_attractivity_attribute_name(self):
         """
@@ -62,7 +58,7 @@ class AttractivityAttribute:
         Returns:
             list[(attribute_enum.Attribute, float)]: The list of attribute factor pairs.
         """
-        return self.attractivity_attribute_list
+        return self._attractivity_attribute_list
 
     def set_attractivity_attribute_list(self, new_attractivity_attribute_list):
         """
@@ -82,7 +78,7 @@ class AttractivityAttribute:
         Returns:
              float: the base factor
         """
-        return self.base_attractivity
+        return self._base_attractivity
 
     def set_base_factor(self, new_base_factor):
         """
@@ -94,5 +90,5 @@ class AttractivityAttribute:
         Returns:
             bool: true if the base factor eas successful set, false else
         """
-        self.base_attractivity = new_base_factor
+        self._base_attractivity = new_base_factor
         return True

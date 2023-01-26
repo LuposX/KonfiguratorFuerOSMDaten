@@ -14,13 +14,12 @@ class OSMDataConfiguration:
     The job of the OSMDataConfiguration is to store the path pointing towards the OSM data file.
     """
 
-    _osm_data_path = Path()
-
     def __init__(self):
         """
         Creates a new instance of the "OSMDataConfiguration" class.
         """
-        pass
+        self._osm_data_path = Path()
+        self._downloader = DownloadData()
 
     def get_osm_data(self):
         """
@@ -53,5 +52,4 @@ class OSMDataConfiguration:
         Returns:
             download_data.DownloadData: The download data class.
         """
-        downloader = DownloadData()
-        return downloader
+        return self._downloader

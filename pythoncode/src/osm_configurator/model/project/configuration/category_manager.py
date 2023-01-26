@@ -14,8 +14,6 @@ class CategoryManager:
     Category Manager holds a list of categories and changes them according to the given needs.
     """
 
-    _categories = []
-
     def __init__(self, categories):
         """
         Constructor of the class.

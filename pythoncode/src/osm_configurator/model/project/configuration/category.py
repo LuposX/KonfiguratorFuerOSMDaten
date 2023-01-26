@@ -20,21 +20,19 @@ class Category:
     affect does OSM-elements.
     """
 
-    _active = False
-    _whitelist = []
-    _blacklist = []
-    _category_name = "Category Name"
-    _calculation_method_of_area = CalculationMethodOfArea.CALCULATE_SITE_AREA
-    _attractivity_attributes = []
-    _default_value_list = []
-    _length = 3
-    _attributes = [[] for x in range(_length)]
-
     def __init__(self):
         """
         Creates a new instance of a "Category" class.
         """
-        pass
+        self._active = False
+        self._whitelist = []
+        self._blacklist = []
+        self._category_name = "Category Name"
+        self._calculation_method_of_area = CalculationMethodOfArea.CALCULATE_SITE_AREA
+        self._attractivity_attributes = []
+        self._default_value_list = []
+        self._length = 3
+        self._attributes = [[] for x in range(self._length)]
 
     def is_active(self):
         """

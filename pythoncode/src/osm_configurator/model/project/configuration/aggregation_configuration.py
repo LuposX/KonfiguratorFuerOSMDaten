@@ -15,14 +15,14 @@ class AggregationConfiguration:
     calculation. Deactivating means the opposite.
     """
 
-    _length = 2
-    _number_of_methods = 0
-    _aggregation_methods_status = [[] for x in range(_length)]
-
     def __init__(self):
         """
         Creates a new instance of the AggregationConfiguration.
         """
+        self._length = 2
+        self._number_of_methods = 0
+        self._aggregation_methods_status = [[] for x in range(self._length)]
+
         for method in AggregationMethod:
             self._aggregation_methods_status.append([method, False])
             self._number_of_methods = self._number_of_methods + 1

@@ -9,16 +9,14 @@ class DefaultValueEntry:
     Default values can be set and read.
     """
 
-    tag = ""
-    _length = 3
-    _attribute_default_values = [[] for x in range(_length)]
-
     def __init__(self, tag):
         """
         Constructor of the class.
         Creates an empty DefaultValueEntry with 0 for all the factor values.
         """
-        self.tag = tag
+        self._tag = tag
+        self._length = 3
+        self._attribute_default_values = [[] for x in range(self._length)]
         self._attribute_default_values[0] = [Attribute.PROPERTY_AREA, 0]
         self._attribute_default_values[0] = [Attribute.NUMER_OF_FLOOR, 0]
         self._attribute_default_values[0] = [Attribute.FIRST_FLOOR_AREA, 0]
@@ -29,7 +27,7 @@ class DefaultValueEntry:
         Returns:
             str: The tag of this entry
         """
-        return self.tag
+        return self._tag
 
     def set_tag(self, new_tag):
         """
@@ -41,7 +39,7 @@ class DefaultValueEntry:
         Returns:
             bool: true if the overwriting process was successful, else false
         """
-        self.tag = new_tag
+        self._tag = new_tag
         return True
 
     def set_attribute_default(self, attribute, value):

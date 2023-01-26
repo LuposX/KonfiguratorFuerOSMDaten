@@ -21,10 +21,6 @@ class ConfigurationManager:
     This class job is to manage the configurations of the OSM data, aggregation, cut-out and categories.
     It also makes this information available to the calculation
     """
-    _osm_data_configurator = OSMDataConfiguration()
-    _aggregation_configurator = AggregationConfiguration()
-    _cut_out_configurator = CutOutConfiguration()
-    _category_manager = CategoryManager()
 
     def __init__(self, active_project_path):
         """
@@ -35,6 +31,10 @@ class ConfigurationManager:
         """
         self._active_project_path = active_project_path
         self._calculation_phase_checkpoints_folder_name = "Results"  # TODO: remove Magic String
+        self._osm_data_configurator = OSMDataConfiguration()
+        self._aggregation_configurator = AggregationConfiguration()
+        self._cut_out_configurator = CutOutConfiguration()
+        self._category_manager = CategoryManager([])
 
     def get_osm_data_configuration(self):
         """
@@ -86,6 +86,6 @@ class ConfigurationManager:
         This method is used to get the name of the folder in which the results will be saved.
 
         Returns:
-            str: the name of the folder
+            str: The name of the folder
         """
         return self._calculation_phase_checkpoints_folder_name

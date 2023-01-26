@@ -16,14 +16,12 @@ class CutOutConfiguration:
     in the calculation.
     """
 
-    _cut_out_mode = CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
-    _cut_out_path = Path()
-
     def __init__(self):
         """
         Creates a new instance of the "CutOutConfiguration" class.
         """
-        pass
+        self._cut_out_mode = CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
+        self._cut_out_path = Path()
 
     def get_cut_out_mode(self):
         """
