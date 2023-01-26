@@ -18,3 +18,7 @@ class AlertPopUp(CTkToplevel):
             message (str): The message that will be shown by the AlertPopUp.
         """
         pass
+
+
+if __name__ == '__main__':
+    AlertPopUp("du kek")
