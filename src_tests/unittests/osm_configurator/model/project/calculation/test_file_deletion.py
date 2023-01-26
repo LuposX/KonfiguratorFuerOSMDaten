@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
-from tests.definitions import TEST_DIR
+from src_tests.definitions import TEST_DIR
 import src.osm_configurator.model.project.calculation.file_deletion as fd
 from pathlib import Path
 import os
