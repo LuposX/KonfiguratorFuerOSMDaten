@@ -38,7 +38,6 @@ class OSMFileConverter:
 
         # Return false, if origin does not exist; target does exist or suffix of target is wrong
         if not os.path.exists(self.origin_path) or os.path.exists(self.target_path):
-            print("l")
             return False
         if self.target_path.suffix != data_format.get_file_extension():
             print(self.target_path.suffix + " " + data_format.get_file_extension())

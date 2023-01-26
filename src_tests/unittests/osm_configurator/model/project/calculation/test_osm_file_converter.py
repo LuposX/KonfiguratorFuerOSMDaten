@@ -14,7 +14,7 @@ def _prepare(target_path):
         os.remove(target_path)
 
 
-def test_correct_split_up_pbf_to_osm():
+def test_correct_convert_pbf_to_osm():
     origin_path = os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf")
     target_path = os.path.join(TEST_DIR, "build/osm_file_converter/monaco-latest.osm")
 
@@ -26,11 +26,13 @@ def test_correct_split_up_pbf_to_osm():
     assert os.path.getsize(target_path) != 0
 
 
-def test_correct_split_up_osm_to_pbf():
+def test_correct_convert_osm_to_pbf():
     origin_path = os.path.join(TEST_DIR, "data/monaco-latest.osm")
     target_path = os.path.join(TEST_DIR, "build/osm_file_converter/monaco-latest.osm.pbf")
 
     _prepare(target_path)
+    assert not os.path.exists(target_path)
+    assert os.path.exists(origin_path)
 
     converter = ofc.OSMFileConverter(Path(origin_path), Path(target_path))
     assert converter.convert_file(offe.OSMFileFormat.PBF)
