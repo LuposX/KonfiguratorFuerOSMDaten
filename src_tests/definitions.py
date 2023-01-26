@@ -3,20 +3,45 @@ from __future__ import annotations
 import os
 import shapely as shp
 
+import src.osm_configurator.model.project.configuration.category as category_i
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Final
+    from typing import List
 
 # DO NOT CHANGE THE MONACO CUTOUT-FILE, CUTOUT-PARSER DEPENDS ON IT
 # -----------------------------------------------------------------
-
 # This file is here, so you can easily define path relative to here
 
+# Defining Test Categories
+# -------------------------
+name: str = "building_category"
+whitelist: List = ["Building=*"]
+TEST_CATEGORY_BUILDING: Final = category_i.Category()
+TEST_CATEGORY_BUILDING.set_category_name(name)
+TEST_CATEGORY_BUILDING.set_whitelist(whitelist)
+
+name: str = "no_building_category"
+blacklist: List = ["Building=*"]
+TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
+TEST_CATEGORY_NO_BUILDING.set_category_name(name)
+TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
+
+name: str = "shop_category"
+blacklist: List = ["shop=supermarket", "shop=general", "shop=alcohol", "shop=computer", "shop=cheese",
+                   "shop=coffee"]
+TEST_CATEGORY_SHOP: Final = category_i.Category()
+TEST_CATEGORY_SHOP.set_category_name(name)
+TEST_CATEGORY_SHOP.set_whitelist(blacklist)
+
 # The test folder
+# ---------------
 TEST_DIR: Final = os.path.dirname(os.path.abspath(__file__))
 
 # Test polygons of the cutout file, monaco-regions
+# ------------------------------------------------
 MONACO_TRAFFIC_CELL_0_POLYGON: Final = shp.Polygon([
                   [
                      7.409700947088794,
