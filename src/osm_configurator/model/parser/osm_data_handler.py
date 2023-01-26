@@ -4,8 +4,9 @@ import osmium as osm
 import numpy as np
 import shapely as shp
 
-from typing import TYPE_CHECKING
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
 
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
@@ -44,13 +45,9 @@ class DataOSMHandler(osm.SimpleHandler):
         self._tmp_tag_list: List = []
 
         self._category_manager: CategoryManager = category_manager_p
-        self._activated_attributes: List = self._category_manager.get_activated_attribute()
 
         # Get a list of tags that are needed, the rest we can throw away.
-        self._needed_tags: Set = {}
-        _attribute: Attribute
-        for _attribute in self._activated_attributes:
-            self._needed_tags.update(_attribute.get_needed_tags())
+        self._needed_tags: List = attribute_enum.Attribute.get_all_tags()
 
         # when cut_out_data is set we need to remove building which are on the edge
         self._cut_out_data: Polygon
