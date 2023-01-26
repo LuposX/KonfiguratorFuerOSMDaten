@@ -52,7 +52,7 @@ class CategoryManager:
         Returns:
             category.Category: The Category we wanted.
         """
-        if index < 0 or index > len(self._categories):
+        if index <= 0 or index > len(self._categories):
             return None
         return self._categories[index]
 

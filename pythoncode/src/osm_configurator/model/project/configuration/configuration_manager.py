@@ -10,7 +10,10 @@ import src.osm_configurator.model.project.configuration.category_manager
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from src.osm_configurator.model.project.configuration.osm_data_configuration import OSMDataConfiguration
+    from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
     from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
+    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
 
 
 class ConfigurationManager:
@@ -18,6 +21,10 @@ class ConfigurationManager:
     This class job is to manage the configurations of the OSM data, aggregation, cut-out and categories.
     It also makes this information available to the calculation
     """
+    _osm_data_configurator = OSMDataConfiguration()
+    _aggregation_configurator = AggregationConfiguration()
+    _cut_out_configurator = CutOutConfiguration()
+    _category_manager = CategoryManager()
 
     def __init__(self, active_project_path):
         """
@@ -36,7 +43,7 @@ class ConfigurationManager:
         Returns:
             osm_data_configuration.OSMDataConfiguration: The osm data configuration.
         """
-        pass
+        return self._osm_data_configurator
 
     def get_aggregation_configuration(self):
         """
@@ -45,7 +52,7 @@ class ConfigurationManager:
         Returns:
             aggregation_configuration.AggregationConfiguration: The aggregation configuration.
         """
-        pass
+        return self._aggregation_configurator
 
     def get_cut_out_configuration(self) -> CutOutConfiguration:
         """
@@ -54,7 +61,7 @@ class ConfigurationManager:
         Returns:
             cut_out_configuration.CutOutConfiguration: The cut-out configuration.
         """
-        pass
+        return self._cut_out_configurator
 
     def get_category_manager(self):
         """
@@ -63,7 +70,7 @@ class ConfigurationManager:
         Returns:
             category_manager.CategoryManager: The category manager.
         """
-        pass
+        return CategoryManager
 
     def get_active_project_path(self) -> pathlib.Path:
         """

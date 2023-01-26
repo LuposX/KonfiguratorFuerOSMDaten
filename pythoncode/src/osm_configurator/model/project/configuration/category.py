@@ -136,7 +136,10 @@ class Category:
         Returns:
             bool: True, if the overwriting process concluded successfully, else False.
         """
-        self._category_name = new_category_name
+        if new_category_name:
+            self._category_name = new_category_name
+            return True
+        return False
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -182,6 +185,8 @@ class Category:
         for item in range(self._length):
             if self._attributes[item][0] == attribute:
                 self._attributes[item][1] = [item, boolean]
+                return True
+        return False
 
     def get_calculation_method_of_area(self):
         """

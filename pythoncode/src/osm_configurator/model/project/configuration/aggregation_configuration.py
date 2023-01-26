@@ -2,20 +2,30 @@ from __future__ import annotations
 
 import src.osm_configurator.model.project.calculation.aggregation_method_enum
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+
 
 class AggregationConfiguration:
-
     """
     This class manages the different aggregation methods stored in an enum. Therefore, it activates and deactivates
     those methods. Activating means that this aggregation methods should be used during the aggregation phase in the
     calculation. Deactivating means the opposite.
     """
 
+    _length = 2
+    _number_of_methods = 0
+    _aggregation_methods_status = [[] for x in range(_length)]
+
     def __init__(self):
         """
         Creates a new instance of the AggregationConfiguration.
         """
-        pass
+        for method in AggregationMethod:
+            self._aggregation_methods_status.append([method, False])
+            self._number_of_methods = self._number_of_methods + 1
 
     def get_all_aggregation_methods(self):
         """
@@ -24,7 +34,11 @@ class AggregationConfiguration:
         Returns:
             list[aggregation_method_enum.AggregationMethod]: A list containing all aggregation methods.
         """
-        pass
+        _all_methods = []
+
+        for method in AggregationMethod:
+            _all_methods.append(method)
+        return _all_methods
 
     def is_aggregation_method_active(self, method):
         """
@@ -36,7 +50,9 @@ class AggregationConfiguration:
         Returns:
             bool: True if the aggregation method is active, otherwise false.
         """
-        pass
+        for item in range(self._number_of_methods):
+            if self._aggregation_methods_status[item][0] == method:
+                return self._aggregation_methods_status[item][1]
 
     def set_aggregation_method_active(self, method, active):
         """
@@ -50,4 +66,8 @@ class AggregationConfiguration:
         Returns:
             bool: True if changing the state works, otherwise false.
         """
-        pass
+        for item in range(self._number_of_methods):
+            if self._aggregation_methods_status[item][0] == method:
+                self._aggregation_methods_status[item][1] = active
+                return True
+        return False
