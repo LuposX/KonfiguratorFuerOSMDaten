@@ -57,7 +57,7 @@ class OSMDataParser(OSMDataParserInterface):
             # TODO: throw error here?
 
         # Process the data
-        osm_handler.apply_file(data_file_path.resolve())
+        osm_handler.apply_file(data_file_path)
 
         # transform the data from osm_handler into  geoDataFrame
         # TODO: not final, check what we need to save
