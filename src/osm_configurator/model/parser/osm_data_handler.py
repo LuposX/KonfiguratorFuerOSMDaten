@@ -123,7 +123,7 @@ class DataOSMHandler(osm.SimpleHandler):
         for category in self._category_manager.get_categories():
             category_name: str = category.get_category_name()
             whitelist: List = category.get_whitelist()
-            blacklist: List = category.get_whitelist()
+            blacklist: List = category.get_blacklist()
 
             # parse the tags from List[str] to List[Tuple[str, str]]
             whitelist_parsed = tag_parser.parse_tags(whitelist)
@@ -137,11 +137,9 @@ class DataOSMHandler(osm.SimpleHandler):
                 # Checks if the key is in the osm element
                 if osm_object.tags.get(tag_in_whitelist[0],  self.KEY_NOT_FOUND) \
                         != self.KEY_NOT_FOUND:
-
+                    # "*"
                     # The-don't-care symbol, says it doesn't matter what the value of the tag is.
-                    if tag_in_whitelist[1] == model_constants_i.DONT_CARE_SYMBOL:
-                        break
-                    else:
+                    if tag_in_whitelist[1] != model_constants_i.DONT_CARE_SYMBOL:
                         # If we find a single tag from the whitelist which the node doesn't correctly have, don't add category.
                         if osm_object.tags.get(tag_in_whitelist[0],  self.KEY_NOT_FOUND) != tag_in_whitelist[1]:
                             all_tags_from_whitelist_correct = False
@@ -161,7 +159,7 @@ class DataOSMHandler(osm.SimpleHandler):
                 # Checks if the key is in the osm element
                 # if the key isn't in the osm element, then we know that this tag is correct for the osm element
                 if osm_object.tags.get(tag_in_blacklist[0],  self.KEY_NOT_FOUND) \
-                        !=  self.KEY_NOT_FOUND:
+                        != self.KEY_NOT_FOUND:
 
                     # If we find a single tag from the blacklist which the node doesn't adhere to,
                     # then the category doesn't apply to the osm_element.
@@ -170,14 +168,12 @@ class DataOSMHandler(osm.SimpleHandler):
                             all_tags_from_blacklist_correct = False
                             break
 
-                    # if we have the dont care symbol, it doesnt matter what the value of the osm element for
-                    # this tag is, the osm element wont be added no matter what.
+                    # if we have the don't care symbol, it doesnt matter what the value of the osm element for
+                    # this tag is, the osm element won't be added no matter what.
                     else:
                         all_tags_from_blacklist_correct = False
                         break
 
-                else:
-                    all_tags_from_blacklist_correct = True
 
             if all_tags_from_whitelist_correct and all_tags_from_blacklist_correct:
                 categories_of_osm_element.append(category_name)
@@ -207,6 +203,7 @@ class DataOSMHandler(osm.SimpleHandler):
             # If building on the edge should be removed check whether the building is on the edge or not
             self._wkbshape = self._wkbfab.create_point(n)
             self._shapely_location = wkb.loads(self._wkbshape, hex=True)
+
             if self._remove_building_on_edge:
                 if self._cut_out_data.contains(self._shapely_location):
                     self._tag_inventory(n)
