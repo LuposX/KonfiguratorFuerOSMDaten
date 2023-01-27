@@ -9,6 +9,8 @@ class CalculationState(Enum):
     This enum provides a list of states the calculations can be in.
     The states can be positive, indicating the calculation is working correctly. But they can be negative as well,
     indicating an error in the calculation. Every state is defined by a unique description of the state.
+
+    The first value is the name the second value is the description of the state.
     """
 
     NOT_STARTED_YET = ("Not started yet", "The calculation was not started yet.")
@@ -19,6 +21,9 @@ class CalculationState(Enum):
     ERROR_INVALID_CATEGORIES = ("Invalid Categories", "Error: The category configuration is not valid.")
     ERROR_INVALID_PREVIOUS_CALCULATIONS = ("Invalid calculation phase", "Error: This calculation phase can not be calculated, because a previous calculation has invalid results or wasn't run.")
     ERROR_PROJECT_NOT_SET_UP_CORRECTLY = ("Project did not got set up Correctly", "Error: The project folder structure did not get set up correctly.")
+    ERROR_TAGS_WRONGLY_FORMATTED = ("Tags wrongly formatted", "Error: while trying to parse your tags, the tags are not correctly formaatted.")
+    ERROR_COULDNT_OPEN_FILE = ("Couldnt open a file", "ERROR: While trying to open a file, do you have permission?")
+    ERROR_ENCODING_THE_FILE = ("Encoding error", "ERROR: While writing to the file there was an encoding error.")
 
     def get_name(self):
         """

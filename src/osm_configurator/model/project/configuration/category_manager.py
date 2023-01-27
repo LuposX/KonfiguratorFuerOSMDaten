@@ -106,3 +106,10 @@ class CategoryManager:
         for category in category_input_list:
             if category not in self._categories:
                 self._categories.append(category)
+
+    def _test_set_categories(self, categories: List):
+        """
+        This method is currently only used for testing.
+        It sets the categories of the category manager
+        """
+        self._categories = categories

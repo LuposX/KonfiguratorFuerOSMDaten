@@ -39,5 +39,8 @@ class OSMDataParserInterface(ABC):
         
         Returns:
             geopandas.GeoDataFrame: The parsed OSM data as a GeoDataFrame.
+
+        Raises:
+            TagsWronglyFormatted: If a tag wasn't correctly formatted.
         """
         pass

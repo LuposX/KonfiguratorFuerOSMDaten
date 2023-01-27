@@ -25,5 +25,8 @@ class TagParserInterface(ABC):
 
         Returns:
            List[Tuple[str, str]]: A list of key,value tag pairs.
+
+        Raises:
+            TagsWronglyFormatted: If a tag wasn't correctly formatted.
         """
         pass

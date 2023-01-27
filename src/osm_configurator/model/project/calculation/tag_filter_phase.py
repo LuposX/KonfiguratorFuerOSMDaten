@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.parser.osm_data_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
@@ -8,7 +7,7 @@ import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
-
+import osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception as tags_wrongly_formatted_exception_i
 
 from typing import TYPE_CHECKING
 
@@ -16,6 +15,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.parser.osm_data_parser import OSMDataParser
+    from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from pathlib import Path
     from typing import List
     from geopandas import GeoDataFrame
@@ -27,7 +27,7 @@ class TagFilterPhase(ICalculationPhase):
     For details see the method calculate().
     """
 
-    def calculate(self, configuration_manager_o: ConfigurationManager):
+    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
         """
         Sorts OSM-elements into their corresponding categories.
         Firstly this method reads in the OSM-files of the previously executed calculation phase. Every category has
@@ -42,7 +42,7 @@ class TagFilterPhase(ICalculationPhase):
             configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration needed for an execution.
 
         Returns:
-            calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
+            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
         """
         # Get path to the results of the last Phase
         checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
@@ -69,14 +69,17 @@ class TagFilterPhase(ICalculationPhase):
         # parse the osm data  with the parser
         file_path: Path
         for file_path in list_of_traffic_cell_checkpoints:
-            traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
-                                                                                          category_manager_o,
-                                                                                          configuration_manager_o
-                                                                                          .get_cut_out_configuration()
-                                                                                          .get_cut_out_mode(),
-                                                                                          configuration_manager_o
-                                                                                          .get_cut_out_configuration()
-                                                                                          .get_cut_out_path())
+            try:
+                traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
+                                                                                              category_manager_o,
+                                                                                              configuration_manager_o
+                                                                                              .get_cut_out_configuration()
+                                                                                              .get_cut_out_mode(),
+                                                                                              configuration_manager_o
+                                                                                              .get_cut_out_configuration()
+                                                                                              .get_cut_out_path())
+            except tags_wrongly_formatted_exception_i.TagsWronglyFormatted as err:
+                return (calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, err.args)
 
             # name of the file
             file_name = file_path.name
@@ -84,5 +87,12 @@ class TagFilterPhase(ICalculationPhase):
             # save the parsed osm data
             try:
                 traffic_cell_data_frame.to_csv(checkpoint_folder_path_current_phase.joinpath(file_name))
-            except Exception:  # TODO: This is probably bad style
-                return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+
+            # If there's a error while encoding the file.
+            except ValueError as err:
+                return (calculation_state_enum.CalculationState.ERROR_ENCODING_THE_FILE, err.args)
+
+            # If the file cannot be opened.
+            except OSError as err:
+                return (calculation_state_enum.CalculationState.ERROR_COULDNT_OPEN_FILE, err.args)
+
