@@ -27,7 +27,7 @@ class Category:
         """
         Creates a new instance of a "Category" class.
         """
-        self._active = False
+        self._active: bool = False
         self._whitelist = []
         self._blacklist = []
         self._category_name = "Category Name"

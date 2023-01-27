@@ -24,14 +24,14 @@ whitelist: List = ["Building=*"]
 TEST_CATEGORY_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_BUILDING.set_category_name(name)
 TEST_CATEGORY_BUILDING.set_whitelist(whitelist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMER_OF_FLOOR, True)
+TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
 
 name: str = "no_building_category"
 blacklist: List = ["Building=*"]
 TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_NO_BUILDING.set_category_name(name)
 TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.FIRST_FLOOR_AREA, True)
+TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 
 name: str = "shop_category"
 blacklist: List = ["shop=supermarket", "shop=general", "shop=alcohol", "shop=computer", "shop=cheese",

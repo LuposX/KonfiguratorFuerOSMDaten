@@ -18,7 +18,7 @@ def _calculate_number_of_floors(category: Category, tags: Dict[str, str]) -> flo
     pass
 
 
-def _calculate_first_floor_area(category: Category, tags: Dict[str, str]) -> float:
+def _calculate_floor_area(category: Category, tags: Dict[str, str]) -> float:
     pass
 
 
@@ -33,8 +33,8 @@ class Attribute(Enum):
     """
     # TODO: Set the tags they need
     PROPERTY_AREA = ("Property Area", [], _calculate_property_area)  #: The area of the property of the osm-element
-    NUMER_OF_FLOOR = ("Number of Floors", [], _calculate_number_of_floors)  #: the number of floors the osm element has
-    FIRST_FLOOR_AREA = ("Floor Area", ["building:levels"], _calculate_first_floor_area)  # the area that the first floor has
+    NUMBER_OF_FLOOR = ("Number of Floors", [], _calculate_number_of_floors)  # the number of floors the osm element has
+    FLOOR_AREA = ("Floor Area", ["building:levels"], _calculate_floor_area)  # the area that all floors together have
 
     def get_name(self) -> str:
         """
@@ -75,4 +75,8 @@ class Attribute(Enum):
         Returns:
             List: A list of tags from the attributes.
         """
-        return list(map(lambda c: c.value[1], cls))
+        all_tags: List = []
+        member: Attribute
+        for member in cls:
+            all_tags.extend(member.value[1])
+        return all_tags

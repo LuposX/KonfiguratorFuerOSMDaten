@@ -3,6 +3,7 @@ from __future__ import annotations
 import osmium as osm
 import numpy as np
 import shapely as shp
+import shapely.wkb as wkb
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
 
@@ -22,6 +23,7 @@ if TYPE_CHECKING:
     from osmium.osm import OSMObject
     from shapely import Polygon
     from typing import Final
+
 
 
 class DataOSMHandler(osm.SimpleHandler):
@@ -155,6 +157,8 @@ class DataOSMHandler(osm.SimpleHandler):
         Args:
             n (Node): The node we found
         """
+        self._shapely_location = None
+
         # Get all the categories that apply to the current osm element
         self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(n)
 
@@ -162,7 +166,8 @@ class DataOSMHandler(osm.SimpleHandler):
         if self._categories_of_osm_element:
 
             # If building on the edge should be removed check whether the building is on the edge or not
-            self._shapely_location = shp.Point((n.location.x, n.location.y))
+            wkbshape = self._wkbfab.create_point(n)
+            self._shapely_location = wkb.loads(wkbshape, hex=True)
             if self._remove_building_on_edge:
                 if self._cut_out_data.contains(self._shapely_location):
                     self._tag_inventory(n, "node")
@@ -180,6 +185,8 @@ class DataOSMHandler(osm.SimpleHandler):
         Args:
             a (Area): The node we found
         """
+        self._shapely_location = None
+
         # Get all the categories that apply to the current osm element
         self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(a)
 
@@ -187,7 +194,7 @@ class DataOSMHandler(osm.SimpleHandler):
         if self._categories_of_osm_element:
             # create location/multipolygon
             wkbshape = self._wkbfab.create_multipolygon(a)
-            self._shapely_location = shp.wkb.loads(wkbshape, hex=True)
+            self._shapely_location = wkb.loads(wkbshape, hex=True)
 
             _origin_name: str
             if a.from_way:
