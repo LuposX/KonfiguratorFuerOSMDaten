@@ -2,20 +2,18 @@ from __future__ import annotations
 
 import osmium as osm
 import numpy as np
-import shapely as shp
 import shapely.wkb as wkb
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
+import osm_configurator.model.model_constants as model_constants_i
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
     from typing import Tuple
-    from typing import Set
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.category import Category
-    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from osmium import Node
     from osmium import Way
     from osmium import Area
@@ -31,7 +29,7 @@ class DataOSMHandler(osm.SimpleHandler):
     This class is responsible for parsing osm data files into a dataframe format.
     """
 
-    DONT_CARE_SYMBOL: Final = "*"
+    KEY_NOT_FOUND: str = "key_not_found"
 
     def __init__(self, category_manager_p: CategoryManager, cut_out_data_p: Polygon = None):
         """
@@ -67,7 +65,8 @@ class DataOSMHandler(osm.SimpleHandler):
         self._tmp_tag_list: List = []  # this is a temporary list that is used to save the tags for one osm element.
         self._categories_of_osm_element = []
         self._wkbshape = None  # used to temporarily save location
-        self._origin_name: str # saved the origin name for area(e.g. way or relation)
+        self._osm_type: str # saved the origin name for area(e.g. way or relation)
+        self._osm_name: str
 
     def _attributes_to_tag_list(self) -> List:
         """
@@ -96,7 +95,8 @@ class DataOSMHandler(osm.SimpleHandler):
                 self._tmp_tag_list.append((tag.k, tag.v))
 
         # save the osm object data that we need.
-        self._osm_data.append([self._origin_name,
+        self._osm_data.append([self._osm_type,
+                               self._osm_name,
                                self._shapely_location,
                                np.asarray(self._tmp_tag_list, dtype=str),
                                np.asarray(self._categories_of_osm_element, dtype=str)])
@@ -125,11 +125,24 @@ class DataOSMHandler(osm.SimpleHandler):
             tag_in_whitelist: Tuple
             for tag_in_whitelist in whitelist:
 
-                # If we find a single tag from the whitelist which the node doesn't correctly have, don't add category.
-                if osm_object.tags.get(tag_in_whitelist[1]) != DataOSMHandler.DONT_CARE_SYMBOL:
-                    if osm_object.tags.get(tag_in_whitelist[0]) != tag_in_whitelist[1]:
-                        all_tags_from_whitelist_correct = False
+                # Checks if the key is in the osm element
+                if osm_object.tags.get(tag_in_whitelist[0], DataOSMHandler.KEY_NOT_FOUND) \
+                        != DataOSMHandler.KEY_NOT_FOUND:
+
+                    # The dont care symbols, says it doesn't matter what the value of the tag is.
+                    if tag_in_whitelist[1] == model_constants_i.DONT_CARE_SYMBOL:
                         break
+                    else:
+                        # If we find a single tag from the whitelist which the node doesn't correctly have, don't add category.
+                        if osm_object.tags.get(tag_in_whitelist[0], DataOSMHandler.KEY_NOT_FOUND) != tag_in_whitelist[1]:
+                            all_tags_from_whitelist_correct = False
+                            break
+
+                # if the key wasn't in the osm_element
+                else:
+                    all_tags_from_whitelist_correct = False
+                    break
+
 
             # Only when the whitelist is correct do we need to check the blacklist.
             if all_tags_from_whitelist_correct:
@@ -139,12 +152,26 @@ class DataOSMHandler(osm.SimpleHandler):
                 tag_in_blacklist: Tuple
                 for tag_in_blacklist in blacklist:
 
-                    # If we find a single tag from the blacklist which the node doesn't adhere to,
-                    # then the category doesn't apply to the osm_element.
-                    if osm_object.tags.get(tag_in_whitelist[1]) != DataOSMHandler.DONT_CARE_SYMBOL:
-                        if osm_object.tags.get(tag_in_blacklist[0]) == tag_in_blacklist[1]:
-                            all_tags_from_whitelist_correct = False
+                    # Checks if the key is in the osm element
+                    # if the key isn't in the osm element, then we know that this tag is correct for the osm element
+                    if osm_object.tags.get(tag_in_blacklist[0], DataOSMHandler.KEY_NOT_FOUND) \
+                            != DataOSMHandler.KEY_NOT_FOUND:
+
+                        # If we find a single tag from the blacklist which the node doesn't adhere to,
+                        # then the category doesn't apply to the osm_element.
+                        if tag_in_blacklist[1] != model_constants_i.DONT_CARE_SYMBOL:
+                            if osm_object.tags.get(tag_in_blacklist[0], DataOSMHandler.KEY_NOT_FOUND) == tag_in_blacklist[1]:
+                                all_tags_from_blacklist_correct = False
+                                break
+
+                        # if we have the dont care symbol, it doesnt matter what the value of the osm element for
+                        # this tag is, the osm element wont be added no matter what.
+                        else:
+                            all_tags_from_blacklist_correct = False
                             break
+
+                    else:
+                        all_tags_from_blacklist_correct = True
 
             if all_tags_from_whitelist_correct and all_tags_from_blacklist_correct:
                 categories_of_osm_element.append(category_name)
@@ -159,7 +186,8 @@ class DataOSMHandler(osm.SimpleHandler):
             n (Node): The node we found
         """
         self._shapely_location = None
-        self._origin_name = "node"
+        self._osm_type = "node"
+        self._osm_name = n.tags.get("name", model_constants_i.STANDARD_OSM_ELEMENT_NAME)
 
         # Get all the categories that apply to the current osm element
         self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(n)
@@ -188,6 +216,7 @@ class DataOSMHandler(osm.SimpleHandler):
             a (Area): The node we found
         """
         self._shapely_location = None
+        self._osm_name = a.tags.get("name", model_constants_i.STANDARD_OSM_ELEMENT_NAME)
 
         # Get all the categories that apply to the current osm element
         self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(a)
@@ -199,9 +228,9 @@ class DataOSMHandler(osm.SimpleHandler):
             self._shapely_location = wkb.loads(self._wkbshape, hex=True)
 
             if a.from_way:
-                self._origin_name = "area-way"
+                self._osm_type = "area-way"
             else:
-                self._origin_name = "area-relation"
+                self._osm_type = "area-relation"
 
             # If building on the edge should be removed check whether the building is on the edge or not
             if self._remove_building_on_edge:

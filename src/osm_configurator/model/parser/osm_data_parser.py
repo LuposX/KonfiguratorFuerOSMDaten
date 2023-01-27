@@ -7,7 +7,7 @@ from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataP
 
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
-import src.osm_configurator.model.parser.dataframe_column_names as dataframe_column_names
+import osm_configurator.model.model_constants as model_constants
 
 from typing import TYPE_CHECKING
 
@@ -47,7 +47,7 @@ class OSMDataParser(OSMDataParserInterface):
             idx: int = int(current_traffic_cell_name.split("_")[0])
 
             osm_handler = osm_data_handler.DataOSMHandler(categories,
-                                                          cut_out_data[dataframe_column_names.GEOMETRY].loc[idx])
+                                                          cut_out_data[model_constants.CL_GEOMETRY].loc[idx])
 
         elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED:
             osm_handler = osm_data_handler.DataOSMHandler(categories)
@@ -61,10 +61,11 @@ class OSMDataParser(OSMDataParserInterface):
 
         # transform the data from osm_handler into  geoDataFrame
         # TODO: not final, check what we need to save
-        data_col_names = [dataframe_column_names.OSM_TYPE,
-                          dataframe_column_names.LOCATION,
-                          dataframe_column_names.TAGS,
-                          dataframe_column_names.CATEGORIES]
+        data_col_names = [model_constants.CL_OSM_TYPE,
+                          model_constants.CL_OSM_ELEMENT_NAME,
+                          model_constants.CL_LOCATION,
+                          model_constants.CL_TAGS,
+                          model_constants.CL_CATEGORIES]
 
         df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=data_col_names)
 
