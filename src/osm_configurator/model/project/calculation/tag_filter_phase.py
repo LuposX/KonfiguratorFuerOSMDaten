@@ -78,6 +78,7 @@ class TagFilterPhase(ICalculationPhase):
                                                                                               .get_cut_out_configuration()
                                                                                               .get_cut_out_path())
             except tags_wrongly_formatted_exception_i.TagsWronglyFormatted:
+                return calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED
 
             # name of the file
             file_name = file_path.name
