@@ -2,10 +2,10 @@ from __future__ import annotations
 
 import pathlib
 
-import src.osm_configurator.model.project.configuration.osm_data_configuration
-import src.osm_configurator.model.project.configuration.aggregation_configuration
-import src.osm_configurator.model.project.configuration.cut_out_configuration
-import src.osm_configurator.model.project.configuration.category_manager
+import src.osm_configurator.model.project.configuration.osm_data_configuration as osm_data_configuration
+import src.osm_configurator.model.project.configuration.aggregation_configuration as aggregation_configuration
+import src.osm_configurator.model.project.configuration.cut_out_configuration as cut_out_configuration
+import src.osm_configurator.model.project.configuration.category_manager as category_manager
 
 from typing import TYPE_CHECKING
 
@@ -31,10 +31,10 @@ class ConfigurationManager:
         """
         self._active_project_path = active_project_path
         self._calculation_phase_checkpoints_folder_name = "Results"  # TODO: remove Magic String
-        self._osm_data_configurator = OSMDataConfiguration()
-        self._aggregation_configurator = AggregationConfiguration()
-        self._cut_out_configurator = CutOutConfiguration()
-        self._category_manager = CategoryManager([])
+        self._osm_data_configurator = osm_data_configuration.OSMDataConfiguration()
+        self._aggregation_configurator = aggregation_configuration.AggregationConfiguration()
+        self._cut_out_configurator = cut_out_configuration.CutOutConfiguration()
+        self._category_manager = category_manager.CategoryManager()
 
     def get_osm_data_configuration(self):
         """
