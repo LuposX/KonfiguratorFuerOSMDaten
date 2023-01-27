@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-    from src.osm_configurator.view.states.state_manager import StateManager
 
 
 class PositionedFrame:
