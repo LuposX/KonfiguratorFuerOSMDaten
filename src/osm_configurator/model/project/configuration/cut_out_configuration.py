@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-import src.osm_configurator.model.project.configuration.cut_out_mode_enum
+import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 
 from typing import TYPE_CHECKING
 
@@ -20,7 +20,7 @@ class CutOutConfiguration:
         """
         Creates a new instance of the "CutOutConfiguration" class.
         """
-        self._cut_out_mode = CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
+        self._cut_out_mode = cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
         self._cut_out_path = Path()
 
     def get_cut_out_mode(self):
@@ -42,7 +42,7 @@ class CutOutConfiguration:
         Returns:
             bool: True if changing the cut-out mode, otherwise false.
         """
-        if new_cut_out_mode in CutOutMode:
+        if new_cut_out_mode in cut_out_mode_enum.CutOutMode:
             self._cut_out_mode = new_cut_out_mode
             return True
         return False
