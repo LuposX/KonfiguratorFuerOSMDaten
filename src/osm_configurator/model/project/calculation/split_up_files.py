@@ -8,6 +8,7 @@ import subprocess
 import shapely.geometry
 import geopandas as gpd
 from geopandas.geodataframe import GeoDataFrame
+from src.osm_configurator.model.parser import dataframe_column_names
 
 
 class SplitUpFile:
@@ -44,13 +45,14 @@ class SplitUpFile:
         if not os.path.exists(self._origin_path) or not os.path.exists(self._result_folder):
             return False
 
-        if 'name' not in cells.columns:
+        if dataframe_column_names.TRAFFIC_CELL_NAME not in cells.columns:
             return False
 
-        for i in range(len(cells["geometry"])):
+        for i in range(len(cells[dataframe_column_names.GEOMETRY])):
             result = subprocess.run(["osmium", "extract", "-b", "{},{},{},{}".format(*cells["geometry"][i].bounds),
                                      str(self._origin_path), "-o",
-                                     str(self._result_folder) + "/" + str(cells["name"][i]) + ".pbf"],
+                                     str(self._result_folder) + "/" +
+                                     str(cells[dataframe_column_names.TRAFFIC_CELL_NAME][i]) + ".pbf"],
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             if result.returncode != 0:
                 return False

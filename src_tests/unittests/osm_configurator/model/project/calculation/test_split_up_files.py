@@ -4,6 +4,7 @@ from src_tests.definitions import TEST_DIR
 import geopandas as gpd
 from pathlib import Path
 import src.osm_configurator.model.project.calculation.split_up_files as suf
+from src.osm_configurator.model.parser import dataframe_column_names
 
 
 def _prepare(result_folder):
@@ -28,7 +29,7 @@ def test_illegal_origin_path():
     df = gpd.read_file(geojson_path)
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df["geometry"])
+    did_work = split_up.split_up_files(df[dataframe_column_names.GEOMETRY])
     assert not did_work
 
 
@@ -40,7 +41,7 @@ def test_illegal_result_folder():
     df = gpd.read_file(geojson_path)
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df["geometry"])
+    did_work = split_up.split_up_files(df[dataframe_column_names.GEOMETRY])
     assert not did_work
 
 
@@ -73,8 +74,8 @@ def test_correct_split_up():
 
     # Begin test
     df = gpd.read_file(geojson_path)
-    df["name"] = df.index
-    df["name"][2] = "cell_with_a_name"
+    df[dataframe_column_names.TRAFFIC_CELL_NAME] = df.index
+    df[dataframe_column_names.TRAFFIC_CELL_NAME][2] = "cell_with_a_name"
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
     did_work = split_up.split_up_files(df)
