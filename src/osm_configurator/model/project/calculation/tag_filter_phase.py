@@ -27,7 +27,7 @@ class TagFilterPhase(ICalculationPhase):
     For details see the method calculate().
     """
 
-    def calculate(self, configuration_manager_o: ConfigurationManager):
+    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
         """
         Sorts OSM-elements into their corresponding categories.
         Firstly this method reads in the OSM-files of the previously executed calculation phase. Every category has
@@ -78,8 +78,8 @@ class TagFilterPhase(ICalculationPhase):
                                                                                               configuration_manager_o
                                                                                               .get_cut_out_configuration()
                                                                                               .get_cut_out_path())
-            except tags_wrongly_formatted_exception_i.TagsWronglyFormatted as msg:
-                return calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED
+            except tags_wrongly_formatted_exception_i.TagsWronglyFormatted as err:
+                return (calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, err.args)
 
             # name of the file
             file_name = file_path.name
