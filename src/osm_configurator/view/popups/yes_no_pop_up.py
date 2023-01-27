@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import customtkinter
 
-POPUPSIZE = "400x200"
-gloBla = 0
+POPUPSIZE = "400x200"  # Holds the size of the Popup
 
 
 class YesNoPopUp(customtkinter.CTk):
@@ -13,7 +12,7 @@ class YesNoPopUp(customtkinter.CTk):
     Pressing a button will return the information back to the creating instance and close the PopUp.
     """
 
-    def __init__(self, message):
+    def __init__(self, message, func):
         """
         This constructor will create an YesNoPopUp, that will show the given message, as well as an 'OK' and
         'Cancel' button. If one of the buttons is pressed or the PopUp closed, it will send a message back via the
@@ -26,8 +25,7 @@ class YesNoPopUp(customtkinter.CTk):
             message (str): The message to be shown in the PopUp.
             func (typing.Callable): Function taking one Boolean and has no return for the PopUp to return a message
         """
-        global gloBla
-        gloBla = 0
+        self.func = func
 
         popup = super().__init__()
         self.geometry(POPUPSIZE)
@@ -43,6 +41,13 @@ class YesNoPopUp(customtkinter.CTk):
         self.button = customtkinter.CTkButton(self, text="Cancel", command=combine_funcs(cancel, self.destroy)) \
             .pack(side="bottom", padx=10, pady=10)
 
+    def accept(self):
+        global gloBla
+        self.func(True)
+
+    def cancel(self):
+        self.func(False)
+
 
 def combine_funcs(*funcs):
     def inner_combined_funcs(*args, **kwargs):
@@ -51,17 +56,4 @@ def combine_funcs(*funcs):
 
     return inner_combined_funcs
 
-
-def accept():
-    global gloBla
-    gloBla = 1
-
-
-def cancel():
-    global gloBla
-    gloBla = 0
-
-
-def get_glo_bla():
-    return gloBla
 
