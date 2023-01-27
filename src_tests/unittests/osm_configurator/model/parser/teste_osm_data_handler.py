@@ -8,7 +8,7 @@ def test_osm_data_handler():
 
     osm_data_handler.apply_file(TEST_DIR.join("data/monaco_split_up_files/0.pbf"))
 
-    test = osm_data_handler.get_osm_data()
+    test_osm_data = osm_data_handler.get_osm_data()
 
-    assert test != None
-    assert test
+    # Checks that the list is not empty
+    assert test_osm_data
