@@ -34,7 +34,7 @@ class Attribute(Enum):
     # TODO: Set the tags they need
     PROPERTY_AREA = ("Property Area", [], _calculate_property_area)  #: The area of the property of the osm-element
     NUMER_OF_FLOOR = ("Number of Floors", [], _calculate_number_of_floors)  #: the number of floors the osm element has
-    FIRST_FLOOR_AREA = ("Floor Area", [], _calculate_first_floor_area)  #: the area that the first floor has
+    FIRST_FLOOR_AREA = ("Floor Area", ["building:levels"], _calculate_first_floor_area)  # the area that the first floor has
 
     def get_name(self) -> str:
         """
