@@ -23,7 +23,7 @@ class CutOutParserInterface(ABC):
             path (pathlib.Path):  The path pointing towards cut_out file we want to parse.
         
         Returns:
-           DataFrame: Our cut_out file transformed into a DataFrame
+           DataFrame: Our cut_out file transformed into a DataFrame, None if an error occurs
             
         Examples:
             To see an example for a cut_out file check out the file `data/partOfKarlsruhe.geojson`.
