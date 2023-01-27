@@ -3,7 +3,6 @@ from __future__ import annotations
 from src.osm_configurator.model.parser.tag_parser_interface import TagParserInterface
 import src.osm_configurator.model.parser.tags_wrongly_formatted_exception as tags_wrongly_formatted_exception_i
 
-import
 
 from typing import TYPE_CHECKING
 
@@ -23,13 +22,14 @@ class TagParser(TagParserInterface):
 
     def parse_tags(self, tags: List[str]) -> List[Tuple[str, str]]:
 
-        parsed_tags: List[Tuple[str, str]]
+        parsed_tags: List[Tuple[str, str]] = []
         tag: str
         for tag in tags:
             split_string = tag.split("=")
 
-            # TODO: parser excpetion
-            if (len(split_string) != 2):
+            if len(split_string) != 2:
                 raise tags_wrongly_formatted_exception_i.TagsWronglyFormatted(str(tag))
 
+            parsed_tags.append((split_string[0], split_string[1]))
 
+        return parsed_tags
