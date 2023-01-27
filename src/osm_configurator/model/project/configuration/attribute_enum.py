@@ -66,3 +66,13 @@ class Attribute(Enum):
             float: the calculated value
         """
         return self.value[2](category, tags)
+
+    @classmethod
+    def get_all_tags(cls) -> List:
+        """
+        Return all used Tags fromm all attributes:
+
+        Returns:
+            List: A list of tags from the attributes.
+        """
+        return list(map(lambda c: c.value[1], cls))
