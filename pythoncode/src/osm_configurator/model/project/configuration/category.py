@@ -3,12 +3,15 @@ from __future__ import annotations
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 import src.osm_configurator.model.project.configuration.attractivity_attribute
 import src.osm_configurator.model.project.configuration.default_value_entry
+import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
     from typing import Tuple
+    from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
 
@@ -24,15 +27,19 @@ class Category:
         """
         Creates a new instance of a "Category" class.
         """
-        self._active = False
-        self._whitelist = []
-        self._blacklist = []
-        self._category_name = "Category Name"
-        self._calculation_method_of_area = CalculationMethodOfArea.CALCULATE_SITE_AREA
-        self._attractivity_attributes = []
-        self._default_value_list = []
-        self._length = 3
-        self._attributes = [[] for x in range(self._length)]
+        self._active: bool = False
+        self._whitelist: List = []
+        self._blacklist: List = []
+        self._category_name: str = "Category Name"
+        self._calculation_method_of_area: calculation_method_of_area_enum_i.CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
+        self._attractivity_attributes: List = []
+        self._default_value_list: List = []
+
+        # Create the Attribute dictionary
+        self._attributes: Dict = {}
+        all_enums_names = [member.name for member in attribute_enum_i.Attribute]
+        for enum_name in all_enums_names:
+            self._attributes.update({enum_name: False})
 
     def is_active(self):
         """
@@ -149,9 +156,9 @@ class Category:
         """
         _activated = []
 
-        for item in range(self._length):
-            if self._attributes[item][1]:
-                _activated.append(self._attributes[item][0])
+        for enum_name in self._attributes:
+            if self._attributes.get(enum_name):
+                _activated.append(enum_name)
         return _activated
 
     def get_attribute(self, attribute) -> bool:
@@ -164,10 +171,10 @@ class Category:
         Returns:
             bool: True when the attribute is active, otherwise false.
         """
-
-        for item in range(self._length):
-            if self._attributes[item][0] == attribute:
-                return self._attributes[item][1]
+        if self._attributes.get(attribute.name):
+            return True
+        else:
+            return False
 
     def set_attribute(self, attribute, boolean):
         """
@@ -180,11 +187,8 @@ class Category:
         Returns:
             bool: True when it works, otherwise false.
         """
-        for item in range(self._length):
-            if self._attributes[item][0] == attribute:
-                self._attributes[item][1] = [item, boolean]
-                return True
-        return False
+        self._attributes[attribute.name] = boolean
+        return True
 
     def get_calculation_method_of_area(self):
         """
