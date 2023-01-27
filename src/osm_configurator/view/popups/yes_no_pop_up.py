@@ -1,19 +1,19 @@
 from __future__ import annotations
 
-from typing import Callable
+import customtkinter
 
-from customtkinter import CTkToplevel
-from customtkinter import CTkLabel
+POPUPSIZE = "400x200"
+gloBla = 0
 
 
-class YesNoPopUp(CTkToplevel):
+class YesNoPopUp(customtkinter.CTk):
     """
     This class creates PopUps, that will pop up in front of the GUI.
     This instance is a YesNoPopUp: It will provide a message, an 'OK' and an 'Cancel' button.
     Pressing a button will return the information back to the creating instance and close the PopUp.
     """
 
-    def __init__(self, message, func):
+    def __init__(self, message):
         """
         This constructor will create an YesNoPopUp, that will show the given message, as well as an 'OK' and
         'Cancel' button. If one of the buttons is pressed or the PopUp closed, it will send a message back via the
@@ -24,9 +24,39 @@ class YesNoPopUp(CTkToplevel):
 
         Args:
             message (str): The message to be shown in the PopUp.
-            func (typing.Callable): A Function that takes one Boolean and has no return, for the PopUp to send a message back.
+            func (typing.Callable): Function taking one Boolean and has no return for the PopUp to return a message
         """
-        pass
+        global gloBla
+        gloBla = 0
 
-    def close_pop_up(self):
-        self.destroy()
+        popup = super().__init__()
+        self.geometry(POPUPSIZE)
+
+        self.title("Alert")
+
+        customtkinter.CTkLabel(popup, text=message) \
+            .pack(side="top", fill="both", expand="True", padx=10, pady=10)
+
+        customtkinter.CTkButton(self, text="Accept", command=combine_funcs(accept, self.destroy)) \
+            .pack(side="bottom", padx=10, pady=10)
+
+        self.button = customtkinter.CTkButton(self, text="Cancel", command=combine_funcs(cancel, self.destroy)) \
+            .pack(side="bottom", padx=10, pady=10)
+
+
+def combine_funcs(*funcs):
+    def inner_combined_funcs(*args, **kwargs):
+        for f in funcs:
+            f(*args, **kwargs)
+
+    return inner_combined_funcs
+
+
+def accept():
+    global gloBla
+    gloBla = 1
+
+
+def cancel():
+    global gloBla
+    gloBla = 0
