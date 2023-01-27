@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from src.osm_configurator.model.parser.tag_parser_interface import TagParserInterface
-import src.osm_configurator.model.parser.tags_wrongly_formatted_exception as tags_wrongly_formatted_exception_i
+import osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception as tags_wrongly_formatted_exception_i
 
 
 from typing import TYPE_CHECKING

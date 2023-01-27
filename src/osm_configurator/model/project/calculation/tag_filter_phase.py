@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.parser.osm_data_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
@@ -8,7 +7,7 @@ import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
-
+import osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception as tags_wrongly_formatted_exception_i
 
 from typing import TYPE_CHECKING
 
@@ -69,14 +68,16 @@ class TagFilterPhase(ICalculationPhase):
         # parse the osm data  with the parser
         file_path: Path
         for file_path in list_of_traffic_cell_checkpoints:
-            traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
-                                                                                          category_manager_o,
-                                                                                          configuration_manager_o
-                                                                                          .get_cut_out_configuration()
-                                                                                          .get_cut_out_mode(),
-                                                                                          configuration_manager_o
-                                                                                          .get_cut_out_configuration()
-                                                                                          .get_cut_out_path())
+            try:
+                traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
+                                                                                              category_manager_o,
+                                                                                              configuration_manager_o
+                                                                                              .get_cut_out_configuration()
+                                                                                              .get_cut_out_mode(),
+                                                                                              configuration_manager_o
+                                                                                              .get_cut_out_configuration()
+                                                                                              .get_cut_out_path())
+            except tags_wrongly_formatted_exception_i.TagsWronglyFormatted:
 
             # name of the file
             file_name = file_path.name
