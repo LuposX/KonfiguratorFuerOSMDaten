@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.calculation.aggregation_method_enum
+import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum
 
 from typing import TYPE_CHECKING
 
@@ -36,7 +36,7 @@ class AggregationConfiguration:
         """
         _all_methods = []
 
-        for method in AggregationMethod:
+        for method in aggregation_method_enum.AggregationMethod:
             _all_methods.append(method)
         return _all_methods
 
