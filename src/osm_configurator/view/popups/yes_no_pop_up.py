@@ -60,3 +60,8 @@ def accept():
 def cancel():
     global gloBla
     gloBla = 0
+
+
+def get_glo_bla():
+    return gloBla
+
