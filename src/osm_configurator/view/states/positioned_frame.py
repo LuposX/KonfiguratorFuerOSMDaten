@@ -1,7 +1,10 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.toplevelframes.top_level_frame
-import src.osm_configurator.view.states.state_manager
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+    from src.osm_configurator.view.states.state_manager import StateManager
 
 
 class PositionedFrame:
@@ -10,42 +13,53 @@ class PositionedFrame:
     it is shown on a Window.
     """
 
-    def __init__(self, frame, colum, line, state_manager, control):
+    def __init__(self, frame: TopLevelFrame, colum: int, line: int):
         """
         This method creates a PositionedFrame, which is a Frame and coordinates to its Position.
 
         Args:
             frame (top_level_frame.TopLevelFrame): The frame you want to give a position
-            colum (int): The Colum the Frame shall be placed in
-            line (int): The Line the Frame shall be placed in
-            state_manager (state_manager.StateManager): The StateManager the frame will use to change states if needed
-            control (control_interface.IControl): The control that a frame shall call, if it needs access to the model
+            colum (int): The Colum the Frame shall be placed in, can't be negative
+            line (int): The Line the Frame shall be placed in, can't be negative
         """
-        pass
+        self.__smallest_colum_and_line_value = 0
 
-    def get_frame(self):
+        if not isinstance(frame, TopLevelFrame):
+            raise TypeError("The given Frame is not a Frame!")
+        elif not isinstance(colum, int):
+            raise TypeError("The given colum is not an Integer!")
+        elif not isinstance(line, int):
+            raise TypeError("The given line is not an Integer!")
+        elif colum < self.__smallest_colum_and_line_value or line < self.__smallest_colum_and_line_value:
+            raise ValueError("The Value of colum or line is negative!")
+        else:
+            self.__frame = frame
+            self.__colum = colum
+            self.__line = line
+
+    def get_frame(self) -> TopLevelFrame:
         """
         This method returns the frame this PositionedFrame holds.
 
         Returns:
             top_level_frame.TopLevelFrame: The Frame this PositionedFrame holds
         """
-        pass
+        return self.__frame
 
-    def get_column(self):
+    def get_column(self) -> int:
         """
         This method Returns the column the frame is placed in.
 
         Returns:
             int: The Column the Frame is placed in.
         """
-        pass
+        return self.__colum
 
-    def get_line(self):
+    def get_line(self) -> int:
         """
         This method returns the line the frame is placed in.
 
         Returns:
             int: The Line the frame is placed in
         """
-        pass
+        return self.__line
