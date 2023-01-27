@@ -16,14 +16,14 @@ def test_correct_parsing():
     df = parser.parse_cutout_file(Path(geojson_path))
 
     # Test non generated names
-    assert df[dataframe_column_names.CL_TRAFFIC_CELL_NAME][0] == "0_super_traffic_cell"
-    assert df[dataframe_column_names.CL_TRAFFIC_CELL_NAME][1] == "1_the_funny_cat"
+    assert df[model_constants.CL_TRAFFIC_CELL_NAME][0] == "0_super_traffic_cell"
+    assert df[model_constants.CL_TRAFFIC_CELL_NAME][1] == "1_the_funny_cat"
 
     # Test auto generated names
-    assert df[dataframe_column_names.CL_TRAFFIC_CELL_NAME][2] == "2_traffic_cell"
-    assert df[dataframe_column_names.CL_TRAFFIC_CELL_NAME][3] == "3_traffic_cell"
+    assert df[model_constants.CL_TRAFFIC_CELL_NAME][2] == "2_traffic_cell"
+    assert df[model_constants.CL_TRAFFIC_CELL_NAME][3] == "3_traffic_cell"
 
     # Test parsed geometry
-    assert MONACO_TRAFFIC_CELL_0_POLYGON == df[dataframe_column_names.CL_GEOMETRY][0]
-    assert MONACO_TRAFFIC_CELL_1_POLYGON == df[dataframe_column_names.CL_GEOMETRY][1]
-    assert "7.430574755831088 43.74116219248498" in str(df[dataframe_column_names.CL_GEOMETRY][5])
+    assert MONACO_TRAFFIC_CELL_0_POLYGON == df[model_constants.CL_GEOMETRY][0]
+    assert MONACO_TRAFFIC_CELL_1_POLYGON == df[model_constants.CL_GEOMETRY][1]
+    assert "7.430574755831088 43.74116219248498" in str(df[model_constants.CL_GEOMETRY][5])

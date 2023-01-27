@@ -19,6 +19,7 @@ class CategoryManager:
         Constructor of the class.
         """
         pass
+        self._categories = []
 
     def get_activated_attribute(self) -> List[Attribute]:
         """

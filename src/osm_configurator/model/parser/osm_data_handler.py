@@ -23,13 +23,10 @@ if TYPE_CHECKING:
     from typing import Final
 
 
-
 class DataOSMHandler(osm.SimpleHandler):
     """
     This class is responsible for parsing osm data files into a dataframe format.
     """
-
-    KEY_NOT_FOUND: str = "key_not_found"
 
     def __init__(self, category_manager_p: CategoryManager, cut_out_data_p: Polygon = None):
         """
@@ -67,6 +64,8 @@ class DataOSMHandler(osm.SimpleHandler):
         self._wkbshape = None  # used to temporarily save location
         self._osm_type: str # saved the origin name for area(e.g. way or relation)
         self._osm_name: str
+
+        self.KEY_NOT_FOUND: str = "key_not_found"
 
     def _attributes_to_tag_list(self) -> List:
         """
@@ -126,15 +125,15 @@ class DataOSMHandler(osm.SimpleHandler):
             for tag_in_whitelist in whitelist:
 
                 # Checks if the key is in the osm element
-                if osm_object.tags.get(tag_in_whitelist[0], DataOSMHandler.KEY_NOT_FOUND) \
-                        != DataOSMHandler.KEY_NOT_FOUND:
+                if osm_object.tags.get(tag_in_whitelist[0],  self.KEY_NOT_FOUND) \
+                        !=  self.KEY_NOT_FOUND:
 
                     # The dont care symbols, says it doesn't matter what the value of the tag is.
                     if tag_in_whitelist[1] == model_constants_i.DONT_CARE_SYMBOL:
                         break
                     else:
                         # If we find a single tag from the whitelist which the node doesn't correctly have, don't add category.
-                        if osm_object.tags.get(tag_in_whitelist[0], DataOSMHandler.KEY_NOT_FOUND) != tag_in_whitelist[1]:
+                        if osm_object.tags.get(tag_in_whitelist[0],  self.KEY_NOT_FOUND) != tag_in_whitelist[1]:
                             all_tags_from_whitelist_correct = False
                             break
 
@@ -154,13 +153,13 @@ class DataOSMHandler(osm.SimpleHandler):
 
                     # Checks if the key is in the osm element
                     # if the key isn't in the osm element, then we know that this tag is correct for the osm element
-                    if osm_object.tags.get(tag_in_blacklist[0], DataOSMHandler.KEY_NOT_FOUND) \
-                            != DataOSMHandler.KEY_NOT_FOUND:
+                    if osm_object.tags.get(tag_in_blacklist[0],  self.KEY_NOT_FOUND) \
+                            !=  self.KEY_NOT_FOUND:
 
                         # If we find a single tag from the blacklist which the node doesn't adhere to,
                         # then the category doesn't apply to the osm_element.
                         if tag_in_blacklist[1] != model_constants_i.DONT_CARE_SYMBOL:
-                            if osm_object.tags.get(tag_in_blacklist[0], DataOSMHandler.KEY_NOT_FOUND) == tag_in_blacklist[1]:
+                            if osm_object.tags.get(tag_in_blacklist[0],  self.KEY_NOT_FOUND) == tag_in_blacklist[1]:
                                 all_tags_from_blacklist_correct = False
                                 break
 
