@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.parser.osm_data_parser import OSMDataParser
+    from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from pathlib import Path
     from typing import List
     from geopandas import GeoDataFrame
@@ -41,7 +42,7 @@ class TagFilterPhase(ICalculationPhase):
             configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration needed for an execution.
 
         Returns:
-            calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
+            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
         """
         # Get path to the results of the last Phase
         checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
@@ -77,7 +78,7 @@ class TagFilterPhase(ICalculationPhase):
                                                                                               configuration_manager_o
                                                                                               .get_cut_out_configuration()
                                                                                               .get_cut_out_path())
-            except tags_wrongly_formatted_exception_i.TagsWronglyFormatted:
+            except tags_wrongly_formatted_exception_i.TagsWronglyFormatted as msg:
                 return calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED
 
             # name of the file
@@ -86,5 +87,12 @@ class TagFilterPhase(ICalculationPhase):
             # save the parsed osm data
             try:
                 traffic_cell_data_frame.to_csv(checkpoint_folder_path_current_phase.joinpath(file_name))
-            except Exception:  # TODO: This is probably bad style
-                return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+
+            # If there's a error while encoding the file.
+            except ValueError as err:
+                return (calculation_state_enum.CalculationState.ERROR_ENCODING_THE_FILE, err.args)
+
+            # If the file cannot be opened.
+            except OSError as err:
+                return (calculation_state_enum.CalculationState.ERROR_COULDNT_OPEN_FILE, err.args)
+
