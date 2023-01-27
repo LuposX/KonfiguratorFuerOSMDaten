@@ -112,7 +112,8 @@ def test_small_instance_successful():
     assert result1 == calculation_state_enum.CalculationState.RUNNING
 
     # Test if files were created
-    test_file_path: Path = Path(os.path.join(TEST_DIR, calculation_phase_utility.get_checkpoints_folder_path_from_phase(config_manager, calculation_phase_enum.CalculationPhase)),"0_super_traffic_cell")
+    test_file_path: Path = Path(os.path.join(TEST_DIR, calculation_phase_utility.get_checkpoints_folder_path_from_phase
+    (config_manager, calculation_phase_enum.CalculationPhase)), "0_super_traffic_cell")
     assert os.path.exists(test_file_path)
 
     # Test if execution works a second time

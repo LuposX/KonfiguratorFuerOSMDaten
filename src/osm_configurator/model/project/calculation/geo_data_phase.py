@@ -4,6 +4,7 @@ import os.path
 from pathlib import Path
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
+from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calc_util
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as phase_enum
@@ -52,7 +53,10 @@ class GeoDataPhase(ICalculationPhase):
         if not os.path.exists(geojson_path):
             return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
-        dataframe: GeoDataFrame = parser.parse_cutout_file(geojson_path)
+        try:
+            dataframe: GeoDataFrame = parser.parse_cutout_file(geojson_path)
+        except IllegalCutOutException as err:
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
         # Get folder, where to store the files
         cp_folder: Path = calc_util.get_checkpoints_folder_path_from_phase(configuration_manager,
@@ -75,3 +79,4 @@ class GeoDataPhase(ICalculationPhase):
             return calculation_state_enum.CalculationState.RUNNING
         else:
             return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+
