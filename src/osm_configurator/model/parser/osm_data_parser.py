@@ -34,7 +34,7 @@ class OSMDataParser(OSMDataParserInterface):
         # Creating our osm_handler which converts the osm-data file into a list of data
         # depending on if we want building on edges removed we initialize the object differently
         osm_handler: DataOSMHandler
-        if cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
+        if cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED:
             # get the name of the file without the suffix
             current_traffic_cell_name: str = data_file_path.stem
 
@@ -49,7 +49,7 @@ class OSMDataParser(OSMDataParserInterface):
             osm_handler = osm_data_handler.DataOSMHandler(categories,
                                                           cut_out_data[model_constants.CL_GEOMETRY].loc[idx])
 
-        elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED:
+        elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
             osm_handler = osm_data_handler.DataOSMHandler(categories)
 
         else:
