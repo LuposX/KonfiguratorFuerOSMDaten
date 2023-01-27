@@ -21,12 +21,15 @@ if TYPE_CHECKING:
     from osmium import Relation
     from osmium.osm import OSMObject
     from shapely import Polygon
+    from typing import Final
 
 
 class DataOSMHandler(osm.SimpleHandler):
     """
     This class is responsible for parsing osm data files into a dataframe format.
     """
+
+    DONT_CARE_SYMBOL: Final = "*"
 
     def __init__(self, category_manager_p: CategoryManager, cut_out_data_p: Polygon = None):
         """
@@ -105,43 +108,45 @@ class DataOSMHandler(osm.SimpleHandler):
         Returns:
             List[str]: A list of categories that apply to the osm element.
         """
-        _categories_of_osm_element = []
+        categories_of_osm_element: List[Category] = []
 
         # check if the osm_element applies to a category.
-        _category: Category
-        for _category in self._category_manager.get_categories():
-            _category_name = _category.get_category_name()
-            _whitelist = _category.get_whitelist()
-            _blacklist = _category.get_whitelist()
+        category: Category
+        for category in self._category_manager.get_categories():
+            category_name: str = category.get_category_name()
+            whitelist: List = category.get_whitelist()
+            blacklist: List = category.get_whitelist()
 
             # check if the node adheres to the whitelist.
-            _all_tags_from_whitelist_correct: bool = True
-            _tag_in_whitelist: Tuple
-            for _tag_in_whitelist in _whitelist:
+            all_tags_from_whitelist_correct: bool = True
+            tag_in_whitelist: Tuple
+            for tag_in_whitelist in whitelist:
 
                 # If we find a single tag from the whitelist which the node doesn't correctly have, don't add category.
-                if osm_object.tags.get(_tag_in_whitelist[0]) != _tag_in_whitelist[1]:
-                    _all_tags_from_whitelist_correct = False
-                    break
+                if osm_object.tags.get(tag_in_whitelist[1]) != DataOSMHandler.DONT_CARE_SYMBOL:
+                    if osm_object.tags.get(tag_in_whitelist[0]) != tag_in_whitelist[1]:
+                        all_tags_from_whitelist_correct = False
+                        break
 
             # Only when the whitelist is correct do we need to check the blacklist.
-            if _all_tags_from_whitelist_correct:
+            if all_tags_from_whitelist_correct:
 
                 # check if the node adheres to the blacklist.
-                _all_tags_from_blacklist_correct: bool = True
-                _tag_in_blacklist: Tuple
-                for _tag_in_blacklist in _blacklist:
+                all_tags_from_blacklist_correct: bool = True
+                tag_in_blacklist: Tuple
+                for tag_in_blacklist in blacklist:
 
                     # If we find a single tag from the blacklist which the node doesn't adhere to,
                     # then the category doesn't apply to the osm_element.
-                    if osm_object.tags.get(_tag_in_blacklist[0]) == _tag_in_blacklist[1]:
-                        _all_tags_from_whitelist_correct = False
-                        break
+                    if osm_object.tags.get(tag_in_whitelist[1]) != DataOSMHandler.DONT_CARE_SYMBOL:
+                        if osm_object.tags.get(tag_in_blacklist[0]) == tag_in_blacklist[1]:
+                            all_tags_from_whitelist_correct = False
+                            break
 
-            if _all_tags_from_whitelist_correct:
-                _categories_of_osm_element.append(_category_name)
+            if all_tags_from_whitelist_correct and all_tags_from_blacklist_correct:
+                categories_of_osm_element.append(category_name)
 
-        return _categories_of_osm_element
+        return categories_of_osm_element
 
     def node(self, n: Node) -> None:
         """
