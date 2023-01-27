@@ -23,7 +23,7 @@ class AggregationConfiguration:
         self._number_of_methods = 0
         self._aggregation_methods_status = [[] for x in range(self._length)]
 
-        for method in AggregationMethod:
+        for method in aggregation_method_enum.AggregationMethod:
             self._aggregation_methods_status.append([method, False])
             self._number_of_methods = self._number_of_methods + 1
 
