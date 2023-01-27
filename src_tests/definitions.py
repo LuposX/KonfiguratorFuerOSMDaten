@@ -4,6 +4,8 @@ import os
 import shapely as shp
 
 import src.osm_configurator.model.project.configuration.category as category_i
+import src.osm_configurator.model.project.configuration.category_manager as category_manager_i
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
 from typing import TYPE_CHECKING
 
@@ -22,21 +24,32 @@ whitelist: List = ["Building=*"]
 TEST_CATEGORY_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_BUILDING.set_category_name(name)
 TEST_CATEGORY_BUILDING.set_whitelist(whitelist)
+# TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMER_OF_FLOOR, true)
 
 name: str = "no_building_category"
 blacklist: List = ["Building=*"]
 TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_NO_BUILDING.set_category_name(name)
 TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
-
+# TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.FIRST_FLOOR_AREA, true)
 name: str = "shop_category"
 blacklist: List = ["shop=supermarket", "shop=general", "shop=alcohol", "shop=computer", "shop=cheese",
                    "shop=coffee"]
+
 TEST_CATEGORY_SHOP: Final = category_i.Category()
 TEST_CATEGORY_SHOP.set_category_name(name)
 TEST_CATEGORY_SHOP.set_whitelist(blacklist)
+# TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, true)
 
-# The test folder
+
+# Defining Test Category Manager
+# -------------------------
+CATEGORY_MANAGER = category_manager_i.CategoryManager()
+CATEGORY_MANAGER.create_category([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
+
+
+
+# The Test folder
 # ---------------
 TEST_DIR: Final = os.path.dirname(os.path.abspath(__file__))
 

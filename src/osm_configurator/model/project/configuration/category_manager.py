@@ -14,16 +14,11 @@ class CategoryManager:
     Category Manager holds a list of categories and changes them according to the given needs.
     """
 
-    _categories = [] # List of categories
-
-    def __init__(self, categories):
+    def __init__(self):
         """
         Constructor of the class.
-
-        Args:
-            categories (Category): Starting list of categories.
         """
-        self._categories = categories
+        pass
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -33,7 +28,14 @@ class CategoryManager:
         Returns:
             List[Attribute]: A list that contains all used attributes
         """
-        pass
+
+        _activated_attributes = []
+
+        for category in self._categories:
+            for attribute in category.get_activated_attribute():
+                if attribute not in _activated_attributes:
+                    _activated_attributes.append(attribute)
+        return _activated_attributes
 
     def get_category(self, index):
         """
@@ -45,8 +47,8 @@ class CategoryManager:
         Returns:
             category.Category: The Category we wanted.
         """
-        if index < 0 or index > len(self._categories):
-            return -1
+        if index <= 0 or index > len(self._categories):
+            return None
         return self._categories[index]
 
     def get_categories(self) -> List:
@@ -58,7 +60,7 @@ class CategoryManager:
         """
         return self._categories
 
-    def create_category(self, new_category):
+    def create_category(self, new_category: List):
         """
         Creates a new category, that will be empty.
 
@@ -91,14 +93,8 @@ class CategoryManager:
 
         Args:
             new_category_list (list[Categories]): List of categories, that will overwrite the already existing list.
-
-        Returns:
-            bool: True, if the replacement was successful, else False.
         """
-        if self._categories != new_category_list:
-            self._categories = new_category_list
-            return True
-        return False
+        self._categories = new_category_list
 
     def merge_categories(self, category_input_list):
         """
@@ -106,14 +102,7 @@ class CategoryManager:
 
         Args:
             category_input_list (list[Category]): New list of categories that will be merged into the existing list.
-
-        Returns:
-            bool: True, if the merging was successful, else False.
         """
-        if self._categories == category_input_list:
-            return False
-
         for category in category_input_list:
             if category not in self._categories:
                 self._categories.append(category)
-        return True
