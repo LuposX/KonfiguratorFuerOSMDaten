@@ -66,6 +66,8 @@ class DataOSMHandler(osm.SimpleHandler):
         self._shapely_location = 0  # the location we save per osm element
         self._tmp_tag_list: List = []  # this is a temporary list that is used to save the tags for one osm element.
         self._categories_of_osm_element = []
+        self._wkbshape = None  # used to temporarily save location
+        self._origin_name: str # saved the origin name for area(e.g. way or relation)
 
     def _attributes_to_tag_list(self) -> List:
         """
@@ -79,13 +81,12 @@ class DataOSMHandler(osm.SimpleHandler):
             _needed_tags.extend(attribute.get_needed_tags())
         return _needed_tags
 
-    def _tag_inventory(self, elem: OSMObject, elem_type: str) -> None:
+    def _tag_inventory(self, elem: OSMObject) -> None:
         """
         This method is responsible to save the information about the osm elements.
 
         Args:
             elem (OSMObject): The osm element we want to save.
-            elem_type (str): The type of the element we got passed as string.
         """
         # Get a temporary list of tags from the osm object.
         self._tmp_tag_list: List = []
@@ -95,7 +96,7 @@ class DataOSMHandler(osm.SimpleHandler):
                 self._tmp_tag_list.append((tag.k, tag.v))
 
         # save the osm object data that we need.
-        self._osm_data.append([elem_type,
+        self._osm_data.append([self._origin_name,
                                self._shapely_location,
                                np.asarray(self._tmp_tag_list, dtype=str),
                                np.asarray(self._categories_of_osm_element, dtype=np.uint16)])
@@ -158,6 +159,7 @@ class DataOSMHandler(osm.SimpleHandler):
             n (Node): The node we found
         """
         self._shapely_location = None
+        self._origin_name = "node"
 
         # Get all the categories that apply to the current osm element
         self._categories_of_osm_element = self._get_list_of_categories_of_the_osm_element(n)
@@ -166,14 +168,14 @@ class DataOSMHandler(osm.SimpleHandler):
         if self._categories_of_osm_element:
 
             # If building on the edge should be removed check whether the building is on the edge or not
-            wkbshape = self._wkbfab.create_point(n)
-            self._shapely_location = wkb.loads(wkbshape, hex=True)
+            self._wkbshape = self._wkbfab.create_point(n)
+            self._shapely_location = wkb.loads(self._wkbshape, hex=True)
             if self._remove_building_on_edge:
                 if self._cut_out_data.contains(self._shapely_location):
-                    self._tag_inventory(n, "node")
+                    self._tag_inventory(n)
 
             else:
-                self._tag_inventory(n, "node")
+                self._tag_inventory(n)
 
         del n
 
@@ -193,22 +195,21 @@ class DataOSMHandler(osm.SimpleHandler):
         # check that the categories aren't empty
         if self._categories_of_osm_element:
             # create location/multipolygon
-            wkbshape = self._wkbfab.create_multipolygon(a)
-            self._shapely_location = wkb.loads(wkbshape, hex=True)
+            self._wkbshape = self._wkbfab.create_multipolygon(a)
+            self._shapely_location = wkb.loads(self._wkbshape, hex=True)
 
-            _origin_name: str
             if a.from_way:
-                _origin_name = "area-way"
+                self._origin_name = "area-way"
             else:
-                _origin_name = "area-relation"
+                self._origin_name = "area-relation"
 
             # If building on the edge should be removed check whether the building is on the edge or not
             if self._remove_building_on_edge:
                 if self._cut_out_data.contains(self._shapely_location):
-                    self._tag_inventory(a, _origin_name)
+                    self._tag_inventory(a)
 
             else:
-                self._tag_inventory(a,  _origin_name)
+                self._tag_inventory(a)
 
         del a
 
