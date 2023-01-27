@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import List
     from typing import Tuple
+    from src.osm_configurator.model.parser.tags_wrongly_formatted_exception import TagsWronglyFormatted
 
 
 class TagParserInterface(ABC):
@@ -25,5 +26,8 @@ class TagParserInterface(ABC):
 
         Returns:
            List[Tuple[str, str]]: A list of key,value tag pairs.
+
+        Raises:
+            TagsWronglyFormatted: If a tag wasn't correctly formatted.
         """
         pass
