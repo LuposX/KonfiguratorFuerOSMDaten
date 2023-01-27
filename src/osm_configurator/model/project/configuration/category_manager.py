@@ -16,14 +16,11 @@ class CategoryManager:
 
     _categories = [] # List of categories
 
-    def __init__(self, categories):
+    def __init__(self):
         """
         Constructor of the class.
-
-        Args:
-            categories (Category): Starting list of categories.
         """
-        self._categories = categories
+        pass
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -58,7 +55,7 @@ class CategoryManager:
         """
         return self._categories
 
-    def create_category(self, new_category):
+    def create_category(self, new_category: List):
         """
         Creates a new category, that will be empty.
 
