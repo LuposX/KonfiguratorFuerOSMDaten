@@ -99,7 +99,7 @@ class DataOSMHandler(osm.SimpleHandler):
         self._osm_data.append([self._origin_name,
                                self._shapely_location,
                                np.asarray(self._tmp_tag_list, dtype=str),
-                               np.asarray(self._categories_of_osm_element, dtype=np.uint16)])
+                               np.asarray(self._categories_of_osm_element, dtype=str)])
 
     def _get_list_of_categories_of_the_osm_element(self, osm_object: OSMObject) -> List[str]:
         """
