@@ -10,6 +10,11 @@ from src.osm_configurator.model.parser import dataframe_column_names
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum
 
 
+OSMIUM_STARTING_ARGS: list = ["osmium", "extract", "-b"]
+OSMIUM_COORDINATE_PATTERN: str = "{},{},{},{}"
+OSMIUM_O_OPTION: str = "-o"
+
+
 class SplitUpFile:
     """
     This class is responsible to split up osm-data files, into multiple smaller osm-data files.
@@ -48,13 +53,18 @@ class SplitUpFile:
             return False
 
         for i in range(len(cells[dataframe_column_names.GEOMETRY])):
-            result = subprocess.run(["osmium", "extract", "-b", "{},{},{},{}".format(*cells[
-                dataframe_column_names.GEOMETRY][i].bounds),
-                                     str(self._origin_path), "-o",
-                                     str(self._result_folder) + "/" +
-                                     str(cells[dataframe_column_names.TRAFFIC_CELL_NAME][i])
-                                     + osm_file_format_enum.OSMFileFormat.PBF.get_file_extension()],
+            result = subprocess.run(self.get_osmium_command_args(cells, i),
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             if result.returncode != 0:
                 return False
         return True
+
+    def get_osmium_command_args(self, cells: GeoDataFrame, i: int) -> list:
+        # Calculates the arguments for the osmium tool, that split the OSM-file up correctly
+        args = list(OSMIUM_STARTING_ARGS)
+        args.append(OSMIUM_COORDINATE_PATTERN.format(*cells[dataframe_column_names.GEOMETRY][i].bounds))
+        args.append(str(self._origin_path))
+        args.append(OSMIUM_O_OPTION)
+        args.append(str(self._result_folder) + "/" + str(cells[dataframe_column_names.TRAFFIC_CELL_NAME][i])
+                    + osm_file_format_enum.OSMFileFormat.PBF.get_file_extension())
+        return args
