@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import pathlib
 from pathlib import Path
 
 from typing import TYPE_CHECKING
@@ -18,8 +19,8 @@ class OSMDataConfiguration:
         """
         Creates a new instance of the "OSMDataConfiguration" class.
         """
-        self._osm_data_path = Path()
-        self._downloader = DownloadData()
+        self._osm_data_path: pathlib.Path = Path()
+        self._downloader: DownloadData = DownloadData()
 
     def get_osm_data(self):
         """

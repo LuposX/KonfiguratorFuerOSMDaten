@@ -29,12 +29,12 @@ class ConfigurationManager:
         Args:
             active_project_path (pathLib.Path): The path pointing towards the project folder.
         """
-        self._active_project_path = active_project_path
-        self._calculation_phase_checkpoints_folder_name = "Results"  # TODO: remove Magic String
-        self._osm_data_configurator = OSMDataConfiguration()
-        self._aggregation_configurator = AggregationConfiguration()
-        self._cut_out_configurator = CutOutConfiguration()
-        self._category_manager = CategoryManager([])
+        self._active_project_path: pathlib.Path = active_project_path
+        self._calculation_phase_checkpoints_folder_name: str = "Results"  # TODO: remove Magic String
+        self._osm_data_configurator: OSMDataConfiguration = OSMDataConfiguration()
+        self._aggregation_configurator: AggregationConfiguration = AggregationConfiguration()
+        self._cut_out_configurator: CutOutConfiguration = CutOutConfiguration()
+        self._category_manager: CategoryManager = CategoryManager()
 
     def get_osm_data_configuration(self):
         """

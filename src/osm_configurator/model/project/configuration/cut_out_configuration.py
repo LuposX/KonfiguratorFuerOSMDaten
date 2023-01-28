@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import pathlib
 from pathlib import Path
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum
 
@@ -20,8 +21,8 @@ class CutOutConfiguration:
         """
         Creates a new instance of the "CutOutConfiguration" class.
         """
-        self._cut_out_mode = CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
-        self._cut_out_path = Path()
+        self._cut_out_mode: CutOutMode = CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
+        self._cut_out_path: pathlib.Path = Path()
 
     def get_cut_out_mode(self):
         """

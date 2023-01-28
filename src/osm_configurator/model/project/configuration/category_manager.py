@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.category
+import src.osm_configurator.model.project.configuration.category as Category
 
 from typing import TYPE_CHECKING
 
@@ -18,7 +19,7 @@ class CategoryManager:
         """
         Constructor of the class.
         """
-        pass
+        self._categories: list[Category] = list
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -28,7 +29,6 @@ class CategoryManager:
         Returns:
             List[Attribute]: A list that contains all used attributes
         """
-
         _activated_attributes = []
 
         for category in self._categories:

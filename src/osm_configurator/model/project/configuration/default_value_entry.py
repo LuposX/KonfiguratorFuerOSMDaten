@@ -1,6 +1,12 @@
 from __future__ import annotations
 
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Dict
 
 
 class DefaultValueEntry:
@@ -14,12 +20,13 @@ class DefaultValueEntry:
         Constructor of the class.
         Creates an empty DefaultValueEntry with 0 for all the factor values.
         """
+
+        self._all_attribute_default_values: Dict = {}
+        all_enums_names = [member.name for member in attribute_enum_i.Attribute]
+        for enum_name in all_enums_names:
+            self._all_attribute_default_values.update({enum_name: 0})
+
         self._tag = tag
-        self._length = 3
-        self._attribute_default_values = [[] for x in range(self._length)]
-        self._attribute_default_values[0] = [Attribute.PROPERTY_AREA, 0]
-        self._attribute_default_values[0] = [Attribute.NUMER_OF_FLOOR, 0]
-        self._attribute_default_values[0] = [Attribute.FIRST_FLOOR_AREA, 0]
 
     def get_default_value_entry_tag(self):
         """
@@ -53,10 +60,9 @@ class DefaultValueEntry:
         Returns:
             bool: True, if overwriting process was successful, else false
         """
-        for item in range(self._length):
-            if self._attribute_default_values[item][0] == attribute:
-                self._attribute_default_values[item][1] = [item, value]
-                return True
+        if attribute in attribute_enum_i:
+            self._all_attribute_default_values.update({attribute: value})
+            return True
         return False
 
     def get_attribute_default(self, attribute):
@@ -69,6 +75,7 @@ class DefaultValueEntry:
         Returns:
             float: The default value of the attribute
         """
-        for item in range(self._length):
-            if self._attribute_default_values[item][0] == attribute:
-                return self._attribute_default_values[item][1]
+
+        if attribute in attribute_enum_i:
+            return self._all_attribute_default_values.get(attribute)
+        return -1

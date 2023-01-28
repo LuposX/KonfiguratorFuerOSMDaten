@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.calculation.aggregation_method_enum
+import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum_i
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Dict
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
@@ -19,13 +19,11 @@ class AggregationConfiguration:
         """
         Creates a new instance of the AggregationConfiguration.
         """
-        self._length = 2
-        self._number_of_methods = 0
-        self._aggregation_methods_status = [[] for x in range(self._length)]
 
-        for method in AggregationMethod:
-            self._aggregation_methods_status.append([method, False])
-            self._number_of_methods = self._number_of_methods + 1
+        self._aggregation_method_state: Dict = {}
+        all_aggregation_methods = [member.name for member in aggregation_method_enum_i]
+        for enum_name in all_aggregation_methods:
+            self._aggregation_method_state.update({enum_name: False})
 
     def get_all_aggregation_methods(self):
         """
@@ -50,9 +48,8 @@ class AggregationConfiguration:
         Returns:
             bool: True if the aggregation method is active, otherwise false.
         """
-        for item in range(self._number_of_methods):
-            if self._aggregation_methods_status[item][0] == method:
-                return self._aggregation_methods_status[item][1]
+
+        return self._aggregation_method_state.get(method)
 
     def set_aggregation_method_active(self, method, active):
         """
@@ -66,8 +63,8 @@ class AggregationConfiguration:
         Returns:
             bool: True if changing the state works, otherwise false.
         """
-        for item in range(self._number_of_methods):
-            if self._aggregation_methods_status[item][0] == method:
-                self._aggregation_methods_status[item][1] = active
-                return True
+
+        if method in aggregation_method_enum_i:
+            self._aggregation_method_state.update({method: active})
+            return True
         return False

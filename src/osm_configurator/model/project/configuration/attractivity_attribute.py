@@ -25,9 +25,9 @@ class AttractivityAttribute:
         Examples:
             An example for attractivity_attribute_list: [(AREA, 1.0), (NUMER_OF_FLOOR, 2.0), (GROUND_AREA, 6.9)]
         """
-        self._attractivity_attribute_name = attractivity_attribute_name
-        self._attractivity_attribute_list = attractivity_attribute_list
-        self._base_attractivity = base_attractivity
+        self._attractivity_attribute_name: str = attractivity_attribute_name
+        self._attractivity_attribute_list: list = attractivity_attribute_list
+        self._base_attractivity: int = base_attractivity
 
     def get_attractivity_attribute_name(self):
         """
