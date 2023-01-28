@@ -1,8 +1,12 @@
 from __future__ import annotations
+from typing import TYPE_CHECKING
 
 from pathlib import Path
 
 from abc import ABC, abstractmethod
+
+if TYPE_CHECKING:
+    from geopandas import GeoDataFrame
 
 
 class CutOutParserInterface(ABC):
@@ -11,7 +15,7 @@ class CutOutParserInterface(ABC):
     """
     
     @abstractmethod
-    def parse_cutout_file(self, path: Path):
+    def parse_cutout_file(self, path: Path) -> GeoDataFrame:
         """
         This method takes in the path to a cut_out file and parses to an
         internal representation of TrafficCells. (DataFrames)

@@ -1,3 +1,7 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
 import os
 
 import src.osm_configurator.model.parser.cut_out_parser as cop
@@ -8,15 +12,19 @@ from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_excepti
 from pathlib import Path
 import shapely as shp
 
+if TYPE_CHECKING:
+    from src.osm_configurator.model.parser.cut_out_parser_interface import CutOutParserInterface
+    from geopandas import GeoDataFrame
+
 
 # without this you get a weird error, idk why
-os.environ["PROJ_LIB"]=""
+os.environ["PROJ_LIB"] = ""
 
 
 def test_correct_parsing():
-    geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
-    parser = cop.CutOutParser()
-    df = parser.parse_cutout_file(Path(geojson_path))
+    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
+    parser: CutOutParserInterface = cop.CutOutParser()
+    df: GeoDataFrame = parser.parse_cutout_file(geojson_path)
 
     # Test non generated names
     assert df[dataframe_column_names.TRAFFIC_CELL_NAME][0] == "0_super_traffic_cell"
@@ -33,10 +41,10 @@ def test_correct_parsing():
 
 
 def test_illegal_path():
-    geojson_path = os.path.join(TEST_DIR, "data/asassa/sdjladlas.geojson")
-    parser = cop.CutOutParser()
+    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/asassa/sdjladlas.geojson"))
+    parser: CutOutParserInterface = cop.CutOutParser()
     try:
-        df = parser.parse_cutout_file(Path(geojson_path))
+        parser.parse_cutout_file(geojson_path)
     except IllegalCutOutException as err:
         return
 
@@ -44,10 +52,10 @@ def test_illegal_path():
 
 
 def test_none_path():
-    geojson_path = os.path.join(TEST_DIR)
+    geojson_path: Path = Path(os.path.join(TEST_DIR))
     parser = cop.CutOutParser()
     try:
-        df = parser.parse_cutout_file(Path(geojson_path))
+        df = parser.parse_cutout_file(geojson_path)
     except IllegalCutOutException as err:
         return
 
