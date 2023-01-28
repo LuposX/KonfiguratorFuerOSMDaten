@@ -16,6 +16,8 @@ from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_format
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 
+import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -118,11 +120,13 @@ class TagFilterPhase(ICalculationPhase):
                 return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
                 # name of the file
-            file_name = file_path.name
+            file_name = file_path.stem
 
             # save the parsed osm data
             try:
-                traffic_cell_data_frame.to_csv(checkpoint_folder_path_current_phase.joinpath(file_name))
+                traffic_cell_data_frame.\
+                    to_csv(checkpoint_folder_path_current_phase.
+                           joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
 
             # If there's a error while encoding the file.
             except ValueError as err:
