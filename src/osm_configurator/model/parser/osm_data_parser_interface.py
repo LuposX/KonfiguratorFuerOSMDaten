@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
     from src.osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
-    from src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted import OSMDataWronglyFormatted
+    from src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
     from pathlib import Path
 
 
