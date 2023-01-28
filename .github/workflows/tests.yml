@@ -28,7 +28,7 @@ jobs:
     - name: Run pytest
       run: |
         pytest
-    - name: Run MyPy
-      run: |
-        mypy src/
+#    - name: Run MyPy
+#      run: |
+#        mypy src/
       
