@@ -23,7 +23,7 @@ class OSMDataConfiguration:
         self._osm_data_path = None
         self._downloader = download_data.DownloadData()
 
-    def get_osm_data(self):
+    def get_osm_data(self) -> Path:
         """
         Gives back the path pointing towards the OSM data file.
 
