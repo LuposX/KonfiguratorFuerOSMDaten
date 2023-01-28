@@ -11,6 +11,7 @@ import src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_excep
 from pathlib import Path
 
 import geopandas as gpd
+import os
 
 from typing import TYPE_CHECKING
 
