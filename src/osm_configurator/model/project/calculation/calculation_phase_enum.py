@@ -40,7 +40,7 @@ class CalculationPhase(Enum):
         """
         return self.value[0]
 
-    def get_folder_name_for_results(self) -> str:
+    def get_folder_name_for_results(self):
         """
         Getter for the folder name of the enum type.
 
