@@ -99,7 +99,7 @@ class TestTagFilterPhase:
         # Execute test
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
         result1: CalculationState = phase.calculate(config_manager)
-        assert result1 == calculation_state_enum.CalculationState.RUNNING
+        assert result1[0] == calculation_state_enum.CalculationState.RUNNING
 
         # Test if files were created
         assert len(
@@ -108,7 +108,7 @@ class TestTagFilterPhase:
 
         # Test if execution works a second time
         result2: CalculationState = phase.calculate(config_manager)
-        assert result2 == calculation_state_enum.CalculationState.RUNNING
+        assert result2[0] == calculation_state_enum.CalculationState.RUNNING
 
     def test_corrupted_osm_data(self):
         # Set up paths

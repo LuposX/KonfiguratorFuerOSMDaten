@@ -11,7 +11,8 @@ import src.osm_configurator.model.project.calculation.calculation_phase_utility 
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
-from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
+from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import \
+    OSMDataWronglyFormatted
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 
@@ -95,7 +96,11 @@ class TagFilterPhase(ICalculationPhase):
         osm_data_parser_o: OSMDataParser = osm_data_parser.OSMDataParser()
 
         # parse the osm data  with the parser
-        file_path: Path
+        return self._parse_the_data_file(osm_data_parser_o, list_of_traffic_cell_checkpoints, category_manager_o,
+                             configuration_manager_o, checkpoint_folder_path_current_phase)
+
+    def _parse_the_data_file(self, osm_data_parser_o, list_of_traffic_cell_checkpoints, category_manager_o,
+                             configuration_manager_o, checkpoint_folder_path_current_phase):
         for file_path in list_of_traffic_cell_checkpoints:
             try:
                 traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
@@ -112,7 +117,7 @@ class TagFilterPhase(ICalculationPhase):
             except OSMDataWronglyFormatted as err:
                 return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
-            # name of the file
+                # name of the file
             file_name = file_path.name
 
             # save the parsed osm data
@@ -127,4 +132,4 @@ class TagFilterPhase(ICalculationPhase):
             except OSError as err:
                 return calculation_state_enum.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
 
-        return calculation_state_enum.CalculationState.RUNNING
+        return calculation_state_enum.CalculationState.RUNNING, ""
