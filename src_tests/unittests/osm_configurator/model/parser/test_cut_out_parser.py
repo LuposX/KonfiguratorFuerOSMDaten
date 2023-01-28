@@ -2,7 +2,7 @@ import os
 
 import src.osm_configurator.model.parser.cut_out_parser as cop
 from src_tests.definitions import TEST_DIR, MONACO_TRAFFIC_CELL_0_POLYGON, MONACO_TRAFFIC_CELL_1_POLYGON
-from osm_configurator.model import model_constants
+import src.osm_configurator.model.model_constants as model_constants
 
 from pathlib import Path
 

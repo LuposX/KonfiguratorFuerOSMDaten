@@ -5,7 +5,7 @@ import numpy as np
 import shapely.wkb as wkb
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
-import osm_configurator.model.model_constants as model_constants_i
+import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 
 from typing import TYPE_CHECKING

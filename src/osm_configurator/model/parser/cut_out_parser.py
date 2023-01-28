@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from src.osm_configurator.model.parser.cut_out_parser_interface import CutOutParserInterface
-import osm_configurator.model.model_constants as dataframe_column_names
+import src.osm_configurator.model.model_constants as dataframe_column_names
 
 import geopandas as gpd
 

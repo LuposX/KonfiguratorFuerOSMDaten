@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import geopandas as gpd
 
-import osm_configurator.model.parser.osm_data_handler as osm_data_handler
+import src.osm_configurator.model.parser.osm_data_handler as osm_data_handler
 from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataParserInterface
 
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
@@ -11,7 +11,7 @@ import src.osm_configurator.model.model_constants as model_constants
 
 import src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted_Exception as osm_data_wrongly_formatted_i
 
-from osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
+from src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
 
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 
@@ -19,7 +19,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
-    from osm_configurator.model.parser.osm_data_handler import DataOSMHandler
+    from src.osm_configurator.model.parser.osm_data_handler import DataOSMHandler
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
     from pathlib import Path
