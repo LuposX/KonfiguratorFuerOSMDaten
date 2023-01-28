@@ -1,0 +1,2 @@
+class OSMDataWronglyFormatted(Exception):
+    pass

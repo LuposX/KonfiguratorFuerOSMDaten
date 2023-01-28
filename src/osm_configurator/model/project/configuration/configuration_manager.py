@@ -70,7 +70,7 @@ class ConfigurationManager:
         Returns:
             category_manager.CategoryManager: The category manager.
         """
-        return CategoryManager
+        return self._category_manager
 
     def get_active_project_path(self) -> pathlib.Path:
         """

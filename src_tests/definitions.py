@@ -20,33 +20,31 @@ if TYPE_CHECKING:
 # Defining Test Categories
 # -------------------------
 name: str = "building_category"
-whitelist: List = ["Building=*"]
+whitelist: List = ["building=*"]
 TEST_CATEGORY_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_BUILDING.set_category_name(name)
 TEST_CATEGORY_BUILDING.set_whitelist(whitelist)
-# TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMER_OF_FLOOR, true)
+TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
 
 name: str = "no_building_category"
-blacklist: List = ["Building=*"]
+blacklist: List = ["building=*"]
 TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_NO_BUILDING.set_category_name(name)
 TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
-# TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.FIRST_FLOOR_AREA, true)
-name: str = "shop_category"
-blacklist: List = ["shop=supermarket", "shop=general", "shop=alcohol", "shop=computer", "shop=cheese",
-                   "shop=coffee"]
+TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 
+name: str = "shop_category"
+blacklist: List = ["shop=*"]
 TEST_CATEGORY_SHOP: Final = category_i.Category()
 TEST_CATEGORY_SHOP.set_category_name(name)
 TEST_CATEGORY_SHOP.set_whitelist(blacklist)
-# TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, true)
+TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
 
 
 # Defining Test Category Manager
 # -------------------------
 CATEGORY_MANAGER = category_manager_i.CategoryManager()
-CATEGORY_MANAGER.create_category([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
-
+CATEGORY_MANAGER._test_set_categories([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
 
 
 # The Test folder

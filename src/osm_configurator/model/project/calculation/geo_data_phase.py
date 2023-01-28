@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import os.path
+import os
 from pathlib import Path
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
@@ -19,7 +19,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParserInterface
-    from pathlib import Path
     from geopandas.geodataframe import GeoDataFrame
     from src.osm_configurator.model.project.calculation.split_up_files import SplitUpFile
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
@@ -50,6 +49,9 @@ class GeoDataPhase(ICalculationPhase):
         parser: CutOutParserInterface = cut_out_parser.CutOutParser()
         geojson_path: Path = configuration_manager.get_cut_out_configuration().get_cut_out_path()
 
+        if geojson_path is None:
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
+
         if not os.path.exists(geojson_path):
             return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
@@ -64,6 +66,9 @@ class GeoDataPhase(ICalculationPhase):
 
         # Get folder, where to read the OSM-data from
         osm_path: Path = configuration_manager.get_osm_data_configuration().get_osm_data()
+        if osm_path is None:
+            return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+
         if not os.path.exists(osm_path):
             return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
 

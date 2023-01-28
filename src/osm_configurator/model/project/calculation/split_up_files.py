@@ -6,7 +6,7 @@ import shapely
 from pathlib import Path
 import subprocess
 from geopandas.geodataframe import GeoDataFrame
-from src.osm_configurator.model.parser import dataframe_column_names
+import src.osm_configurator.model.model_constants as model_constants
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum
 
 
@@ -49,10 +49,10 @@ class SplitUpFile:
         if not os.path.exists(self._origin_path) or not os.path.exists(self._result_folder):
             return False
 
-        if dataframe_column_names.TRAFFIC_CELL_NAME not in cells.columns:
+        if model_constants.CL_TRAFFIC_CELL_NAME not in cells.columns:
             return False
 
-        for i in range(len(cells[dataframe_column_names.GEOMETRY])):
+        for i in range(len(cells[model_constants.CL_LOCATION])):
             result = subprocess.run(self.get_osmium_command_args(cells, i),
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             if result.returncode != 0:
@@ -62,9 +62,9 @@ class SplitUpFile:
     def get_osmium_command_args(self, cells: GeoDataFrame, i: int) -> list:
         # Calculates the arguments for the osmium tool, that split the OSM-file up correctly
         args = list(OSMIUM_STARTING_ARGS)
-        args.append(OSMIUM_COORDINATE_PATTERN.format(*cells[dataframe_column_names.GEOMETRY][i].bounds))
+        args.append(OSMIUM_COORDINATE_PATTERN.format(*cells[model_constants.CL_LOCATION][i].bounds))
         args.append(str(self._origin_path))
         args.append(OSMIUM_O_OPTION)
-        args.append(str(self._result_folder) + "/" + str(cells[dataframe_column_names.TRAFFIC_CELL_NAME][i])
+        args.append(str(self._result_folder) + "/" + str(cells[model_constants.CL_TRAFFIC_CELL_NAME][i])
                     + osm_file_format_enum.OSMFileFormat.PBF.get_file_extension())
         return args
