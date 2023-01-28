@@ -12,12 +12,12 @@ class YesNoPopUp(customtkinter.CTk):
     Pressing a button will return the information back to the creating instance and close the PopUp.
     """
 
-    def __init__(self, message, func):
+    def __init__(self, message: str, func):
         """
-        This constructor will create an YesNoPopUp, that will show the given message, as well as an 'OK' and
+        This constructor will create an YesNoPopUp, that will show the given message, as well as an 'Accept' and
         'Cancel' button. If one of the buttons is pressed or the PopUp closed, it will send a message back via the
         given function, what button had been pressed.
-        If 'OK' has been pressed, the given function will be called with a boolean = true.
+        If 'Accept' has been pressed, the given function will be called with a boolean = true.
         If 'Cancel' has been pressed, or the PopUp was closed otherwise, the given function will be called with
         a boolean = false.
 
@@ -35,25 +35,45 @@ class YesNoPopUp(customtkinter.CTk):
         customtkinter.CTkLabel(popup, text=message) \
             .pack(side="top", fill="both", expand="True", padx=10, pady=10)
 
-        customtkinter.CTkButton(self, text="Accept", command=combine_funcs(accept, self.destroy)) \
+        customtkinter.CTkButton(self, text="Accept", command=combine_funcs(self.accept, self.destroy)) \
             .pack(side="bottom", padx=10, pady=10)
 
-        self.button = customtkinter.CTkButton(self, text="Cancel", command=combine_funcs(cancel, self.destroy)) \
+        self.button = customtkinter.CTkButton(self, text="Cancel",
+                                              command=combine_funcs(self.cancel, self.destroy)) \
             .pack(side="bottom", padx=10, pady=10)
 
     def accept(self):
-        global gloBla
+        """
+        Models the acceptance-process if a button is pressed.
+        It will return "True" to the given function.
+        """
         self.func(True)
 
     def cancel(self):
+        """
+        Models the cancelling-process if a button is pressed.
+        It will return "False" to the given function.
+        """
         self.func(False)
 
 
 def combine_funcs(*funcs):
+    """
+    Will execute a list of functions in the given order.
+    Args:
+        *funcs: Contains the functions that will be executed
+    """
+
     def inner_combined_funcs(*args, **kwargs):
+        """
+        Actually calls the functions
+        Args:
+            *args: contains the arguments of the given function
+            *kwargs: Function will receive a dictionary of arguments, because the actual number is not
+            clear before execution
+        """
         for f in funcs:
             f(*args, **kwargs)
 
     return inner_combined_funcs
-
 

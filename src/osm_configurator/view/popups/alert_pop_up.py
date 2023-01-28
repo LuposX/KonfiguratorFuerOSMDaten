@@ -11,9 +11,11 @@ class AlertPopUp(customtkinter.CTk):
     This instance is an Alert-PopUp. It provides a message and one 'OK' button, to close the PopUp again.
     """
 
-    def __init__(self, message):
+    def __init__(self, message: str):
         """
         Creates a new popup showing the given message. If OK-Button is pressed the popup will close
+        Args:
+            message (str): String containing the message that will be shown
         """
         popup = super().__init__()
         self.geometry(POPUPSIZE)
