@@ -19,7 +19,7 @@ class CategoryManager:
         """
         Constructor of the class.
         """
-        self._categories: list[Category] = list
+        self._categories: list = []
 
     def get_activated_attribute(self) -> List[Attribute]:
         """

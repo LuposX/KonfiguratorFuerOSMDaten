@@ -28,13 +28,12 @@ class Category:
         Creates a new instance of a "Category" class.
         """
         self._active: bool = False
-        self._whitelist = []
-        self._blacklist = []
-        self._category_name = "Category Name"
-        self._calculation_method_of_area = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
-        self._attractivity_attributes = []
-        self._default_value_list = []
-        self._length = 3
+        self._whitelist: list = []
+        self._blacklist: list = []
+        self._category_name: str = "Category Name"
+        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
+        self._attractivity_attributes: list = []
+        self._default_value_list: list = []
 
         # Create the Attribute dictionary
         self._attributes: Dict = {}
