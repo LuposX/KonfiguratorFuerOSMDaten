@@ -5,10 +5,9 @@ import os
 import shapely
 from pathlib import Path
 import subprocess
-import shapely.geometry
-import geopandas as gpd
 from geopandas.geodataframe import GeoDataFrame
 from src.osm_configurator.model.parser import dataframe_column_names
+import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum
 
 
 class SplitUpFile:
@@ -49,10 +48,12 @@ class SplitUpFile:
             return False
 
         for i in range(len(cells[dataframe_column_names.GEOMETRY])):
-            result = subprocess.run(["osmium", "extract", "-b", "{},{},{},{}".format(*cells["geometry"][i].bounds),
+            result = subprocess.run(["osmium", "extract", "-b", "{},{},{},{}".format(*cells[
+                dataframe_column_names.GEOMETRY][i].bounds),
                                      str(self._origin_path), "-o",
                                      str(self._result_folder) + "/" +
-                                     str(cells[dataframe_column_names.TRAFFIC_CELL_NAME][i]) + ".pbf"],
+                                     str(cells[dataframe_column_names.TRAFFIC_CELL_NAME][i])
+                                     + osm_file_format_enum.OSMFileFormat.PBF.get_file_extension()],
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             if result.returncode != 0:
                 return False
