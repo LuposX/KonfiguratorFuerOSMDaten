@@ -9,9 +9,7 @@ import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 import src.osm_configurator.model.model_constants as model_constants
 
-import src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted_Exception as osm_data_wrongly_formatted_i
-
-from src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
+from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
 
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 

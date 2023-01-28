@@ -10,9 +10,9 @@ import src.osm_configurator.model.project.calculation.file_deletion as file_dele
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
-from src.osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
-from src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
-from src.osm_configurator.model.parser.custom_expceptions.illegal_cut_out_exception import IllegalCutOutException
+from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
+from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
+from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 
 from typing import TYPE_CHECKING
