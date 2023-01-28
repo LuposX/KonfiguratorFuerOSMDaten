@@ -10,6 +10,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+    from src.osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
+    from src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted import OSMDataWronglyFormatted
     from pathlib import Path
 
 
@@ -42,5 +44,6 @@ class OSMDataParserInterface(ABC):
 
         Raises:
             TagsWronglyFormatted: If a tag wasn't correctly formatted.
+            OSMDataWronglyFormatted: If there is a file in there which doesnt have the right format e.g. not "invalid.txt"
         """
         pass

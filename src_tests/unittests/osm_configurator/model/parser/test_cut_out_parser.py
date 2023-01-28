@@ -24,6 +24,6 @@ def test_correct_parsing():
     assert df[model_constants.CL_TRAFFIC_CELL_NAME][3] == "3_traffic_cell"
 
     # Test parsed geometry
-    assert MONACO_TRAFFIC_CELL_0_POLYGON == df[model_constants.CL_GEOMETRY][0]
-    assert MONACO_TRAFFIC_CELL_1_POLYGON == df[model_constants.CL_GEOMETRY][1]
-    assert "7.430574755831088 43.74116219248498" in str(df[model_constants.CL_GEOMETRY][5])
+    assert MONACO_TRAFFIC_CELL_0_POLYGON == df[model_constants.CL_LOCATION][0]
+    assert MONACO_TRAFFIC_CELL_1_POLYGON == df[model_constants.CL_LOCATION][1]
+    assert "7.430574755831088 43.74116219248498" in str(df[model_constants.CL_LOCATION][5])

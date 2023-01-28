@@ -1,13 +1,19 @@
 from __future__ import annotations
 
+import os
+
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser
+import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
-import osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception as tags_wrongly_formatted_exception_i
+from osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
+from osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted import OSMDataWronglyFormatted
+from src.osm_configurator.model.parser.custom_expceptions.illegal_cut_out_exception import IllegalCutOutException
+import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 
 from typing import TYPE_CHECKING
 
@@ -16,9 +22,12 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.parser.osm_data_parser import OSMDataParser
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+    from src.osm_configurator.model.parser.cut_out_parser import CutOutParserInterface
     from pathlib import Path
     from typing import List
+    from typing import Tuple
     from geopandas import GeoDataFrame
+    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
 
 
 class TagFilterPhase(ICalculationPhase):
@@ -44,6 +53,21 @@ class TagFilterPhase(ICalculationPhase):
         Returns:
             Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
         """
+        # Get data frame of geojson
+        parser: CutOutParserInterface = cut_out_parser.CutOutParser()
+        geojson_path: Path = configuration_manager_o.get_cut_out_configuration().get_cut_out_path()
+
+        if geojson_path == None:
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ""
+
+        if not os.path.exists(geojson_path):
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ""
+
+        try:
+            dataframe: GeoDataFrame = parser.parse_cutout_file(geojson_path)
+        except IllegalCutOutException as err:
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ''.join(str(err))
+
         # Get path to the results of the last Phase
         checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
@@ -54,11 +78,15 @@ class TagFilterPhase(ICalculationPhase):
             configuration_manager_o,
             calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
 
+        # Prepare result folder
+        deleter: FileDeletion = file_deletion.FileDeletion()
+        deleter.reset_folder(checkpoint_folder_path_current_phase)
+
         # check if the folder exist
         if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
             list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
         else:
-            return calculation_state_enum.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY
+            return calculation_state_enum.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, ""
 
         # Get the CategoryManager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
@@ -78,8 +106,11 @@ class TagFilterPhase(ICalculationPhase):
                                                                                               configuration_manager_o
                                                                                               .get_cut_out_configuration()
                                                                                               .get_cut_out_path())
-            except tags_wrongly_formatted_exception_i.TagsWronglyFormatted as err:
-                return (calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, err.args)
+            except TagsWronglyFormatted as err:
+                return calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
+
+            except OSMDataWronglyFormatted as err:
+                return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
             # name of the file
             file_name = file_path.name
@@ -90,9 +121,10 @@ class TagFilterPhase(ICalculationPhase):
 
             # If there's a error while encoding the file.
             except ValueError as err:
-                return (calculation_state_enum.CalculationState.ERROR_ENCODING_THE_FILE, err.args)
+                return calculation_state_enum.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
 
             # If the file cannot be opened.
             except OSError as err:
-                return (calculation_state_enum.CalculationState.ERROR_COULDNT_OPEN_FILE, err.args)
+                return calculation_state_enum.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
 
+        return calculation_state_enum.CalculationState.RUNNING

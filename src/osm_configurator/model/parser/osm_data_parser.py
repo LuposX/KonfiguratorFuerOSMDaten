@@ -7,7 +7,13 @@ from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataP
 
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
-import osm_configurator.model.model_constants as model_constants
+import src.osm_configurator.model.model_constants as model_constants
+
+import src.osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted as osm_data_wrongly_formatted_i
+
+from osm_configurator.model.parser.custom_expceptions.osm_data_wrongly_formatted import OSMDataWronglyFormatted
+
+import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 
 from typing import TYPE_CHECKING
 
@@ -36,7 +42,13 @@ class OSMDataParser(OSMDataParserInterface):
         osm_handler: DataOSMHandler
         if cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED:
             # get the name of the file without the suffix
+            # current_traffic_cell_name: str = data_file_path.split("/")[-1]
             current_traffic_cell_name: str = data_file_path.stem
+
+            if data_file_path.suffix not in [osm_file_format_enum_i.OSMFileFormat.OSM.get_file_extension(),
+                                             osm_file_format_enum_i.OSMFileFormat.OSM.BZ2.get_file_extension(),
+                                             osm_file_format_enum_i.OSMFileFormat.OSM.PBF.get_file_extension()]:
+                raise OSMDataWronglyFormatted
 
             # create a new cutout parser and parse the cutout file
             cut_out_parser_o = cut_out_parser.CutOutParser()
@@ -44,10 +56,14 @@ class OSMDataParser(OSMDataParserInterface):
 
             # get the entry in tha dataframe which corresponds to the file we are currently working on
             # get the index the file references, naming scheme: "index_name"
-            idx: int = int(current_traffic_cell_name.split("_")[0])
+            idx = current_traffic_cell_name.split("_")
+            if len(idx) == 0:
+                raise OSMDataWronglyFormatted
+
+            idx = int(idx[0])
 
             osm_handler = osm_data_handler.DataOSMHandler(categories,
-                                                          cut_out_data[model_constants.CL_GEOMETRY].loc[idx])
+                                                          cut_out_data[model_constants.CL_LOCATION].loc[idx])
 
         elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
             osm_handler = osm_data_handler.DataOSMHandler(categories)
