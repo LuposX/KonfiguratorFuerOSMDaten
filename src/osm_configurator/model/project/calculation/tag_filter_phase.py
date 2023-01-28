@@ -54,13 +54,13 @@ class TagFilterPhase(ICalculationPhase):
             configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration needed for an execution.
 
         Returns:
-            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
+            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
         # Get data frame of geojson
         parser: CutOutParserInterface = cut_out_parser.CutOutParser()
         geojson_path: Path = configuration_manager_o.get_cut_out_configuration().get_cut_out_path()
 
-        if geojson_path == None:
+        if geojson_path is None:
             return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ""
 
         if not os.path.exists(geojson_path):
@@ -99,20 +99,22 @@ class TagFilterPhase(ICalculationPhase):
 
         # parse the osm data  with the parser
         return self._parse_the_data_file(osm_data_parser_o, list_of_traffic_cell_checkpoints, category_manager_o,
-                             configuration_manager_o, checkpoint_folder_path_current_phase)
+                                         configuration_manager_o, checkpoint_folder_path_current_phase)
 
     def _parse_the_data_file(self, osm_data_parser_o, list_of_traffic_cell_checkpoints, category_manager_o,
                              configuration_manager_o, checkpoint_folder_path_current_phase):
         for file_path in list_of_traffic_cell_checkpoints:
             try:
-                traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o.parse_osm_data_file(file_path,
-                                                                                              category_manager_o,
-                                                                                              configuration_manager_o
-                                                                                              .get_cut_out_configuration()
-                                                                                              .get_cut_out_mode(),
-                                                                                              configuration_manager_o
-                                                                                              .get_cut_out_configuration()
-                                                                                              .get_cut_out_path())
+                traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o \
+                    .parse_osm_data_file(file_path,
+                                         category_manager_o,
+                                         configuration_manager_o
+                                         .get_cut_out_configuration()
+                                         .get_cut_out_mode(),
+                                         configuration_manager_o
+                                         .get_cut_out_configuration()
+                                         .get_cut_out_path())
+
             except TagsWronglyFormatted as err:
                 return calculation_state_enum.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
 
@@ -124,11 +126,11 @@ class TagFilterPhase(ICalculationPhase):
 
             # save the parsed osm data
             try:
-                traffic_cell_data_frame.\
+                traffic_cell_data_frame. \
                     to_csv(checkpoint_folder_path_current_phase.
                            joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
 
-            # If there's a error while encoding the file.
+            # If there's an error while encoding the file.
             except ValueError as err:
                 return calculation_state_enum.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
 

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import osmium as osm
-import numpy as np
 import shapely.wkb as wkb
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
@@ -40,6 +39,7 @@ class DataOSMHandler(osm.SimpleHandler):
         osm.SimpleHandler.__init__(self)
 
         # This will be the list in which we save the output.
+        self._osm_type = None
         self._osm_data: List = []
 
         # this is a temporary list that is used to save the tags for one osm element.
@@ -140,7 +140,8 @@ class DataOSMHandler(osm.SimpleHandler):
                     # "*"
                     # The-don't-care symbol, says it doesn't matter what the value of the tag is.
                     if tag_in_whitelist[1] != model_constants_i.DONT_CARE_SYMBOL:
-                        # If we find a single tag from the whitelist which the node doesn't correctly have, don't add category.
+                        # If we find a single tag from the whitelist which the node doesn't correctly have
+                        # don't add category.
                         if osm_object.tags.get(tag_in_whitelist[0],  self.KEY_NOT_FOUND) != tag_in_whitelist[1]:
                             all_tags_from_whitelist_correct = False
                             break
@@ -168,7 +169,7 @@ class DataOSMHandler(osm.SimpleHandler):
                             all_tags_from_blacklist_correct = False
                             break
 
-                    # if we have the don't care symbol, it doesnt matter what the value of the osm element for
+                    # if we have the don't-care symbol, it doesn't matter what the value of the osm element for
                     # this tag is, the osm element won't be added no matter what.
                     else:
                         all_tags_from_blacklist_correct = False
