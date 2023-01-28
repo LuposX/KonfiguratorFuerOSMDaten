@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import List
     from typing import Dict
+    from typing import Tuple
     from src.osm_configurator.model.project.configuration.category import Category
 
 
@@ -32,9 +33,9 @@ class Attribute(Enum):
     a function which describes how the value of the enum is calculated.
     """
     # TODO: Set the tags they need
-    PROPERTY_AREA = ("Property Area", [], _calculate_property_area)  #: The area of the property of the osm-element
-    NUMBER_OF_FLOOR = ("Number of Floors", [], _calculate_number_of_floors)  # the number of floors the osm element has
-    FLOOR_AREA = ("Floor Area", ["building:levels"], _calculate_floor_area)  # the area that all floors together have
+    PROPERTY_AREA: Tuple[str, List[str], str] = ("Property Area", [], _calculate_property_area)  #: The area of the property of the osm-element
+    NUMBER_OF_FLOOR: Tuple[str, List[str], str] = ("Number of Floors", [], _calculate_number_of_floors)  # the number of floors the osm element has
+    FLOOR_AREA: Tuple[str, List[str], str] = ("Floor Area", ["building:levels"], _calculate_floor_area)  # the area that all floors together have
 
     def get_name(self) -> str:
         """
@@ -68,14 +69,14 @@ class Attribute(Enum):
         return self.value[2](category, tags)
 
     @classmethod
-    def get_all_tags(cls) -> List:
+    def get_all_tags(cls) -> List[str]:
         """
         Return all used Tags fromm all attributes:
 
         Returns:
-            List: A list of tags from the attributes.
+            List[str]: A list of tags from the attributes.
         """
-        all_tags: List = []
+        all_tags: List[str] = []
         member: Attribute
         for member in cls:
             all_tags.extend(member.value[1])

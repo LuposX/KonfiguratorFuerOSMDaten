@@ -2,6 +2,11 @@ from __future__ import annotations
 
 from enum import Enum, unique
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    pass
+
 
 @unique
 class CalculationPhase(Enum):

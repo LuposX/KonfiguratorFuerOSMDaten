@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+    from typing import List
 
 
 class AggregationConfiguration:
@@ -19,9 +20,9 @@ class AggregationConfiguration:
         """
         Creates a new instance of the AggregationConfiguration.
         """
-        self._length = 2
-        self._number_of_methods = 0
-        self._aggregation_methods_status = [[] for x in range(self._length)]
+        self._length: int = 2
+        self._number_of_methods: int = 0
+        self._aggregation_methods_status: List = [[] for x in range(self._length)]
 
         for method in aggregation_method_enum.AggregationMethod:
             self._aggregation_methods_status.append([method, False])
