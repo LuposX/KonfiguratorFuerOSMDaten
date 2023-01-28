@@ -1,9 +1,21 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.states.state_name_enum
-import src.osm_configurator.view.states.state
-import src.osm_configurator.view.states.positioned_frame
-import src.osm_configurator.view.states.main_window
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.view.states.state_name_enum import StateName
+    from src.osm_configurator.view.states.state import State
+    from src.osm_configurator.view.states.positioned_frame import PositionedFrame
+    from src.osm_configurator.view.states.main_window import MainWindow
+    from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
+    from src.osm_configurator.control.calculation_controller_interface import ICalculationController
+    from src.osm_configurator.control.category_controller_interface import ICategoryController
+    from src.osm_configurator.control.cut_out_controller_interface import ICutOutController
+    from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
+    from src.osm_configurator.control.export_controller_interface import IExportController
+    from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
+    from src.osm_configurator.control.project_controller_interface import IProjectController
+    from src.osm_configurator.control.settings_controller_interface import ISettingsController
 
 
 class StateManager:
