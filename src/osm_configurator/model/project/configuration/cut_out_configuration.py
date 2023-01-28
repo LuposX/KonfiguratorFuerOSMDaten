@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.configuration.cut_out_mode_enum
+import os
+from pathlib import Path
+import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 
 from typing import TYPE_CHECKING
 
@@ -18,7 +20,8 @@ class CutOutConfiguration:
         """
         Creates a new instance of the "CutOutConfiguration" class.
         """
-        pass
+        self._cut_out_mode = cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
+        self._cut_out_path = Path()
 
     def get_cut_out_mode(self):
         """
@@ -27,9 +30,9 @@ class CutOutConfiguration:
         Returns:
             cut_out_mode_enum.CutOutMode: The used cut-out mode.
         """
-        pass
+        return self._cut_out_mode
 
-    def set_cut_out_mode(self, new_cut_out_mode) -> CutOutMode:
+    def set_cut_out_mode(self, new_cut_out_mode):
         """
         Changes the cut-out mode used during the reduction phase in the calculation.
 
@@ -37,9 +40,12 @@ class CutOutConfiguration:
             new_cut_out_mode (cut_out_mode_enum.CutOutMode): The new cut-out mode for the calculation.
 
         Returns:
-            bool: True if changing the cut-out mode works, otherwise false.
+            bool: True if changing the cut-out mode, otherwise false.
         """
-        pass
+        if new_cut_out_mode in cut_out_mode_enum.CutOutMode:
+            self._cut_out_mode = new_cut_out_mode
+            return True
+        return False
 
     def get_cut_out_path(self):
         """
@@ -48,16 +54,19 @@ class CutOutConfiguration:
         Returns:
             pathlib.Path: The path pointing towards the cut-out.
         """
-        pass
+        return self._cut_out_path
 
-    def set_cut_out_path(self, path):
+    def set_cut_out_path(self, new_path):
         """
         Changes the path pointing towards the cut-out file.
 
         Args:
-            path (pathlib.Path): The new path.
+            new_path (pathlib.Path): The new path.
 
         Returns:
-            bool: True if changing the cut-out path works, otherwise false.
+            bool: True if changing the path, otherwise false.
         """
-        pass
+        if os.path.exists(new_path):
+            self._cut_out_path = path = new_path
+            return True
+        return False
