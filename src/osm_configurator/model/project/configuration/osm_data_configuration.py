@@ -20,7 +20,7 @@ class OSMDataConfiguration:
         """
         Creates a new instance of the "OSMDataConfiguration" class.
         """
-        self._osm_data_path = None
+        self._osm_data_path: Path = None
         self._downloader = download_data.DownloadData()
 
     def get_osm_data(self) -> Path:
