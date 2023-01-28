@@ -28,12 +28,13 @@ class Category:
         Creates a new instance of a "Category" class.
         """
         self._active: bool = False
-        self._whitelist: List = []
-        self._blacklist: List = []
-        self._category_name: str = "Category Name"
-        self._calculation_method_of_area: calculation_method_of_area_enum_i.CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
-        self._attractivity_attributes: List = []
-        self._default_value_list: List = []
+        self._whitelist = []
+        self._blacklist = []
+        self._category_name = "Category Name"
+        self._calculation_method_of_area = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
+        self._attractivity_attributes = []
+        self._default_value_list = []
+        self._length = 3
 
         # Create the Attribute dictionary
         self._attributes: Dict = {}
@@ -157,8 +158,9 @@ class Category:
         _activated = []
 
         for enum_name in self._attributes:
-            if self._attributes.get(enum_name):
+            if self._attributes.get(enum_name) == True:
                 _activated.append(enum_name)
+
         return _activated
 
     def get_attribute(self, attribute) -> bool:

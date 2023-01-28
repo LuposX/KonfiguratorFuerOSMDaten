@@ -1,9 +1,14 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.calculation.calculation_state_enum
-import src.osm_configurator.model.project.configuration.configuration_manager
 
 from abc import ABC, abstractmethod
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Tuple
+    from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+    from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
 
 
 class ICalculationPhase(ABC):
@@ -16,7 +21,7 @@ class ICalculationPhase(ABC):
     """
 
     @abstractmethod
-    def calculate(self, configuration_manager):
+    def calculate(self, configuration_manager: ConfigurationManager) -> Tuple[CalculationState, str]:
         """
         Performs the calculations of the calculation phase.
         This consists of the following steps:\n
@@ -25,9 +30,9 @@ class ICalculationPhase(ABC):
         3. Store the results of this computation phase so the following execution phases can read it.\n
 
         Args:
-            configuration_manager (configuration_manager.ConfigurationManager): The ConfigurationManager where the information about the configuration of the configuration is stored.
+            configuration_manager (ConfigurationManager): The ConfigurationManager where the information about the configuration of the configuration is stored.
 
         Returns:
-            calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
+            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
         """
         pass
