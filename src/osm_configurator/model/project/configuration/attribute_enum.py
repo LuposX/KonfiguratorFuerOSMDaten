@@ -38,7 +38,7 @@ class Attribute(Enum):
     NUMBER_OF_FLOOR: Tuple[str, List[str], Callable] = ("Number of Floors", [], _calculate_number_of_floors)  # the number of floors the osm element has
     FLOOR_AREA: Tuple[str, List[str], Callable] = ("Floor Area", ["building:levels"], _calculate_floor_area)  # the area that all floors together have
 
-    def get_name(self):
+    def get_name(self) -> str:
         """
         Getter for the name of the enum type.
 
@@ -47,7 +47,7 @@ class Attribute(Enum):
         """
         return self.value[0]
 
-    def get_needed_tags(self):
+    def get_needed_tags(self) -> List[str]:
         """
         Getter for the tags of the enum type.
 

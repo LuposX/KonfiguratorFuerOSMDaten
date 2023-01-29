@@ -3,7 +3,7 @@ from __future__ import annotations
 import osmium as osm
 import shapely.wkb as wkb
 
-import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 
@@ -14,13 +14,15 @@ if TYPE_CHECKING:
     from typing import Tuple
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.category import Category
-    from osmium import Node
-    from osmium import Way
-    from osmium import Area
-    from osmium import Relation
+    from osmium import Node  # type: ignore
+    from osmium import Way  # type: ignore
+    from osmium import Area  # type: ignore
+    from osmium import Relation  # type: ignore
     from osmium.osm import OSMObject
     from shapely import Polygon
     from typing import Final
+
+KEY_NOT_FOUND: str = "key_not_found"
 
 
 class DataOSMHandler(osm.SimpleHandler):
@@ -42,13 +44,10 @@ class DataOSMHandler(osm.SimpleHandler):
         self._osm_type = None
         self._osm_data: List = []
 
-        # this is a temporary list that is used to save the tags for one osm element.
-        self._tmp_tag_list: List = []
-
         self._category_manager: CategoryManager = category_manager_p
 
         # Get a list of tags that are needed, the rest we can throw away.
-        self._needed_tags: List = attribute_enum.Attribute.get_all_tags()
+        self._needed_tags: List[str] = attribute_enum_i.Attribute.get_all_tags()
 
         # when cut_out_data is set we need to remove building which are on the edge
         self._cut_out_data: Polygon
@@ -60,22 +59,21 @@ class DataOSMHandler(osm.SimpleHandler):
 
         self._wkbfab = osm.geom.WKBFactory()  # with this we create geometries for areas
         self._shapely_location = 0  # the location we save per osm element
-        self._tmp_tag_list: List = []  # this is a temporary list that is used to save the tags for one osm element.
-        self._categories_of_osm_element = []
+        self._tmp_tag_list: List[
+            str] = []  # this is a temporary list that is used to save the tags for one osm element.
+        self._categories_of_osm_element: List[str] = []
         self._wkbshape = None  # used to temporarily save location
-        self._osm_type: str # saved the origin name for area(e.g. way or relation)
+        self._osm_type: str  # saved the origin name for area(e.g. way or relation)
         self._osm_name: str
 
-        self.KEY_NOT_FOUND: str = "key_not_found"
-
-    def _attributes_to_tag_list(self) -> List:
+    def _attributes_to_tag_list(self) -> List[str]:
         """
         This method is used to extract all the tags that are needed for the calculation from the Attributes.
 
         Returns:
             List: Of tag names(keys) that the attributes needs.
         """
-        _needed_tags: List = []
+        _needed_tags: List[str] = []
         for attribute in self._activated_attributes:
             _needed_tags.extend(attribute.get_needed_tags())
         return _needed_tags
@@ -135,14 +133,14 @@ class DataOSMHandler(osm.SimpleHandler):
             for tag_in_whitelist in whitelist_parsed:
 
                 # Checks if the key is in the osm element
-                if osm_object.tags.get(tag_in_whitelist[0],  self.KEY_NOT_FOUND) \
-                        != self.KEY_NOT_FOUND:
+                if osm_object.tags.get(tag_in_whitelist[0], KEY_NOT_FOUND) \
+                        != KEY_NOT_FOUND:
                     # "*"
                     # The-don't-care symbol, says it doesn't matter what the value of the tag is.
                     if tag_in_whitelist[1] != model_constants_i.DONT_CARE_SYMBOL:
                         # If we find a single tag from the whitelist which the node doesn't correctly have
                         # don't add category.
-                        if osm_object.tags.get(tag_in_whitelist[0],  self.KEY_NOT_FOUND) != tag_in_whitelist[1]:
+                        if osm_object.tags.get(tag_in_whitelist[0], KEY_NOT_FOUND) != tag_in_whitelist[1]:
                             all_tags_from_whitelist_correct = False
                             break
 
@@ -151,7 +149,6 @@ class DataOSMHandler(osm.SimpleHandler):
                     all_tags_from_whitelist_correct = False
                     break
 
-
             # check if the node adheres to the blacklist.
             all_tags_from_blacklist_correct: bool = True
             tag_in_blacklist: Tuple
@@ -159,13 +156,13 @@ class DataOSMHandler(osm.SimpleHandler):
 
                 # Checks if the key is in the osm element
                 # if the key isn't in the osm element, then we know that this tag is correct for the osm element
-                if osm_object.tags.get(tag_in_blacklist[0],  self.KEY_NOT_FOUND) \
-                        != self.KEY_NOT_FOUND:
+                if osm_object.tags.get(tag_in_blacklist[0], KEY_NOT_FOUND) \
+                        != KEY_NOT_FOUND:
 
                     # If we find a single tag from the blacklist which the node doesn't adhere to,
                     # then the category doesn't apply to the osm_element.
                     if tag_in_blacklist[1] != model_constants_i.DONT_CARE_SYMBOL:
-                        if osm_object.tags.get(tag_in_blacklist[0],  self.KEY_NOT_FOUND) == tag_in_blacklist[1]:
+                        if osm_object.tags.get(tag_in_blacklist[0], KEY_NOT_FOUND) == tag_in_blacklist[1]:
                             all_tags_from_blacklist_correct = False
                             break
 
@@ -174,7 +171,6 @@ class DataOSMHandler(osm.SimpleHandler):
                     else:
                         all_tags_from_blacklist_correct = False
                         break
-
 
             if all_tags_from_whitelist_correct and all_tags_from_blacklist_correct:
                 categories_of_osm_element.append(category_name)
