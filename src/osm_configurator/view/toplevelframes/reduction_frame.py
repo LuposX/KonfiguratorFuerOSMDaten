@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import src.osm_configurator.view.states.state_manager
+import src.osm_configurator.control.category_controller_interface
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -14,13 +15,13 @@ class ReductionFrame(TopLevelFrame):
     calculate the Reduction. The other frame provides the default calculation-values.
     """
 
-    def __init__(self, state_manager, control):
+    def __init__(self, state_manager, category_controller):
         """
         This method creates a ReductionFrame that lets the user edit the reduction of all the categories.
 
         Args:
             state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
-            control (control_interface.IControl): The control the frame will call to get access to the model.
+            category_controller (category_controller.CategoryController): Respective controller
         """
         # super().__init__(state_manager, control)
         pass
