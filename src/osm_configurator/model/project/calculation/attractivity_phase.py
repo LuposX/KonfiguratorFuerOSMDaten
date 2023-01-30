@@ -3,6 +3,8 @@ from __future__ import annotations
 import pandas as pd
 import os
 from pathlib import Path
+import pandas.core.series as pds
+
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 
@@ -65,6 +67,8 @@ class AttractivityPhase(ICalculationPhase):
             cell_name: str = row[model_constants.CL_TRAFFIC_CELL_NAME]
             self._calculate_attractivity_in_traffic_cell(cell_name, configuration_manager)
 
+        return calculation_state_enum.CalculationState.RUNNING, "running"
+
     def _calculate_attractivity_in_traffic_cell(self, cell_name: str, config_manager: ConfigurationManager) \
             -> Tuple[CalculationState, str]:
         # get the necessary path's
@@ -85,9 +89,11 @@ class AttractivityPhase(ICalculationPhase):
         return calculation_state_enum.CalculationState.RUNNING, "running"
 
     def _calculate_attractivity_for_element(self, element: Series, output_df: DataFrame,
-                                            category_list: List[Category]) -> Tuple[CalculationState, str]:
+                                            category_list: List[Category]) -> bool:
         category_name: str = element["category"]
         category: Category = self._get_category_by_name(category_name, category_list)
+
+        new_entry = pds.Series()
 
         attractivity: AttractivityAttribute
         for attractivity in category.get_attractivity_attributes():
@@ -95,7 +101,9 @@ class AttractivityPhase(ICalculationPhase):
             attribute: Attribute
             for attribute in attribute_enum.Attribute:
                 value += attractivity.get_attribute_factor(attribute) * element[attribute.get_name()]
-            # TO DO: add to output_df
+            new_entry[attractivity.get_attractivity_attribute_name()] = value
+
+        return True
 
     def _get_category_by_name(self, category_name: str, category_list: List[Category]) -> Category:
         list_of_categories_with_name = [cat for cat in category_list if cat.get_category_name() == category_name]
