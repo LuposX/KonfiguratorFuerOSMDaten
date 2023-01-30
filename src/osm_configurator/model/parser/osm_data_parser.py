@@ -59,7 +59,7 @@ class OSMDataParser(OSMDataParserInterface):
             idx = int(idx[0])
 
             osm_handler = osm_data_handler_i.DataOSMHandler(categories,
-                                                            cut_out_data[model_constants_i.CL_LOCATION].loc[idx])
+                                                            cut_out_data[model_constants_i.CL_GEOMETRY].loc[idx])
 
         elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
             osm_handler = osm_data_handler_i.DataOSMHandler(categories)
