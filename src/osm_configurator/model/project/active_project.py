@@ -6,7 +6,18 @@ import src.osm_configurator.model.project.project_settings
 import src.osm_configurator.model.project.calculation.calculation_manager
 import src.osm_configurator.model.project.export
 
+from typing import TYPE_CHECKING
 from pathlib import Path
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
+    from src.osm_configurator.model.project.calculation.calculation_manager import CalculationManager
+    from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+    from src.osm_configurator.model.project.project_saver import ProjectSaver
+    from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
+    from src.osm_configurator.model.project.data_visualizer import DataVisualizer
+    from src.osm_configurator.model.project.project_settings import ProjectSettings
+    from src.osm_configurator.model.project.export import Export
 
 
 class ActiveProject:
@@ -28,7 +39,16 @@ class ActiveProject:
             project_name (str): How we want to name the project.
             project_description (str): The description of our project.
         """
-        pass
+
+        self._path = project_folder
+        self._configurator_manager = ConfigurationManager(project_folder)
+        self._calculation_manager = CalculationManager(self._configurator_manager)
+        self._project_saver = ProjectSaver(self)
+        self._project_io_handler = ProjectIOHandler(self)
+        self._data_visualizer = DataVisualizer()
+        self._project_settings = ProjectSettings(project_folder, project_name, project_description)
+        self._export = Export(self)
+        self._last_step = ConfigPhase.DATA_CONFIG_PHASE
 
     def get_last_step(self):
         """
@@ -38,7 +58,17 @@ class ActiveProject:
         Returns:
             config_phase_enum.ConfigPhase: The last phase the user was working on.
         """
-        pass
+        return self._last_step
+
+    def set_last_step(self, current_step):
+        """
+        This method is there so that the user can continue working in the same phase in an existing project
+        where he previously stopped.
+
+        Args:
+            config_phase_enum.ConfigPhase: The current phase the user is working on.
+        """
+        self._last_step = current_step
 
     def get_project_path(self):
         """
@@ -47,8 +77,7 @@ class ActiveProject:
         Returns:
             pathlib.Path: The path pointing towards the project folder.
         """
-        pass
-
+        return self._path
 
     def get_config_manager(self):
         """
@@ -57,7 +86,7 @@ class ActiveProject:
         Returns:
             configuration_manager.ConfigurationManager: The configuration manager.
         """
-        pass
+        return self._configurator_manager
 
     def get_data_visualizer(self):
         """
@@ -66,16 +95,7 @@ class ActiveProject:
         Returns:
             data_visualizer.DataVisualizer: The data visualizer.
         """
-        pass
-
-    def get_project_settings(self):
-        """
-        Getter for the project settings.
-
-        Returns:
-            project_settings.ProjectSettings: The project settings.
-        """
-        pass
+        return self._data_visualizer
 
     def get_calculation_manager(self):
         """
@@ -84,7 +104,16 @@ class ActiveProject:
         Returns:
             calculation_manager.CalculationManager: The calculation Manager.
         """
-        pass
+        return self._calculation_manager
+
+    def get_project_settings(self):
+        """
+        Getter for the project settings.
+
+        Returns:
+            project_settings.ProjectSettings: The project settings.
+        """
+        return self._project_settings
 
     def get_export_manager(self):
         """
@@ -93,5 +122,4 @@ class ActiveProject:
         Returns:
             export.Export: The  export Manager.
         """
-        pass
-
+        return self._export
