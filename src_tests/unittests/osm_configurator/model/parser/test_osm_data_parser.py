@@ -13,7 +13,7 @@ from src_tests.definitions import CATEGORY_MANAGER, \
     TEST_CATEGORY_NO_BUILDING, \
     TEST_CATEGORY_BUILDING
 
-from src.osm_configurator.model.model_constants import CL_OSM_ELEMENT_NAME, CL_CATEGORIES
+from src.osm_configurator.model.model_constants import CL_OSM_ELEMENT_NAME, CL_CATEGORY
 
 # without this you get a weird error, idk why
 os.environ["PROJ_LIB"]=""
@@ -35,29 +35,29 @@ class TestOSMDataParser:
         # Building which are fully inside
         assert "Église Saint-Nicolas" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_BUILDING.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Église Saint-Nicolas"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Église Saint-Nicolas"][CL_CATEGORY].tolist()
 
         assert "L'Aigue Marine"  in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_BUILDING.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "L'Aigue Marine"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "L'Aigue Marine"][CL_CATEGORY].tolist()
 
         assert "Monaco Mutualité" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_SHOP.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Monaco Mutualité"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Monaco Mutualité"][CL_CATEGORY].tolist()
 
 
         # Buildings which lie on the edge
         assert "Le Mantegna" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_BUILDING.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Le Mantegna"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Le Mantegna"][CL_CATEGORY].tolist()
 
         assert "Le Magellan - Bât. A-F" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_BUILDING.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Le Magellan - Bât. A-F"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Le Magellan - Bât. A-F"][CL_CATEGORY].tolist()
 
         assert "Héliport de Monaco" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_NO_BUILDING.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Héliport de Monaco"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Héliport de Monaco"][CL_CATEGORY].tolist()
 
     def test_parse_osm_data_file_with_edge_detection(self):
         osm_parser = osm_data_parser_i.OSMDataParser()
@@ -75,11 +75,11 @@ class TestOSMDataParser:
         # Building which are fully inside
         assert "Église Saint-Nicolas" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_BUILDING.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Église Saint-Nicolas"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Église Saint-Nicolas"][CL_CATEGORY].tolist()
 
         assert "L'Aigue Marine" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_BUILDING.get_category_name() in \
-               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "L'Aigue Marine"][CL_CATEGORIES].tolist()
+               parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "L'Aigue Marine"][CL_CATEGORY].tolist()
 
         # Buildings which lie on the edge
         assert "Le Mantegna" not in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
