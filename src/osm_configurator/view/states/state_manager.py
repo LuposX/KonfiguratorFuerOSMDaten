@@ -2,7 +2,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
+import src.osm_configurator.view.states.state_name_enum
+import src.osm_configurator.view.states.state
+
+import src.osm_configurator.view.toplevelframes.main_menu_frame as bullshit
+
+
 if TYPE_CHECKING:
+    from typing import Final
     from src.osm_configurator.view.states.state_name_enum import StateName
     from src.osm_configurator.view.states.state import State
     from src.osm_configurator.view.states.positioned_frame import PositionedFrame
@@ -32,7 +39,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
 
 # Final Variables
-aggregation_line = 0
+AGGREGATION_LINE: Final = 0
 aggregation_colum = 0
 
 main_menu_line = 0
@@ -44,7 +51,7 @@ create_project_colum = 0
 project_head_frame_line = 0
 project_head_frame_colum = 0
 
-project_foot_frame_line= 0
+project_foot_frame_line = 0
 project_foot_frame_colum = 0
 
 attractivity_view_frame_line = 0
@@ -67,6 +74,7 @@ reduction_frame_colum = 0
 
 settings_frame_line = 0
 settings_frame_colum = 0
+
 
 class StateManager:
     """
@@ -99,7 +107,9 @@ class StateManager:
             osm_data_controller (osm_data_controller.OSMDataController): Respective controller
         """
         self.__main_window = main_window
-        self.__states = self.__create_states(export_controller, category_controller, project_controller, settings_controller, aggregation_controller, calculation_controller, cut_out_controller, data_visualization_controller, osm_data_controller)
+        self.__states = self.__create_states(export_controller, category_controller, project_controller,
+                                             settings_controller, aggregation_controller, calculation_controller,
+                                             cut_out_controller, data_visualization_controller, osm_data_controller)
 
         # At the beginning, there is no previous State
         self.__previous_state = None
@@ -115,77 +125,101 @@ class StateManager:
         self.change_state(self.__current_state.get_state_name())
 
     def __create_states(self, export_controller: IExportController,
-                 category_controller: ICategoryController, project_controller: IProjectController,
-                 settings_controller: ISettingsController, aggregation_controller: IAggregationController,
-                 calculation_controller: ICalculationController,
-                 cut_out_controller: ICutOutController, data_visualization_controller: IDataVisualizationController,
-                 osm_data_controller: IOSMDataController) -> list[State]:
+                        category_controller: ICategoryController, project_controller: IProjectController,
+                        settings_controller: ISettingsController, aggregation_controller: IAggregationController,
+                        calculation_controller: ICalculationController,
+                        cut_out_controller: ICutOutController,
+                        data_visualization_controller: IDataVisualizationController,
+                        osm_data_controller: IOSMDataController) -> list[State]:
         all_states: list[State] = []
 
         # Main Menu State
-        main_menu_frame = MainMenuFrame(self, project_controller)
+        main_menu_frame = bullshit.MainMenuFrame(self, project_controller)
         positioned_main_menu_frame = PositionedFrame(main_menu_frame, main_menu_colum, main_menu_line)
         state_main_menu = State(list[positioned_main_menu_frame], StateName.MAIN_MENU, None, None)
         all_states.append(state_main_menu)
 
         # Create Project State
         create_project_frame = CreateProjectFrame(self, project_controller)
-        positioned_create_project_frame = PositionedFrame(create_project_frame, create_project_colum, create_project_line)
+        positioned_create_project_frame = PositionedFrame(create_project_frame, create_project_colum,
+                                                          create_project_line)
         state_create_project = State(list[positioned_create_project_frame], StateName.CREATE_PROJECT, None, None)
         all_states.append(state_create_project)
 
         # Project Head Frame
         project_head_frame = ProjectHeadFrame(self, export_controller, project_controller)
-        positioned_project_head_frame = PositionedFrame(project_head_frame, project_head_frame_colum, project_head_frame_line)
+        positioned_project_head_frame = PositionedFrame(project_head_frame, project_head_frame_colum,
+                                                        project_head_frame_line)
 
         # Project Foot Frame
         project_foot_frame = ProjectFootFrame(self, project_controller)
-        positioned_project_foot_frame = PositionedFrame(project_foot_frame, project_foot_frame_colum, project_foot_frame_line)
+        positioned_project_foot_frame = PositionedFrame(project_foot_frame, project_foot_frame_colum,
+                                                        project_foot_frame_line)
 
         # Aggregation Frame State
         aggregation_frame = AggregationFrame(self, aggregation_controller)
-        positioned_aggregation_frame = PositionedFrame(aggregation_frame, aggregation_colum, aggregation_line)
-        state_aggregation_frame = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_aggregation_frame], StateName.AGGREGATION, StateName.ATTRACTIVITY_EDIT, StateName.CALCULATION)
+        positioned_aggregation_frame = PositionedFrame(aggregation_frame, aggregation_colum, AGGREGATION_LINE)
+        state_aggregation_frame = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_aggregation_frame],
+            StateName.AGGREGATION, StateName.ATTRACTIVITY_EDIT, StateName.CALCULATION)
         all_states.append(state_aggregation_frame)
 
         # Attractivity Frame States
         attractivity_edit_frame = AttractivityEditFrame(self, category_controller)
-        positioned_attractivity_edit_frame = PositionedFrame(attractivity_edit_frame, attractivity_edit_frame_colum, attractivity_edit_frame_line)
+        positioned_attractivity_edit_frame = PositionedFrame(attractivity_edit_frame, attractivity_edit_frame_colum,
+                                                             attractivity_edit_frame_line)
         attractivity_view_frame = AttractivityViewFrame(self, category_controller)
-        positioned_attractivity_view_frame = PositionedFrame(attractivity_view_frame, attractivity_view_frame_colum, attractivity_view_frame_line)
-        state_attractivity_edit = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_attractivity_edit_frame], StateName.ATTRACTIVITY_EDIT, StateName.REDUCTION, StateName.AGGREGATION)
+        positioned_attractivity_view_frame = PositionedFrame(attractivity_view_frame, attractivity_view_frame_colum,
+                                                             attractivity_view_frame_line)
+        state_attractivity_edit = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_attractivity_edit_frame],
+            StateName.ATTRACTIVITY_EDIT, StateName.REDUCTION, StateName.AGGREGATION)
         all_states.append(state_attractivity_edit)
-        state_attractivity_view = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_attractivity_view_frame], StateName.ATTRACTIVITY_VIEW, StateName.REDUCTION, StateName.AGGREGATION)
+        state_attractivity_view = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_attractivity_view_frame],
+            StateName.ATTRACTIVITY_VIEW, StateName.REDUCTION, StateName.AGGREGATION)
         all_states.append(state_attractivity_view)
 
         # Calculation Frame State
         calculation_frame = CalculationFrame(self, calculation_controller, data_visualization_controller)
-        positioned_calcualtion_frame = PositionedFrame(calculation_frame, calculation_frame_colum, calculation_frame_line)
-        state_calculation_frame = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_calcualtion_frame], StateName.CALCULATION, StateName.AGGREGATION, None)
+        positioned_calcualtion_frame = PositionedFrame(calculation_frame, calculation_frame_colum,
+                                                       calculation_frame_line)
+        state_calculation_frame = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_calcualtion_frame],
+            StateName.CALCULATION, StateName.AGGREGATION, None)
         all_states.append(state_calculation_frame)
 
         # Category Frame State
         category_frame = CategoryFrame(self, category_controller)
         positioned_category_frame = PositionedFrame(category_frame, category_frame_colum, category_frame_line)
-        state_category_frame = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_category_frame], StateName.CATEGORY, StateName.DATA, StateName.REDUCTION)
+        state_category_frame = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_category_frame],
+            StateName.CATEGORY, StateName.DATA, StateName.REDUCTION)
         all_states.append(state_category_frame)
 
         # Data Frame State
-        data_frame = DataFrame(self, data_visualization_controller, cut_out_controller, category_controller, osm_data_controller)
+        data_frame = DataFrame(self, data_visualization_controller, cut_out_controller, category_controller,
+                               osm_data_controller)
         positioned_data_frame = PositionedFrame(data_frame, data_frame_colum, data_frame_line)
-        state_data_frame = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_data_frame], StateName.DATA, None, StateName.CATEGORY)
+        state_data_frame = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_data_frame], StateName.DATA,
+            None, StateName.CATEGORY)
         all_states.append(state_data_frame)
 
         # Reduction Frame State
         reduction_frame = ReductionFrame(self, category_controller)
         positioned_reduction_frame = PositionedFrame(reduction_frame, reduction_frame_colum, reduction_frame_line)
-        state_reduction_frame = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_reduction_frame], StateName.REDUCTION, StateName.CATEGORY, StateName.ATTRACTIVITY_EDIT)
+        state_reduction_frame = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_reduction_frame],
+            StateName.REDUCTION, StateName.CATEGORY, StateName.ATTRACTIVITY_EDIT)
         all_states.append(state_reduction_frame)
 
         # Settings Frame State
         settings_frame = SettingsFrame(self, settings_controller)
         positioned_settings_frame = PositionedFrame(settings_frame, settings_frame_colum, settings_frame_line)
-        state_settings_frame = State(list[positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_frame], StateName.SETTINGS, None, None)
+        state_settings_frame = State(
+            list[positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_frame],
+            StateName.SETTINGS, None, None)
         all_states.append(state_settings_frame)
 
         return all_states
