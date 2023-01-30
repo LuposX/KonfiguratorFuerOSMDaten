@@ -29,7 +29,7 @@ def test_illegal_origin_path():
     df = gpd.read_file(geojson_path)
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df[model_constants.CL_LOCATION])
+    did_work = split_up.split_up_files(df[model_constants.CL_GEOMETRY])
     assert not did_work
 
 
@@ -41,7 +41,7 @@ def test_illegal_result_folder():
     df = gpd.read_file(geojson_path)
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df[model_constants.CL_LOCATION])
+    did_work = split_up.split_up_files(df[model_constants.CL_GEOMETRY])
     assert not did_work
 
 

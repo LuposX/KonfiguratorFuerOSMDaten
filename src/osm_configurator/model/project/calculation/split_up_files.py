@@ -52,7 +52,7 @@ class SplitUpFile:
         if model_constants.CL_TRAFFIC_CELL_NAME not in cells.columns:
             return False
 
-        for i in range(len(cells[model_constants.CL_LOCATION])):
+        for i in range(len(cells[model_constants.CL_GEOMETRY])):
             result = subprocess.run(self.get_osmium_command_args(cells, i),
                                     stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             if result.returncode != 0:
@@ -62,7 +62,7 @@ class SplitUpFile:
     def get_osmium_command_args(self, cells: GeoDataFrame, i: int) -> list:
         # Calculates the arguments for the osmium tool, that split the OSM-file up correctly
         args = list(OSMIUM_STARTING_ARGS)
-        args.append(OSMIUM_COORDINATE_PATTERN.format(*cells[model_constants.CL_LOCATION][i].bounds))
+        args.append(OSMIUM_COORDINATE_PATTERN.format(*cells[model_constants.CL_GEOMETRY][i].bounds))
         args.append(str(self._origin_path))
         args.append(OSMIUM_O_OPTION)
         args.append(str(self._result_folder) + "/" + str(cells[model_constants.CL_TRAFFIC_CELL_NAME][i])
