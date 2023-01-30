@@ -11,16 +11,22 @@ import src.osm_configurator.model.project.calculation.calculation_state_enum as 
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.model_constants as model_constants
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
+
+from src.osm_configurator.model.parser.custom_exceptions.category_exception import CategoryException
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
-    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
+    from src.osm_configurator.model.project.configuration.category import Category
+    from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParser
     from typing import Tuple
+    from typing import List
     from pandas.core.series import Series
     from pandas import DataFrame
 
@@ -79,5 +85,21 @@ class AttractivityPhase(ICalculationPhase):
         return calculation_state_enum.CalculationState.RUNNING, "running"
 
     def _calculate_attractivity_for_element(self, element: Series, output_df: DataFrame,
-                                            config_manager: ConfigurationManager) -> Tuple[CalculationState, str]:
-        pass
+                                            category_list: List[Category]) -> Tuple[CalculationState, str]:
+        category_name: str = element["category"]
+        category: Category = self._get_category_by_name(category_name, category_list)
+
+        attractivity: AttractivityAttribute
+        for attractivity in category.get_attractivity_attributes():
+            value: float = attractivity.get_base_factor()
+            attribute: Attribute
+            for attribute in attribute_enum.Attribute:
+                pass
+
+    def _get_category_by_name(self, category_name: str, category_list: List[Category]) -> Category:
+        list_of_categories_with_name = [cat for cat in category_list if cat.get_category_name() == category_name]
+        assert len(list_of_categories_with_name) <= 1
+        if len(list_of_categories_with_name) == 0:
+            raise CategoryException("An OSM-element has a category that is not registered in the configuration")
+
+        return list_of_categories_with_name[0]
