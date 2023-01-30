@@ -94,7 +94,8 @@ class AttractivityPhase(ICalculationPhase):
             value: float = attractivity.get_base_factor()
             attribute: Attribute
             for attribute in attribute_enum.Attribute:
-                pass
+                value += attractivity.get_attribute_factor(attribute) * element[attribute.get_name()]
+            # TO DO: add to output_df
 
     def _get_category_by_name(self, category_name: str, category_list: List[Category]) -> Category:
         list_of_categories_with_name = [cat for cat in category_list if cat.get_category_name() == category_name]
