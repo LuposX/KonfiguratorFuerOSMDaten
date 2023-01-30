@@ -13,8 +13,8 @@ This file is used, to name the columns in the Dataframe.
 # ----------------------------
 CL_OSM_TYPE: Final = "osm_type"
 CL_TAGS: Final = "tags"
-CL_CATEGORIES: Final = "category"
-CL_LOCATION: Final = "geometry"
+CL_CATEGORY: Final = "category"
+CL_GEOMETRY: Final = "geometry"
 CL_TRAFFIC_CELL_NAME: Final = "traffic_cell_name"
 CL_OSM_ELEMENT_NAME: Final = "element_name"
 
@@ -22,3 +22,9 @@ CL_OSM_ELEMENT_NAME: Final = "element_name"
 # -----
 STANDARD_OSM_ELEMENT_NAME: Final = "missing"
 DONT_CARE_SYMBOL: Final = "*"
+
+# Name of osm elements
+# ---------------------
+NODE_NAME: Final = "node"
+AREA_WAY_NAME: Final = "area-way"
+AREA_RELATION_NAME: Final = "area-relation"

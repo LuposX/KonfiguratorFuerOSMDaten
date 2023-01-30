@@ -190,7 +190,7 @@ class DataOSMHandler(osm.SimpleHandler):
             TagsWronglyFormatted: If a tag wasn't correctly formatted.
         """
         self._shapely_location = None
-        self._osm_type = "node"
+        self._osm_type = model_constants_i.NODE_NAME
         self._osm_name = n.tags.get("name", model_constants_i.STANDARD_OSM_ELEMENT_NAME)
 
         # Get all the categories that apply to the current osm element
@@ -236,9 +236,9 @@ class DataOSMHandler(osm.SimpleHandler):
             self._shapely_location = wkb.loads(self._wkbshape, hex=True)
 
             if a.from_way:
-                self._osm_type = "area-way"
+                self._osm_type = model_constants_i.AREA_WAY_NAME
             else:
-                self._osm_type = "area-relation"
+                self._osm_type = model_constants_i.AREA_RELATION_NAME
 
             # If building on the edge should be removed check whether the building is on the edge or not
             if self._remove_building_on_edge:
