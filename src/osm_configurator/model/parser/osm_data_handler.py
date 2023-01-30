@@ -93,11 +93,13 @@ class DataOSMHandler(osm.SimpleHandler):
                 self._tmp_tag_list.append((tag.k, tag.v))
 
         # save the osm object data that we need.
-        self._osm_data.append([self._osm_type,
-                               self._osm_name,
-                               self._shapely_location,
-                               self._tmp_tag_list,
-                               self._categories_of_osm_element])
+        # we have one row of the osm element for each category the osm element applies to
+        for category in self._categories_of_osm_element:
+            self._osm_data.append([self._osm_type,
+                                   self._osm_name,
+                                   self._shapely_location,
+                                   self._tmp_tag_list,
+                                   category])
 
     def _get_list_of_categories_of_the_osm_element(self, osm_object: OSMObject) -> List[str]:
         """
