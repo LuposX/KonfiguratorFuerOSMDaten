@@ -36,6 +36,8 @@ class Category:
         self._default_value_list = []
         self._length = 3
 
+        self._strictly_use_default_values: bool = False
+
         # Create the Attribute dictionary
         self._attributes: Dict = {}
         all_enums_names = [member.name for member in attribute_enum_i.Attribute]
@@ -159,6 +161,21 @@ class Category:
 
         for enum_name in self._attributes:
             if self._attributes.get(enum_name) == True:
+                _activated.append(enum_name)
+
+        return _activated
+
+    def get_not_activated_attribute(self) -> List[Attribute]:
+        """
+        Return a list of all attributes, that are not activated.
+
+        Returns:
+            List[Attribute]: A list that contains all used attributes
+        """
+        _activated = []
+
+        for enum_name in self._attributes:
+            if self._attributes.get(enum_name) == False:
                 _activated.append(enum_name)
 
         return _activated
@@ -327,3 +344,6 @@ class Category:
         self._default_value_list[index + 1], self._default_value_list[index] \
             = self._default_value_list[index], self._default_value_list[index + 1]
         return True
+
+    def get_strictly_use_default_values(self) -> bool:
+        return self._strictly_use_default_values

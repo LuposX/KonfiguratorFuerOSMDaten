@@ -10,6 +10,8 @@ import src.osm_configurator.model.project.calculation.calculation_state_enum as 
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
+import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 
 import geopandas as gpd
 
@@ -20,7 +22,7 @@ from src.osm_configurator.model.project.calculation.calculation_phase_interface 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import Tuple, List
+    from typing import Tuple, List, Dict
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
@@ -29,6 +31,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.parser.tag_parser import TagParser
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 class ReductionPhase(ICalculationPhase):
     """
@@ -77,13 +80,17 @@ class ReductionPhase(ICalculationPhase):
         else:
             return calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, ""
 
-        return self._parse_the_data_file(list_of_traffic_cell_checkpoints, category_manager_o)
+        return self._parse_the_data_file(list_of_traffic_cell_checkpoints, category_manager_o, checkpoint_folder_path_current_phase)
 
-    def _parse_the_data_file(self, list_of_traffic_cell_checkpoints: List[Path], category_manager_o: CategoryManager):
-        for file in list_of_traffic_cell_checkpoints:
+    def _parse_the_data_file(self,
+                             list_of_traffic_cell_checkpoints: List[Path],
+                             category_manager_o: CategoryManager,
+                             checkpoint_folder_path_current_phase: Path):
+
+        for file_path in list_of_traffic_cell_checkpoints:
             try:
                 # Read out dataframe from disk into memory
-                df = gpd.read_file(file)
+                df = gpd.read_file(file_path)
             except FileNotFoundError as err:
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
 
@@ -91,53 +98,107 @@ class ReductionPhase(ICalculationPhase):
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
 
             # calculated data data
-            # should be in the same format as last one
+            # should be in the format: model_constants_i.DF_CL_REDUCTION_PHASE
+            # which should be: CL_OSM_TYPE, CL_OSM_ELEMENT_NAME, CL_GEOMETRY, CL_TAGS, CL_CATEGORY, CL_AREA_PROPERTY, CL_BUILDING_PROPERTY
+            reduction_phase_data = []
 
             # This for-loop is for the calculation
             # iterate over the dataframe
+            # TODI: I  think the data entries are in different order depending on which attributes are activated
             for idx, row in df.iterrows():
                 curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
                 curr_calculated_method_of_area: CalculationMethodOfArea = curr_category.get_calculation_method_of_area()
 
-                # If our current osm element is a Node
-                if row[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
-
-                else:
-                    if curr_calculated_method_of_area == calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
-                        # What we get here are shapely object, which are either a polygon(maybe multipolygon) or a point
-                        row[model_constants_i.CL_GEOMETRY].area
-                    else:
-                        # TODO: Iam not sure how to go about this?
-                        pass
-
-
-            # This for loop is to get the default_value_data_list, which tells us for each osm element which  default entry applies to it
-            # ----------------------------------------------------------------------------------------------------------
-            # Create a list where we save which default value applies to which osm element.
-            # idx is the osm element entry is the default value.
-            default_value_data_list = []
-
-            # iterate over the dataframe
-            for idx, row in df.iterrows():
-                curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
-
-                # Get everything we need for point reduction
                 curr_default_value_list: List[DefaultValueEntry] = curr_category.get_default_value_list()
-                curr_calculated_method_of_area: CalculationMethodOfArea = curr_category.get_calculation_method_of_area()
+                curr_default_value: DefaultValueEntry = self._find_default_value_entry_which_applies(curr_default_value_list, row[model_constants_i.CL_TAGS])  # maybe need a val()
 
-                default_value_data_list.append(
-                    self._find_default_value_entry_which_applies(curr_default_value_list, row["tags"])) # maybe need a val()
+                # This means we don't need to calculate anything
+                if curr_category.get_strictly_use_default_values():
+                    # create the data entry
+                    data_entry: List = []
 
-                # If our current osm element is a Node
-                if row[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
+                    for DF_CL_NAME in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
+                        # Do point reduction
+                        if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
+                            # Returns a representation of the object’s geometric centroid (point).
+                            data_entry.append(row[model_constants_i.CL_GEOMETRY].centroid)
 
+                        else:
+                            data_entry.append(row[data_entry])
+
+                    # Get the default values for teh attributes
+                    for attribute in attribute_enum_i.Attribute:
+                        data_entry.append(curr_default_value.get_attribute_default(attribute))
+
+                    # Now add the osm element data row to the global data
+                    reduction_phase_data.append(data_entry)
+
+                # If strictly-use-default-values isn't activated, we need to calculate the data
                 else:
-                    if curr_calculated_method_of_area == calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
-                        # What we get here are shapely object, which are either a polygon(maybe multipolygon) or a point
-                        row[model_constants_i.CL_GEOMETRY].area
-                    else:
-                        # TODO: Iam not sure how to go about this?
+                    # If our current osm element is a Node
+                    # we can't calculate area for nodes.
+                    # TODO: should we tread them the same or give them for area the default values?
+                    if row[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
                         pass
+
+                    # create the data entry
+                    data_entry: List = []
+
+                    # These are the attributes we need to calculate
+                    activated_attributes: List[Attribute] = curr_category.get_activated_attribute()
+                    # get the not activated
+                    not_activated_attributes: List[Attribute] = curr_category.get_not_activated_attribute()
+
+                    # transform list into a dictionary
+                    activated_attributes_dict: Dict
+                    for attribute_entry in activated_attributes:
+                        activated_attributes_dict.update({attribute_entry.get_name(): attribute_entry})
+
+                    # Insert the data which isn't calculated from the attributes
+                    for DF_CL_NAME in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
+                        # Do point reduction
+                        if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
+                            # Returns a representation of the object’s geometric centroid (point).
+                            data_entry.append(row[model_constants_i.CL_GEOMETRY].centroid)
+
+                        else:
+                            data_entry.append(row[data_entry])
+
+                    # Add the attributes to the list that are not activated(which means that don't get caclulated)
+                    for act_attribute in activated_attributes_dict.keys():
+                        data_entry.append(curr_default_value.get_attribute_default(act_attribute))
+
+                    # calculate the not activated attributes
+                    for not_act_attribute in not_activated_attributes:
+                        data_entry.append(not_act_attribute.calculate_attribute_value(curr_category, idk))
+
+                    # Now add the osm element data row to the global data
+                    reduction_phase_data.append(data_entry)
+
+            # We now need to construct our dataframe from the data
+            column_name = []
+            column_name.extend(model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES)
+            column_name.extend([e.get_name() for e in attribute_enum_i.Attribute])
+            traffic_cell_data_frame = gpd.GeoDataFrame(data=reduction_phase_data, columns=column_name)
+
+            # save the parsed osm data
+            # name of the file
+            file_name = file_path.stem
+
+            try:
+                traffic_cell_data_frame. \
+                    to_csv(checkpoint_folder_path_current_phase.
+                           joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
+
+            # If there's an error while encoding the file.
+            except ValueError as err:
+                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
+
+            # If the file cannot be opened.
+            except OSError as err:
+                return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
+
+            return calculation_state_enum_i.CalculationState.RUNNING, ""
 
     def _find_default_value_entry_which_applies(self, default_value_list: List[DefaultValueEntry],
                                                 osm_element_tags: List[str]):
@@ -185,9 +246,4 @@ class ReductionPhase(ICalculationPhase):
                 return _default_value_entry
 
         return None
-
-
-
-
-
 

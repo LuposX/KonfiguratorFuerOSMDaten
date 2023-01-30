@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
+
 if TYPE_CHECKING:
     from typing import Final
 
@@ -17,8 +19,9 @@ CL_CATEGORY: Final = "category"
 CL_GEOMETRY: Final = "geometry"
 CL_TRAFFIC_CELL_NAME: Final = "traffic_cell_name"
 CL_OSM_ELEMENT_NAME: Final = "element_name"
-CL_AREA_PROPERTY: Final = "area_property"
-CL_BUILDING_PROPERTY: Final = "building_area"
+CL_AREA_WITHOUT_FLOORS: Final = "area_of_osm_element"
+CL_AREA_WITH_FLOORS: Final = "area_of_osm_element_with_floors"
+CL_NUMBER_OF_FLOORS: Final = "number_of_floors"
 
 # Misc
 # -----
@@ -40,11 +43,9 @@ DF_CL_TAG_FILTER_PHASE: Final = [CL_OSM_TYPE,
                                  CL_CATEGORY
                                  ]
 
-DF_CL_REDUCTION_PHASE: Final = [CL_OSM_TYPE,
-                                CL_OSM_ELEMENT_NAME,
-                                CL_GEOMETRY,
-                                CL_TAGS,
-                                CL_CATEGORY,
-                                CL_AREA_PROPERTY,
-                                CL_BUILDING_PROPERTY
-                                ]
+DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES: Final = [CL_OSM_TYPE,
+                                                   CL_OSM_ELEMENT_NAME,
+                                                   CL_GEOMETRY,
+                                                   CL_TAGS,
+                                                   CL_CATEGORY,
+                                                   ]
