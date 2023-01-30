@@ -2,6 +2,11 @@ from __future__ import annotations
 
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Tuple, List, Dict
+
 
 class DefaultValueEntry:
     """
@@ -9,17 +14,13 @@ class DefaultValueEntry:
     Default values can be set and read.
     """
 
-    def __init__(self, tag):
+    def __init__(self):
         """
         Constructor of the class.
         Creates an empty DefaultValueEntry with 0 for all the factor values.
         """
-        self._tag = tag
-        self._length = 3
-        self._attribute_default_values = [[] for x in range(self._length)]
-        self._attribute_default_values[0] = [Attribute.PROPERTY_AREA, 0]
-        self._attribute_default_values[0] = [Attribute.NUMER_OF_FLOOR, 0]
-        self._attribute_default_values[0] = [Attribute.FIRST_FLOOR_AREA, 0]
+        self._tag: str = ""
+        self._default_value_per_attribute: Dict[Attribute, float] = {}
 
     def get_default_value_entry_tag(self):
         """
@@ -42,7 +43,7 @@ class DefaultValueEntry:
         self._tag = new_tag
         return True
 
-    def set_attribute_default(self, attribute, value):
+    def set_attribute_default(self, attribute: Attribute, value) -> bool:
         """
         Sets the default value of an attribute
 
@@ -53,13 +54,10 @@ class DefaultValueEntry:
         Returns:
             bool: True, if overwriting process was successful, else false
         """
-        for item in range(self._length):
-            if self._attribute_default_values[item][0] == attribute:
-                self._attribute_default_values[item][1] = [item, value]
-                return True
-        return False
+        self._default_value_per_attribute[attribute] = value
+        return True
 
-    def get_attribute_default(self, attribute):
+    def get_attribute_default(self, attribute: Attribute) -> float:
         """
         Gets the default value of a certain attribute
 
@@ -69,6 +67,4 @@ class DefaultValueEntry:
         Returns:
             float: The default value of the attribute
         """
-        for item in range(self._length):
-            if self._attribute_default_values[item][0] == attribute:
-                return self._attribute_default_values[item][1]
+        return self._default_value_per_attribute[attribute]

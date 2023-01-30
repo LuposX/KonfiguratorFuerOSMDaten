@@ -9,7 +9,7 @@ import src.osm_configurator.model.project.calculation.file_deletion as file_dele
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
+import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility_i
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
@@ -71,12 +71,12 @@ class TagFilterPhase(ICalculationPhase):
             return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ''.join(str(err))
 
         # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_last_phase: Path = calculation_phase_utility_i.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.GEO_DATA_PHASE)
 
         # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_current_phase: Path = calculation_phase_utility_i.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE)
 

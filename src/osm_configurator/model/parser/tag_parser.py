@@ -6,8 +6,7 @@ from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List
-    from typing import Tuple
+    from typing import List, Dict, Tuple
 
 
 class TagParser(TagParserInterface):
@@ -19,9 +18,9 @@ class TagParser(TagParserInterface):
         """
         pass
 
-    def parse_tags(self, tags: List[str]) -> List[Tuple[str, str]]:
+    def parse_tags(self, tags: List[str]) -> Dict[str, str]:
 
-        parsed_tags: List[Tuple[str, str]] = []
+        parsed_tags: Dict[str, str] = {}
         tag: str
         for tag in tags:
             split_string = tag.split("=")
@@ -29,6 +28,6 @@ class TagParser(TagParserInterface):
             if len(split_string) != 2:
                 raise TagsWronglyFormatted(str(tag))
 
-            parsed_tags.append((split_string[0], split_string[1]))
+            parsed_tags.update({split_string[0]: split_string[1]})
 
         return parsed_tags

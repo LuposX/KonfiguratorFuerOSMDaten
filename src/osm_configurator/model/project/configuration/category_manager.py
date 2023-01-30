@@ -5,9 +5,9 @@ import src.osm_configurator.model.project.configuration.category
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List
+    from typing import List, Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
-
+    from src.osm_configurator.model.project.configuration.category import Category
 
 class CategoryManager:
     """
@@ -18,7 +18,7 @@ class CategoryManager:
         """
         Constructor of the class.
         """
-        self._categories = []
+        self._categories: Dict = {}
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -37,21 +37,19 @@ class CategoryManager:
                     _activated_attributes.append(attribute)
         return _activated_attributes
 
-    def get_category(self, index):
+    def get_category(self, name):
         """
         Gets a category based on the index.
 
         Args:
-            index (int): Index in the categories-list, that will be returned.
+            name (str): IThe name of the category.
 
         Returns:
             category.Category: The Category we wanted.
         """
-        if index <= 0 or index > len(self._categories):
-            return None
-        return self._categories[index]
+        return self._categories.get(name)
 
-    def get_categories(self) -> List:
+    def get_categories(self) -> Dict:
         """
         Getter for all the Categories.
 
@@ -60,19 +58,19 @@ class CategoryManager:
         """
         return self._categories
 
-    def create_category(self, new_category: List):
+    def create_category(self, new_category: Category):
         """
         Creates a new category, that will be empty.
 
         Returns:
             category.Category: The newly created category.
         """
-        if new_category not in self._categories:
-            self._categories.append(new_category)
+        if new_category.get_category_name() not in self._categories:
+            self._categories.update({new_category.get_category_name(): new_category})
             return True
         return False
 
-    def remove_category(self, category):
+    def remove_category(self, category: Category):
         """
         Removes the given category from the categories list, if element is inside the List.
 
