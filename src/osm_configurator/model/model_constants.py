@@ -13,7 +13,7 @@ This file is used, to name the columns in the Dataframe.
 # ----------------------------
 CL_OSM_TYPE: Final = "osm_type"
 CL_TAGS: Final = "tags"
-CL_CATEGORIES: Final = "categories"
+CL_CATEGORIES: Final = "category"
 CL_LOCATION: Final = "geometry"
 CL_TRAFFIC_CELL_NAME: Final = "traffic_cell_name"
 CL_OSM_ELEMENT_NAME: Final = "element_name"
