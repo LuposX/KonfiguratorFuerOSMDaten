@@ -13,10 +13,11 @@ from src_tests.definitions import CATEGORY_MANAGER, \
     TEST_CATEGORY_NO_BUILDING, \
     TEST_CATEGORY_BUILDING
 
-from src.osm_configurator.model.model_constants import CL_OSM_ELEMENT_NAME, CL_CATEGOR
+from src.osm_configurator.model.model_constants import CL_OSM_ELEMENT_NAME, CL_CATEGORY
 
 # without this you get a weird error, idk why
 os.environ["PROJ_LIB"]=""
+
 
 class TestOSMDataParser:
     def test_parse_osm_data_file(self):
