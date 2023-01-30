@@ -45,7 +45,6 @@ class TestOSMDataParser:
         assert TEST_CATEGORY_SHOP.get_category_name() in \
                parsed_data_df[parsed_data_df[CL_OSM_ELEMENT_NAME] == "Monaco Mutualité"][CL_CATEGORY].tolist()
 
-
         # Buildings which lie on the edge
         assert "Le Mantegna" in parsed_data_df[CL_OSM_ELEMENT_NAME].tolist()
         assert TEST_CATEGORY_BUILDING.get_category_name() in \
