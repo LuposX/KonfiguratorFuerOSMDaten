@@ -8,7 +8,7 @@ class TestTagParser:
         tag_parser = tag_parser_i.TagParser()
 
         tags_not_formatted = ["building=yes", "waterfall=yes", "building:level=5", "poop=900"]
-        tags_formatted = [("building", "yes"), ("waterfall", "yes"), ("building:level", "5"), ("poop", "900")]
+        tags_formatted = {"building": "yes", "waterfall": "yes", "building:level": "5", "poop": "900"}
 
         assert tags_formatted == tag_parser.parse_tags(tags_not_formatted)
 

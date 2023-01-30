@@ -10,10 +10,10 @@ import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List
-    from typing import Tuple
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.category import Category
+    from src.osm_configurator.model.parser.tag_parser import TagParser
+    from typing import List, Tuple, Dict
     from osmium import Node  # type: ignore
     from osmium import Way  # type: ignore
     from osmium import Area  # type: ignore
@@ -116,14 +116,14 @@ class DataOSMHandler(osm.SimpleHandler):
         """
         categories_of_osm_element: List[Category] = []
 
-        tag_parser = tag_parser_i.TagParser()
+        tag_parser: TagParser = tag_parser_i.TagParser()
 
         # check if the osm_element applies to a category.
         category: Category
         for category in self._category_manager.get_categories():
             category_name: str = category.get_category_name()
-            whitelist: List = category.get_whitelist()
-            blacklist: List = category.get_blacklist()
+            whitelist: Dict = category.get_whitelist()
+            blacklist: Dict = category.get_blacklist()
 
             # parse the tags from List[str] to List[Tuple[str, str]]
             whitelist_parsed = tag_parser.parse_tags(whitelist)
@@ -132,17 +132,17 @@ class DataOSMHandler(osm.SimpleHandler):
             # check if the node adheres to the whitelist.
             all_tags_from_whitelist_correct: bool = True
             tag_in_whitelist: Tuple
-            for tag_in_whitelist in whitelist_parsed:
+            for key_tag, value_tag in whitelist_parsed.items():
 
                 # Checks if the key is in the osm element
-                if osm_object.tags.get(tag_in_whitelist[0], KEY_NOT_FOUND) \
+                if osm_object.tags.get(key_tag, KEY_NOT_FOUND) \
                         != KEY_NOT_FOUND:
                     # "*"
                     # The-don't-care symbol, says it doesn't matter what the value of the tag is.
-                    if tag_in_whitelist[1] != model_constants_i.DONT_CARE_SYMBOL:
+                    if value_tag != model_constants_i.DONT_CARE_SYMBOL:
                         # If we find a single tag from the whitelist which the node doesn't correctly have
                         # don't add category.
-                        if osm_object.tags.get(tag_in_whitelist[0], KEY_NOT_FOUND) != tag_in_whitelist[1]:
+                        if osm_object.tags.get(key_tag, KEY_NOT_FOUND) != value_tag:
                             all_tags_from_whitelist_correct = False
                             break
 
@@ -154,17 +154,17 @@ class DataOSMHandler(osm.SimpleHandler):
             # check if the node adheres to the blacklist.
             all_tags_from_blacklist_correct: bool = True
             tag_in_blacklist: Tuple
-            for tag_in_blacklist in blacklist_parsed:
+            for key_tag, value_tag in blacklist_parsed.items():
 
                 # Checks if the key is in the osm element
                 # if the key isn't in the osm element, then we know that this tag is correct for the osm element
-                if osm_object.tags.get(tag_in_blacklist[0], KEY_NOT_FOUND) \
+                if osm_object.tags.get(key_tag, KEY_NOT_FOUND) \
                         != KEY_NOT_FOUND:
 
                     # If we find a single tag from the blacklist which the node doesn't adhere to,
                     # then the category doesn't apply to the osm_element.
-                    if tag_in_blacklist[1] != model_constants_i.DONT_CARE_SYMBOL:
-                        if osm_object.tags.get(tag_in_blacklist[0], KEY_NOT_FOUND) == tag_in_blacklist[1]:
+                    if value_tag != model_constants_i.DONT_CARE_SYMBOL:
+                        if osm_object.tags.get(key_tag, KEY_NOT_FOUND) == value_tag:
                             all_tags_from_blacklist_correct = False
                             break
 
