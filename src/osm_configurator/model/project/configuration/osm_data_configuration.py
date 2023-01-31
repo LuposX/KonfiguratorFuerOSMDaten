@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import pathlib
 from pathlib import Path
 
 from typing import TYPE_CHECKING
@@ -23,7 +24,7 @@ class OSMDataConfiguration:
         self._osm_data_path = Path()
         self._downloader = download_data.DownloadData()
 
-    def get_osm_data(self):
+    def get_osm_data(self) -> pathlib.Path:
         """
         Gives back the path pointing towards the OSM data file.
 
@@ -32,7 +33,7 @@ class OSMDataConfiguration:
         """
         return self._osm_data_path
 
-    def set_osm_data(self, new_osm_data):
+    def set_osm_data(self, new_osm_data: pathlib.Path) -> bool:
         """
         Edits the path pointing towards the OSM data file.
 
@@ -47,7 +48,7 @@ class OSMDataConfiguration:
             return True
         return False
 
-    def get_download_data(self):
+    def get_download_data(self) -> DownloadData:
         """
         Getter for the download data class.
 

@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Dict
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 
 class DefaultValueEntry:
@@ -15,7 +16,7 @@ class DefaultValueEntry:
     Default values can be set and read.
     """
 
-    def __init__(self, tag):
+    def __init__(self, tag: str):
         """
         Constructor of the class.
         Creates an empty DefaultValueEntry with 0 for all the factor values.
@@ -27,7 +28,7 @@ class DefaultValueEntry:
         for enum_name in all_enums_names:
             self._all_attribute_default_values.update({enum_name: 0})
 
-    def get_default_value_entry_tag(self):
+    def get_default_value_entry_tag(self) -> str:
         """
         Returns the tag associated with this default value entry
         Returns:
@@ -35,20 +36,16 @@ class DefaultValueEntry:
         """
         return self._tag
 
-    def set_tag(self, new_tag):
+    def set_tag(self, new_tag: str):
         """
         Sets a new value for a given tag
 
         Args:
             new_tag (str): value for overwriting the current tag, must be a valid OSM-tag
-
-        Returns:
-            bool: true if the overwriting process was successful, else false
         """
         self._tag = new_tag
-        return True
 
-    def set_attribute_default(self, attribute, value):
+    def set_attribute_default(self, attribute: Attribute, value: float) -> bool:
         """
         Sets the default value of an attribute
 
@@ -64,7 +61,7 @@ class DefaultValueEntry:
             return True
         return False
 
-    def get_attribute_default(self, attribute):
+    def get_attribute_default(self, attribute: Attribute) -> float:
         """
         Gets the default value of a certain attribute
 

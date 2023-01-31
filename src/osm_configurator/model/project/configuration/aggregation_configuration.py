@@ -25,7 +25,7 @@ class AggregationConfiguration:
         for enum_name in all_aggregation_methods:
             self._aggregation_method_state.update({enum_name: False})
 
-    def get_all_aggregation_methods(self):
+    def get_all_aggregation_methods(self) -> list[AggregationMethod]:
         """
         Gives back a List of all possible aggregation methods.
 
@@ -38,7 +38,7 @@ class AggregationConfiguration:
             _all_methods.append(method)
         return _all_methods
 
-    def is_aggregation_method_active(self, method):
+    def is_aggregation_method_active(self, method: AggregationMethod) -> bool:
         """
         Checks, if a given aggregation method is active.
 
@@ -51,7 +51,7 @@ class AggregationConfiguration:
 
         return self._aggregation_method_state.get(method)
 
-    def set_aggregation_method_active(self, method, active):
+    def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
         """
         Changes the aggregation method from active to inactive and vice versa. If an already active aggregation
         method should be activated, it stays active. The same applies to inactive aggregation methods, which should be deactivated.

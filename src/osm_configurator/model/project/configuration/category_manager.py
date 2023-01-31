@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import List
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+    from src.osm_configurator.model.project.configuration.category import Category
 
 
 class CategoryManager:
@@ -37,7 +38,7 @@ class CategoryManager:
                     _activated_attributes.append(attribute)
         return _activated_attributes
 
-    def get_category(self, index):
+    def get_category(self, index: int) -> Category:
         """
         Gets a category based on the index.
 
@@ -51,7 +52,7 @@ class CategoryManager:
             return None
         return self._categories[index]
 
-    def get_categories(self) -> List:
+    def get_categories(self) -> list[Category]:
         """
         Getter for all the Categories.
 
@@ -60,19 +61,22 @@ class CategoryManager:
         """
         return self._categories
 
-    def create_category(self, new_category: List):
+    def create_category(self, new_category: Category) -> bool:
         """
         Creates a new category, that will be empty.
 
+        Args:
+            new_category (Category): Category that will be created.
+
         Returns:
-            category.Category: The newly created category.
+            bool: True, if the element was created correctly, else false.
         """
         if new_category not in self._categories:
             self._categories.append(new_category)
             return True
         return False
 
-    def remove_category(self, category):
+    def remove_category(self, category) -> bool:
         """
         Removes the given category from the categories list, if element is inside the List.
 
@@ -87,7 +91,7 @@ class CategoryManager:
             return True
         return False
 
-    def override_categories(self, new_category_list):
+    def override_categories(self, new_category_list: list[Category]):
         """
         Overwrites the list of categories with the given list, if both lists are not identical.
 
@@ -96,7 +100,7 @@ class CategoryManager:
         """
         self._categories = new_category_list
 
-    def merge_categories(self, category_input_list):
+    def merge_categories(self, category_input_list: list[Category]):
         """
         Merges the existing category list with the given list if both lists are not identical.
 

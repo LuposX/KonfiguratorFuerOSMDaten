@@ -43,7 +43,7 @@ class AttractivityAttribute:
         """
         return self._attractivity_attribute_name
 
-    def set_attractivity_attribute_name(self, new_name) -> bool:
+    def set_attractivity_attribute_name(self, new_name: str) -> bool:
         """
         Setter for the attractivity attribute name.
 
@@ -91,7 +91,7 @@ class AttractivityAttribute:
         """
         return self._base_attractivity
 
-    def set_base_factor(self, new_base_factor) -> bool:
+    def set_base_factor(self, new_base_factor: float) -> bool:
         """
         Setter for the base factor.
 
