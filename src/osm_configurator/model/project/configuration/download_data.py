@@ -25,5 +25,5 @@ class DownloadData:
         Returns:
             bool: True when the download works, otherwise false.
         """
-        karl = ox.geometries_from_polygon(self.df["geometry"][0], tags={"building": True})
+        data = ox.geometries_from_polygon(self.df["geometry"][0], tags={"building": True})
         return True

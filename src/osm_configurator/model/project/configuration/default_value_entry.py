@@ -21,12 +21,11 @@ class DefaultValueEntry:
         Creates an empty DefaultValueEntry with 0 for all the factor values.
         """
 
+        self._tag: str = tag
         self._all_attribute_default_values: Dict = {}
         all_enums_names = [member.name for member in attribute_enum_i.Attribute]
         for enum_name in all_enums_names:
             self._all_attribute_default_values.update({enum_name: 0})
-
-        self._tag = tag
 
     def get_default_value_entry_tag(self):
         """
