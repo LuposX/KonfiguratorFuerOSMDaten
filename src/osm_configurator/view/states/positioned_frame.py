@@ -4,7 +4,9 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+    from typing import Final
 
+SMALLEST_COLUM_AND_LINE_VALUE: Final = 0
 
 class PositionedFrame:
     """
@@ -21,7 +23,6 @@ class PositionedFrame:
             colum (int): The Colum the Frame shall be placed in, can't be negative
             line (int): The Line the Frame shall be placed in, can't be negative
         """
-        self.__smallest_colum_and_line_value = 0
 
         if not isinstance(frame, TopLevelFrame):
             raise TypeError("The given Frame is not a Frame!")
@@ -29,12 +30,12 @@ class PositionedFrame:
             raise TypeError("The given colum is not an Integer!")
         elif not isinstance(line, int):
             raise TypeError("The given line is not an Integer!")
-        elif colum < self.__smallest_colum_and_line_value or line < self.__smallest_colum_and_line_value:
+        elif colum < SMALLEST_COLUM_AND_LINE_VALUE or line < SMALLEST_COLUM_AND_LINE_VALUE:
             raise ValueError("The Value of colum or line is negative!")
         else:
-            self.__frame = frame
-            self.__colum = colum
-            self.__line = line
+            self._frame = frame
+            self._colum = colum
+            self._line = line
 
     def get_frame(self) -> TopLevelFrame:
         """
@@ -43,7 +44,7 @@ class PositionedFrame:
         Returns:
             top_level_frame.TopLevelFrame: The Frame this PositionedFrame holds
         """
-        return self.__frame
+        return self._frame
 
     def get_column(self) -> int:
         """
@@ -52,7 +53,7 @@ class PositionedFrame:
         Returns:
             int: The Column the Frame is placed in.
         """
-        return self.__colum
+        return self._colum
 
     def get_line(self) -> int:
         """
@@ -61,4 +62,4 @@ class PositionedFrame:
         Returns:
             int: The Line the frame is placed in
         """
-        return self.__line
+        return self._line

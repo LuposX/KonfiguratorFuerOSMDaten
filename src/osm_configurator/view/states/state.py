@@ -48,10 +48,10 @@ class State:
             raise TypeError("default_left is no StateName, and not None! "
                             "The default_left, shall be a StateName or None!")
         else:
-            self.__active_frames = active_frames
-            self.__own_state_name = own_state_name
-            self.__default_left = default_left
-            self.__default_right = default_right
+            self._active_frames = active_frames
+            self._own_state_name = own_state_name
+            self._default_left = default_left
+            self._default_right = default_right
 
     def get_active_frames(self) -> list[PositionedFrame]:
         """
@@ -60,7 +60,7 @@ class State:
         Returns:
             list[positioned_frame.PositionedFrame]: List of frames this state holds
         """
-        return self.__active_frames
+        return self._active_frames
 
     def get_default_left(self) -> StateName:
         """
@@ -69,7 +69,7 @@ class State:
         Returns:
             state_name_enum.StateName: This states left state name
         """
-        return self.__default_left
+        return self._default_left
 
     def get_default_right(self) -> StateName:
         """
@@ -78,7 +78,7 @@ class State:
         Returns:
             state_name_enum.StateName: This states right state name
         """
-        return self.__default_right
+        return self._default_right
 
     def get_state_name(self) -> StateName:
         """
@@ -87,7 +87,7 @@ class State:
         Returns:
             state_name_enum.StateName: The name of this state
         """
-        return self.__own_state_name
+        return self._own_state_name
 
     def __eq__(self, other) -> bool:
         """
