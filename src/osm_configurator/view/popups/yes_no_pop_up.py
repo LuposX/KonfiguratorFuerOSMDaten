@@ -4,7 +4,7 @@ import src.osm_configurator.view.states.view_constants as vc
 
 import customtkinter
 
-POPUPSIZE = vc.ViewConstants.POPUPSIZE  # Holds the size of the Popup
+POPUPSIZE = vc.ViewConstants.POPUPSIZE.value  # Holds the size of the Popup
 
 
 class YesNoPopUp(customtkinter.CTk):

@@ -26,17 +26,23 @@ class MainMenuFrame(TopLevelFrame):
         """
         window = super().__init__(state_manager, control)
 
-        customtkinter.CTkButton(window, text="New Project") \
+        customtkinter.CTkButton(master=window, text="New Project") \
             .pack(side="left", padx=40, pady=40)
 
-        customtkinter.CTkButton(window, text="Load external Project") \
+        customtkinter.CTkButton(master=window, text="Load external Project") \
             .pack(side="left", padx=40, pady=40)
 
-        customtkinter.CTkButton(window, text="Load selected Project") \
+        customtkinter.CTkButton(master=window, text="Load selected Project") \
             .pack(side="left", padx=40, pady=40)
 
-        customtkinter.CTkButton(window, text="Settings") \
+        customtkinter.CTkButton(master=window, text="Settings") \
             .pack(side="left", padx=40, pady=40)
+
+        # showing all the entries in custom boxes
+        for entry in entries:
+            customtkinter.CTkEntry(master=window, placeholder_text=entry) \
+                .pack(side="right", padx=20, pady=10)\
+                .bind(self.activate)
 
     def activate(self):
         pass
