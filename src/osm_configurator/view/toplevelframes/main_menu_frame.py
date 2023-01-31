@@ -1,14 +1,16 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.states.state_manager as state_manager
-import src.osm_configurator.control.project_controller_interface as project_controller_interface
-
+from src.osm_configurator.model.application.passive_project import PassiveProject
+from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+from src.osm_configurator.view.states.state_manager import StateManager
+
+import src.osm_configurator.view.states.state_name_enum as sne
 
 import customtkinter
 
 
-class MainMenuFrame(TopLevelFrame):
+class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
     """
     This frame shows the application's main menu.
     The user can create a new project, or load an already existing project. Projects stored in the default folder
@@ -22,27 +24,28 @@ class MainMenuFrame(TopLevelFrame):
         Args:
             _state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
             project_controller (project_controller.ProjectController): Respective controller
-            control (control_interface.IControl): The frame will call the control to gain access to the model.
         """
         window = super().__init__(state_manager, control)
 
-        customtkinter.CTkButton(master=window, text="New Project") \
+        customtkinter.CTkButton(self, text="New Project", command=self.__create_project) \
             .pack(side="left", padx=40, pady=40)
 
-        customtkinter.CTkButton(master=window, text="Load external Project") \
+        customtkinter.CTkButton(self, text="Load external Project") \
             .pack(side="left", padx=40, pady=40)
 
-        customtkinter.CTkButton(master=window, text="Load selected Project") \
+        customtkinter.CTkButton(self, text="Load selected Project") \
             .pack(side="left", padx=40, pady=40)
 
-        customtkinter.CTkButton(master=window, text="Settings") \
+        customtkinter.CTkButton(self, text="Settings", command=self.__call_settings()) \
             .pack(side="left", padx=40, pady=40)
 
-        # showing all the entries in custom boxes
-        for entry in entries:
-            customtkinter.CTkEntry(master=window, placeholder_text=entry) \
-                .pack(side="right", padx=20, pady=10)\
-                .bind(self.activate)
+        # showing all entries in custom boxes
+        for passive_project in self._passive_projects:
+            name = passive_project.get_name()  # name of the shown project
+            description = passive_project.get_description()  # description of the shown project
+            customtkinter.CTkButton(master=window, name=name, description=description,
+                                    command=self.__load_project(passive_project)) \
+                .pack(side="right", padx=20, pady=10)  # creates and places the button
 
     def activate(self):
         pass
