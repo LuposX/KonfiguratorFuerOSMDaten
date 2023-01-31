@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
+    from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
 
 
 class Category:
@@ -34,6 +35,10 @@ class Category:
         self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
         self._attractivity_attributes: list = []
         self._default_value_list: list = []
+
+        # Adds DEFAULT-Tag to the tag-list
+        self._default_tag = DefaultValueEntry("DEFAULT")
+        self._default_value_list.append(self._default_tag)
 
         # Create the Attribute dictionary
         self._attributes: Dict = {}
