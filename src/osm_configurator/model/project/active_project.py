@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pathlib
+
 import src.osm_configurator.model.project.configuration.configuration_manager
 import src.osm_configurator.model.project.data_visualizer
 import src.osm_configurator.model.project.project_settings
@@ -55,7 +57,7 @@ class ActiveProject:
         self._data_visualizer = DataVisualizer()
         self._export = Export(self)
 
-    def get_last_step(self):
+    def get_last_step(self) -> ConfigPhase:
         """
         This method is there so that the user can continue working in the same phase in an existing project
         where he previously stopped.
@@ -65,7 +67,7 @@ class ActiveProject:
         """
         return self._last_step
 
-    def set_last_step(self, current_step):
+    def set_last_step(self, current_step: ConfigPhase):
         """
         This method is there so that the user can continue working in the same phase in an existing project
         where he previously stopped.
@@ -75,7 +77,7 @@ class ActiveProject:
         """
         self._last_step = current_step
 
-    def get_project_path(self):
+    def get_project_path(self) -> pathlib.Path:
         """
         This method is to give back the path pointing towards the project folder.
 
@@ -84,7 +86,7 @@ class ActiveProject:
         """
         return self._project_settings.get_location()
 
-    def get_config_manager(self):
+    def get_config_manager(self) -> ConfigurationManager:
         """
         Getter for the configuration Manager.
 
@@ -93,7 +95,7 @@ class ActiveProject:
         """
         return self._configurator_manager
 
-    def get_data_visualizer(self):
+    def get_data_visualizer(self) -> DataVisualizer:
         """
         Getter for the data visualizer.
 
@@ -102,7 +104,7 @@ class ActiveProject:
         """
         return self._data_visualizer
 
-    def get_calculation_manager(self):
+    def get_calculation_manager(self) -> CalculationManager:
         """
         Getter for the calculation Manager.
 
@@ -111,7 +113,7 @@ class ActiveProject:
         """
         return self._calculation_manager
 
-    def get_project_settings(self):
+    def get_project_settings(self) -> ProjectSettings:
         """
         Getter for the project settings.
 
@@ -120,7 +122,7 @@ class ActiveProject:
         """
         return self._project_settings
 
-    def get_export_manager(self):
+    def get_export_manager(self) -> Export:
         """
         Getter for the export Manager.
 

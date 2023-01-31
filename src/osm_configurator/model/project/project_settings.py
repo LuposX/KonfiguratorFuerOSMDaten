@@ -105,12 +105,15 @@ class ProjectSettings:
         """
         return self._calculation_phase_checkpoints_folder
 
-    def set_calculation_phase_checkpoints_folder(self, folder_name: str):
+    def set_calculation_phase_checkpoints_folder(self, folder_name: str) -> bool:
         """
         This method is used to set the name of the folder in which the results will be saved.
 
         Args:
             folder_name (str): the name of the folder
+
+        Returns:
+            bool: true if change successful, false else
         """
         if isinstance(folder_name, str):
             self._calculation_phase_checkpoints_folder = folder_name
