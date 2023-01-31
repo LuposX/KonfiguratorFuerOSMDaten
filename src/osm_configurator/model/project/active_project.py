@@ -40,15 +40,20 @@ class ActiveProject:
             project_description (str): The description of our project.
         """
 
-        self._path = project_folder
+        self._project_io_handler = ProjectIOHandler(self)
         self._configurator_manager = ConfigurationManager(project_folder)
         self._calculation_manager = CalculationManager(self._configurator_manager)
-        self._project_saver = ProjectSaver(self)
-        self._project_io_handler = ProjectIOHandler(self)
-        self._data_visualizer = DataVisualizer()
+
+        if is_newly_created:
+            self._project_io_handler.build_project(project_folder)
+            self._last_step = ConfigPhase.DATA_CONFIG_PHASE
+        else:
+            self._project_io_handler.load_project(project_folder)
+
         self._project_settings = ProjectSettings(project_folder, project_name, project_description)
+        self._project_saver = ProjectSaver(self)
+        self._data_visualizer = DataVisualizer()
         self._export = Export(self)
-        self._last_step = ConfigPhase.DATA_CONFIG_PHASE
 
     def get_last_step(self):
         """
@@ -77,7 +82,7 @@ class ActiveProject:
         Returns:
             pathlib.Path: The path pointing towards the project folder.
         """
-        return self._path
+        return self._project_settings.get_location()
 
     def get_config_manager(self):
         """
