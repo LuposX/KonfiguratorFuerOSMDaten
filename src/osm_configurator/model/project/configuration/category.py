@@ -35,6 +35,7 @@ class Category:
         self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
         self._attractivity_attributes: list = []
         self._default_value_list: list = []
+        self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
         self._default_tag = DefaultValueEntry("DEFAULT")
@@ -162,9 +163,8 @@ class Category:
         _activated = []
 
         for enum_name in self._attributes:
-            if self._attributes.get(enum_name) == True:
+            if self._attributes.get(enum_name):
                 _activated.append(enum_name)
-
         return _activated
 
     def get_attribute(self, attribute) -> bool:
@@ -177,10 +177,7 @@ class Category:
         Returns:
             bool: True when the attribute is active, otherwise false.
         """
-        if self._attributes.get(attribute.name):
-            return True
-        else:
-            return False
+        return self._attributes.get(attribute.name)
 
     def set_attribute(self, attribute, boolean):
         """
@@ -195,6 +192,24 @@ class Category:
         """
         self._attributes[attribute.name] = boolean
         return True
+
+    def get_strictly_use_default_values(self) -> bool:
+        """
+        Getter for _strictly_use_default_values.
+
+        Returns:
+            bool: True when the default values should be used strictly.
+        """
+        return self._strictly_use_default_values
+
+    def set_strictly_use_default_values(self, boolean):
+        """
+        Setter for _strictly_use_default_values.
+
+        Args:
+            boolean (bool): The new value _strictly_use_default_values should be set to.
+        """
+        self._strictly_use_default_values = boolean
 
     def get_calculation_method_of_area(self):
         """
