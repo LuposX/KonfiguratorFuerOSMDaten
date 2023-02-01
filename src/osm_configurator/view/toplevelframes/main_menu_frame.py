@@ -29,10 +29,11 @@ class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
         This method creates a MainMenuFrame showing the MainMenu of the application.
 
         Args:
-            state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
+            state_manager (state_manager.StateManager): Frame will call the StateManager, if it wants to switch states
             project_controller (project_controller.ProjectController): Respective controller
         """
         window = super().__init__()
+
         self._project_controller = project_controller
         self._state_manager = state_manager
 
@@ -56,6 +57,7 @@ class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
         for passive_project in self._passive_projects:
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
+
             customtkinter.CTkButton(master=window, name=name, description=description,
                                     command=self.__load_project(passive_project)) \
                 .pack(side="right", padx=20, pady=10)  # creates and places the button
@@ -78,12 +80,12 @@ class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
 
     def __create_project(self):
         """
-        Calls the create_project-window
+        Calls the create_project-window switching states
         """
         self._state_manager.change_state(sne.StateName.CREATE_PROJECT.value)
 
     def __call_settings(self):
         """
-        Calls the settings-menu
+        Calls the settings-menu switching states
         """
         self._state_manager.change_state(sne.StateName.SETTINGS.value)

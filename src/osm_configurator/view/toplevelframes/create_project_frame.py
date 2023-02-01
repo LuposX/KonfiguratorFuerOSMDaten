@@ -34,7 +34,7 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to change to another State.
             project_controller (project_controller.ProjectController): Respective controller
         """
-        window = super().__init__()
+        window = super().__init__()  # Creates the window
 
         self._state_manager = state_manager
         self._project_controller = project_controller
@@ -69,14 +69,14 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
         """
         Opens the explorer making the user choose the wanted destination
         """
-        #  Implement procedure for choosing the project's path
+        #  TODO: Implement procedure for choosing the project's path
         self._project_path = "Insert Path Here"
 
     def __create_pressed(self):
         """
         The create-button was pressed, the project is created, the user is redirected to the data-phase-window
         """
-        #  Initialize Project-Creation
+        #  TODO: Initialize Project-Creation
 
         self._project_name = self.name_field.get()
 
