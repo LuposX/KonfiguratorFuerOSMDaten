@@ -98,45 +98,30 @@ class ReductionPhase(ICalculationPhase):
             except Exception as err:
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
 
-            # If we have nodes in a area(relations or way) and the nodes have the same category as the area in which
-            # it lies we delete the node.
-            # So we iterate over all osm_elements which are area and check if there are nodes in it
-            # if yes we check if they have the same category and if yes we delete them, otherwise they can stay.
-            # TODO: the index of new geodatframe should have the same index as the old ones, if not ehre is the issue.
-            area_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_WAY_NAME) | (df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
-            node_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME)]
+            # Remove unwanted nodes
+            # ---------------------
+            # We remove all nodes which are in an area and have the same category as them
+            # Why? Because they are most likely doubled elements.
+            self._remove_nodes_in_areas_with_same_category(df)
 
-            idx: int
-            node_row: GeoSeries
-            for idx_node, node_row in node_df.iterrows():
-                # This should return a GeoSeries which consists of bool values, true when the matching up row
-                # in the dataframe contains the node otherwise false.
-                found_areas_bool: GeoSeries = area_df[model_constants_i.CL_GEOMETRY].within(node_row[model_constants_i.CL_GEOMETRY]) #TODO: This could be wrong if yes use contains() instead
+            # Initialize Data
+            # --------------.
+            # Initialize a dictionary in which we will save our calculated data
+            reduction_phase_data = self._initalize_data_save()
 
-                # iterate over them and check their categories
-                i: int
-                found_series: GeoSeries
-                # The iloc takes in our geoseries which consists of boolean values and returns all entries
-                # in the dataframe which row number is true.
-                for i, found_series in area_df.loc[found_areas_bool].iterrows():
-                    # This checks if the category name of the found_area is the same as the node ones
-                    # If it has the same category we delete it.
-                    if found_series[model_constants_i.CL_CATEGORY].item() == node_row[model_constants_i.CL_CATEGORY].item():
-                        # delete the node
-                        df.drop(idx_node)
-                        break
-
-            # calculated data data
-            # should be in the format: model_constants_i.DF_CL_REDUCTION_PHASE
-            # which should be: CL_OSM_TYPE, CL_OSM_ELEMENT_NAME, CL_GEOMETRY, CL_TAGS, CL_CATEGORY, CL_AREA_PROPERTY, CL_BUILDING_PROPERTY
-            reduction_phase_data = []
-
+            # Calculate data
+            # --------------
             # This for-loop is for the calculation
             # iterate over the dataframe
-            # TODI: I  think the data entries are in different order depending on which attributes are activated
+            # TODO: I  think the data entries are in different order depending on which attributes are activated, refactor this shit
             idx: int
             row: GeoSeries
             for idx, row in df.iterrows():
+                # Initalize a temporal data save lcoation
+                # just used for a single osm element
+                # we do this so we can compare at the end if we have an entry for each key.
+                data_entry: Dict = self._initalize_data_save()
+
                 curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
                 curr_calculated_method_of_area: CalculationMethodOfArea = curr_category.get_calculation_method_of_area()
 
@@ -145,35 +130,14 @@ class ReductionPhase(ICalculationPhase):
 
                 # This means we don't need to calculate anything
                 if curr_category.get_strictly_use_default_values():
-                    # create the data entry
-                    data_entry: List = []
-
-                    for DF_CL_NAME in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
-                        # Do point reduction
-                        if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
-                            # Returns a representation of the object’s geometric centroid (point).
-                            data_entry.append(row[model_constants_i.CL_GEOMETRY].centroid)
-
-                        else:
-                            data_entry.append(row[data_entry])
-
-                    # Get the default values for teh attributes
-                    for attribute in attribute_enum_i.Attribute:
-                        data_entry.append(curr_default_value.get_attribute_default(attribute))
-
-                    # Now add the osm element data row to the global data
-                    reduction_phase_data.append(data_entry)
+                    self._get_default_values_for_osm_element(curr_default_value, reduction_phase_data, row, data_entry)
 
                 # If strictly-use-default-values isn't activated, we need to calculate the data
                 else:
                     # If our current osm element is a Node
                     # we can't calculate area for nodes.
-                    # TODO: should we tread them the same or give them for area the default values? answer: give them default values
                     if row[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
-                        pass
-
-                    # create the data entry
-                    data_entry: List = []
+                        self._get_default_values_for_osm_element(curr_default_value, reduction_phase_data, row)
 
                     # These are the attributes we need to calculate
                     activated_attributes: List[Attribute] = curr_category.get_activated_attribute()
@@ -186,25 +150,35 @@ class ReductionPhase(ICalculationPhase):
                         activated_attributes_dict.update({attribute_entry.get_name(): attribute_entry})
 
                     # Insert the data which isn't calculated from the attributes
+                    DF_CL_NAME: str
                     for DF_CL_NAME in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
                         # Do point reduction
                         if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
                             # Returns a representation of the object’s geometric centroid (point).
-                            data_entry.append(row[model_constants_i.CL_GEOMETRY].centroid)
+                            data_entry[model_constants_i.CL_GEOMETRY] += row[model_constants_i.CL_GEOMETRY].centroid
 
                         else:
-                            data_entry.append(row[data_entry])
-
-                    # Add the attributes to the list that are not activated(which means that don't get caclulated)
-                    for act_attribute in activated_attributes_dict.keys():
-                        data_entry.append(curr_default_value.get_attribute_default(act_attribute))
+                            data_entry[DF_CL_NAME] += row[DF_CL_NAME]
 
                     # calculate the not activated attributes
-                    for not_act_attribute in not_activated_attributes:
-                        data_entry.append(not_act_attribute.calculate_attribute_value(curr_category, idk))
+                    key_act_attribute: str
+                    value_act_attribute: Attribute
+                    for key_act_attribute, value_act_attribute in activated_attributes_dict.items():
+                        data_entry.append(value_act_attribute.calculate_attribute_value())
 
-                    # Now add the osm element data row to the global data
-                    reduction_phase_data.append(data_entry)
+                    # Add the attributes to the list that are not activated(which means that don't get caclulated)
+                    not_act_attribute: Attribute
+                    for not_act_attribute in not_activated_attributes:
+                        data_entry[not_act_attribute.get_name()] += curr_default_value.get_attribute_default(not_act_attribute)
+
+                    # Add the calculated data for a single osm element to the main saving point
+                    for key_data_entry, value_data_entry in data_entry.items():
+                        if len (value_data_entry) != 1:
+                            reduction_phase_data[key_data_entry] += value_data_entry[0]
+
+                        else:
+                            # STH WENT REALLY WRONG HERE IF HE CAME INTO THIS ELSE
+                            print("ERROR REDUCTION PHASE: TRIED ADDING AN OSM ELEMENT TO MAIN MEMORY, MORE THAN ONE ENTRY.")
 
             # We now need to construct our dataframe from the data
             column_name = []
@@ -230,6 +204,79 @@ class ReductionPhase(ICalculationPhase):
                 return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
 
             return calculation_state_enum_i.CalculationState.RUNNING, ""
+
+    def _initalize_data_save(self):
+        """
+        This method is used to create a dictionary with the correct keys which are the
+        attributes which we want to save and other information about the osm element such as the name.
+        The Dictionary has as key one type of information for the osm element which will later be transformed
+        in a column in the dataframe and each key has a signel has a list of values.
+        """
+        reduction_phase_data: Dict = {}
+
+        # First we add all columns which are not attributes such as "name", "geometry".
+        column_name: str
+        for column_name in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
+            reduction_phase_data.update({column_name: []})
+
+        # Next we add all column which are created from attributes
+        tmp_attribute: Attribute
+        for tmp_attribute in attribute_enum_i.Attribute:
+            reduction_phase_data.update({tmp_attribute.get_name(): []})
+
+        return reduction_phase_data
+
+    def _get_default_values_for_osm_element(self, curr_default_value: DefaultValueEntry,
+                                            reduction_phase_data: Dict,
+                                            osm_element: GeoSeries,
+                                            data_entry: Dict):
+        """
+        This method uses DefaultValueEntry to calculate the default value for the osm element
+        """
+        DF_CL_NAME: str
+        for DF_CL_NAME in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
+            # Do point reduction
+            if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
+                # Returns a representation of the object’s geometric centroid (point).
+                reduction_phase_data[DF_CL_NAME] += osm_element[model_constants_i.CL_GEOMETRY].centroid
+
+            else:
+                data_entry[DF_CL_NAME] += osm_element[DF_CL_NAME]
+
+        # Get the default values for the attributes
+        attribute: Attribute
+        for attribute in attribute_enum_i.Attribute:
+            data_entry[Attribute.get_name()] += curr_default_value.get_attribute_default(attribute)
+
+    def _remove_nodes_in_areas_with_same_category(self, df: GeoDataFrame):
+        # If we have nodes in a area(relations or way) and the nodes have the same category as the area in which
+        # it lies we delete the node.
+        # So we iterate over all osm_elements which are area and check if there are nodes in it
+        # if yes we check if they have the same category and if yes we delete them, otherwise they can stay.
+        # TODO: the index of new geodatframe should have the same index as the old ones, if not ehre is the issue.
+        area_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_WAY_NAME) | (
+                    df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
+        node_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME)]
+        idx: int
+        node_row: GeoSeries
+        for idx_node, node_row in node_df.iterrows():
+            # This should return a GeoSeries which consists of bool values, true when the matching up row
+            # in the dataframe contains the node otherwise false.
+            found_areas_bool: GeoSeries = area_df[model_constants_i.CL_GEOMETRY].within(
+                node_row[model_constants_i.CL_GEOMETRY])  # TODO: This could be wrong if yes use contains() instead
+
+            # iterate over them and check their categories
+            i: int
+            found_series: GeoSeries
+            # The iloc takes in our geoseries which consists of boolean values and returns all entries
+            # in the dataframe which row number is true.
+            for i, found_series in area_df.loc[found_areas_bool].iterrows():
+                # This checks if the category name of the found_area is the same as the node ones
+                # If it has the same category we delete it.
+                if found_series[model_constants_i.CL_CATEGORY].item() == node_row[model_constants_i.CL_CATEGORY].item():
+                    # delete the node
+                    df.drop(idx_node)
+                    break
 
     def _find_default_value_entry_which_applies(self, default_value_list: List[DefaultValueEntry],
                                                 osm_element_tags: List[str]):
@@ -277,4 +324,3 @@ class ReductionPhase(ICalculationPhase):
                 return _default_value_entry
 
         return None
-
