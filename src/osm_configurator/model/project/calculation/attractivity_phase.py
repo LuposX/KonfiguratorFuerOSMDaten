@@ -22,6 +22,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.configuration.category import Category
+    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
@@ -84,7 +85,20 @@ class AttractivityPhase(ICalculationPhase):
 
         # Read and create data frames
         input_df: DataFrame = pd.read_csv(input_path)
-        output_df: DataFrame = pd.DataFrame()
+        output_df: DataFrame = self._init_dataframe(config_manager.get_category_manager())
+
+        # Iterate over all elements in this cell
+        index: int
+        element: Series
+        for index, element in input_df.iterrows():
+            try:
+                self._calculate_attractivity_for_element(element, output_df,
+                                                         config_manager.get_category_manager().get_categories())
+            except CategoryException as err:
+                return calculation_state_enum.CalculationState.ERROR_INVALID_CATEGORIES, err.args[0]
+
+        # Save results as csv
+        output_df.to_csv(output_path)
 
         return calculation_state_enum.CalculationState.RUNNING, "running"
 
@@ -103,6 +117,7 @@ class AttractivityPhase(ICalculationPhase):
                 value += attractivity.get_attribute_factor(attribute) * element[attribute.get_name()]
             new_entry[attractivity.get_attractivity_attribute_name()] = value
 
+        output_df.append(new_entry)
         return True
 
     def _get_category_by_name(self, category_name: str, category_list: List[Category]) -> Category:
@@ -112,3 +127,21 @@ class AttractivityPhase(ICalculationPhase):
             raise CategoryException("An OSM-element has a category that is not registered in the configuration")
 
         return list_of_categories_with_name[0]
+
+    def _get_all_attractivity_names(self, category_manager: CategoryManager) -> List[str]:
+        categories: List[Category] = category_manager.get_categories()
+        attractivity_names: List[str] = []
+        category: Category
+        for category in categories:
+            attractivity: AttractivityAttribute
+            for attractivity in category.get_attractivity_attributes():
+                if attractivity.get_attractivity_attribute_name() not in attractivity_names:
+                    attractivity_names.append(attractivity.get_attractivity_attribute_name())
+        return attractivity_names
+
+    def _init_dataframe(self, category_manager: CategoryManager) -> DataFrame:
+        # Creates a dataframe that has the attractivity attributes as it's columns
+        df: DataFrame = pd.DataFrame()
+        attractivity_names: List[str] = self._get_all_attractivity_names(category_manager)
+        df.columns = attractivity_names
+        return df
