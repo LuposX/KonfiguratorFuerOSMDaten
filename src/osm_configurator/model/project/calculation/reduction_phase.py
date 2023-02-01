@@ -32,6 +32,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.parser.tag_parser import TagParser
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+    from geopandas import GeoDataFrame, GeoSeries
 
 class ReductionPhase(ICalculationPhase):
     """
@@ -97,6 +98,34 @@ class ReductionPhase(ICalculationPhase):
             except Exception as err:
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
 
+            # If we have nodes in a area(relations or way) and the nodes have the same category as the area in which
+            # it lies we delete the node.
+            # So we iterate over all osm_elements which are area and check if there are nodes in it
+            # if yes we check if they have the same category and if yes we delete them, otherwise they can stay.
+            # TODO: the index of new geodatframe should have the same index as the old ones, if not ehre is the issue.
+            area_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_WAY_NAME) | (df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
+            node_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME)]
+
+            idx: int
+            node_row: GeoSeries
+            for idx_node, node_row in node_df.iterrows():
+                # This should return a GeoSeries which consists of bool values, true when the matching up row
+                # in the dataframe contains the node otherwise false.
+                found_areas_bool: GeoSeries = area_df[model_constants_i.CL_GEOMETRY].within(node_row[model_constants_i.CL_GEOMETRY]) #TODO: This could be wrong if yes use contains() instead
+
+                # iterate over them and check their categories
+                i: int
+                found_series: GeoSeries
+                # The iloc takes in our geoseries which consists of boolean values and returns all entries
+                # in the dataframe which row number is true.
+                for i, found_series in area_df.loc[found_areas_bool].iterrows():
+                    # This checks if the category name of the found_area is the same as the node ones
+                    # If it has the same category we delete it.
+                    if found_series[model_constants_i.CL_CATEGORY].item() == node_row[model_constants_i.CL_CATEGORY].item():
+                        # delete the node
+                        df.drop(idx_node)
+                        break
+
             # calculated data data
             # should be in the format: model_constants_i.DF_CL_REDUCTION_PHASE
             # which should be: CL_OSM_TYPE, CL_OSM_ELEMENT_NAME, CL_GEOMETRY, CL_TAGS, CL_CATEGORY, CL_AREA_PROPERTY, CL_BUILDING_PROPERTY
@@ -105,6 +134,8 @@ class ReductionPhase(ICalculationPhase):
             # This for-loop is for the calculation
             # iterate over the dataframe
             # TODI: I  think the data entries are in different order depending on which attributes are activated
+            idx: int
+            row: GeoSeries
             for idx, row in df.iterrows():
                 curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
                 curr_calculated_method_of_area: CalculationMethodOfArea = curr_category.get_calculation_method_of_area()
@@ -137,7 +168,7 @@ class ReductionPhase(ICalculationPhase):
                 else:
                     # If our current osm element is a Node
                     # we can't calculate area for nodes.
-                    # TODO: should we tread them the same or give them for area the default values?
+                    # TODO: should we tread them the same or give them for area the default values? answer: give them default values
                     if row[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
                         pass
 
