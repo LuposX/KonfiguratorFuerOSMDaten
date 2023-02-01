@@ -74,7 +74,11 @@ class AttractivityPhase(ICalculationPhase):
         row: Series
         for index, row in cells.iterrows():
             cell_name: str = row[model_constants.CL_TRAFFIC_CELL_NAME]
-            self._calculate_attractivity_in_traffic_cell(cell_name, configuration_manager)
+            result: calculation_state_enum
+            msg: str
+            result, msg = self._calculate_attractivity_in_traffic_cell(cell_name, configuration_manager)
+            if result != calculation_state_enum.CalculationState.RUNNING:
+                return result, msg
 
         return calculation_state_enum.CalculationState.RUNNING, "running"
 

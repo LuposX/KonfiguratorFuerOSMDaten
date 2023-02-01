@@ -5,6 +5,8 @@ from typing import TYPE_CHECKING
 from pathlib import Path
 import os
 import shutil
+import pandas
+import math
 
 from src_tests.definitions import TEST_DIR
 import src_tests.definitions as definitions
@@ -20,6 +22,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.attractivity_phase import AttractivityPhase
+    from pandas import DataFrame
 
 
 def _prepare_config(project: Path, geojson: Path) -> ConfigurationManager:
@@ -37,6 +40,7 @@ def test_minimal_input_successfully():
     # Prepare categories and attractivities
     cat_manager: CategoryManager = config_manager.get_category_manager()
     cat_manager.get_categories().append(definitions.TEST_CATEGORY_BUILDING)
+    cat_manager.get_categories().append(definitions.TEST_CATEGORY_NO_BUILDING)
     cat_manager.get_categories().append(definitions.TEST_CATEGORY_SHOP)
 
     # Copy results of reduction phase
@@ -55,4 +59,15 @@ def test_minimal_input_successfully():
     result: CalculationState = phase.calculate(config_manager)[0]
     assert result == calculation_state_enum.CalculationState.RUNNING
 
-    # TODO: Test the correctness of the output
+    # Check whether calculation has correct results
+    result_path: Path = Path(os.path.join(calculation_utility.get_checkpoints_folder_path_from_phase
+                                          (config_manager, calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE),
+                                          "0_traffic_cell.csv"))
+    df: DataFrame = pandas.read_csv(result_path)
+    assert df["coolness"][0] == 210
+    assert df["coolness"][1] == 907
+    assert df["coolness"][4] == 2001
+
+    assert df["trading"][0] == 810
+    assert math.isnan(df["trading"][3])
+    assert df["trading"][5] == 42

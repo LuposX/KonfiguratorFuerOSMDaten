@@ -52,9 +52,15 @@ TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.NUMBER
 TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 2)
 TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 3)
 
+TEST_ATTRACTIVITY_TRADING2: Final = attractivity_attribute.AttractivityAttribute("trading", 42)
+TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 0)
+TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 0)
+TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 0)
+
 # Set attractivities of categories
 TEST_CATEGORY_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
 TEST_CATEGORY_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING)
+TEST_CATEGORY_NO_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING2)
 TEST_CATEGORY_SHOP.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
 
 
