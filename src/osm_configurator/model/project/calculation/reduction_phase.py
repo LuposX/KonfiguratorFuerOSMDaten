@@ -117,9 +117,9 @@ class ReductionPhase(ICalculationPhase):
             idx: int
             row: GeoSeries
             for idx, row in df.iterrows():
-                # Initalize a temporal data save lcoation
+                # Initialize a temporal data save location
                 # just used for a single osm element
-                # we do this so we can compare at the end if we have an entry for each key.
+                # we do this, so we can compare at the end if we have an entry for each key.
                 data_entry: Dict = self._initalize_data_save()
 
                 curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
@@ -134,11 +134,6 @@ class ReductionPhase(ICalculationPhase):
 
                 # If strictly-use-default-values isn't activated, we need to calculate the data
                 else:
-                    # If our current osm element is a Node
-                    # we can't calculate area for nodes.
-                    if row[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
-                        self._get_default_values_for_osm_element(curr_default_value, reduction_phase_data, row)
-
                     # These are the attributes we need to calculate
                     activated_attributes: List[Attribute] = curr_category.get_activated_attribute()
                     # get the not activated
@@ -160,11 +155,38 @@ class ReductionPhase(ICalculationPhase):
                         else:
                             data_entry[DF_CL_NAME] += row[DF_CL_NAME]
 
+                    # previously calculated attributes temp data saver
+                    already_calculated_attributes: Dict[str, float] = {}
+
                     # calculate the not activated attributes
                     key_act_attribute: str
                     value_act_attribute: Attribute
                     for key_act_attribute, value_act_attribute in activated_attributes_dict.items():
-                        data_entry.append(value_act_attribute.calculate_attribute_value())
+                        if key_act_attribute == attribute_enum_i.Attribute.PROPERTY_AREA:
+                            # property needs to be treated special, because it depends on speical data
+                            # i.e all osm element which lie in its border.
+
+                            curr_category.get_calculation_method_of_area()
+
+                            calculated_value: float = value_act_attribute.calculate_attribute_value(curr_category,
+                                                                                                    row,
+                                                                                                    already_calculated_attributes,
+                                                                                                    curr_default_value,
+                                                                                                    [df, self])
+
+                        else:
+                            # Calculate the value of the osm element for the given attribute
+                            calculated_value: float = value_act_attribute.calculate_attribute_value(curr_category,
+                                                                                                    row,
+                                                                                                    already_calculated_attributes,
+                                                                                                    curr_default_value,
+                                                                                                    None)
+                        # we save already calculated attributes in this list if we have attributes
+                        # which are dependent on other attributes which need to be calculated first.
+                        already_calculated_attributes.update({key_act_attribute: calculated_value})
+
+                        # The data entry will later be saved to our main memory for all osm elements
+                        data_entry[key_act_attribute] += calculated_value
 
                     # Add the attributes to the list that are not activated(which means that don't get caclulated)
                     not_act_attribute: Attribute
@@ -173,7 +195,7 @@ class ReductionPhase(ICalculationPhase):
 
                     # Add the calculated data for a single osm element to the main saving point
                     for key_data_entry, value_data_entry in data_entry.items():
-                        if len (value_data_entry) != 1:
+                        if len(value_data_entry) != 1:
                             reduction_phase_data[key_data_entry] += value_data_entry[0]
 
                         else:
@@ -278,6 +300,7 @@ class ReductionPhase(ICalculationPhase):
                     df.drop(idx_node)
                     break
 
+    # TODO: MAYBE refactor this into category? Because its needed in attribute class
     def _find_default_value_entry_which_applies(self, default_value_list: List[DefaultValueEntry],
                                                 osm_element_tags: List[str]):
         """
