@@ -14,6 +14,7 @@ import src.osm_configurator.model.project.calculation.calculation_phase_enum as 
 import src.osm_configurator.model.model_constants as model_constants
 import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
+import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 
 from src.osm_configurator.model.parser.custom_exceptions.category_exception import CategoryException
 
@@ -26,6 +27,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParser
     from typing import Tuple
@@ -61,10 +63,16 @@ class AttractivityPhase(ICalculationPhase):
         except IllegalCutOutException as err:
             return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, str(err.args[0])
 
+        # Delete result files
+        result_folder: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase\
+            (configuration_manager, calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
+        deleter: FileDeletion = file_deletion.FileDeletion()
+        deleter.reset_folder(result_folder)
+
         # Iterate over all traffic cells and generate the attractivities
         index: int
         row: Series
-        for index, row in cells:
+        for index, row in cells.iterrows():
             cell_name: str = row[model_constants.CL_TRAFFIC_CELL_NAME]
             self._calculate_attractivity_in_traffic_cell(cell_name, configuration_manager)
 
@@ -78,9 +86,9 @@ class AttractivityPhase(ICalculationPhase):
                                                     calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
         attractivity_folder: Path = calculation_phase_utility \
             .get_checkpoints_folder_path_from_phase(config_manager,
-                                                    calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
-        input_path: Path = Path(os.path.join(reduction_folder, cell_name, ".csv"))
-        output_path: Path = Path(os.path.join(attractivity_folder, cell_name, ".csv"))
+                                                    calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
+        input_path: Path = Path(os.path.join(reduction_folder, cell_name + ".csv"))
+        output_path: Path = Path(os.path.join(attractivity_folder, cell_name + ".csv"))
         # TODO: magic strings
 
         # Read and create data frames
@@ -92,7 +100,7 @@ class AttractivityPhase(ICalculationPhase):
         element: Series
         for index, element in input_df.iterrows():
             try:
-                self._calculate_attractivity_for_element(element, output_df,
+                output_df = self._calculate_attractivity_for_element(element, output_df,
                                                          config_manager.get_category_manager().get_categories())
             except CategoryException as err:
                 return calculation_state_enum.CalculationState.ERROR_INVALID_CATEGORIES, err.args[0]
@@ -103,7 +111,7 @@ class AttractivityPhase(ICalculationPhase):
         return calculation_state_enum.CalculationState.RUNNING, "running"
 
     def _calculate_attractivity_for_element(self, element: Series, output_df: DataFrame,
-                                            category_list: List[Category]) -> bool:
+                                            category_list: List[Category]) -> DataFrame:
         category_name: str = element["category"]
         category: Category = self._get_category_by_name(category_name, category_list)
 
@@ -117,8 +125,8 @@ class AttractivityPhase(ICalculationPhase):
                 value += attractivity.get_attribute_factor(attribute) * element[attribute.get_name()]
             new_entry[attractivity.get_attractivity_attribute_name()] = value
 
-        output_df.append(new_entry)
-        return True
+        output_df = output_df.append(new_entry, ignore_index=True)
+        return output_df
 
     def _get_category_by_name(self, category_name: str, category_list: List[Category]) -> Category:
         list_of_categories_with_name = [cat for cat in category_list if cat.get_category_name() == category_name]
@@ -141,7 +149,6 @@ class AttractivityPhase(ICalculationPhase):
 
     def _init_dataframe(self, category_manager: CategoryManager) -> DataFrame:
         # Creates a dataframe that has the attractivity attributes as it's columns
-        df: DataFrame = pd.DataFrame()
         attractivity_names: List[str] = self._get_all_attractivity_names(category_manager)
-        df.columns = attractivity_names
+        df: DataFrame = pd.DataFrame(columns=attractivity_names)
         return df

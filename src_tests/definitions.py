@@ -6,6 +6,7 @@ import shapely as shp
 import src.osm_configurator.model.project.configuration.category as category_i
 import src.osm_configurator.model.project.configuration.category_manager as category_manager_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
+import src.osm_configurator.model.project.configuration.attractivity_attribute as attractivity_attribute
 
 from typing import TYPE_CHECKING
 
@@ -39,6 +40,22 @@ TEST_CATEGORY_SHOP: Final = category_i.Category()
 TEST_CATEGORY_SHOP.set_category_name(name)
 TEST_CATEGORY_SHOP.set_whitelist(blacklist)
 TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
+
+# Define attractivity attributes
+TEST_ATTRACTIVITY_COOLNESS: Final = attractivity_attribute.AttractivityAttribute("coolness", 0)
+TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 1)
+TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 0)
+
+TEST_ATTRACTIVITY_TRADING: Final = attractivity_attribute.AttractivityAttribute("trading", 100)
+TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 2)
+TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 3)
+
+# Set attractivities of categories
+TEST_CATEGORY_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
+TEST_CATEGORY_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING)
+TEST_CATEGORY_SHOP.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
 
 
 # Defining Test Category Manager
