@@ -1,12 +1,20 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.toplevelframes.settings_frame
-import src.osm_configurator.control.settings_controller_interface
-
+from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
+from src.osm_configurator.control.settings_controller_interface import ISettingsController
 from src.osm_configurator.view.activatable import Activatable
 
+import customtkinter
 
-class SettingsApplicationFrame(Activatable):
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
+    from src.osm_configurator.control.settings_controller_interface import ISettingsController
+    from src.osm_configurator.view.activatable import Activatable
+
+
+class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
     """
     This frame shows the settings of the application.
     """
@@ -19,7 +27,20 @@ class SettingsApplicationFrame(Activatable):
             parent (settings_frame.SettingsFrame): The parent of this frame where this frame will be located.
             settings_controller (settings_controller.SettingsController): Respective controller.
         """
-        pass
+        frame = super().__init__()
+
+        self._parent = parent
+        self._settings_controller = settings_controller
+
+        self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
+
+        self.header = customtkinter.CTkLabel(self, text="General Settings")
+        self.header.grid(row=0, column=0, padx=0, pady=0)
+
+        self.path_default_header = customtkinter.CTkLabel(self, text="Default Folder")
+        self.path_default_box = customtkinter.CTkLabel(self, text=self._project_default_folder.name)
+        self.change_default_path_button = customtkinter.CTkButton(self, text="Change Default Folder",
+                                                                  command=self.__change_default_folder)
 
     def activate(self):
         """
@@ -29,3 +50,12 @@ class SettingsApplicationFrame(Activatable):
             bool: True, if activation was successful, otherwise false.
         """
         pass
+
+    def __change_default_folder(self) -> bool:
+        """
+        Changes the default folder to the path that was entered in the textbox
+        Checks if the path is valid and confirms changes if so
+        Returns:
+            bool: True if change was successful, else false
+        """
+        return True
