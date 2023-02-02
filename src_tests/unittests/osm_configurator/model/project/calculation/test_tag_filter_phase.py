@@ -11,7 +11,7 @@ import src.osm_configurator.model.project.calculation.file_deletion as file_dele
 
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum_i
 
-from src_tests.definitions import TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP
+from src_tests.definitions import TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP
 
 from pathlib import Path
 import os
@@ -39,7 +39,7 @@ def _prepare_config(geojson: Path, project: Path, assert_existence: bool,
 
     config_manager.get_cut_out_configuration().set_cut_out_mode(cut_out_mode)
 
-    config_manager.get_category_manager().add_categories([TEST_CATEGORY_BUILDING,
+    config_manager.get_category_manager().add_categories([TEST_CATEGORY_SITE_AREA,
                                                           TEST_CATEGORY_NO_BUILDING,
                                                           TEST_CATEGORY_SHOP])
 

@@ -32,12 +32,17 @@ class DefaultValueFinder:
 
         _default_value_entry: DefaultValueEntry
         for _default_value_entry in default_value_list:
-            # This will return a dictionary with a single entry which is our tag
-            parsed_default_value_tag = tag_parser_o.parse_tags(
-                [_default_value_entry.get_default_value_entry_tag()])
 
-            # Since teh dictionary has only one entry we can get the key this way
-            key_tag_default_value_entry = parsed_default_value_tag.keys()[0]
+            # check that the default value has even an entry
+            default_tag: str = _default_value_entry.get_default_value_entry_tag()
+            if not default_tag:
+                continue
+
+            # This will return a dictionary with a single entry which is our tag
+            parsed_default_value_tag = tag_parser_o.parse_tags([default_tag])
+
+            # Since the dictionary has only one entry we can get the key this way
+            key_tag_default_value_entry = list(parsed_default_value_tag.keys())[0]
             value_tag_default_value_entry = parsed_default_value_tag.get(key_tag_default_value_entry)
 
             # gets set to true when osm element applies to default_value_list entry

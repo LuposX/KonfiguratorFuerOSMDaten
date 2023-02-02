@@ -25,3 +25,22 @@ class TestTagParser:
         with pytest.raises(Exception) as e:
             tag_parser.parse_tags(tags_wrongly_formated)
 
+    def teste_string_to_list(self):
+        tag_parser = tag_parser_i.TagParser()
+
+        tag1 = '["buildin:=yes", "building=no", "poop=384893_?$%ada", "building:level=298398_Ssfs90"]'
+        tag2 = "['buildin:=yes', 'building=no', 'poop=384893_?$%ada', 'building:level=298398_Ssfs90']"
+        tag3 = "['buildin:=yes']"
+        tag4 = '[]'
+
+        assert set(["buildin:=yes", "building=no", "poop=384893_?$%ada", "building:level=298398_Ssfs90"]) \
+               == set(tag_parser.string_to_list_parser(tag1))
+
+        assert set(['buildin:=yes', 'building=no', 'poop=384893_?$%ada', 'building:level=298398_Ssfs90']) \
+               == set(tag_parser.string_to_list_parser(tag2))
+
+        assert set(['buildin:=yes']) \
+               == set(tag_parser.string_to_list_parser(tag3))
+
+        assert set([]) \
+               == set(tag_parser.string_to_list_parser(tag4))

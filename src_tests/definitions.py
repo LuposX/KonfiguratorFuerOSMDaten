@@ -6,6 +6,7 @@ import shapely as shp
 import src.osm_configurator.model.project.configuration.category as category_i
 import src.osm_configurator.model.project.configuration.category_manager as category_manager_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
+import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 
 from typing import TYPE_CHECKING
 
@@ -21,30 +22,40 @@ if TYPE_CHECKING:
 # -------------------------
 name: str = "building_category"
 whitelist: List = ["building=*"]
-TEST_CATEGORY_BUILDING: Final = category_i.Category()
-TEST_CATEGORY_BUILDING.set_category_name(name)
-TEST_CATEGORY_BUILDING.set_whitelist(whitelist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+TEST_CATEGORY_SITE_AREA: Final = category_i.Category()
+TEST_CATEGORY_SITE_AREA.set_category_name(name)
+TEST_CATEGORY_SITE_AREA.set_whitelist(whitelist)
+TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+TEST_CATEGORY_SITE_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA)
+
+name: str = "building_category"
+whitelist: List = ["building=*"]
+TEST_CATEGORY_BUILDING_AREA: Final = category_i.Category()
+TEST_CATEGORY_BUILDING_AREA.set_category_name(name)
+TEST_CATEGORY_BUILDING_AREA.set_whitelist(whitelist)
+TEST_CATEGORY_BUILDING_AREA.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+TEST_CATEGORY_BUILDING_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
+
 
 name: str = "no_building_category"
 blacklist: List = ["building=*"]
 TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_NO_BUILDING.set_category_name(name)
 TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
+TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 
 name: str = "shop_category"
 blacklist: List = ["shop=*"]
 TEST_CATEGORY_SHOP: Final = category_i.Category()
 TEST_CATEGORY_SHOP.set_category_name(name)
 TEST_CATEGORY_SHOP.set_whitelist(blacklist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
+TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
 
 
 # Defining Test Category Manager
 # -------------------------
 CATEGORY_MANAGER = category_manager_i.CategoryManager()
-CATEGORY_MANAGER.add_categories([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
+CATEGORY_MANAGER.add_categories([TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
 
 
 # The Test folder

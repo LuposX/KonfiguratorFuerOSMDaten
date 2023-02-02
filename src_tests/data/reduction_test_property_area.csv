@@ -1,0 +1,9 @@
+,osm_type,element_name,WKT,tags,category
+0,node,the_shiggy_wiggy,"POINT (5 5)",[],no_building_category
+1,node,Po pi Po pi,"POINT (6 6)",[],no_building_category
+2,node,waltuh,"POINT (7 7)",["building=yes"],building_category
+3,node,big_reimu,"POINT (8 8)",["building=shop"],building_category
+4,area-way,missing,"POLYGON ((1 1, 1 2, 2 2, 2 1)))",["building=adjnajid"],building_category
+5,node,not_inside_1,"POINT (120 120)",[],building_category
+6,node,not_inside_2,"POINT (200 200)",[],no_building_category
+
