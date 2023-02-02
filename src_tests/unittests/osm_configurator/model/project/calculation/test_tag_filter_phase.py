@@ -39,9 +39,9 @@ def _prepare_config(geojson: Path, project: Path, assert_existence: bool,
 
     config_manager.get_cut_out_configuration().set_cut_out_mode(cut_out_mode)
 
-    config_manager.get_category_manager()._test_set_categories([TEST_CATEGORY_BUILDING,
-                                                                TEST_CATEGORY_NO_BUILDING,
-                                                                TEST_CATEGORY_SHOP])
+    config_manager.get_category_manager().add_categories([TEST_CATEGORY_BUILDING,
+                                                          TEST_CATEGORY_NO_BUILDING,
+                                                          TEST_CATEGORY_SHOP])
 
     return config_manager
 

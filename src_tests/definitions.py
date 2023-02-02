@@ -44,7 +44,7 @@ TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, T
 # Defining Test Category Manager
 # -------------------------
 CATEGORY_MANAGER = category_manager_i.CategoryManager()
-CATEGORY_MANAGER._test_set_categories([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
+CATEGORY_MANAGER.add_categories([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
 
 
 # The Test folder
