@@ -105,7 +105,7 @@ class CategoryManager:
             if category not in self._categories:
                 self._categories.append(category)
 
-    def _test_set_categories(self, categories: List):
+    def add_categories(self, categories: List):
         """
         This method is currently only used for testing.
         It sets the categories of the category manager
