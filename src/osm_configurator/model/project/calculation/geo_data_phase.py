@@ -6,7 +6,7 @@ from pathlib import Path
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calc_util
+import src.osm_configurator.model.project.calculation.folder_path_calculator as calc_util
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as phase_enum
 
 import src.osm_configurator.model.project.calculation.split_up_files as split_up_files

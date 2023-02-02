@@ -5,7 +5,7 @@ from src_tests.definitions import TEST_DIR
 import src.osm_configurator.model.project.calculation.tag_filter_phase as tag_filter_phase_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 

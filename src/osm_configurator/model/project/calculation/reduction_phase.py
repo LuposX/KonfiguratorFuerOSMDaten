@@ -3,7 +3,7 @@ from __future__ import annotations
 import src.osm_configurator.model.project.configuration.configuration_manager
 import src.osm_configurator.model.project.calculation.calculation_state_enum
 
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility_i
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum_i
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum_i
@@ -34,6 +34,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from geopandas import GeoDataFrame, GeoSeries
 
+
 class ReductionPhase(ICalculationPhase):
     """
     This calculation phase is responsible for reducing bigger OSM-elements on single coordinates and for generating
@@ -57,14 +58,14 @@ class ReductionPhase(ICalculationPhase):
         Returns:
               Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
-
+        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
         # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = calculation_phase_utility_i.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_last_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE)
 
         # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = calculation_phase_utility_i.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_current_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.REDUCTION_PHASE)
 
