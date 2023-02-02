@@ -18,7 +18,7 @@ class State:
     Those states can be 'none' in order so signify that there is no further right or left.
     """
 
-    def __init__(self, active_frames: list[PositionedFrame], own_state_name: StateName, default_left: StateName, default_right: StateName):
+    def __init__(self, active_frames: list[PositionedFrame], own_state_name: StateName, default_left: StateName | None, default_right: StateName | None):
         """
         This method creates a new state, that holds the given frames, has the given state name,
         and has a default left and right.
