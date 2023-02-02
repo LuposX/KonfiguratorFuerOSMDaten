@@ -37,16 +37,22 @@ class SettingsProjectFrame(customtkinter.CTkFrame, Activatable):
         self._project_name = ISettingsController.get_project_name(self._settings_controller)
         self._project_description = ISettingsController.get_project_description(self._settings_controller)
 
-        self.header = customtkinter.CTkLabel(self, text="Current Project")
-        self.header.grid(row=0, column=0, padx=10, pady=10)
+        self.header = customtkinter.CTkLabel(self, text="Current Project") \
+            .pack(side="top")
 
-        self.project_name_box = customtkinter.CTkTextbox(self, text=self._project_name)
+        self.project_name_box = customtkinter.CTkTextbox(self, text=self._project_name) \
+            .pack(side="top")
+
         self.change_project_name_button = customtkinter.CTkButton(self, text="Change Project Name",
-                                                                  command=self.__change_project_name)
+                                                                  command=self.__change_project_name) \
+            .pack(side="left")
 
-        self.description_box = customtkinter.CTkTextbox(self, text=self._project_description)
+        self.description_box = customtkinter.CTkTextbox(self, text=self._project_description) \
+            .pack(side="left")
+
         self.change_description_button = customtkinter.CTkButton(self, text="Change Project Description",
-                                                                 command=self.__change_project_description)
+                                                                 command=self.__change_project_description) \
+            .pack(side="left")
 
     def activate(self) -> bool:
         """
