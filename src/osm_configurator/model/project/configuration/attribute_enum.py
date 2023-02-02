@@ -94,10 +94,11 @@ def _calculate_number_of_floors(category: Category,
                                 curr_default_value: DefaultValueEntry,
                                 data: Any) -> float:
     tag_parser_o = tag_parser_i.TagParser()
-    for tag in osm_element[model_constants_i.CL_TAGS]:
-        parsed_tag = tag_parser_o.parse_tags(tag)
-        if NUMBER_FLOOR_KEY in parsed_tag.keys():
-            return float(parsed_tag.get(NUMBER_FLOOR_KEY))
+    parsed_tags: Dict = tag_parser_o.parse_tags(osm_element[model_constants_i.CL_TAGS])
+
+    for key, value in parsed_tags.items():
+        if NUMBER_FLOOR_KEY == key:
+            return float(value)
 
     return curr_default_value.get_attribute_default(Attribute.NUMBER_OF_FLOOR)
 
@@ -170,7 +171,7 @@ class Attribute(Enum):
         Returns:
             float: the calculated value
         """
-        return self.value[2](category, osm_element, prev_calculated_attributes, data)
+        return self.value[2](category, osm_element, prev_calculated_attributes, curr_default_value, data)
 
     @classmethod
     def get_all_tags(cls) -> List[str]:
