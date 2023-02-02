@@ -1,21 +1,20 @@
 from __future__ import annotations
 
 from enum import Enum, unique
+from typing import TYPE_CHECKING
 
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
-import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
+import \
+    src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List, Dict, Tuple, Callable, Final, Any
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from geopandas import GeoSeries, GeoDataFrame
-    from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
-    from src.osm_configurator.model.project.calculation.reduction_phase import ReductionPhase
     from src.osm_configurator.model.project.calculation.default_value_finder import DefaultValueFinder
 
 
@@ -84,7 +83,6 @@ def _calculate_property_area(category: Category,
 
         return area_sum
 
-
     # For future expansion maybe used.
     else:
         return curr_default_value.get_attribute_default(Attribute.PROPERTY_AREA)
@@ -100,6 +98,8 @@ def _calculate_number_of_floors(category: Category,
         parsed_tag = tag_parser_o.parse_tags(tag)
         if NUMBER_FLOOR_KEY in parsed_tag.keys():
             return float(parsed_tag.get(NUMBER_FLOOR_KEY))
+
+    return curr_default_value.get_attribute_default(Attribute.NUMBER_OF_FLOOR)
 
 
 def _calculate_floor_area(category: Category,
