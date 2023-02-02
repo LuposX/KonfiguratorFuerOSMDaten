@@ -1,12 +1,21 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.settings_controller_interface
-
+from src.osm_configurator.view.states.state_manager import StateManager
+from src.osm_configurator.control.settings_controller_interface import ISettingsController
+from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
+from typing import TYPE_CHECKING
+import customtkinter
 
-class SettingsFrame(TopLevelFrame):
+if TYPE_CHECKING:
+    from src.osm_configurator.view.states.state_manager import StateManager
+    from src.osm_configurator.control.settings_controller_interface import ISettingsController
+    from src.osm_configurator.view.activatable import Activatable
+    from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+
+
+class SettingsFrame(Activatable, customtkinter.CTkToplevel):
     """
     This frame shows the user the settings for:
     - The application
@@ -23,8 +32,10 @@ class SettingsFrame(TopLevelFrame):
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
             settings_controller (settings_controller.SettingsController): Respective controller
         """
-        # super().__init__(state_manager, control)
-        pass
+        window = super().__init__()
+
+        self._state_manager = state_manager
+        self._settings_controller = settings_controller
 
     def activate(self):
         pass
