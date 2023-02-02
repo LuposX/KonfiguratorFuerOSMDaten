@@ -5,6 +5,7 @@ from enum import Enum, unique
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
+import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
 
 from typing import TYPE_CHECKING
 
@@ -15,6 +16,8 @@ if TYPE_CHECKING:
     from geopandas import GeoSeries, GeoDataFrame
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.project.calculation.reduction_phase import ReductionPhase
+    from src.osm_configurator.model.project.calculation.default_value_finder import DefaultValueFinder
+
 
 NUMBER_FLOOR_KEY: Final = "building:levels"
 BUILDING_KEY: Final = "Building"
@@ -34,8 +37,9 @@ def _calculate_property_area(category: Category,
                              prev_calculated_attributes: Dict[str, float],
                              curr_default_value: DefaultValueEntry,
                              data: Any) -> float:
-    df: GeoDataFrame = data[0]
-    reduction_phase: ReductionPhase = data[1] # Not Ideal, maybe refactoring the method we need into category?
+    df: GeoDataFrame = data
+
+    default_value_finder_o: DefaultValueFinder = default_value_finder_i.DefaultValueEntry()
 
     # if the osm element we look at is a node, we can't calculate the value of it
     if osm_element[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
@@ -67,8 +71,8 @@ def _calculate_property_area(category: Category,
                 if found_series[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
                     curr_default_value_list: List[DefaultValueEntry] = category.get_default_value_list()
 
-                    default_value: DefaultValueEntry = reduction_phase\
-                        ._find_default_value_entry_which_applies(curr_default_value_list,
+                    default_value: DefaultValueEntry = default_value_finder_o\
+                        .find_default_value_entry_which_applies(curr_default_value_list,
                                                                  found_series[model_constants_i.CL_TAGS])
 
                     # add default values to the sum
