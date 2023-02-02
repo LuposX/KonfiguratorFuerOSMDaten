@@ -22,42 +22,43 @@ if TYPE_CHECKING:
 os.environ["PROJ_LIB"] = ""
 
 
-def test_correct_parsing():
-    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-    parser: CutOutParserInterface = cop.CutOutParser()
-    df: GeoDataFrame = parser.parse_cutout_file(geojson_path)
+class TestCutOutParser:
+    def test_correct_parsing(self):
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
+        parser: CutOutParserInterface = cop.CutOutParser()
+        df: GeoDataFrame = parser.parse_cutout_file(geojson_path)
 
-    # Test non generated names
-    assert df[model_constants.CL_TRAFFIC_CELL_NAME][0] == "0_super_traffic_cell"
-    assert df[model_constants.CL_TRAFFIC_CELL_NAME][1] == "1_the_funny_cat"
+        # Test non generated names
+        assert df[model_constants.CL_TRAFFIC_CELL_NAME][0] == "0_super_traffic_cell"
+        assert df[model_constants.CL_TRAFFIC_CELL_NAME][1] == "1_the_funny_cat"
 
-    # Test auto generated names
-    assert df[model_constants.CL_TRAFFIC_CELL_NAME][2] == "2_traffic_cell"
-    assert df[model_constants.CL_TRAFFIC_CELL_NAME][3] == "3_traffic_cell"
+        # Test auto generated names
+        assert df[model_constants.CL_TRAFFIC_CELL_NAME][2] == "2_traffic_cell"
+        assert df[model_constants.CL_TRAFFIC_CELL_NAME][3] == "3_traffic_cell"
 
-    # Test parsed geometry
-    assert MONACO_TRAFFIC_CELL_0_POLYGON == df[model_constants.CL_GEOMETRY][0]
-    assert MONACO_TRAFFIC_CELL_1_POLYGON == df[model_constants.CL_GEOMETRY][1]
-    assert "7.430574755831088 43.74116219248498" in str(df[model_constants.CL_GEOMETRY][5])
-
-
-def test_illegal_path():
-    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/asassa/sdjladlas.geojson"))
-    parser: CutOutParserInterface = cop.CutOutParser()
-    try:
-        parser.parse_cutout_file(geojson_path)
-    except IllegalCutOutException as err:
-        return
-
-    assert False
+        # Test parsed geometry
+        assert MONACO_TRAFFIC_CELL_0_POLYGON == df[model_constants.CL_GEOMETRY][0]
+        assert MONACO_TRAFFIC_CELL_1_POLYGON == df[model_constants.CL_GEOMETRY][1]
+        assert "7.430574755831088 43.74116219248498" in str(df[model_constants.CL_GEOMETRY][5])
 
 
-def test_none_path():
-    geojson_path: Path = Path(os.path.join(TEST_DIR))
-    parser = cop.CutOutParser()
-    try:
-        df = parser.parse_cutout_file(geojson_path)
-    except IllegalCutOutException as err:
-        return
+    def test_illegal_path(self):
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/asassa/sdjladlas.geojson"))
+        parser: CutOutParserInterface = cop.CutOutParser()
+        try:
+            parser.parse_cutout_file(geojson_path)
+        except IllegalCutOutException as err:
+            return
 
-    assert False
+        assert False
+
+
+    def test_none_path(self):
+        geojson_path: Path = Path(os.path.join(TEST_DIR))
+        parser = cop.CutOutParser()
+        try:
+            df = parser.parse_cutout_file(geojson_path)
+        except IllegalCutOutException as err:
+            return
+
+        assert False
