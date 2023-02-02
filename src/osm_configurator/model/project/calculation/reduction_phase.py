@@ -1,14 +1,10 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.configuration.configuration_manager
-import src.osm_configurator.model.project.calculation.calculation_state_enum
-
 import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum_i
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum_i
 import src.osm_configurator.model.model_constants as model_constants_i
-import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
@@ -107,7 +103,7 @@ class ReductionPhase(ICalculationPhase):
             # Initialize Data
             # --------------.
             # Initialize a dictionary in which we will save our calculated data
-            reduction_phase_data = self._initalize_data_save()
+            reduction_phase_data = self._initialize_data_save()
 
             default_value_finder_o = default_value_finder_i.DefaultValueEntry()
 
@@ -122,7 +118,7 @@ class ReductionPhase(ICalculationPhase):
                 # Initialize a temporal data save location
                 # just used for a single osm element
                 # we do this, so we can compare at the end if we have an entry for each key.
-                data_entry: Dict = self._initalize_data_save()
+                data_entry: Dict = self._initialize_data_save()
 
                 curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
                 curr_calculated_method_of_area: CalculationMethodOfArea = curr_category.get_calculation_method_of_area()
@@ -144,7 +140,7 @@ class ReductionPhase(ICalculationPhase):
                     # previously calculated attributes temp data saver
                     already_calculated_attributes: Dict[str, float] = {}
 
-                    # Add the attributes t o the list that are not activated(which means that don't get caclulated)
+                    # Add the attributes t o the list that are not activated(which means that don't get calculated)
                     not_act_attribute: Attribute
                     for not_act_attribute in not_activated_attributes:
                         tmp_default_value: float = curr_default_value.get_attribute_default(
@@ -177,7 +173,7 @@ class ReductionPhase(ICalculationPhase):
                     for key_act_attribute, value_act_attribute in activated_attributes_dict.items():
                         if key_act_attribute == attribute_enum_i.Attribute.PROPERTY_AREA:
                             # property needs to be treated special, because it depends on special data
-                            # i.e all osm element which lie in its border.
+                            # i.e. all osm element which lie in its border.
 
                             curr_category.get_calculation_method_of_area()
 
@@ -235,12 +231,12 @@ class ReductionPhase(ICalculationPhase):
 
             return calculation_state_enum_i.CalculationState.RUNNING, ""
 
-    def _initalize_data_save(self):
+    def _initialize_data_save(self):
         """
         This method is used to create a dictionary with the correct keys which are the
         attributes which we want to save and other information about the osm element such as the name.
         The Dictionary has as key one type of information for the osm element which will later be transformed
-        in a column in the dataframe and each key has a signel has a list of values.
+        in a column in the dataframe and each key has a  list of values.
         """
         reduction_phase_data: Dict = {}
 
@@ -283,7 +279,7 @@ class ReductionPhase(ICalculationPhase):
         # it lies we delete the node.
         # So we iterate over all osm_elements which are area and check if there are nodes in it
         # if yes we check if they have the same category and if yes we delete them, otherwise they can stay.
-        # TODO: the index of new geodatframe should have the same index as the old ones, if not ehre is the issue.
+        # TODO: the index of new geodatframe should have the same index as the old ones, if not here is the issue.
         area_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_WAY_NAME) | (
                     df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
         node_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME)]
@@ -298,7 +294,7 @@ class ReductionPhase(ICalculationPhase):
             # iterate over them and check their categories
             i: int
             found_series: GeoSeries
-            # The iloc takes in our geoseries which consists of boolean values and returns all entries
+            # The iloc takes in our geo-series which consists of boolean values and returns all entries
             # in the dataframe which row number is true.
             for i, found_series in area_df.loc[found_areas_bool].iterrows():
                 # This checks if the category name of the found_area is the same as the node ones

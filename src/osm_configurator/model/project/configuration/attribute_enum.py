@@ -22,7 +22,7 @@ NUMBER_FLOOR_KEY: Final = "building:levels"
 BUILDING_KEY: Final = "Building"
 
 """
-If you want to add another Attribute to this method all you need to do is insert the approiate attribute in the enum
+If you want to add another Attribute to this method all you need to do is insert the appropriate attribute in the enum
 definition, notice orders matter.
 And furthermore define what the function should calculate on the osm element.
 Each function gets the category of the osm element, all previously calculated attributes in a dictionary and
