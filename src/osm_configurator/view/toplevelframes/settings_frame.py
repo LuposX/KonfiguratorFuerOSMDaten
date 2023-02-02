@@ -4,6 +4,8 @@ from src.osm_configurator.view.states.state_manager import StateManager
 from src.osm_configurator.control.settings_controller_interface import ISettingsController
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+from src.osm_configurator.view.utilityframes.settings_application_frame import SettingsApplicationFrame
+from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
 
 from typing import TYPE_CHECKING
 import customtkinter
@@ -13,6 +15,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.activatable import Activatable
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+    from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
+    from src.osm_configurator.view.utilityframes.settings_application_frame import SettingsApplicationFrame
 
 
 class SettingsFrame(Activatable, customtkinter.CTkToplevel):
@@ -36,6 +40,16 @@ class SettingsFrame(Activatable, customtkinter.CTkToplevel):
 
         self._state_manager = state_manager
         self._settings_controller = settings_controller
+
+        self.title = "Settings Frame"
+
+        self.settings_application_frame = \
+            SettingsApplicationFrame(self, self._settings_controller) \
+            .pack(side="top")
+
+        self.create_project_frame = \
+            SettingsProjectFrame(self, self._settings_controller) \
+            .pack(side="bottom")
 
     def activate(self):
         pass
