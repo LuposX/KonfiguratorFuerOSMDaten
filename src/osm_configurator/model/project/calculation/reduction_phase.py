@@ -141,6 +141,20 @@ class ReductionPhase(ICalculationPhase):
                     # get the not activated
                     not_activated_attributes: List[Attribute] = curr_category.get_not_activated_attribute()
 
+                    # previously calculated attributes temp data saver
+                    already_calculated_attributes: Dict[str, float] = {}
+
+                    # Add the attributes t o the list that are not activated(which means that don't get caclulated)
+                    not_act_attribute: Attribute
+                    for not_act_attribute in not_activated_attributes:
+                        tmp_default_value: float = curr_default_value.get_attribute_default(
+                            not_act_attribute)
+                        data_entry[not_act_attribute.get_name()] += tmp_default_value
+
+                        # we save already calculated attributes in this list if we have attributes
+                        # which are dependent on other attributes which need to be calculated first.
+                        already_calculated_attributes.update({not_act_attribute.get_name(): tmp_default_value})
+
                     # transform list into a dictionary
                     activated_attributes_dict: Dict
                     for attribute_entry in activated_attributes:
@@ -156,9 +170,6 @@ class ReductionPhase(ICalculationPhase):
 
                         else:
                             data_entry[DF_CL_NAME] += row[DF_CL_NAME]
-
-                    # previously calculated attributes temp data saver
-                    already_calculated_attributes: Dict[str, float] = {}
 
                     # calculate the not activated attributes
                     key_act_attribute: str
@@ -189,11 +200,6 @@ class ReductionPhase(ICalculationPhase):
 
                         # The data entry will later be saved to our main memory for all osm elements
                         data_entry[key_act_attribute] += calculated_value
-
-                    # Add the attributes to the list that are not activated(which means that don't get caclulated)
-                    not_act_attribute: Attribute
-                    for not_act_attribute in not_activated_attributes:
-                        data_entry[not_act_attribute.get_name()] += curr_default_value.get_attribute_default(not_act_attribute)
 
                     # Add the calculated data for a single osm element to the main saving point
                     for key_data_entry, value_data_entry in data_entry.items():

@@ -107,16 +107,10 @@ def _calculate_floor_area(category: Category,
                           prev_calculated_attributes: Dict[str, float],
                           curr_default_value: DefaultValueEntry,
                           data: Any) -> float:
-    raise NotImplemented
 
     # if the osm element we look at is a node, we can't calculate the value of it
     if osm_element[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
         return curr_default_value.get_attribute_default(Attribute.FLOOR_AREA)
-
-    # we only need to claculate floor are if this got set by the user.
-    # TODO: write this condition finish
-    # elif category.floo
-       # return curr_default_value.get_attribute_default(Attribute.FLOOR_AREA)
 
     else:
         return prev_calculated_attributes.get(Attribute.PROPERTY_AREA.get_name()) * prev_calculated_attributes.get(Attribute.NUMBER_OF_FLOOR.get_name())
