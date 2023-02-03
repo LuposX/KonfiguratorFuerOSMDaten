@@ -61,7 +61,12 @@ class SettingsProjectFrame(customtkinter.CTkFrame, Activatable):
         Returns:
             bool: True, if activation was successful, otherwise false.
         """
-        pass
+        self._project_name = ISettingsController.get_project_name(self._settings_controller)
+        self._project_description = ISettingsController.get_project_description(self._settings_controller)
+
+        if self._project_name != "":
+            return True
+        return False
 
     def __change_project_name(self) -> bool:
         """

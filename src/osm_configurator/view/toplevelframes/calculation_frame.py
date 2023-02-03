@@ -63,8 +63,10 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
                                     command=self.__aggregation_pressed)
         ]
 
+        counter = 0  # helps to align the buttons
         for button in self.buttons:
-            button.pack(side="left", padx=40, pady=40)
+            button.grid(row=counter, line=0, padx=40, pady=40)
+            counter += 1
 
     def activate(self):
         self.__activate_buttons()
@@ -98,6 +100,8 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
     def __disable_buttons(self):
         """
         Makes a list of buttons non-clickable
+        Colors the clicked button yellow, the lower buttons are colored green.
+        All other buttons keep their original color
         """
         counter = 0
         starting_index = self._starting_point.get_order()
@@ -129,11 +133,11 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
         self.progressbar = \
             customtkinter.CTkProgressBar(master=self.window, progress_color="green", width=400,
                                          orientation="horizontal") \
-            .pack(side="right", padx=40, pady=40)
+                .pack(side="right", padx=40, pady=40)
 
         cancel_button = \
-            customtkinter.CTkButton(master=self.window, text="Cancel", bg_color="red", command=self.__stop_calculation)\
-            .pack(side="right", padx=40, pady=40)
+            customtkinter.CTkButton(master=self.window, text="Cancel", bg_color="red", command=self.__stop_calculation) \
+                .pack(side="right", padx=40, pady=40)
 
         self.buttons.append(cancel_button)
 

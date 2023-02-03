@@ -45,11 +45,22 @@ class SettingsFrame(Activatable, customtkinter.CTkToplevel):
 
         self.settings_application_frame = \
             SettingsApplicationFrame(self, self._settings_controller) \
-            .pack(side="top")
+            .pack(side="top", padx=10, pady=10)
 
         self.create_project_frame = \
             SettingsProjectFrame(self, self._settings_controller) \
-            .pack(side="bottom")
+            .pack(side="bottom", padx=10, pady=10)
 
-    def activate(self):
-        pass
+    def activate(self) -> bool:
+        """
+        Gets called if the window is called.
+        Calls the activate functions of the frames
+        Returns:
+            bool: True, if activation was successful, else false
+        """
+        settings_activation = self.settings_application_frame.activate()
+        create_project_activation = self.create_project_frame.activate()
+
+        if settings_activation and create_project_activation:
+            return True  # Activation successful
+        return False

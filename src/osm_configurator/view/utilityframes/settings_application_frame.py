@@ -38,26 +38,30 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
         self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
 
         self.header = customtkinter.CTkLabel(self, text="General Settings")
-        self.header.pack(side="top")
+        self.header.grid(row=0, line=0, xpad=30, ypad=30)
 
         self.path_default_header = customtkinter.CTkLabel(self, text="Default Folder") \
-            .pack(side="top")
+            .grid(row=1, line=0, xpad=20, ypad=20)
 
         self.path_default_box = customtkinter.CTkTextbox(self, text=self._project_default_folder.name) \
-            .pack(side="left")
+            .grid(row=2, line=0, xpad=20, ypad=20)
 
         self.change_default_path_button = customtkinter.CTkButton(self, text="Change Default Folder",
                                                                   command=self.__change_default_folder) \
-            .pack(side="left")
+            .grid(row=3, line=0, xpad=20, ypad=20)
 
-    def activate(self):
+    def activate(self) -> bool:
         """
         Tells the current frame to activate and collect all the data it needs.
 
         Returns:
             bool: True, if activation was successful, otherwise false.
         """
-        pass
+        self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
+
+        if self._project_default_folder != "":
+            return True
+        return False
 
     def __change_default_folder(self) -> bool:
         """

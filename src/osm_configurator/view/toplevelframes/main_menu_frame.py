@@ -42,16 +42,16 @@ class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
         # Implementing the buttons
 
         customtkinter.CTkButton(self, text="New Project", command=self.__create_project) \
-            .pack(side="left", padx=40, pady=40)
+            .grid(row=0, line=0, padx=40, pady=40)
 
         customtkinter.CTkButton(self, text="Load external Project") \
-            .pack(side="left", padx=40, pady=40)
+            .grid(row=1, line=0, padx=40, pady=40)
 
         customtkinter.CTkButton(self, text="Load selected Project") \
-            .pack(side="left", padx=40, pady=40)
+            .grid(row=2, line=0, padx=40, pady=40)
 
         customtkinter.CTkButton(self, text="Settings", command=self.__call_settings()) \
-            .pack(side="left", padx=40, pady=40)
+            .grid(row=3, line=0, padx=40, pady=40)
 
         # showing all entries in custom boxes
         for passive_project in self._passive_projects:
@@ -62,12 +62,15 @@ class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
                                     command=self.__load_project(passive_project)) \
                 .pack(side="right", padx=20, pady=10)  # creates and places the button
 
-    def activate(self):
+    def activate(self) -> bool:
         """
         Overwrites the activate function from the Activatable-Interface
         Fetches all the data needed to update the window accordingly
+        Returns:
+            bool: True if activation was successful, else false
         """
         self._passive_projects = self._project_controller.get_list_of_passive_projects()
+        return True
 
     def __load_project(self, passive_project: PassiveProject):
         """
