@@ -7,6 +7,7 @@ from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 
 from pathlib import Path
 import customtkinter
+from tkinter import filedialog
 
 from typing import TYPE_CHECKING
 
@@ -43,12 +44,12 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
         self.path_default_header = customtkinter.CTkLabel(self, text="Default Folder") \
             .grid(row=1, line=0, xpad=20, ypad=20)
 
-        self.path_default_box = customtkinter.CTkTextbox(self, text=self._project_default_folder.name) \
-            .grid(row=2, line=0, xpad=20, ypad=20)
+        self.path_default_box = customtkinter.CTkTextbox(self, text=self._project_default_folder.name, state="disabled") \
+            .grid(row=2, line=0, xpad=20, ypad=20)  # Creates a read-only textbox showing the default-filepath
 
         self.change_default_path_button = customtkinter.CTkButton(self, text="Change Default Folder",
                                                                   command=self.__change_default_folder) \
-            .grid(row=3, line=0, xpad=20, ypad=20)
+            .grid(row=3, line=0, xpad=20, ypad=20)  # button to browse for a new default folder
 
     def activate(self) -> bool:
         """
@@ -65,20 +66,32 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
 
     def __change_default_folder(self) -> bool:
         """
-        Changes the default folder to the path that was entered in the textbox
-        Checks if the path is valid and confirms changes if so
+        Opens the explorer making the user choose a new path for the default folder
+        Changes the default folder to the path that was chosen.
+        Checks if the path is valid and confirms changes if so.
         If the path is not valid a popup will be shown reloading the page
         Returns:
             bool: True if change was successful, else False
         """
-        #  TODO: Explorer öffnen
-        new_path = Path(self.path_default_box.get("0.0", "end"))
+        new_path = Path(self.__browse_files())
 
         if new_path.exists():
             self._project_default_folder = new_path
-            self._settings_controller.set_project_default_folder(new_path)  # updates the path
+            self._settings_controller.set_project_default_folder(new_path)  # Updates the path
+            self.path_default_box.configure(text=new_path.name)  # Updates the textbox
             return True
         popup = AlertPopUp("Please enter a valid path!")
         popup.mainloop()  # shows the popup
         self.activate()  # reloads the page
         return False
+
+    def __browse_files(self) -> str:
+        """
+        Opens the explorer starting from the default-folder making the user browse for the searched path
+        Returns:
+            str: The path-name
+        """
+        new_path = filedialog.askopenfilename(initialdir=self._project_default_folder,
+                                              title="Select a File",
+                                              filetypes=".geojson")
+        return new_path
