@@ -53,41 +53,71 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
 
 # Final Variables
-AGGREGATION_LINE: Final = 0
+FRAME_STICKY_TOP_LEFT: Final = "NW"
+FRAME_STICKY_TOP_RIGHT: Final = "NE"
+FRAME_STICKY_BOTTOM_LEFT: Final = "SW"
+FRAME_STICKY_BOTTOM_RIGHT: Final = "SE"
+FRAME_STICKY_WHOLE_CELL: Final = "NSEW"
+
+AGGREGATION_ROW: Final = 0
 AGGREGATION_COLUM: Final = 0
+AGGREGATION_ROW_SPAN: Final = 1
+AGGREGATION_COLUM_SPAN: Final = 1
 
-MAIN_MENU_LINE: Final = 0
+MAIN_MENU_ROW: Final = 0
 MAIN_MENU_COLUM: Final = 0
+MAIN_MENU_ROW_SPAN: Final = 1
+MAIN_MENU_COLUM_SPAN: Final = 1
 
-CREATE_PROJECT_LINE: Final = 0
+CREATE_PROJECT_ROW: Final = 0
 CREATE_PROJECT_COLUM: Final = 0
+CREATE_PROJECT_ROW_SPAN: Final = 1
+CREATE_PROJECT_COLUM_SPAN: Final = 1
 
-PROJECT_HEAD_FRAME_LINE: Final = 0
+PROJECT_HEAD_FRAME_ROW: Final = 0
 PROJECT_HEAD_FRAME_COLUM: Final = 0
+PROJECT_HEAD_FRAME_ROW_SPAN: Final = 1
+PROJECT_HEAD_FRAME_COLUM_SPAN: Final = 1
 
-PROJECT_FOOT_FRAME_LINE: Final = 0
-PROJECT_FOOT_FRAME_COLUM = 0
+PROJECT_FOOT_FRAME_ROW: Final = 0
+PROJECT_FOOT_FRAME_COLUM: Final = 0
+PROJECT_FOOT_FRAME_ROW_SPAN: Final = 1
+PROJECT_FOOT_FRAME_COLUM_SPAN: Final = 1
 
-ATTRACTIVITY_VIEW_FRAME_LINE: Final = 0
+ATTRACTIVITY_VIEW_FRAME_ROW: Final = 0
 ATTRACTIVITY_VIEW_FRAME_COLUM: Final = 0
+ATTRACTIVITY_VIEW_FRAME_ROW_SPAN: Final = 1
+ATTRACTIVITY_VIEW_FRAME_COLUM_SPAN: Final = 1
 
-ATTRACTIVITY_EDIT_FRAME_LINE: Final = 0
+ATTRACTIVITY_EDIT_FRAME_ROW: Final = 0
 ATTRACTIVITY_EDIT_FRAME_COLUM: Final = 0
+ATTRACTIVITY_EDIT_FRAME_ROW_SPAN: Final = 1
+ATTRACTIVITY_EDIT_FRAME_COLUM_SPAN: Final = 1
 
-CALCULATION_FRAME_LINE: Final = 0
+CALCULATION_FRAME_ROW: Final = 0
 CALCULATION_FRAME_COLUM: Final = 0
+CALCULATION_FRAME_ROW_SPAN: Final = 1
+CALCULATION_FRAME_COLUM_SPAN: Final = 1
 
-CATEGORY_FRAME_LINE: Final = 0
+CATEGORY_FRAME_ROW: Final = 0
 CATEGORY_FRAME_COLUM: Final = 0
+CATEGORY_FRAME_ROW_SPAN: Final = 1
+CATEGORY_FRAME_COLUM_SPAN: Final = 1
 
-DATA_FRAME_LINE: Final = 0
+DATA_FRAME_ROW: Final = 0
 DATA_FRAME_COLUM: Final = 0
+DATA_FRAME_ROW_SPAN: Final = 1
+DATA_FRAME_COLUM_SPAN: Final = 1
 
-REDUCTION_FRAME_LINE: Final = 0
+REDUCTION_FRAME_ROW: Final = 0
 REDUCTION_FRAME_COLUM: Final = 0
+REDUCTION_FRAME_ROW_SPAN: Final = 1
+REDUCTION_FRAME_COLUM_SPAN: Final = 1
 
-SETTINGS_FRAME_LINE: Final = 0
+SETTINGS_FRAME_ROW: Final = 0
 SETTINGS_FRAME_COLUM: Final = 0
+SETTINGS_FRAME_ROW_SPAN: Final = 1
+SETTINGS_FRAME_COLUM_SPAN: Final = 1
 
 
 class StateManager:
@@ -149,14 +179,18 @@ class StateManager:
         # Main Menu State
         main_menu_frame = main_menu_frame_i.MainMenuFrame(self, project_controller)
         positioned_main_menu_frame = positioned_frame_i.PositionedFrame(main_menu_frame, MAIN_MENU_COLUM,
-                                                                        MAIN_MENU_LINE)
+                                                                        MAIN_MENU_ROW, MAIN_MENU_COLUM_SPAN,
+                                                                        MAIN_MENU_ROW_SPAN, FRAME_STICKY_WHOLE_CELL)
         state_main_menu = State(list[positioned_main_menu_frame], state_name_enum_i.StateName.MAIN_MENU, None, None)
         all_states.append(state_main_menu)
 
         # Create Project State
         create_project_frame = create_project_frame_i.CreateProjectFrame(self, project_controller)
         positioned_create_project_frame = positioned_frame_i.PositionedFrame(create_project_frame, CREATE_PROJECT_COLUM,
-                                                                             CREATE_PROJECT_LINE)
+                                                                             CREATE_PROJECT_ROW,
+                                                                             CREATE_PROJECT_COLUM_SPAN,
+                                                                             CREATE_PROJECT_ROW_SPAN,
+                                                                             FRAME_STICKY_WHOLE_CELL)
         state_create_project = State(list[positioned_create_project_frame], state_name_enum_i.StateName.CREATE_PROJECT,
                                      None, None)
         all_states.append(state_create_project)
@@ -164,17 +198,24 @@ class StateManager:
         # Project Head Frame
         project_head_frame = project_head_frame_i.ProjectHeadFrame(self, export_controller, project_controller)
         positioned_project_head_frame = positioned_frame_i.PositionedFrame(project_head_frame, PROJECT_HEAD_FRAME_COLUM,
-                                                                           PROJECT_HEAD_FRAME_LINE)
+                                                                           PROJECT_HEAD_FRAME_ROW,
+                                                                           PROJECT_HEAD_FRAME_COLUM_SPAN,
+                                                                           PROJECT_HEAD_FRAME_ROW_SPAN,
+                                                                           FRAME_STICKY_WHOLE_CELL)
 
         # Project Foot Frame
         project_foot_frame = project_foot_frame_i.ProjectFootFrame(self, project_controller)
         positioned_project_foot_frame = positioned_frame_i.PositionedFrame(project_foot_frame, PROJECT_FOOT_FRAME_COLUM,
-                                                                           PROJECT_FOOT_FRAME_LINE)
+                                                                           PROJECT_FOOT_FRAME_ROW,
+                                                                           PROJECT_FOOT_FRAME_COLUM_SPAN,
+                                                                           PROJECT_FOOT_FRAME_ROW_SPAN,
+                                                                           FRAME_STICKY_WHOLE_CELL)
 
         # Aggregation Frame State
         aggregation_frame = aggregation_frame_i.AggregationFrame(self, aggregation_controller)
         positioned_aggregation_frame = positioned_frame_i.PositionedFrame(aggregation_frame, AGGREGATION_COLUM,
-                                                                          AGGREGATION_LINE)
+                                                                          AGGREGATION_ROW, AGGREGATION_COLUM_SPAN,
+                                                                          AGGREGATION_ROW_SPAN, FRAME_STICKY_WHOLE_CELL)
         state_aggregation_frame = State(
             list[positioned_project_head_frame, positioned_project_foot_frame, positioned_aggregation_frame],
             state_name_enum_i.StateName.AGGREGATION, state_name_enum_i.StateName.ATTRACTIVITY_EDIT,
@@ -185,10 +226,17 @@ class StateManager:
         attractivity_edit_frame = attractivity_edit_frame_i.AttractivityEditFrame(self, category_controller)
         positioned_attractivity_edit_frame = positioned_frame_i.PositionedFrame(attractivity_edit_frame,
                                                                                 ATTRACTIVITY_EDIT_FRAME_COLUM,
-                                                                                ATTRACTIVITY_EDIT_FRAME_LINE)
+                                                                                ATTRACTIVITY_EDIT_FRAME_ROW,
+                                                                                ATTRACTIVITY_EDIT_FRAME_COLUM_SPAN,
+                                                                                ATTRACTIVITY_EDIT_FRAME_ROW_SPAN,
+                                                                                FRAME_STICKY_WHOLE_CELL)
         attractivity_view_frame = attractivity_view_frame_i.AttractivityViewFrame(self, category_controller)
-        positioned_attractivity_view_frame = positioned_frame_i.PositionedFrame(attractivity_view_frame, ATTRACTIVITY_VIEW_FRAME_COLUM,
-                                                             ATTRACTIVITY_VIEW_FRAME_LINE)
+        positioned_attractivity_view_frame = positioned_frame_i.PositionedFrame(attractivity_view_frame,
+                                                                                ATTRACTIVITY_VIEW_FRAME_COLUM,
+                                                                                ATTRACTIVITY_VIEW_FRAME_ROW,
+                                                                                ATTRACTIVITY_VIEW_FRAME_COLUM_SPAN,
+                                                                                ATTRACTIVITY_VIEW_FRAME_ROW_SPAN,
+                                                                                FRAME_STICKY_WHOLE_CELL)
         state_attractivity_edit = State(
             list[positioned_project_head_frame, positioned_project_foot_frame, positioned_attractivity_edit_frame],
             state_name_enum_i.StateName.ATTRACTIVITY_EDIT, state_name_enum_i.StateName.REDUCTION,
@@ -204,7 +252,10 @@ class StateManager:
         calculation_frame = calculate_frame_i.CalculationFrame(self, calculation_controller,
                                                                data_visualization_controller)
         positioned_calcualtion_frame = positioned_frame_i.PositionedFrame(calculation_frame, CALCULATION_FRAME_COLUM,
-                                                                          CALCULATION_FRAME_LINE)
+                                                                          CALCULATION_FRAME_ROW,
+                                                                          CALCULATION_FRAME_COLUM_SPAN,
+                                                                          CALCULATION_FRAME_ROW_SPAN,
+                                                                          FRAME_STICKY_WHOLE_CELL)
         state_calculation_frame = State(
             list[positioned_project_head_frame, positioned_project_foot_frame, positioned_calcualtion_frame],
             state_name_enum_i.StateName.CALCULATION, state_name_enum_i.StateName.AGGREGATION, None)
@@ -213,7 +264,8 @@ class StateManager:
         # Category Frame State
         category_frame = category_frame_i.CategoryFrame(self, category_controller)
         positioned_category_frame = positioned_frame_i.PositionedFrame(category_frame, CATEGORY_FRAME_COLUM,
-                                                                       CATEGORY_FRAME_LINE)
+                                                                       CATEGORY_FRAME_ROW, CATEGORY_FRAME_COLUM_SPAN,
+                                                                       CATEGORY_FRAME_ROW_SPAN, FRAME_STICKY_WHOLE_CELL)
         state_category_frame = State(
             list[positioned_project_head_frame, positioned_project_foot_frame, positioned_category_frame],
             state_name_enum_i.StateName.CATEGORY, state_name_enum_i.StateName.DATA,
@@ -224,7 +276,9 @@ class StateManager:
         data_frame = data_frame_i.DataFrame(self, data_visualization_controller, cut_out_controller,
                                             category_controller,
                                             osm_data_controller)
-        positioned_data_frame = positioned_frame_i.PositionedFrame(data_frame, DATA_FRAME_COLUM, DATA_FRAME_LINE)
+        positioned_data_frame = positioned_frame_i.PositionedFrame(data_frame, DATA_FRAME_COLUM, DATA_FRAME_ROW,
+                                                                   DATA_FRAME_COLUM_SPAN, DATA_FRAME_ROW_SPAN,
+                                                                   FRAME_STICKY_WHOLE_CELL)
         state_data_frame = State(
             list[positioned_project_head_frame, positioned_project_foot_frame, positioned_data_frame],
             state_name_enum_i.StateName.DATA,
@@ -234,7 +288,9 @@ class StateManager:
         # Reduction Frame State
         reduction_frame = reduction_frame_i.ReductionFrame(self, category_controller)
         positioned_reduction_frame = positioned_frame_i.PositionedFrame(reduction_frame, REDUCTION_FRAME_COLUM,
-                                                                        REDUCTION_FRAME_LINE)
+                                                                        REDUCTION_FRAME_ROW, REDUCTION_FRAME_COLUM_SPAN,
+                                                                        REDUCTION_FRAME_ROW_SPAN,
+                                                                        FRAME_STICKY_WHOLE_CELL)
         state_reduction_frame = State(
             list[positioned_project_head_frame, positioned_project_foot_frame, positioned_reduction_frame],
             state_name_enum_i.StateName.REDUCTION, state_name_enum_i.StateName.CATEGORY,
@@ -244,7 +300,8 @@ class StateManager:
         # Settings Frame State
         settings_frame = settings_frame_i.SettingsFrame(self, settings_controller)
         positioned_settings_frame = positioned_frame_i.PositionedFrame(settings_frame, SETTINGS_FRAME_COLUM,
-                                                                       SETTINGS_FRAME_LINE)
+                                                                       SETTINGS_FRAME_ROW, SETTINGS_FRAME_COLUM_SPAN,
+                                                                       SETTINGS_FRAME_ROW_SPAN, FRAME_STICKY_WHOLE_CELL)
         state_settings_frame = State(
             list[positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_frame],
             state_name_enum_i.StateName.SETTINGS, None, None)
