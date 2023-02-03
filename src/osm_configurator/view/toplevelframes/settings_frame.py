@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.utilityframes.settings_application_frame import SettingsApplicationFrame
 
 
-class SettingsFrame(Activatable, customtkinter.CTkToplevel):
+class SettingsFrame(Activatable, customtkinter.CTkFrame):
     """
     This frame shows the user the settings for:
     - The application

@@ -71,6 +71,9 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
     def activate(self):
         self.__activate_buttons()
         #  TODO: Keep the progressbar up-to-date
+        #  self._calculation_controller.get_current_calculation_process() gibt aktuellen Stand an
+
+        #  TODO: Prüfen, ob Berechnung bereits fertig ist
 
     def __tag_filter_pressed(self):
         self._starting_point = CalculationPhase.TAG_FILTER_PHASE

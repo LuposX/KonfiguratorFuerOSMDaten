@@ -22,7 +22,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
     This frame shows the settings of the application.
     """
 
-    def __init__(self, parent, settings_controller):
+    def __init__(self, parent, settings_controller: ISettingsController):
         """
         This method creates a SettingsApplicationFrame, showing the settings of the application.
 
@@ -71,11 +71,12 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
         Returns:
             bool: True if change was successful, else False
         """
+        #  TODO: Explorer öffnen
         new_path = Path(self.path_default_box.get("0.0", "end"))
 
         if new_path.exists():
             self._project_default_folder = new_path
-            ISettingsController.set_project_default_folder(self._settings_controller, new_path)  # updates the path
+            self._settings_controller.set_project_default_folder(new_path)  # updates the path
             return True
         popup = AlertPopUp("Please enter a valid path!")
         popup.mainloop()  # shows the popup
