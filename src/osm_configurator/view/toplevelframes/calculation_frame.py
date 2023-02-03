@@ -112,9 +112,9 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
         for button in self.buttons:
             button.config(state="disable")
             if counter == starting_index:
-                button['bg_color'] = "yellow"
+                button.configure(bg_color="yellow")
             elif counter < starting_index:
-                button['bg_color'] = "green"
+                button.configure(bg_color="green")
             counter += 1
 
     def __activate_buttons(self):
