@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import customtkinter
 
+import screeninfo
+
 import src.osm_configurator.control.export_controller_interface
 import src.osm_configurator.control.category_controller_interface
 import src.osm_configurator.control.project_controller_interface
@@ -42,6 +44,7 @@ TOP_ROW_WEIGHT: Final = 1
 BOTTOM_ROW_WEIGHT: Final = 1
 MIDDLE_ROW_WEIGHT: Final = 4
 COLUM_WEIGHT: Final = 1
+WINDOW_TITLE: Final = "OSM-Configurator"
 
 
 class MainWindow:
@@ -71,8 +74,17 @@ class MainWindow:
         """
         # Creating the mainWindow and setting its position, and making it resizable
         self._window = customtkinter.CTk()
-        screen_height = self._window.winfo_screenheight()
-        screen_width = self._window.winfo_screenwidth()
+        self._window.title(WINDOW_TITLE)
+
+        # Selecting the primary Monitor to get accurate location for centering the window
+        primary_monitor = None
+        for monitor in screeninfo.get_monitors():
+            if monitor.is_primary:
+                primary_monitor = monitor
+                break
+
+        screen_height = primary_monitor.height
+        screen_width = primary_monitor.width
 
         true_height = screen_height / 2 - MAIN_WINDOW_HEIGHT / 2
         true_width = screen_width / 2 - MAIN_WINDOW_WIDTH / 2
