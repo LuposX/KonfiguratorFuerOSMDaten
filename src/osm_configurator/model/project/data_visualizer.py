@@ -1,15 +1,12 @@
 from __future__ import annotations
 
+import src.osm_configurator.model.project.configuration.cut_out_configuration
+
 import pathlib
 from typing import TYPE_CHECKING
 
-import src.osm_configurator.model.project.configuration.cut_out_configuration
-import matplotlib
-
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
-    from matplotlib.axes import Axes
-
 
 
 class DataVisualizer:
@@ -34,7 +31,7 @@ class DataVisualizer:
         Returns:
             bool: True if creating the map works, otherwise false.
         """
-        pass
+        return True
 
     def create_boxplot(self, data: Axes) -> bool:
         """
@@ -47,7 +44,7 @@ class DataVisualizer:
         Returns:
             bool: True if creating the boxplot works, otherwise false.
         """
-        pass
+        return True
 
     def _save_map(self, destination_path: pathlib.Path) -> bool:
         """
@@ -60,4 +57,4 @@ class DataVisualizer:
         Returns:
             bool: True if saving the map works, otherwise false.
         """
-        pass
+        return True
