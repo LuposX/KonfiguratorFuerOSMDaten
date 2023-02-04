@@ -67,7 +67,7 @@ class DefaultValueFinder:
         # TODO: THIS SHOULDNT BE HERE, BUT CONFIGURATION DIDNT IMPLEMENT THIS, SO I NEED TO DO THIS MYSELF
         default_default_value_entry: DefaultValueEntry = default_value_entry_i.DefaultValueEntry()
         if len(osm_element_tags) != 0:
-            default_default_value_entry.set_tag(osm_element_tags[0])
+            default_default_value_entry.set_tag(osm_element_tags.get(list(osm_element_tags.keys())[0]))
 
         for attribute in attribute_enum_i.Attribute:
             default_default_value_entry.set_attribute_default(attribute, 1)

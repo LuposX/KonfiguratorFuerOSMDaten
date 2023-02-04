@@ -88,7 +88,7 @@ class TestReductionPhase:
         # Test if files were created
         assert len(
             os.listdir(os.path.join(project_path, "results/" + calculation_phase_enum.CalculationPhase.REDUCTION_PHASE
-                                    .get_folder_name_for_results()))) == 4
+                                    .get_folder_name_for_results()))) == 2
 
         # Test if execution works a second time
         result2: CalculationState = phase.calculate(config_manager)

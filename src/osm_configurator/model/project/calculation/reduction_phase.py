@@ -132,7 +132,8 @@ class ReductionPhase(ICalculationPhase):
                 curr_default_value_list: List[DefaultValueEntry] = curr_category.get_default_value_list()
 
                 # make the string to a list of string
-                osm_elements_list_tags: List[str] = tag_parser_o.user_tag_parser(row[model_constants_i.CL_TAGS])
+                osm_elements_list_tags: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(row[model_constants_i.CL_TAGS])
+                osm_elements_list_tags: Dict[str, str] = tag_parser_o.list_to_dict(osm_elements_list_tags)
 
                 curr_default_value: DefaultValueEntry = default_value_finder_o.find_default_value_entry_which_applies(curr_default_value_list, osm_elements_list_tags)
 
