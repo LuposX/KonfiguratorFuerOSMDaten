@@ -31,7 +31,7 @@ class ProjectSaver:
         Args:
             active_project (active_project.ActiveProject): The project the ProjectSaver shall load.
         """
-        self.active_project = active_project
+        self.active_project: ActiveProject = active_project
 
     def save_project(self, destination: Path):
         """
