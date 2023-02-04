@@ -10,7 +10,6 @@ import src.osm_configurator.model.project.export
 import src.osm_configurator.model.project.project_saver
 
 from typing import TYPE_CHECKING
-from pathlib import Path
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
@@ -21,6 +20,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.data_visualizer import DataVisualizer
     from src.osm_configurator.model.project.project_settings import ProjectSettings
     from src.osm_configurator.model.project.export import Export
+    from pathlib import Path
 
 
 class ActiveProject:
@@ -43,20 +43,20 @@ class ActiveProject:
             project_description (str): The description of our project.
         """
 
-        self._project_io_handler = ProjectIOHandler(self)
-        self._configurator_manager = ConfigurationManager(project_folder)
-        self._calculation_manager = CalculationManager(self._configurator_manager)
+        self._project_io_handler: ProjectIOHandler = ProjectIOHandler(self)
+        self._configurator_manager: ConfigurationManager = ConfigurationManager(project_folder)
+        self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager)
 
         if is_newly_created:
             self._project_io_handler.build_project(project_folder)
-            self._last_step = ConfigPhase.DATA_CONFIG_PHASE
+            self._last_step: ConfigPhase = ConfigPhase.DATA_CONFIG_PHASE
         else:
             self._project_io_handler.load_project(project_folder)
 
-        self._project_settings = ProjectSettings(project_folder, project_name, project_description)
-        self._project_saver = ProjectSaver(self)
-        self._data_visualizer = DataVisualizer()
-        self._export = Export(self)
+        self._project_settings: ProjectSettings = ProjectSettings(project_folder, project_name, project_description)
+        self._project_saver: ProjectSaver = ProjectSaver(self)
+        self._data_visualizer: DataVisualizer = DataVisualizer()
+        self._export: Export = Export(self)
 
     def get_last_step(self) -> ConfigPhase:
         """
@@ -78,7 +78,7 @@ class ActiveProject:
         """
         self._last_step = current_step
 
-    def get_project_path(self) -> pathlib.Path:
+    def get_project_path(self) -> Path:
         """
         This method is to give back the path pointing towards the project folder.
 
