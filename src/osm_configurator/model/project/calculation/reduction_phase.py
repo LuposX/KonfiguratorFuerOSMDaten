@@ -78,7 +78,7 @@ class ReductionPhase(ICalculationPhase):
         if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
             list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
         else:
-            return calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, ""
+            return (calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, "")
 
         return self._parse_the_data_file(list_of_traffic_cell_checkpoints, category_manager_o, checkpoint_folder_path_current_phase)
 
@@ -98,10 +98,10 @@ class ReductionPhase(ICalculationPhase):
                                    KEEP_GEOM_COLUMNS="NO"
                                    )
             except (FileNotFoundError, DriverError) as err:
-                return calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)
+                return [calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)]
 
             except Exception as err:
-                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
+                return (calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args))
 
             # Remove unwanted nodes
             # ---------------------
@@ -237,13 +237,13 @@ class ReductionPhase(ICalculationPhase):
 
             # If there's an error while encoding the file.
             except ValueError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
+                return (calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err)))
 
             # If the file cannot be opened.
             except OSError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
+                return (calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err)))
 
-        return calculation_state_enum_i.CalculationState.RUNNING, ""
+        return (calculation_state_enum_i.CalculationState.RUNNING, "")
 
     def _initialize_data_save(self):
         """

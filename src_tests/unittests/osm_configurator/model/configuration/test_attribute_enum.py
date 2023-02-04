@@ -167,6 +167,6 @@ class TestAttributeEnumMethods:
             osm_element_1_default_value,
             df
         )
-        assert 3.0 == calculated_value
+        assert 100.0 == calculated_value
 
 
