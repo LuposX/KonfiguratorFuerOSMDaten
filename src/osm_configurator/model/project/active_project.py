@@ -7,6 +7,7 @@ import src.osm_configurator.model.project.data_visualizer
 import src.osm_configurator.model.project.project_settings
 import src.osm_configurator.model.project.calculation.calculation_manager
 import src.osm_configurator.model.project.export
+import src.osm_configurator.model.project.project_saver
 
 from typing import TYPE_CHECKING
 from pathlib import Path
@@ -130,3 +131,13 @@ class ActiveProject:
             export.Export: The  export Manager.
         """
         return self._export
+
+    def get_project_saver(self) -> ProjectSaver:
+        """
+        Getter for the project saver.
+
+        Returns:
+            project_saver.ProjectSaver: The project saver.
+        """
+        return self._project_saver
+

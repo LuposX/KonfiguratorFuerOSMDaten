@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
+    from pathlib import Path
 
 
 class ProjectSaver:
@@ -32,20 +33,20 @@ class ProjectSaver:
         """
         self.active_project = active_project
 
-    def save_project(self, path):
+    def save_project(self, destination: Path):
         """
         Stores all the configurations of the project.
         The information about the configuration of the project are stored to the disk.
 
         Args:
-            path (pathlib.Path): The path pointing towards the project folder. The data will be stored here.
+            destination (pathlib.Path): The path pointing towards the project folder. The data will be stored here.
 
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
 
         # Saves ProjectSettings
-        filename = "/" + self.active_project.get_project_settings().get_name() + "project_settings.csv"
+        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "project_settings.csv"
         settings_data = [["name", self.active_project.get_project_settings().get_name()],
                          ["description", self.active_project.get_project_settings().get_description()],
                          ["location", self.active_project.get_project_settings().get_location()],
@@ -56,19 +57,19 @@ class ProjectSaver:
             writer.writerows(settings_data)
 
         # Save ConfigPhase
-        filename = "/" + self.active_project.get_project_settings().get_name() + "last_step.text"
+        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "last_step.text"
         config_phase_data = str(self.active_project.get_last_step())
         with open(filename, 'w') as f:
             f.write(config_phase_data)
 
         # Save OSMDataConfiguration
-        filename = "/" + self.active_project.get_project_settings().get_name() + "osm_path.text"
+        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "osm_path.text"
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
         with open(filename, 'w') as f:
             f.write(osm_path_data)
 
         # Save AggregationConfiguration
-        filename = "/" + self.active_project.get_project_settings().get_name() + "/Configuration/active_methods.csv"
+        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "/Configuration/active_methods.csv"
         with open(filename, 'w', newline='') as f:
             writer = csv.writer(f)
             for method in AggregationMethod:
@@ -77,7 +78,7 @@ class ProjectSaver:
                     writer.writerow(str(method))
 
         # Save CutOutConfiguration
-        filename = "/" + self.active_project.get_project_settings().get_name() \
+        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() \
                    + "/Configuration/cut_out_configuration.csv"
         cut_out_data = [["cut_out_path",
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
@@ -95,7 +96,7 @@ class ProjectSaver:
         category_manager = self.active_project.get_config_manager().get_category_manager()
 
         for category in category_manager.get_categories():
-            filename = "/" + self.active_project.get_project_settings().get_name() + "/Configuration/Categories" \
+            filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "/Configuration/Categories" \
                        + category.get_category_name + "csv"
             with open(filename, 'w', newline='') as f:
                 writer = csv.writer(f)
