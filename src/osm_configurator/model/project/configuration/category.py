@@ -39,7 +39,7 @@ class Category:
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
-        self._default_tag = DefaultValueEntry("DEFAULT")
+        self._default_tag: DefaultValueEntry = DefaultValueEntry("DEFAULT")
         self._default_value_list.append(self._default_tag)
 
         # Create the Attribute dictionary
