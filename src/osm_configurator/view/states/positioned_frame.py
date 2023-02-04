@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING
+import src.osm_configurator.view.toplevelframes.top_level_frame as top_level_frame_i
 
 if TYPE_CHECKING:
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
@@ -29,7 +30,7 @@ class PositionedFrame:
             sticky (str): The stick Type of how the frame is placed in a grid
         """
 
-        if not isinstance(frame, TopLevelFrame):
+        if not isinstance(frame, top_level_frame_i.TopLevelFrame):
             raise TypeError("The given Frame is not a Frame!")
         elif not isinstance(colum, int):
             raise TypeError("The given colum is not an Integer!")
