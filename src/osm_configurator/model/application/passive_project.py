@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import csv
 
 
 class PassiveProject:
@@ -16,7 +17,10 @@ class PassiveProject:
         Args:
             project_folder_path (Path): The path to the project you want to make a PassiveProject on.
         """
-        pass
+        filename = str(project_folder_path) + "/project_settings.csv"
+        with open(filename, 'r') as f:
+            reader = csv.reader(f)
+            self.data = list(reader)
 
     def get_name(self):
         """
@@ -25,7 +29,7 @@ class PassiveProject:
         Returns:
             str: The name of the passive project.
         """
-        pass
+        return self.data[0][0]
 
     def get_description(self):
         """
@@ -34,7 +38,7 @@ class PassiveProject:
         Returns:
             str: The description of the passive project.
         """
-        pass
+        return self.data[1][0]
 
     def get_edit_date(self):
         """
@@ -43,7 +47,7 @@ class PassiveProject:
         Returns:
             str: The last edit date of the passive project.
         """
-        pass
+        return self.data[2][0]
 
     def get_project_folder_path(self):
         """
@@ -52,4 +56,4 @@ class PassiveProject:
         Returns:
             pathlib.Path: The path pointing towards the passive project.
         """
-        pass
+        return self.data[3][0]
