@@ -2,6 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
+import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
+
 if TYPE_CHECKING:
     from src.osm_configurator.view.states.positioned_frame import PositionedFrame
     from src.osm_configurator.view.states.state_name_enum import StateName
@@ -35,16 +38,16 @@ class State:
             raise TypeError("active_frames is not a list!")
         else:
             for frame in active_frames:
-                if not isinstance(frame, PositionedFrame):
+                if not isinstance(frame, positioned_frame_i.PositionedFrame):
                     raise TypeError("The Frames of the active_frames are no PositionedFrames!")
 
         # Checking the other Attributes for correct type
-        if not isinstance(own_state_name, StateName):
+        if not isinstance(own_state_name, state_name_enum_i.StateName):
             raise TypeError("own_state_name is no StateName!")
-        elif not isinstance(default_right, StateName) and default_right is not None:
+        elif not isinstance(default_right, state_name_enum_i.StateName) and default_right is not None:
             raise TypeError("default_right is no StateName, and not None! "
                             "The default_right, shall be a StateName or None!")
-        elif not isinstance(default_left, StateName) and default_left is not None:
+        elif not isinstance(default_left, state_name_enum_i.StateName) and default_left is not None:
             raise TypeError("default_left is no StateName, and not None! "
                             "The default_left, shall be a StateName or None!")
         else:

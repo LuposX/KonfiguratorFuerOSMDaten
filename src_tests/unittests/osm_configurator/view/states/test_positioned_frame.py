@@ -48,6 +48,7 @@ def test_value_errors():
                                            0, 0, positioned_frame_i.SMALLEST_COLUM_SPAN_AND_ROW_SPAN_VALUE - 1,
                                            state_manager_i.FRAME_STICKY_WHOLE_CELL)
 
+
 @pytest.mark.parametrize("frame,column,row,column_span,row_span,sticky",
                          [(top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0, state_manager_i.FRAME_STICKY_WHOLE_CELL),
                           (top_level_frame_i.TopLevelFrame(None), 1, 0, 0, 0, state_manager_i.FRAME_STICKY_WHOLE_CELL),
@@ -57,8 +58,10 @@ def test_value_errors():
                           (top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0, state_manager_i.FRAME_STICKY_TOP_LEFT),
                           (top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0, state_manager_i.FRAME_STICKY_TOP_RIGHT),
                           (top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0, state_manager_i.FRAME_STICKY_BOTTOM_LEFT),
-                          (top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0, state_manager_i.FRAME_STICKY_BOTTOM_RIGHT),
-                          (top_level_frame_i.TopLevelFrame(None), 69, 42, 420, 69420, state_manager_i.FRAME_STICKY_WHOLE_CELL),
+                          (
+                          top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0, state_manager_i.FRAME_STICKY_BOTTOM_RIGHT),
+                          (top_level_frame_i.TopLevelFrame(None), 69, 42, 420, 69420,
+                           state_manager_i.FRAME_STICKY_WHOLE_CELL),
                           (top_level_frame_i.TopLevelFrame(None), 1, 2, 3, 4, state_manager_i.FRAME_STICKY_TOP_LEFT),
                           (top_level_frame_i.TopLevelFrame(None), 9, 8, 7, 6, state_manager_i.FRAME_STICKY_WHOLE_CELL)])
 def test_attributes(frame, column, row, column_span, row_span, sticky):
