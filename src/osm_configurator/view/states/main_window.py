@@ -55,7 +55,7 @@ class MainWindow:
     """
 
     def __init__(self, export_controller: IExportController, category_controller: ICategoryController, project_controller: IProjectController, settings_controller: ISettingsController,
-                 aggregation_controller: IAggregationController, application_controller: ApplicationController, calculation_controller: ICalculationController, cut_out_controller: ICutOutController,
+                 aggregation_controller: IAggregationController, calculation_controller: ICalculationController, cut_out_controller: ICutOutController,
                  data_visualization_controller: IDataVisualizationController, osm_data_controller: IOSMDataController):
         """
         This method creates a MainWindow with a connection to the given control.
@@ -66,7 +66,6 @@ class MainWindow:
             project_controller (project_controller.ProjectController): Respective controller.
             settings_controller (settings_controller.SettingsController): Respective controller.
             aggregation_controller (aggregation_controller.AggregationController): Respective controller.
-            application_controller (application_controller.ApplicationController): Respective controller.
             calculation_controller (calculation_controller.CalculationController): Respective controller.
             cut_out_controller (cut_out_controller.CutOutController): Respective controller.
             data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller.
