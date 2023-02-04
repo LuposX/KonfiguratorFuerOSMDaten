@@ -26,7 +26,7 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_OSM_TYPE: model_constants_i.NODE_NAME,
             model_constants_i.CL_OSM_ELEMENT_NAME: "neco_arc_house",
             model_constants_i.CL_GEOMETRY: shp.Point((0.0, 0.0)),
-            model_constants_i.CL_TAGS: ["building=yes", "shop=:)", "building:levels=2"],
+            model_constants_i.CL_TAGS: "[('building', 'yes'), ('shop', 'lol213'), ('building:levels', '2')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
         osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
@@ -49,7 +49,7 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_OSM_TYPE: model_constants_i.NODE_NAME,
             model_constants_i.CL_OSM_ELEMENT_NAME: "neco_arc_chaos_house",
             model_constants_i.CL_GEOMETRY: shp.Point((0.0, 0.0)),
-            model_constants_i.CL_TAGS: ["building=yes", "shop=butcher"],
+            model_constants_i.CL_TAGS: "[('building', 'yes'), ('shop', 'butcher')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
         osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
@@ -72,7 +72,7 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_OSM_TYPE: model_constants_i.NODE_NAME,
             model_constants_i.CL_OSM_ELEMENT_NAME: "neco_arc_chaos_house",
             model_constants_i.CL_GEOMETRY: shp.Point((0.0, 0.0)),
-            model_constants_i.CL_TAGS: ["building=yes", "shop=butcher"],
+            model_constants_i.CL_TAGS:  "[('building', 'yes'), ('shop', 'butcher')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
         osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
@@ -98,7 +98,7 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_OSM_TYPE: model_constants_i.NODE_NAME,
             model_constants_i.CL_OSM_ELEMENT_NAME: "Zhang Yongラーメンを落とす",
             model_constants_i.CL_GEOMETRY: shp.Point((0.0, 0.0)),
-            model_constants_i.CL_TAGS: ["building=yes", "song=Red Sun Sky"],
+            model_constants_i.CL_TAGS: "[('building', 'yes'), ('song', 'Red Sun Sky')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
         osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
@@ -121,7 +121,7 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_OSM_TYPE: model_constants_i.AREA_WAY_NAME,
             model_constants_i.CL_OSM_ELEMENT_NAME: "奧的斯電梯公司",
             model_constants_i.CL_GEOMETRY: shp.Polygon([(0, 0), (1, 1), (1, 0)]),
-            model_constants_i.CL_TAGS: ["building=yes", "pepe=rare_pepe"],
+            model_constants_i.CL_TAGS: "[('building', 'yes'), ('pepe', 'rare_pepe')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
         osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
@@ -154,7 +154,7 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_OSM_TYPE: model_constants_i.AREA_WAY_NAME,
             model_constants_i.CL_OSM_ELEMENT_NAME: "奧的斯電梯公司",
             model_constants_i.CL_GEOMETRY: shp.Polygon([(0, 0), (0, 10), (10, 10), (10,0), (0,0)]),
-            model_constants_i.CL_TAGS: ["building=yes", "pepe=rare_pepe"],
+            model_constants_i.CL_TAGS: "[('building', 'yes'), ('pepe', 'rare_pepe')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_BUILDING_AREA.get_category_name(),
         }
 

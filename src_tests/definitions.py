@@ -7,6 +7,7 @@ import src.osm_configurator.model.project.configuration.category as category_i
 import src.osm_configurator.model.project.configuration.category_manager as category_manager_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
+import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry_i
 
 from typing import TYPE_CHECKING
 
@@ -20,36 +21,53 @@ if TYPE_CHECKING:
 
 # Defining Test Categories
 # -------------------------
-name: str = "building_category"
+name: str = "building_category_site_area"
 whitelist: List = ["building=*"]
 TEST_CATEGORY_SITE_AREA: Final = category_i.Category()
 TEST_CATEGORY_SITE_AREA.set_category_name(name)
 TEST_CATEGORY_SITE_AREA.set_whitelist(whitelist)
+TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
 TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 TEST_CATEGORY_SITE_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA)
+osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_CATEGORY_SITE_AREA.add_default_value_entry(osm_element_1_default_value)
 
-name: str = "building_category"
+name: str = "building_category_building_area"
 whitelist: List = ["building=*"]
 TEST_CATEGORY_BUILDING_AREA: Final = category_i.Category()
 TEST_CATEGORY_BUILDING_AREA.set_category_name(name)
 TEST_CATEGORY_BUILDING_AREA.set_whitelist(whitelist)
+TEST_CATEGORY_BUILDING_AREA.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
 TEST_CATEGORY_BUILDING_AREA.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+TEST_CATEGORY_BUILDING_AREA.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 TEST_CATEGORY_BUILDING_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
-
+osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_CATEGORY_BUILDING_AREA.add_default_value_entry(osm_element_1_default_value)
 
 name: str = "no_building_category"
 blacklist: List = ["building=*"]
 TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_NO_BUILDING.set_category_name(name)
 TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
-TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
+TEST_CATEGORY_NO_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
+TEST_CATEGORY_NO_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+TEST_CATEGORY_NO_BUILDING.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
+osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_CATEGORY_NO_BUILDING.add_default_value_entry(osm_element_1_default_value)
 
 name: str = "shop_category"
 blacklist: List = ["shop=*"]
 TEST_CATEGORY_SHOP: Final = category_i.Category()
 TEST_CATEGORY_SHOP.set_category_name(name)
 TEST_CATEGORY_SHOP.set_whitelist(blacklist)
-TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
+TEST_CATEGORY_SHOP.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
+osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_CATEGORY_SHOP.add_default_value_entry(osm_element_1_default_value)
 
 
 # Defining Test Category Manager

@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.category import Category
 
+
 class CategoryManager:
     """
     Category Manager holds a list of categories and changes them according to the given needs.
@@ -18,7 +19,7 @@ class CategoryManager:
         """
         Constructor of the class.
         """
-        self._categories: Dict = {}
+        self._categories: List = {}
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -47,9 +48,15 @@ class CategoryManager:
         Returns:
             category.Category: The Category we wanted.
         """
-        return self._categories.get(name)
+        item: Category
+        for item in self._categories:
+            if item.get_category_name() == name:
+                return item
 
-    def get_categories(self) -> Dict:
+        # TODO: IDK WHAT TO DO HERE
+        return None
+
+    def get_categories(self) -> List:
         """
         Getter for all the Categories.
 

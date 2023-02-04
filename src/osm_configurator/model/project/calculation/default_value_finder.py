@@ -7,13 +7,14 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.parser.tag_parser import TagParser
     from typing import Tuple, List, Dict
 
 
 class DefaultValueFinder:
     def find_default_value_entry_which_applies(self, default_value_list: List[DefaultValueEntry],
-                                                osm_element_tags: List[str]):
+                                                osm_element_tags: Dict[str, str]):
         """
         This method figures out the first default value entry in the List which applies to the osm element.
         Where applies means that the osm element hast the same key-value pair then the default-value-entry.
@@ -22,13 +23,14 @@ class DefaultValueFinder:
 
         Args:
             default_value_list (List): A list of default-value entries
-            osm_element_tags (List[str]): A list of unparsed tags of the osm element.
+            osm_element_tags (Dict[str, str]): A parsed dictionary of tags.
         """
+        # Because circular-dependency issues is the import here.
+        import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
+        import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry_i
+
         # Create a new Tag parser
         tag_parser_o: TagParser = tag_parser_i.TagParser()
-
-        # These are the parsed tags from the osm element
-        parsed_osm_element_tag_list = tag_parser_o.parse_tags(osm_element_tags)
 
         _default_value_entry: DefaultValueEntry
         for _default_value_entry in default_value_list:
@@ -50,16 +52,24 @@ class DefaultValueFinder:
 
             # get the first value of every tuple entry, which is the key of the tag
             # if this true this means the key value of the default value is also in the osm tag list.
-            if key_tag_default_value_entry in parsed_osm_element_tag_list.keys():
+            if key_tag_default_value_entry in osm_element_tags.keys():
                 # The don't care symbol is "*" if thats set the value of the osm element for this tag
                 # doesn't interest us.
                 if value_tag_default_value_entry == model_constants_i.DONT_CARE_SYMBOL:
                     is_osm_element_in_default_value = True
 
-                elif value_tag_default_value_entry == parsed_osm_element_tag_list.get(key_tag_default_value_entry):
+                elif value_tag_default_value_entry == osm_element_tags.get(key_tag_default_value_entry):
                     is_osm_element_in_default_value = True
 
             if is_osm_element_in_default_value:
                 return _default_value_entry
 
-        return None
+        # TODO: THIS SHOULDNT BE HERE, BUT CONFIGURATION DIDNT IMPLEMENT THIS, SO I NEED TO DO THIS MYSELF
+        default_default_value_entry: DefaultValueEntry = default_value_entry_i.DefaultValueEntry()
+        if len(osm_element_tags) != 0:
+            default_default_value_entry.set_tag(osm_element_tags[0])
+
+        for attribute in attribute_enum_i.Attribute:
+            default_default_value_entry.set_attribute_default(attribute, 1)
+
+        return default_default_value_entry

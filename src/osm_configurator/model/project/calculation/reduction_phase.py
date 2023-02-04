@@ -8,6 +8,7 @@ import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
+import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 
 import geopandas as gpd
 
@@ -28,6 +29,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from geopandas import GeoDataFrame, GeoSeries
+    from src.osm_configurator.model.parser.tag_parser import TagParser
 
 
 class ReductionPhase(ICalculationPhase):
@@ -69,7 +71,7 @@ class ReductionPhase(ICalculationPhase):
         deleter.reset_folder(checkpoint_folder_path_current_phase)
 
         # get the category manager
-        category_manager_o: CategoryManager = ConfigurationManager.get_category_manager()
+        category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
 
         # check if the folder exist
         if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
@@ -84,10 +86,16 @@ class ReductionPhase(ICalculationPhase):
                              category_manager_o: CategoryManager,
                              checkpoint_folder_path_current_phase: Path):
 
+        tag_parser_o: TagParser = tag_parser_i.TagParser()
+
         for file_path in list_of_traffic_cell_checkpoints:
+            # THIS HERE WORKS
             try:
                 # Read out dataframe from disk into memory
-                df = gpd.read_file(file_path)
+                df = gpd.read_file(file_path,
+                                   GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
+                                   KEEP_GEOM_COLUMNS="NO"
+                                   )
             except FileNotFoundError as err:
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
 
@@ -105,13 +113,12 @@ class ReductionPhase(ICalculationPhase):
             # Initialize a dictionary in which we will save our calculated data
             reduction_phase_data = self._initialize_data_save()
 
-            default_value_finder_o = default_value_finder_i.DefaultValueEntry()
+            default_value_finder_o = default_value_finder_i.DefaultValueFinder()
 
             # Calculate data
             # --------------
             # This for-loop is for the calculation
             # iterate over the dataframe
-            # TODO: I  think the data entries are in different order depending on which attributes are activated, refactor this shit
             idx: int
             row: GeoSeries
             for idx, row in df.iterrows():
@@ -121,14 +128,17 @@ class ReductionPhase(ICalculationPhase):
                 data_entry: Dict = self._initialize_data_save()
 
                 curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
-                curr_calculated_method_of_area: CalculationMethodOfArea = curr_category.get_calculation_method_of_area()
 
                 curr_default_value_list: List[DefaultValueEntry] = curr_category.get_default_value_list()
-                curr_default_value: DefaultValueEntry = default_value_finder_o.find_default_value_entry_which_applies(curr_default_value_list, row[model_constants_i.CL_TAGS])  # maybe need a val()
+
+                # make the string to a list of string
+                osm_elements_list_tags: List[str] = tag_parser_o.user_tag_parser(row[model_constants_i.CL_TAGS])
+
+                curr_default_value: DefaultValueEntry = default_value_finder_o.find_default_value_entry_which_applies(curr_default_value_list, osm_elements_list_tags)
 
                 # This means we don't need to calculate anything
                 if curr_category.get_strictly_use_default_values():
-                    self._get_default_values_for_osm_element(curr_default_value, reduction_phase_data, row, data_entry)
+                    self._set_data_entry_from_default_value(curr_default_value, reduction_phase_data, row, data_entry)
 
                 # If strictly-use-default-values isn't activated, we need to calculate the data
                 else:
@@ -145,14 +155,14 @@ class ReductionPhase(ICalculationPhase):
                     for not_act_attribute in not_activated_attributes:
                         tmp_default_value: float = curr_default_value.get_attribute_default(
                             not_act_attribute)
-                        data_entry[not_act_attribute.get_name()] += tmp_default_value
+                        data_entry[not_act_attribute.get_name()].append(tmp_default_value)
 
                         # we save already calculated attributes in this list if we have attributes
                         # which are dependent on other attributes which need to be calculated first.
                         already_calculated_attributes.update({not_act_attribute.get_name(): tmp_default_value})
 
                     # transform list into a dictionary
-                    activated_attributes_dict: Dict
+                    activated_attributes_dict: Dict = {}
                     for attribute_entry in activated_attributes:
                         activated_attributes_dict.update({attribute_entry.get_name(): attribute_entry})
 
@@ -162,16 +172,16 @@ class ReductionPhase(ICalculationPhase):
                         # Do point reduction
                         if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
                             # Returns a representation of the object’s geometric centroid (point).
-                            data_entry[model_constants_i.CL_GEOMETRY] += row[model_constants_i.CL_GEOMETRY].centroid
+                            data_entry[model_constants_i.CL_GEOMETRY].append(row[model_constants_i.CL_GEOMETRY].centroid)
 
                         else:
-                            data_entry[DF_CL_NAME] += row[DF_CL_NAME]
+                            data_entry[DF_CL_NAME].append(row[DF_CL_NAME])
 
                     # calculate the not activated attributes
                     key_act_attribute: str
                     value_act_attribute: Attribute
                     for key_act_attribute, value_act_attribute in activated_attributes_dict.items():
-                        if key_act_attribute == attribute_enum_i.Attribute.PROPERTY_AREA:
+                        if value_act_attribute == attribute_enum_i.Attribute.PROPERTY_AREA:
                             # property needs to be treated special, because it depends on special data
                             # i.e. all osm element which lie in its border.
 
@@ -195,16 +205,18 @@ class ReductionPhase(ICalculationPhase):
                         already_calculated_attributes.update({key_act_attribute: calculated_value})
 
                         # The data entry will later be saved to our main memory for all osm elements
-                        data_entry[key_act_attribute] += calculated_value
+                        data_entry[key_act_attribute].append(calculated_value)
 
                     # Add the calculated data for a single osm element to the main saving point
                     for key_data_entry, value_data_entry in data_entry.items():
-                        if len(value_data_entry) != 1:
-                            reduction_phase_data[key_data_entry] += value_data_entry[0]
+                        if len(value_data_entry) == 1:
+                            # since we only save one value per entry we can do [0]
+                            reduction_phase_data[key_data_entry].append(value_data_entry[0])
 
                         else:
                             # STH WENT REALLY WRONG HERE IF HE CAME INTO THIS ELSE
                             print("ERROR REDUCTION PHASE: TRIED ADDING AN OSM ELEMENT TO MAIN MEMORY, MORE THAN ONE ENTRY.")
+
 
             # We now need to construct our dataframe from the data
             column_name = []
@@ -229,7 +241,7 @@ class ReductionPhase(ICalculationPhase):
             except OSError as err:
                 return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
 
-            return calculation_state_enum_i.CalculationState.RUNNING, ""
+        return calculation_state_enum_i.CalculationState.RUNNING, ""
 
     def _initialize_data_save(self):
         """
@@ -252,10 +264,10 @@ class ReductionPhase(ICalculationPhase):
 
         return reduction_phase_data
 
-    def _get_default_values_for_osm_element(self, curr_default_value: DefaultValueEntry,
-                                            reduction_phase_data: Dict,
-                                            osm_element: GeoSeries,
-                                            data_entry: Dict):
+    def _set_data_entry_from_default_value(self, curr_default_value: DefaultValueEntry,
+                                           reduction_phase_data: Dict,
+                                           osm_element: GeoSeries,
+                                           data_entry: Dict):
         """
         This method uses DefaultValueEntry to calculate the default value for the osm element
         """

@@ -63,7 +63,7 @@ class ConfigurationManager:
         """
         return self._cut_out_configurator
 
-    def get_category_manager(self):
+    def get_category_manager(self) -> CategoryManager:
         """
         Getter for the category manager.
 

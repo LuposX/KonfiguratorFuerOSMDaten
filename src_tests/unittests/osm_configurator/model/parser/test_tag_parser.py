@@ -34,13 +34,13 @@ class TestTagParser:
         tag4 = '[]'
 
         assert set(["buildin:=yes", "building=no", "poop=384893_?$%ada", "building:level=298398_Ssfs90"]) \
-               == set(tag_parser.string_to_list_parser(tag1))
+               == set(tag_parser.user_tag_parser(tag1))
 
         assert set(['buildin:=yes', 'building=no', 'poop=384893_?$%ada', 'building:level=298398_Ssfs90']) \
-               == set(tag_parser.string_to_list_parser(tag2))
+               == set(tag_parser.user_tag_parser(tag2))
 
         assert set(['buildin:=yes']) \
-               == set(tag_parser.string_to_list_parser(tag3))
+               == set(tag_parser.user_tag_parser(tag3))
 
         assert set([]) \
-               == set(tag_parser.string_to_list_parser(tag4))
+               == set(tag_parser.user_tag_parser(tag4))

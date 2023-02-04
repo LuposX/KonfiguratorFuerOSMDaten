@@ -39,8 +39,8 @@ class Category:
         self._strictly_use_default_values: bool = False
 
         # Create the Attribute dictionary
-        self._attributes: Dict = {}
-        all_enums_names = [member.name for member in attribute_enum_i.Attribute]
+        self._attributes: Dict[Attribute, bool] = {}
+        all_enums_names = [member for member in attribute_enum_i.Attribute]
         for enum_name in all_enums_names:
             self._attributes.update({enum_name: False})
 
@@ -159,9 +159,9 @@ class Category:
         """
         _activated = []
 
-        for enum_name in self._attributes:
-            if self._attributes.get(enum_name) == True:
-                _activated.append(enum_name)
+        for enum in self._attributes:
+            if self._attributes.get(enum) == True:
+                _activated.append(enum)
 
         return _activated
 
@@ -174,9 +174,9 @@ class Category:
         """
         _activated = []
 
-        for enum_name in self._attributes:
-            if self._attributes.get(enum_name) == False:
-                _activated.append(enum_name)
+        for enum in self._attributes:
+            if self._attributes.get(enum) == False:
+                _activated.append(enum)
 
         return _activated
 
@@ -190,7 +190,7 @@ class Category:
         Returns:
             bool: True when the attribute is active, otherwise false.
         """
-        if self._attributes.get(attribute.name):
+        if self._attributes.get(attribute):
             return True
         else:
             return False
@@ -206,7 +206,7 @@ class Category:
         Returns:
             bool: True when it works, otherwise false.
         """
-        self._attributes[attribute.name] = boolean
+        self._attributes[attribute] = boolean
         return True
 
     def get_calculation_method_of_area(self):

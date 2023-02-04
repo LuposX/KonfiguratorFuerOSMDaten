@@ -37,9 +37,11 @@ class TagParser(TagParserInterface):
 
         return parsed_tags
 
-    def string_to_list_parser(self, string: str) -> List[str]:
+    def user_tag_parser(self, string: str) -> List[str]:
         """
         This method parses a string representation of a list to an actual list.
+        This methods gets used to parse the input the string fro mthe GUI.
+        e.g. format '["building=yes", "pooop=funny_Cat"]'
         """
         tmp_str: str = re.sub(r'["\[\]\']', '', string)
         tmp_str: str = tmp_str.split(",")
@@ -51,3 +53,18 @@ class TagParser(TagParserInterface):
             return list(filter(None, tmp_str))
         else:
             return []
+
+    def dataframe_tag_parser(self, string: str) -> List[Tuple[str, str]]:
+        """
+        This method parses a string representation of a list to an actual list.
+        This method is used to parse teh tags from the dataframe file.
+        The input format is in the form:
+        e.g. "[('addr:country', 'MC'), ('building', 'terrace'), ('building:levels', '8')]"
+        """
+        return eval(string)
+
+    def list_to_dict(self, string: List[Tuple[str, str]]) -> Dict[str, str]:
+        """
+        This function is used to convert a list of tuples into a dicitonary.
+        """
+        return dict(string)

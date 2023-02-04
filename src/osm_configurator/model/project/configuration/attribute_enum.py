@@ -71,16 +71,17 @@ def _calculate_property_area(category: Category,
         for i, found_series in df.loc[found_areas_bool].iterrows():
             # the found_series saves the tags as string representation of a list
             # we transform it into an actual list
-            transformed_list: List[str] = tag_parser_o.string_to_list_parser(found_series[model_constants_i.CL_TAGS])
-            parsed_tag: Dict[str, str] = tag_parser_o.parse_tags(transformed_list)
-            if parsed_tag.get(BUILDING_KEY) != None:
+            transformed_list: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(found_series[model_constants_i.CL_TAGS])
+            dict_transformed_list: Dict[str, str] = tag_parser_o.list_to_dict(transformed_list)
+
+            if dict_transformed_list.get(BUILDING_KEY) is not None:
                 # if its a node use default values for it
                 if found_series[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
                     curr_default_value_list: List[DefaultValueEntry] = category.get_default_value_list()
 
                     default_value: DefaultValueEntry = default_value_finder_o\
                         .find_default_value_entry_which_applies(curr_default_value_list,
-                                                                transformed_list)
+                                                                dict_transformed_list)
 
                     # add default values to the sum
                     area_sum += default_value.get_attribute_default(Attribute.PROPERTY_AREA)
@@ -102,9 +103,10 @@ def _calculate_number_of_floors(category: Category,
                                 curr_default_value: DefaultValueEntry,
                                 data: Any) -> float:
     tag_parser_o = tag_parser_i.TagParser()
-    parsed_tags: Dict = tag_parser_o.parse_tags(osm_element[model_constants_i.CL_TAGS])
+    tag_list: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(osm_element[model_constants_i.CL_TAGS])
+    dict_tag_list: Dict[str, str] = tag_parser_o.list_to_dict(tag_list)
 
-    for key, value in parsed_tags.items():
+    for key, value in dict_tag_list.items():
         if NUMBER_FLOOR_KEY == key:
             return float(value)
 
@@ -116,6 +118,7 @@ def _calculate_floor_area(category: Category,
                           prev_calculated_attributes: Dict[str, float],
                           curr_default_value: DefaultValueEntry,
                           data: Any) -> float:
+
     return prev_calculated_attributes.get(Attribute.PROPERTY_AREA.get_name()) * prev_calculated_attributes.get(Attribute.NUMBER_OF_FLOOR.get_name())
 
 

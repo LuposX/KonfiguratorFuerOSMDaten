@@ -88,9 +88,7 @@ class DataOSMHandler(osm.SimpleHandler):
         # Get a temporary list of tags from the osm object.
         self._tmp_tag_list: List = []
         for tag in elem.tags:
-            # only save the tags if we need them later.
-            if tag.k in self._needed_tags:
-                self._tmp_tag_list.append((tag.k, tag.v))
+            self._tmp_tag_list.append((tag.k, tag.v))
 
         # save the osm object data that we need.
         # we have one row of the osm element for each category the osm element applies to
