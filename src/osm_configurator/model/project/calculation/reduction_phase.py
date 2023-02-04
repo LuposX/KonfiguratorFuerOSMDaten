@@ -11,6 +11,7 @@ import src.osm_configurator.model.project.calculation.default_value_finder as de
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 
 import geopandas as gpd
+from fiona.errors import DriverError
 
 from pathlib import Path
 
@@ -96,8 +97,8 @@ class ReductionPhase(ICalculationPhase):
                                    GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
                                    KEEP_GEOM_COLUMNS="NO"
                                    )
-            except FileNotFoundError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
+            except (FileNotFoundError, DriverError) as err:
+                return calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)
 
             except Exception as err:
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)

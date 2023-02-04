@@ -59,13 +59,11 @@ def _prepare_previous_phase_folder(path_to_new_proejct: Path, path_old_data: Pat
 
 
 class TestReductionPhase:
-    def test_reduction_phase_fully_correctly(self):
-        # THIS HERE WORKS
+    def test_reduction_phase_fully(self):
         # Set up paths
         project_path: Path = Path(os.path.join(TEST_DIR, "build/reduction_phase/projectXY"))
         geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
 
-        # THIS HERE WORKS
         # Set up result folder from last phase
         # so delete folder from previous test runs and copy the data into it
         _prepare_previous_phase_folder(os.path.join(os.path.join(project_path, "results/"),
@@ -74,7 +72,6 @@ class TestReductionPhase:
                                        os.path.join(TEST_DIR, "data/monaco_reduction_phase_valid/")
                                        )
 
-        # THIS HERE WORKS
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
                                                                cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
@@ -93,3 +90,49 @@ class TestReductionPhase:
         # Test if execution works a second time
         result2: CalculationState = phase.calculate(config_manager)
         assert result2[0] == calculation_state_enum.CalculationState.RUNNING
+
+    def test_reduction_phase_corrupted_data(self):
+        # Set up paths
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/reduction_phase/projectXY"))
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
+
+        # Set up result folder from last phase
+        # so delete folder from previous test runs and copy the data into it
+        _prepare_previous_phase_folder(os.path.join(os.path.join(project_path, "results/"),
+                                                    calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE
+                                                    .get_folder_name_for_results()),
+                                       os.path.join(TEST_DIR, "data/monaco_split_up_files_invalid/")
+                                       )
+
+        # Set up configurator
+        config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+
+        # Execute test
+        phase: ReductionPhase = reduction_phase_i.ReductionPhase()
+        result1: CalculationState = phase.calculate(config_manager)
+
+        assert result1[0] == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND
+
+    def test_reduction_phase_invalid_path(self):
+        # Set up paths
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/reduction_phdadadaase/projectXY"))
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/ada-radadadaegions.geojson"))
+
+        # Set up result folder from last phase
+        # so delete folder from previous test runs and copy the data into it
+        _prepare_previous_phase_folder(os.path.join(os.path.join(project_path, "results/"),
+                                                    calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE
+                                                    .get_folder_name_for_results()),
+                                       os.path.join(TEST_DIR, "data/monaco_split_up_files_invalid/")
+                                       )
+
+        # Set up configurator
+        config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, False,
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+
+        # Execute test
+        phase: ReductionPhase = reduction_phase_i.ReductionPhase()
+        result1: CalculationState = phase.calculate(config_manager)
+
+        assert result1[0] == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND
