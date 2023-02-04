@@ -8,9 +8,10 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 
 from typing import TYPE_CHECKING
 
+from src.osm_configurator.model.project.configuration import default_value_entry
+
 if TYPE_CHECKING:
     from typing import List
-    from typing import Tuple
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
@@ -39,7 +40,7 @@ class Category:
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
-        self._default_tag: DefaultValueEntry = DefaultValueEntry("DEFAULT")
+        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry("DEFAULT")
         self._default_value_list.append(self._default_tag)
 
         # Create the Attribute dictionary
