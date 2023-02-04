@@ -2,13 +2,11 @@ from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 import src.osm_configurator.model.project.configuration.attractivity_attribute
-import src.osm_configurator.model.project.configuration.default_value_entry
+import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
 from typing import TYPE_CHECKING
-
-from src.osm_configurator.model.project.configuration import default_value_entry
 
 if TYPE_CHECKING:
     from typing import List
@@ -186,7 +184,7 @@ class Category:
         Returns:
             bool: True when it works, otherwise false.
         """
-        if attribute in Attribute:
+        if attribute in attribute_enum_i.Attribute:
             self._attributes[attribute.name] = boolean
             return True
         else:
