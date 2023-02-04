@@ -4,7 +4,7 @@ import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 
 
 class TestTagParser:
-    def test_tag_parser_correctly(self):
+    def test_user_tag_parser_correctly(self):
         tag_parser = tag_parser_i.TagParser()
 
         tags_not_formatted = ["building=yes", "waterfall=yes", "building:level=5", "poop=900"]
@@ -44,3 +44,32 @@ class TestTagParser:
 
         assert set([]) \
                == set(tag_parser.user_tag_parser(tag4))
+
+    def test_tag_dataframe_parser_correctly(self):
+        tag_parser = tag_parser_i.TagParser()
+
+        tag1 = "[('addr:country', 'MC'), ('building', 'terrace'), ('building:levels', '8'), ('name', 'Les Eucalyptus')]"
+        tag2 = "[('area', 'yes'), ('building', 'yes'), ('building:levels', '1'), ('highway', 'footway'), ('roof:shape', 'flat')]"
+        tag3 = "[('area', 'yes')]"
+        tag4 = "[]"
+
+        tag1_formatted = [('addr:country', 'MC'), ('building', 'terrace'), ('building:levels', '8'),
+                          ('name', 'Les Eucalyptus')]
+        tag2_formatted = [('area', 'yes'), ('building', 'yes'),
+                          ('building:levels', '1'),
+                          ('highway', 'footway'),
+                          ('roof:shape', 'flat')]
+        tag3_formatted = [('area', 'yes')]
+        tag4_formatted = []
+
+        assert set(tag1_formatted) \
+               == set(tag_parser.dataframe_tag_parser(tag1))
+
+        assert set(tag2_formatted) \
+               == set(tag_parser.dataframe_tag_parser(tag2))
+
+        assert set(tag3_formatted) \
+               == set(tag_parser.dataframe_tag_parser(tag3))
+
+        assert set(tag4_formatted) \
+               == set(tag_parser.dataframe_tag_parser(tag4))
