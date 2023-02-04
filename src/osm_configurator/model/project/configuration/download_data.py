@@ -17,7 +17,6 @@ class DownloadData:
         """
         Creates a new instance of the DownloadData.
         """
-        self.df = gpd.read_file("../../data/partOfKarlsruhe.geojson")
 
     def download_data(self, coordinates: Polygon) -> bool:
         """
@@ -29,5 +28,4 @@ class DownloadData:
         Returns:
             bool: True when the download works, otherwise false.
         """
-        data = ox.geometries_from_polygon(self.df["geometry"][0], tags={"building": True})
         return True
