@@ -13,6 +13,7 @@ class OSMFileFormat(Enum):
     PBF = ".pbf"
     BZ2 = ".bz2"
     OSM = ".osm"
+    CSV= ".csv"
 
     def get_file_extension(self):
         """

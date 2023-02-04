@@ -11,6 +11,4 @@ class CalculationParser(CalculationParserInterface):
         pass
     
     def check_validity_of_calculation_step(self, project_path, starting_point):
-        pass 
-    
-    
+        pass

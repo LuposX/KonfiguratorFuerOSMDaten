@@ -10,6 +10,7 @@ import src.osm_configurator.model.project.configuration.download_data as downloa
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.download_data import DownloadData
+    from pathlib import Path
 
 
 class OSMDataConfiguration:
@@ -21,10 +22,10 @@ class OSMDataConfiguration:
         """
         Creates a new instance of the "OSMDataConfiguration" class.
         """
-        self._osm_data_path = Path()
-        self._downloader = download_data.DownloadData()
+        self._osm_data_path: Path = None
+        self._downloader: DownloadData = download_data.DownloadData()
 
-    def get_osm_data(self) -> pathlib.Path:
+    def get_osm_data(self) -> Path:
         """
         Gives back the path pointing towards the OSM data file.
 

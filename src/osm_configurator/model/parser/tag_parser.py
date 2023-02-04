@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 from src.osm_configurator.model.parser.tag_parser_interface import TagParserInterface
-import osm_configurator.model.parser.custom_expceptions.tags_wrongly_formatted_exception as tags_wrongly_formatted_exception_i
-
+from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
 
 from typing import TYPE_CHECKING
 
@@ -28,7 +27,7 @@ class TagParser(TagParserInterface):
             split_string = tag.split("=")
 
             if len(split_string) != 2:
-                raise tags_wrongly_formatted_exception_i.TagsWronglyFormatted(str(tag))
+                raise TagsWronglyFormatted(str(tag))
 
             parsed_tags.append((split_string[0], split_string[1]))
 

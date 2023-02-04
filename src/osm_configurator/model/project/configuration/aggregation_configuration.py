@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Dict
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+    from typing import List
 
 
 class AggregationConfiguration:
@@ -19,7 +20,6 @@ class AggregationConfiguration:
         """
         Creates a new instance of the AggregationConfiguration.
         """
-
         self._aggregation_method_state: Dict = {}
         all_aggregation_methods = [member.name for member in aggregation_method_enum_i]
         for enum_name in all_aggregation_methods:
