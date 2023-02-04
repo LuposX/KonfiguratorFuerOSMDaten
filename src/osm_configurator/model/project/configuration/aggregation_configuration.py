@@ -21,7 +21,7 @@ class AggregationConfiguration:
         Creates a new instance of the AggregationConfiguration.
         """
         self._aggregation_method_state: Dict = {}
-        all_aggregation_methods = [member.name for member in aggregation_method_enum_i]
+        all_aggregation_methods = [member.name for member in aggregation_method_enum_i.AggregationMethod]
         for enum_name in all_aggregation_methods:
             self._aggregation_method_state.update({enum_name: False})
 
