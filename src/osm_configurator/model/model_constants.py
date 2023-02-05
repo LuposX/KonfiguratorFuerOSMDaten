@@ -17,6 +17,7 @@ CL_CATEGORIES: Final = "categories"
 CL_LOCATION: Final = "geometry"
 CL_TRAFFIC_CELL_NAME: Final = "traffic_cell_name"
 CL_OSM_ELEMENT_NAME: Final = "element_name"
+CL_AREA: Final = "area"
 
 # Misc
 # -----
