@@ -7,12 +7,16 @@ import matplotlib
 
 import geopandas as gpd
 
+import matplotlib.pyplot as plt
+import seaborn as sb
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
     from pathlib import Path
     from geopandas import GeoDataFrame
+    from pandas import DataFrame
     from folium import Map
 
 
@@ -52,34 +56,23 @@ class DataVisualizer:
         map: Map = gdf.explode(model_constants_i.CL_AREA, legend=False)
 
         try:
-            map.save(os.path.join(map_saving_path, ))
+            map.save(os.path.join(map_saving_path, filename))
         except Exception:
             return False
 
         return True
 
-    def create_boxplot(self, data):
+    def create_boxplot(self, data: DataFrame, map_saving_path: Path, filename: str):
         """
-        This method is to visualize the data by creating a boxplot.
-        It is used to visualize the calculated end result via a boxplot.
+        This method creates a boxplot which can later be viewed.
 
         Args:
-            data (matplotlib.axes.Axes): A plot of the data which we want to visualize.
+            data (DataFrame): The data which we want to visualize, should come from the aggregation phase.
+            map_saving_path (Path): the path where we want to save the file, doesn't include filename.
+            filename (str): the name under which the file should be saved, need to have the ".png" extension.
 
         Returns:
             bool: True if creating the boxplot works, otherwise false.
         """
-        pass
-
-    def _save_map(self, destination_path):
-        """
-        This method so to save the map after creating it at a given path.
-        The map in an HTML file format.
-
-        Args:
-            destination_path (pathlib.Path): The path, where the map should be saved.
-
-        Returns:
-            bool: True if saving the map works, otherwise false.
-        """
-        pass
+        fig = sb.boxplot(data)
+        fig.get_figure().savefig(os.path.join(map_saving_path, filename))
