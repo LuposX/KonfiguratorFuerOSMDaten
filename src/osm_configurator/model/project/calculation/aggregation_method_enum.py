@@ -1,35 +1,38 @@
 from __future__ import annotations
 
 from enum import Enum, unique
-from typing import Tuple, Callable
-from geopandas import GeoDataFrame
 
+from typing import TYPE_CHECKING
 
-def _sum(data, attractivity_name):
+if TYPE_CHECKING:
+    from typing import Tuple, Callable
+    from geopandas import GeoDataFrame
+
+def _sum(df: GeoDataFrame):
     pass
 
 
-def _average(data, attractivity_name):
+def _average(df: GeoDataFrame):
     pass
 
 
-def _mean(data, attractivity_name):
+def _mean(df: GeoDataFrame) -> float:
     pass
 
 
-def _upper_quartile(data, attractivity_name):
+def _upper_quartile(df: GeoDataFrame) -> float:
     pass
 
 
-def _lower_quartile(data, attractivity_name):
+def _lower_quartile(df: GeoDataFrame) -> float:
     pass
 
 
-def _maximum(data, attractivity_name):
+def _maximum(df: GeoDataFrame) -> float:
     pass
 
 
-def _minimum(data, attractivity_name):
+def _minimum(df: GeoDataFrame) -> float:
     pass
 
 
@@ -50,19 +53,17 @@ class AggregationMethod(Enum):
     MAXIMUM = (_maximum, "maximum")  #: Calculates the maximum of the attractivity attribute over all osm elements from the data.
     MINIMUM = (_minimum, "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
 
-    def calculate_aggregation(self, data, attractivity_name):
+    def calculate_aggregation(self, data: GeoDataFrame) -> float:
         """
         Executes the aggregation method of the called enum type.
 
         Args:
             data (geopandas.GeoDataFrame): The data on which we want to execute the function on, should be a GeoDataFrame containing osm elements.
-            attractivity_name (str): This is the name of the attractivity through which we want to call the function,
-                                        the attractivity_name should be the name of a column in the data GeoDataFrame.
 
         Returns:
             float: The aggregated value of the attractivity values from all osm elements.
         """
-        return self.value[0](data, attractivity_name)
+        return self.value[0](data)
 
     def get_name(self):
         """
