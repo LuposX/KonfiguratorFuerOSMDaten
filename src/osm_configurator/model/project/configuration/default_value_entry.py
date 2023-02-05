@@ -28,9 +28,9 @@ class DefaultValueEntry:
         """
         self._tag: str = tag
         self._all_attribute_default_values: Dict = {}
-        all_enums_names = [member.name for member in attribute_enum_i.Attribute]
-        for enum_name in all_enums_names:
-            self._all_attribute_default_values.update({enum_name: 0})
+        attribute: Attribute
+        for attribute in attribute_enum_i.Attribute:
+            self._all_attribute_default_values.update({attribute: 0})
 
     def get_default_value_entry_tag(self) -> str:
         """

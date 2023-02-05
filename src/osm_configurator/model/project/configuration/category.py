@@ -34,7 +34,7 @@ class Category:
         self._whitelist: List = []
         self._blacklist: List = []
         self._category_name: str = "Category Name"
-        self._calculation_method_of_area: None
+        self._calculation_method_of_area: CalculationMethodOfArea = None
         self._attractivity_attributes: List = []
         self._default_value_list: List = []
         self._strictly_use_default_values: bool = False
@@ -47,9 +47,9 @@ class Category:
 
         # Create the Attribute dictionary
         self._attributes: Dict[Attribute, bool] = {}
-        all_enums_names = [member for member in attribute_enum_i.Attribute]
-        for enum_name in all_enums_names:
-            self._attributes.update({enum_name: False})
+        attribute: Attribute
+        for attribute in attribute_enum_i.Attribute:
+            self._attributes.update({attribute: False})
 
     def is_active(self) -> bool:
         """

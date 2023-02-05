@@ -133,8 +133,6 @@ class TestAttributeEnumMethods:
                                          GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
                                          KEEP_GEOM_COLUMNS="NO")
 
-        TEST_CATEGORY_BUILDING_AREA.add_default_value_entry(osm_element_1_default_value)
-
         osm_element_1_data: Dict = {
             model_constants_i.CL_OSM_TYPE: model_constants_i.AREA_WAY_NAME,
             model_constants_i.CL_OSM_ELEMENT_NAME: "奧的斯電梯公司",

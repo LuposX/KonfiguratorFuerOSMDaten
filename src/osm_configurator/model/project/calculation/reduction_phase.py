@@ -90,7 +90,6 @@ class ReductionPhase(ICalculationPhase):
         tag_parser_o: TagParser = tag_parser_i.TagParser()
 
         for file_path in list_of_traffic_cell_checkpoints:
-            # THIS HERE WORKS
             try:
                 # Read out dataframe from disk into memory
                 df = gpd.read_file(file_path,
