@@ -58,6 +58,10 @@ class AttractivityPhase(ICalculationPhase):
         # Get the traffic cells
         geojson_path: Path = configuration_manager.get_cut_out_configuration().get_cut_out_path()
         co_parser: CutOutParser = cut_out_parser.CutOutParser()
+
+        if geojson_path is None:
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, "Invalid geojson file"
+
         try:
             cells: GeoDataFrame = co_parser.parse_cutout_file(geojson_path)
         except IllegalCutOutException as err:

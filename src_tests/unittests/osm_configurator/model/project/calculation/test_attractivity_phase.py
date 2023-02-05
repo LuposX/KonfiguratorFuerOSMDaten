@@ -71,3 +71,11 @@ def test_minimal_input_successfully():
     assert df["trading"][0] == 810
     assert math.isnan(df["trading"][3])
     assert df["trading"][5] == 42
+
+
+def test_illegal_configuration():
+    config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(
+        Path(os.path.join(TEST_DIR, "build/attractivity_phase/projectIllegal")))
+    phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
+    result: CalculationState = phase.calculate(config_manager)[0]
+    assert result == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
