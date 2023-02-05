@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from src_tests.definitions import TEST_CATEGORY_SITE_AREA, TEST_DIR, TEST_CATEGORY_BUILDING_AREA
+from src_tests.definitions import TEST_CATEGORY_SITE_AREA, TEST_DIR, TEST_CATEGORY_BUILDING_AREA, osm_element_1_default_value
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry_i
@@ -29,8 +29,6 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_TAGS: "[('building', 'yes'), ('shop', 'lol213'), ('building:levels', '2')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
-        osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
-        osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 0)
 
         osm_element_1: GeoSeries = pd.Series(data=osm_element_1_data)
 
@@ -52,8 +50,6 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_TAGS: "[('building', 'yes'), ('shop', 'butcher')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
-        osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
-        osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 0)
 
         osm_element_1: GeoSeries = pd.Series(data=osm_element_1_data)
 
@@ -65,7 +61,7 @@ class TestAttributeEnumMethods:
             None
         )
 
-        assert 0 == calculated_value
+        assert 1 == calculated_value
 
     def test_floor_area_correctly(self):
         osm_element_1_data: Dict = {
@@ -75,9 +71,6 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_TAGS:  "[('building', 'yes'), ('shop', 'butcher')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
-        osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
-        osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.FLOOR_AREA, 0)
-
         osm_element_1: GeoSeries = pd.Series(data=osm_element_1_data)
 
         calculated_value = attribute_enum_i.Attribute.FLOOR_AREA.calculate_attribute_value(
@@ -101,8 +94,6 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_TAGS: "[('building', 'yes'), ('song', 'Red Sun Sky')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
-        osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
-        osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 69.420)
 
         osm_element_1: GeoSeries = pd.Series(data=osm_element_1_data)
 
@@ -114,7 +105,7 @@ class TestAttributeEnumMethods:
             None
         )
 
-        assert 69.420 == calculated_value
+        assert 1 == calculated_value
 
     def test_property_area_correctly_with_polygon_and_site_area(self):
         osm_element_1_data: Dict = {
@@ -124,8 +115,6 @@ class TestAttributeEnumMethods:
             model_constants_i.CL_TAGS: "[('building', 'yes'), ('pepe', 'rare_pepe')]",
             model_constants_i.CL_CATEGORY: TEST_CATEGORY_SITE_AREA.get_category_name(),
         }
-        osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
-        osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 555)
 
         osm_element_1: GeoSeries = pd.Series(data=osm_element_1_data)
 
@@ -143,10 +132,6 @@ class TestAttributeEnumMethods:
         df: GeoDataFrame = gpd.read_file(os.path.join(TEST_DIR, "data/reduction_test_property_area.csv"),
                                          GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
                                          KEEP_GEOM_COLUMNS="NO")
-
-        osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
-        osm_element_1_default_value.set_tag("building=*")
-        osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 1)
 
         TEST_CATEGORY_BUILDING_AREA.add_default_value_entry(osm_element_1_default_value)
 

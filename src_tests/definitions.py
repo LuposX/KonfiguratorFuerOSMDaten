@@ -26,12 +26,16 @@ whitelist: List = ["building=*"]
 TEST_CATEGORY_SITE_AREA: Final = category_i.Category()
 TEST_CATEGORY_SITE_AREA.set_category_name(name)
 TEST_CATEGORY_SITE_AREA.set_whitelist(whitelist)
+
 TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
 TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
 TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 TEST_CATEGORY_SITE_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA)
+
 osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
 osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.FLOOR_AREA, 1)
 TEST_CATEGORY_SITE_AREA.add_default_value_entry(osm_element_1_default_value)
 
 name: str = "building_category_building_area"
@@ -45,6 +49,8 @@ TEST_CATEGORY_BUILDING_AREA.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA,
 TEST_CATEGORY_BUILDING_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
 osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
 osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.FLOOR_AREA, 1)
 TEST_CATEGORY_BUILDING_AREA.add_default_value_entry(osm_element_1_default_value)
 
 name: str = "no_building_category"
@@ -57,6 +63,8 @@ TEST_CATEGORY_NO_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLO
 TEST_CATEGORY_NO_BUILDING.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
 osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.FLOOR_AREA, 1)
 TEST_CATEGORY_NO_BUILDING.add_default_value_entry(osm_element_1_default_value)
 
 name: str = "shop_category"
@@ -67,6 +75,8 @@ TEST_CATEGORY_SHOP.set_whitelist(blacklist)
 TEST_CATEGORY_SHOP.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
 osm_element_1_default_value = default_value_entry_i.DefaultValueEntry()
 osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 1)
+osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.FLOOR_AREA, 1)
 TEST_CATEGORY_SHOP.add_default_value_entry(osm_element_1_default_value)
 
 
