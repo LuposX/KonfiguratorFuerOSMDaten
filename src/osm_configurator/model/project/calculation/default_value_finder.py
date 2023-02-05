@@ -40,6 +40,10 @@ class DefaultValueFinder:
             if not default_tag:
                 continue
 
+            # If its the default default tag
+            if default_tag == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+                return _default_value_entry
+
             # This will return a dictionary with a single entry which is our tag
             parsed_default_value_tag = tag_parser_o.parse_tags([default_tag])
 

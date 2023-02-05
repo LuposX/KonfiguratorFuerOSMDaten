@@ -28,6 +28,8 @@ CL_NUMBER_OF_FLOORS: Final = "number_of_floors"
 STANDARD_OSM_ELEMENT_NAME: Final = "missing"
 DONT_CARE_SYMBOL: Final = "*"
 
+DEFAULT_DEFAULT_VALUE_ENTRY_TAG: Final = "default"
+
 # Name of osm elements
 # ---------------------
 NODE_NAME: Final = "node"

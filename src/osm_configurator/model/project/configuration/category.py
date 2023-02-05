@@ -6,6 +6,8 @@ import src.osm_configurator.model.project.configuration.default_value_entry as d
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
+import src.osm_configurator.model.model_constants as model_constants_i
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -38,7 +40,7 @@ class Category:
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
-        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry("DEFAULT")
+        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
         self._default_value_list.append(self._default_tag)
 
         self._strictly_use_default_values: bool = False
