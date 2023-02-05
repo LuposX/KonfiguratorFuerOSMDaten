@@ -86,6 +86,7 @@ CATEGORY_MANAGER = category_manager_i.CategoryManager()
 CATEGORY_MANAGER.add_categories([TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
 
 
+
 # The Test folder
 # ---------------
 TEST_DIR: Final = os.path.dirname(os.path.abspath(__file__))
