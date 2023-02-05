@@ -60,8 +60,8 @@ class DefaultValueEntry:
         Returns:
             bool: True, if overwriting process was successful, else false
         """
-        if attribute in attribute_enum_i:
-            self._default_value_per_attribute[attribute] = value
+        if attribute in attribute_enum_i.Attribute:
+            self._all_attribute_default_values[attribute] = value
             return True
         return False
 
@@ -75,5 +75,5 @@ class DefaultValueEntry:
         Returns:
             float: The default value of the attribute
         """
-        if attribute in attribute_enum_i:
-            return self._default_value_per_attribute[attribute]
+        if attribute in attribute_enum_i.Attribute:
+            return self._all_attribute_default_values[attribute]
