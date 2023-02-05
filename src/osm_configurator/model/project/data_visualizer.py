@@ -6,6 +6,7 @@ import src.osm_configurator.model.model_constants as model_constants_i
 import matplotlib
 
 import geopandas as gpd
+import webbrowser
 
 import matplotlib.pyplot as plt
 import seaborn as sb
@@ -31,9 +32,9 @@ class DataVisualizer:
         """
         pass
 
-    def create_map(self, cut_out_config: CutOutConfiguration, map_saving_path: Path, filename: str):
+    def create_map(self, cut_out_config: CutOutConfiguration, map_saving_path: Path, filename: str) -> bool:
         """
-        This method to create a map from to given cut-out.
+        This method is used to create a map from to given cut-out config and save it.
 
         Args:
             cut_out_config (cut_out_configuration.CutOutConfiguration): The cut-out configuration from which the map should be created.
@@ -62,9 +63,9 @@ class DataVisualizer:
 
         return True
 
-    def create_boxplot(self, data: DataFrame, map_saving_path: Path, filename: str):
+    def create_boxplot(self, data: DataFrame, map_saving_path: Path, filename: str) -> bool:
         """
-        This method creates a boxplot which can later be viewed.
+        This method creates a boxplot which is saved and can later be viewed.
 
         Args:
             data (DataFrame): The data which we want to visualize, should come from the aggregation phase.
@@ -75,4 +76,45 @@ class DataVisualizer:
             bool: True if creating the boxplot works, otherwise false.
         """
         fig = sb.boxplot(data)
-        fig.get_figure().savefig(os.path.join(map_saving_path, filename))
+
+        # try saving the figure
+        try:
+            fig.get_figure().savefig(os.path.join(map_saving_path, filename))
+        except Exception:
+            return False
+
+        return True
+
+    def show_map(self, path_to_map: Path) -> bool:
+        """
+        This function is used to visualize am already created map.
+
+         Args:
+            path_to_map (Path): the path where the map is saved we want to show.
+
+         Returns:
+            bool: True if creating the boxplot works, otherwise false.
+        """
+        try:
+            webbrowser.open_new(path_to_map)
+        except Exception:
+            return False
+
+        return True
+
+    def show_boxplot(self, path_to_map: Path) -> bool:
+        """
+        This function is used to visualize am already created boxplot.
+
+         Args:
+            path_to_map (Path): the path where the boxplot is saved we want to show.
+
+         Returns:
+            bool: True if creating the boxplot works, otherwise false.
+        """
+        try:
+            webbrowser.open_new(path_to_map)
+        except Exception:
+            return False
+
+        return True
