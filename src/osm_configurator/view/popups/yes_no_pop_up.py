@@ -50,6 +50,7 @@ class YesNoPopUp(customtkinter.CTk):
         It will return "True" to the given function.
         """
         self.func(True)
+        return True
 
     def cancel(self):
         """
@@ -57,6 +58,7 @@ class YesNoPopUp(customtkinter.CTk):
         It will return "False" to the given function.
         """
         self.func(False)
+        return False
 
 
 def combine_funcs(*funcs):
