@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+import numpy as np
 import pandas as pd
 
 if TYPE_CHECKING:
@@ -12,7 +13,6 @@ if TYPE_CHECKING:
 
 # the name of the data entry in the osm tag key file
 CL_KEY: Final = "key"
-
 
 class RecommenderSystem:
 
@@ -36,13 +36,19 @@ class RecommenderSystem:
             path_to_recommender_file (Path):
 
         Returns:
-            Series: Returns a Series of strings containing the recommendations depending on the input.
+            List[str]: Returns a List of strings containing the recommendations depending on the input. If file was not found return None.
         """
-        # open the file
-        key_df = pd.read_csv(path_to_recommender_file)
+        try:
+            # open the file
+            key_df = pd.read_csv(path_to_recommender_file)
+        except Exception:
+            return None
 
         # gets a series with true and false
         # an entry is true if the entry in the dataframe at that position contains the string
         found_matches: Series = key_df[CL_KEY].str.contains(input)
 
-        return key_df.loc[found_matches]
+        # Replaces all NaN values with False.
+        found_matches.replace(np.NaN, False, inplace=True)
+
+        return key_df.loc[found_matches][CL_KEY].tolist()

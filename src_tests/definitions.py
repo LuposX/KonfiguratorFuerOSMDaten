@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import os
+import pathlib
+
 import shapely as shp
 
 import src.osm_configurator.model.project.configuration.category as category_i
@@ -47,9 +49,10 @@ CATEGORY_MANAGER = category_manager_i.CategoryManager()
 CATEGORY_MANAGER.override_categories([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
 
 
-# The Test folder
+# Folder Paths
 # ---------------
 TEST_DIR: Final = os.path.dirname(os.path.abspath(__file__))
+PROJECT_MAIN_FOLDER: Final = pathlib.Path(__file__).parent.parent
 
 # Test polygons of the cutout file, monaco-regions
 # ------------------------------------------------
