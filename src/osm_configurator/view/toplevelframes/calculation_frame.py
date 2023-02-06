@@ -218,7 +218,7 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
             - No: Nothing happens, calculations continues
         """
         popup = YesNoPopUp("Do you really want to cancel the calculation process?", self.__receive_pop_up)
-        #  TODO: Wie zum fick soll die popup kommunikation funktionieren?
+        #  TODO: Implement PopUp Communication => Call new function receiving the values
 
     def __show_calculation_utilities(self):
         """
@@ -229,7 +229,7 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
         self.progressbar = \
             customtkinter.CTkProgressBar(master=self.window, progress_color="green", width=400,
                                          orientation="horizontal") \
-                .pack(side="right", padx=40, pady=40)
+            .pack(side="right", padx=40, pady=40)
 
         cancel_button = \
             customtkinter.CTkButton(master=self.window, text="Cancel", bg_color="red", command=self.__stop_calculation) \
