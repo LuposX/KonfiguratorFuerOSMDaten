@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 import csv
 
@@ -10,15 +11,14 @@ class PassiveProject:
     the class holds the name, description, last edit date and path of the projects.
     """
 
-    def __init__(self, project_folder_path):
+    def __init__(self, settings_file):
         """
         Creates a new instance of the PassiveProject.
 
         Args:
-            project_folder_path (Path): The path to the project you want to make a PassiveProject on.
+            settings_file (Path): The settings file of to the project you want to make a PassiveProject on.
         """
-        filename = str(project_folder_path) + "/project_settings.csv"
-        with open(filename, 'r') as f:
+        with open(settings_file, 'r') as f:
             reader = csv.reader(f)
             self.data = list(reader)
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import pathlib
+import os
 from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.application.application_interface import IApplication
@@ -26,8 +27,9 @@ class Application(IApplication):
         Creates a new instance of the application_interface.Application.
         """
         self.active_project: ActiveProject = None
-        self.passive_project_list: list[PassiveProject] = list[None]
         self.application_settings: ApplicationSettings = ApplicationSettings()
+        self.passive_project_list: list[PassiveProject] = self._create_passive_project_list(
+            self.application_settings.get_default_location())
         self.recommender_system: RecommenderSystem = RecommenderSystem()
         self.application_settings_saver: ApplicationSettingsSaver = ApplicationSettingsSaver()
 
@@ -55,3 +57,13 @@ class Application(IApplication):
         self.application_settings_saver.save_settings(destination)
         self.active_project.get_project_saver(destination)
         return True
+
+    def _create_passive_project_list(self, destination: pathlib.Path) -> list[PassiveProject]:
+        passive_project_list: list[PassiveProject] = []
+
+        for files in os.walk(destination):
+            for filename in files:
+                if filename.endswith("settings.csv"):
+                    filepath = os.path.join(destination, filename)
+                    passive_project_list.append(PassiveProject(Path(filepath)))
+        return passive_project_list

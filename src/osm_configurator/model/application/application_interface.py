@@ -3,6 +3,7 @@ from __future__ import annotations
 import src.osm_configurator.model.application.recommender_system
 import src.osm_configurator.model.project.active_project
 import src.osm_configurator.model.application.application_settings
+import src.osm_configurator.model.application.passive_project
 
 from abc import ABC, abstractmethod
 from pathlib import Path
@@ -37,13 +38,13 @@ class IApplication(ABC):
         pass
 
     @abstractmethod
-    def load_project(self, path) -> bool:
+    def load_project(self, destination) -> bool:
         """
         This method loads an existing project. This project can be internal or external ones. The path is pointing
         towards the folder, where the project is saved.
 
         Args:
-            path (pathlib.Path): The path of the project, to be loaded.
+            destination (pathlib.Path): The path of the project, to be loaded.
         Returns:
             bool: True if loading the project is working, otherwise false.
         """
@@ -99,5 +100,18 @@ class IApplication(ABC):
 
         Returns:
             bool: True when saving works, otherwise false.
+        """
+        pass
+
+    @abstractmethod
+    def _create_passive_project_list(self, destination: Path) -> list[PassiveProject]:
+        """
+        Creates the list of passive projects.
+
+        Args:
+            destination (pathlib.Path): The path where the projects are stored.
+
+        Returns:
+            list[passive_project.PassiveProject]: The list of passive projects.
         """
         pass
