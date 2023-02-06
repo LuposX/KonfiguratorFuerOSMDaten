@@ -59,12 +59,12 @@ class AggregationPhase(ICalculationPhase):
         # Get path to the results of the last Phase
         checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.GEO_DATA_PHASE)
+            calculation_phase_enum_i.CalculationPhase.ATTRACTIVITY_PHASE)
 
         # Get path to the results of the current Phase
         checkpoint_folder_path_current_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE)
+            calculation_phase_enum_i.CalculationPhase.AGGREGATION_PHASE)
 
         # Prepare result folder
         deleter: FileDeletion = file_deletion_i.FileDeletion()
@@ -83,7 +83,7 @@ class AggregationPhase(ICalculationPhase):
         active_aggregation_methods: List[AggregationMethod] = self._get_activated_aggregation_methods(aggregation_configuration)
 
         # Create a dict where we save the dataframe
-        aggregation_phase_data: Dict[AggregationMethod, List] = {}
+        aggregation_phase_data: Dict[AggregationMethod, List[float]] = {}
         aggregation_phase_data.update({model_constants_i.CL_OSM_ELEMENT_NAME: []})
         for agg_method in active_aggregation_methods:
             aggregation_phase_data.update({agg_method: []})
