@@ -76,26 +76,71 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
         #  TODO: Prüfen, ob Berechnung bereits fertig ist
 
     def __tag_filter_pressed(self):
+        """
+        Startet die Routine, falls der Tag-Filter-Button gedrückt wird
+        Routine:
+            - Startpunkt setzen
+            - Knöpfe dementsprechend färben und nicht-klickbar machen
+            - Calculation starten
+                - Ladebalken einblenden
+                - Berechnung starten
+        """
         self._starting_point = CalculationPhase.TAG_FILTER_PHASE
         self.__disable_buttons()
         self.__start_calculation()
 
     def __data_and_geofilter_pressed(self):
+        """
+        Startet die Routine, falls Data-And-Geofilter als Startpunkt gewählt wurde
+        Routine:
+            - Startpunkt setzen
+            - Knöpfe dementsprechend färben und nicht-klickbar machen
+            - Calculation starten
+                - Ladebalken einblenden
+                - Berechnung starten
+        """
         self._starting_point = CalculationPhase.GEO_DATA_PHASE
         self.__disable_buttons()
         self.__start_calculation()
 
     def __reduction_pressed(self):
+        """
+        Startet die Routine, falls Reduction als Startpunkt gewählt wurde
+        Routine:
+            - Startpunkt setzen
+            - Knöpfe dementsprechend färben und nicht-klickbar machen
+            - Calculation starten
+                - Ladebalken einblenden
+                - Berechnung starten
+        """
         self._starting_point = CalculationPhase.REDUCTION_PHASE
         self.__disable_buttons()
         self.__start_calculation()
 
     def __attractivity_pressed(self):
+        """
+        Startet die Routine, falls Attractivity als Startpunkt gewählt wurde
+        Routine:
+            - Startpunkt setzen
+            - Knöpfe dementsprechend färben und nicht-klickbar machen
+            - Calculation starten
+                - Ladebalken einblenden
+                - Berechnung starten
+        """
         self._starting_point = CalculationPhase.ATTRACTIVITY_PHASE
         self.__disable_buttons()
         self.__start_calculation()
 
     def __aggregation_pressed(self):
+        """
+        Startet die Routine, falls Aggregation als Startpunkt gewählt wurde
+        Routine:
+            - Startpunkt setzen
+            - Knöpfe dementsprechend färben und nicht-klickbar machen
+            - Calculation starten
+                - Ladebalken einblenden
+                - Berechnung starten
+        """
         self._starting_point = CalculationPhase.AGGREGATION_PHASE
         self.__disable_buttons()
         self.__start_calculation()
@@ -136,11 +181,11 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
         self.progressbar = \
             customtkinter.CTkProgressBar(master=self.window, progress_color="green", width=400,
                                          orientation="horizontal") \
-                .pack(side="right", padx=40, pady=40)
+            .pack(side="right", padx=40, pady=40)
 
         cancel_button = \
             customtkinter.CTkButton(master=self.window, text="Cancel", bg_color="red", command=self.__stop_calculation) \
-                .pack(side="right", padx=40, pady=40)
+            .pack(side="right", padx=40, pady=40)
 
         self.buttons.append(cancel_button)
 
