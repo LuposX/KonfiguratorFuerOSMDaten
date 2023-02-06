@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import src.osm_configurator.model.project.active_project
+from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationMethod
+from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 import pathlib
 import csv
 
@@ -14,6 +17,13 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from pathlib import Path
+
+
+def _write_csv_file(data: list, filename: Path) -> bool:
+    with open(filename, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerows(data)
+    return True
 
 
 class ProjectSaver:
@@ -32,87 +42,168 @@ class ProjectSaver:
             active_project (active_project.ActiveProject): The project the ProjectSaver shall load.
         """
         self.active_project: ActiveProject = active_project
+        self.destination: Path = active_project.get_project_settings().get_location()
 
-    def save_project(self, destination: Path):
+    def save_project(self):
         """
         Stores all the configurations of the project.
         The information about the configuration of the project are stored to the disk.
-
-        Args:
-            destination (pathlib.Path): The path pointing towards the project folder. The data will be stored here.
 
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
 
         # Saves ProjectSettings
-        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "project_settings.csv"
+        self._save_settings()
+
+        # Save ConfigPhase
+        self._save_config_phase()
+
+        # Save OSMDataConfiguration
+        self._save_osm_configurator()
+
+        # Save AggregationConfiguration
+        self._save_aggregation_configurator()
+
+        # Save CutOutConfiguration
+        self._save_cut_out_configurator()
+
+        # Save Categories (one file for every category)
+        self._save_categories()
+
+    def _save_settings(self) -> bool:
+        """
+        Stores the settings of the project.
+
+        Returns:
+            bool: True, if the project was stored successfully, False, if an error occurred.
+        """
+        filename = self._create_filename("project_settings")
         settings_data = [["name", self.active_project.get_project_settings().get_name()],
                          ["description", self.active_project.get_project_settings().get_description()],
                          ["location", self.active_project.get_project_settings().get_location()],
-                         ["calculation_phase_checkpoints_folder", str(self.active_project.get_project_settings()
-                                                                      .get_calculation_phase_checkpoints_folder())]]
-        with open(filename, 'w', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerows(settings_data)
+                         ["calculation_phase_checkpoints_folder", self.active_project.get_project_settings()
+                         .get_calculation_phase_checkpoints_folder()]]
+        _write_csv_file(settings_data, filename)
+        return True
 
-        # Save ConfigPhase
-        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "last_step.text"
+    def _save_config_phase(self) -> bool:
+        """
+        Stores the last config step of the project.
+
+        Returns:
+            bool: True, if the project was stored successfully, False, if an error occurred.
+        """
+        filename = self._create_filename("last_step")
         config_phase_data = str(self.active_project.get_last_step())
         with open(filename, 'w') as f:
             f.write(config_phase_data)
+        return True
 
-        # Save OSMDataConfiguration
-        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "osm_path.text"
+    def _save_osm_configurator(self) -> bool:
+        """
+        Stores the osm-configuration of the project.
+
+        Returns:
+            bool: True, if the project was stored successfully, False, if an error occurred.
+        """
+        filename = self._create_filename("osm_path")
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
         with open(filename, 'w') as f:
             f.write(osm_path_data)
+        return True
 
-        # Save AggregationConfiguration
-        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "/Configuration/active_methods.csv"
-        with open(filename, 'w', newline='') as f:
-            writer = csv.writer(f)
-            for method in AggregationMethod:
-                if self.active_project.get_config_manager().get_aggregation_configuration() \
-                        .is_aggregation_method_active(method):
-                    writer.writerow(str(method))
+    def _save_aggregation_configurator(self) -> bool:
+        """
+        Stores all active aggregation methods.
 
-        # Save CutOutConfiguration
-        filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() \
-                   + "/Configuration/cut_out_configuration.csv"
+        Returns:
+            bool: True, if the project was stored successfully, False, if an error occurred.
+        """
+        filename = self._create_filename("active_methods")
+        active_methods: list = []
+        for method in AggregationMethod:
+            if self.active_project.get_config_manager().get_aggregation_configuration() \
+                    .is_aggregation_method_active(method):
+                active_methods.append(method.get_name())
+        _write_csv_file(active_methods, filename)
+        return True
+
+    def _save_cut_out_configurator(self):
+        """
+        Stores the cut-out-configuration.
+
+        Returns:
+            bool: True, if the project was stored successfully, False, if an error occurred.
+        """
+        filename = self._create_filename("cut_out_configuration")
         cut_out_data = [["cut_out_path",
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
                         ["cut_out_mode",
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_mode().get_name()]]
+        _write_csv_file(cut_out_data, filename)
+        return True
 
-        with open(filename, 'w', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerows(cut_out_data)
+    def _save_categories(self):
+        """
+        Stores the categories of the project.
 
-        # Save Categories (one file for every category)
-        categories_labels = [["name", "status", "white_list", "black_list", "calculation_method_of_area",
-                              "active_attributes", "strictly_use_default_values", "attractivity_attributes",
-                              "default_value_list"]]
+        Returns:
+            bool: True, if the project was stored successfully, False, if an error occurred.
+        """
         category_manager = self.active_project.get_config_manager().get_category_manager()
 
         for category in category_manager.get_categories():
-            filename = str(destination) + "/" + self.active_project.get_project_settings().get_name() + "/Configuration/Categories" \
-                       + category.get_category_name + "csv"
-            with open(filename, 'w', newline='') as f:
-                writer = csv.writer(f)
-                writer.writerow(categories_labels)
-                category_name = category.get_category_name()
-                category_is_active = category.is_active()
-                category_whitelist = category.get_whitelist()
-                category_blacklist = category.get_blacklist()
-                category_calculation_method_of_area = category.get_calculation_method_of_area()
-                # Todo: Method missing
-                category_strictly_use_default_values = category.get_strictly_use_default_values()
-                category_active_attributes = ""
+            filename = self._create_category_filename(category.get_category_name)
+            all_attractivity_attributes_list: list[str] = []
+            for attractivity_attribute in category.get_activated_attribute():
+                attractivity_attribute_values: list[str] = []
                 for attribute in Attribute:
-                    if attribute:
-                        category_active_attributes = category_active_attributes + "," + attribute.get_name()
-                category_data = [[category_name, category_is_active, category_whitelist, category_blacklist,
-                                  category_calculation_method_of_area, category_strictly_use_default_values,
-                                  category_active_attributes]]
-                writer.writerow(category_data)
+                    attractivity_attribute_values.append(attribute.get_name() + ":" \
+                                                         + attractivity_attribute.get_attribute_factor(attribute))
+                all_attractivity_attributes_list.append(";".join(attractivity_attribute_values))
+                all_attractivity_attributes_list.append("base:" + attractivity_attribute.get_base_factor())
+            all_default_value_entries_list: list[str] = []
+            for default_value_entry in category.get_default_value_list():
+                default_value_entry_values: list[str] = []
+                for attribute in Attribute:
+                    default_value_entry_values.append(attribute.get_name() + ":" \
+                                                      + default_value_entry.get_attribute_default_value(attribute))
+                all_default_value_entries_list.append(";".join(attractivity_attribute_values))
+            category_data = [["name", category.get_category_name()],
+                             ["status", category.is_active()],
+                             ["white_list", category.get_whitelist()],
+                             ["black_list", category.get_blacklist()],
+                             ["calculation_method_of_area", category.get_calculation_method_of_area()],
+                             ["active_attributes", category.get_activated_attribute()],
+                             ["strictly_use_default_values", category.get_strictly_use_default_values],
+                             ["attractivity_attributes", all_attractivity_attributes_list],
+                             ["default_value_list", all_default_value_entries_list]]
+            _write_csv_file(category_data, filename)
+        return True
+
+    def _create_filename(self, name: str) -> Path:
+        """
+        Creates a filename to store data from the given str and destination.
+
+        Args:
+            name (str): The name of the new file.
+
+        Returns:
+            pathlib.Path: The created path.
+        """
+        filename = str(self.destination) + "/" + name + ".csv"
+        return Path(filename)
+
+    def _create_category_filename(self, name: str) -> Path:
+        """
+        Creates a filename to store category-data from the given str and destination.
+
+        Args:
+            name (str): The name of the new file.
+
+        Returns:
+            pathlib.Path: The created path.
+        """
+        filename = str(self.destination) + "/Category/" + name + ".csv"
+        return Path(filename)
