@@ -19,7 +19,7 @@ class ApplicationSettings:
         """
         Creates a new instance of the ApplicationSettings.
         """
-        self.path = None
+        self.path: pathlib.Path = Path('')
 
     def get_default_location(self) -> Path:
         """

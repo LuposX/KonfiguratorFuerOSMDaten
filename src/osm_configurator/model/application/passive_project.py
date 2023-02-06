@@ -29,7 +29,7 @@ class PassiveProject:
         Returns:
             str: The name of the passive project.
         """
-        return self.data[0][0]
+        return self.data[0][1]
 
     def get_description(self):
         """
@@ -38,7 +38,7 @@ class PassiveProject:
         Returns:
             str: The description of the passive project.
         """
-        return self.data[1][0]
+        return self.data[1][1]
 
     def get_edit_date(self):
         """
@@ -47,7 +47,7 @@ class PassiveProject:
         Returns:
             str: The last edit date of the passive project.
         """
-        return self.data[2][0]
+        return self.data[2][1]
 
     def get_project_folder_path(self):
         """
@@ -56,4 +56,4 @@ class PassiveProject:
         Returns:
             pathlib.Path: The path pointing towards the passive project.
         """
-        return self.data[3][0]
+        return self.data[3][1]
