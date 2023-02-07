@@ -25,18 +25,19 @@ class AggregationConfiguration:
         for enum_name in all_aggregation_methods:
             self._aggregation_method_state.update({enum_name: False})
 
-    def get_all_aggregation_methods(self) -> list[AggregationMethod]:
+    def get_all_aggregation_methods(self) -> List[AggregationMethod]:
         """
         Gives back a List of all possible aggregation methods.
 
         Returns:
-            list[aggregation_method_enum.AggregationMethod]: A list containing all aggregation methods.
+            List[aggregation_method_enum.AggregationMethod]: A list containing all aggregation methods.
         """
-        _all_methods = []
+        all_methods: List[AggregationMethod] = []
 
+        method: AggregationMethod
         for method in AggregationMethod:
-            _all_methods.append(method)
-        return _all_methods
+            all_methods.append(method)
+        return all_methods
 
     def is_aggregation_method_active(self, method: AggregationMethod) -> bool:
         """
@@ -68,3 +69,19 @@ class AggregationConfiguration:
             self._aggregation_method_state.update({method: active})
             return True
         return False
+
+    def get_all_active_aggregation_methods(self) -> List[AggregationMethod]:
+        """
+        Getter for all activated aggregation methods.
+
+        Returns:
+            List[AggregationMethod]: Activated aggregation method.
+        """
+        activated_methods: List[AggregationMethod] = []
+
+        method: AggregationMethod
+        for method in AggregationMethod:
+            if self.is_aggregation_method_active(method):
+                activated_methods.append(method)
+
+        return activated_methods

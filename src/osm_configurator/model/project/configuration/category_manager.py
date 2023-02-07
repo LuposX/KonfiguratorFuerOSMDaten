@@ -6,10 +6,10 @@ import src.osm_configurator.model.project.configuration.category as Category
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List
+    from typing import List, Set
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.category import Category
-
+    from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 class CategoryManager:
     """
@@ -107,6 +107,23 @@ class CategoryManager:
         Args:
             category_input_list (list[Category]): New list of categories that will be merged into the existing list.
         """
+        category: Category
         for category in category_input_list:
             if category not in self._categories:
                 self._categories.append(category)
+
+    def get_all_defined_attractivity_attributes(self) -> List[AttractivityAttribute]:
+        """
+        Gets all defined attractivity attributes.
+        Doesn't have dupplicates.
+
+        Returns:
+            (List[AttractivityAttribute]): Attractivity Attributes
+        """
+        result: Set[AttractivityAttribute] = set([])
+
+        category: Category
+        for category in self._categories:
+            result.update(category.get_attractivity_attributes())
+
+        return list(result)
