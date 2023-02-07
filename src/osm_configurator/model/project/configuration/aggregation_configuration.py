@@ -35,7 +35,7 @@ class AggregationConfiguration:
         all_methods: List[AggregationMethod] = []
 
         method: AggregationMethod
-        for method in AggregationMethod:
+        for method in aggregation_method_enum_i.AggregationMethod:
             all_methods.append(method)
         return all_methods
 
@@ -65,7 +65,7 @@ class AggregationConfiguration:
             bool: True if changing the state works, otherwise false.
         """
 
-        if method in aggregation_method_enum_i:
+        if method in aggregation_method_enum_i.AggregationMethod:
             self._aggregation_method_state.update({method: active})
             return True
         return False
@@ -80,7 +80,7 @@ class AggregationConfiguration:
         activated_methods: List[AggregationMethod] = []
 
         method: AggregationMethod
-        for method in AggregationMethod:
+        for method in aggregation_method_enum_i.AggregationMethod:
             if self.is_aggregation_method_active(method):
                 activated_methods.append(method)
 
