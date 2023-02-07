@@ -33,6 +33,10 @@ def _standard_deviation(df: Series) -> float:
     return df.std()
 
 
+def _median(df: Series) -> float:
+    return df.median()
+
+
 def _25_quantile(df: Series) -> float:
     return df.quantile(0.25)
 
@@ -62,6 +66,7 @@ class AggregationMethod(Enum):
     _minimum, "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
     VARIANCE = (_variance, "variance")
     STANDARD_DERIVATIVE = (_standard_deviation, "Standard deviation")
+    MEDIAN = (_median, "Median")
     QUANTILE_25 = (_25_quantile, "0.25 Quantile")
     QUANTILE_50 = (_50_quantile, "0.50 Quantile")
     QUANTILE_75 = (_75_quantile, "0.75 Quantile")
