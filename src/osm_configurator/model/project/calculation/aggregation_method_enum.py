@@ -6,34 +6,43 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Tuple, Callable
-    from geopandas import GeoDataFrame
-
-def _sum(df: GeoDataFrame):
-    pass
+    from pandas import Series
 
 
-def _average(df: GeoDataFrame):
-    pass
+def _sum(df: Series):
+    return df.sum()
 
 
-def _mean(df: GeoDataFrame) -> float:
-    pass
+def _mean(df: Series) -> float:
+    return df.mean()
 
 
-def _upper_quartile(df: GeoDataFrame) -> float:
-    pass
+def _maximum(df: Series) -> float:
+    return df.max()
 
 
-def _lower_quartile(df: GeoDataFrame) -> float:
-    pass
+def _minimum(df: Series) -> float:
+    return df.min()
 
 
-def _maximum(df: GeoDataFrame) -> float:
-    pass
+def _variance(df: Series) -> float:
+    return df.var()
 
 
-def _minimum(df: GeoDataFrame) -> float:
-    pass
+def _standard_deviation(df: Series) -> float:
+    return df.std()
+
+
+def _25_quantile(df: Series) -> float:
+    return df.quantile(0.25)
+
+
+def _50_quantile(df: Series) -> float:
+    return df.quantile(0.50)
+
+
+def _75_quantile(df: Series) -> float:
+    return df.quantile(0.75)
 
 
 @unique
@@ -46,19 +55,23 @@ class AggregationMethod(Enum):
     """
     # Attributes are from the type (Tuple[Callable, str])
     SUM = (_sum, "sum")  #: Calculates the sum of the attractivity attribute over all osm elements from the data.
-    AVERAGE = (_average, "average")  #: Calculates the average of the attractivity attribute over all osm elements from the data.
     MEAN = (_mean, "mean")  #: Calculates the mean of the attractivity attribute over all osm elements from the data.
-    UPPER_QUARTILE = (_upper_quartile, "upper quartile")  #: Calculates the upper_quartile of the attractivity attribute over all osm elements from the data.
-    LOWER_QUARTILE = (_lower_quartile, "lower quartile")  #: Calculates the lower quartile of the attractivity attribute over all osm elements from the data.
-    MAXIMUM = (_maximum, "maximum")  #: Calculates the maximum of the attractivity attribute over all osm elements from the data.
-    MINIMUM = (_minimum, "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
+    MAXIMUM = (
+    _maximum, "maximum")  #: Calculates the maximum of the attractivity attribute over all osm elements from the data.
+    MINIMUM = (
+    _minimum, "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
+    VARIANCE = (_variance, "variance")
+    STANDARD_DERIVATIVE = (_standard_deviation, "Standard deviation")
+    QUANTILE_25 = (_25_quantile, "0.25 Quantile")
+    QUANTILE_50 = (_50_quantile, "0.50 Quantile")
+    QUANTILE_75 = (_75_quantile, "0.75 Quantile")
 
-    def calculate_aggregation(self, data: GeoDataFrame) -> float:
+    def calculate_aggregation(self, data: Series) -> float:
         """
         Executes the aggregation method of the called enum type.
 
         Args:
-            data (geopandas.GeoDataFrame): The data on which we want to execute the function on, should be a GeoDataFrame containing osm elements.
+            data (Series): The data on which we want to execute the function on, should be a Series containing attractitivity attributes.
 
         Returns:
             float: The aggregated value of the attractivity values from all osm elements.
