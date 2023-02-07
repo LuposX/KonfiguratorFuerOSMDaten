@@ -21,6 +21,7 @@ import src.osm_configurator.model.model_constants as model_constants_i
 
 import pandas as pd
 import geopandas as gpd
+from fiona.errors import DriverError
 
 from typing import TYPE_CHECKING
 
@@ -79,13 +80,13 @@ class AggregationPhase(ICalculationPhase):
             list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
 
         else:
-            return calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, ""
+            return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ""
 
         # Get the CategoryManager
         aggregation_configuration: AggregationConfiguration = configuration_manager_o.get_aggregation_configuration()
 
         # get all activated aggregation methods
-        active_aggregation_methods: List[AggregationMethod] = self._get_activated_aggregation_methods(aggregation_configuration)
+        active_aggregation_methods: List[AggregationMethod] = aggregation_configuration.get_all_active_aggregation_methods()
 
         # Create a dict where we save the dataframe
         aggregation_phase_data: Dict[AggregationMethod, List[float]] = {}
@@ -95,7 +96,7 @@ class AggregationPhase(ICalculationPhase):
 
         # For each active aggregation method create one dataframe with all traffic cells in it
         aggregation_method: AggregationMethod
-        for aggregation_method in aggregation_configuration.get_all_active_aggregation_methods():
+        for aggregation_method in active_aggregation_methods:
 
             # Create a dict where we save the dataframe
             # it has as key the name of a attractivity attribute and as value the list of calculated data entries
@@ -113,12 +114,12 @@ class AggregationPhase(ICalculationPhase):
             file_path: Path
             for file_path in list_of_traffic_cell_checkpoints:
                 try:
-                    traffic_cell_data_frame: GeoDataFrame = gpd.read_file(file_path)
+                    traffic_cell_data_frame: DataFrame = pd.read_csv(file_path, index_col=0)
 
                 except TagsWronglyFormatted as err:
                     return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
 
-                except OSMDataWronglyFormatted as err:
+                except (OSMDataWronglyFormatted, DriverError) as err:
                     return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
                 # add the name of the cell
@@ -127,7 +128,7 @@ class AggregationPhase(ICalculationPhase):
                 # iterate over the column of the dataframe, each column corresponds to one attractivity attribute
                 # This ignores the index column
                 column_name: str
-                for column_name in traffic_cell_data_frame.columns:
+                for column_name in traffic_cell_data_frame.columns.values:
                     # Calculate the given method
                     column_result: float = aggregation_method.calculate_aggregation(traffic_cell_data_frame[column_name])
 
