@@ -94,7 +94,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_filename("last_step")
+        filename = str(self.destination) + "/" + "last_step.txt"
         config_phase_data = str(self.active_project.get_last_step())
         with open(filename, 'w') as f:
             f.write(config_phase_data)
@@ -107,7 +107,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_filename("osm_path")
+        filename = str(self.destination) + "/" + "osm_path.txt"
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
         with open(filename, 'w') as f:
             f.write(osm_path_data)
@@ -153,9 +153,11 @@ class ProjectSaver:
         """
         category_manager = self.active_project.get_config_manager().get_category_manager()
 
+        # Iterates throw every category and makes a csv-file for it
         for category in category_manager.get_categories():
             filename = self._create_category_filename(category.get_category_name)
             all_attractivity_attributes_list: list[str] = []
+            # Saves all attractivity attributes
             for attractivity_attribute in category.get_activated_attribute():
                 attractivity_attribute_values: list[str] = []
                 for attribute in Attribute:
@@ -164,6 +166,7 @@ class ProjectSaver:
                 all_attractivity_attributes_list.append(";".join(attractivity_attribute_values))
                 all_attractivity_attributes_list.append("base:" + attractivity_attribute.get_base_factor())
             all_default_value_entries_list: list[str] = []
+            # Saves all default value entry
             for default_value_entry in category.get_default_value_list():
                 default_value_entry_values: list[str] = []
                 for attribute in Attribute:

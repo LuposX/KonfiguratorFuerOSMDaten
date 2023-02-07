@@ -25,3 +25,9 @@ class ConfigPhase(Enum):
             str: Name of the Phase.
         """
         return self.value
+
+    def equals(self, phase: str) -> ConfigPhase | None:
+        for config_phase in ConfigPhase:
+            if config_phase.get_name() == phase:
+                return config_phase
+        return None
