@@ -20,5 +20,11 @@ class CalculationMethodOfArea(Enum):
         Returns:
             str: The name of the Calculation Method.
         """
-        pass
+        return self.value
+
+    def equals(self, name: str) -> CalculationMethodOfArea | None:
+        for method in CalculationMethodOfArea:
+            if method.get_calculation_method() == name:
+                return method
+        return None
 

@@ -121,12 +121,11 @@ class ProjectSaver:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
         filename = self._create_filename("active_methods")
-        active_methods: list = []
+        aggregation_methods: list = []
+        aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
-            if self.active_project.get_config_manager().get_aggregation_configuration() \
-                    .is_aggregation_method_active(method):
-                active_methods.append(method.get_name())
-        _write_csv_file(active_methods, filename)
+            aggregation_methods.append([method.get_name(), aggregation_configurator.is_aggregation_method_active(method)])
+        _write_csv_file(aggregation_methods, filename)
         return True
 
     def _save_cut_out_configurator(self):
