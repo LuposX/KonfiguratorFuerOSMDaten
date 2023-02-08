@@ -89,12 +89,22 @@ def test_big_input_successfully():
     config_manager: ConfigurationManager = _prepare_config(project_path, geojson_path)
 
     # Copy results of reduction phase
-    copy_from: Path = Path(os.path.join(TEST_DIR, "data/attractivity_phase/minimal/0_traffic_cell.csv"))
+    copy_from1: Path = Path(os.path.join(TEST_DIR, "data/monaco_attractivity_inputs/1_the_funny_cat.csv"))
+    copy_from2: Path = Path(os.path.join(TEST_DIR, "data/monaco_attractivity_inputs/4_traffic_cell.csv"))
     input_folder: Path = calculation_utility.get_checkpoints_folder_path_from_phase \
         (config_manager, calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
-    copy_to: Path = Path(os.path.join(input_folder, "0_traffic_cell.csv"))
+    copy_to1: Path = Path(os.path.join(input_folder, "1_the_funny_cat.csv"))
+    copy_to2: Path = Path(os.path.join(input_folder, "4_traffic_cell.csv"))
     if not os.path.exists(input_folder):
         os.makedirs(input_folder)
-    if os.path.exists(copy_to):
-        os.remove(copy_to)
-    shutil.copyfile(copy_from, copy_to)
+    if os.path.exists(copy_to1):
+        os.remove(copy_to1)
+    shutil.copyfile(copy_from1, copy_to1)
+    if os.path.exists(copy_to2):
+        os.remove(copy_to2)
+    shutil.copyfile(copy_from2, copy_to2)
+
+    # Execute attractivity phase
+    phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
+    result: CalculationState = phase.calculate(config_manager)[0]
+    assert result == calculation_state_enum.CalculationState.RUNNING
