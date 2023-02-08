@@ -59,7 +59,8 @@ class ProjectHeadFrame(TopLevelFrame):
         """
         # Starting with no master
         # Also setting other constants, based on what is in the constant enum
-        super().__init__(master=None, width=view_constants_i.ViewConstants.HEAD_FRAME_WIDTH.value,
+        super().__init__(master=None,
+                         width=view_constants_i.ViewConstants.HEAD_FRAME_WIDTH.value,
                          height=view_constants_i.ViewConstants.HEAD_FRAME_HEIGHT.value,
                          corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
                          fg_color=view_constants_i.ViewConstants.HEAD_FRAME_FG_COLOR.value)
