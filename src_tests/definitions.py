@@ -20,26 +20,32 @@ if TYPE_CHECKING:
 
 # Defining Test Categories
 # -------------------------
-name: str = "building_category"
+name: str = "building_category_site_area"
 whitelist: List = ["building=*"]
-TEST_CATEGORY_BUILDING: Final = category_i.Category()
-TEST_CATEGORY_BUILDING.set_category_name(name)
-TEST_CATEGORY_BUILDING.set_whitelist(whitelist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+TEST_CATEGORY_SITE_AREA: Final = category_i.Category()
+TEST_CATEGORY_SITE_AREA.set_category_name(name)
+TEST_CATEGORY_SITE_AREA.set_whitelist(whitelist)
+TEST_CATEGORY_SITE_AREA.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
+
+name: str = "building_category_building_area"
+whitelist: List = ["building=*"]
+TEST_CATEGORY_BUILDING_AREA: Final = category_i.Category()
+TEST_CATEGORY_BUILDING_AREA.set_category_name(name)
+TEST_CATEGORY_BUILDING_AREA.set_whitelist(whitelist)
 
 name: str = "no_building_category"
 blacklist: List = ["building=*"]
 TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
 TEST_CATEGORY_NO_BUILDING.set_category_name(name)
 TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
+TEST_CATEGORY_NO_BUILDING.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True)
 
 name: str = "shop_category"
 blacklist: List = ["shop=*"]
 TEST_CATEGORY_SHOP: Final = category_i.Category()
 TEST_CATEGORY_SHOP.set_category_name(name)
 TEST_CATEGORY_SHOP.set_whitelist(blacklist)
-TEST_CATEGORY_BUILDING.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
+TEST_CATEGORY_SHOP.set_attribute(attribute_enum_i.Attribute.PROPERTY_AREA, True)
 
 # Define attractivity attributes
 TEST_ATTRACTIVITY_COOLNESS: Final = attractivity_attribute.AttractivityAttribute("coolness", 0)
@@ -58,8 +64,8 @@ TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.FLOOR
 TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 0)
 
 # Set attractivities of categories
-TEST_CATEGORY_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
-TEST_CATEGORY_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING)
+TEST_CATEGORY_BUILDING_AREA.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
+TEST_CATEGORY_BUILDING_AREA.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING)
 TEST_CATEGORY_NO_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING2)
 TEST_CATEGORY_SHOP.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
 
@@ -67,7 +73,7 @@ TEST_CATEGORY_SHOP.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
 # Defining Test Category Manager
 # -------------------------
 CATEGORY_MANAGER = category_manager_i.CategoryManager()
-CATEGORY_MANAGER._test_set_categories([TEST_CATEGORY_BUILDING, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
+CATEGORY_MANAGER._test_set_categories([TEST_CATEGORY_BUILDING_AREA, TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
 
 
 # The Test folder

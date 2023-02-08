@@ -16,12 +16,14 @@ import src.osm_configurator.model.project.calculation.calculation_phase_utility 
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
+import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.attractivity_phase import AttractivityPhase
+    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
     from pandas import DataFrame
 
 
@@ -31,7 +33,8 @@ def _prepare_config(project: Path, geojson: Path) -> ConfigurationManager:
 
     # Prepare categories and attractivities
     cat_manager: CategoryManager = config_manager.get_category_manager()
-    cat_manager.get_categories().append(definitions.TEST_CATEGORY_BUILDING)
+    cat_manager.get_categories().append(definitions.TEST_CATEGORY_BUILDING_AREA)
+    cat_manager.get_categories().append(definitions.TEST_CATEGORY_SITE_AREA)
     cat_manager.get_categories().append(definitions.TEST_CATEGORY_NO_BUILDING)
     cat_manager.get_categories().append(definitions.TEST_CATEGORY_SHOP)
 
@@ -88,21 +91,16 @@ def test_big_input_successfully():
     project_path: Path = Path(os.path.join(TEST_DIR, "build/attractivity_phase/projectBig"))
     config_manager: ConfigurationManager = _prepare_config(project_path, geojson_path)
 
-    # Copy results of reduction phase
-    copy_from1: Path = Path(os.path.join(TEST_DIR, "data/monaco_attractivity_inputs/1_the_funny_cat.csv"))
-    copy_from2: Path = Path(os.path.join(TEST_DIR, "data/monaco_attractivity_inputs/4_traffic_cell.csv"))
-    input_folder: Path = calculation_utility.get_checkpoints_folder_path_from_phase \
+    # Reset and Copy results of reduction phase
+    copy_from: Path = Path(os.path.join(TEST_DIR, "data/attractivity_phase/big"))
+    copy_to: Path = calculation_utility.get_checkpoints_folder_path_from_phase \
         (config_manager, calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
-    copy_to1: Path = Path(os.path.join(input_folder, "1_the_funny_cat.csv"))
-    copy_to2: Path = Path(os.path.join(input_folder, "4_traffic_cell.csv"))
-    if not os.path.exists(input_folder):
-        os.makedirs(input_folder)
-    if os.path.exists(copy_to1):
-        os.remove(copy_to1)
-    shutil.copyfile(copy_from1, copy_to1)
-    if os.path.exists(copy_to2):
-        os.remove(copy_to2)
-    shutil.copyfile(copy_from2, copy_to2)
+
+    deleter: FileDeletion = file_deletion.FileDeletion()
+    deleter.reset_folder(copy_to)
+
+    for file_name in os.listdir(copy_from):
+        shutil.copy2(os.path.join(copy_from, file_name), copy_to)
 
     # Execute attractivity phase
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
