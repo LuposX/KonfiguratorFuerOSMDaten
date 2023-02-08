@@ -80,19 +80,14 @@ class AggregationPhase(ICalculationPhase):
             list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
 
         else:
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ""
+            return calculation_state_enum_i.CalculationState.ERROR_INVALID_PREVIOUS_CALCULATIONS, \
+                "Data folder from the previous phase doesn't exists."
 
         # Get the CategoryManager
         aggregation_configuration: AggregationConfiguration = configuration_manager_o.get_aggregation_configuration()
 
         # get all activated aggregation methods
         active_aggregation_methods: List[AggregationMethod] = aggregation_configuration.get_all_active_aggregation_methods()
-
-        # Create a dict where we save the dataframe
-        aggregation_phase_data: Dict[AggregationMethod, List[float]] = {}
-        aggregation_phase_data.update({model_constants_i.CL_OSM_ELEMENT_NAME: []})
-        for agg_method in active_aggregation_methods:
-            aggregation_phase_data.update({agg_method: []})
 
         # For each active aggregation method create one dataframe with all traffic cells in it
         aggregation_method: AggregationMethod
