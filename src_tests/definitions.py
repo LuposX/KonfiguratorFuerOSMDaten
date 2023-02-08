@@ -10,6 +10,8 @@ import src.osm_configurator.model.project.configuration.category_manager as cate
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry_i
+import src.osm_configurator.model.project.configuration.attractivity_attribute as attractivity_attribute
+
 
 from typing import TYPE_CHECKING
 
@@ -67,6 +69,29 @@ TEST_CATEGORY_SHOP.set_whitelist(blacklist)
 for member in attribute_enum_i.Attribute:
     TEST_CATEGORY_SHOP.set_attribute(member, True)
 TEST_CATEGORY_SHOP.add_default_value_entry(osm_element_1_default_value)
+
+
+# Define attractivity attributes
+TEST_ATTRACTIVITY_COOLNESS: Final = attractivity_attribute.AttractivityAttribute("coolness", 0)
+TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 1)
+TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 0)
+
+TEST_ATTRACTIVITY_TRADING: Final = attractivity_attribute.AttractivityAttribute("trading", 100)
+TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
+TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 2)
+TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 3)
+
+TEST_ATTRACTIVITY_TRADING2: Final = attractivity_attribute.AttractivityAttribute("trading", 42)
+TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 0)
+TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 0)
+TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 0)
+
+# Set attractivities of categories
+TEST_CATEGORY_BUILDING_AREA.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
+TEST_CATEGORY_BUILDING_AREA.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING)
+TEST_CATEGORY_NO_BUILDING.add_attractivity_attribute(TEST_ATTRACTIVITY_TRADING2)
+TEST_CATEGORY_SHOP.add_attractivity_attribute(TEST_ATTRACTIVITY_COOLNESS)
 
 
 # Defining Test Category Manager

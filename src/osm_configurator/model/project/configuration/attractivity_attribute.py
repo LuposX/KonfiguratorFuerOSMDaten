@@ -20,7 +20,6 @@ class AttractivityAttribute:
     def __init__(self, attractivity_attribute_name: str, base_attractivity: float):
         """
         Creates a new instance of a "AttractivityAttribute" class.
-
         Args:
             attractivity_attribute_name (str): The name of the Attractivity Attributes
             base_attractivity (float): The base attractivity value.
@@ -37,19 +36,16 @@ class AttractivityAttribute:
     def get_attractivity_attribute_name(self) -> str:
         """
         Getter for attractivity attribute name.
-
         Returns:
             str: The attractivity attribute name.
         """
         return self._attractivity_attribute_name
 
-    def set_attractivity_attribute_name(self, new_name: str) -> bool:
+    def set_attractivity_attribute_name(self, new_name) -> bool:
         """
         Setter for the attractivity attribute name.
-
         Args:
             new_name (str): name of the attractivity attribute.
-
         Returns:
             bool: true, if the name was successfully set, false otherwise
         """
@@ -59,10 +55,8 @@ class AttractivityAttribute:
     def get_attribute_factor(self, attribute: Attribute) -> float:
         """
         Getter for the list of attributes and factors.
-
         Args:
             attribute: The attribute we want to read the factor from
-
         Returns:
             float: The value of the factor to the given attribute
         """
@@ -71,11 +65,9 @@ class AttractivityAttribute:
     def set_attribute_factor(self, attribute: Attribute, factor: float) -> bool:
         """
          Setter for the list of attributes and factors.
-
         Args:
             attribute: The attribute we for which we want to set the factor.
             factor: The factor we want to set
-
         Return:
             bool: true, on success
         """
@@ -85,19 +77,16 @@ class AttractivityAttribute:
     def get_base_factor(self) -> float:
         """
         Getter for the base factor.
-
         Returns:
              float: the base factor
         """
         return self._base_attractivity
 
-    def set_base_factor(self, new_base_factor: float) -> bool:
+    def set_base_factor(self, new_base_factor) -> bool:
         """
         Setter for the base factor.
-
         Args:
             new_base_factor (float): New value for the base factor
-
         Returns:
             bool: true if the base factor eas successful set, false else
         """
