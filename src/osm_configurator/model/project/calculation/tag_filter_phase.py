@@ -16,6 +16,8 @@ from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_
 from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import \
     OSMDataWronglyFormatted
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
+import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+
 
 from typing import TYPE_CHECKING
 
@@ -25,6 +27,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.parser.osm_data_parser import OSMDataParser
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParserInterface
+    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
     from typing import List
     from typing import Tuple
@@ -37,6 +40,8 @@ class TagFilterPhase(ICalculationPhase):
     This calculation phase is responsible for sorting OSM-elements into their corresponding categories.
     For details see the method calculate().
     """
+    def get_calculation_phase_enum(self) -> CalculationPhase:
+        return calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE
 
     def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
         """

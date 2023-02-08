@@ -12,6 +12,7 @@ import src.osm_configurator.model.project.calculation.calculation_phase_enum as 
 import src.osm_configurator.model.project.calculation.split_up_files as split_up_files
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
+import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 
 from typing import TYPE_CHECKING
 
@@ -20,6 +21,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParserInterface
     from geopandas.geodataframe import GeoDataFrame
+    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.calculation.split_up_files import SplitUpFile
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
 
@@ -28,6 +30,8 @@ class GeoDataPhase(ICalculationPhase):
     """
     This Phase is responsible for splitting the file in smaller pieces, based on the traffic cells.
     """
+    def get_calculation_phase_enum(self) -> CalculationPhase:
+        return calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE
 
     def calculate(self, configuration_manager: ConfigurationManager) -> CalculationState:
         """

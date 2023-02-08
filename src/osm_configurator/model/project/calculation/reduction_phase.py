@@ -9,6 +9,8 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
+import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+
 
 import geopandas as gpd
 from fiona.errors import DriverError
@@ -28,6 +30,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
+    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from geopandas import GeoDataFrame, GeoSeries
     from src.osm_configurator.model.parser.tag_parser import TagParser
@@ -39,6 +42,9 @@ class ReductionPhase(ICalculationPhase):
     the values of the attributes for alle OSM-elements.
     For details see the method calculate().
     """
+    def get_calculation_phase_enum(self) -> CalculationPhase:
+        return calculation_phase_enum.CalculationPhase.REDUCTION_PHASE
+
     def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
         """
         Reduces OSM-elements on single points and calculates their attributes.
