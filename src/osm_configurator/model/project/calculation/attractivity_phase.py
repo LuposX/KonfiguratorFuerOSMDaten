@@ -97,7 +97,6 @@ class AttractivityPhase(ICalculationPhase):
                                                     calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
         input_path: Path = Path(os.path.join(reduction_folder, cell_name + ".csv"))
         output_path: Path = Path(os.path.join(attractivity_folder, cell_name + ".csv"))
-        # TODO: magic strings
 
         # Read and create data frames
         input_df: DataFrame = pd.read_csv(input_path)
@@ -123,7 +122,7 @@ class AttractivityPhase(ICalculationPhase):
         category_name: str = element["category"]
         category: Category = self._get_category_by_name(category_name, category_list)
 
-        new_entry = pds.Series()
+        new_entry: Series = pds.Series()
 
         attractivity: AttractivityAttribute
         for attractivity in category.get_attractivity_attributes():
@@ -137,7 +136,7 @@ class AttractivityPhase(ICalculationPhase):
         return output_df
 
     def _get_category_by_name(self, category_name: str, category_list: List[Category]) -> Category:
-        list_of_categories_with_name = [cat for cat in category_list if cat.get_category_name() == category_name]
+        list_of_categories_with_name: List[Category] = [cat for cat in category_list if cat.get_category_name() == category_name]
         assert len(list_of_categories_with_name) <= 1
         if len(list_of_categories_with_name) == 0:
             raise CategoryException("An OSM-element has a category that is not registered in the configuration")
