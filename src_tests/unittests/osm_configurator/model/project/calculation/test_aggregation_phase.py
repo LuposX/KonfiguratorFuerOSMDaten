@@ -105,13 +105,18 @@ class TestAggregationPhase:
         _prepare_previous_phase_folder(os.path.join(os.path.join(project_path, "results/"),
                                                     calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE
                                                     .get_folder_name_for_results()),
-                                       os.path.join(TEST_DIR, "data/0_traffic_cell_aggregation_test.csv"),
-                                       False
+                                       os.path.join(TEST_DIR, "data/monaco_needed_data_for_aggregation_phase/"),
+                                       True
                                        )
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(project_path,
-                                                               [aggregation_method_enum_i.AggregationMethod.SUM])
+                                                               [aggregation_method_enum_i.AggregationMethod.SUM,
+                                                                aggregation_method_enum_i.AggregationMethod.VARIANCE,
+                                                                aggregation_method_enum_i.AggregationMethod.QUANTILE_25,
+                                                                aggregation_method_enum_i.AggregationMethod.MAXIMUM,
+                                                                aggregation_method_enum_i.AggregationMethod.MEAN
+                                                                ])
 
         # Execute test
         phase: AggregationPhase = aggregation_phase_i.AggregationPhase()
@@ -122,7 +127,7 @@ class TestAggregationPhase:
         # Test if files were created
         assert len(
             os.listdir(os.path.join(project_path, "results/" + calculation_phase_enum.CalculationPhase.AGGREGATION_PHASE
-                                    .get_folder_name_for_results()))) == 1
+                                    .get_folder_name_for_results()))) == 5
 
         # Test if execution works a second time
         result2: (CalculationState, str) = phase.calculate(config_manager)

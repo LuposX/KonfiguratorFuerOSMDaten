@@ -41,10 +41,6 @@ def _25_quantile(df: Series) -> float:
     return df.quantile(0.25)
 
 
-def _50_quantile(df: Series) -> float:
-    return df.quantile(0.50)
-
-
 def _75_quantile(df: Series) -> float:
     return df.quantile(0.75)
 
@@ -67,9 +63,8 @@ class AggregationMethod(Enum):
     VARIANCE = (_variance, "variance")
     STANDARD_DERIVATIVE = (_standard_deviation, "Standard deviation")
     MEDIAN = (_median, "Median")
-    QUANTILE_25 = (_25_quantile, "0.25 Quantile")
-    QUANTILE_50 = (_50_quantile, "0.50 Quantile")
-    QUANTILE_75 = (_75_quantile, "0.75 Quantile")
+    QUANTILE_25 = (_25_quantile, "25_Quantile")
+    QUANTILE_75 = (_75_quantile, "75_Quantile")
 
     def calculate_aggregation(self, data: Series) -> float:
         """

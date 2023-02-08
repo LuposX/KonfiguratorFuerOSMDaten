@@ -80,7 +80,7 @@ class AggregationConfiguration:
         activated_methods: List[AggregationMethod] = []
 
         method: AggregationMethod
-        for method in aggregation_method_enum_i.AggregationMethod:
+        for method in list(aggregation_method_enum_i.AggregationMethod):
             if self.is_aggregation_method_active(method):
                 activated_methods.append(method)
 

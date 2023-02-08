@@ -114,7 +114,7 @@ class AggregationPhase(ICalculationPhase):
                 except TagsWronglyFormatted as err:
                     return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
 
-                except (OSMDataWronglyFormatted, DriverError) as err:
+                except (OSMDataWronglyFormatted, DriverError, UnicodeDecodeError) as err:
                     return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
                 # add the name of the cell
