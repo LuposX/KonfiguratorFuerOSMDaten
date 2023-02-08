@@ -24,6 +24,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.calculation.split_up_files import SplitUpFile
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
+    from typing import Tuple
 
 
 class GeoDataPhase(ICalculationPhase):
@@ -33,7 +34,7 @@ class GeoDataPhase(ICalculationPhase):
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE
 
-    def calculate(self, configuration_manager: ConfigurationManager) -> CalculationState:
+    def calculate(self, configuration_manager: ConfigurationManager) -> Tuple[CalculationState, str]:
         """
         This method does:
         It splits the big input osm_data file into multiple smaller one. There are three main reason to do that
@@ -54,15 +55,15 @@ class GeoDataPhase(ICalculationPhase):
         geojson_path: Path = configuration_manager.get_cut_out_configuration().get_cut_out_path()
 
         if geojson_path is None:
-            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, "geojson was not configured"
 
         if not os.path.exists(geojson_path):
-            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, "referenced geojson file does not exist"
 
         try:
             dataframe: GeoDataFrame = parser.parse_cutout_file(geojson_path)
         except IllegalCutOutException as err:
-            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
+            return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, "The geojson is corrupted"
 
         # Get folder, where to store the files
         folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
@@ -72,10 +73,10 @@ class GeoDataPhase(ICalculationPhase):
         # Get folder, where to read the OSM-data from
         osm_path: Path = configuration_manager.get_osm_data_configuration().get_osm_data()
         if osm_path is None:
-            return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+            return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA, "Path to OSM data is not configured"
 
         if not os.path.exists(osm_path):
-            return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+            return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA, "referenced osm data does not exist"
 
         # Prepare result folder
         deleter: FileDeletion = file_deletion.FileDeletion()
@@ -86,7 +87,8 @@ class GeoDataPhase(ICalculationPhase):
         result: bool = splitter.split_up_files(dataframe)
 
         if result:
-            return calculation_state_enum.CalculationState.RUNNING
+            return calculation_state_enum.CalculationState.RUNNING, "The calculation is running"
         else:
-            return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+            return calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA, \
+                   "An error accured while reading the OSM data"
 
