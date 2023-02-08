@@ -165,7 +165,7 @@ class ProjectIOHandler:
         for file in os.listdir(self.destination):
             if file.endswith(".csv"):
                 # TODO check byte
-                filepath: Path = Path(os.path.join(self.destination, file))
+                filepath: Path = Path(self.destination + file)
                 with open(filepath, "r") as f:
                     reader = csv.reader(f)
                     category_data: list[str] = list(reader)
@@ -177,9 +177,17 @@ class ProjectIOHandler:
                     category.deactivate()
                 else:
                     return False
+
+                # Loads whitelist
                 category.set_whitelist(category_data[2][1])
+
+                # Loads blacklist
                 category.set_blacklist(category_data[3][1])
+
+                # Loads calculation method of area
                 category.set_calculation_method_of_area(CalculationMethodOfArea.equals(category_data[4][1]))
+
+                # Loads active attributes
                 number_of_active_attributes = len(category_data[5]) - 1
                 for number in range(number_of_active_attributes):
                     attribute: Attribute = Attribute.equals(category_data[5][number + 1])
@@ -187,6 +195,8 @@ class ProjectIOHandler:
                         category.set_attribute(attribute)
                     else:
                         return False
+
+                # Loads strictly use default values
                 strictly_use_default_value_bool: bool = convert_bool(category_data[6][1])
                 if strictly_use_default_value_bool is not None:
                     category.set_strictly_use_default_values(strictly_use_default_value_bool)
@@ -197,17 +207,15 @@ class ProjectIOHandler:
                 number_of_attractivity_attributes = len(category_data[6]) - 1
                 for number in range(number_of_attractivity_attributes):
                     input_str: list[str] = category_data[6][number + 1].split("_")
-                    attractivity_attribute_list: list[(Attribute, float)] = []
+                    attractivity_attribute: AttractivityAttribute = AttractivityAttribute(input_str[0])
                     attribute_list: list[str] = input_str[1].split(";")
                     for attribute_str in attribute_list:
                         attribute_str_split_up: list[str] = attribute_str.split(":")
                         if attribute_str_split_up[0] is "base":
-                            attractivity_attribute_base_factor = attribute_str_split_up[1]
+                            attractivity_attribute.set_base_factor(float(attribute_str_split_up[1]))
                         else:
-                            attribute: Attribute = Attribute.equals(attribute_str_split_up[0])
-                            attribute_value: float = float(attribute_str_split_up[1])
-                            attractivity_attribute_list.append((attribute, attribute_value))
-                    attractivity_attribute: AttractivityAttribute = AttractivityAttribute(input_str[0], attractivity_attribute_list, attractivity_attribute_base_factor)
+                            attractivity_attribute.set_attribute_factor(Attribute.equals(attribute_str_split_up[0]),
+                                                                        float(attribute_str_split_up[1]))
                     category.add_attractivity_attribute(attractivity_attribute)
 
                 # Loads default value entries
@@ -218,7 +226,8 @@ class ProjectIOHandler:
                     default_value_entries_list: list[str] = input_str[1].split(";")
                     for default_value_entry_str in default_value_entries_list:
                         attribute_str_split_up: list[str] = default_value_entry_str.split(":")
-                        default_value_entry.set_attribute_default(Attribute.equals(attribute_str_split_up[0]), float(attribute_str_split_up[1]))
+                        default_value_entry.set_attribute_default(Attribute.equals(attribute_str_split_up[0]),
+                                                                  float(attribute_str_split_up[1]))
                     category.add_default_value_entry(default_value_entry)
             category_list.append(category)
             self._active_project.get_config_manager().get_category_manager().override_categories(category_list)

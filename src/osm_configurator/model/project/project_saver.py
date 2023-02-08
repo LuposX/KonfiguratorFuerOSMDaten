@@ -40,7 +40,21 @@ class ProjectSaver:
             active_project (active_project.ActiveProject): The project the ProjectSaver shall load.
         """
         self.active_project: ActiveProject = active_project
-        self.destination: Path = active_project.get_project_settings().get_location()
+        self.destination: Path = self.active_project.get_project_settings().get_location()
+
+    def save_to_export(self, export_destination: Path) -> bool:
+        """
+        Stores all the configurations of the project at the given path.
+
+        Args:
+            export_destination (pathlib.Path): The path, where the config should be stored.
+
+        Returns:
+            bool: True, if the project was stored successfully, False, if an error occurred.
+        """
+        self.destination = export_destination
+        self.save_project()
+        self.destination = self.active_project.get_project_settings().get_location()
 
     def save_project(self) -> bool:
         """

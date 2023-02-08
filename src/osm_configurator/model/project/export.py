@@ -1,7 +1,14 @@
 from __future__ import annotations
 
+import os.path
 import pathlib
-import src.osm_configurator.model.project
+import shutil
+import src.osm_configurator.model.project.active_project
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.active_project import ActiveProject
+    from pathlib import Path
 
 
 class Export:
@@ -10,16 +17,16 @@ class Export:
     Whereby exporting means, saving data from the currently active project somewhere else on the system on the disk.
     """
 
-    def __init__(self, project):
+    def __init__(self, active_project: ActiveProject):
         """
         Creates a new instance of the "Export" class.
 
         Args:
-            project (project.ActiveProject): The project to make exports from
+            active_project (active_project.ActiveProject): The project to make exports from
         """
-        pass
+        self._active_project = active_project
 
-    def export_project(self, path):
+    def export_project(self, path: Path):
         """
         Exports the whole project to the given path.
 
@@ -29,9 +36,10 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        pass
+        self._active_project.get_project_saver().save_project()
+        shutil.copytree(self._active_project.get_project_settings().get_location(), path)
 
-    def export_configuration(self, path):
+    def export_configuration(self, path: Path) -> bool:
         """
         Exports the configuration to the given path. More specific, exports all the categories and their configurations,
         to the given path.
@@ -42,9 +50,9 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        pass
+        return self._active_project.get_project_saver().save_to_export(path)
 
-    def export_calculation(self, path):
+    def export_calculation(self, path: Path) -> bool:
         """
         Exports the results of the calculation to the given path.
         Whereby the calculation are a folder with all the different results from each
@@ -56,9 +64,12 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        pass
+        if not os.path.exists(path):
+            return False
+        shutil.copytree(self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder(), path)
+        return True
 
-    def export_map(self, path):
+    def export_map(self, path: Path) -> bool:
         """
         Exports an HTML-Data with the map in it, to the given path.
 
@@ -68,4 +79,5 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        pass
+        return self._active_project.get_data_visualizer().create_map(self._active_project.get_config_manager()
+                                                                     .get_cut_out_configuration(), path)
