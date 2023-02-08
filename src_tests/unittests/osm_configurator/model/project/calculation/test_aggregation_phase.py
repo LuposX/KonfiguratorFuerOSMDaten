@@ -55,7 +55,7 @@ def _prepare_config(project: Path, aggregation_methods: List[AggregationMethod])
     category.add_attractivity_attribute(test2)
 
     # add the category to category manager
-    config_manager.get_category_manager().merge_categories([category])
+    config_manager.get_category_manager().add_categories([category])
 
     return config_manager
 

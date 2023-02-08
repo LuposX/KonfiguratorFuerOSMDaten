@@ -7,7 +7,7 @@ import src.osm_configurator.model.project.calculation.file_deletion as file_dele
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 
 
 
@@ -61,13 +61,15 @@ class AggregationPhase(ICalculationPhase):
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.
         """
+        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
+
         # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_last_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.ATTRACTIVITY_PHASE)
 
         # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_current_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.AGGREGATION_PHASE)
 
