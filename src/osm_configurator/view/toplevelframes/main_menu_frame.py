@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
 
 
-class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
+class MainMenuFrame(Activatable, TopLevelFrame):
     """
     This frame shows the application's main menu.
     The user can create a new project, or load an already existing project. Projects stored in the default folder
@@ -32,6 +32,8 @@ class MainMenuFrame(Activatable, customtkinter.CTkToplevel):
             state_manager (state_manager.StateManager): Frame will call the StateManager, if it wants to switch states
             project_controller (project_controller.ProjectController): Respective controller
         """
+        # TODO: Adjust customtkinter attributes to the given enums
+
         window = super().__init__()
 
         self._project_controller = project_controller

@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.states.view_constants import ViewConstants
 
 
-class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
+class CalculationFrame(TopLevelFrame, Activatable):
     """
     This frame lets the user start the calculation from a selected phase, indicated by different buttons.
     Once a calculation is started, there will be a progressbar shown, the different buttons will be deactivated
@@ -31,6 +31,8 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
     A cancel-Button is provided to stop the calculation.
     The CalculationFrame shows popups, if an error occurs in the calculations.
     """
+
+    # TODO: Adjust customtkinter attributes to the given enums
 
     def __init__(self, state_manager: StateManager, calculation_controller: ICalculationController,
                  data_visualization_controller: IDataVisualizationController):
@@ -74,7 +76,6 @@ class CalculationFrame(TopLevelFrame, Activatable, customtkinter.CTkToplevel):
         self.__activate_buttons()
         #  TODO: Keep the progressbar up-to-date
         #  self._calculation_controller.get_current_calculation_process() gibt aktuellen Stand an
-
         #  TODO: Prüfen, ob Berechnung bereits fertig ist
 
     def __tag_filter_pressed(self):

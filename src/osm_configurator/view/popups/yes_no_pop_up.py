@@ -27,6 +27,8 @@ class YesNoPopUp(customtkinter.CTk):
             message (str): The message to be shown in the PopUp.
             func (typing.Callable): Function taking one Boolean and has no return for the PopUp to return a message
         """
+        # TODO: Adjust customtkinter attributes to the given enums
+
         self.func = func
 
         popup = super().__init__()

@@ -21,6 +21,8 @@ class SettingsProjectFrame(customtkinter.CTkFrame, Activatable):
     This frame shows the current project settings.
     """
 
+    # TODO: Adjust customtkinter attributes to the given enums
+
     def __init__(self, parent, settings_controller):
         """
         This method creates a SettingsProjectFrame, showing the current project settings.

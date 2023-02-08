@@ -23,6 +23,8 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
     This frame shows the settings of the application.
     """
 
+    # TODO: Adjust customtkinter attributes to the given enums
+
     def __init__(self, parent, settings_controller: ISettingsController):
         """
         This method creates a SettingsApplicationFrame, showing the settings of the application.
