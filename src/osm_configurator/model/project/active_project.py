@@ -30,7 +30,7 @@ class ActiveProject:
     created.
     """
 
-    def __init__(self, project_folder, is_newly_created, project_name=None, project_description=None):
+    def __init__(self, project_folder: Path, is_newly_created: bool, project_name=None, project_description=None):
         """
         Creates a new instance of the ActiveProject. In this process it creates the ConfigurationManager and also
         differentiate between the case that the project is new or loaded. In the case of an existing project it
@@ -46,6 +46,8 @@ class ActiveProject:
         self._project_io_handler: ProjectIOHandler = ProjectIOHandler(self)
         self._configurator_manager: ConfigurationManager = ConfigurationManager(project_folder)
         self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager)
+        self._project_settings: ProjectSettings = ProjectSettings(project_folder, project_name, project_description,
+                                                                  "calculation_check_points")
 
         if is_newly_created:
             self._project_io_handler.build_project(project_folder)
@@ -53,7 +55,6 @@ class ActiveProject:
         else:
             self._project_io_handler.load_project(project_folder)
 
-        self._project_settings: ProjectSettings = ProjectSettings(project_folder, project_name, project_description)
         self._project_saver: ProjectSaver = ProjectSaver(self)
         self._data_visualizer: DataVisualizer = DataVisualizer()
         self._export: Export = Export(self)
