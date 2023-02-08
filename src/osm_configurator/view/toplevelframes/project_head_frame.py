@@ -12,6 +12,8 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
+from PIL import Image
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -21,6 +23,9 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.project_controller_interface import IProjectController
 
 # Final Constants
+# Icons shall be square!
+ICON_HEIGHT_AND_WIDTH: Final = 42
+
 BUTTON_SPACE_TO_BORDER: Final = 10
 BUTTON_HEIGHT: Final = view_constants_i.ViewConstants.HEAD_FRAME_HEIGHT.value - (2 * BUTTON_SPACE_TO_BORDER)
 BUTTON_WIDTH: Final = view_constants_i.ViewConstants.HEAD_FRAME_WIDTH.value / 8 - (2 * BUTTON_SPACE_TO_BORDER)
@@ -87,7 +92,8 @@ class ProjectHeadFrame(TopLevelFrame):
                                                          hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                          border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                          text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                         command=self._main_menu_button_pressed)
+                                                         command=self._main_menu_button_pressed,
+                                                         text="Main Menu")
         self._main_menu_button.grid(row=0, column=0, rowspan=1, columnspan=1)
 
         # Save Button
@@ -98,7 +104,8 @@ class ProjectHeadFrame(TopLevelFrame):
                                                     hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                     border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                     text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                    command=self._save_button_pressed)
+                                                    command=self._save_button_pressed,
+                                                    text="Save")
         self._save_button.grid(row=1, column=0, rowspan=1, columnspan=1)
 
         # Data Button
@@ -109,7 +116,8 @@ class ProjectHeadFrame(TopLevelFrame):
                                                     hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                     border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                     text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                    command=self._data_button_pressed)
+                                                    command=self._data_button_pressed,
+                                                    text="Data")
         self._data_button.grid(row=0, column=1, rowspan=2, columnspan=1)
 
         # Category Button
@@ -120,7 +128,8 @@ class ProjectHeadFrame(TopLevelFrame):
                                                         hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                         border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                         text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                        command=self._category_button_pressed)
+                                                        command=self._category_button_pressed,
+                                                        text="Categories")
         self._category_button.grid(row=0, column=2, rowspan=2, columnspan=1)
 
         # Reduction Button
@@ -131,7 +140,8 @@ class ProjectHeadFrame(TopLevelFrame):
                                                          hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                          border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                          text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                         command=self._reduction_button_pressed)
+                                                         command=self._reduction_button_pressed,
+                                                         text="Reduction")
         self._reduction_button.grid(row=0, column=3, rowspan=2, columnspan=1)
 
         # Attractivity Button
@@ -142,7 +152,8 @@ class ProjectHeadFrame(TopLevelFrame):
                                                             hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                             border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                             text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                            command=self._attractivity_button_pressed)
+                                                            command=self._attractivity_button_pressed,
+                                                            text="Attractivity")
         self._attractivity_button.grid(row=0, column=4, rowspan=2, columnspan=1)
 
         # Aggregation Button
@@ -153,7 +164,8 @@ class ProjectHeadFrame(TopLevelFrame):
                                                            hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                            border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                            text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                           command=self._attractivity_button_pressed)
+                                                           command=self._attractivity_button_pressed,
+                                                           text="Aggregation")
         self._aggregation_button.grid(row=0, column=5, rowspan=2, columnspan=1)
 
         # Calculate Button
@@ -164,10 +176,16 @@ class ProjectHeadFrame(TopLevelFrame):
                                                          hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                          border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                          text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                         command=self._calculate_button_pressed)
+                                                         command=self._calculate_button_pressed,
+                                                         text="Calculate")
         self._calculate_button.grid(row=0, column=6, rowspan=2, columnspan=1)
 
         # Options Button
+
+        # Options Icon Used: https://www.flaticon.com/free-icon/cogwheel_44427
+        options_icon = customtkinter.CTkImage(light_image=Image.open("../view_icons/options.png"),
+                                              dark_image=Image.open("../view_icons/options.png"),
+                                              size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
         self._options_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
                                                        corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
                                                        border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
@@ -175,7 +193,9 @@ class ProjectHeadFrame(TopLevelFrame):
                                                        hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
                                                        border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
                                                        text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                       command=self._options_button_pressed)
+                                                       command=self._options_button_pressed,
+                                                       text="",
+                                                       image=options_icon)
         self._options_button.grid(row=0, column=7, rowspan=2, columnspan=1)
 
     def activate(self):
