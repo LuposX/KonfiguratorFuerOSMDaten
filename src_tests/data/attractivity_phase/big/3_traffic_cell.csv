@@ -1,0 +1,1224 @@
+,osm_type,element_name,geometry,tags,category,Number of Floors,Property Area,Floor Area
+0,node,missing,POINT (7.4288888 43.7341999),[],no_building_category,0.0,0.0,0.0
+1,node,missing,POINT (7.4276958 43.7336254),[],no_building_category,0.0,0.0,0.0
+2,node,missing,POINT (7.4229581 43.7332885),[],no_building_category,0.0,0.0,0.0
+3,node,missing,POINT (7.4227075 43.7336214),[],no_building_category,0.0,0.0,0.0
+4,node,missing,POINT (7.4226146 43.7341982),[],no_building_category,0.0,0.0,0.0
+5,node,missing,POINT (7.4225188 43.7345509),[],no_building_category,0.0,0.0,0.0
+6,node,missing,POINT (7.4222487 43.7354396),[],no_building_category,0.0,0.0,0.0
+7,node,missing,POINT (7.4218916 43.7355483),[],no_building_category,0.0,0.0,0.0
+8,node,missing,POINT (7.4218889 43.7359174),[],no_building_category,0.0,0.0,0.0
+9,node,missing,POINT (7.421991 43.7362789),[],no_building_category,0.0,0.0,0.0
+10,node,missing,POINT (7.42228 43.7367186),[],no_building_category,0.0,0.0,0.0
+11,node,missing,POINT (7.423432 43.73268),[],no_building_category,0.0,0.0,0.0
+12,node,missing,POINT (7.4234088 43.7327145),"[('crossing', 'marked'), ('crossing:island', 'no'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+13,node,missing,POINT (7.423314 43.7328085),[],no_building_category,0.0,0.0,0.0
+14,node,missing,POINT (7.4231924 43.7328798),[],no_building_category,0.0,0.0,0.0
+15,node,missing,POINT (7.4227984 43.7331475),"[('crossing', 'zebra'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+16,node,missing,POINT (7.4224845 43.7335709),[],no_building_category,0.0,0.0,0.0
+17,node,missing,POINT (7.4223636 43.7341605),"[('crossing', 'uncontrolled'), ('crossing:island', 'no'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+18,node,missing,POINT (7.4223176 43.7346983),[],no_building_category,0.0,0.0,0.0
+19,node,missing,POINT (7.4222385 43.7350286),[],no_building_category,0.0,0.0,0.0
+20,node,missing,POINT (7.4230269 43.7368624),[],no_building_category,0.0,0.0,0.0
+21,node,missing,POINT (7.4217584 43.7334482),[],no_building_category,0.0,0.0,0.0
+22,node,missing,POINT (7.4215567 43.7339309),[],no_building_category,0.0,0.0,0.0
+23,node,missing,POINT (7.4213722 43.7344802),[],no_building_category,0.0,0.0,0.0
+24,node,missing,POINT (7.421245 43.7352207),[],no_building_category,0.0,0.0,0.0
+25,node,missing,POINT (7.4212204 43.7354374),[],no_building_category,0.0,0.0,0.0
+26,node,missing,POINT (7.4212113 43.7357741),[],no_building_category,0.0,0.0,0.0
+27,node,missing,POINT (7.4212611 43.7361473),[],no_building_category,0.0,0.0,0.0
+28,node,missing,POINT (7.4211593 43.7367707),[],no_building_category,0.0,0.0,0.0
+29,node,missing,POINT (7.4196441 43.7342962),[],no_building_category,0.0,0.0,0.0
+30,node,missing,POINT (7.4197084 43.7340051),[],no_building_category,0.0,0.0,0.0
+31,node,missing,POINT (7.4197734 43.7336922),[],no_building_category,0.0,0.0,0.0
+32,node,missing,POINT (7.4201833 43.7337544),[],no_building_category,0.0,0.0,0.0
+33,node,missing,POINT (7.4204532 43.7353911),[],no_building_category,0.0,0.0,0.0
+34,node,missing,POINT (7.4195871 43.7345948),[],no_building_category,0.0,0.0,0.0
+35,node,missing,POINT (7.4194465 43.7352804),[],no_building_category,0.0,0.0,0.0
+36,node,missing,POINT (7.4195648 43.7353926),[],no_building_category,0.0,0.0,0.0
+37,node,missing,POINT (7.4203251 43.733348),[],no_building_category,0.0,0.0,0.0
+38,node,missing,POINT (7.418518 43.7342434),[],no_building_category,0.0,0.0,0.0
+39,node,missing,POINT (7.4185584 43.7343016),[],no_building_category,0.0,0.0,0.0
+40,node,missing,POINT (7.4185972 43.7343518),[],no_building_category,0.0,0.0,0.0
+41,node,missing,POINT (7.4206536 43.7363642),[],no_building_category,0.0,0.0,0.0
+42,node,missing,POINT (7.4200957 43.7358991),[],no_building_category,0.0,0.0,0.0
+43,node,missing,POINT (7.4208145 43.7337052),[],no_building_category,0.0,0.0,0.0
+44,node,missing,POINT (7.4206723 43.7340984),[],no_building_category,0.0,0.0,0.0
+45,node,missing,POINT (7.4195767 43.7361202),[],no_building_category,0.0,0.0,0.0
+46,node,missing,POINT (7.4204901 43.7369253),[],no_building_category,0.0,0.0,0.0
+47,node,missing,POINT (7.4283814 43.7341384),[],no_building_category,0.0,0.0,0.0
+48,node,missing,POINT (7.4276814 43.7350152),[],no_building_category,0.0,0.0,0.0
+49,node,missing,POINT (7.4272444 43.7347765),[],no_building_category,0.0,0.0,0.0
+50,node,missing,POINT (7.4274276 43.734648),[],no_building_category,0.0,0.0,0.0
+51,node,missing,POINT (7.4226378 43.7338863),[],no_building_category,0.0,0.0,0.0
+52,node,missing,POINT (7.4198793 43.7364028),[],no_building_category,0.0,0.0,0.0
+53,node,missing,POINT (7.421693 43.7336006),"[('crossing', 'uncontrolled'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+54,node,missing,POINT (7.4192476 43.7350788),[],no_building_category,0.0,0.0,0.0
+55,node,missing,POINT (7.4186527 43.7344168),[],no_building_category,0.0,0.0,0.0
+56,node,missing,POINT (7.4200931 43.7348704),[],no_building_category,0.0,0.0,0.0
+57,node,missing,POINT (7.420494 43.7349182),[],no_building_category,0.0,0.0,0.0
+58,node,missing,POINT (7.4318176 43.7365578),[],no_building_category,0.0,0.0,0.0
+59,node,Place Sainte-DÃ©vote (Gare),POINT (7.4210726 43.7367089),"[('bus', 'yes'), ('highway', 'bus_stop'), ('name', 'Place Sainte-DÃ©vote (Gare)'), ('public_transport', 'stop_position'), ('ref:STTM', '6'), ('tourist_bus', 'yes')]",no_building_category,0.0,0.0,0.0
+60,node,Brasserie de Monaco,POINT (7.4221485 43.7338202),"[('addr:country', 'MC'), ('amenity', 'restaurant'), ('capacity', '250'), ('cuisine', 'pizza;burger'), ('internet_access', 'wlan'), ('internet_access:fee', 'yes'), ('microbrewery', 'yes'), ('name', 'Brasserie de Monaco'), ('phone', '+377 97 98 51 20'), ('url', 'http://www.bar-brasseriedemonaco.com')]",no_building_category,0.0,0.0,0.0
+61,node,missing,POINT (7.4276095 43.7339419),[],no_building_category,0.0,0.0,0.0
+62,node,missing,POINT (7.4224366 43.7347523),[],no_building_category,0.0,0.0,0.0
+63,node,missing,POINT (7.4232465 43.7346513),[],no_building_category,0.0,0.0,0.0
+64,node,missing,POINT (7.4234061 43.7341043),[],no_building_category,0.0,0.0,0.0
+65,node,missing,POINT (7.4235352 43.7341219),[],no_building_category,0.0,0.0,0.0
+66,node,missing,POINT (7.423185 43.735428),[],no_building_category,0.0,0.0,0.0
+67,node,missing,POINT (7.4230512 43.7354108),[],no_building_category,0.0,0.0,0.0
+68,node,missing,POINT (7.4231685 43.7348568),[],no_building_category,0.0,0.0,0.0
+69,node,missing,POINT (7.4226942 43.7345736),[],no_building_category,0.0,0.0,0.0
+70,node,missing,POINT (7.4226431 43.7347821),[],no_building_category,0.0,0.0,0.0
+71,node,missing,POINT (7.4224716 43.7361002),[],no_building_category,0.0,0.0,0.0
+72,node,missing,POINT (7.4223975 43.7358312),[],no_building_category,0.0,0.0,0.0
+73,node,missing,POINT (7.4231186 43.7354194),[],no_building_category,0.0,0.0,0.0
+74,node,missing,POINT (7.4234679 43.7341131),[],no_building_category,0.0,0.0,0.0
+75,node,missing,POINT (7.4233623 43.7330822),[],no_building_category,0.0,0.0,0.0
+76,node,missing,POINT (7.4225136 43.73466),[],no_building_category,0.0,0.0,0.0
+77,node,missing,POINT (7.4258756 43.7332606),[],no_building_category,0.0,0.0,0.0
+78,node,missing,POINT (7.426489 43.7333723),[],no_building_category,0.0,0.0,0.0
+79,node,missing,POINT (7.4273111 43.7335493),[],no_building_category,0.0,0.0,0.0
+80,node,missing,POINT (7.4268812 43.7334593),[],no_building_category,0.0,0.0,0.0
+81,node,missing,POINT (7.4213059 43.7347806),[],no_building_category,0.0,0.0,0.0
+82,node,missing,POINT (7.4224698 43.7330511),[],no_building_category,0.0,0.0,0.0
+83,node,missing,POINT (7.4225672 43.7329468),[],no_building_category,0.0,0.0,0.0
+84,node,missing,POINT (7.4215521 43.7363678),[],no_building_category,0.0,0.0,0.0
+85,node,missing,POINT (7.4214554 43.736105),[],no_building_category,0.0,0.0,0.0
+86,node,missing,POINT (7.4214191 43.7357186),[],no_building_category,0.0,0.0,0.0
+87,node,missing,POINT (7.4221618 43.7355204),[],no_building_category,0.0,0.0,0.0
+88,node,missing,POINT (7.4225468 43.7345516),[],no_building_category,0.0,0.0,0.0
+89,node,missing,POINT (7.4220375 43.7355577),[],no_building_category,0.0,0.0,0.0
+90,node,missing,POINT (7.4225829 43.7343131),[],no_building_category,0.0,0.0,0.0
+91,node,missing,POINT (7.4221882 43.7367332),"[('crossing', 'zebra'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+92,node,missing,POINT (7.4220399 43.7337014),[],no_building_category,0.0,0.0,0.0
+93,node,Chez Edgar,POINT (7.42141 43.7339303),"[('addr:country', 'MC'), ('amenity', 'restaurant'), ('name', 'Chez Edgar')]",no_building_category,0.0,0.0,0.0
+94,node,SociÃ©tÃ© GÃ©nÃ©rale,POINT (7.4211094 43.7350476),"[('addr:country', 'MC'), ('amenity', 'bank'), ('brand', 'SociÃ©tÃ© GÃ©nÃ©rale'), ('brand:wikidata', 'Q270363'), ('brand:wikipedia', 'en:SociÃ©tÃ© GÃ©nÃ©rale'), ('name', 'SociÃ©tÃ© GÃ©nÃ©rale')]",no_building_category,0.0,0.0,0.0
+95,node,Casino,POINT (7.4210255 43.7353115),"[('addr:city', 'Monaco'), ('addr:street', 'Boulevard Albert 1er'), ('brand', 'Casino'), ('brand:wikidata', 'Q2670967'), ('name', 'Casino'), ('opening_hours', '08:30-24:00'), ('shop', 'supermarket'), ('url', 'http://magasins.supercasino.fr/supermarche/monaco/CM634')]",no_building_category,0.0,0.0,0.0
+96,node,Casino,POINT (7.4210255 43.7353115),"[('addr:city', 'Monaco'), ('addr:street', 'Boulevard Albert 1er'), ('brand', 'Casino'), ('brand:wikidata', 'Q2670967'), ('name', 'Casino'), ('opening_hours', '08:30-24:00'), ('shop', 'supermarket'), ('url', 'http://magasins.supercasino.fr/supermarche/monaco/CM634')]",shop_category,0.0,0.0,0.0
+97,node,missing,POINT (7.421026 43.7355109),"[('addr:country', 'MC'), ('amenity', 'pharmacy'), ('healthcare', 'pharmacy')]",no_building_category,0.0,0.0,0.0
+98,node,missing,POINT (7.4225875 43.7340714),[],no_building_category,0.0,0.0,0.0
+99,node,missing,POINT (7.4219611 43.7340809),[],no_building_category,0.0,0.0,0.0
+100,node,missing,POINT (7.4226311 43.733327),[],no_building_category,0.0,0.0,0.0
+101,node,missing,POINT (7.4228411 43.7334052),[],no_building_category,0.0,0.0,0.0
+102,node,missing,POINT (7.4223273 43.734155),[],no_building_category,0.0,0.0,0.0
+103,node,missing,POINT (7.4220794 43.7341038),[],no_building_category,0.0,0.0,0.0
+104,node,missing,POINT (7.4218115 43.7333334),[],no_building_category,0.0,0.0,0.0
+105,node,missing,POINT (7.4223368 43.7338944),[],no_building_category,0.0,0.0,0.0
+106,node,missing,POINT (7.4207732 43.7338046),[],no_building_category,0.0,0.0,0.0
+107,node,missing,POINT (7.427828 43.7344673),[],no_building_category,0.0,0.0,0.0
+108,node,missing,POINT (7.4290314 43.7341145),[],no_building_category,0.0,0.0,0.0
+109,node,missing,POINT (7.4210215 43.7358293),[],no_building_category,0.0,0.0,0.0
+110,node,missing,POINT (7.4207085 43.7336334),[],no_building_category,0.0,0.0,0.0
+111,node,missing,POINT (7.4210573 43.7359648),[],no_building_category,0.0,0.0,0.0
+112,node,missing,POINT (7.4230332 43.7335347),[],no_building_category,0.0,0.0,0.0
+113,node,missing,POINT (7.4197646 43.7342727),[],no_building_category,0.0,0.0,0.0
+114,node,missing,POINT (7.4196491 43.7357358),[],no_building_category,0.0,0.0,0.0
+115,node,missing,POINT (7.420301 43.7357601),[],no_building_category,0.0,0.0,0.0
+116,node,missing,POINT (7.4210352 43.7356764),[],no_building_category,0.0,0.0,0.0
+117,node,missing,POINT (7.4204902 43.7356637),[],no_building_category,0.0,0.0,0.0
+118,node,missing,POINT (7.420396 43.7343007),[],no_building_category,0.0,0.0,0.0
+119,node,missing,POINT (7.420798 43.7356691),[],no_building_category,0.0,0.0,0.0
+120,node,missing,POINT (7.4201308 43.7356045),[],no_building_category,0.0,0.0,0.0
+121,node,missing,POINT (7.4211646 43.7362409),[],no_building_category,0.0,0.0,0.0
+122,node,missing,POINT (7.4202518 43.7355509),[],no_building_category,0.0,0.0,0.0
+123,node,missing,POINT (7.4205888 43.7363202),[],no_building_category,0.0,0.0,0.0
+124,node,missing,POINT (7.4198728 43.7337624),[],no_building_category,0.0,0.0,0.0
+125,node,missing,POINT (7.4204053 43.7364121),[],no_building_category,0.0,0.0,0.0
+126,node,missing,POINT (7.4199708 43.7358474),[],no_building_category,0.0,0.0,0.0
+127,node,missing,POINT (7.4200257 43.7335994),[],no_building_category,0.0,0.0,0.0
+128,node,missing,POINT (7.4209196 43.7359202),[],no_building_category,0.0,0.0,0.0
+129,node,missing,POINT (7.420492 43.7357819),[],no_building_category,0.0,0.0,0.0
+130,node,missing,POINT (7.419934 43.7363629),[],no_building_category,0.0,0.0,0.0
+131,node,missing,POINT (7.4200353 43.7356023),[],no_building_category,0.0,0.0,0.0
+132,node,missing,POINT (7.4210688 43.7355254),[],no_building_category,0.0,0.0,0.0
+133,node,missing,POINT (7.4201427 43.7358274),[],no_building_category,0.0,0.0,0.0
+134,node,missing,POINT (7.4203119 43.7355509),[],no_building_category,0.0,0.0,0.0
+135,node,missing,POINT (7.420754 43.7361004),[],no_building_category,0.0,0.0,0.0
+136,node,missing,POINT (7.420744 43.7335218),[],no_building_category,0.0,0.0,0.0
+137,node,missing,POINT (7.4205856 43.735631),[],no_building_category,0.0,0.0,0.0
+138,node,missing,POINT (7.4203959 43.7364261),[],no_building_category,0.0,0.0,0.0
+139,node,missing,POINT (7.4198767 43.7335806),[],no_building_category,0.0,0.0,0.0
+140,node,missing,POINT (7.4209196 43.7359493),[],no_building_category,0.0,0.0,0.0
+141,node,missing,POINT (7.4203443 43.7334301),[],no_building_category,0.0,0.0,0.0
+142,node,missing,POINT (7.4205229 43.7358129),[],no_building_category,0.0,0.0,0.0
+143,node,missing,POINT (7.4200821 43.7364712),[],no_building_category,0.0,0.0,0.0
+144,node,missing,POINT (7.4201536 43.7355891),[],no_building_category,0.0,0.0,0.0
+145,node,missing,POINT (7.421056 43.7354945),[],no_building_category,0.0,0.0,0.0
+146,node,missing,POINT (7.4202591 43.7357583),[],no_building_category,0.0,0.0,0.0
+147,node,missing,POINT (7.4201117 43.7356364),[],no_building_category,0.0,0.0,0.0
+148,node,missing,POINT (7.4203046 43.7359621),[],no_building_category,0.0,0.0,0.0
+149,node,missing,POINT (7.4200986 43.7364872),[],no_building_category,0.0,0.0,0.0
+150,node,missing,POINT (7.4210269 43.7357164),[],no_building_category,0.0,0.0,0.0
+151,node,missing,POINT (7.4207525 43.7334805),[],no_building_category,0.0,0.0,0.0
+152,node,missing,POINT (7.4211421 43.7362557),[],no_building_category,0.0,0.0,0.0
+153,node,missing,POINT (7.4205284 43.7361677),[],no_building_category,0.0,0.0,0.0
+154,node,missing,POINT (7.4204611 43.7356291),[],no_building_category,0.0,0.0,0.0
+155,node,missing,POINT (7.4207413 43.7356673),[],no_building_category,0.0,0.0,0.0
+156,node,missing,POINT (7.4202231 43.7342874),[],no_building_category,0.0,0.0,0.0
+157,node,missing,POINT (7.4208031 43.7354833),[],no_building_category,0.0,0.0,0.0
+158,node,missing,POINT (7.419968 43.7355674),[],no_building_category,0.0,0.0,0.0
+159,node,missing,POINT (7.4197169 43.7354272),[],no_building_category,0.0,0.0,0.0
+160,node,missing,POINT (7.4205173 43.7363703),[],no_building_category,0.0,0.0,0.0
+161,node,missing,POINT (7.4205851 43.735653),[],no_building_category,0.0,0.0,0.0
+162,node,missing,POINT (7.4201627 43.7358438),[],no_building_category,0.0,0.0,0.0
+163,node,missing,POINT (7.4201419 43.7337885),[],no_building_category,0.0,0.0,0.0
+164,node,missing,POINT (7.4197721 43.7356656),[],no_building_category,0.0,0.0,0.0
+165,node,missing,POINT (7.4207413 43.7357492),[],no_building_category,0.0,0.0,0.0
+166,node,missing,POINT (7.4197944 43.7341003),[],no_building_category,0.0,0.0,0.0
+167,node,missing,POINT (7.42026 43.7365975),[],no_building_category,0.0,0.0,0.0
+168,node,missing,POINT (7.4200353 43.7355704),[],no_building_category,0.0,0.0,0.0
+169,node,missing,POINT (7.4201039 43.7336092),[],no_building_category,0.0,0.0,0.0
+170,node,missing,POINT (7.4203137 43.7354581),[],no_building_category,0.0,0.0,0.0
+171,node,missing,POINT (7.4199648 43.7354294),[],no_building_category,0.0,0.0,0.0
+172,node,missing,POINT (7.4206321 43.7358766),[],no_building_category,0.0,0.0,0.0
+173,node,missing,POINT (7.4206467 43.7355616),[],no_building_category,0.0,0.0,0.0
+174,node,missing,POINT (7.4205892 43.735471),[],no_building_category,0.0,0.0,0.0
+175,node,missing,POINT (7.4203307 43.7363843),[],no_building_category,0.0,0.0,0.0
+176,node,missing,POINT (7.4200783 43.7337151),[],no_building_category,0.0,0.0,0.0
+177,node,missing,POINT (7.4209068 43.7354854),[],no_building_category,0.0,0.0,0.0
+178,node,missing,POINT (7.4204611 43.7354544),[],no_building_category,0.0,0.0,0.0
+179,node,missing,POINT (7.4199463 43.7355665),[],no_building_category,0.0,0.0,0.0
+180,node,missing,POINT (7.4210287 43.7354854),[],no_building_category,0.0,0.0,0.0
+181,node,missing,POINT (7.4202355 43.7357237),[],no_building_category,0.0,0.0,0.0
+182,node,missing,POINT (7.4199375 43.7356318),[],no_building_category,0.0,0.0,0.0
+183,node,missing,POINT (7.4201645 43.7354544),[],no_building_category,0.0,0.0,0.0
+184,node,missing,POINT (7.420532 43.7358729),[],no_building_category,0.0,0.0,0.0
+185,node,missing,POINT (7.4206487 43.7354724),[],no_building_category,0.0,0.0,0.0
+186,node,missing,POINT (7.420734 43.7355654),[],no_building_category,0.0,0.0,0.0
+187,node,missing,POINT (7.4204613 43.7354745),[],no_building_category,0.0,0.0,0.0
+188,node,missing,POINT (7.4203455 43.7363722),[],no_building_category,0.0,0.0,0.0
+189,node,missing,POINT (7.4198511 43.7336865),[],no_building_category,0.0,0.0,0.0
+190,node,missing,POINT (7.4203137 43.7355945),[],no_building_category,0.0,0.0,0.0
+191,node,missing,POINT (7.4213052 43.733821),[],no_building_category,0.0,0.0,0.0
+192,node,missing,POINT (7.419703 43.7361296),[],no_building_category,0.0,0.0,0.0
+193,node,missing,POINT (7.420814 43.7343044),[],no_building_category,0.0,0.0,0.0
+194,node,missing,POINT (7.420754 43.7358729),[],no_building_category,0.0,0.0,0.0
+195,node,missing,POINT (7.4206446 43.7356543),[],no_building_category,0.0,0.0,0.0
+196,node,missing,POINT (7.421257 43.7343696),[],no_building_category,0.0,0.0,0.0
+197,node,missing,POINT (7.4202646 43.735933),[],no_building_category,0.0,0.0,0.0
+198,node,missing,POINT (7.4202791 43.7356855),[],no_building_category,0.0,0.0,0.0
+199,node,missing,POINT (7.4202394 43.7341767),[],no_building_category,0.0,0.0,0.0
+200,node,missing,POINT (7.4236135 43.733672),[],no_building_category,0.0,0.0,0.0
+201,node,missing,POINT (7.4202173 43.7357365),[],no_building_category,0.0,0.0,0.0
+202,node,missing,POINT (7.4201688 43.7343092),[],no_building_category,0.0,0.0,0.0
+203,node,missing,POINT (7.4207049 43.7357528),[],no_building_category,0.0,0.0,0.0
+204,node,missing,POINT (7.4203101 43.7356691),[],no_building_category,0.0,0.0,0.0
+205,node,missing,POINT (7.4201986 43.7341368),[],no_building_category,0.0,0.0,0.0
+206,node,missing,POINT (7.4202699 43.7363372),[],no_building_category,0.0,0.0,0.0
+207,node,missing,POINT (7.4201354 43.7354362),[],no_building_category,0.0,0.0,0.0
+208,node,missing,POINT (7.4211865 43.7363099),[],no_building_category,0.0,0.0,0.0
+209,node,missing,POINT (7.4202518 43.7355945),[],no_building_category,0.0,0.0,0.0
+210,node,missing,POINT (7.4199971 43.735691),[],no_building_category,0.0,0.0,0.0
+211,node,missing,POINT (7.4201002 43.7340137),[],no_building_category,0.0,0.0,0.0
+212,node,missing,POINT (7.4204567 43.7364472),[],no_building_category,0.0,0.0,0.0
+213,node,missing,POINT (7.4198478 43.7359176),[],no_building_category,0.0,0.0,0.0
+214,node,missing,POINT (7.4204229 43.7358183),[],no_building_category,0.0,0.0,0.0
+215,node,missing,POINT (7.4207558 43.7359366),[],no_building_category,0.0,0.0,0.0
+216,node,missing,POINT (7.4208363 43.7359984),[],no_building_category,0.0,0.0,0.0
+217,node,missing,POINT (7.4208977 43.7355673),[],no_building_category,0.0,0.0,0.0
+218,node,missing,POINT (7.4206853 43.7337679),[],no_building_category,0.0,0.0,0.0
+219,node,missing,POINT (7.4204629 43.7356036),[],no_building_category,0.0,0.0,0.0
+220,node,missing,POINT (7.4201218 43.7362289),[],no_building_category,0.0,0.0,0.0
+221,node,missing,POINT (7.4210566 43.7356311),[],no_building_category,0.0,0.0,0.0
+222,node,missing,POINT (7.4204975 43.7358929),[],no_building_category,0.0,0.0,0.0
+223,node,missing,POINT (7.4207285 43.7356364),[],no_building_category,0.0,0.0,0.0
+224,node,missing,POINT (7.4198311 43.7339877),[],no_building_category,0.0,0.0,0.0
+225,node,missing,POINT (7.4203163 43.7363535),[],no_building_category,0.0,0.0,0.0
+226,node,missing,POINT (7.4210415 43.7359348),[],no_building_category,0.0,0.0,0.0
+227,node,missing,POINT (7.4209341 43.7355691),[],no_building_category,0.0,0.0,0.0
+228,node,missing,POINT (7.4202764 43.7337174),[],no_building_category,0.0,0.0,0.0
+229,node,missing,POINT (7.4207049 43.7358038),[],no_building_category,0.0,0.0,0.0
+230,node,missing,POINT (7.4199625 43.7356273),[],no_building_category,0.0,0.0,0.0
+231,node,missing,POINT (7.4209402 43.7363508),[],no_building_category,0.0,0.0,0.0
+232,node,missing,POINT (7.4209644 43.7337708),[],no_building_category,0.0,0.0,0.0
+233,node,missing,POINT (7.420432 43.7359002),[],no_building_category,0.0,0.0,0.0
+234,node,missing,POINT (7.4214074 43.7338361),[],no_building_category,0.0,0.0,0.0
+235,node,missing,POINT (7.4204065 43.7358511),[],no_building_category,0.0,0.0,0.0
+236,node,missing,POINT (7.4204123 43.73419),[],no_building_category,0.0,0.0,0.0
+237,node,missing,POINT (7.4202765 43.7363512),[],no_building_category,0.0,0.0,0.0
+238,node,missing,POINT (7.4209211 43.7362894),[],no_building_category,0.0,0.0,0.0
+239,node,missing,POINT (7.4212229 43.735402),"[('crossing', 'uncontrolled'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+240,node,missing,POINT (7.4206465 43.7343386),"[('crossing', 'marked'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+241,node,missing,POINT (7.4213956 43.7343821),"[('crossing', 'uncontrolled'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+242,node,missing,POINT (7.4195739 43.734288),"[('crossing', 'marked'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+243,node,missing,POINT (7.4210421 43.7354245),"[('crossing', 'marked'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+244,node,missing,POINT (7.4205849 43.7343779),"[('crossing', 'marked'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+245,node,missing,POINT (7.4187002 43.7344704),"[('crossing', 'uncontrolled'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+246,node,missing,POINT (7.4211795 43.7344675),"[('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+247,node,missing,POINT (7.4204025 43.7353708),"[('crossing', 'marked'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+248,node,missing,POINT (7.4185909 43.7342239),"[('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+249,node,missing,POINT (7.4197225 43.7343054),"[('crossing', 'marked'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+250,node,missing,POINT (7.4186966 43.7342075),[],no_building_category,0.0,0.0,0.0
+251,node,missing,POINT (7.4201637 43.7346043),[],no_building_category,0.0,0.0,0.0
+252,node,missing,POINT (7.4201853 43.7344216),[],no_building_category,0.0,0.0,0.0
+253,node,missing,POINT (7.4197467 43.7343946),[],no_building_category,0.0,0.0,0.0
+254,node,missing,POINT (7.4197252 43.7345773),[],no_building_category,0.0,0.0,0.0
+255,node,missing,POINT (7.4198334 43.7364288),[],no_building_category,0.0,0.0,0.0
+256,node,missing,POINT (7.4195333 43.7361432),[],no_building_category,0.0,0.0,0.0
+257,node,missing,POINT (7.4200584 43.7366273),[],no_building_category,0.0,0.0,0.0
+258,node,missing,POINT (7.4245101 43.7329578),[],no_building_category,0.0,0.0,0.0
+259,node,missing,POINT (7.4245985 43.7329751),[],no_building_category,0.0,0.0,0.0
+260,node,missing,POINT (7.4257553 43.7332225),[],no_building_category,0.0,0.0,0.0
+261,node,missing,POINT (7.4257514 43.7332341),[],no_building_category,0.0,0.0,0.0
+262,node,missing,POINT (7.4242375 43.7336049),[],no_building_category,0.0,0.0,0.0
+263,node,missing,POINT (7.4243255 43.7336259),[],no_building_category,0.0,0.0,0.0
+264,node,missing,POINT (7.4239923 43.7335874),[],no_building_category,0.0,0.0,0.0
+265,node,missing,POINT (7.4240603 43.7335682),[],no_building_category,0.0,0.0,0.0
+266,node,missing,POINT (7.4239798 43.7336303),[],no_building_category,0.0,0.0,0.0
+267,node,missing,POINT (7.4245211 43.7336688),[],no_building_category,0.0,0.0,0.0
+268,node,missing,POINT (7.4240251 43.7336777),[],no_building_category,0.0,0.0,0.0
+269,node,missing,POINT (7.4245664 43.7337009),[],no_building_category,0.0,0.0,0.0
+270,node,missing,POINT (7.4245485 43.7337432),[],no_building_category,0.0,0.0,0.0
+271,node,missing,POINT (7.4244766 43.7337714),[],no_building_category,0.0,0.0,0.0
+272,node,missing,POINT (7.4232919 43.7347717),[],no_building_category,0.0,0.0,0.0
+273,node,missing,POINT (7.4231594 43.734892),[],no_building_category,0.0,0.0,0.0
+274,node,missing,POINT (7.4231859 43.734896),[],no_building_category,0.0,0.0,0.0
+275,node,missing,POINT (7.4201954 43.7337657),[],no_building_category,0.0,0.0,0.0
+276,node,missing,POINT (7.4206631 43.7338487),[],no_building_category,0.0,0.0,0.0
+277,node,missing,POINT (7.4206996 43.7338898),[],no_building_category,0.0,0.0,0.0
+278,node,missing,POINT (7.4201458 43.7340321),[],no_building_category,0.0,0.0,0.0
+279,node,missing,POINT (7.4206654 43.734036),[],no_building_category,0.0,0.0,0.0
+280,node,missing,POINT (7.4206384 43.7340733),[],no_building_category,0.0,0.0,0.0
+281,node,Parking du Square Gastaud,POINT (7.4207326 43.7342977),"[('access', 'yes'), ('addr:country', 'MC'), ('amenity', 'parking'), ('fee', 'yes'), ('layer', '-1'), ('name', 'Parking du Square Gastaud'), ('parking', 'underground')]",no_building_category,0.0,0.0,0.0
+282,node,missing,POINT (7.4197259 43.7346064),[],no_building_category,0.0,0.0,0.0
+283,node,missing,POINT (7.4201307 43.734652),[],no_building_category,0.0,0.0,0.0
+284,node,BibliothÃ¨que Louis Notari,POINT (7.4206705 43.734903),"[('addr:country', 'MC'), ('amenity', 'library'), ('name', 'BibliothÃ¨que Louis Notari')]",no_building_category,0.0,0.0,0.0
+285,node,missing,POINT (7.4201701 43.7360304),"[('addr:country', 'MC'), ('amenity', 'atm'), ('operator', 'SociÃ©tÃ© Marseillaise de CrÃ©dit')]",no_building_category,0.0,0.0,0.0
+286,node,missing,POINT (7.4214815 43.7341258),[],no_building_category,0.0,0.0,0.0
+287,node,missing,POINT (7.4212324 43.7359964),[],no_building_category,0.0,0.0,0.0
+288,node,missing,POINT (7.4213244 43.7363487),"[('crossing', 'uncontrolled'), ('crossing_ref', 'tiger'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+289,node,missing,POINT (7.4231076 43.7329227),[],no_building_category,0.0,0.0,0.0
+290,node,missing,POINT (7.4229757 43.7323832),[],no_building_category,0.0,0.0,0.0
+291,node,missing,POINT (7.4234201 43.7326996),[],no_building_category,0.0,0.0,0.0
+292,node,missing,POINT (7.4226895 43.7332589),[],no_building_category,0.0,0.0,0.0
+293,node,missing,POINT (7.4225561 43.7334328),[],no_building_category,0.0,0.0,0.0
+294,node,missing,POINT (7.4225818 43.7340092),[],no_building_category,0.0,0.0,0.0
+295,node,missing,POINT (7.4225294 43.7341842),[],no_building_category,0.0,0.0,0.0
+296,node,missing,POINT (7.4224549 43.7344579),[],no_building_category,0.0,0.0,0.0
+297,node,missing,POINT (7.4224598 43.7345851),[],no_building_category,0.0,0.0,0.0
+298,node,missing,POINT (7.4224553 43.7346121),[],no_building_category,0.0,0.0,0.0
+299,node,missing,POINT (7.422443 43.7346705),[],no_building_category,0.0,0.0,0.0
+300,node,missing,POINT (7.4224146 43.7347246),[],no_building_category,0.0,0.0,0.0
+301,node,missing,POINT (7.4223498 43.7348305),[],no_building_category,0.0,0.0,0.0
+302,node,missing,POINT (7.4222056 43.7353787),[],no_building_category,0.0,0.0,0.0
+303,node,missing,POINT (7.4221946 43.7354202),[],no_building_category,0.0,0.0,0.0
+304,node,missing,POINT (7.4221849 43.7354449),[],no_building_category,0.0,0.0,0.0
+305,node,missing,POINT (7.4221653 43.7354679),[],no_building_category,0.0,0.0,0.0
+306,node,missing,POINT (7.4221409 43.7354855),[],no_building_category,0.0,0.0,0.0
+307,node,missing,POINT (7.4221091 43.7355014),[],no_building_category,0.0,0.0,0.0
+308,node,missing,POINT (7.4218817 43.7355085),[],no_building_category,0.0,0.0,0.0
+309,node,missing,POINT (7.4220761 43.7355094),[],no_building_category,0.0,0.0,0.0
+310,node,missing,POINT (7.4220065 43.7355147),[],no_building_category,0.0,0.0,0.0
+311,node,missing,POINT (7.4220456 43.7355147),[],no_building_category,0.0,0.0,0.0
+312,node,missing,POINT (7.4218431 43.7357401),[],no_building_category,0.0,0.0,0.0
+313,node,missing,POINT (7.4218515 43.7358565),[],no_building_category,0.0,0.0,0.0
+314,node,missing,POINT (7.4218655 43.7359487),[],no_building_category,0.0,0.0,0.0
+315,node,missing,POINT (7.4218963 43.7360965),[],no_building_category,0.0,0.0,0.0
+316,node,missing,POINT (7.4219566 43.7362737),[],no_building_category,0.0,0.0,0.0
+317,node,missing,POINT (7.4220799 43.7364905),[],no_building_category,0.0,0.0,0.0
+318,node,missing,POINT (7.4222341 43.736694),[],no_building_category,0.0,0.0,0.0
+319,node,missing,POINT (7.4222432 43.7367071),[],no_building_category,0.0,0.0,0.0
+320,node,missing,POINT (7.4228107 43.736794),[],no_building_category,0.0,0.0,0.0
+321,node,missing,POINT (7.4221145 43.7367648),[],no_building_category,0.0,0.0,0.0
+322,node,missing,POINT (7.423829 43.736898),[],no_building_category,0.0,0.0,0.0
+323,node,missing,POINT (7.4246689 43.7369859),[],no_building_category,0.0,0.0,0.0
+324,node,missing,POINT (7.4249455 43.737013),[],no_building_category,0.0,0.0,0.0
+325,node,missing,POINT (7.4213851 43.7361977),[],no_building_category,0.0,0.0,0.0
+326,node,missing,POINT (7.4213977 43.7362438),[],no_building_category,0.0,0.0,0.0
+327,node,missing,POINT (7.4214145 43.7362843),[],no_building_category,0.0,0.0,0.0
+328,node,missing,POINT (7.4214319 43.7363215),[],no_building_category,0.0,0.0,0.0
+329,node,missing,POINT (7.4212118 43.7363567),[],no_building_category,0.0,0.0,0.0
+330,node,missing,POINT (7.4212224 43.7363753),[],no_building_category,0.0,0.0,0.0
+331,node,missing,POINT (7.4214706 43.7363977),[],no_building_category,0.0,0.0,0.0
+332,node,missing,POINT (7.4209949 43.7364221),[],no_building_category,0.0,0.0,0.0
+333,node,missing,POINT (7.4215133 43.736466),[],no_building_category,0.0,0.0,0.0
+334,node,missing,POINT (7.4213025 43.7365382),[],no_building_category,0.0,0.0,0.0
+335,node,missing,POINT (7.421306 43.7365481),[],no_building_category,0.0,0.0,0.0
+336,node,missing,POINT (7.4213082 43.7365589),[],no_building_category,0.0,0.0,0.0
+337,node,missing,POINT (7.4213089 43.7365696),[],no_building_category,0.0,0.0,0.0
+338,node,missing,POINT (7.4213081 43.7365799),[],no_building_category,0.0,0.0,0.0
+339,node,missing,POINT (7.4213058 43.73659),[],no_building_category,0.0,0.0,0.0
+340,node,missing,POINT (7.4213021 43.7365996),[],no_building_category,0.0,0.0,0.0
+341,node,missing,POINT (7.4212969 43.7366087),[],no_building_category,0.0,0.0,0.0
+342,node,missing,POINT (7.4211049 43.7366125),[],no_building_category,0.0,0.0,0.0
+343,node,missing,POINT (7.4211097 43.7366183),[],no_building_category,0.0,0.0,0.0
+344,node,missing,POINT (7.4212904 43.7366172),[],no_building_category,0.0,0.0,0.0
+345,node,missing,POINT (7.4216107 43.7366281),[],no_building_category,0.0,0.0,0.0
+346,node,missing,POINT (7.4211184 43.7366261),[],no_building_category,0.0,0.0,0.0
+347,node,missing,POINT (7.4212826 43.7366251),[],no_building_category,0.0,0.0,0.0
+348,node,missing,POINT (7.4211282 43.7366332),[],no_building_category,0.0,0.0,0.0
+349,node,missing,POINT (7.4212736 43.7366322),[],no_building_category,0.0,0.0,0.0
+350,node,missing,POINT (7.421139 43.7366393),[],no_building_category,0.0,0.0,0.0
+351,node,missing,POINT (7.4212634 43.7366384),[],no_building_category,0.0,0.0,0.0
+352,node,missing,POINT (7.4211507 43.7366444),[],no_building_category,0.0,0.0,0.0
+353,node,missing,POINT (7.4212523 43.7366436),[],no_building_category,0.0,0.0,0.0
+354,node,missing,POINT (7.4211629 43.7366484),[],no_building_category,0.0,0.0,0.0
+355,node,missing,POINT (7.4212405 43.7366478),[],no_building_category,0.0,0.0,0.0
+356,node,missing,POINT (7.4211756 43.7366513),[],no_building_category,0.0,0.0,0.0
+357,node,missing,POINT (7.421228 43.7366508),[],no_building_category,0.0,0.0,0.0
+358,node,missing,POINT (7.4211888 43.7366529),[],no_building_category,0.0,0.0,0.0
+359,node,missing,POINT (7.4212151 43.7366527),[],no_building_category,0.0,0.0,0.0
+360,node,missing,POINT (7.421202 43.7366534),[],no_building_category,0.0,0.0,0.0
+361,node,missing,POINT (7.4216542 43.7366747),[],no_building_category,0.0,0.0,0.0
+362,node,missing,POINT (7.4216969 43.7367126),[],no_building_category,0.0,0.0,0.0
+363,node,missing,POINT (7.4217285 43.7367345),[],no_building_category,0.0,0.0,0.0
+364,node,missing,POINT (7.4217936 43.7367709),[],no_building_category,0.0,0.0,0.0
+365,node,missing,POINT (7.4218399 43.7367901),[],no_building_category,0.0,0.0,0.0
+366,node,missing,POINT (7.4218858 43.736803),[],no_building_category,0.0,0.0,0.0
+367,node,missing,POINT (7.421932 43.7368149),[],no_building_category,0.0,0.0,0.0
+368,node,missing,POINT (7.4219692 43.7368225),[],no_building_category,0.0,0.0,0.0
+369,node,missing,POINT (7.4220077 43.7368278),[],no_building_category,0.0,0.0,0.0
+370,node,missing,POINT (7.4212053 43.7363799),[],no_building_category,0.0,0.0,0.0
+371,node,missing,POINT (7.4229996 43.7369326),[],no_building_category,0.0,0.0,0.0
+372,node,missing,POINT (7.4233224 43.736953),[],no_building_category,0.0,0.0,0.0
+373,node,missing,POINT (7.4218599 43.7355355),[],no_building_category,0.0,0.0,0.0
+374,node,missing,POINT (7.4214275 43.7359352),[],no_building_category,0.0,0.0,0.0
+375,node,missing,POINT (7.421494 43.7362425),[],no_building_category,0.0,0.0,0.0
+376,node,missing,POINT (7.4220183 43.7363993),[],no_building_category,0.0,0.0,0.0
+377,node,missing,POINT (7.4216324 43.7364902),[],no_building_category,0.0,0.0,0.0
+378,node,missing,POINT (7.4217097 43.7366048),[],no_building_category,0.0,0.0,0.0
+379,node,missing,POINT (7.4221752 43.7366231),[],no_building_category,0.0,0.0,0.0
+380,node,missing,POINT (7.4218556 43.7367165),[],no_building_category,0.0,0.0,0.0
+381,node,missing,POINT (7.4220007 43.7367563),[],no_building_category,0.0,0.0,0.0
+382,node,missing,POINT (7.4217946 43.7336222),[],no_building_category,0.0,0.0,0.0
+383,node,missing,POINT (7.421606 43.7340503),[],no_building_category,0.0,0.0,0.0
+384,node,missing,POINT (7.4212132 43.7343682),[],no_building_category,0.0,0.0,0.0
+385,node,missing,POINT (7.4214804 43.7343958),[],no_building_category,0.0,0.0,0.0
+386,node,missing,POINT (7.4211727 43.7344925),[],no_building_category,0.0,0.0,0.0
+387,node,missing,POINT (7.4214023 43.7347347),[],no_building_category,0.0,0.0,0.0
+388,node,missing,POINT (7.4213493 43.7349651),[],no_building_category,0.0,0.0,0.0
+389,node,missing,POINT (7.4210383 43.7353687),[],no_building_category,0.0,0.0,0.0
+390,node,missing,POINT (7.421312 43.7354214),[],no_building_category,0.0,0.0,0.0
+391,node,missing,POINT (7.4210487 43.7354858),[],no_building_category,0.0,0.0,0.0
+392,node,missing,POINT (7.4213034 43.7357169),[],no_building_category,0.0,0.0,0.0
+393,node,missing,POINT (7.4213148 43.7358815),[],no_building_category,0.0,0.0,0.0
+394,node,missing,POINT (7.4213377 43.7360029),[],no_building_category,0.0,0.0,0.0
+395,node,missing,POINT (7.4213505 43.7360654),[],no_building_category,0.0,0.0,0.0
+396,node,missing,POINT (7.4213632 43.7361234),[],no_building_category,0.0,0.0,0.0
+397,node,missing,POINT (7.4234945 43.7327282),[],no_building_category,0.0,0.0,0.0
+398,node,missing,POINT (7.423526 43.7327328),[],no_building_category,0.0,0.0,0.0
+399,node,missing,POINT (7.4234861 43.7327433),[],no_building_category,0.0,0.0,0.0
+400,node,missing,POINT (7.423352 43.7330717),[],no_building_category,0.0,0.0,0.0
+401,node,missing,POINT (7.4233075 43.7330901),[],no_building_category,0.0,0.0,0.0
+402,node,missing,POINT (7.4232311 43.7331195),[],no_building_category,0.0,0.0,0.0
+403,node,missing,POINT (7.4231496 43.7331545),[],no_building_category,0.0,0.0,0.0
+404,node,missing,POINT (7.4230707 43.7331986),[],no_building_category,0.0,0.0,0.0
+405,node,missing,POINT (7.4229982 43.7332465),[],no_building_category,0.0,0.0,0.0
+406,node,missing,POINT (7.4229847 43.7332578),[],no_building_category,0.0,0.0,0.0
+407,node,missing,POINT (7.422918 43.7333136),[],no_building_category,0.0,0.0,0.0
+408,node,missing,POINT (7.4228492 43.733378),[],no_building_category,0.0,0.0,0.0
+409,node,missing,POINT (7.4228085 43.7334277),[],no_building_category,0.0,0.0,0.0
+410,node,missing,POINT (7.4227589 43.7335003),[],no_building_category,0.0,0.0,0.0
+411,node,missing,POINT (7.4227028 43.7336061),[],no_building_category,0.0,0.0,0.0
+412,node,missing,POINT (7.4226125 43.7339418),[],no_building_category,0.0,0.0,0.0
+413,node,missing,POINT (7.4226023 43.7339703),[],no_building_category,0.0,0.0,0.0
+414,node,Stade Nautique,POINT (7.4215941 43.7338388),"[('bus', 'yes'), ('highway', 'bus_stop'), ('name', 'Stade Nautique'), ('public_transport', 'stop_position')]",no_building_category,0.0,0.0,0.0
+415,node,Princesse Antoinette,POINT (7.4212077 43.7356156),"[('bus', 'yes'), ('highway', 'bus_stop'), ('name', 'Princesse Antoinette'), ('public_transport', 'stop_position')]",no_building_category,0.0,0.0,0.0
+416,node,La Condamine,POINT (7.4217593 43.7341489),"[('admin_level', '10'), ('capital', '10'), ('name', 'La Condamine'), ('name:it', 'La Condamina'), ('name:mk', 'Ð›Ð° ÐšÐ¾Ð½Ð´Ð°Ð¼Ð¸Ð½'), ('name:oc', 'La Condamina'), ('place', 'suburb'), ('wikidata', 'Q55095'), ('wikipedia', 'fr:La Condamine (Monaco)')]",no_building_category,0.0,0.0,0.0
+417,node,missing,POINT (7.425918 43.7332601),[],no_building_category,0.0,0.0,0.0
+418,node,missing,POINT (7.4179263 43.7343602),[],no_building_category,0.0,0.0,0.0
+419,node,missing,POINT (7.4219617 43.7343578),[],no_building_category,0.0,0.0,0.0
+420,node,missing,POINT (7.422196 43.7343882),[],no_building_category,0.0,0.0,0.0
+421,node,missing,POINT (7.4218527 43.734796),[],no_building_category,0.0,0.0,0.0
+422,node,missing,POINT (7.4220869 43.7348264),[],no_building_category,0.0,0.0,0.0
+423,node,missing,POINT (7.4206344 43.7344142),[],no_building_category,0.0,0.0,0.0
+424,node,missing,POINT (7.4207073 43.7343852),[],no_building_category,0.0,0.0,0.0
+425,node,missing,POINT (7.4213847 43.734428),[],no_building_category,0.0,0.0,0.0
+426,node,missing,POINT (7.4206431 43.7343829),[],no_building_category,0.0,0.0,0.0
+427,node,missing,POINT (7.4208009 43.7343812),[],no_building_category,0.0,0.0,0.0
+428,node,missing,POINT (7.4201016 43.7361158),[],no_building_category,0.0,0.0,0.0
+429,node,missing,POINT (7.4200756 43.7361174),[],no_building_category,0.0,0.0,0.0
+430,node,missing,POINT (7.4200475 43.7361236),[],no_building_category,0.0,0.0,0.0
+431,node,missing,POINT (7.4201398 43.7361278),[],no_building_category,0.0,0.0,0.0
+432,node,missing,POINT (7.4200215 43.7361377),[],no_building_category,0.0,0.0,0.0
+433,node,missing,POINT (7.4200107 43.736158),[],no_building_category,0.0,0.0,0.0
+434,node,missing,POINT (7.4200129 43.7361877),[],no_building_category,0.0,0.0,0.0
+435,node,missing,POINT (7.4200388 43.7362377),[],no_building_category,0.0,0.0,0.0
+436,node,missing,POINT (7.4203701 43.7362946),[],no_building_category,0.0,0.0,0.0
+437,node,missing,POINT (7.4204528 43.7363489),[],no_building_category,0.0,0.0,0.0
+438,node,missing,POINT (7.4205099 43.7363936),[],no_building_category,0.0,0.0,0.0
+439,node,missing,POINT (7.4205685 43.7364225),[],no_building_category,0.0,0.0,0.0
+440,node,missing,POINT (7.4207644 43.7365788),[],no_building_category,0.0,0.0,0.0
+441,node,missing,POINT (7.4206746 43.7365053),[],no_building_category,0.0,0.0,0.0
+442,node,missing,POINT (7.4216746 43.7334914),[],no_building_category,0.0,0.0,0.0
+443,node,missing,POINT (7.4217098 43.7335584),[],no_building_category,0.0,0.0,0.0
+444,node,missing,POINT (7.4201007 43.7366052),[],no_building_category,0.0,0.0,0.0
+445,node,missing,POINT (7.4202417 43.7367238),[],no_building_category,0.0,0.0,0.0
+446,node,missing,POINT (7.4201983 43.7367471),[],no_building_category,0.0,0.0,0.0
+447,node,missing,POINT (7.4203517 43.7368107),[],no_building_category,0.0,0.0,0.0
+448,node,missing,POINT (7.4203091 43.736828),[],no_building_category,0.0,0.0,0.0
+449,node,missing,POINT (7.4207945 43.7365893),[],no_building_category,0.0,0.0,0.0
+450,node,missing,POINT (7.4208549 43.7365877),[],no_building_category,0.0,0.0,0.0
+451,node,missing,POINT (7.4209029 43.7365902),[],no_building_category,0.0,0.0,0.0
+452,node,missing,POINT (7.4209424 43.7365993),[],no_building_category,0.0,0.0,0.0
+453,node,missing,POINT (7.4209803 43.7366235),[],no_building_category,0.0,0.0,0.0
+454,node,missing,POINT (7.4217302 43.7347886),[],no_building_category,0.0,0.0,0.0
+455,node,missing,POINT (7.4218686 43.7343437),[],no_building_category,0.0,0.0,0.0
+456,node,missing,POINT (7.4219828 43.7341694),[],no_building_category,0.0,0.0,0.0
+457,node,missing,POINT (7.4217553 43.7349842),[],no_building_category,0.0,0.0,0.0
+458,node,missing,POINT (7.4223431 43.7342193),[],no_building_category,0.0,0.0,0.0
+459,node,missing,POINT (7.4219342 43.7343528),[],no_building_category,0.0,0.0,0.0
+460,node,missing,POINT (7.4217981 43.7348027),[],no_building_category,0.0,0.0,0.0
+461,node,missing,POINT (7.4221373 43.7349944),[],no_building_category,0.0,0.0,0.0
+462,node,missing,POINT (7.4220681 43.7340696),[],no_building_category,0.0,0.0,0.0
+463,node,missing,POINT (7.4221929 43.7335188),[],no_building_category,0.0,0.0,0.0
+464,node,missing,POINT (7.4224343 43.7331739),[],no_building_category,0.0,0.0,0.0
+465,node,missing,POINT (7.4220805 43.7337491),[],no_building_category,0.0,0.0,0.0
+466,node,missing,POINT (7.4219555 43.7340468),[],no_building_category,0.0,0.0,0.0
+467,node,missing,POINT (7.42193 43.7341158),[],no_building_category,0.0,0.0,0.0
+468,node,missing,POINT (7.4228524 43.7327979),[],no_building_category,0.0,0.0,0.0
+469,node,missing,POINT (7.4229949 43.7324658),[],no_building_category,0.0,0.0,0.0
+470,node,missing,POINT (7.4230077 43.7326872),[],no_building_category,0.0,0.0,0.0
+471,node,missing,POINT (7.4226215 43.7329779),[],no_building_category,0.0,0.0,0.0
+472,node,missing,POINT (7.4219182 43.7341603),[],no_building_category,0.0,0.0,0.0
+473,node,missing,POINT (7.4229326 43.7326446),[],no_building_category,0.0,0.0,0.0
+474,node,missing,POINT (7.4220588 43.734139),[],no_building_category,0.0,0.0,0.0
+475,node,missing,POINT (7.4223216 43.733325),[],no_building_category,0.0,0.0,0.0
+476,node,Stade Nautique,POINT (7.4216692 43.7338517),"[('bus', 'yes'), ('highway', 'platform'), ('name', 'Stade Nautique'), ('public_transport', 'platform')]",no_building_category,0.0,0.0,0.0
+477,node,missing,POINT (7.4223558 43.734551),[],no_building_category,0.0,0.0,0.0
+478,node,missing,POINT (7.4223251 43.7340363),[],no_building_category,0.0,0.0,0.0
+479,node,missing,POINT (7.4223433 43.73411),[],no_building_category,0.0,0.0,0.0
+480,node,missing,POINT (7.4223284 43.7339375),[],no_building_category,0.0,0.0,0.0
+481,node,missing,POINT (7.4224019 43.7342379),[],no_building_category,0.0,0.0,0.0
+482,node,missing,POINT (7.4224126 43.7342747),[],no_building_category,0.0,0.0,0.0
+483,node,missing,POINT (7.4224101 43.7343117),"[('crossing', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+484,node,missing,POINT (7.422325 43.7339783),[],no_building_category,0.0,0.0,0.0
+485,node,missing,POINT (7.4208301 43.7336536),[],no_building_category,0.0,0.0,0.0
+486,node,missing,POINT (7.423257 43.7331189),[],no_building_category,0.0,0.0,0.0
+487,node,missing,POINT (7.4231745 43.7331562),[],no_building_category,0.0,0.0,0.0
+488,node,missing,POINT (7.4231081 43.7331881),[],no_building_category,0.0,0.0,0.0
+489,node,missing,POINT (7.423028 43.7332373),[],no_building_category,0.0,0.0,0.0
+490,node,missing,POINT (7.4234984 43.7327504),[],no_building_category,0.0,0.0,0.0
+491,node,missing,POINT (7.422769 43.7335053),[],no_building_category,0.0,0.0,0.0
+492,node,missing,POINT (7.4276219 43.7338976),[],no_building_category,0.0,0.0,0.0
+493,node,missing,POINT (7.4274885 43.7338796),[],no_building_category,0.0,0.0,0.0
+494,node,missing,POINT (7.4274757 43.7339231),[],no_building_category,0.0,0.0,0.0
+495,node,missing,POINT (7.4228373 43.7340642),[],no_building_category,0.0,0.0,0.0
+496,node,missing,POINT (7.4229059 43.7340717),[],no_building_category,0.0,0.0,0.0
+497,node,missing,POINT (7.4227617 43.7345779),[],no_building_category,0.0,0.0,0.0
+498,node,missing,POINT (7.422765 43.7345837),[],no_building_category,0.0,0.0,0.0
+499,node,missing,POINT (7.4272879 43.7346308),[],no_building_category,0.0,0.0,0.0
+500,node,missing,POINT (7.4227038 43.7347887),[],no_building_category,0.0,0.0,0.0
+501,node,missing,POINT (7.4272029 43.7349485),[],no_building_category,0.0,0.0,0.0
+502,node,missing,POINT (7.4225126 43.7352967),[],no_building_category,0.0,0.0,0.0
+503,node,missing,POINT (7.4225788 43.7353051),[],no_building_category,0.0,0.0,0.0
+504,node,missing,POINT (7.4218784 43.7357405),[],no_building_category,0.0,0.0,0.0
+505,node,missing,POINT (7.4219041 43.736012),[],no_building_category,0.0,0.0,0.0
+506,node,missing,POINT (7.4219275 43.7361045),[],no_building_category,0.0,0.0,0.0
+507,node,missing,POINT (7.42204 43.736388),[],no_building_category,0.0,0.0,0.0
+508,node,missing,POINT (7.4221131 43.7364991),[],no_building_category,0.0,0.0,0.0
+509,node,missing,POINT (7.4221645 43.7365745),[],no_building_category,0.0,0.0,0.0
+510,node,missing,POINT (7.4212004 43.7344144),"[('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+511,node,missing,POINT (7.425316 43.7371669),[],no_building_category,0.0,0.0,0.0
+512,node,Planet Sushi,POINT (7.4211519 43.7346774),"[('access:covid19', 'yes'), ('addr:country', 'MC'), ('amenity', 'restaurant'), ('cuisine', 'japanese'), ('delivery:covid19', 'yes'), ('drive_through:covid19', 'no'), ('name', 'Planet Sushi'), ('opening_hours:covid19', 'open'), ('takeaway:covid19', 'no'), ('url', 'http://commande.planetsushi.fr/nos-restaurants/planet-sushi-monaco')]",no_building_category,0.0,0.0,0.0
+513,node,missing,POINT (7.4204815 43.7353161),[],no_building_category,0.0,0.0,0.0
+514,node,missing,POINT (7.4205802 43.7349866),[],no_building_category,0.0,0.0,0.0
+515,node,missing,POINT (7.4207548 43.7349531),[],no_building_category,0.0,0.0,0.0
+516,node,missing,POINT (7.420789 43.7346651),[],no_building_category,0.0,0.0,0.0
+517,node,missing,POINT (7.4209785 43.7349539),[],no_building_category,0.0,0.0,0.0
+518,node,missing,POINT (7.4211265 43.7349709),[],no_building_category,0.0,0.0,0.0
+519,node,missing,POINT (7.4210711 43.7353624),[],no_building_category,0.0,0.0,0.0
+520,node,missing,POINT (7.4207391 43.7350115),[],no_building_category,0.0,0.0,0.0
+521,node,missing,POINT (7.421045 43.7344992),[],no_building_category,0.0,0.0,0.0
+522,node,missing,POINT (7.4210253 43.7346095),[],no_building_category,0.0,0.0,0.0
+523,node,missing,POINT (7.4205938 43.7345598),[],no_building_category,0.0,0.0,0.0
+524,node,missing,POINT (7.4201718 43.7345357),[],no_building_category,0.0,0.0,0.0
+525,node,missing,POINT (7.4206212 43.7344572),"[('crossing', 'marked'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+526,node,missing,POINT (7.4217294 43.733787),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+527,node,missing,POINT (7.4216931 43.73387),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+528,node,missing,POINT (7.4216399 43.734005),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+529,node,missing,POINT (7.4216077 43.7340923),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+530,node,missing,POINT (7.4215748 43.7341833),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+531,node,missing,POINT (7.4216957 43.7338193),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+532,node,missing,POINT (7.4215131 43.7343524),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+533,node,Monaco Fitness Center,POINT (7.4220734 43.7341516),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:postcode', '98000'), ('addr:street', 'Route de la piscine'), ('contact:website', 'http://monacofitnesscenter.com'), ('leisure', 'fitness_centre'), ('name', 'Monaco Fitness Center'), ('phone', '+337 93 30 23 35')]",no_building_category,0.0,0.0,0.0
+534,node,U Picin Tocu,POINT (7.4205767 43.7343319),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:housenumber', '1'), ('addr:postcode', '98000'), ('addr:street', 'Rue Louis Notari'), ('amenity', 'fast_food'), ('name', 'U Picin Tocu'), ('phone', '+377 93 50 34 40'), ('takeaway', 'yes')]",no_building_category,0.0,0.0,0.0
+535,node,missing,POINT (7.4217193 43.7345098),[],no_building_category,0.0,0.0,0.0
+536,node,missing,POINT (7.4228723 43.7340685),[],no_building_category,0.0,0.0,0.0
+537,node,missing,POINT (7.4225419 43.7352992),[],no_building_category,0.0,0.0,0.0
+538,node,missing,POINT (7.4202974 43.7351926),[],no_building_category,0.0,0.0,0.0
+539,node,missing,POINT (7.4198634 43.7351119),[],no_building_category,0.0,0.0,0.0
+540,node,missing,POINT (7.4196355 43.7350287),[],no_building_category,0.0,0.0,0.0
+541,node,missing,POINT (7.4196936 43.7346894),[],no_building_category,0.0,0.0,0.0
+542,node,missing,POINT (7.4202727 43.7353574),[],no_building_category,0.0,0.0,0.0
+543,node,missing,POINT (7.41997 43.7347141),[],no_building_category,0.0,0.0,0.0
+544,node,missing,POINT (7.4204742 43.7346129),[],no_building_category,0.0,0.0,0.0
+545,node,missing,POINT (7.4199119 43.7350534),[],no_building_category,0.0,0.0,0.0
+546,node,missing,POINT (7.4196118 43.735089),[],no_building_category,0.0,0.0,0.0
+547,node,missing,POINT (7.4203074 43.7345978),[],no_building_category,0.0,0.0,0.0
+548,node,missing,POINT (7.4200975 43.7351645),[],no_building_category,0.0,0.0,0.0
+549,node,missing,POINT (7.4195764 43.73529),[],no_building_category,0.0,0.0,0.0
+550,node,missing,POINT (7.4198573 43.7351421),[],no_building_category,0.0,0.0,0.0
+551,node,missing,POINT (7.4202791 43.7347204),[],no_building_category,0.0,0.0,0.0
+552,node,missing,POINT (7.4204325 43.7347421),[],no_building_category,0.0,0.0,0.0
+553,node,missing,POINT (7.420762 43.7344269),[],no_building_category,0.0,0.0,0.0
+554,node,missing,POINT (7.418648 43.7342097),[],no_building_category,0.0,0.0,0.0
+555,node,missing,POINT (7.4207515 43.7343812),[],no_building_category,0.0,0.0,0.0
+556,node,missing,POINT (7.4196581 43.7354786),"[('crossing', 'uncontrolled'), ('crossing_ref', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+557,node,Le Nautic,POINT (7.4219845 43.7350028),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:street', 'Quai Albert 1er'), ('amenity', 'restaurant'), ('name', 'Le Nautic')]",no_building_category,0.0,0.0,0.0
+558,node,missing,POINT (7.4172152 43.7342958),[],no_building_category,0.0,0.0,0.0
+559,node,missing,POINT (7.4181192 43.7344466),[],no_building_category,0.0,0.0,0.0
+560,node,missing,POINT (7.4181614 43.7346603),[],no_building_category,0.0,0.0,0.0
+561,node,missing,POINT (7.4181731 43.7347194),[],no_building_category,0.0,0.0,0.0
+562,node,missing,POINT (7.4182223 43.7348963),[],no_building_category,0.0,0.0,0.0
+563,node,missing,POINT (7.4183866 43.7351228),[],no_building_category,0.0,0.0,0.0
+564,node,missing,POINT (7.4185805 43.7353408),[],no_building_category,0.0,0.0,0.0
+565,node,missing,POINT (7.4186748 43.7354241),[],no_building_category,0.0,0.0,0.0
+566,node,missing,POINT (7.418813 43.7355179),[],no_building_category,0.0,0.0,0.0
+567,node,missing,POINT (7.4189408 43.7356162),[],no_building_category,0.0,0.0,0.0
+568,node,missing,POINT (7.4192062 43.7358093),[],no_building_category,0.0,0.0,0.0
+569,node,missing,POINT (7.419299 43.7358871),[],no_building_category,0.0,0.0,0.0
+570,node,missing,POINT (7.4194151 43.7359949),[],no_building_category,0.0,0.0,0.0
+571,node,missing,POINT (7.419475 43.7360539),[],no_building_category,0.0,0.0,0.0
+572,node,missing,POINT (7.4195579 43.7361294),[],no_building_category,0.0,0.0,0.0
+573,node,missing,POINT (7.4198578 43.7364149),[],no_building_category,0.0,0.0,0.0
+574,node,missing,POINT (7.4200823 43.7366129),[],no_building_category,0.0,0.0,0.0
+575,node,missing,POINT (7.4202213 43.7367319),[],no_building_category,0.0,0.0,0.0
+576,node,missing,POINT (7.4203295 43.736811),[],no_building_category,0.0,0.0,0.0
+577,node,missing,POINT (7.4205091 43.7369075),[],no_building_category,0.0,0.0,0.0
+578,node,missing,POINT (7.4206243 43.7369744),[],no_building_category,0.0,0.0,0.0
+579,node,missing,POINT (7.4207787 43.7370534),[],no_building_category,0.0,0.0,0.0
+580,node,missing,POINT (7.420872 43.7370979),[],no_building_category,0.0,0.0,0.0
+581,node,missing,POINT (7.420218 43.7337579),[],no_building_category,0.0,0.0,0.0
+582,node,missing,POINT (7.4207343 43.7338424),[],no_building_category,0.0,0.0,0.0
+583,node,missing,POINT (7.4203366 43.7338667),[],no_building_category,0.0,0.0,0.0
+584,node,missing,POINT (7.4204358 43.7338686),[],no_building_category,0.0,0.0,0.0
+585,node,missing,POINT (7.4205841 43.7338761),"[('addr:country', 'MC'), ('amenity', 'bench'), ('backrest', 'yes')]",no_building_category,0.0,0.0,0.0
+586,node,missing,POINT (7.4205136 43.7339035),[],no_building_category,0.0,0.0,0.0
+587,node,missing,POINT (7.4205324 43.7339471),[],no_building_category,0.0,0.0,0.0
+588,node,missing,POINT (7.4206169 43.7339558),[],no_building_category,0.0,0.0,0.0
+589,node,missing,POINT (7.4203245 43.7339645),[],no_building_category,0.0,0.0,0.0
+590,node,missing,POINT (7.4201343 43.7340437),[],no_building_category,0.0,0.0,0.0
+591,node,missing,POINT (7.4207044 43.7339659),[],no_building_category,0.0,0.0,0.0
+592,node,missing,POINT (7.4204895 43.7339868),[],no_building_category,0.0,0.0,0.0
+593,node,missing,POINT (7.420413 43.7339907),[],no_building_category,0.0,0.0,0.0
+594,node,missing,POINT (7.4205491 43.7340169),"[('addr:country', 'MC'), ('amenity', 'bench'), ('backrest', 'yes')]",no_building_category,0.0,0.0,0.0
+595,node,missing,POINT (7.4204874 43.7340796),[],no_building_category,0.0,0.0,0.0
+596,node,Le Marathon,POINT (7.4205278 43.7363064),"[('addr:country', 'MC'), ('addr:housenumber', '47'), ('addr:street', 'Rue Grimaldi'), ('amenity', 'restaurant'), ('name', 'Le Marathon')]",no_building_category,0.0,0.0,0.0
+597,node,missing,POINT (7.4220168 43.7339831),"[('addr:country', 'MC'), ('amenity', 'toilets')]",no_building_category,0.0,0.0,0.0
+598,node,missing,POINT (7.4206428 43.7353377),[],no_building_category,0.0,0.0,0.0
+599,node,missing,POINT (7.4204067 43.7343323),[],no_building_category,0.0,0.0,0.0
+600,node,missing,POINT (7.4204359 43.7341587),[],no_building_category,0.0,0.0,0.0
+601,node,missing,POINT (7.4206764 43.7341791),[],no_building_category,0.0,0.0,0.0
+602,node,missing,POINT (7.4206166 43.7343508),[],no_building_category,0.0,0.0,0.0
+603,node,missing,POINT (7.4206459 43.7341771),[],no_building_category,0.0,0.0,0.0
+604,node,missing,POINT (7.4203788 43.733952),[],no_building_category,0.0,0.0,0.0
+605,node,missing,POINT (7.4204197 43.7339595),[],no_building_category,0.0,0.0,0.0
+606,node,missing,POINT (7.4204531 43.7339454),[],no_building_category,0.0,0.0,0.0
+607,node,missing,POINT (7.4204659 43.7339182),[],no_building_category,0.0,0.0,0.0
+608,node,missing,POINT (7.4204436 43.7338933),[],no_building_category,0.0,0.0,0.0
+609,node,missing,POINT (7.4204038 43.7338831),[],no_building_category,0.0,0.0,0.0
+610,node,missing,POINT (7.4203668 43.7338997),[],no_building_category,0.0,0.0,0.0
+611,node,missing,POINT (7.4203576 43.7339276),[],no_building_category,0.0,0.0,0.0
+612,node,missing,POINT (7.4202971 43.7338853),[],no_building_category,0.0,0.0,0.0
+613,node,missing,POINT (7.4203481 43.733891),[],no_building_category,0.0,0.0,0.0
+614,node,missing,POINT (7.420339 43.7339331),[],no_building_category,0.0,0.0,0.0
+615,node,missing,POINT (7.420288 43.7339274),[],no_building_category,0.0,0.0,0.0
+616,node,missing,POINT (7.4222229 43.7350548),[],no_building_category,0.0,0.0,0.0
+617,node,missing,POINT (7.4221614 43.7351),[],no_building_category,0.0,0.0,0.0
+618,node,missing,POINT (7.422073 43.735165),[],no_building_category,0.0,0.0,0.0
+619,node,missing,POINT (7.4219807 43.7352363),[],no_building_category,0.0,0.0,0.0
+620,node,missing,POINT (7.4219068 43.7353075),[],no_building_category,0.0,0.0,0.0
+621,node,missing,POINT (7.4218683 43.7353576),[],no_building_category,0.0,0.0,0.0
+622,node,missing,POINT (7.4218236 43.7354255),[],no_building_category,0.0,0.0,0.0
+623,node,Depart Grand Prix de Monaco,POINT (7.4212652 43.7350269),"[('addr:country', 'MC'), ('name', 'Depart Grand Prix de Monaco'), ('name:de', 'Monaco Grand Prix Start- und Ziellinie'), ('name:en', 'Monaco Grand Prix Start/Finish Line'), ('name:fr', 'Depart Grand Prix de Monaco'), ('raceway', 'start-finish'), ('tourism', 'attraction')]",no_building_category,0.0,0.0,0.0
+624,node,Princesse Antoinette,POINT (7.4212797 43.7356163),"[('bench', 'yes'), ('bus', 'yes'), ('departures_board', 'timetable'), ('highway', 'platform'), ('name', 'Princesse Antoinette'), ('public_transport', 'platform'), ('shelter', 'yes')]",no_building_category,0.0,0.0,0.0
+625,node,missing,POINT (7.4212815 43.7355052),[],no_building_category,0.0,0.0,0.0
+626,node,missing,POINT (7.4217254 43.7337147),[],no_building_category,0.0,0.0,0.0
+627,node,missing,POINT (7.4375121 43.7492969),[],no_building_category,0.0,0.0,0.0
+628,node,Caisses sociales de Monaco,POINT (7.4203058 43.7351066),"[('name', 'Caisses sociales de Monaco'), ('office', 'government'), ('website', 'https://www.caisses-sociales.mc/')]",no_building_category,0.0,0.0,0.0
+629,node,missing,POINT (7.4237022 43.7327917),[],no_building_category,0.0,0.0,0.0
+630,node,missing,POINT (7.424096 43.7328716),[],no_building_category,0.0,0.0,0.0
+631,node,missing,POINT (7.4229898 43.7360788),[],no_building_category,0.0,0.0,0.0
+632,node,missing,POINT (7.4237662 43.7328048),[],no_building_category,0.0,0.0,0.0
+633,node,missing,POINT (7.4241259 43.7328778),[],no_building_category,0.0,0.0,0.0
+634,node,missing,POINT (7.4252847 43.7331196),[],no_building_category,0.0,0.0,0.0
+635,node,missing,POINT (7.4254491 43.7331567),[],no_building_category,0.0,0.0,0.0
+636,node,missing,POINT (7.4259086 43.7332602),[],no_building_category,0.0,0.0,0.0
+637,node,missing,POINT (7.426458 43.7333662),[],no_building_category,0.0,0.0,0.0
+638,node,missing,POINT (7.4269025 43.7334638),[],no_building_category,0.0,0.0,0.0
+639,node,missing,POINT (7.4273333 43.7335534),[],no_building_category,0.0,0.0,0.0
+640,node,missing,POINT (7.4272508 43.734755),[],no_building_category,0.0,0.0,0.0
+641,node,missing,POINT (7.4234837 43.7341152),[],no_building_category,0.0,0.0,0.0
+642,node,missing,POINT (7.4234866 43.7340998),[],no_building_category,0.0,0.0,0.0
+643,node,missing,POINT (7.4234942 43.7341007),[],no_building_category,0.0,0.0,0.0
+644,node,missing,POINT (7.4235651 43.7336655),[],no_building_category,0.0,0.0,0.0
+645,node,missing,POINT (7.4234453 43.7340929),[],no_building_category,0.0,0.0,0.0
+646,node,missing,POINT (7.4234588 43.7340945),[],no_building_category,0.0,0.0,0.0
+647,node,missing,POINT (7.4234542 43.7341112),[],no_building_category,0.0,0.0,0.0
+648,node,missing,POINT (7.4228894 43.7340701),[],no_building_category,0.0,0.0,0.0
+649,node,missing,POINT (7.4230043 43.7335289),[],no_building_category,0.0,0.0,0.0
+650,node,missing,POINT (7.4228567 43.7340666),[],no_building_category,0.0,0.0,0.0
+651,node,missing,POINT (7.4231277 43.7354206),[],no_building_category,0.0,0.0,0.0
+652,node,missing,POINT (7.4231241 43.7354352),[],no_building_category,0.0,0.0,0.0
+653,node,missing,POINT (7.4231401 43.7354379),[],no_building_category,0.0,0.0,0.0
+654,node,missing,POINT (7.422944 43.7360732),[],no_building_category,0.0,0.0,0.0
+655,node,missing,POINT (7.4230946 43.7354316),[],no_building_category,0.0,0.0,0.0
+656,node,missing,POINT (7.4231059 43.7354328),[],no_building_category,0.0,0.0,0.0
+657,node,missing,POINT (7.4231101 43.7354183),[],no_building_category,0.0,0.0,0.0
+658,node,missing,POINT (7.4225344 43.7352986),[],no_building_category,0.0,0.0,0.0
+659,node,missing,POINT (7.4225315 43.7353107),[],no_building_category,0.0,0.0,0.0
+660,node,missing,POINT (7.4225225 43.7353101),[],no_building_category,0.0,0.0,0.0
+661,node,missing,POINT (7.4225038 43.736096),[],no_building_category,0.0,0.0,0.0
+662,node,missing,POINT (7.4224307 43.7358319),[],no_building_category,0.0,0.0,0.0
+663,node,missing,POINT (7.4225555 43.7353126),[],no_building_category,0.0,0.0,0.0
+664,node,missing,POINT (7.4225436 43.735311),[],no_building_category,0.0,0.0,0.0
+665,node,missing,POINT (7.4225476 43.7353001),[],no_building_category,0.0,0.0,0.0
+666,node,missing,POINT (7.4223066 43.7367406),[],no_building_category,0.0,0.0,0.0
+667,node,missing,POINT (7.4221083 43.73503),[],no_building_category,0.0,0.0,0.0
+668,node,missing,POINT (7.4220873 43.7368385),[],no_building_category,0.0,0.0,0.0
+669,node,missing,POINT (7.4222851 43.7368598),[],no_building_category,0.0,0.0,0.0
+670,node,missing,POINT (7.4249238 43.7371239),[],no_building_category,0.0,0.0,0.0
+671,node,missing,POINT (7.4268443 43.7373467),[],no_building_category,0.0,0.0,0.0
+672,node,missing,POINT (7.4266306 43.7372857),[],no_building_category,0.0,0.0,0.0
+673,node,missing,POINT (7.4201797 43.7348418),[],no_building_category,0.0,0.0,0.0
+674,node,missing,POINT (7.420199 43.7347646),[],no_building_category,0.0,0.0,0.0
+675,node,missing,POINT (7.4204294 43.7347948),[],no_building_category,0.0,0.0,0.0
+676,node,missing,POINT (7.42041 43.7348719),[],no_building_category,0.0,0.0,0.0
+677,node,Le lion et la SirÃ¨ne,POINT (7.420537 43.7338715),"[('addr:country', 'MC'), ('artwork_type', 'sculpture'), ('name', 'Le lion et la SirÃ¨ne'), ('tourism', 'artwork')]",no_building_category,0.0,0.0,0.0
+678,node,missing,POINT (7.420416 43.7338406),"[('addr:country', 'MC'), ('amenity', 'bench')]",no_building_category,0.0,0.0,0.0
+679,node,missing,POINT (7.422388 43.7346424),"[('tourism', 'artwork')]",no_building_category,0.0,0.0,0.0
+680,node,missing,POINT (7.4222109 43.7354088),"[('artwork_type', 'statue'), ('tourism', 'artwork')]",no_building_category,0.0,0.0,0.0
+681,node,Auto-Ã©cole Georges,POINT (7.420414 43.7362159),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:housenumber', '45'), ('addr:postcode', '98000'), ('addr:street', 'Rue Grimaldi'), ('amenity', 'driving_school'), ('name', 'Auto-Ã©cole Georges'), ('opening_hours', 'Mo-Fr 09:00-19:00'), ('payment:cheque', 'yes'), ('payment:visa', 'yes')]",no_building_category,0.0,0.0,0.0
+682,node,missing,POINT (7.4204053 43.7337997),[],no_building_category,0.0,0.0,0.0
+683,node,missing,POINT (7.4203837 43.7340533),[],no_building_category,0.0,0.0,0.0
+684,node,missing,POINT (7.420546 43.7340682),[],no_building_category,0.0,0.0,0.0
+685,node,missing,POINT (7.4205904 43.733825),[],no_building_category,0.0,0.0,0.0
+686,node,missing,POINT (7.4209105 43.7353476),[],no_building_category,0.0,0.0,0.0
+687,node,missing,POINT (7.4209564 43.7349639),[],no_building_category,0.0,0.0,0.0
+688,node,missing,POINT (7.4209923 43.7346792),[],no_building_category,0.0,0.0,0.0
+689,node,La bionda brasserie,POINT (7.4200243 43.7343828),"[('address', '7 Rue Suffren Reymond, La Condamine 98000, Monaco'), ('amenity', 'restaurant'), ('cuisine', 'italian'), ('name', 'La bionda brasserie')]",no_building_category,0.0,0.0,0.0
+690,node,missing,POINT (7.4196397 43.7350044),[],no_building_category,0.0,0.0,0.0
+691,node,missing,POINT (7.4193205 43.7351534),"[('crossing', 'zebra'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+692,node,missing,POINT (7.4214304 43.7342658),[],no_building_category,0.0,0.0,0.0
+693,node,missing,POINT (7.4212904 43.7362497),[],no_building_category,0.0,0.0,0.0
+694,node,missing,POINT (7.4229768 43.7330045),[],no_building_category,0.0,0.0,0.0
+695,node,missing,POINT (7.4222961 43.7347849),[],no_building_category,0.0,0.0,0.0
+696,node,missing,POINT (7.4223083 43.7347359),[],no_building_category,0.0,0.0,0.0
+697,node,missing,POINT (7.4223429 43.7346008),[],no_building_category,0.0,0.0,0.0
+698,node,missing,POINT (7.4223317 43.7340725),[],no_building_category,0.0,0.0,0.0
+699,node,missing,POINT (7.4223224 43.7340085),[],no_building_category,0.0,0.0,0.0
+700,node,missing,POINT (7.4223491 43.7338502),[],no_building_category,0.0,0.0,0.0
+701,node,missing,POINT (7.422407 43.7337299),"[('crossing', 'marked'), ('crossing:island', 'no'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+702,node,missing,POINT (7.4230383 43.732966),[],no_building_category,0.0,0.0,0.0
+703,node,missing,POINT (7.4231683 43.732892),[],no_building_category,0.0,0.0,0.0
+704,node,missing,POINT (7.4232693 43.7328395),[],no_building_category,0.0,0.0,0.0
+705,node,missing,POINT (7.4233403 43.7327864),[],no_building_category,0.0,0.0,0.0
+706,node,missing,POINT (7.4233895 43.7327397),[],no_building_category,0.0,0.0,0.0
+707,node,missing,POINT (7.4217927 43.7333741),[],no_building_category,0.0,0.0,0.0
+708,node,missing,POINT (7.421705 43.7335705),[],no_building_category,0.0,0.0,0.0
+709,node,missing,POINT (7.4216373 43.7337308),[],no_building_category,0.0,0.0,0.0
+710,node,missing,POINT (7.421569 43.7339007),[],no_building_category,0.0,0.0,0.0
+711,node,missing,POINT (7.4215295 43.7340015),[],no_building_category,0.0,0.0,0.0
+712,node,missing,POINT (7.4214022 43.7343601),[],no_building_category,0.0,0.0,0.0
+713,node,missing,POINT (7.4213748 43.7344691),[],no_building_category,0.0,0.0,0.0
+714,node,missing,POINT (7.421358 43.7345446),[],no_building_category,0.0,0.0,0.0
+715,node,missing,POINT (7.4213333 43.7346566),[],no_building_category,0.0,0.0,0.0
+716,node,missing,POINT (7.4213176 43.7347276),[],no_building_category,0.0,0.0,0.0
+717,node,missing,POINT (7.4212964 43.734838),[],no_building_category,0.0,0.0,0.0
+718,node,missing,POINT (7.4212724 43.7349832),[],no_building_category,0.0,0.0,0.0
+719,node,missing,POINT (7.4214252 43.7365564),[],no_building_category,0.0,0.0,0.0
+720,node,missing,POINT (7.4212306 43.735349),[],no_building_category,0.0,0.0,0.0
+721,node,missing,POINT (7.4212103 43.7355796),[],no_building_category,0.0,0.0,0.0
+722,node,missing,POINT (7.4212091 43.7356754),[],no_building_category,0.0,0.0,0.0
+723,node,missing,POINT (7.4212159 43.7358229),[],no_building_category,0.0,0.0,0.0
+724,node,missing,POINT (7.4212313 43.7359846),[],no_building_category,0.0,0.0,0.0
+725,node,missing,POINT (7.4212587 43.7361347),[],no_building_category,0.0,0.0,0.0
+726,node,missing,POINT (7.4213049 43.736292),[],no_building_category,0.0,0.0,0.0
+727,node,missing,POINT (7.4222845 43.7367851),[],no_building_category,0.0,0.0,0.0
+728,node,missing,POINT (7.4218099 43.735538),[],no_building_category,0.0,0.0,0.0
+729,node,missing,POINT (7.4221942 43.7351872),[],no_building_category,0.0,0.0,0.0
+730,node,missing,POINT (7.4223041 43.734753),[],no_building_category,0.0,0.0,0.0
+731,node,missing,POINT (7.4226706 43.733281),[],no_building_category,0.0,0.0,0.0
+732,node,missing,POINT (7.4228637 43.7330923),[],no_building_category,0.0,0.0,0.0
+733,node,missing,POINT (7.4227518 43.7331926),[],no_building_category,0.0,0.0,0.0
+734,node,missing,POINT (7.4233701 43.7327603),[],no_building_category,0.0,0.0,0.0
+735,node,missing,POINT (7.4217145 43.7335478),[],no_building_category,0.0,0.0,0.0
+736,node,missing,POINT (7.4215368 43.7339825),[],no_building_category,0.0,0.0,0.0
+737,node,missing,POINT (7.4214102 43.7343333),[],no_building_category,0.0,0.0,0.0
+738,node,missing,POINT (7.4213284 43.7346786),[],no_building_category,0.0,0.0,0.0
+739,node,missing,POINT (7.4212837 43.7349149),[],no_building_category,0.0,0.0,0.0
+740,node,missing,POINT (7.4209318 43.736585),[],no_building_category,0.0,0.0,0.0
+741,node,missing,POINT (7.4209184 43.7365938),[],no_building_category,0.0,0.0,0.0
+742,node,missing,POINT (7.4254556 43.7371769),[],no_building_category,0.0,0.0,0.0
+743,node,missing,POINT (7.4250446 43.7371516),[],no_building_category,0.0,0.0,0.0
+744,node,missing,POINT (7.4247235 43.7371071),[],no_building_category,0.0,0.0,0.0
+745,node,missing,POINT (7.4238455 43.7370178),[],no_building_category,0.0,0.0,0.0
+746,node,missing,POINT (7.4231012 43.7369385),"[('crossing', 'unmarked'), ('highway', 'crossing')]",no_building_category,0.0,0.0,0.0
+747,node,Hertz,POINT (7.4212068 43.7364016),"[('addr:city', 'Monaco'), ('addr:street', 'Boulevard Albert 1er'), ('amenity', 'car_rental'), ('brand', 'Hertz'), ('brand:wikidata', 'Q1543874'), ('brand:wikipedia', 'en:The Hertz Corporation'), ('name', 'Hertz')]",no_building_category,0.0,0.0,0.0
+748,node,BÃ¼ro des Honorarkonsuls der Bundesrepublik Deutschland,POINT (7.4211156 43.7362721),"[('addr:city', 'Monaco'), ('addr:housenumber', '25 bis'), ('addr:street', 'Boulevard Albert 1er'), ('consulate', 'honorary_consul'), ('country', 'DE'), ('diplomatic', 'consulate'), ('email', 'monaco@hk-diplo.de'), ('name', 'BÃ¼ro des Honorarkonsuls der Bundesrepublik Deutschland'), ('name:fr', ""Bureau du Consul Honoraire de la RÃ©publique FÃ©dÃ©rale d'Allemagne""), ('office', 'diplomatic'), ('opening_hours', 'Tu-Fr 14:00-17:30'), ('phone', '+377 97 97 49 65'), ('target', 'MC')]",no_building_category,0.0,0.0,0.0
+749,node,Auto Konzept,POINT (7.4212486 43.7341816),"[('brand', 'Volkswagen'), ('name', 'Auto Konzept'), ('shop', 'car_repair')]",no_building_category,0.0,0.0,0.0
+750,node,Auto Konzept,POINT (7.4212486 43.7341816),"[('brand', 'Volkswagen'), ('name', 'Auto Konzept'), ('shop', 'car_repair')]",shop_category,0.0,0.0,0.0
+751,node,missing,POINT (7.4223671 43.7322437),[],no_building_category,0.0,0.0,0.0
+752,node,missing,POINT (7.4213848 43.73615),[],no_building_category,0.0,0.0,0.0
+753,node,missing,POINT (7.4377203 43.7493909),[],no_building_category,0.0,0.0,0.0
+754,node,missing,POINT (7.4303133 43.7398495),[],no_building_category,0.0,0.0,0.0
+755,node,missing,POINT (7.4320649 43.7456495),[],no_building_category,0.0,0.0,0.0
+756,node,missing,POINT (7.4294608 43.7383583),[],no_building_category,0.0,0.0,0.0
+757,node,missing,POINT (7.430539 43.7430354),[],no_building_category,0.0,0.0,0.0
+758,node,missing,POINT (7.4217225 43.7370523),[],no_building_category,0.0,0.0,0.0
+759,node,missing,POINT (7.4266236 43.737359),[],no_building_category,0.0,0.0,0.0
+760,node,missing,POINT (7.4350978 43.7482067),[],no_building_category,0.0,0.0,0.0
+761,node,missing,POINT (7.4199512 43.7361946),[],no_building_category,0.0,0.0,0.0
+762,node,missing,POINT (7.4200863 43.7360953),[],no_building_category,0.0,0.0,0.0
+763,node,missing,POINT (7.4304074 43.7411771),[],no_building_category,0.0,0.0,0.0
+764,node,CFM,POINT (7.4212291 43.7342815),"[('addr:city', 'Monaco'), ('addr:street', 'Boulevard Albert 1er'), ('amenity', 'bank'), ('name', 'CFM')]",no_building_category,0.0,0.0,0.0
+765,node,missing,POINT (7.4198789 43.7350745),[],no_building_category,0.0,0.0,0.0
+766,node,missing,POINT (7.4223525 43.734919),"[('amenity', 'recycling'), ('location', 'underground'), ('recycling_type', 'container')]",no_building_category,0.0,0.0,0.0
+767,node,missing,POINT (7.4217322 43.7350116),[],no_building_category,0.0,0.0,0.0
+768,node,missing,POINT (7.4199694 43.7350827),[],no_building_category,0.0,0.0,0.0
+769,node,DPM Monaco,POINT (7.4206775 43.7362312),"[('addr:street', 'Rue Grimaldi'), ('name', 'DPM Monaco'), ('second_hand', 'only'), ('shop', 'car')]",no_building_category,0.0,0.0,0.0
+770,node,DPM Monaco,POINT (7.4206775 43.7362312),"[('addr:street', 'Rue Grimaldi'), ('name', 'DPM Monaco'), ('second_hand', 'only'), ('shop', 'car')]",shop_category,0.0,0.0,0.0
+771,node,missing,POINT (7.420554 43.7361601),[],no_building_category,0.0,0.0,0.0
+772,node,missing,POINT (7.4207398 43.7363108),[],no_building_category,0.0,0.0,0.0
+773,node,missing,POINT (7.4208705 43.7362399),[],no_building_category,0.0,0.0,0.0
+774,node,missing,POINT (7.4207188 43.7361109),[],no_building_category,0.0,0.0,0.0
+775,node,missing,POINT (7.4195047 43.7350402),[],no_building_category,0.0,0.0,0.0
+776,node,missing,POINT (7.4198722 43.7351433),[],no_building_category,0.0,0.0,0.0
+777,node,missing,POINT (7.4198359 43.7353151),[],no_building_category,0.0,0.0,0.0
+778,node,missing,POINT (7.4198213 43.7353631),[],no_building_category,0.0,0.0,0.0
+779,node,missing,POINT (7.4222086 43.7350671),[],no_building_category,0.0,0.0,0.0
+780,node,missing,POINT (7.421727 43.7350309),[],no_building_category,0.0,0.0,0.0
+781,node,missing,POINT (7.4217022 43.7353007),[],no_building_category,0.0,0.0,0.0
+782,node,missing,POINT (7.4225043 43.7329013),"[('shop', 'gift')]",no_building_category,0.0,0.0,0.0
+783,node,missing,POINT (7.4225043 43.7329013),"[('shop', 'gift')]",shop_category,0.0,0.0,0.0
+784,node,missing,POINT (7.4220189 43.7345684),"[('addr:city', 'Monaco'), ('addr:postcode', '98000'), ('leisure', 'ice_rink'), ('opening_hours', 'Dec-Mar'), ('seasonal', 'yes'), ('website', 'https://www.mairie.mc/en/langues-etrangeres/events-entertainment/rainier-iii-nautical-stadium')]",no_building_category,0.0,0.0,0.0
+785,node,missing,POINT (7.421037 43.7356299),[],no_building_category,0.0,0.0,0.0
+786,node,missing,POINT (7.4209316 43.7356234),[],no_building_category,0.0,0.0,0.0
+787,node,missing,POINT (7.4207281 43.7335724),[],no_building_category,0.0,0.0,0.0
+788,node,missing,POINT (7.4213984 43.733643),[],no_building_category,0.0,0.0,0.0
+789,node,missing,POINT (7.4215117 43.7336634),[],no_building_category,0.0,0.0,0.0
+790,node,missing,POINT (7.4214409 43.7338463),[],no_building_category,0.0,0.0,0.0
+791,node,missing,POINT (7.4213471 43.733735),[],no_building_category,0.0,0.0,0.0
+792,node,missing,POINT (7.4216953 43.7338573),[],no_building_category,0.0,0.0,0.0
+793,node,Parcours Princesse Grace - 11,POINT (7.4202343 43.7338002),"[('board_type', 'history'), ('description', '1958-01-22'), ('direction', '200'), ('information', 'board'), ('name', 'Parcours Princesse Grace - 11'), ('ref', '11'), ('tourism', 'information')]",no_building_category,0.0,0.0,0.0
+794,node,missing,POINT (7.4201786 43.7337819),"[('barrier', 'bollard')]",no_building_category,0.0,0.0,0.0
+795,node,missing,POINT (7.4202432 43.7337811),"[('barrier', 'bollard')]",no_building_category,0.0,0.0,0.0
+796,node,missing,POINT (7.4201401 43.7340093),"[('barrier', 'bollard')]",no_building_category,0.0,0.0,0.0
+797,node,missing,POINT (7.4214034 43.7336167),[],no_building_category,0.0,0.0,0.0
+798,node,missing,POINT (7.42135 43.7337297),[],no_building_category,0.0,0.0,0.0
+799,node,missing,POINT (7.4220329 43.7367171),[],no_building_category,0.0,0.0,0.0
+800,node,missing,POINT (7.4219679 43.7367061),[],no_building_category,0.0,0.0,0.0
+801,node,missing,POINT (7.4218978 43.7366885),[],no_building_category,0.0,0.0,0.0
+802,node,missing,POINT (7.4218439 43.7366584),[],no_building_category,0.0,0.0,0.0
+803,node,missing,POINT (7.4217981 43.7366158),[],no_building_category,0.0,0.0,0.0
+804,node,missing,POINT (7.4218439 43.7366003),[],no_building_category,0.0,0.0,0.0
+805,node,missing,POINT (7.4218134 43.7365607),[],no_building_category,0.0,0.0,0.0
+806,node,missing,POINT (7.421787 43.7365064),[],no_building_category,0.0,0.0,0.0
+807,node,missing,POINT (7.4218408 43.7364924),[],no_building_category,0.0,0.0,0.0
+808,node,missing,POINT (7.4218042 43.7364292),[],no_building_category,0.0,0.0,0.0
+809,node,missing,POINT (7.4217727 43.7363551),[],no_building_category,0.0,0.0,0.0
+810,node,missing,POINT (7.421728 43.7362603),[],no_building_category,0.0,0.0,0.0
+811,node,missing,POINT (7.4216843 43.7362706),[],no_building_category,0.0,0.0,0.0
+812,node,missing,POINT (7.4216528 43.7361862),[],no_building_category,0.0,0.0,0.0
+813,node,missing,POINT (7.4216985 43.7361781),[],no_building_category,0.0,0.0,0.0
+814,node,missing,POINT (7.4216863 43.7361193),[],no_building_category,0.0,0.0,0.0
+815,node,missing,POINT (7.4216721 43.7360569),[],no_building_category,0.0,0.0,0.0
+816,node,missing,POINT (7.4216609 43.735996),[],no_building_category,0.0,0.0,0.0
+817,node,missing,POINT (7.4216132 43.7360018),[],no_building_category,0.0,0.0,0.0
+818,node,missing,POINT (7.4215918 43.7359167),[],no_building_category,0.0,0.0,0.0
+819,node,missing,POINT (7.4216416 43.7359101),[],no_building_category,0.0,0.0,0.0
+820,node,missing,POINT (7.4216396 43.7358491),[],no_building_category,0.0,0.0,0.0
+821,node,missing,POINT (7.4216335 43.7357118),[],no_building_category,0.0,0.0,0.0
+822,node,missing,POINT (7.4215817 43.7357118),[],no_building_category,0.0,0.0,0.0
+823,node,missing,POINT (7.4215827 43.7356273),[],no_building_category,0.0,0.0,0.0
+824,node,missing,POINT (7.4216345 43.7356266),[],no_building_category,0.0,0.0,0.0
+825,node,missing,POINT (7.4216467 43.7354628),[],no_building_category,0.0,0.0,0.0
+826,node,missing,POINT (7.4215949 43.7354614),[],no_building_category,0.0,0.0,0.0
+827,node,missing,POINT (7.421602 43.7353725),[],no_building_category,0.0,0.0,0.0
+828,node,missing,POINT (7.4216508 43.7353747),[],no_building_category,0.0,0.0,0.0
+829,node,missing,POINT (7.4216498 43.7353644),[],no_building_category,0.0,0.0,0.0
+830,node,missing,POINT (7.4217341 43.7350545),[],no_building_category,0.0,0.0,0.0
+831,node,missing,POINT (7.4217046 43.7350523),[],no_building_category,0.0,0.0,0.0
+832,node,missing,POINT (7.4217077 43.7350281),[],no_building_category,0.0,0.0,0.0
+833,node,missing,POINT (7.4217301 43.73502),[],no_building_category,0.0,0.0,0.0
+834,node,missing,POINT (7.4217351 43.7350016),[],no_building_category,0.0,0.0,0.0
+835,node,missing,POINT (7.4217077 43.7349972),[],no_building_category,0.0,0.0,0.0
+836,node,missing,POINT (7.4217118 43.7349796),[],no_building_category,0.0,0.0,0.0
+837,node,Automobile Club Monaco,POINT (7.4204924 43.7361115),"[('addr:street', 'Rue Grimaldi'), ('name', 'Automobile Club Monaco'), ('shop', 'clothes')]",no_building_category,0.0,0.0,0.0
+838,node,Automobile Club Monaco,POINT (7.4204924 43.7361115),"[('addr:street', 'Rue Grimaldi'), ('name', 'Automobile Club Monaco'), ('shop', 'clothes')]",shop_category,0.0,0.0,0.0
+839,node,missing,POINT (7.4212975 43.736528),[],no_building_category,0.0,0.0,0.0
+840,node,missing,POINT (7.4199582 43.7363108),[],no_building_category,0.0,0.0,0.0
+841,node,missing,POINT (7.4200352 43.7362542),[],no_building_category,0.0,0.0,0.0
+842,node,missing,POINT (7.422653 43.7325784),[],no_building_category,0.0,0.0,0.0
+843,node,Bambi,POINT (7.4206742 43.7354916),"[('addr:country', 'MC'), ('amenity', 'restaurant'), ('name', 'Bambi')]",no_building_category,0.0,0.0,0.0
+844,node,missing,POINT (7.4201061 43.7360625),[],no_building_category,0.0,0.0,0.0
+845,node,missing,POINT (7.4201767 43.73601),[],no_building_category,0.0,0.0,0.0
+846,node,missing,POINT (7.419915 43.7359737),[],no_building_category,0.0,0.0,0.0
+847,node,missing,POINT (7.4213067 43.7355054),[],no_building_category,0.0,0.0,0.0
+848,node,missing,POINT (7.421305 43.735616),[],no_building_category,0.0,0.0,0.0
+849,node,missing,POINT (7.4217516 43.7337203),[],no_building_category,0.0,0.0,0.0
+850,node,missing,POINT (7.4238967 43.7370229),[],no_building_category,0.0,0.0,0.0
+851,node,missing,POINT (7.4240575 43.7370394),[],no_building_category,0.0,0.0,0.0
+852,node,missing,POINT (7.4212123 43.7355512),[],no_building_category,0.0,0.0,0.0
+853,node,missing,POINT (7.421494 43.7344377),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+854,node,missing,POINT (7.4214778 43.7345347),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+855,node,missing,POINT (7.4214554 43.7346169),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+856,node,missing,POINT (7.4214208 43.7347667),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+857,node,missing,POINT (7.4214005 43.734893),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+858,node,missing,POINT (7.421366 43.7349929),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+859,node,missing,POINT (7.4213436 43.7352705),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+860,node,missing,POINT (7.4213416 43.7353909),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+861,node,missing,POINT (7.4213334 43.7354923),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+862,node,missing,POINT (7.4213375 43.7356201),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+863,node,missing,POINT (7.4213273 43.7357229),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+864,node,missing,POINT (7.4213436 43.7358301),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+865,node,missing,POINT (7.4213497 43.7359314),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+866,node,missing,POINT (7.4213721 43.7360856),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+867,node,missing,POINT (7.4214412 43.7364102),"[('natural', 'tree')]",no_building_category,0.0,0.0,0.0
+868,node,missing,POINT (7.4214275 43.735424),[],no_building_category,0.0,0.0,0.0
+869,node,missing,POINT (7.422819 43.7325078),[],no_building_category,0.0,0.0,0.0
+870,node,missing,POINT (7.4225489 43.732657),[],no_building_category,0.0,0.0,0.0
+871,node,missing,POINT (7.4224479 43.7327388),[],no_building_category,0.0,0.0,0.0
+872,node,missing,POINT (7.4222803 43.7329059),[],no_building_category,0.0,0.0,0.0
+873,node,missing,POINT (7.4221849 43.7330101),[],no_building_category,0.0,0.0,0.0
+874,node,missing,POINT (7.4220328 43.733216),[],no_building_category,0.0,0.0,0.0
+875,node,missing,POINT (7.421914 43.7334119),[],no_building_category,0.0,0.0,0.0
+876,node,missing,POINT (7.4218491 43.7335474),[],no_building_category,0.0,0.0,0.0
+877,node,missing,POINT (7.4215305 43.7364636),[],no_building_category,0.0,0.0,0.0
+878,node,missing,POINT (7.421631 43.7366187),[],no_building_category,0.0,0.0,0.0
+879,node,missing,POINT (7.4216589 43.736655),[],no_building_category,0.0,0.0,0.0
+880,node,missing,POINT (7.4217216 43.7367111),[],no_building_category,0.0,0.0,0.0
+881,node,missing,POINT (7.4217555 43.736733),[],no_building_category,0.0,0.0,0.0
+882,node,missing,POINT (7.4217744 43.7367124),[],no_building_category,0.0,0.0,0.0
+883,node,missing,POINT (7.4218392 43.7367478),[],no_building_category,0.0,0.0,0.0
+884,node,missing,POINT (7.4219817 43.7367926),[],no_building_category,0.0,0.0,0.0
+885,node,missing,POINT (7.4220686 43.736807),[],no_building_category,0.0,0.0,0.0
+886,node,missing,POINT (7.4222211 43.7368315),[],no_building_category,0.0,0.0,0.0
+887,node,missing,POINT (7.4221564 43.7368014),[],no_building_category,0.0,0.0,0.0
+888,node,missing,POINT (7.4220578 43.7367169),[],no_building_category,0.0,0.0,0.0
+889,node,missing,POINT (7.4216338 43.7357183),[],no_building_category,0.0,0.0,0.0
+890,node,missing,POINT (7.4220128 43.7367978),[],no_building_category,0.0,0.0,0.0
+891,node,missing,POINT (7.4220639 43.7341008),[],no_building_category,0.0,0.0,0.0
+892,node,missing,POINT (7.424731 43.736992),[],no_building_category,0.0,0.0,0.0
+893,node,missing,POINT (7.4219421 43.7336626),[],no_building_category,0.0,0.0,0.0
+894,node,missing,POINT (7.4218518 43.7340664),[],no_building_category,0.0,0.0,0.0
+895,node,missing,POINT (7.4217004 43.7350078),[],no_building_category,0.0,0.0,0.0
+896,node,missing,POINT (7.4214684 43.7351314),[],no_building_category,0.0,0.0,0.0
+897,node,missing,POINT (7.4214985 43.7349861),[],no_building_category,0.0,0.0,0.0
+898,node,missing,POINT (7.4207989 43.7356372),[],no_building_category,0.0,0.0,0.0
+899,node,missing,POINT (7.4224557 43.7341741),[],no_building_category,0.0,0.0,0.0
+900,node,missing,POINT (7.4220711 43.7343359),[],no_building_category,0.0,0.0,0.0
+901,node,missing,POINT (7.4221076 43.7343408),[],no_building_category,0.0,0.0,0.0
+902,node,missing,POINT (7.4220936 43.7343951),[],no_building_category,0.0,0.0,0.0
+903,node,missing,POINT (7.422057 43.7343902),[],no_building_category,0.0,0.0,0.0
+904,node,missing,POINT (7.4220996 43.7343719),[],no_building_category,0.0,0.0,0.0
+905,node,missing,POINT (7.4221311 43.7343766),[],no_building_category,0.0,0.0,0.0
+906,node,missing,POINT (7.4221523 43.7343769),[],no_building_category,0.0,0.0,0.0
+907,node,missing,POINT (7.4221616 43.7343741),[],no_building_category,0.0,0.0,0.0
+908,node,missing,POINT (7.4221692 43.7343691),[],no_building_category,0.0,0.0,0.0
+909,node,missing,POINT (7.422174 43.7343627),[],no_building_category,0.0,0.0,0.0
+910,node,missing,POINT (7.4221755 43.7343554),[],no_building_category,0.0,0.0,0.0
+911,node,missing,POINT (7.4221511 43.7343346),[],no_building_category,0.0,0.0,0.0
+912,node,missing,POINT (7.4221415 43.7343344),[],no_building_category,0.0,0.0,0.0
+913,node,missing,POINT (7.4221324 43.7343365),[],no_building_category,0.0,0.0,0.0
+914,node,missing,POINT (7.4221246 43.7343405),[],no_building_category,0.0,0.0,0.0
+915,node,missing,POINT (7.422119 43.734346),[],no_building_category,0.0,0.0,0.0
+916,node,missing,POINT (7.422116 43.7343526),[],no_building_category,0.0,0.0,0.0
+917,node,missing,POINT (7.4221421 43.7343773),[],no_building_category,0.0,0.0,0.0
+918,node,missing,POINT (7.422159 43.7343796),[],no_building_category,0.0,0.0,0.0
+919,node,missing,POINT (7.4221901 43.7343838),[],no_building_category,0.0,0.0,0.0
+920,node,missing,POINT (7.4222029 43.7343854),[],no_building_category,0.0,0.0,0.0
+921,node,missing,POINT (7.4222145 43.7343868),[],no_building_category,0.0,0.0,0.0
+922,node,missing,POINT (7.4222221 43.7343864),[],no_building_category,0.0,0.0,0.0
+923,node,missing,POINT (7.4222301 43.7343843),[],no_building_category,0.0,0.0,0.0
+924,node,missing,POINT (7.4222302 43.7343489),[],no_building_category,0.0,0.0,0.0
+925,node,missing,POINT (7.4222215 43.734345),[],no_building_category,0.0,0.0,0.0
+926,node,missing,POINT (7.4222115 43.7343432),[],no_building_category,0.0,0.0,0.0
+927,node,missing,POINT (7.4222012 43.7343438),[],no_building_category,0.0,0.0,0.0
+928,node,missing,POINT (7.4221917 43.7343466),[],no_building_category,0.0,0.0,0.0
+929,node,missing,POINT (7.422184 43.7343515),[],no_building_category,0.0,0.0,0.0
+930,node,missing,POINT (7.4221748 43.7343815),[],no_building_category,0.0,0.0,0.0
+931,node,missing,POINT (7.4221738 43.7343853),[],no_building_category,0.0,0.0,0.0
+932,node,missing,POINT (7.4221728 43.7343878),[],no_building_category,0.0,0.0,0.0
+933,node,missing,POINT (7.4221736 43.7343482),[],no_building_category,0.0,0.0,0.0
+934,node,missing,POINT (7.4221684 43.7343419),[],no_building_category,0.0,0.0,0.0
+935,node,missing,POINT (7.4221606 43.7343372),[],no_building_category,0.0,0.0,0.0
+936,node,missing,POINT (7.4221161 43.7343595),[],no_building_category,0.0,0.0,0.0
+937,node,missing,POINT (7.4221192 43.734366),[],no_building_category,0.0,0.0,0.0
+938,node,missing,POINT (7.422125 43.7343715),[],no_building_category,0.0,0.0,0.0
+939,node,missing,POINT (7.4221329 43.7343754),[],no_building_category,0.0,0.0,0.0
+940,node,missing,POINT (7.4222371 43.7343781),[],no_building_category,0.0,0.0,0.0
+941,node,missing,POINT (7.4222408 43.7343706),[],no_building_category,0.0,0.0,0.0
+942,node,missing,POINT (7.4222408 43.7343626),[],no_building_category,0.0,0.0,0.0
+943,node,missing,POINT (7.4222372 43.7343551),[],no_building_category,0.0,0.0,0.0
+944,node,missing,POINT (7.4221787 43.7343579),[],no_building_category,0.0,0.0,0.0
+945,node,missing,POINT (7.4221765 43.7343651),[],no_building_category,0.0,0.0,0.0
+946,node,missing,POINT (7.4221749 43.7343729),[],no_building_category,0.0,0.0,0.0
+947,node,Princesse Florestine,POINT (7.4198022 43.7356153),"[('bus', 'yes'), ('highway', 'bus_stop'), ('name', 'Princesse Florestine'), ('public_transport', 'stop_position')]",no_building_category,0.0,0.0,0.0
+948,node,missing,POINT (7.421812 43.733627),[],no_building_category,0.0,0.0,0.0
+949,node,missing,POINT (7.4217598 43.7337426),[],no_building_category,0.0,0.0,0.0
+950,node,missing,POINT (7.4216817 43.7339258),[],no_building_category,0.0,0.0,0.0
+951,node,missing,POINT (7.4216195 43.7340793),[],no_building_category,0.0,0.0,0.0
+952,node,missing,POINT (7.4215514 43.7342915),[],no_building_category,0.0,0.0,0.0
+953,node,missing,POINT (7.4214982 43.7344682),[],no_building_category,0.0,0.0,0.0
+954,node,missing,POINT (7.4214511 43.7346782),[],no_building_category,0.0,0.0,0.0
+955,node,missing,POINT (7.421414 43.7348723),[],no_building_category,0.0,0.0,0.0
+956,node,missing,POINT (7.421396 43.7350251),[],no_building_category,0.0,0.0,0.0
+957,node,missing,POINT (7.421372 43.7352091),[],no_building_category,0.0,0.0,0.0
+958,node,missing,POINT (7.4213609 43.7353394),[],no_building_category,0.0,0.0,0.0
+959,node,missing,POINT (7.4213509 43.7354647),[],no_building_category,0.0,0.0,0.0
+960,node,missing,POINT (7.4213449 43.735603),[],no_building_category,0.0,0.0,0.0
+961,node,missing,POINT (7.4213419 43.7357746),[],no_building_category,0.0,0.0,0.0
+962,node,missing,POINT (7.4213499 43.7359101),[],no_building_category,0.0,0.0,0.0
+963,node,missing,POINT (7.4213659 43.7360245),[],no_building_category,0.0,0.0,0.0
+964,node,missing,POINT (7.421382 43.7361034),[],no_building_category,0.0,0.0,0.0
+965,node,missing,POINT (7.4214241 43.7362432),[],no_building_category,0.0,0.0,0.0
+966,node,missing,POINT (7.4214551 43.7363156),[],no_building_category,0.0,0.0,0.0
+967,node,missing,POINT (7.4213985 43.7361671),[],no_building_category,0.0,0.0,0.0
+968,node,missing,POINT (7.4214912 43.7363916),[],no_building_category,0.0,0.0,0.0
+969,node,missing,POINT (7.4215742 43.736539),[],no_building_category,0.0,0.0,0.0
+970,node,missing,POINT (7.4216893 43.7366856),[],no_building_category,0.0,0.0,0.0
+971,node,missing,POINT (7.4215976 43.736572),[],no_building_category,0.0,0.0,0.0
+972,node,missing,POINT (7.4228905 43.7324582),[],no_building_category,0.0,0.0,0.0
+973,node,missing,POINT (7.4230023 43.7324443),[],no_building_category,0.0,0.0,0.0
+974,node,missing,POINT (7.422967 43.7324432),[],no_building_category,0.0,0.0,0.0
+975,node,missing,POINT (7.4229304 43.7324475),[],no_building_category,0.0,0.0,0.0
+976,node,missing,POINT (7.4219701 43.7333148),[],no_building_category,0.0,0.0,0.0
+977,node,missing,POINT (7.4221066 43.7331079),[],no_building_category,0.0,0.0,0.0
+978,node,missing,POINT (7.4223764 43.7328091),[],no_building_category,0.0,0.0,0.0
+979,node,missing,POINT (7.4222331 43.7367669),[],no_building_category,0.0,0.0,0.0
+980,node,missing,POINT (7.4222578 43.7367785),[],no_building_category,0.0,0.0,0.0
+981,node,missing,POINT (7.422209 43.7367514),[],no_building_category,0.0,0.0,0.0
+982,node,missing,POINT (7.4218489 43.7361398),[],no_building_category,0.0,0.0,0.0
+983,node,missing,POINT (7.4219867 43.7364478),[],no_building_category,0.0,0.0,0.0
+984,node,missing,POINT (7.4219341 43.736352),[],no_building_category,0.0,0.0,0.0
+985,node,missing,POINT (7.4218031 43.73584),[],no_building_category,0.0,0.0,0.0
+986,node,missing,POINT (7.4218155 43.7359939),[],no_building_category,0.0,0.0,0.0
+987,node,missing,POINT (7.4217986 43.7356898),[],no_building_category,0.0,0.0,0.0
+988,node,missing,POINT (7.4220814 43.7365948),[],no_building_category,0.0,0.0,0.0
+989,node,missing,POINT (7.4221348 43.7366675),[],no_building_category,0.0,0.0,0.0
+990,node,missing,POINT (7.4221029 43.7352623),[],no_building_category,0.0,0.0,0.0
+991,node,missing,POINT (7.4224713 43.734127),[],no_building_category,0.0,0.0,0.0
+992,node,missing,POINT (7.4224721 43.7340798),[],no_building_category,0.0,0.0,0.0
+993,node,missing,POINT (7.4224431 43.7340438),[],no_building_category,0.0,0.0,0.0
+994,node,missing,POINT (7.4224029 43.7340125),[],no_building_category,0.0,0.0,0.0
+995,node,missing,POINT (7.4222676 43.7339571),[],no_building_category,0.0,0.0,0.0
+996,node,missing,POINT (7.4222282 43.7339355),[],no_building_category,0.0,0.0,0.0
+997,node,missing,POINT (7.4222024 43.7338809),[],no_building_category,0.0,0.0,0.0
+998,node,missing,POINT (7.4222185 43.7338035),[],no_building_category,0.0,0.0,0.0
+999,node,missing,POINT (7.4223646 43.7334889),[],no_building_category,0.0,0.0,0.0
+1000,node,missing,POINT (7.422458 43.7333427),[],no_building_category,0.0,0.0,0.0
+1001,node,missing,POINT (7.4225366 43.7332317),[],no_building_category,0.0,0.0,0.0
+1002,node,missing,POINT (7.4226735 43.7330823),[],no_building_category,0.0,0.0,0.0
+1003,node,missing,POINT (7.4228538 43.7329387),[],no_building_category,0.0,0.0,0.0
+1004,node,missing,POINT (7.4229423 43.7328843),[],no_building_category,0.0,0.0,0.0
+1005,node,missing,POINT (7.4230048 43.7328518),[],no_building_category,0.0,0.0,0.0
+1006,node,missing,POINT (7.423074 43.7328225),[],no_building_category,0.0,0.0,0.0
+1007,node,missing,POINT (7.4231568 43.7327933),[],no_building_category,0.0,0.0,0.0
+1008,node,missing,POINT (7.4233892 43.7327089),[],no_building_category,0.0,0.0,0.0
+1009,node,missing,POINT (7.4218167 43.7354893),[],no_building_category,0.0,0.0,0.0
+1010,node,missing,POINT (7.421829 43.7354474),[],no_building_category,0.0,0.0,0.0
+1011,node,missing,POINT (7.4219117 43.7353648),[],no_building_category,0.0,0.0,0.0
+1012,node,missing,POINT (7.4218668 43.7353992),[],no_building_category,0.0,0.0,0.0
+1013,node,missing,POINT (7.4221371 43.7352391),[],no_building_category,0.0,0.0,0.0
+1014,node,missing,POINT (7.4221653 43.7352153),[],no_building_category,0.0,0.0,0.0
+1015,node,missing,POINT (7.4221795 43.7352024),[],no_building_category,0.0,0.0,0.0
+1016,node,missing,POINT (7.4219591 43.7364007),[],no_building_category,0.0,0.0,0.0
+1017,node,missing,POINT (7.4218311 43.7360658),[],no_building_category,0.0,0.0,0.0
+1018,node,missing,POINT (7.4218859 43.7362386),[],no_building_category,0.0,0.0,0.0
+1019,node,missing,POINT (7.4224121 43.7342927),[],no_building_category,0.0,0.0,0.0
+1020,node,missing,POINT (7.4224087 43.734255),[],no_building_category,0.0,0.0,0.0
+1021,node,missing,POINT (7.4222091 43.733914),[],no_building_category,0.0,0.0,0.0
+1022,node,missing,POINT (7.422246 43.7339472),[],no_building_category,0.0,0.0,0.0
+1023,node,missing,POINT (7.4213798 43.7344485),[],no_building_category,0.0,0.0,0.0
+1024,node,missing,POINT (7.422244 43.7333383),[],no_building_category,0.0,0.0,0.0
+1025,node,missing,POINT (7.4223618 43.7331674),[],no_building_category,0.0,0.0,0.0
+1026,node,missing,POINT (7.4217524 43.7367506),[],no_building_category,0.0,0.0,0.0
+1027,node,missing,POINT (7.4228117 43.7325574),[],no_building_category,0.0,0.0,0.0
+1028,node,missing,POINT (7.4228495 43.732473),[],no_building_category,0.0,0.0,0.0
+1029,node,missing,POINT (7.4228304 43.7324646),[],no_building_category,0.0,0.0,0.0
+1030,node,missing,POINT (7.421477 43.7348949),[],no_building_category,0.0,0.0,0.0
+1031,node,missing,POINT (7.422775 43.7327778),[],no_building_category,0.0,0.0,0.0
+1032,node,missing,POINT (7.4228067 43.7327227),[],no_building_category,0.0,0.0,0.0
+1033,node,missing,POINT (7.4216764 43.7345847),[],no_building_category,0.0,0.0,0.0
+1034,node,missing,POINT (7.4214177 43.7350199),[],no_building_category,0.0,0.0,0.0
+1035,node,missing,POINT (7.4213608 43.7351285),[],no_building_category,0.0,0.0,0.0
+1036,node,missing,POINT (7.4212978 43.735199),[],no_building_category,0.0,0.0,0.0
+1037,node,missing,POINT (7.422849 43.7324354),[],no_building_category,0.0,0.0,0.0
+1038,node,missing,POINT (7.4228906 43.7324005),[],no_building_category,0.0,0.0,0.0
+1039,node,missing,POINT (7.4229145 43.7323891),[],no_building_category,0.0,0.0,0.0
+1040,node,missing,POINT (7.4216757 43.7344658),[],no_building_category,0.0,0.0,0.0
+1041,node,missing,POINT (7.4218017 43.7340163),[],no_building_category,0.0,0.0,0.0
+1042,node,missing,POINT (7.4220009 43.7335728),[],no_building_category,0.0,0.0,0.0
+1043,node,missing,POINT (7.4222286 43.7332144),[],no_building_category,0.0,0.0,0.0
+1044,node,missing,POINT (7.4224481 43.73295),[],no_building_category,0.0,0.0,0.0
+1045,node,missing,POINT (7.4225498 43.7328619),[],no_building_category,0.0,0.0,0.0
+1046,node,missing,POINT (7.42244 43.7328149),[],no_building_category,0.0,0.0,0.0
+1047,node,missing,POINT (7.4222489 43.7330088),[],no_building_category,0.0,0.0,0.0
+1048,node,missing,POINT (7.422005 43.7333466),[],no_building_category,0.0,0.0,0.0
+1049,node,missing,POINT (7.421883 43.7335787),[],no_building_category,0.0,0.0,0.0
+1050,node,missing,POINT (7.4217041 43.7339782),[],no_building_category,0.0,0.0,0.0
+1051,node,missing,POINT (7.4215497 43.734457),[],no_building_category,0.0,0.0,0.0
+1052,node,missing,POINT (7.4203373 43.7353904),[],no_building_category,0.0,0.0,0.0
+1053,node,missing,POINT (7.4202521 43.7353987),[],no_building_category,0.0,0.0,0.0
+1054,node,missing,POINT (7.4196734 43.7353604),[],no_building_category,0.0,0.0,0.0
+1055,node,missing,POINT (7.4206344 43.7348092),[],no_building_category,0.0,0.0,0.0
+1056,node,missing,POINT (7.4207829 43.7348313),[],no_building_category,0.0,0.0,0.0
+1057,node,missing,POINT (7.4201056 43.7360462),[],no_building_category,0.0,0.0,0.0
+1058,node,missing,POINT (7.4199208 43.7359127),[],no_building_category,0.0,0.0,0.0
+1059,node,missing,POINT (7.4199888 43.7358636),[],no_building_category,0.0,0.0,0.0
+1060,node,missing,POINT (7.4201736 43.7359971),[],no_building_category,0.0,0.0,0.0
+1061,node,missing,POINT (7.4201624 43.7349235),[],no_building_category,0.0,0.0,0.0
+1062,node,missing,POINT (7.4203624 43.7349517),[],no_building_category,0.0,0.0,0.0
+1063,node,missing,POINT (7.4207202 43.734384),[],no_building_category,0.0,0.0,0.0
+1064,node,missing,POINT (7.4206832 43.7340534),[],no_building_category,0.0,0.0,0.0
+1065,node,missing,POINT (7.4204581 43.7339348),[],no_building_category,0.0,0.0,0.0
+1066,node,missing,POINT (7.4212403 43.7352623),[],no_building_category,0.0,0.0,0.0
+1067,node,missing,POINT (7.4209716 43.7348431),[],no_building_category,0.0,0.0,0.0
+1068,node,missing,POINT (7.4211567 43.7348555),[],no_building_category,0.0,0.0,0.0
+1069,node,missing,POINT (7.4211552 43.7348933),[],no_building_category,0.0,0.0,0.0
+1070,node,missing,POINT (7.4209677 43.734874),[],no_building_category,0.0,0.0,0.0
+1071,node,missing,POINT (7.4210489 43.7344759),[],no_building_category,0.0,0.0,0.0
+1072,node,missing,POINT (7.421206 43.734497),[],no_building_category,0.0,0.0,0.0
+1073,node,missing,POINT (7.4211706 43.7347108),[],no_building_category,0.0,0.0,0.0
+1074,node,missing,POINT (7.4210073 43.7346996),[],no_building_category,0.0,0.0,0.0
+1075,node,missing,POINT (7.421621 43.7335879),[],no_building_category,0.0,0.0,0.0
+1076,node,missing,POINT (7.4215684 43.7337048),[],no_building_category,0.0,0.0,0.0
+1077,node,missing,POINT (7.421365 43.7341615),[],no_building_category,0.0,0.0,0.0
+1078,node,missing,POINT (7.4213093 43.7343755),[],no_building_category,0.0,0.0,0.0
+1079,node,missing,POINT (7.421295 43.7344214),[],no_building_category,0.0,0.0,0.0
+1080,node,missing,POINT (7.4212806 43.734474),[],no_building_category,0.0,0.0,0.0
+1081,node,missing,POINT (7.4212448 43.7346123),[],no_building_category,0.0,0.0,0.0
+1082,node,missing,POINT (7.4211801 43.7350609),[],no_building_category,0.0,0.0,0.0
+1083,node,missing,POINT (7.4211328 43.7353839),[],no_building_category,0.0,0.0,0.0
+1084,node,missing,POINT (7.4211295 43.73543),[],no_building_category,0.0,0.0,0.0
+1085,node,missing,POINT (7.4211123 43.7356998),[],no_building_category,0.0,0.0,0.0
+1086,node,missing,POINT (7.4211416 43.735968),[],no_building_category,0.0,0.0,0.0
+1087,node,missing,POINT (7.4212156 43.7362418),[],no_building_category,0.0,0.0,0.0
+1088,node,missing,POINT (7.4212679 43.7363634),[],no_building_category,0.0,0.0,0.0
+1089,node,missing,POINT (7.4213619 43.7365268),[],no_building_category,0.0,0.0,0.0
+1090,node,missing,POINT (7.421136 43.7353577),"[('highway', 'stop')]",no_building_category,0.0,0.0,0.0
+1091,node,missing,POINT (7.4211343 43.734715),[],no_building_category,0.0,0.0,0.0
+1092,node,missing,POINT (7.4210917 43.734944),[],no_building_category,0.0,0.0,0.0
+1093,node,missing,POINT (7.4204698 43.7353436),[],no_building_category,0.0,0.0,0.0
+1094,node,missing,POINT (7.4210087 43.7353769),[],no_building_category,0.0,0.0,0.0
+1095,node,missing,POINT (7.4229984 43.7324556),[],no_building_category,0.0,0.0,0.0
+1096,node,missing,POINT (7.4227812 43.7329897),[],no_building_category,0.0,0.0,0.0
+1097,node,missing,POINT (7.4222632 43.7336912),[],no_building_category,0.0,0.0,0.0
+1098,node,missing,POINT (7.4221532 43.7336617),"[('noexit', 'yes')]",no_building_category,0.0,0.0,0.0
+1099,node,missing,POINT (7.4233333 43.7327339),[],no_building_category,0.0,0.0,0.0
+1100,node,missing,POINT (7.422358 43.7339906),[],no_building_category,0.0,0.0,0.0
+1101,node,missing,POINT (7.4226056 43.7331499),[],no_building_category,0.0,0.0,0.0
+1102,node,missing,POINT (7.4229453 43.732608),[],no_building_category,0.0,0.0,0.0
+1103,node,missing,POINT (7.4228092 43.7326378),[],no_building_category,0.0,0.0,0.0
+1104,node,missing,POINT (7.4220148 43.7350432),[],no_building_category,0.0,0.0,0.0
+1105,node,missing,POINT (7.4255346 43.7371842),[],no_building_category,0.0,0.0,0.0
+1106,node,missing,POINT (7.4216911 43.7365772),[],no_building_category,0.0,0.0,0.0
+1107,node,missing,POINT (7.4215687 43.7365582),[],no_building_category,0.0,0.0,0.0
+1108,node,missing,POINT (7.4222106 43.735153),[],no_building_category,0.0,0.0,0.0
+1109,node,missing,POINT (7.4218137 43.7354662),[],no_building_category,0.0,0.0,0.0
+1110,area-way,missing,POINT (7.422468389696938 43.735701405924445),"[('area', 'yes'), ('floating', 'yes'), ('foot', 'yes'), ('man_made', 'pier'), ('mooring', 'yes')]",no_building_category,0.0,0.0,0.0
+1111,area-way,FAMI,POINT (7.419873064276772 43.7354961318821),"[('addr:country', 'MC'), ('building', 'retail'), ('name', 'FAMI')]",building_category_site_area,0.0,2.5116724999952782e-08,0.0
+1112,area-way,FAMI,POINT (7.419873064276772 43.7354961318821),"[('addr:country', 'MC'), ('building', 'retail'), ('name', 'FAMI')]",building_category_building_area,0.0,2.5116724999952782e-08,0.0
+1113,area-way,missing,POINT (7.4205250996071666 43.735550926486226),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4')]",building_category_site_area,4.0,1.9713149999691982e-08,7.885259999876793e-08
+1114,area-way,missing,POINT (7.4205250996071666 43.735550926486226),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4')]",building_category_building_area,4.0,1.9713149999691982e-08,7.885259999876793e-08
+1115,area-way,missing,POINT (7.42352811976157 43.73388811436356),"[('area', 'yes'), ('man_made', 'pier'), ('mooring', 'yes')]",no_building_category,0.0,0.0,0.0
+1116,area-way,Villa Bellevue BÃ¢t. B,POINT (7.420101949999999 43.73635005),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '8'), ('name', 'Villa Bellevue BÃ¢t. B')]",building_category_site_area,8.0,4.018413999942688e-08,3.2147311999541503e-07
+1117,area-way,Villa Bellevue BÃ¢t. B,POINT (7.420101949999999 43.73635005),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '8'), ('name', 'Villa Bellevue BÃ¢t. B')]",building_category_building_area,8.0,4.018413999942688e-08,3.2147311999541503e-07
+1118,area-way,Villa Florio,POINT (7.420616901045102 43.735562673548024),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4'), ('name', 'Villa Florio')]",building_category_site_area,4.0,1.083212000009175e-08,4.3328480000367e-08
+1119,area-way,Villa Florio,POINT (7.420616901045102 43.735562673548024),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4'), ('name', 'Villa Florio')]",building_category_building_area,4.0,1.083212000009175e-08,4.3328480000367e-08
+1120,area-way,missing,POINT (7.4199816 43.734204749999996),"[('addr:country', 'MC'), ('building', 'retail')]",building_category_site_area,0.0,7.077177999872478e-08,0.0
+1121,area-way,missing,POINT (7.4199816 43.734204749999996),"[('addr:country', 'MC'), ('building', 'retail')]",building_category_building_area,0.0,7.077177999872478e-08,0.0
+1122,area-way,missing,POINT (7.420229357002928 43.73551843648142),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '3')]",building_category_site_area,3.0,1.8372374999474993e-08,5.5117124998424975e-08
+1123,area-way,missing,POINT (7.420229357002928 43.73551843648142),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '3')]",building_category_building_area,3.0,1.8372374999474993e-08,5.5117124998424975e-08
+1124,area-way,missing,POINT (7.4203177 43.734238700000006),"[('addr:country', 'MC'), ('building', 'retail')]",building_category_site_area,0.0,1.9356820000050373e-08,0.0
+1125,area-way,missing,POINT (7.4203177 43.734238700000006),"[('addr:country', 'MC'), ('building', 'retail')]",building_category_building_area,0.0,1.9356820000050373e-08,0.0
+1126,area-way,missing,POINT (7.420023568630539 43.73562643747062),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '3')]",building_category_site_area,3.0,1.2394210000209132e-08,3.71826300006274e-08
+1127,area-way,missing,POINT (7.420023568630539 43.73562643747062),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '3')]",building_category_building_area,3.0,1.2394210000209132e-08,3.71826300006274e-08
+1128,area-way,missing,POINT (7.420127669466061 43.73573063529573),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4')]",building_category_site_area,4.0,2.350270000001019e-08,9.401080000004076e-08
+1129,area-way,missing,POINT (7.420127669466061 43.73573063529573),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4')]",building_category_building_area,4.0,2.350270000001019e-08,9.401080000004076e-08
+1130,area-way,Le Winch,POINT (7.420883528308625 43.73559632082529),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '9'), ('name', 'Le Winch')]",building_category_site_area,9.0,2.7133010000651903e-08,2.4419709000586714e-07
+1131,area-way,Le Winch,POINT (7.420883528308625 43.73559632082529),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '9'), ('name', 'Le Winch')]",building_category_building_area,9.0,2.7133010000651903e-08,2.4419709000586714e-07
+1132,area-way,Villa Bellevue BÃ¢t. A,POINT (7.4202746790823415 43.73647028879799),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '8'), ('name', 'Villa Bellevue BÃ¢t. A')]",building_category_site_area,8.0,4.4242615000116786e-08,3.539409200009343e-07
+1133,area-way,Villa Bellevue BÃ¢t. A,POINT (7.4202746790823415 43.73647028879799),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '8'), ('name', 'Villa Bellevue BÃ¢t. A')]",building_category_building_area,8.0,4.4242615000116786e-08,3.539409200009343e-07
+1134,area-way,missing,POINT (7.422944668575947 43.733804558998635),"[('area', 'yes'), ('floating', 'yes'), ('man_made', 'pier'), ('mooring', 'yes')]",no_building_category,0.0,0.0,0.0
+1135,area-way,missing,POINT (7.420543467150958 43.73601248855441),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '4')]",building_category_site_area,4.0,7.829653000045167e-08,3.131861200018067e-07
+1136,area-way,missing,POINT (7.420543467150958 43.73601248855441),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '4')]",building_category_building_area,4.0,7.829653000045167e-08,3.131861200018067e-07
+1137,area-way,Villa Hyacinthe,POINT (7.42073503194686 43.73554260118506),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:street', 'Rue Princesse Antoinette'), ('building', 'residential'), ('building:levels', '4'), ('name', 'Villa Hyacinthe')]",building_category_site_area,4.0,1.8258329999867327e-08,7.30333199994693e-08
+1138,area-way,Villa Hyacinthe,POINT (7.42073503194686 43.73554260118506),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:street', 'Rue Princesse Antoinette'), ('building', 'residential'), ('building:levels', '4'), ('name', 'Villa Hyacinthe')]",building_category_building_area,4.0,1.8258329999867327e-08,7.30333199994693e-08
+1139,area-way,Les Caravelles,POINT (7.420989194831496 43.73612707898455),"[('addr:country', 'MC'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'hotel'), ('building:levels', '16'), ('name', 'Les Caravelles'), ('tourism', 'hotel')]",building_category_site_area,16.0,6.715346999986828e-08,1.0744555199978924e-06
+1140,area-way,Les Caravelles,POINT (7.420989194831496 43.73612707898455),"[('addr:country', 'MC'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'hotel'), ('building:levels', '16'), ('name', 'Les Caravelles'), ('tourism', 'hotel')]",building_category_building_area,16.0,6.715346999986828e-08,1.0744555199978924e-06
+1141,area-way,missing,POINT (7.420513126410581 43.73359861888955),"[('addr:country', 'MC'), ('building', 'retail')]",building_category_site_area,0.0,1.19889085000183e-07,0.0
+1142,area-way,missing,POINT (7.420513126410581 43.73359861888955),"[('addr:country', 'MC'), ('building', 'retail')]",building_category_building_area,0.0,1.19889085000183e-07,0.0
+1143,area-way,Villa Trianon,POINT (7.420346689428873 43.73619030411398),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '3'), ('name', 'Villa Trianon')]",building_category_site_area,3.0,4.307209499943946e-08,1.292162849983184e-07
+1144,area-way,Villa Trianon,POINT (7.420346689428873 43.73619030411398),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '3'), ('name', 'Villa Trianon')]",building_category_building_area,3.0,4.307209499943946e-08,1.292162849983184e-07
+1145,area-way,Le Shangri-La,POINT (7.4211106977745604 43.73407021301698),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '14'), ('name', 'Le Shangri-La')]",building_category_site_area,14.0,2.4618406999967293e-07,3.446576979995421e-06
+1146,area-way,Le Shangri-La,POINT (7.4211106977745604 43.73407021301698),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '14'), ('name', 'Le Shangri-La')]",building_category_building_area,14.0,2.4618406999967293e-07,3.446576979995421e-06
+1147,area-way,missing,POINT (7.420408766086759 43.73572548635473),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '3')]",building_category_site_area,3.0,2.1094149999322167e-08,6.32824499979665e-08
+1148,area-way,missing,POINT (7.420408766086759 43.73572548635473),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '3')]",building_category_building_area,3.0,2.1094149999322167e-08,6.32824499979665e-08
+1149,area-way,Villa Portofino,POINT (7.419977495057704 43.733647860336646),"[('addr:country', 'MC'), ('building', 'apartments'), ('name', 'Villa Portofino'), ('shop', 'hairdresser')]",building_category_site_area,0.0,2.478765999897151e-08,0.0
+1150,area-way,Villa Portofino,POINT (7.419977495057704 43.733647860336646),"[('addr:country', 'MC'), ('building', 'apartments'), ('name', 'Villa Portofino'), ('shop', 'hairdresser')]",building_category_building_area,0.0,2.478765999897151e-08,0.0
+1151,area-way,Villa Portofino,POINT (7.419977495057704 43.733647860336646),"[('addr:country', 'MC'), ('building', 'apartments'), ('name', 'Villa Portofino'), ('shop', 'hairdresser')]",shop_category,0.0,0.0,0.0
+1152,area-way,CFM Indosuez Wealth Management,POINT (7.419986490454524 43.733888072784616),"[('addr:country', 'MC'), ('amenity', 'bank'), ('building', 'commercial'), ('name', 'CFM Indosuez Wealth Management')]",building_category_site_area,0.0,6.170105999895946e-08,0.0
+1153,area-way,CFM Indosuez Wealth Management,POINT (7.419986490454524 43.733888072784616),"[('addr:country', 'MC'), ('amenity', 'bank'), ('building', 'commercial'), ('name', 'CFM Indosuez Wealth Management')]",building_category_building_area,0.0,6.170105999895946e-08,0.0
+1154,area-way,missing,POINT (7.420284059003733 43.73584686973226),"[('addr:country', 'MC'), ('building', 'commercial'), ('building:levels', '3'), ('source', 'Bing')]",building_category_site_area,3.0,2.1209370000374644e-08,6.362811000112393e-08
+1155,area-way,missing,POINT (7.420284059003733 43.73584686973226),"[('addr:country', 'MC'), ('building', 'commercial'), ('building:levels', '3'), ('source', 'Bing')]",building_category_building_area,3.0,2.1209370000374644e-08,6.362811000112393e-08
+1156,area-way,missing,POINT (7.420048641944228 43.7355118020178),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '3')]",building_category_site_area,3.0,2.7560339999633284e-08,8.268101999889985e-08
+1157,area-way,missing,POINT (7.420048641944228 43.7355118020178),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '3')]",building_category_building_area,3.0,2.7560339999633284e-08,8.268101999889985e-08
+1158,area-way,missing,POINT (7.419809949999999 43.735791600000006),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '7')]",building_category_site_area,7.0,3.6310140000613845e-08,2.541709800042969e-07
+1159,area-way,missing,POINT (7.419809949999999 43.735791600000006),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '7')]",building_category_building_area,7.0,3.6310140000613845e-08,2.541709800042969e-07
+1160,area-way,missing,POINT (7.420388507769618 43.73552784920324),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4')]",building_category_site_area,4.0,2.1294399999363224e-08,8.51775999974529e-08
+1161,area-way,missing,POINT (7.420388507769618 43.73552784920324),"[('addr:country', 'MC'), ('building', 'residential'), ('building:levels', '4')]",building_category_building_area,4.0,2.1294399999363224e-08,8.51775999974529e-08
+1162,area-way,Le Bristol,POINT (7.421053861467967 43.736300159710744),"[('addr:country', 'MC'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'yes'), ('name', 'Le Bristol'), ('tourism', 'hotel')]",building_category_site_area,0.0,1.5627555000016682e-08,0.0
+1163,area-way,Le Bristol,POINT (7.421053861467967 43.736300159710744),"[('addr:country', 'MC'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'yes'), ('name', 'Le Bristol'), ('tourism', 'hotel')]",building_category_building_area,0.0,1.5627555000016682e-08,0.0
+1164,area-way,Suffren,POINT (7.419955224072156 43.73449944638172),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '8'), ('name', 'Suffren')]",building_category_site_area,8.0,8.070398999994309e-08,6.456319199995447e-07
+1165,area-way,Suffren,POINT (7.419955224072156 43.73449944638172),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '8'), ('name', 'Suffren')]",building_category_building_area,8.0,8.070398999994309e-08,6.456319199995447e-07
+1166,area-way,Square ThÃ©odore Gastaud,POINT (7.420417342758605 43.73392960252557),"[('addr:country', 'MC'), ('leisure', 'park'), ('name', 'Square ThÃ©odore Gastaud')]",no_building_category,0.0,0.0,0.0
+1167,area-way,Ermanno Palace,POINT (7.4211676376327995 43.73650899342247),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:housenumber', '27'), ('addr:postcode', '98000'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'apartments'), ('building:levels', '18'), ('name', 'Ermanno Palace')]",building_category_site_area,18.0,5.86793950000215e-08,1.056229110000387e-06
+1168,area-way,Ermanno Palace,POINT (7.4211676376327995 43.73650899342247),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:housenumber', '27'), ('addr:postcode', '98000'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'apartments'), ('building:levels', '18'), ('name', 'Ermanno Palace')]",building_category_building_area,18.0,5.86793950000215e-08,1.056229110000387e-06
+1169,area-way,missing,POINT (7.422024331184348 43.734592080315494),"[('access', 'customers'), ('leisure', 'swimming_pool'), ('length', '25'), ('location', 'outdoor'), ('sport', 'swimming'), ('swimming_pool', 'outdoor')]",no_building_category,0.0,0.0,0.0
+1170,area-way,Stade Nautique Rainier III,POINT (7.422029902374728 43.734601353435515),"[('addr:country', 'MC'), ('addr:street', 'Quai Albert 1er'), ('covered', 'no'), ('description', 'In the winter, from December through March, the Rainier III Nautical Stadium becomes a 1,000 square meter (11,000 square feet) ice rink.'), ('fee', 'yes'), ('leisure', 'sports_centre'), ('name', 'Stade Nautique Rainier III'), ('name:en', 'Rainier III Nautical Stadium'), ('opening_hours', 'Apr 24-Jun 14: 09:00-18:00; Jun 15-Sep 08: 09:00-20:00; Sep 09-Oct 13: 09:00-18:00'), ('phone', '+337 93 30 64 83'), ('sport', 'swimming'), ('website', 'https://www.mairie.mc/en/langues-etrangeres/events-entertainment/rainier-iii-nautical-stadium'), ('wikidata', 'Q13385309'), ('wikipedia', 'en:Rainier III Nautical Stadium')]",no_building_category,0.0,0.0,0.0
+1171,area-way,missing,POINT (7.421021135412671 43.735161245278),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '4')]",building_category_site_area,4.0,6.155920999962892e-08,2.4623683999851567e-07
+1172,area-way,missing,POINT (7.421021135412671 43.735161245278),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '4')]",building_category_building_area,4.0,6.155920999962892e-08,2.4623683999851567e-07
+1173,area-way,SÃ»retÃ© Publique de Monaco,POINT (7.420605473774875 43.73451232913042),"[('addr:country', 'MC'), ('amenity', 'police'), ('building', 'yes'), ('name', 'SÃ»retÃ© Publique de Monaco')]",building_category_site_area,0.0,9.369027499934435e-08,0.0
+1174,area-way,SÃ»retÃ© Publique de Monaco,POINT (7.420605473774875 43.73451232913042),"[('addr:country', 'MC'), ('amenity', 'police'), ('building', 'yes'), ('name', 'SÃ»retÃ© Publique de Monaco')]",building_category_building_area,0.0,9.369027499934435e-08,0.0
+1175,area-way,La FrÃ©gate,POINT (7.419802760177262 43.73487139749187),"[('addr:country', 'MC'), ('building', 'yes'), ('name', 'La FrÃ©gate'), ('source', 'Bing'), ('tourism', 'hotel')]",building_category_site_area,0.0,9.521097499979434e-08,0.0
+1176,area-way,La FrÃ©gate,POINT (7.419802760177262 43.73487139749187),"[('addr:country', 'MC'), ('building', 'yes'), ('name', 'La FrÃ©gate'), ('source', 'Bing'), ('tourism', 'hotel')]",building_category_building_area,0.0,9.521097499979434e-08,0.0
+1177,area-way,missing,POINT (7.420374340065138 43.73466766164188),"[('addr:country', 'MC'), ('building', 'commercial'), ('source', 'Bing')]",building_category_site_area,0.0,2.0800589999444727e-08,0.0
+1178,area-way,missing,POINT (7.420374340065138 43.73466766164188),"[('addr:country', 'MC'), ('building', 'commercial'), ('source', 'Bing')]",building_category_building_area,0.0,2.0800589999444727e-08,0.0
+1179,area-way,missing,POINT (7.419925081407266 43.73523064925208),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '4'), ('source', 'Bing')]",building_category_site_area,4.0,1.2847935999933958e-07,5.139174399973583e-07
+1180,area-way,missing,POINT (7.419925081407266 43.73523064925208),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '4'), ('source', 'Bing')]",building_category_building_area,4.0,1.2847935999933958e-07,5.139174399973583e-07
+1181,area-way,villa Medecin,POINT (7.420526286752215 43.73425472030123),"[('addr:country', 'MC'), ('addr:housename', 'villa Medecin'), ('building', 'retail'), ('name', 'villa Medecin')]",building_category_site_area,0.0,3.6997480000101754e-08,0.0
+1182,area-way,villa Medecin,POINT (7.420526286752215 43.73425472030123),"[('addr:country', 'MC'), ('addr:housename', 'villa Medecin'), ('building', 'retail'), ('name', 'villa Medecin')]",building_category_building_area,0.0,3.6997480000101754e-08,0.0
+1183,area-way,missing,POINT (7.420410937295139 43.733921871401584),"[('addr:country', 'MC'), ('building', 'yes'), ('leisure', 'bandstand'), ('shelter_type', 'pavilion')]",building_category_site_area,0.0,5.817000000055966e-09,0.0
+1184,area-way,missing,POINT (7.420410937295139 43.733921871401584),"[('addr:country', 'MC'), ('building', 'yes'), ('leisure', 'bandstand'), ('shelter_type', 'pavilion')]",building_category_building_area,0.0,5.817000000055966e-09,0.0
+1185,area-way,missing,POINT (7.42031805 43.7339092),"[('addr:country', 'MC'), ('building', 'yes')]",building_category_site_area,0.0,2.198970000111067e-09,0.0
+1186,area-way,missing,POINT (7.42031805 43.7339092),"[('addr:country', 'MC'), ('building', 'yes')]",building_category_building_area,0.0,2.198970000111067e-09,0.0
+1187,area-way,Princesse Antoinette,POINT (7.421293214980423 43.73556075871621),"[('area', 'yes'), ('bench', 'yes'), ('bin', 'yes'), ('bus', 'yes'), ('name', 'Princesse Antoinette'), ('public_transport', 'platform'), ('shelter', 'yes'), ('surface', 'paved'), ('wheelchair', 'yes')]",no_building_category,0.0,0.0,0.0
+1188,area-way,Stade Nautique,POINT (7.421710391789801 43.73378595993714),"[('area', 'yes'), ('bench', 'yes'), ('bus', 'yes'), ('name', 'Stade Nautique'), ('public_transport', 'platform'), ('shelter', 'yes'), ('wheelchair', 'yes')]",no_building_category,0.0,0.0,0.0
+1189,area-way,missing,POINT (7.423042781358983 43.73575247281034),"[('area', 'yes'), ('man_made', 'pier')]",no_building_category,0.0,0.0,0.0
+1190,area-way,Eglise rÃ©formÃ©e de Monaco,POINT (7.420304504910549 43.73481826887947),"[('addr:country', 'MC'), ('amenity', 'place_of_worship'), ('building', 'yes'), ('name', 'Eglise rÃ©formÃ©e de Monaco'), ('religion', 'christian')]",building_category_site_area,0.0,1.835490499987039e-08,0.0
+1191,area-way,Eglise rÃ©formÃ©e de Monaco,POINT (7.420304504910549 43.73481826887947),"[('addr:country', 'MC'), ('amenity', 'place_of_worship'), ('building', 'yes'), ('name', 'Eglise rÃ©formÃ©e de Monaco'), ('religion', 'christian')]",building_category_building_area,0.0,1.835490499987039e-08,0.0
+1192,area-way,missing,POINT (7.420610688658853 43.735163186391745),"[('addr:country', 'MC'), ('building', 'commercial'), ('building:levels', '8'), ('office', 'yes')]",building_category_site_area,8.0,5.4755660000384594e-08,4.3804528000307675e-07
+1193,area-way,missing,POINT (7.420610688658853 43.735163186391745),"[('addr:country', 'MC'), ('building', 'commercial'), ('building:levels', '8'), ('office', 'yes')]",building_category_building_area,8.0,5.4755660000384594e-08,4.3804528000307675e-07
+1194,area-way,Palais HÃ©raclÃ¨s,POINT (7.420876347621109 43.73481501540432),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '16'), ('name', 'Palais HÃ©raclÃ¨s')]",building_category_site_area,16.0,5.643894999913111e-08,9.030231999860977e-07
+1195,area-way,Palais HÃ©raclÃ¨s,POINT (7.420876347621109 43.73481501540432),"[('addr:country', 'MC'), ('building', 'apartments'), ('building:levels', '16'), ('name', 'Palais HÃ©raclÃ¨s')]",building_category_building_area,16.0,5.643894999913111e-08,9.030231999860977e-07
+1196,area-way,missing,POINT (7.420718168979446 43.73620585979324),"[('building', 'retail')]",building_category_site_area,0.0,3.079627499977515e-08,0.0
+1197,area-way,missing,POINT (7.420718168979446 43.73620585979324),"[('building', 'retail')]",building_category_building_area,0.0,3.079627499977515e-08,0.0
+1198,area-way,ACM,POINT (7.420843581771131 43.73580806764727),"[('addr:city', 'Monaco'), ('addr:country', 'MC'), ('addr:housenumber', '23'), ('addr:postcode', '98000'), ('addr:street', 'Boulevard Albert 1er'), ('club', 'automobile'), ('name', 'ACM'), ('url', 'http://www.acm.mc'), ('wikidata', 'Q4743441')]",no_building_category,0.0,0.0,0.0
+1199,area-way,missing,POINT (7.420988053470152 43.735553241153546),"[('addr:country', 'MC'), ('amenity', 'pharmacy'), ('building', 'retail'), ('dispensing', 'yes'), ('healthcare', 'pharmacy')]",building_category_site_area,0.0,2.079017499967275e-08,0.0
+1200,area-way,missing,POINT (7.420988053470152 43.735553241153546),"[('addr:country', 'MC'), ('amenity', 'pharmacy'), ('building', 'retail'), ('dispensing', 'yes'), ('healthcare', 'pharmacy')]",building_category_building_area,0.0,2.079017499967275e-08,0.0
+1201,area-way,Albatros,POINT (7.421412131094366 43.73374602461435),"[('addr:city', 'Monaco'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'retail'), ('layer', '-1'), ('name', 'Albatros')]",building_category_site_area,0.0,2.4620770000268813e-08,0.0
+1202,area-way,Albatros,POINT (7.421412131094366 43.73374602461435),"[('addr:city', 'Monaco'), ('addr:street', 'Boulevard Albert 1er'), ('building', 'retail'), ('layer', '-1'), ('name', 'Albatros')]",building_category_building_area,0.0,2.4620770000268813e-08,0.0
+1203,area-way,missing,POINT (7.421055192031527 43.7336256379879),"[('building', 'apartments'), ('building:levels', '6'), ('layer', '1')]",building_category_site_area,6.0,7.771466500088933e-08,4.6628799000533593e-07
+1204,area-way,missing,POINT (7.421055192031527 43.7336256379879),"[('building', 'apartments'), ('building:levels', '6'), ('layer', '1')]",building_category_building_area,6.0,7.771466500088933e-08,4.6628799000533593e-07
+1205,area-way,missing,POINT (7.419903715979511 43.73613363533264),"[('addr:city', 'Monaco'), ('addr:housenumber', '45'), ('addr:postcode', '98000'), ('addr:street', 'Rue Grimaldi'), ('building', 'apartments'), ('building:levels', '5'), ('layer', '1')]",building_category_site_area,5.0,6.182103499912937e-08,3.0910517499564685e-07
+1206,area-way,missing,POINT (7.419903715979511 43.73613363533264),"[('addr:city', 'Monaco'), ('addr:housenumber', '45'), ('addr:postcode', '98000'), ('addr:street', 'Rue Grimaldi'), ('building', 'apartments'), ('building:levels', '5'), ('layer', '1')]",building_category_building_area,5.0,6.182103499912937e-08,3.0910517499564685e-07
+1207,area-way,missing,POINT (7.421881835747252 43.7344653541541),"[('area', 'yes'), ('highway', 'pedestrian'), ('lit', 'yes')]",no_building_category,0.0,0.0,0.0
+1208,area-way,Plongeoir,POINT (7.422082325545642 43.73436551278183),"[('amenity', 'spring_board'), ('building', 'yes'), ('height', '10'), ('name', 'Plongeoir'), ('sport', 'cliff_diving')]",building_category_site_area,0.0,2.054010000101531e-09,0.0
+1209,area-way,Plongeoir,POINT (7.422082325545642 43.73436551278183),"[('amenity', 'spring_board'), ('building', 'yes'), ('height', '10'), ('name', 'Plongeoir'), ('sport', 'cliff_diving')]",building_category_building_area,0.0,2.054010000101531e-09,0.0
+1210,area-way,missing,POINT (7.422208078278385 43.73436591344415),"[('attraction', 'water_slide')]",no_building_category,0.0,0.0,0.0
+1211,area-way,missing,POINT (7.422145579127162 43.73435584714339),"[('attraction', 'water_slide')]",no_building_category,0.0,0.0,0.0
+1212,area-way,Emplacement bÃ¢timent pit lane,POINT (7.421974271132164 43.73361501220187),"[('line', 'yes'), ('name', 'Emplacement bÃ¢timent pit lane')]",no_building_category,0.0,0.0,0.0
+1213,area-way,missing,POINT (7.420684301898999 43.734910802005395),"[('amenity', 'library'), ('building', 'yes')]",building_category_site_area,0.0,2.8768669999545843e-08,0.0
+1214,area-way,missing,POINT (7.420684301898999 43.734910802005395),"[('amenity', 'library'), ('building', 'yes')]",building_category_building_area,0.0,2.8768669999545843e-08,0.0
+1215,area-way,missing,POINT (7.420047199999998 43.735954899999996),"[('amenity', 'bank'), ('building', 'yes')]",building_category_site_area,0.0,1.815167999945107e-08,0.0
+1216,area-way,missing,POINT (7.420047199999998 43.735954899999996),"[('amenity', 'bank'), ('building', 'yes')]",building_category_building_area,0.0,1.815167999945107e-08,0.0
+1217,area-way,Social Funds of Monaco,POINT (7.420229922586437 43.73505806191119),"[('building', 'commercial'), ('building:levels', '6'), ('name', 'Social Funds of Monaco')]",building_category_site_area,6.0,5.0006294999668985e-08,3.000377699980139e-07
+1218,area-way,Social Funds of Monaco,POINT (7.420229922586437 43.73505806191119),"[('building', 'commercial'), ('building:levels', '6'), ('name', 'Social Funds of Monaco')]",building_category_building_area,6.0,5.0006294999668985e-08,3.000377699980139e-07
+1219,area-way,missing,POINT (7.421065802640403 43.73486677566748),"[('building', 'roof'), ('layer', '1')]",building_category_site_area,0.0,6.442200000003592e-09,0.0
+1220,area-way,missing,POINT (7.421065802640403 43.73486677566748),"[('building', 'roof'), ('layer', '1')]",building_category_building_area,0.0,6.442200000003592e-09,0.0
+1221,area-way,missing,POINT (7.421107825638128 43.73459628577973),"[('building', 'yes')]",building_category_site_area,0.0,3.5514044999940126e-08,0.0
+1222,area-way,missing,POINT (7.421107825638128 43.73459628577973),"[('building', 'yes')]",building_category_building_area,0.0,3.5514044999940126e-08,0.0

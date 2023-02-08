@@ -6,10 +6,10 @@ import src.osm_configurator.model.project.configuration.category as Category
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List, Dict
+    from typing import List, Dict, Set
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.category import Category
-
+    from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 class CategoryManager:
     """
@@ -129,6 +129,23 @@ class CategoryManager:
             if category.get_category_name() not in self._get_all_categories_names():
                 self._categories.append(category)
 
+
+    def get_all_defined_attractivity_attributes(self) -> List[AttractivityAttribute]:
+        """
+        Gets all defined attractivity attributes.
+        Doesn't have dupplicates.
+
+        Returns:
+            (List[AttractivityAttribute]): Attractivity Attributes
+        """
+        result: Set[AttractivityAttribute] = set([])
+
+        category: Category
+        for category in self._categories:
+            result.update(category.get_attractivity_attributes())
+
+        return list(result)
+
     def _get_all_categories_names(self) -> List[str]:
         """
         This method return the names of all categories currently saved.
@@ -138,3 +155,4 @@ class CategoryManager:
             name_list.append(category.get_category_name())
 
         return name_list
+

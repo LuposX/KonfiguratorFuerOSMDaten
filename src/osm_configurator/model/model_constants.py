@@ -19,9 +19,12 @@ CL_CATEGORY: Final = "category"
 CL_GEOMETRY: Final = "geometry" # THIS IS NOT ALLOWED TO BE SET TO A DIFFERENT VALUE, GEOPANDAS RELIES ON THIS NAME.
 CL_TRAFFIC_CELL_NAME: Final = "traffic_cell_name"
 CL_OSM_ELEMENT_NAME: Final = "element_name"
+CL_AREA: Final = "area"
+
 CL_AREA_WITHOUT_FLOORS: Final = "area_of_osm_element"
 CL_AREA_WITH_FLOORS: Final = "area_of_osm_element_with_floors"
 CL_NUMBER_OF_FLOORS: Final = "number_of_floors"
+
 
 # Misc
 # -----
