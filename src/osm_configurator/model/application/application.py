@@ -55,7 +55,7 @@ class Application(IApplication):
 
     def save(self, destination: Path) -> bool:
         self.application_settings_saver.save_settings(destination)
-        self.active_project.get_project_saver(destination)
+        self.active_project.get_project_saver.save_project(destination)
         return True
 
     def _create_passive_project_list(self, destination: pathlib.Path) -> list[PassiveProject]:
