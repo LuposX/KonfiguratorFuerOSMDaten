@@ -28,6 +28,13 @@ if TYPE_CHECKING:
 def _prepare_config(project: Path, geojson: Path) -> ConfigurationManager:
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project)
     config_manager.get_cut_out_configuration().set_cut_out_path(geojson)
+
+    # Prepare categories and attractivities
+    cat_manager: CategoryManager = config_manager.get_category_manager()
+    cat_manager.get_categories().append(definitions.TEST_CATEGORY_BUILDING)
+    cat_manager.get_categories().append(definitions.TEST_CATEGORY_NO_BUILDING)
+    cat_manager.get_categories().append(definitions.TEST_CATEGORY_SHOP)
+
     return config_manager
 
 
@@ -36,12 +43,6 @@ def test_minimal_input_successfully():
     geojson_path: Path = Path(os.path.join(TEST_DIR, "data/attractivity_phase/minimal/cells.geojson"))
     project_path: Path = Path(os.path.join(TEST_DIR, "build/attractivity_phase/projectMinimal"))
     config_manager: ConfigurationManager = _prepare_config(project_path, geojson_path)
-
-    # Prepare categories and attractivities
-    cat_manager: CategoryManager = config_manager.get_category_manager()
-    cat_manager.get_categories().append(definitions.TEST_CATEGORY_BUILDING)
-    cat_manager.get_categories().append(definitions.TEST_CATEGORY_NO_BUILDING)
-    cat_manager.get_categories().append(definitions.TEST_CATEGORY_SHOP)
 
     # Copy results of reduction phase
     copy_from: Path = Path(os.path.join(TEST_DIR, "data/attractivity_phase/minimal/0_traffic_cell.csv"))
@@ -79,3 +80,21 @@ def test_illegal_configuration():
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
     result: CalculationState = phase.calculate(config_manager)[0]
     assert result == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
+
+
+def test_big_input_successfully():
+    # Prepare configuration manager
+    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
+    project_path: Path = Path(os.path.join(TEST_DIR, "build/attractivity_phase/projectBig"))
+    config_manager: ConfigurationManager = _prepare_config(project_path, geojson_path)
+
+    # Copy results of reduction phase
+    copy_from: Path = Path(os.path.join(TEST_DIR, "data/attractivity_phase/minimal/0_traffic_cell.csv"))
+    input_folder: Path = calculation_utility.get_checkpoints_folder_path_from_phase \
+        (config_manager, calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
+    copy_to: Path = Path(os.path.join(input_folder, "0_traffic_cell.csv"))
+    if not os.path.exists(input_folder):
+        os.makedirs(input_folder)
+    if os.path.exists(copy_to):
+        os.remove(copy_to)
+    shutil.copyfile(copy_from, copy_to)
