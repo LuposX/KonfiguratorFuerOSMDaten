@@ -21,7 +21,7 @@ class ICalculationPhase(ABC):
     """
 
     @abstractmethod
-    def calculate(self, configuration_manager: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
         """
         Performs the calculations of the calculation phase.
         This consists of the following steps:\n
@@ -30,7 +30,7 @@ class ICalculationPhase(ABC):
         3. Store the results of this computation phase so the following execution phases can read it.\n
 
         Args:
-            configuration_manager (ConfigurationManager): The ConfigurationManager where the information about the configuration of the configuration is stored.
+            configuration_manager_o (ConfigurationManager): The ConfigurationManager where the information about the configuration of the configuration is stored.
 
         Returns:
             Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.

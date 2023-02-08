@@ -6,7 +6,7 @@ from pathlib import Path
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calc_util
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as phase_enum
 
 import src.osm_configurator.model.project.calculation.split_up_files as split_up_files
@@ -61,7 +61,8 @@ class GeoDataPhase(ICalculationPhase):
             return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
         # Get folder, where to store the files
-        cp_folder: Path = calc_util.get_checkpoints_folder_path_from_phase(configuration_manager,
+        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
+        cp_folder: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(configuration_manager,
                                                                            phase_enum.CalculationPhase.GEO_DATA_PHASE)
 
         # Get folder, where to read the OSM-data from

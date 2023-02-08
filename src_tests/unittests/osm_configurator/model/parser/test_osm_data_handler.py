@@ -4,6 +4,9 @@ from src_tests.definitions import CATEGORY_MANAGER, MONACO_TRAFFIC_CELL_0_POLYGO
 
 import os
 
+# without this you get a weird error, idk why
+os.environ["PROJ_LIB"]=""
+
 
 def test_osm_data_handler():
     # you can't test here much besides that list ist not empty because data is still in raw format
