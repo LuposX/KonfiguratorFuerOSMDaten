@@ -248,7 +248,7 @@ class Category:
         """
         self._calculation_method_of_area = new_calculation_method_of_area
 
-    def get_attractivity_attributes(self) -> AttractivityAttribute:
+    def get_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
         Getter for the AttractivityAttributes of the category.
 

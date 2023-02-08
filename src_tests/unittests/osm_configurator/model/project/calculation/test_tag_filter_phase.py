@@ -65,7 +65,7 @@ class TestTagFilterPhase:
 
         # Execute phase, without setting any path's to the geojson and osm data
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result: CalculationState = phase.calculate(config_manager)
+        result: (CalculationState, str) = phase.calculate(config_manager)
         assert result[0] == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
     def test_invalid_geojson_path(self):
@@ -79,7 +79,7 @@ class TestTagFilterPhase:
 
         # Execute test
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result1: CalculationState = phase.calculate(config_manager)
+        result1: (CalculationState, str) = phase.calculate(config_manager)
         assert result1[0] == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
     def test_full_monaco_instance_successful(self):
@@ -99,7 +99,7 @@ class TestTagFilterPhase:
 
         # Execute test
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result1: CalculationState = phase.calculate(config_manager)
+        result1: (CalculationState, str) = phase.calculate(config_manager)
         assert result1[0] == calculation_state_enum.CalculationState.RUNNING
 
         # Test if files were created
@@ -108,7 +108,7 @@ class TestTagFilterPhase:
                                     .get_folder_name_for_results()))) == 8
 
         # Test if execution works a second time
-        result2: CalculationState = phase.calculate(config_manager)
+        result2: (CalculationState, str) = phase.calculate(config_manager)
         assert result2[0] == calculation_state_enum.CalculationState.RUNNING
 
     def test_corrupted_osm_data(self):
@@ -128,5 +128,5 @@ class TestTagFilterPhase:
 
         # Execute test
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result1: CalculationState = phase.calculate(config_manager)
+        result1: (CalculationState, str) = phase.calculate(config_manager)
         assert result1[0] == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
