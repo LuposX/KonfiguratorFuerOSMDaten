@@ -98,7 +98,7 @@ class AggregationPhase(ICalculationPhase):
             # for each traffic cell.
             # Another key, value pair is the traffic cell name, per entry in a list.
             aggregation_phase_data: Dict[str, List] = {}
-            aggregation_phase_data.update({model_constants_i.CL_OSM_ELEMENT_NAME: []})
+            aggregation_phase_data.update({model_constants_i.CL_TRAFFIC_CELL_NAME: []})
 
             attractivity_attribute: AttractivityAttribute
             for attractivity_attribute in configuration_manager_o.get_category_manager()\
@@ -118,7 +118,7 @@ class AggregationPhase(ICalculationPhase):
                     return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
                 # add the name of the cell
-                aggregation_phase_data[model_constants_i.CL_OSM_ELEMENT_NAME].append(file_path.stem)
+                aggregation_phase_data[model_constants_i.CL_TRAFFIC_CELL_NAME].append(file_path.stem)
 
                 # iterate over the column of the dataframe, each column corresponds to one attractivity attribute
                 # This ignores the index column
