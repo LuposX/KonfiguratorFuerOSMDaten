@@ -12,7 +12,7 @@ import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.model_constants as model_constants
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 
@@ -69,8 +69,8 @@ class AttractivityPhase(ICalculationPhase):
             return calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA, str(err.args[0])
 
         # Delete result files
-        result_folder: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase\
-            (configuration_manager, calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
+        result_folder: Path = folder_path_calculator.FolderPathCalculator().get_checkpoints_folder_path_from_phase(
+            configuration_manager, calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
         deleter: FileDeletion = file_deletion.FileDeletion()
         deleter.reset_folder(result_folder)
 
@@ -90,10 +90,10 @@ class AttractivityPhase(ICalculationPhase):
     def _calculate_attractivity_in_traffic_cell(self, cell_name: str, config_manager: ConfigurationManager) \
             -> Tuple[CalculationState, str]:
         # get the necessary path's
-        reduction_folder: Path = calculation_phase_utility\
+        reduction_folder: Path = folder_path_calculator.FolderPathCalculator()\
             .get_checkpoints_folder_path_from_phase(config_manager,
                                                     calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
-        attractivity_folder: Path = calculation_phase_utility \
+        attractivity_folder: Path = folder_path_calculator.FolderPathCalculator() \
             .get_checkpoints_folder_path_from_phase(config_manager,
                                                     calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
         input_path: Path = Path(os.path.join(reduction_folder, cell_name + ".csv"))

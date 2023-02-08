@@ -12,7 +12,7 @@ from src_tests.definitions import TEST_DIR
 import src_tests.definitions as definitions
 
 import src.osm_configurator.model.project.calculation.attractivity_phase as attractivity_phase
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_utility
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
@@ -49,7 +49,7 @@ def test_minimal_input_successfully():
 
     # Copy results of reduction phase
     copy_from: Path = Path(os.path.join(TEST_DIR, "data/attractivity_phase/minimal/0_traffic_cell.csv"))
-    input_folder: Path = calculation_utility.get_checkpoints_folder_path_from_phase\
+    input_folder: Path = folder_path_calculator.FolderPathCalculator().get_checkpoints_folder_path_from_phase\
         (config_manager, calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
     copy_to: Path = Path(os.path.join(input_folder, "0_traffic_cell.csv"))
     if not os.path.exists(input_folder):
@@ -64,7 +64,7 @@ def test_minimal_input_successfully():
     assert result == calculation_state_enum.CalculationState.RUNNING
 
     # Check whether calculation has correct results
-    result_path: Path = Path(os.path.join(calculation_utility.get_checkpoints_folder_path_from_phase
+    result_path: Path = Path(os.path.join(folder_path_calculator.FolderPathCalculator().get_checkpoints_folder_path_from_phase
                                           (config_manager, calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE),
                                           "0_traffic_cell.csv"))
     df: DataFrame = pandas.read_csv(result_path)
@@ -93,7 +93,7 @@ def test_big_input_successfully():
 
     # Reset and Copy results of reduction phase
     copy_from: Path = Path(os.path.join(TEST_DIR, "data/attractivity_phase/big"))
-    copy_to: Path = calculation_utility.get_checkpoints_folder_path_from_phase \
+    copy_to: Path = folder_path_calculator.FolderPathCalculator().get_checkpoints_folder_path_from_phase \
         (config_manager, calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
 
     deleter: FileDeletion = file_deletion.FileDeletion()
@@ -108,7 +108,7 @@ def test_big_input_successfully():
     assert result == calculation_state_enum.CalculationState.RUNNING
 
     # Do further testing
-    result_path: Path = Path(os.path.join(calculation_utility.get_checkpoints_folder_path_from_phase
+    result_path: Path = Path(os.path.join(folder_path_calculator.FolderPathCalculator().get_checkpoints_folder_path_from_phase
                                           (config_manager, calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE),
                                           "6_traffic_cell.csv"))
     df: DataFrame = pandas.read_csv(result_path)
