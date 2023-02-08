@@ -14,6 +14,7 @@ if TYPE_CHECKING:
 # the name of the data entry in the osm tag key file
 CL_KEY: Final = "key"
 
+
 class RecommenderSystem:
 
     """
@@ -26,7 +27,6 @@ class RecommenderSystem:
         """
         pass
 
-    # TODO: remember the path_to the recommender file is saved in the data folder
     def recommend_key(self, input: str, path_to_recommender_file: Path) -> List[str]:
         """
         Creates recommendations based on user input
