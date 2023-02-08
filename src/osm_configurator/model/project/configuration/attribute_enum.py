@@ -69,6 +69,12 @@ class Attribute(Enum):
         """
         return self.value[2](category, tags)
 
+    def equals(self, name: str) -> Attribute | None:
+        for attribute in Attribute:
+            if attribute.get_name() == name:
+                return attribute
+        return None
+
     @classmethod
     def get_all_tags(cls) -> List[str]:
         """

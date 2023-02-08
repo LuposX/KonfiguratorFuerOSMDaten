@@ -11,10 +11,22 @@ from src.osm_configurator.model.project.configuration.aggregation_configuration 
 from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutMode
 from src.osm_configurator.model.project.configuration.category import Category
 from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
+from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
     from pathlib import Path
+
+
+def convert_bool(string: str) -> bool | None:
+    if string is "True":
+        return True
+    if string is not "False":
+        return False
+    else:
+        return None
 
 
 class ProjectIOHandler:
@@ -114,7 +126,6 @@ class ProjectIOHandler:
             with open(filepath, "r") as f:
                 reader = csv.reader(f)
                 aggregation = list(reader)
-                # Todo equals in AggregationMethod
             for row in aggregation:
                 method: AggregationMethod = AggregationMethod.equals(row[0])
                 state: bool = False
@@ -157,7 +168,7 @@ class ProjectIOHandler:
                 filepath: Path = Path(os.path.join(self.destination, file))
                 with open(filepath, "r") as f:
                     reader = csv.reader(f)
-                    category_data = list(reader)
+                    category_data: list[str] = list(reader)
                 category: Category
                 category.set_category_name(category_data[0][1])
                 if category_data[1][1] is "True":
@@ -169,9 +180,46 @@ class ProjectIOHandler:
                 category.set_whitelist(category_data[2][1])
                 category.set_blacklist(category_data[3][1])
                 category.set_calculation_method_of_area(CalculationMethodOfArea.equals(category_data[4][1]))
+                number_of_active_attributes = len(category_data[5]) - 1
+                for number in range(number_of_active_attributes):
+                    attribute: Attribute = Attribute.equals(category_data[5][number + 1])
+                    if attribute is not None:
+                        category.set_attribute(attribute)
+                    else:
+                        return False
+                strictly_use_default_value_bool: bool = convert_bool(category_data[6][1])
+                if strictly_use_default_value_bool is not None:
+                    category.set_strictly_use_default_values(strictly_use_default_value_bool)
+                else:
+                    return False
 
+                # Loads attractivity attributes
+                number_of_attractivity_attributes = len(category_data[6]) - 1
+                for number in range(number_of_attractivity_attributes):
+                    input_str: list[str] = category_data[6][number + 1].split("_")
+                    attractivity_attribute_list: list[(Attribute, float)] = []
+                    attribute_list: list[str] = input_str[1].split(";")
+                    for attribute_str in attribute_list:
+                        attribute_str_split_up: list[str] = attribute_str.split(":")
+                        if attribute_str_split_up[0] is "base":
+                            attractivity_attribute_base_factor = attribute_str_split_up[1]
+                        else:
+                            attribute: Attribute = Attribute.equals(attribute_str_split_up[0])
+                            attribute_value: float = float(attribute_str_split_up[1])
+                            attractivity_attribute_list.append((attribute, attribute_value))
+                    attractivity_attribute: AttractivityAttribute = AttractivityAttribute(input_str[0], attractivity_attribute_list, attractivity_attribute_base_factor)
+                    category.add_attractivity_attribute(attractivity_attribute)
 
-
-                category.set_category_name(category_data[0][1])
-
-        return False
+                # Loads default value entries
+                number_of_default_value_entries = len(category_data[7]) - 1
+                for number in range(number_of_default_value_entries):
+                    input_str: list[str] = category_data[7][number + 1].split("_")
+                    default_value_entry: DefaultValueEntry = DefaultValueEntry(input_str[0])
+                    default_value_entries_list: list[str] = input_str[1].split(";")
+                    for default_value_entry_str in default_value_entries_list:
+                        attribute_str_split_up: list[str] = default_value_entry_str.split(":")
+                        default_value_entry.set_attribute_default(Attribute.equals(attribute_str_split_up[0]), float(attribute_str_split_up[1]))
+                    category.add_default_value_entry(default_value_entry)
+            category_list.append(category)
+            self._active_project.get_config_manager().get_category_manager().override_categories(category_list)
+        return True

@@ -14,13 +14,11 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
     from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
-    from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
-    from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from pathlib import Path
 
 
 def _write_csv_file(data: list, filename: Path) -> bool:
-    with open(filename, 'w', newline='') as f:
+    with open(filename, "w", newline="") as f:
         writer = csv.writer(f)
         writer.writerows(data)
     return True
@@ -44,7 +42,7 @@ class ProjectSaver:
         self.active_project: ActiveProject = active_project
         self.destination: Path = active_project.get_project_settings().get_location()
 
-    def save_project(self):
+    def save_project(self) -> bool:
         """
         Stores all the configurations of the project.
         The information about the configuration of the project are stored to the disk.
@@ -54,22 +52,29 @@ class ProjectSaver:
         """
 
         # Saves ProjectSettings
-        self._save_settings()
+        if not self._save_settings():
+            return False
 
         # Save ConfigPhase
-        self._save_config_phase()
+        if not self._save_config_phase():
+            return False
 
         # Save OSMDataConfiguration
-        self._save_osm_configurator()
+        if not self._save_osm_configurator():
+            return False
 
         # Save AggregationConfiguration
-        self._save_aggregation_configurator()
+        if not self._save_aggregation_configurator():
+            return False
 
         # Save CutOutConfiguration
-        self._save_cut_out_configurator()
+        if not self._save_cut_out_configurator():
+            return False
 
         # Save Categories (one file for every category)
-        self._save_categories()
+        if not self._save_categories():
+            return False
+        return True
 
     def _save_settings(self) -> bool:
         """
@@ -96,7 +101,7 @@ class ProjectSaver:
         """
         filename = str(self.destination) + "/" + "last_step.txt"
         config_phase_data = str(self.active_project.get_last_step())
-        with open(filename, 'w') as f:
+        with open(filename, "w") as f:
             f.write(config_phase_data)
         return True
 
@@ -109,7 +114,7 @@ class ProjectSaver:
         """
         filename = str(self.destination) + "/" + "osm_path.txt"
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
-        with open(filename, 'w') as f:
+        with open(filename, "w") as f:
             f.write(osm_path_data)
         return True
 
@@ -155,29 +160,36 @@ class ProjectSaver:
         # Iterates throw every category and makes a csv-file for it
         for category in category_manager.get_categories():
             filename = self._create_category_filename(category.get_category_name)
-            all_attractivity_attributes_list: list[str] = []
+
+            # Converts active attributes
+            active_attributes: list[str] = []
+            for attribute in category.get_activated_attribute():
+                active_attributes.append(attribute.get_name())
+
             # Saves all attractivity attributes
+            all_attractivity_attributes_list: list[str] = []
             for attractivity_attribute in category.get_activated_attribute():
-                attractivity_attribute_values: list[str] = []
+                attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name + "_"]
                 for attribute in Attribute:
-                    attractivity_attribute_values.append(attribute.get_name() + ":" \
-                                                         + attractivity_attribute.get_attribute_factor(attribute))
+                    attractivity_attribute_values.append(attribute.get_name() + ":" + \
+                                                    attractivity_attribute.get_attribute_factor(attribute))
+                attractivity_attribute_values.append("base:" + attractivity_attribute.get_base_factor())
                 all_attractivity_attributes_list.append(";".join(attractivity_attribute_values))
-                all_attractivity_attributes_list.append("base:" + attractivity_attribute.get_base_factor())
-            all_default_value_entries_list: list[str] = []
+
             # Saves all default value entry
+            all_default_value_entries_list: list[str] = []
             for default_value_entry in category.get_default_value_list():
-                default_value_entry_values: list[str] = []
+                default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag + "_"]
                 for attribute in Attribute:
                     default_value_entry_values.append(attribute.get_name() + ":" \
                                                       + default_value_entry.get_attribute_default_value(attribute))
-                all_default_value_entries_list.append(";".join(attractivity_attribute_values))
+                all_default_value_entries_list.append(";".join(default_value_entry_values))
             category_data = [["name", category.get_category_name()],
                              ["status", category.is_active()],
                              ["white_list", category.get_whitelist()],
                              ["black_list", category.get_blacklist()],
                              ["calculation_method_of_area", category.get_calculation_method_of_area()],
-                             ["active_attributes", category.get_activated_attribute()],
+                             ["active_attributes", active_attributes],
                              ["strictly_use_default_values", category.get_strictly_use_default_values],
                              ["attractivity_attributes", all_attractivity_attributes_list],
                              ["default_value_list", all_default_value_entries_list]]
