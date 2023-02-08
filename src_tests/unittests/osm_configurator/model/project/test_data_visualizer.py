@@ -5,11 +5,6 @@ from typing import TYPE_CHECKING
 import pandas as pd
 
 from src_tests.definitions import TEST_DIR
-import src.osm_configurator.model.project.calculation.geo_data_phase as geo_data_phase
-import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
-import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
-import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.data_visualizer as data_visualizer_i
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 
