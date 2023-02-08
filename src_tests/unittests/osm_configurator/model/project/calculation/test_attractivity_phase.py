@@ -106,3 +106,12 @@ def test_big_input_successfully():
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
     result: CalculationState = phase.calculate(config_manager)[0]
     assert result == calculation_state_enum.CalculationState.RUNNING
+
+    # Do further testing
+    result_path: Path = Path(os.path.join(calculation_utility.get_checkpoints_folder_path_from_phase
+                                          (config_manager, calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE),
+                                          "6_traffic_cell.csv"))
+    df: DataFrame = pandas.read_csv(result_path)
+
+    assert df["trading"][100] == 42
+    assert math.isnan(df["coolness"][100])
