@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import customtkinter
+import tkinter
+from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
+from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.popups.yes_no_pop_up import YesNoPopUp
@@ -11,8 +14,6 @@ from src.osm_configurator.control.calculation_controller_interface import ICalcu
 from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.states.view_constants import ViewConstants
-
-from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.view.activatable import Activatable
@@ -155,6 +156,7 @@ class CalculationFrame(TopLevelFrame, Activatable):
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.ATTRACTIVITY_PHASE)
         if checker != CalculationPhase.RUNNING:  # Check, if changing states is possible
+            # Interrupt calculation start
             self.__calculation_start_interrupted()
             self.activate()
             return
@@ -176,6 +178,7 @@ class CalculationFrame(TopLevelFrame, Activatable):
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.AGGREGATION_PHASE)
         if checker != CalculationPhase.RUNNING:  # Check, if changing states is possible
+            # Interrupt calculation start
             self.__calculation_start_interrupted()
             self.activate()
             return
@@ -236,9 +239,71 @@ class CalculationFrame(TopLevelFrame, Activatable):
             customtkinter.CTkButton(master=self.window, text="Cancel", bg_color="red", command=self.__stop_calculation) \
             .pack(side="right", padx=40, pady=40)
 
+        self.progressbar_label = \
+            customtkinter.CTkLabel(master=self.window, text="Calculation started")\
+            .pack(side="right", padx=40, pady=40)
+
         self.buttons.append(cancel_button)
 
         self._calculation_controller.start_calculations(self._starting_point)
+
+        self.window.after(1000, self.__update_progressbar)
+
+    def __update_progressbar(self):
+        """
+        Keeps the progressbar up-to-date. calls itself every second if the calculation is not finished
+        """
+        calculation_state = self._calculation_controller.get_calculation_state()
+        calculation_phase = self._calculation_controller.get_current_calculation_phase()
+        calculation_process = self._calculation_controller.get_current_calculation_process()
+
+        if calculation_state == CalculationState.RUNNING and calculation_process < 1:
+            # Calculation is running and no phase change expected
+            self.progressbar.configure(value=calculation_process)
+            self.window.after(1000, self.__update_progressbar)
+            return
+
+        if (calculation_state == CalculationState.RUNNING or calculation_state == CalculationState.ENDED_SUCCESSFULLY)\
+                and calculation_process == 1:
+            #  Phase change expected
+            if calculation_phase == CalculationPhase.AGGREGATION_PHASE:
+                # Calculation is done
+                self.__end_calculation()
+                return
+            else:
+                # State will be switched
+                calculation_phase = self.__get_next_phase(calculation_phase)
+
+                self.progressbar.configure(value=0)  # Reset progressbar
+                self.progressbar_label.configure(text=calculation_phase.get_name())  # change label to the next phase
+
+                self.window.after(1000, self.__update_progressbar)
+                return
+
+        # TODO: What happens if there's an error in the calculation?
+
+    def __end_calculation(self):
+        """
+        Function called if calculation finished successfully
+        """
+        #  TODO: implement
+        pass
+
+    def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
+        """
+        Iterates the CalculationPhase-Enum and returns the next element to the given
+        Args:
+            current_phase (CalculationPhase): value of the given calculation-phase
+        Returns:
+            CalculationPhase: Value of the next calculation-phase
+        """
+        take_next = False
+        for element in CalculationPhase:
+            if take_next:
+                return element
+            if element == current_phase:
+                take_next = True
+        return CalculationPhase.NONE
 
     def __calculation_start_interrupted(self):
         """
@@ -254,4 +319,5 @@ class CalculationFrame(TopLevelFrame, Activatable):
         Args:
             pop_up_value (bool): value the popup returns
         """
+        #  TODO: implement
         return pop_up_value
