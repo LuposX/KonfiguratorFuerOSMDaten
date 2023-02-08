@@ -4,7 +4,8 @@ import customtkinter
 
 import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.control.project_controller_interface
-import src.osm_configurator.view.states.view_constants as view_constants_i
+import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
@@ -23,7 +24,7 @@ if TYPE_CHECKING:
 # Final Variables
 ICON_HEIGHT_AND_WIDTH: Final = 30
 BUTTON_SPACE_TO_BORDER: Final = 5
-BUTTON_HEIGHT: Final = view_constants_i.ViewConstants.FOOT_FRAME_HEIGHT.value - (2 * BUTTON_SPACE_TO_BORDER)
+BUTTON_HEIGHT: Final = frame_constants_i.FrameConstants.FOOT_FRAME_HEIGHT.value - (2 * BUTTON_SPACE_TO_BORDER)
 # Buttons here are squared!
 BUTTON_WIDTH: Final = BUTTON_HEIGHT
 
@@ -44,10 +45,10 @@ class ProjectFootFrame(TopLevelFrame):
         # Starting with no master
         # Also setting other constants, based on what is in the constant enum
         super().__init__(master=None,
-                         width=view_constants_i.ViewConstants.FOOT_FRAME_WIDTH.value,
-                         height=view_constants_i.ViewConstants.FOOT_FRAME_HEIGHT.value,
-                         corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                         fg_color=view_constants_i.ViewConstants.FOOT_FRAME_FG_COLOR.value)
+                         width=frame_constants_i.FrameConstants.FOOT_FRAME_WIDTH.value,
+                         height=frame_constants_i.FrameConstants.FOOT_FRAME_HEIGHT.value,
+                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+                         fg_color=frame_constants_i.FrameConstants.FOOT_FRAME_FG_COLOR.value)
 
         # Setting private Attributes
         self._state_manager = state_manager
@@ -69,12 +70,12 @@ class ProjectFootFrame(TopLevelFrame):
                                                  dark_image=Image.open("../view_icons/arrow_left.png"),
                                                  size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
         self._left_arrow = customtkinter.CTkButton(master=self, width=BUTTON_WIDTH, height=BUTTON_HEIGHT,
-                                                   corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                   border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                   fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                   hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                   border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                   text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                   corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                   border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                   hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                   border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                    command=self._left_arrow_pressed,
                                                    text="",
                                                    image=left_arrow_icon)
@@ -85,15 +86,15 @@ class ProjectFootFrame(TopLevelFrame):
                                                   dark_image=Image.open("../view_icons/arrow_right.png"),
                                                   size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
         self._right_arrow = customtkinter.CTkButton(master=self, width=BUTTON_WIDTH, height=BUTTON_HEIGHT,
-                                                   corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                   border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                   fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                   hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                   border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                   text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
-                                                   command=self._right_arrow_pressed,
-                                                   text="",
-                                                   image=right_arrow_icon)
+                                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                                    command=self._right_arrow_pressed,
+                                                    text="",
+                                                    image=right_arrow_icon)
         self._right_arrow.grid(row=0, column=2, rowspan=1, columnspan=1)
 
     def activate(self):
@@ -101,22 +102,22 @@ class ProjectFootFrame(TopLevelFrame):
         current_state: state_i.State = self._state_manager.get_state()
 
         # Activating all buttons, so they don't all end up beeing disabled
-        self._left_arrow.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                   text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
-        self._right_arrow.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                    text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
+        self._left_arrow.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+        self._right_arrow.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
 
         # If there is no default left, the left arrow is disabled
         if current_state.get_default_left() is None:
             self._left_arrow.configure(state="disabled",
-                                       fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                       text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
         # If there is no default right, the right arrow is disabled
         if current_state.get_default_right() is None:
             self._right_arrow.configure(state="disabled",
-                                        fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                        text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
     def _left_arrow_pressed(self):
         # Button activation and deactivation happens in activate()

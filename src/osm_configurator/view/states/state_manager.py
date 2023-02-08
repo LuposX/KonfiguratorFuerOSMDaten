@@ -81,3 +81,15 @@ class StateManager:
         This method closes the program and shuts the whole application down.
         """
         pass
+
+    def lock_state(self):
+        """
+        This method locks the Application in the current Frame
+        """
+        pass
+
+    def unlock_state(self):
+        """
+        This Method unlocks the Application to be able to change Frames again
+        """
+        pass

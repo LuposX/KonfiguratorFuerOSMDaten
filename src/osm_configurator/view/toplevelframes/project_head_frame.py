@@ -5,7 +5,8 @@ import customtkinter
 import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.control.export_controller_interface
 import src.osm_configurator.control.project_controller_interface
-import src.osm_configurator.view.states.view_constants as view_constants_i
+import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
@@ -27,8 +28,8 @@ if TYPE_CHECKING:
 ICON_HEIGHT_AND_WIDTH: Final = 42
 
 BUTTON_SPACE_TO_BORDER: Final = 10
-BUTTON_HEIGHT: Final = view_constants_i.ViewConstants.HEAD_FRAME_HEIGHT.value - (2 * BUTTON_SPACE_TO_BORDER)
-BUTTON_WIDTH: Final = view_constants_i.ViewConstants.HEAD_FRAME_WIDTH.value / 8 - (2 * BUTTON_SPACE_TO_BORDER)
+BUTTON_HEIGHT: Final = frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value - (2 * BUTTON_SPACE_TO_BORDER)
+BUTTON_WIDTH: Final = frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value / 8 - (2 * BUTTON_SPACE_TO_BORDER)
 
 
 class ProjectHeadFrame(TopLevelFrame):
@@ -60,10 +61,10 @@ class ProjectHeadFrame(TopLevelFrame):
         # Starting with no master
         # Also setting other constants, based on what is in the constant enum
         super().__init__(master=None,
-                         width=view_constants_i.ViewConstants.HEAD_FRAME_WIDTH.value,
-                         height=view_constants_i.ViewConstants.HEAD_FRAME_HEIGHT.value,
-                         corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                         fg_color=view_constants_i.ViewConstants.HEAD_FRAME_FG_COLOR.value)
+                         width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
+                         height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+                         fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value)
 
         # Setting private Attributes
         self._state_manager = state_manager
@@ -87,96 +88,96 @@ class ProjectHeadFrame(TopLevelFrame):
         # Making all the Buttons
         # MainMenu Button
         self._main_menu_button = customtkinter.CTkButton(master=self, height=int(BUTTON_HEIGHT / 2), width=BUTTON_WIDTH,
-                                                         corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                         border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                         fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                         hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                         border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                         text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                         corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                         border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                         hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                         border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                          command=self._main_menu_button_pressed,
                                                          text="Main Menu")
         self._main_menu_button.grid(row=0, column=0, rowspan=1, columnspan=1)
 
         # Save Button
         self._save_button = customtkinter.CTkButton(master=self, height=int(BUTTON_HEIGHT / 2), width=BUTTON_WIDTH,
-                                                    corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                    border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                    fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                    hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                    border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                    text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                     command=self._save_button_pressed,
                                                     text="Save")
         self._save_button.grid(row=1, column=0, rowspan=1, columnspan=1)
 
         # Data Button
         self._data_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
-                                                    corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                    border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                    fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                    hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                    border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                    text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                     command=self._data_button_pressed,
                                                     text="Data")
         self._data_button.grid(row=0, column=1, rowspan=2, columnspan=1)
 
         # Category Button
         self._category_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
-                                                        corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                        border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                        fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                        hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                        border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                        text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                        corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                        border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                        hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                        border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                         command=self._category_button_pressed,
                                                         text="Categories")
         self._category_button.grid(row=0, column=2, rowspan=2, columnspan=1)
 
         # Reduction Button
         self._reduction_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
-                                                         corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                         border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                         fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                         hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                         border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                         text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                         corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                         border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                         hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                         border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                          command=self._reduction_button_pressed,
                                                          text="Reduction")
         self._reduction_button.grid(row=0, column=3, rowspan=2, columnspan=1)
 
         # Attractivity Button
         self._attractivity_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
-                                                            corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                            border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                            fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                            hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                            border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                            text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                            corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                            border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                            hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                            border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                             command=self._attractivity_button_pressed,
                                                             text="Attractivity")
         self._attractivity_button.grid(row=0, column=4, rowspan=2, columnspan=1)
 
         # Aggregation Button
         self._aggregation_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
-                                                           corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                           border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                           fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                           hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                           border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                           text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                           corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                           border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                           fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                           hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                           border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                           text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                            command=self._attractivity_button_pressed,
                                                            text="Aggregation")
         self._aggregation_button.grid(row=0, column=5, rowspan=2, columnspan=1)
 
         # Calculate Button
         self._calculate_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
-                                                         corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                         border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                         fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                         hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                         border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                         text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                         corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                         border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                         hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                         border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                          command=self._calculate_button_pressed,
                                                          text="Calculate")
         self._calculate_button.grid(row=0, column=6, rowspan=2, columnspan=1)
@@ -188,12 +189,12 @@ class ProjectHeadFrame(TopLevelFrame):
                                               dark_image=Image.open("../view_icons/options.png"),
                                               size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
         self._options_button = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT, width=BUTTON_WIDTH,
-                                                       corner_radius=view_constants_i.ViewConstants.FRAME_CORNER_RADIUS.value,
-                                                       border_width=view_constants_i.ViewConstants.BUTTON_BORDER_WIDTH.value,
-                                                       fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                       hover_color=view_constants_i.ViewConstants.BUTTON_HOVER_COLOR.value,
-                                                       border_color=view_constants_i.ViewConstants.BUTTON_BORDER_COLOR.value,
-                                                       text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR.value,
+                                                       corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                       border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                       hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                       border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                        command=self._options_button_pressed,
                                                        text="",
                                                        image=options_icon)
@@ -205,26 +206,26 @@ class ProjectHeadFrame(TopLevelFrame):
         current_state_name = current_state.get_state_name()
 
         # Activating all Buttons first, to prevent all buttons getting disabled eventually
-        self._main_menu_button.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                         text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
-        self._save_button.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                    text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
-        self._data_button.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                    text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
-        self._category_button.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                        text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
-        self._reduction_button.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                         text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
+        self._main_menu_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+        self._save_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+        self._data_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+        self._category_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+        self._reduction_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
         self._attractivity_button.configure(state="normal",
-                                            fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                            text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
+                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
         self._aggregation_button.configure(state="normal",
-                                           fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                           text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
-        self._calculate_button.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                         text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
-        self._options_button.configure(state="normal", fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_ACTIVE,
-                                       text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR)
+                                           fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                           text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+        self._calculate_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+        self._options_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
 
         # Now checking what state is active and disabling the corrosponding button
         match current_state_name:
@@ -236,43 +237,43 @@ class ProjectHeadFrame(TopLevelFrame):
 
             case state_name_enum_i.StateName.DATA:
                 self._data_button.configure(state="disabled",
-                                            fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                            text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.CATEGORY:
                 self._category_button.configure(state="disabled",
-                                                fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                                text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.REDUCTION:
                 self._reduction_button.configure(state="disabled",
-                                                 fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
                 self._attractivity_button.configure(state="disabled",
-                                                    fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                                    text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
                 self._attractivity_button.configure(state="disabled",
-                                                    fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                                    text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                    fg_color=button_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
+                                                    text_color=button_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.AGGREGATION:
                 self._aggregation_button.configure(state="disabled",
-                                                   fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                                   text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.CALCULATION:
                 self._calculate_button.configure(state="disabled",
-                                                 fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.SETTINGS:
                 self._options_button.configure(state="disabled",
-                                               fg_color=view_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                               text_color=view_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                               fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                               text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
     def _main_menu_button_pressed(self):
         # Buttons don't get activated or disabled, because if we change back into a state with the HeadFrame
