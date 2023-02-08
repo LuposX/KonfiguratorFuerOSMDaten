@@ -54,6 +54,8 @@ class DataVisualizer:
             # save the map
             map: Map = gdf.explore(model_constants_i.CL_AREA, legend=False)
             map.save(os.path.join(map_saving_path, filename))
+
+        # I use "Exception" here because seaborn nor matplotlib say on their documentation page which error they throw
         except Exception:
             return False
 
@@ -76,6 +78,8 @@ class DataVisualizer:
             data: DataFrame = pd.read_csv(data_path)
             fig = sb.boxplot(data)
             fig.get_figure().savefig(os.path.join(map_saving_path, filename))
+
+        # I use "Exception" here because seaborn nor matplotlib say on their documentation page which error they throw
         except Exception:
             return False
 
