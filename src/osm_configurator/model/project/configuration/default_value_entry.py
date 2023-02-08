@@ -9,6 +9,11 @@ if TYPE_CHECKING:
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Tuple, List, Dict
+
 
 class DefaultValueEntry:
     """
@@ -21,12 +26,11 @@ class DefaultValueEntry:
         Constructor of the class.
         Creates an empty DefaultValueEntry with 0 for all the factor values.
         """
-
         self._tag: str = tag
         self._all_attribute_default_values: Dict = {}
-        all_enums_names = [member.name for member in attribute_enum_i.Attribute]
-        for enum_name in all_enums_names:
-            self._all_attribute_default_values.update({enum_name: 0})
+        attribute: Attribute
+        for attribute in attribute_enum_i.Attribute:
+            self._all_attribute_default_values.update({attribute: 0})
 
     def get_default_value_entry_tag(self) -> str:
         """
@@ -56,8 +60,8 @@ class DefaultValueEntry:
         Returns:
             bool: True, if overwriting process was successful, else false
         """
-        if attribute in attribute_enum_i:
-            self._all_attribute_default_values.update({attribute: value})
+        if attribute in attribute_enum_i.Attribute:
+            self._all_attribute_default_values[attribute] = value
             return True
         return False
 
@@ -71,7 +75,5 @@ class DefaultValueEntry:
         Returns:
             float: The default value of the attribute
         """
-
-        if attribute in attribute_enum_i:
-            return self._all_attribute_default_values.get(attribute)
-        return -1
+        if attribute in attribute_enum_i.Attribute:
+            return self._all_attribute_default_values[attribute]

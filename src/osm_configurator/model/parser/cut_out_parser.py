@@ -36,7 +36,10 @@ class CutOutParser(CutOutParserInterface):
             raise IllegalCutOutException("Cut out file does not exist at the specified path.")
 
         try:
-            df = gpd.read_file(path)
+            df = gpd.read_file(path,
+                               GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
+                               KEEP_GEOM_COLUMNS="NO"
+                               )
         except fiona.errors.DriverError as err:
             raise IllegalCutOutException("Could not load cut out file at the given path")
 

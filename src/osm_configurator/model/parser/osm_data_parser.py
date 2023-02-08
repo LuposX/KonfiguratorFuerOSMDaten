@@ -59,7 +59,7 @@ class OSMDataParser(OSMDataParserInterface):
             idx = int(idx[0])
 
             osm_handler = osm_data_handler_i.DataOSMHandler(categories,
-                                                            cut_out_data[model_constants_i.CL_LOCATION].loc[idx])
+                                                            cut_out_data[model_constants_i.CL_GEOMETRY].loc[idx])
 
         elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
             osm_handler = osm_data_handler_i.DataOSMHandler(categories)
@@ -71,14 +71,6 @@ class OSMDataParser(OSMDataParserInterface):
         # Process the data
         osm_handler.apply_file(data_file_path)
 
-        # transform the data from osm_handler into  geoDataFrame
-        # TODO: not final, check what we need to save
-        data_col_names = [model_constants_i.CL_OSM_TYPE,
-                          model_constants_i.CL_OSM_ELEMENT_NAME,
-                          model_constants_i.CL_LOCATION,
-                          model_constants_i.CL_TAGS,
-                          model_constants_i.CL_CATEGORIES]
-
-        df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=data_col_names)
+        df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=model_constants_i.DF_CL_TAG_FILTER_PHASE)
 
         return df_osm

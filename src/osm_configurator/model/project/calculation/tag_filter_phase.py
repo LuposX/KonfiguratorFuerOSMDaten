@@ -9,7 +9,7 @@ import src.osm_configurator.model.project.calculation.file_deletion as file_dele
 import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 
-import src.osm_configurator.model.project.calculation.calculation_phase_utility as calculation_phase_utility
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
@@ -60,23 +60,25 @@ class TagFilterPhase(ICalculationPhase):
         geojson_path: Path = configuration_manager_o.get_cut_out_configuration().get_cut_out_path()
 
         if geojson_path is None:
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ""
+            return [calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ""]
 
         if not os.path.exists(geojson_path):
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ""
+            return [calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ""]
 
         try:
             dataframe: GeoDataFrame = parser.parse_cutout_file(geojson_path)
         except IllegalCutOutException as err:
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ''.join(str(err))
+            return [calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, ''.join(str(err))]
+
+        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
 
         # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_last_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.GEO_DATA_PHASE)
 
         # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = calculation_phase_utility.get_checkpoints_folder_path_from_phase(
+        checkpoint_folder_path_current_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
             configuration_manager_o,
             calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE)
 
@@ -88,7 +90,7 @@ class TagFilterPhase(ICalculationPhase):
         if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
             list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
         else:
-            return calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, ""
+            return [calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, ""]
 
         # Get the CategoryManager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
@@ -120,10 +122,10 @@ class TagFilterPhase(ICalculationPhase):
                                          .get_cut_out_path())
 
             except TagsWronglyFormatted as err:
-                return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
+                return [calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))]
 
             except OSMDataWronglyFormatted as err:
-                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
+                return [calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))]
 
                 # name of the file
             file_name = file_path.stem
@@ -136,10 +138,10 @@ class TagFilterPhase(ICalculationPhase):
 
             # If there's an error while encoding the file.
             except ValueError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
+                return [calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))]
 
             # If the file cannot be opened.
             except OSError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
+                return [calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))]
 
-        return calculation_state_enum_i.CalculationState.RUNNING, ""
+        return [calculation_state_enum_i.CalculationState.RUNNING, ""]
