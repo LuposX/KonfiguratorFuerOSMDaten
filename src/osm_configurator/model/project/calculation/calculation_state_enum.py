@@ -15,6 +15,7 @@ class CalculationState(Enum):
 
     NOT_STARTED_YET = ("Not started yet", "The calculation was not started yet.")
     RUNNING = ("Running", "The calculations are currently running.")
+    CANCELED = ("Canceled", "The calculations was canceled")
     ENDED_SUCCESSFULLY = ("Done", "The calculations ended successfully.")
     ERROR_INVALID_OSM_DATA = ("Invalid OSM Data", "Error: The osm data are not valid.")
     ERROR_INVALID_CUT_OUT_DATA = ("Invalid Cut Out Data", "Error: The cut out data are not valid.")
