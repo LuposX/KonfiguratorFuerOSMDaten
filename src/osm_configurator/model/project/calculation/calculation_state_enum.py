@@ -24,6 +24,7 @@ class CalculationState(Enum):
     ERROR_TAGS_WRONGLY_FORMATTED = ("Tags wrongly formatted", "Error: while trying to parse your tags, the tags are not correctly formaatted.")
     ERROR_COULDNT_OPEN_FILE = ("Couldnt open a file", "ERROR: While trying to open a file, do you have permission?")
     ERROR_ENCODING_THE_FILE = ("Encoding error", "ERROR: While writing to the file there was an encoding error.")
+    ERROR_FILE_NOT_FOUND = ("File not found", "ERROW: While trying to open the file couldn't find the file.")
 
     def get_name(self):
         """

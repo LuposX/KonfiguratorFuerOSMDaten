@@ -26,10 +26,13 @@ def test_illegal_origin_path():
     result_folder = os.path.join(TEST_DIR, "build/split_up_files")
     geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
 
-    df = gpd.read_file(geojson_path)
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df[model_constants.CL_LOCATION])
+    did_work = split_up.split_up_files(df[model_constants.CL_GEOMETRY])
     assert not did_work
 
 
@@ -38,10 +41,13 @@ def test_illegal_result_folder():
     result_folder = os.path.join(TEST_DIR, "build/split_up_filesadadaahsliahfilafiasfga")
     geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
 
-    df = gpd.read_file(geojson_path)
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df[model_constants.CL_LOCATION])
+    did_work = split_up.split_up_files(df[model_constants.CL_GEOMETRY])
     assert not did_work
 
 
@@ -55,7 +61,10 @@ def test_no_name_column():
     _prepare(result_folder)
 
     # Begin test
-    df = gpd.read_file(geojson_path)
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
     did_work = split_up.split_up_files(df)
@@ -73,7 +82,10 @@ def test_correct_split_up():
     _prepare(result_folder)
 
     # Begin test
-    df = gpd.read_file(geojson_path)
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
     df[model_constants.CL_TRAFFIC_CELL_NAME] = df.index
     df[model_constants.CL_TRAFFIC_CELL_NAME][2] = "cell_with_a_name"
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))

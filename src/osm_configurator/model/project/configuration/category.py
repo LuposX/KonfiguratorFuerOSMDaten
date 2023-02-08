@@ -6,6 +6,8 @@ import src.osm_configurator.model.project.configuration.default_value_entry as d
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
+import src.osm_configurator.model.model_constants as model_constants_i
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -29,23 +31,25 @@ class Category:
         Creates a new instance of a "Category" class.
         """
         self._active: bool = False
-        self._whitelist: list = []
-        self._blacklist: list = []
+        self._whitelist: List = []
+        self._blacklist: List = []
         self._category_name: str = "Category Name"
-        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
-        self._attractivity_attributes: list = []
-        self._default_value_list: list = []
+        self._calculation_method_of_area: CalculationMethodOfArea = None
+        self._attractivity_attributes: List = []
+        self._default_value_list: List = []
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
-        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry("DEFAULT")
+        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
         self._default_value_list.append(self._default_tag)
 
+        self._strictly_use_default_values: bool = False
+
         # Create the Attribute dictionary
-        self._attributes: Dict = {}
-        all_enums_names = [member.name for member in attribute_enum_i.Attribute]
-        for enum_name in all_enums_names:
-            self._attributes.update({enum_name: False})
+        self._attributes: Dict[Attribute, bool] = {}
+        attribute: Attribute
+        for attribute in attribute_enum_i.Attribute:
+            self._attributes.update({attribute: False})
 
     def is_active(self) -> bool:
         """
@@ -155,11 +159,26 @@ class Category:
             list[Attribute]: A list that contains all used attributes
         """
         _activated = []
+        for enum in self._attributes:
+            if self._attributes.get(enum) == True:
+                _activated.append(enum)
 
-        for enum_name in self._attributes:
-            if self._attributes.get(enum_name):
-                _activated.append(enum_name)
         return _activated
+
+    def get_not_activated_attribute(self) -> List[Attribute]:
+        """
+        Return a list of all attributes, that are not activated.
+
+        Returns:
+            List[Attribute]: A list that contains all used attributes
+        """
+        _not_activated = []
+
+        for enum in self._attributes:
+            if self._attributes.get(enum) == False:
+                _not_activated.append(enum)
+
+        return _not_activated
 
     def get_attribute(self, attribute: Attribute) -> bool:
         """
@@ -171,7 +190,10 @@ class Category:
         Returns:
             bool: True when the attribute is active, otherwise false.
         """
-        return self._attributes.get(attribute.name)
+        if self._attributes.get(attribute):
+            return True
+        else:
+            return False
 
     def set_attribute(self, attribute: Attribute, boolean: bool) -> bool:
         """
@@ -185,7 +207,7 @@ class Category:
             bool: True when it works, otherwise false.
         """
         if attribute in attribute_enum_i.Attribute:
-            self._attributes[attribute.name] = boolean
+            self._attributes[attribute] = boolean
             return True
         else:
             return False
@@ -343,3 +365,6 @@ class Category:
         self._default_value_list[index + 1], self._default_value_list[index] \
             = self._default_value_list[index], self._default_value_list[index + 1]
         return True
+
+    def get_strictly_use_default_values(self) -> bool:
+        return self._strictly_use_default_values
