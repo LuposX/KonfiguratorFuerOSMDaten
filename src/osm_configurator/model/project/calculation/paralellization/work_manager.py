@@ -29,6 +29,9 @@ class WorkManager:
     def append_work(self, work: Work):
         """
         Adds a piece of work to the manager
+
+        Args:
+            work (Work): The work/task that is added to the task manager
         """
         self._work_to_do.append(work)
 
