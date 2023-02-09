@@ -87,28 +87,34 @@ class CalculationManager:
         Returns:
             calculation_phase_enum.CalculationState, str: The state of the calculation, after trying to start the calculations.
         """
+        # Check if there is exactly one phase with the given starting point
         if len([x for x in self._phases if x.get_calculation_phase_enum() == starting_point]) != 1:
             raise ValueError("There is not a unique ICalculationPhase with the given staring point")
 
+        # Terminate all calculations that are running till now
         if self._process.is_alive():
             self._process.terminate()
 
+        # Start process that executes _do_calculations
         self._process = multiprocessing.Process(target=self._do_calculations, args=(starting_point, self._message_queue))
         self._process.start()
 
         return calculation_state_enum.CalculationState.RUNNING, "The calculations are currently running"
 
     def _do_calculations(self, starting_point: CalculationPhase, message_queue: SimpleQueue):
+        # Get index of the phase where the calculation should start
         starting_index: int = 0
         while self._phases[starting_index].get_calculation_phase_enum() != starting_point:
             starting_index += 1
 
+        # Beginning  at the starting point, calculate all following phases
         current_index: int = starting_index
         result: Tuple[CalculationState, str] = calculation_state_enum.CalculationState.RUNNING
         while current_index < len(self._phases) and result[0] == calculation_state_enum.CalculationState.RUNNING:
             result = self._phases[current_index].calculate(self._config_manager)
-            message_queue.put(result)
+            message_queue.put(result)  # Put the return value of the phases in the queue to the main process
 
+        # If all calculation is done and the calculations aer still running: switch state to ENDED_SUCCESSFULLY
         if result[0] == calculation_state_enum.CalculationState.RUNNING:
             message_queue.put((calculation_state_enum.CalculationState.ENDED_SUCCESSFULLY,
                                "The calculation have finished successfully"))
