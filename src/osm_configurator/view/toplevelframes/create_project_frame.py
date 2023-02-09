@@ -26,6 +26,8 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
     The user can cancel the creation-process.
     """
 
+    # TODO: Change CTk-values to standardized enum-values
+
     def __init__(self, state_manager: StateManager, project_controller: IProjectController):
         """
         This method creates a CreateProjectFrame where a user can create a new project.

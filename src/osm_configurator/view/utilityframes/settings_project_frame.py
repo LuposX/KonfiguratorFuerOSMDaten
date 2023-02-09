@@ -4,10 +4,13 @@ from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
 from src.osm_configurator.control.settings_controller_interface import ISettingsController
 from src.osm_configurator.view.activatable import Activatable
+
+# Constants
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.constants.button_constants as button_constants_i
 
+# Other
 import customtkinter
-
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -52,21 +55,39 @@ class SettingsProjectFrame(customtkinter.CTkFrame, Activatable):
         self._project_name = ISettingsController.get_project_name(self._settings_controller)
         self._project_description = ISettingsController.get_project_description(self._settings_controller)
 
-        self.header = customtkinter.CTkLabel(master=self, text="Current Project") \
+        self.header = \
+            customtkinter.CTkLabel(master=self,
+                                   text="Current Project") \
             .grid(column=0, row=0, rowspan=1, columnspan=1)
 
-        self.project_name_box = customtkinter.CTkTextbox(master=self, text=self._project_name) \
+        self.project_name_box = \
+            customtkinter.CTkTextbox(master=self,
+                                     text=self._project_name) \
             .grid(column=1, row=0, rowspan=1, columnspan=1)
 
-        self.change_project_name_button = customtkinter.CTkButton(master=self, text="Change Project Name",
-                                                                  command=self.__change_project_name) \
+        self.change_project_name_button = \
+            customtkinter.CTkButton(master=self,
+                                    text="Change Project Name",
+                                    command=self.__change_project_name,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value) \
             .grid(column=2, row=0, rowspan=1, columnspan=1)
 
-        self.description_box = customtkinter.CTkTextbox(self, text=self._project_description) \
+        self.description_box = \
+            customtkinter.CTkTextbox(master=self,
+                                     text=self._project_description) \
             .grid(column=3, row=0, rowspan=1, columnspan=1)
 
-        self.change_description_button = customtkinter.CTkButton(self, text="Change Project Description",
-                                                                 command=self.__change_project_description) \
+        self.change_description_button = \
+            customtkinter.CTkButton(self,
+                                    text="Change Project Description",
+                                    command=self.__change_project_description,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value) \
             .grid(column=3, row=1, rowspan=1, columnspan=1)
 
     def activate(self) -> bool:
