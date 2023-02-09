@@ -3,7 +3,6 @@ from __future__ import annotations
 import pandas as pd
 import os
 from pathlib import Path
-import pandas.core.series as pds
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
@@ -23,10 +22,10 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.configuration.category import Category
-    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParser
@@ -42,6 +41,9 @@ class AttractivityPhase(ICalculationPhase):
     This calculation phase is responsible for calculating the attractivity attributes of the OSM-elements.
     For details see the method calculate().
     """
+    def get_calculation_phase_enum(self) -> CalculationPhase:
+        return calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE
+
     def calculate(self, configuration_manager: ConfigurationManager) -> Tuple[CalculationState, str]:
         """Calculates the attractivity attributes of the osm-elements
         The calculation phase reads the data of the previous calculation phase. Now it calculates the attractivity

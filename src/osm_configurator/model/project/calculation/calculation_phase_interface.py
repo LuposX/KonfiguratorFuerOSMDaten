@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Tuple
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
 
 
@@ -34,5 +35,14 @@ class ICalculationPhase(ABC):
 
         Returns:
             Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
+        """
+        pass
+
+    @abstractmethod
+    def get_calculation_phase_enum(self) -> CalculationPhase:
+        """
+        Returns the CalculationPhase that corresponds to this ICalculationPhase.
+        Returns:
+            CalculationPhase: the CalculationPhase that corresponds to this ICalculationPhase.
         """
         pass
