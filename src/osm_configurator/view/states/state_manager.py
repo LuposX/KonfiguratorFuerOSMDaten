@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.states.state as state_i
@@ -21,6 +21,8 @@ import src.osm_configurator.view.toplevelframes.category_frame as category_frame
 import src.osm_configurator.view.toplevelframes.data_frame as data_frame_i
 import src.osm_configurator.view.toplevelframes.reduction_frame as reduction_frame_i
 import src.osm_configurator.view.toplevelframes.settings_frame as settings_frame_i
+
+import src.osm_configurator.view.toplevelframes.lockable as lockable_i
 
 if TYPE_CHECKING:
     from typing import Final
@@ -149,6 +151,9 @@ class StateManager:
             data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
             osm_data_controller (osm_data_controller.OSMDataController): Respective controller
         """
+        # The StateManager starts unlocked
+        self._locked = False
+        # Setting other attributes
         self._main_window = main_window
         self._states = self.__create_states(export_controller, category_controller, project_controller,
                                             settings_controller, aggregation_controller, calculation_controller,
@@ -346,24 +351,28 @@ class StateManager:
             bool: True if state change was successful, false if not.
         """
 
-        # First getting the actual next State, if there is no State with the given Name,
-        # change_state failed and returns False
-        next_state = None
-        for state in self._states:
-            if state.get_state_name() == new_state:
-                next_state = state
-                break
-
-        # If there is no next State, False is Returned
-        # If there is a next State, then the state gets changed at the main_window and that will tell if
-        # the State change actually worked
-        if next_state is None:
+        # If the StateManager is locked in a State, the State can't be changed
+        if self._locked:
             return False
         else:
-            success = self._main_window.change_state(self._previous_state, next_state)
-            if success:
-                self._current_state = next_state
-            return success
+            # First getting the actual next State, if there is no State with the given Name,
+            # change_state failed and returns False
+            next_state = None
+            for state in self._states:
+                if state.get_state_name() == new_state:
+                    next_state = state
+                    break
+
+            # If there is no next State, False is Returned
+            # If there is a next State, then the state gets changed at the main_window and that will tell if
+            # the State change actually worked
+            if next_state is None:
+                return False
+            else:
+                success = self._main_window.change_state(self._previous_state, next_state)
+                if success:
+                    self._current_state = next_state
+                return success
 
     def get_state(self) -> State:
         """
@@ -373,3 +382,29 @@ class StateManager:
             state.State: The currently active state.
         """
         return self._current_state
+
+    def lock_state(self):
+        """
+        This method locks the Application in the current State
+        """
+        # Locking himself up
+        self._locked = True
+
+        # Locking up all Frames, that can be locked
+        for frame in self._current_state.get_active_frames():
+            real_frame = frame.get_frame()
+            if isinstance(real_frame, lockable_i.Lockable):
+                real_frame.lock()
+
+    def unlock_state(self):
+        """
+        This Method unlocks the Application to be able to change States again
+        """
+        # Unlocking himself
+        self._locked = False
+
+        # Unlocking all Frames, that can be unlocked
+        for frame in self._current_state.get_active_frames():
+            real_frame = frame.get_frame()
+            if isinstance(real_frame, lockable_i.Lockable):
+                real_frame.unlock()

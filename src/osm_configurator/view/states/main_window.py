@@ -161,6 +161,8 @@ class MainWindow:
 
             actual_frame.master = self._window
             actual_frame.grid(row=row, column=column, rowspan=row_span, column_span=column_span, sticky=sticky_type)
+            # After Frame is placed, activate it, so it starts its job
+            actual_frame.activate()
 
         return True
 
