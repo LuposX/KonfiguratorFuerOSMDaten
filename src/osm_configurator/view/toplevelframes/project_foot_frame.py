@@ -153,8 +153,8 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         else:
             # Disabling all Buttons
             self._left_arrow.configure(state="disabled",
-                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._right_arrow.configure(state="disabled",
                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)

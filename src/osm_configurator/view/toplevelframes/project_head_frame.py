@@ -48,7 +48,6 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
     Exceptions are the MainMenu and the creation of a new project without this header.
     """
 
-
     def __init__(self, state_manager: StateManager, export_controller: IExportController,
                  project_controller: IProjectController):
         """
@@ -212,15 +211,18 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         current_state_name = current_state.get_state_name()
 
         # Activating all Buttons first, to prevent all buttons getting disabled eventually
-        self._main_menu_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+        self._main_menu_button.configure(state="normal",
+                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                          text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
         self._save_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
         self._data_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
-        self._category_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+        self._category_button.configure(state="normal",
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
-        self._reduction_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+        self._reduction_button.configure(state="normal",
+                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                          text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
         self._attractivity_button.configure(state="normal",
                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
@@ -228,9 +230,11 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         self._aggregation_button.configure(state="normal",
                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
-        self._calculate_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+        self._calculate_button.configure(state="normal",
+                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                          text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
-        self._options_button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+        self._options_button.configure(state="normal",
+                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
 
         # Now checking what state is active and disabling the corrosponding button
@@ -386,29 +390,29 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         else:
             # Disabling all Buttons, except the save Button!
             self._main_menu_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._data_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._category_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._reduction_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._attractivity_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._aggregation_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                               fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                               text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._calculate_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._options_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                           fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                           text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
             self._locked = True
             return True
 
