@@ -44,7 +44,7 @@ class CalculationManager:
             attractivity_phase.AttractivityPhase(),
             aggregation_phase.AggregationPhase()
         ]
-        self._calculation_state = (calculation_state_enum.CalculationState.NOT_STARTED_YET,
+        self._calculation_state: Tuple[CalculationState,str] = (calculation_state_enum.CalculationState.NOT_STARTED_YET,
                                    "The calculation has not started yet")
         self._process: Process = multiprocessing.Process()
         self._message_queue: SimpleQueue = multiprocessing.SimpleQueue()
