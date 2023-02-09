@@ -296,7 +296,7 @@ class CalculationFrame(TopLevelFrame, Activatable):
 
         self._calculation_controller.start_calculations(self._starting_point)  # starts the calculation from the chosen starting point
 
-        self.window.after(1000, self.__update_progressbar)  # keeps the progressbar up-to-date
+        self.window.after(30000, self.__update_progressbar)  # keeps the progressbar up-to-date
 
     def __update_progressbar(self) -> None:
         """
@@ -309,7 +309,7 @@ class CalculationFrame(TopLevelFrame, Activatable):
         if calculation_state == CalculationState.RUNNING and calculation_process < 1:
             # Calculation is running and no phase change expected
             self.progressbar.configure(value=calculation_process)
-            self.window.after(1000, self.__update_progressbar)
+            self.window.after(30000, self.__update_progressbar)
             return
 
         if (calculation_state == CalculationState.RUNNING or calculation_state == CalculationState.ENDED_SUCCESSFULLY)\
@@ -326,7 +326,7 @@ class CalculationFrame(TopLevelFrame, Activatable):
                 self.progressbar.configure(value=0)  # Reset progressbar
                 self.progressbar_label.configure(text=calculation_phase.get_name())  # change label to the next phase
 
-                self.window.after(1000, self.__update_progressbar)
+                self.window.after(30000, self.__update_progressbar)
                 return
 
         # TODO: What happens if there's an error in the calculation?

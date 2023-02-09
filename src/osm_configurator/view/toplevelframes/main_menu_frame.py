@@ -65,9 +65,11 @@ class MainMenuFrame(Activatable, TopLevelFrame):
                                     text="New Project",
                                     command=self.__create_project),
             customtkinter.CTkButton(master=self,
-                                    text="Load external Project"),  # TODO: Impelement the loading process for an external project)
+                                    text="Load external Project",
+                                    command=self.__load_external_project),
             customtkinter.CTkButton(master=self,
-                                    text="Load selected Project"),  # TODO: Implement routine
+                                    text="Load selected Project",
+                                    command=self.__load_selected_project),
             customtkinter.CTkButton(master=self,
                                     text="Settings",
                                     command=self.__call_settings())
@@ -137,3 +139,11 @@ class MainMenuFrame(Activatable, TopLevelFrame):
         Calls the settings-menu switching states
         """
         self._state_manager.change_state(sne.StateName.SETTINGS.value)
+
+    def __load_external_project(self):
+        #  TODO: Open explorer and load project via chosen path
+        pass
+
+    def __load_selected_project(self):
+        # TODO: Load selected project
+        pass
