@@ -19,7 +19,7 @@ import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 
-import src.osm_configurator.view.states.view_constants as view_constants_i
+import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 
 from typing import TYPE_CHECKING
 
@@ -70,7 +70,7 @@ class MainWindow:
         """
         # Creating the mainWindow and setting its position, and making it resizable
         self._window = customtkinter.CTk()
-        self._window.title(view_constants_i.ViewConstants.WINDOW_TITLE.value)
+        self._window.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
 
         # Selecting the primary Monitor to get accurate location for centering the window
         primary_monitor = None
@@ -82,14 +82,14 @@ class MainWindow:
         screen_height = primary_monitor.height
         screen_width = primary_monitor.width
 
-        true_height = screen_height / 2 - view_constants_i.ViewConstants.MAIN_WINDOW_HEIGHT.value / 2
-        true_width = screen_width / 2 - view_constants_i.ViewConstants.MAIN_WINDOW_WIDTH.value / 2
+        true_height = screen_height / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value / 2
+        true_width = screen_width / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value / 2
 
-        self._window.geometry("%dx%d+%d+%d" % (view_constants_i.ViewConstants.MAIN_WINDOW_WIDTH.value,
-                                               view_constants_i.ViewConstants.MAIN_WINDOW_HEIGHT.value,
+        self._window.geometry("%dx%d+%d+%d" % (main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value,
+                                               main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value,
                                                true_width, true_height))
-        self._window.minsize(view_constants_i.ViewConstants.MAIN_WINDOW_WIDTH_MINIMUM.value,
-                             view_constants_i.ViewConstants.MAIN_WINDOW_HEIGHT_MINIMUM.value)
+        self._window.minsize(main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH_MINIMUM.value,
+                             main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT_MINIMUM.value)
         self._window.resizable(True, True)
 
         # Configurating the grid for the Application
