@@ -33,6 +33,7 @@ def test_correct_state_passing_on_error():
     time.sleep(3)
     new_state: CalculationState = calc_manager.get_calculation_state()[0]
     assert new_state != calculation_state_enum.CalculationState.RUNNING
+    assert new_state != calculation_state_enum.CalculationState.ENDED_SUCCESSFULLY
 
 
 @pytest.mark.parametrize("phase", [
