@@ -76,7 +76,13 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
         self.destination_button = \
             customtkinter.CTkButton(master=self,
                                     name="Choose Destination",
-                                    command=self._choose_destination) \
+                                    command=self._choose_destination,
+                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                    ) \
             .grid(row=2, column=0, rowspan=1, columnspan=1)
 
         self.create_button = \

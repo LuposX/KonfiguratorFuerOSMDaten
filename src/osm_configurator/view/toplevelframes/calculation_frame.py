@@ -94,7 +94,7 @@ class CalculationFrame(TopLevelFrame, Activatable):
                                     command=self.__aggregation_pressed)
         ]
 
-        # Aligning the buttons and configure the standard-attributes
+        # Aligning and configuring the buttons with standard-attributes
         counter = 1  # helps to align the buttons in the correct row
         for button in self.buttons:
             button.configure(
@@ -105,6 +105,8 @@ class CalculationFrame(TopLevelFrame, Activatable):
             )
             button.grid(row=counter, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
             counter += 1
+
+            # TODO: Optional scrollbar possible
 
     def activate(self):
         self.__activate_buttons()
