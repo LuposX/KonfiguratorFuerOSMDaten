@@ -7,6 +7,10 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 from src.osm_configurator.view.utilityframes.settings_application_frame import SettingsApplicationFrame
 from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
 
+# Constants
+import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+
 from typing import TYPE_CHECKING
 import customtkinter
 
@@ -36,7 +40,13 @@ class SettingsFrame(Activatable, customtkinter.CTkFrame):
             state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
             settings_controller (settings_controller.SettingsController): Respective controller
         """
-        window = super().__init__()
+        super().__init__(
+            master=None,
+            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
+            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+            corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
+        )
 
         self._state_manager = state_manager
         self._settings_controller = settings_controller

@@ -50,10 +50,10 @@ class CalculationFrame(TopLevelFrame, Activatable):
         """
         self.window = super().__init__(
             master=None,
-            width=frame_constants_i.FrameConstants.FOOT_FRAME_WIDTH.value,
-            height=frame_constants_i.FrameConstants.FOOT_FRAME_HEIGHT.value,
+            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
+            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
             corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-            fg_color=frame_constants_i.FrameConstants.FOOT_FRAME_FG_COLOR.value
+            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
         )
 
         self._starting_point = CalculationPhase.NONE

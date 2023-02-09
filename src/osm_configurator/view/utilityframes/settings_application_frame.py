@@ -5,6 +5,12 @@ from src.osm_configurator.control.settings_controller_interface import ISettings
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 
+# Constants
+import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.constants.text_box_constants as text_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
+
 from pathlib import Path
 import customtkinter
 from tkinter import filedialog
@@ -23,8 +29,6 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
     This frame shows the settings of the application.
     """
 
-    # TODO: Adjust customtkinter attributes to the given enums
-
     def __init__(self, parent, settings_controller: ISettingsController):
         """
         This method creates a SettingsApplicationFrame, showing the settings of the application.
@@ -33,25 +37,67 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
             parent (settings_frame.SettingsFrame): The parent of this frame where this frame will be located.
             settings_controller (settings_controller.SettingsController): Respective controller.
         """
-        frame = super().__init__()
+        super().__init__(
+            master=None,
+            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
+            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value / 2,
+            corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
+        )
 
         self._parent = parent
         self._settings_controller = settings_controller
 
         self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
 
-        self.header = customtkinter.CTkLabel(self, text="General Settings")
-        self.header.grid(row=0, line=0, xpad=30, ypad=30)
+        # Defining the grid-structure
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_columnconfigure(2, weight=1)
+        self.grid_columnconfigure(3, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(2, weight=1)
+        self.grid_rowconfigure(3, weight=1)
 
-        self.path_default_header = customtkinter.CTkLabel(self, text="Default Folder") \
-            .grid(row=1, line=0, xpad=20, ypad=20)
+        self.header = \
+            customtkinter.CTkLabel(master=self,
+                                   text="General Settings") \
+            .grid(row=0, line=0, columnspan=1, rowspan=1, padx=10, pady=10)
 
-        self.path_default_box = customtkinter.CTkTextbox(self, text=self._project_default_folder.name, state="disabled") \
-            .grid(row=2, line=0, xpad=20, ypad=20)  # Creates a read-only textbox showing the default-filepath
+        self.path_default_header = \
+            customtkinter.CTkLabel(master=self,
+                                   text="Default Folder",
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value) \
+            .grid(row=1, line=0, columnspan=1, rowspan=1, padx=10, pady=10)
 
-        self.change_default_path_button = customtkinter.CTkButton(self, text="Change Default Folder",
-                                                                  command=self.__change_default_folder) \
-            .grid(row=3, line=0, xpad=20, ypad=20)  # button to browse for a new default folder
+        self.path_default_box = \
+            customtkinter.CTkTextbox(master=self,
+                                     text=self._project_default_folder.name,
+                                     state=text_constants_i.TextBoxConstants.TEXT_BOX_DEFAULT_STATE.value,
+                                     corner_radius=text_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+                                     border_width=text_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+                                     fg_color=text_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+                                     border_color=text_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+                                     text_color=text_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value
+                                     ) \
+            .grid(row=2, line=0, padx=10, pady=10)  # Creates a read-only textbox showing the default-filepath
+
+        self.change_default_path_button = \
+            customtkinter.CTkButton(master=self,
+                                    text="Change Default Folder",
+                                    command=self.__change_default_folder,
+                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                    ) \
+            .grid(row=3, line=0, xpad=10, ypad=10)  # button to browse for a new default folder
 
     def activate(self) -> bool:
         """
