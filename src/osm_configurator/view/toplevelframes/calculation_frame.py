@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import customtkinter
-import tkinter
 from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
