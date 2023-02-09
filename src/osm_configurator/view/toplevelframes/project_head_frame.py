@@ -5,9 +5,10 @@ import src.osm_configurator.control.export_controller_interface
 import src.osm_configurator.control.project_controller_interface
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
 
-class ProjectHeadFrame(TopLevelFrame):
+class ProjectHeadFrame(TopLevelFrame, Lockable):
     """
     This frame shows the header pipeLine of the application, if a project is opened.
     Functionality the user can use:
@@ -36,4 +37,10 @@ class ProjectHeadFrame(TopLevelFrame):
         pass
 
     def activate(self):
+        pass
+
+    def lock(self) -> bool:
+        pass
+
+    def unlock(self) -> bool:
         pass
