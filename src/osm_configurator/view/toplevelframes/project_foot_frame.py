@@ -11,6 +11,7 @@ import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
 from PIL import Image
 
@@ -29,7 +30,7 @@ BUTTON_HEIGHT: Final = frame_constants_i.FrameConstants.FOOT_FRAME_HEIGHT.value 
 BUTTON_WIDTH: Final = BUTTON_HEIGHT
 
 
-class ProjectFootFrame(TopLevelFrame):
+class ProjectFootFrame(TopLevelFrame, Lockable):
     """
     This frame shows two arrows on the bottom of the Window. The user can navigate the pipeline by going left or right.
     """
@@ -53,6 +54,7 @@ class ProjectFootFrame(TopLevelFrame):
         # Setting private Attributes
         self._state_manager = state_manager
         self._project_controller = project_controller
+        self._locked = None
 
         # Making the grid of the frame
         self.grid_columnconfigure(0, weight=1)
@@ -98,6 +100,9 @@ class ProjectFootFrame(TopLevelFrame):
         self._right_arrow.grid(row=0, column=2, rowspan=1, columnspan=1)
 
     def activate(self):
+        # If Frame is activated, it is unlocked
+        self._locked = False
+
         # Getting what is the current state
         current_state: state_i.State = self._state_manager.get_state()
 
@@ -141,3 +146,27 @@ class ProjectFootFrame(TopLevelFrame):
         # If the project can't be saved, an PopUp will pop up
         if not self._project_controller.save_project():
             alert_pop_up_i.AlertPopUp("Project could not be saved!")
+
+    def lock(self) -> bool:
+        if self._locked:
+            return False
+        else:
+            # Disabling all Buttons
+            self._left_arrow.configure(state="disabled",
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._right_arrow.configure(state="disabled",
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._locked = True
+            return True
+
+    def unlock(self) -> bool:
+        if not self._locked:
+            return False
+        else:
+            # Activate does exactly what we want, it enables all buttons, except for those wo shall not be active,
+            # since there is no default left or right
+            self.activate()
+            self._locked = False
+            return True

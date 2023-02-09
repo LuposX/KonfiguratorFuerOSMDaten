@@ -12,6 +12,7 @@ import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
 from PIL import Image
 
@@ -32,7 +33,7 @@ BUTTON_HEIGHT: Final = frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value 
 BUTTON_WIDTH: Final = frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value / 8 - (2 * BUTTON_SPACE_TO_BORDER)
 
 
-class ProjectHeadFrame(TopLevelFrame):
+class ProjectHeadFrame(TopLevelFrame, Lockable):
     """
     This frame shows the header pipeLine of the application, if a project is opened.
     Functionality the user can use:
@@ -46,6 +47,7 @@ class ProjectHeadFrame(TopLevelFrame):
     and below that one there will be a FootFrame.
     Exceptions are the MainMenu and the creation of a new project without this header.
     """
+
 
     def __init__(self, state_manager: StateManager, export_controller: IExportController,
                  project_controller: IProjectController):
@@ -70,6 +72,7 @@ class ProjectHeadFrame(TopLevelFrame):
         self._state_manager = state_manager
         self._export_controller = export_controller
         self._project_controller = project_controller
+        self._locked = None
 
         # Making the grid of the Frame
         # It consists of 8 Columns, one column for each Button, and two rows, to make MainMenu and Save in one Column
@@ -201,6 +204,9 @@ class ProjectHeadFrame(TopLevelFrame):
         self._options_button.grid(row=0, column=7, rowspan=2, columnspan=1)
 
     def activate(self):
+        # IF frame is activated, it is unlocked
+        self._locked = False
+
         # Getting what is the current state
         current_state: state_i.State = self._state_manager.get_state()
         current_state_name = current_state.get_state_name()
@@ -257,8 +263,8 @@ class ProjectHeadFrame(TopLevelFrame):
 
             case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
                 self._attractivity_button.configure(state="disabled",
-                                                    fg_color=button_constants_i.ViewConstants.BUTTON_FG_COLOR_DISABLED,
-                                                    text_color=button_constants_i.ViewConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
             case state_name_enum_i.StateName.AGGREGATION:
                 self._aggregation_button.configure(state="disabled",
@@ -373,3 +379,45 @@ class ProjectHeadFrame(TopLevelFrame):
         # If the project can't be saved, an PopUp will pop up
         if not self._project_controller.save_project():
             alert_pop_up_i.AlertPopUp("Project could not be saved!")
+
+    def lock(self) -> bool:
+        if self._locked:
+            return False
+        else:
+            # Disabling all Buttons, except the save Button!
+            self._main_menu_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._data_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._category_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._reduction_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._attractivity_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._aggregation_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._calculate_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._options_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+            self._locked = True
+            return True
+
+    def unlock(self) -> bool:
+        if not self._locked:
+            return False
+        else:
+            # Doing the activate method, because that excatly does what we want, it unlocks all buttons, except for the
+            # one of the current state
+            self.activate()
+            self._locked = False
+            return True
