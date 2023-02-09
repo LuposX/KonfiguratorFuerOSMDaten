@@ -63,8 +63,8 @@ class ProjectFootFrame(TopLevelFrame):
         # There is only one row
         self.grid_rowconfigure(0, weight=1)
 
-        # Making all the Buttons
-        # Left Arrow
+        # Making all the Buttons.
+        # Left Arrow.
         # Arrow Used: https://www.flaticon.com/free-icon/right-arrow_626053?term=arrow+right&page=1&position=85&origin=search&related_id=626053
         left_arrow_icon = customtkinter.CTkImage(light_image=Image.open("../view_icons/arrow_left.png"),
                                                  dark_image=Image.open("../view_icons/arrow_left.png"),
