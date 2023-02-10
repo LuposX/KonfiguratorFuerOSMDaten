@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from src.osm_configurator.model.application.passive_project import PassiveProject
 from src.osm_configurator.view.activatable import Activatable
+from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.states.state_manager import StateManager
 import src.osm_configurator.view.states.state_name_enum as sne
@@ -12,6 +13,8 @@ import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 
 # Other
 import customtkinter
+from tkinter import filedialog
+from pathlib import Path
 
 from typing import TYPE_CHECKING
 
@@ -67,9 +70,6 @@ class MainMenuFrame(Activatable, TopLevelFrame):
             customtkinter.CTkButton(master=self,
                                     text="Load external Project",
                                     command=self.__load_external_project),
-            customtkinter.CTkButton(master=self,
-                                    text="Load selected Project",
-                                    command=self.__load_selected_project),
             customtkinter.CTkButton(master=self,
                                     text="Settings",
                                     command=self.__call_settings())
@@ -140,10 +140,34 @@ class MainMenuFrame(Activatable, TopLevelFrame):
         """
         self._state_manager.change_state(sne.StateName.SETTINGS.value)
 
-    def __load_external_project(self):
-        #  TODO: Open explorer and load project via chosen path
-        pass
+    def __load_external_project(self) -> bool:
+        """
+        Loads a project from an external source. opens the explorer and lets the user choose the project.
+        if the chosen project-path is not valid, an error occurs
+        Returns:
+            bool: True, if a valid path was chosen and the loading process is initialised by calling the controller,
+                  else false
+        """
+        new_path = Path(self.__browse_files())
 
-    def __load_selected_project(self):
-        # TODO: Load selected project
-        pass
+        if not new_path.exists():
+            # No valid Path was chosen: popup will be shown, page will reload
+            popup = AlertPopUp("No valid Path entered. Please choose a valid Path")
+            popup.mainloop()
+            self.activate()
+            return False
+
+        # Correct path was chosen, loading process will be initialised
+        self._project_controller.load_project(new_path)
+        return True
+
+    def __browse_files(self) -> str:
+        """
+        Opens the explorer starting from the current directory
+        Returns:
+            str: Name of the chosen path
+        """
+        new_path = \
+            filedialog.askopenfilename(title="Please select Your File",
+                                       filetypes=".geojson")
+        return new_path

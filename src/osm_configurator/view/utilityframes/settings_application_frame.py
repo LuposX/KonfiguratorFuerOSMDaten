@@ -63,7 +63,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
         self.header = \
             customtkinter.CTkLabel(master=self,
                                    text="General Settings") \
-            .grid(row=0, line=0, columnspan=1, rowspan=1, padx=10, pady=10)
+                .grid(row=0, line=0, columnspan=1, rowspan=1, padx=10, pady=10)
 
         self.path_default_header = \
             customtkinter.CTkLabel(master=self,
@@ -72,7 +72,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value) \
-            .grid(row=1, line=0, columnspan=1, rowspan=1, padx=10, pady=10)
+                .grid(row=1, line=0, columnspan=1, rowspan=1, padx=10, pady=10)
 
         self.path_default_box = \
             customtkinter.CTkTextbox(master=self,
@@ -84,7 +84,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
                                      border_color=text_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
                                      text_color=text_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value
                                      ) \
-            .grid(row=2, line=0, padx=10, pady=10)  # Creates a read-only textbox showing the default-filepath
+                .grid(row=2, line=0, padx=10, pady=10)  # Creates a read-only textbox showing the default-filepath
 
         self.change_default_path_button = \
             customtkinter.CTkButton(master=self,
@@ -97,7 +97,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     ) \
-            .grid(row=3, line=0, xpad=10, ypad=10)  # button to browse for a new default folder
+                .grid(row=3, line=0, xpad=10, ypad=10)  # button to browse for a new default folder
 
     def activate(self) -> bool:
         """
@@ -139,7 +139,8 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
         Returns:
             str: Name of the chosen path
         """
-        new_path = filedialog.askopenfilename(initialdir=self._project_default_folder,
-                                              title="Select a File",
-                                              filetypes=".geojson")
+        new_path = \
+            filedialog.askopenfilename(initialdir=self._project_default_folder,
+                                       title="Select a File",
+                                       filetypes=".geojson")
         return new_path
