@@ -55,8 +55,10 @@ class MainWindow:
     Its job is to just show the frames of different states and create the window the GUI will be used on.
     """
 
-    def __init__(self, export_controller: IExportController, category_controller: ICategoryController, project_controller: IProjectController, settings_controller: ISettingsController,
-                 aggregation_controller: IAggregationController, calculation_controller: ICalculationController, cut_out_controller: ICutOutController,
+    def __init__(self, export_controller: IExportController, category_controller: ICategoryController,
+                 project_controller: IProjectController, settings_controller: ISettingsController,
+                 aggregation_controller: IAggregationController, calculation_controller: ICalculationController,
+                 cut_out_controller: ICutOutController,
                  data_visualization_controller: IDataVisualizationController, osm_data_controller: IOSMDataController):
         """
         This method creates a MainWindow with a connection to the given control.
@@ -105,11 +107,12 @@ class MainWindow:
 
         # Creating the StateManager
         self._state_manager: StateManager = state_manager_i.StateManager(self, export_controller, category_controller,
-                                                           project_controller,
-                                                           settings_controller, aggregation_controller,
-                                                           calculation_controller,
-                                                           cut_out_controller, data_visualization_controller,
-                                                           osm_data_controller)
+                                                                         project_controller,
+                                                                         settings_controller, aggregation_controller,
+                                                                         calculation_controller,
+                                                                         cut_out_controller,
+                                                                         data_visualization_controller,
+                                                                         osm_data_controller)
 
     def start_main_window(self):
         """
