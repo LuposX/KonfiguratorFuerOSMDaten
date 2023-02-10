@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import os
+
+from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
 from pathlib import Path
 from typing import TYPE_CHECKING
 
@@ -39,17 +41,41 @@ class ProjectSettings:
 
     def set_location(self, new_location: Path) -> bool:
         """
-        This method changes the location where the project will be stored.
+        This method loads the location where the project will be stored.
 
         Args:
-            new_location (pathlib.Path): The new location for the project
+            new_location (pathlib.Path): The location for the project.
 
         Returns:
-            bool: true, if location change was successful, false else
+            bool: true, if location change was successful, false else.
         """
         if os.path.exists(new_location):
             self._path = new_location
             return True
+        return False
+
+    def change_location(self, new_location: Path) -> bool:
+        """
+        This method changes the location where the project will be stored.
+
+        Args:
+            new_location (pathlib.Path): The new location for the project.
+
+        Returns:
+            bool: true, if location change was successful, false else.
+        """
+        if os.path.exists(new_location):
+            save_path = self._path
+            self._path = new_location.joinpath(self._name)
+            if not os.path.exists(self._path):
+                os.makedirs(self._path)
+                config_directory: Path = self._path.joinpath("configuration")
+                os.makedirs(config_directory)
+                os.makedirs(config_directory.joinpath("categories"))
+                os.makedirs(self._path.joinpath(self._calculation_phase_checkpoints_folder))
+                return True
+            else:
+                self._path = save_path
         return False
 
     def get_name(self) -> str:
@@ -57,23 +83,38 @@ class ProjectSettings:
         This method returns the name of the project.
 
         Returns:
-            str: name of the project
+            str: name of the project.
         """
         return self._name
 
     def set_name(self, new_name: str) -> bool:
         """
+        This method loads the name of the project.
+
+        Args:
+            new_name (str): The new name of the project.
+
+        Returns:
+            bool: true if change was successful, false else.
+        """
+        if isinstance(new_name, str):
+            self._name = new_name
+            return True
+        return False
+
+    def change_name(self, new_name: str) -> bool:
+        """
         This method changes the name of the project.
 
         Args:
-            new_name (str): The new name of the project
+            new_name (str): The new name of the project.
 
         Returns:
-            bool: true if change was successful, false else
+            bool: true if change was successful, false else.
         """
         if isinstance(new_name, str):
             _new_path: str = str(self._path).replace(self._name, new_name)
-            if not os.path.exists(_new_path):
+            if not os.path.exists(Path(_new_path)):
                 os.rename(self._path, _new_path)
                 self._path = Path(_new_path)
                 self._name = new_name
@@ -113,17 +154,39 @@ class ProjectSettings:
         """
         return self._calculation_phase_checkpoints_folder
 
-    def set_calculation_phase_checkpoints_folder(self, folder_name: str) -> bool:
+    def set_calculation_phase_checkpoints_folder(self, new_folder_name: str) -> bool:
         """
         This method is used to set the name of the folder in which the results will be saved.
 
         Args:
-            folder_name (str): the name of the folder
+            new_folder_name (str): The name of the folder.
 
         Returns:
             bool: true if change successful, false else
         """
-        if isinstance(folder_name, str):
-            self._calculation_phase_checkpoints_folder = folder_name
+        if isinstance(new_folder_name, str):
+            self._calculation_phase_checkpoints_folder = new_folder_name
             return True
         return False
+
+    def change_calculation_phase_checkpoints_folder(self, new_folder_name: str) -> bool:
+        """
+        This method is used to change the name of the folder in which the results will be saved.
+
+        Args:
+            new_folder_name (str): The name of the folder.
+
+        Returns:
+            bool: true if change successful, false else.
+        """
+        if isinstance(new_folder_name, str):
+            old_path: Path = self._path.joinpath(self._calculation_phase_checkpoints_folder)
+            new_path: Path = self._path.joinpath(new_folder_name)
+            if not os.path.exists(new_path):
+                os.rename(old_path, new_path)
+                self._calculation_phase_checkpoints_folder = new_folder_name
+                return True
+            return True
+        return False
+
+

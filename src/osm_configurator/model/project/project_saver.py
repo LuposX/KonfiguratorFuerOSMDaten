@@ -42,7 +42,7 @@ class ProjectSaver:
             active_project (active_project.ActiveProject): The project the ProjectSaver shall load.
         """
         self.active_project: ActiveProject = active_project
-        self.destination: Path = Path()
+        self.destination: Path = self.active_project.get_project_settings().get_location()
 
     def save_to_export(self, export_destination: Path) -> bool:
         """
@@ -56,7 +56,7 @@ class ProjectSaver:
         """
         if os.path.exists(export_destination):
             self.save_project()
-            shutil.copytree(self.active_project.get_project_settings().get_location(), export_destination)
+            shutil.copytree(self.active_project.get_project_settings().get_location(), export_destination.joinpath(self.active_project.get_project_settings().get_name()))
             return True
         return False
 
@@ -68,7 +68,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        self.destination: Path = self.active_project.get_project_settings().get_location()
+        self.destination = self.active_project.get_project_settings().get_location()
 
         # Saves ProjectSettings
         if not self._save_settings():
@@ -118,7 +118,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename: Path = self.destination.joinpath("last_step.txt")
+        filename: Path = self.destination.joinpath(Path("last_step.txt"))
         config_phase_data = self.active_project.get_last_step().get_name()
         with open(filename, "w") as f:
             f.write(config_phase_data)
@@ -131,7 +131,8 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename: Path = self.destination.joinpath("osm_path.txt")
+        config_directory: Path = self.destination.joinpath("configuration")
+        filename: Path = config_directory.joinpath("osm_path.txt")
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
         with open(filename, "w") as f:
             f.write(osm_path_data)
@@ -144,11 +145,11 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_filename("active_methods")
+        filename = self._create_config_filename("active_methods")
         aggregation_methods: list = []
         aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
-            aggregation_methods.append([method.get_name(), aggregation_configurator.is_aggregation_method_active(method)])
+            aggregation_methods.append([method.get_name(), str(aggregation_configurator.is_aggregation_method_active(method))])
         _write_csv_file(aggregation_methods, filename)
         return True
 
@@ -159,7 +160,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_filename("cut_out_configuration")
+        filename = self._create_config_filename("cut_out_configuration")
         cut_out_data = [["cut_out_path",
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
                         ["cut_out_mode",
@@ -225,8 +226,21 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        filename = str(self.destination) + "/" + name + ".csv"
-        return Path(filename)
+        file: str = name + ".csv"
+        return self.destination.joinpath(file)
+
+    def _create_config_filename(self, name: str) -> Path:
+        """
+        Creates a filename to store data from the given str and destination.
+
+        Args:
+            name (str): The name of the new file.
+
+        Returns:
+            pathlib.Path: The created path.
+        """
+        config_directory: Path = self.destination.joinpath("configuration")
+        return config_directory.joinpath(name + ".csv")
 
     def _create_category_filename(self, name: str) -> Path:
         """
@@ -238,5 +252,6 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        filename = str(self.destination) + "/Category/" + name + ".csv"
-        return Path(filename)
+        config_directory: Path = self.destination.joinpath("configuration")
+        category_directory: Path = config_directory.joinpath("categories")
+        return category_directory.joinpath(self._create_filename(name))

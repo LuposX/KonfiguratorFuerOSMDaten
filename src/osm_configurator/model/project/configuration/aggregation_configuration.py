@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum_i
+from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod as aggregation_method_enum_i
 
 from typing import TYPE_CHECKING, Dict
 
@@ -21,9 +21,8 @@ class AggregationConfiguration:
         Creates a new instance of the AggregationConfiguration.
         """
         self._aggregation_method_state: Dict = {}
-        all_aggregation_methods = [member.name for member in aggregation_method_enum_i.AggregationMethod]
-        for enum_name in all_aggregation_methods:
-            self._aggregation_method_state.update({enum_name: False})
+        for method in aggregation_method_enum_i:
+            self._aggregation_method_state.update({method: False})
 
     def get_all_aggregation_methods(self) -> list[AggregationMethod]:
         """

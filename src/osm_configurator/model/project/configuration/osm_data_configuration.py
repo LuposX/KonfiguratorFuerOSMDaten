@@ -32,7 +32,7 @@ class OSMDataConfiguration:
         """
         return self._osm_data_path
 
-    def set_osm_data(self, new_osm_data):
+    def set_osm_data(self, new_osm_data) -> bool:
         """
         Edits the path pointing towards the OSM data file.
 
@@ -47,7 +47,7 @@ class OSMDataConfiguration:
             return True
         return False
 
-    def get_download_data(self):
+    def get_download_data(self) -> DownloadData:
         """
         Getter for the download data class.
 
