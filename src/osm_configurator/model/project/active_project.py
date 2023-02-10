@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
 from src.osm_configurator.model.project.data_visualizer import DataVisualizer
@@ -44,7 +45,11 @@ class ActiveProject:
             project_description (str): The description of our project.
         """
 
-        self.project_directory: Path = project_folder.joinpath(project_name)
+        if project_name is not None:
+            self.project_directory: Path = project_folder.joinpath(project_name)
+        else:
+            self.project_directory: Path = project_folder
+            project_name = os.path.basename(project_folder)
 
         self._project_io_handler: ProjectIOHandler = ProjectIOHandler(self)
         self._configurator_manager: ConfigurationManager = ConfigurationManager(project_folder)
