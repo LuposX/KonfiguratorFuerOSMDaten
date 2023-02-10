@@ -1,12 +1,13 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.active_project
-from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationMethod
-from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
-from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
-import pathlib
+import os.path
 import csv
 
+import src.osm_configurator.model.project.active_project
+from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -52,9 +53,16 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        self.destination = export_destination
-        self.save_project()
-        self.destination = self.active_project.get_project_settings().get_location()
+        if os.path.exists(export_destination):
+            self.destination = export_destination
+            config_directory: Path = export_destination.joinpath("configuration")
+            os.makedirs(config_directory)
+            os.makedirs(config_directory.joinpath("categories"))
+            os.makedirs(export_destination.joinpath("calculation_check_points"))
+            self.save_project()
+            self.destination = self.active_project.get_project_settings().get_location()
+            return True
+        return False
 
     def save_project(self) -> bool:
         """

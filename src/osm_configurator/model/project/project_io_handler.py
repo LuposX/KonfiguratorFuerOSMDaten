@@ -1,19 +1,19 @@
 from __future__ import annotations
 
 import os
-
-import src.osm_configurator.model.project.active_project
-import pathlib
 import csv
-from typing import TYPE_CHECKING
+
+from pathlib import Path
+import src.osm_configurator.model.project.active_project
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationMethod
-from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutMode
+from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from src.osm_configurator.model.project.configuration.category import Category
 from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
@@ -65,7 +65,7 @@ class ProjectIOHandler:
             config_directory: Path = path.joinpath("configuration")
             os.makedirs(config_directory)
             os.makedirs(config_directory.joinpath("categories"))
-            os.makedirs(path.joinpath("calculation_check_points"))
+            os.makedirs(path.joinpath(self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder()))
             return True
         return False
 

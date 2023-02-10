@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-import pathlib
-
-import src.osm_configurator.model.project.configuration.configuration_manager
-import src.osm_configurator.model.project.data_visualizer
-import src.osm_configurator.model.project.project_settings
-import src.osm_configurator.model.project.calculation.calculation_manager
-import src.osm_configurator.model.project.export
-import src.osm_configurator.model.project.project_saver
+from pathlib import Path
+from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
+from src.osm_configurator.model.project.data_visualizer import DataVisualizer
+from src.osm_configurator.model.project.project_settings import ProjectSettings
+from src.osm_configurator.model.project.calculation.calculation_manager import CalculationManager
+from src.osm_configurator.model.project.export import Export
+from src.osm_configurator.model.project.project_saver import ProjectSaver
+from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
+from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 
 from typing import TYPE_CHECKING
 
@@ -43,14 +44,16 @@ class ActiveProject:
             project_description (str): The description of our project.
         """
 
+        self.project_directory: Path = project_folder.joinpath(project_name)
+
         self._project_io_handler: ProjectIOHandler = ProjectIOHandler(self)
         self._configurator_manager: ConfigurationManager = ConfigurationManager(project_folder)
         self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager)
-        self._project_settings: ProjectSettings = ProjectSettings(project_folder, project_name, project_description,
-                                                                  "calculation_check_points")
+        self._project_settings: ProjectSettings = ProjectSettings(self.project_directory, project_name,
+                                                                  project_description, "calculation_check_points")
 
         if is_newly_created:
-            self._project_io_handler.build_project(project_folder)
+            self._project_io_handler.build_project(self.project_directory)
             self._last_step: ConfigPhase = ConfigPhase.DATA_CONFIG_PHASE
         else:
             self._project_io_handler.load_project(project_folder)
@@ -69,15 +72,21 @@ class ActiveProject:
         """
         return self._last_step
 
-    def set_last_step(self, current_step: ConfigPhase):
+    def set_last_step(self, current_step: ConfigPhase) -> bool:
         """
         This method is there so that the user can continue working in the same phase in an existing project
         where he previously stopped.
 
         Args:
             config_phase_enum.ConfigPhase: The current phase the user is working on.
+
+        Return:
+            bool: True if changing the state works, otherwise false.
         """
-        self._last_step = current_step
+        if current_step in ConfigPhase:
+            self._last_step = current_step
+            return True
+        return False
 
     def get_project_path(self) -> Path:
         """
