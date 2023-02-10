@@ -14,6 +14,7 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
+
 from PIL import Image
 
 from typing import TYPE_CHECKING, List
@@ -24,9 +25,11 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.export_controller_interface import IExportController
     from src.osm_configurator.control.project_controller_interface import IProjectController
 
+
 # Final Constants
 # Icons shall be square!
 ICON_HEIGHT_AND_WIDTH: Final = 42
+
 
 BUTTON_SPACE_TO_BORDER: Final = 10
 BUTTON_HEIGHT: Final = frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value - (2 * BUTTON_SPACE_TO_BORDER)

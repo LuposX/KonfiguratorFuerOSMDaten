@@ -1,7 +1,10 @@
 from __future__ import annotations
 
+
 from src.osm_configurator.model.application.passive_project import PassiveProject
 from src.osm_configurator.view.activatable import Activatable
+import src.osm_configurator.control.project_controller_interface
+
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.states.state_manager import StateManager
 

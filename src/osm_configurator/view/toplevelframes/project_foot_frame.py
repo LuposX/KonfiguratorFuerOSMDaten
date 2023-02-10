@@ -13,9 +13,11 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
+
 from PIL import Image
 
 from typing import TYPE_CHECKING, List
+
 
 if TYPE_CHECKING:
     from typing import Final
