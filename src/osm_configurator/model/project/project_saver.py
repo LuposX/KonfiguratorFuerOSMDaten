@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-import os.path
+import os
 import csv
+import shutil
 
+from pathlib import Path
 import src.osm_configurator.model.project.active_project
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
-from pathlib import Path
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -41,7 +42,7 @@ class ProjectSaver:
             active_project (active_project.ActiveProject): The project the ProjectSaver shall load.
         """
         self.active_project: ActiveProject = active_project
-        self.destination: Path = self.active_project.get_project_settings().get_location()
+        self.destination: Path = Path()
 
     def save_to_export(self, export_destination: Path) -> bool:
         """
@@ -54,13 +55,8 @@ class ProjectSaver:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
         if os.path.exists(export_destination):
-            self.destination = export_destination
-            config_directory: Path = export_destination.joinpath("configuration")
-            os.makedirs(config_directory)
-            os.makedirs(config_directory.joinpath("categories"))
-            os.makedirs(export_destination.joinpath("calculation_check_points"))
             self.save_project()
-            self.destination = self.active_project.get_project_settings().get_location()
+            shutil.copytree(self.active_project.get_project_settings().get_location(), export_destination)
             return True
         return False
 
@@ -72,6 +68,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
+        self.destination: Path = self.active_project.get_project_settings().get_location()
 
         # Saves ProjectSettings
         if not self._save_settings():
@@ -105,7 +102,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_filename("project_settings")
+        filename: Path = self._create_filename("project_settings")
         settings_data = [["name", self.active_project.get_project_settings().get_name()],
                          ["description", self.active_project.get_project_settings().get_description()],
                          ["location", self.active_project.get_project_settings().get_location()],
@@ -121,8 +118,8 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = str(self.destination) + "/" + "last_step.txt"
-        config_phase_data = str(self.active_project.get_last_step())
+        filename: Path = self.destination.joinpath("last_step.txt")
+        config_phase_data = self.active_project.get_last_step().get_name()
         with open(filename, "w") as f:
             f.write(config_phase_data)
         return True
@@ -134,7 +131,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = str(self.destination) + "/" + "osm_path.txt"
+        filename: Path = self.destination.joinpath("osm_path.txt")
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
         with open(filename, "w") as f:
             f.write(osm_path_data)

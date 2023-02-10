@@ -51,12 +51,12 @@ class ActiveProject:
         self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager)
         self._project_settings: ProjectSettings = ProjectSettings(self.project_directory, project_name,
                                                                   project_description, "calculation_check_points")
+        self._last_step: ConfigPhase = ConfigPhase.DATA_CONFIG_PHASE
 
         if is_newly_created:
             self._project_io_handler.build_project(self.project_directory)
-            self._last_step: ConfigPhase = ConfigPhase.DATA_CONFIG_PHASE
         else:
-            self._project_io_handler.load_project(project_folder)
+            self._project_io_handler.load_project(self.project_directory)
 
         self._project_saver: ProjectSaver = ProjectSaver(self)
         self._data_visualizer: DataVisualizer = DataVisualizer()

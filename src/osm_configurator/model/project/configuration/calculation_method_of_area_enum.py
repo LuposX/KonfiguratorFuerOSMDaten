@@ -22,7 +22,7 @@ class CalculationMethodOfArea(Enum):
         """
         return self.value
 
-    def equals(self, name: str) -> CalculationMethodOfArea | None:
+    def equals(name: str) -> CalculationMethodOfArea | None:
         for method in CalculationMethodOfArea:
             if method.get_calculation_method() == name:
                 return method

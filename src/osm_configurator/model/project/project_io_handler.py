@@ -82,15 +82,20 @@ class ProjectIOHandler:
         self.destination = path
 
         # Loads the different parts of the project
-        self._load_project_settings()
+        if not self._load_project_settings():
+            return False
 
-        self._load_config_phase()
+        if not self._load_config_phase():
+            return False
 
-        self._load_osm_configurator()
+        if not self._load_osm_configurator():
+            return False
 
-        self._load_aggregation_configuration()
+        if not self._load_aggregation_configuration():
+            return False
 
-        self._load_category_configuration()
+        if not self._load_category_configuration():
+            return False
         return True
 
     def _load_project_settings(self) -> bool:
@@ -176,37 +181,37 @@ class ProjectIOHandler:
                 with open(filepath, "r") as f:
                     reader = csv.reader(f)
                     category_data: list[str] = list(reader)
-                category: Category
-                category.set_category_name(category_data[0][1])
+                loaded_category: Category = Category()
+                loaded_category.set_category_name(category_data[0][1])
                 if category_data[1][1] is "True":
-                    category.activate()
+                    loaded_category.activate()
                 if category_data[1][1] is not "False":
-                    category.deactivate()
+                    loaded_category.deactivate()
                 else:
                     return False
 
                 # Loads whitelist
-                category.set_whitelist(category_data[2][1])
+                loaded_category.set_whitelist(category_data[2][1])
 
                 # Loads blacklist
-                category.set_blacklist(category_data[3][1])
+                loaded_category.set_blacklist(category_data[3][1])
 
                 # Loads calculation method of area
-                category.set_calculation_method_of_area(CalculationMethodOfArea.equals(category_data[4][1]))
+                loaded_category.set_calculation_method_of_area(CalculationMethodOfArea.equals(category_data[4][1]))
 
                 # Loads active attributes
                 number_of_active_attributes = len(category_data[5]) - 1
                 for number in range(number_of_active_attributes):
                     attribute: Attribute = Attribute.equals(category_data[5][number + 1])
                     if attribute is not None:
-                        category.set_attribute(attribute)
+                        loaded_category.set_attribute(attribute)
                     else:
                         return False
 
                 # Loads strictly use default values
                 strictly_use_default_value_bool: bool = convert_bool(category_data[6][1])
                 if strictly_use_default_value_bool is not None:
-                    category.set_strictly_use_default_values(strictly_use_default_value_bool)
+                    loaded_category.set_strictly_use_default_values(strictly_use_default_value_bool)
                 else:
                     return False
 
@@ -223,7 +228,7 @@ class ProjectIOHandler:
                         else:
                             attractivity_attribute.set_attribute_factor(Attribute.equals(attribute_str_split_up[0]),
                                                                         float(attribute_str_split_up[1]))
-                    category.add_attractivity_attribute(attractivity_attribute)
+                    loaded_category.add_attractivity_attribute(attractivity_attribute)
 
                 # Loads default value entries
                 number_of_default_value_entries = len(category_data[7]) - 1
@@ -235,8 +240,9 @@ class ProjectIOHandler:
                         attribute_str_split_up: list[str] = default_value_entry_str.split(":")
                         default_value_entry.set_attribute_default(Attribute.equals(attribute_str_split_up[0]),
                                                                   float(attribute_str_split_up[1]))
-                    category.add_default_value_entry(default_value_entry)
-            category_list.append(category)
-            self._active_project.get_config_manager().get_category_manager().override_categories(category_list)
-            return True
-        return False
+                    loaded_category.add_default_value_entry(default_value_entry)
+                category_list.append(loaded_category)
+                self._active_project.get_config_manager().get_category_manager().override_categories(category_list)
+            else:
+                return False
+        return True

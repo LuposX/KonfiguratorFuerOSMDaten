@@ -37,7 +37,9 @@ class Export:
             bool: true, if export was successful, otherwise false.
         """
         self._active_project.get_project_saver().save_project()
-        shutil.copytree(self._active_project.get_project_settings().get_location(), path)
+        shutil.copytree(self._active_project.get_project_settings().get_location(),
+                        path.joinpath(self._active_project.get_project_settings().get_name()))
+
 
     def export_configuration(self, path: Path) -> bool:
         """

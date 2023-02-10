@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from enum import Enum, unique
 
-
 @unique
 class ConfigPhase(Enum):
     """
@@ -26,7 +25,7 @@ class ConfigPhase(Enum):
         """
         return self.value
 
-    def equals(self, phase: str) -> ConfigPhase | None:
+    def equals(phase: str) -> ConfigPhase | None:
         for config_phase in ConfigPhase:
             if config_phase.get_name() == phase:
                 return config_phase

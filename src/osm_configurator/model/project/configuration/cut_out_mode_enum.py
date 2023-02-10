@@ -22,7 +22,7 @@ class CutOutMode(Enum):
         """
         return self.value
 
-    def equals(self, mode: str) -> CutOutMode | None:
+    def equals(mode: str) -> CutOutMode | None:
         for cut_out_mode in CutOutMode:
             if cut_out_mode.get_name() == mode:
                 return cut_out_mode

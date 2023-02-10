@@ -1,7 +1,11 @@
 from __future__ import annotations
 
 import os
-import pathlib
+from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 class ProjectSettings:
@@ -19,12 +23,12 @@ class ProjectSettings:
             description (str): A description of the project
             calculation_phase_checkpoints_folder(str): The name of the folder for calculation checkpoints
         """
-        self._path: pathlib.Path = location
+        self._path: Path = location
         self._name: str = project_name
         self._description: str = description
         self._calculation_phase_checkpoints_folder: str = calculation_phase_checkpoints_folder
 
-    def get_location(self) -> pathlib.Path:
+    def get_location(self) -> Path:
         """
         Getter for the location of the Project on the disk.
 
@@ -33,7 +37,7 @@ class ProjectSettings:
         """
         return self._path
 
-    def set_location(self, new_location: pathlib.Path) -> bool:
+    def set_location(self, new_location: Path) -> bool:
         """
         This method changes the location where the project will be stored.
 
@@ -68,8 +72,12 @@ class ProjectSettings:
             bool: true if change was successful, false else
         """
         if isinstance(new_name, str):
-            self._name = new_name
-            return True
+            _new_path: str = str(self._path).replace(self._name, new_name)
+            if not os.path.exists(_new_path):
+                os.rename(self._path, _new_path)
+                self._path = Path(_new_path)
+                self._name = new_name
+                return True
         return False
 
     def get_description(self) -> str:

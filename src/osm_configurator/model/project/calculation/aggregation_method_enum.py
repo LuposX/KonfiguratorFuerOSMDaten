@@ -73,7 +73,7 @@ class AggregationMethod(Enum):
         """
         return self.value[1]
 
-    def equals(self, mode: str) -> AggregationMethod | None:
+    def equals(mode: str) -> AggregationMethod | None:
         for method in AggregationMethod:
             if method.get_name() == mode:
                 return method
