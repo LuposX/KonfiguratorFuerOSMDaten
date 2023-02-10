@@ -76,8 +76,7 @@ class MainMenuFrame(Activatable, TopLevelFrame):
         ]
 
         # Align the buttons and give them the standard style-attributes
-        counter = 0
-        for button in self.main_buttons_left:
+        for i, button in enumerate(self.main_buttons_left):
             button.configure(
                 border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
@@ -86,17 +85,16 @@ class MainMenuFrame(Activatable, TopLevelFrame):
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
             )
 
-            button.grid(row=counter, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
-            counter += 1
+            button.grid(row=i, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
 
         # showing all entries in custom boxes
-        counter = 0
-        for passive_project in self._passive_projects:
+        for i, passive_project in enumerate(self._passive_projects):
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
 
             customtkinter.CTkButton(master=self,
                                     name=name,
+                                    text=name,
                                     description=description,
                                     command=self.__load_project(passive_project),
                                     rder_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
@@ -105,9 +103,7 @@ class MainMenuFrame(Activatable, TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     ) \
-                .grid(column=3, row=counter, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
-
-            counter += 1
+                .grid(column=3, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
 
     def activate(self) -> bool:
         """

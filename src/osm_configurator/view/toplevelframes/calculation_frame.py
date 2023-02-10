@@ -95,18 +95,14 @@ class CalculationFrame(TopLevelFrame, Activatable):
         ]
 
         # Aligning and configuring the buttons with standard-attributes
-        counter = 1  # helps to align the buttons in the correct row
-        for button in self.buttons:
+        for i, button in enumerate(self.buttons):
             button.configure(
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
             )
-            button.grid(row=counter, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
-            counter += 1
-
-            # TODO: Optional scrollbar possible
+            button.grid(row=i+1, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
 
     def activate(self):
         self.__activate_buttons()
@@ -225,17 +221,15 @@ class CalculationFrame(TopLevelFrame, Activatable):
         Colors the clicked button yellow, the lower buttons are colored green.
         All other buttons keep their original color
         """
-        counter = 0
         starting_index = self._starting_point.get_order()
 
-        for button in self.buttons:
+        for i, button in enumerate(self.buttons):
             button.config(state="disable")
 
-            if counter == starting_index:
+            if i == starting_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_YELLOW.value)
-            elif counter < starting_index:
+            elif i < starting_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_GREEN.value)
-            counter += 1
 
     def __activate_buttons(self):
         """
@@ -300,7 +294,7 @@ class CalculationFrame(TopLevelFrame, Activatable):
 
     def __update_progressbar(self) -> None:
         """
-        Keeps the progressbar up-to-date. calls itself every second if the calculation is not finished
+        Keeps the progressbar up-to-date. calls itself every five seconds if the calculation is not finished
         """
         calculation_state = self._calculation_controller.get_calculation_state()
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
@@ -329,14 +323,25 @@ class CalculationFrame(TopLevelFrame, Activatable):
                 self.window.after(30000, self.__update_progressbar)
                 return
 
-        # TODO: What happens if there's an error in the calculation?
-
     def __end_calculation(self):
         """
-        Function called if calculation finished successfully
+        Function called if calculation finished successfully.
+        Configures the shown widgets alerting that the calculation finished successfully
         """
-        #  TODO: implement
-        pass
+        self.progressbar_label.configure(text="Calculation finished successfully")
+        visualize_button = \
+            customtkinter.CTkButton(master=self,
+                                                   name="VisualizeResults",
+                                                   text="Visualize Results",
+                                                   command=self.__visualize_results,
+                                                   border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                                   hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                                   border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                                   )\
+            .grid(column=3, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
+        self.buttons.append(visualize_button)
 
     def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
         """
@@ -370,3 +375,11 @@ class CalculationFrame(TopLevelFrame, Activatable):
         """
         #  TODO: implement
         return pop_up_value
+
+    def __visualize_results(self):
+        """
+        Gets called if the "Visualize Results" Button is pressed. Calls the according function from the controller to
+        initialise the visualization process
+        """
+        self._data_visualization_controller.get_calculation_visualization()
+        # TODO: finish implementation

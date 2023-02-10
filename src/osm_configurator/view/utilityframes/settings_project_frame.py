@@ -8,6 +8,8 @@ from src.osm_configurator.view.activatable import Activatable
 # Constants
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
+import src.osm_configurator.view.constants.text_box_constants as text_box_constants_i
 
 # Other
 import customtkinter
@@ -24,8 +26,6 @@ class SettingsProjectFrame(customtkinter.CTkFrame, Activatable):
     """
     This frame shows the current project settings.
     """
-
-    # TODO: Adjust customtkinter attributes to the given enums
 
     def __init__(self, parent, settings_controller):
         """
@@ -57,12 +57,22 @@ class SettingsProjectFrame(customtkinter.CTkFrame, Activatable):
 
         self.header = \
             customtkinter.CTkLabel(master=self,
-                                   text="Current Project") \
+                                   text="Current Project",
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value) \
             .grid(column=0, row=0, rowspan=1, columnspan=1)
 
         self.project_name_box = \
             customtkinter.CTkTextbox(master=self,
-                                     text=self._project_name) \
+                                     text=self._project_name,
+                                     corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+                                     border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
+                                     fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+                                     border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+                                     text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                                     ) \
             .grid(column=1, row=0, rowspan=1, columnspan=1)
 
         self.change_project_name_button = \
@@ -77,11 +87,17 @@ class SettingsProjectFrame(customtkinter.CTkFrame, Activatable):
 
         self.description_box = \
             customtkinter.CTkTextbox(master=self,
-                                     text=self._project_description) \
+                                     text=self._project_description,
+                                     corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+                                     border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
+                                     fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+                                     border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+                                     text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                                     ) \
             .grid(column=3, row=0, rowspan=1, columnspan=1)
 
         self.change_description_button = \
-            customtkinter.CTkButton(self,
+            customtkinter.CTkButton(master=self,
                                     text="Change Project Description",
                                     command=self.__change_project_description,
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
