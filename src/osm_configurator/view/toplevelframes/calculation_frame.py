@@ -239,7 +239,13 @@ class CalculationFrame(TopLevelFrame, Activatable):
             button.configure(state="enable",
                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value)
 
-    def __stop_calculation(self):
+    def __stop_calculation_init(self):
+        """
+        Initializes the cancel process to make the process communicate with the yes-no-popup
+        """
+        self.__show_yes_no_popup(func=self.__stop_calculation, message="Do You really want to cancel the Calculation?")
+
+    def __stop_calculation(self, cancel: bool):
         """
         Stops the already running calculation process.
         If the process isn't started yet, nothing will happen.
@@ -248,9 +254,27 @@ class CalculationFrame(TopLevelFrame, Activatable):
             - Show popup, asking if user wants to stop the calculation
             - Yes: Calculation is stopped
             - No: Nothing happens, calculations continues
+        Args:
+            cancel (bool): True, if the calculation will be canceled, false else (value from the popup)
         """
-        popup = YesNoPopUp("Do you really want to cancel the calculation process?", self.__receive_pop_up)
-        #  TODO: Implement PopUp Communication => Call new function receiving the values
+        if self._calculation_controller.get_calculation_state() != CalculationState.RUNNING:
+            # Calculation can't be stopped, because it has already stopped
+            popup = AlertPopUp(message="The Calculation has already stopped!")
+            popup.mainloop()
+        if cancel:
+            # Calculation will be stopped
+            self._calculation_controller.cancel_calculations()
+
+    def __show_yes_no_popup(self, func, message: str):
+        """
+        Shows a yes_no-popup with the inserted message and function
+        Args:
+            func (function): function that will receive the return-value of the popup
+            message (str): message the popup will display
+        """
+        popup = YesNoPopUp(message=message, func=func)
+        popup.mainloop()
+
 
     def __show_calculation_utilities(self):
         """
@@ -366,15 +390,6 @@ class CalculationFrame(TopLevelFrame, Activatable):
         """
         AlertPopUp("Calculation couldn't be started, please try again!") \
             .mainloop()
-
-    def __receive_pop_up(self, pop_up_value: bool):
-        """
-        Func given to a popup to receive the returned value
-        Args:
-            pop_up_value (bool): value the popup returns
-        """
-        #  TODO: implement
-        return pop_up_value
 
     def __visualize_results(self):
         """
