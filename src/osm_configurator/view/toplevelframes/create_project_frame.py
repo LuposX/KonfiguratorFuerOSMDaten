@@ -5,7 +5,6 @@ import src.osm_configurator.control.project_controller_interface
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-
 import src.osm_configurator.view.states.state_name_enum as sne
 
 # Constants
@@ -15,6 +14,8 @@ import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 # Other
 from typing import TYPE_CHECKING
 import customtkinter
+from pathlib import Path
+from tkinter import filedialog
 
 if TYPE_CHECKING:
     from src.osm_configurator.view.states.state_manager import StateManager
@@ -49,9 +50,9 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
         self._state_manager = state_manager
         self._project_controller = project_controller
 
-        self._project_description = ""
-        self._project_name = ""
-        self._project_path = ""
+        self._project_description: str
+        self._project_name: str
+        self._project_path: Path
 
         # Configuring the rows and columns
         self.grid_columnconfigure(0, weight=1)
@@ -112,29 +113,57 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
     def activate(self):
         pass
 
-    def _choose_destination(self):
+    def _choose_destination(self) -> bool:
         """
         Opens the explorer making the user choose the wanted destination
+        Returns:
+            bool: True, if a valid path was chosen and project-loading process was given to the controller, else false
         """
-        #  TODO: Implement procedure for choosing the project's path
-        self._project_path = "Insert Path Here"
+        new_path = Path(self.__browse_files())
 
-    def __create_pressed(self):
+        if not new_path.exists():
+            # No valid Path chosen
+            popup = AlertPopUp("No valid Path chosen! Please enter a valid Path.")
+            popup.mainloop()
+            self.activate()
+            return False
+
+        # valid Path was chosen => project will be loaded
+        self._project_path = new_path
+        self._project_controller.load_project(new_path)
+        return True
+
+    def __create_pressed(self) -> bool:
         """
         The create-button was pressed, the project is created, the user is redirected to the data-phase-window
+        Returns:
+            bool: True, if project has all valid attributes and creation was given to the controller, false else
         """
-        #  TODO: Initialize Project-Creation
-
         self._project_name = self.name_field.get()
 
         if self._project_name == "":
-            popup = AlertPopUp("No project-name entered. Please try again.")
+            # No projectname entered
+            popup = AlertPopUp("No Projectname entered. Please enter a valid Projectname.")
             popup.mainloop()  # Displays the popup
             self.__reload()  # Reloads the page
-            return
+            return False
+
+        if not self._project_path.exists():
+            # No valid path chosen
+            popup = AlertPopUp("No valid Path entered. Please choose a valid Path.")
+            popup.mainloop()
+            self.__reload()
+            return False
 
         self._project_description = self.description_field.get()
         self._state_manager.change_state(sne.StateName.DATA.value)
+
+        self._project_controller.create_project(
+            name=self._project_name,
+            destination=self._project_path
+        )
+
+        return True
 
     def __cancel_pressed(self):
         """
@@ -144,3 +173,13 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
 
     def __reload(self):
         self._state_manager.change_state(sne.StateName.CREATE_PROJECT.value)
+
+    def __browse_files(self) -> str:
+        """
+        Opens the explorer starting from the default-folder making the user browse for the searched path
+        Return:
+            str: Name of the chosen path
+        """
+        new_path = filedialog.askopenfilename(title="Select a project to load",
+                                              filetypes=".geojson")  # opens the file explorer in the current dir
+        return new_path

@@ -137,7 +137,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
         """
         Opens the explorer starting from the default-folder making the user browse for the searched path
         Returns:
-            str: The path-name
+            str: Name of the chosen path
         """
         new_path = filedialog.askopenfilename(initialdir=self._project_default_folder,
                                               title="Select a File",
