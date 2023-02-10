@@ -1,7 +1,13 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.toplevelframes.top_level_frame
-import src.osm_configurator.view.states.state_manager
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+    from typing import Final
+
+SMALLEST_COLUM_AND_ROW_VALUE: Final = 0
+SMALLEST_COLUM_SPAN_AND_ROW_SPAN_VALUE: Final = 0
 
 
 class PositionedFrame:
@@ -10,42 +16,92 @@ class PositionedFrame:
     it is shown on a Window.
     """
 
-    def __init__(self, frame, colum, line, state_manager, control):
+    def __init__(self, frame: TopLevelFrame, colum: int, row: int, colum_span: int, row_span: int, sticky: str):
         """
         This method creates a PositionedFrame, which is a Frame and coordinates to its Position.
 
         Args:
             frame (top_level_frame.TopLevelFrame): The frame you want to give a position
-            colum (int): The Colum the Frame shall be placed in
-            line (int): The Line the Frame shall be placed in
-            state_manager (state_manager.StateManager): The StateManager the frame will use to change states if needed
-            control (control_interface.IControl): The control that a frame shall call, if it needs access to the model
+            colum (int): The Colum the Frame shall be placed in, can't be negative
+            row (int): The Line the Frame shall be placed in, can't be negative
+            colum_span (int): The colum span the frame shall have
+            row_span (int): The row span the frame shall have
+            sticky (str): The stick Type of how the frame is placed in a grid
         """
-        pass
 
-    def get_frame(self):
+        # Testing for correct Types, except for the frame, because Python is a little bitch
+        if not isinstance(colum, int):
+            raise TypeError("The given colum is not an Integer!")
+        elif not isinstance(row, int):
+            raise TypeError("The given row is not an Integer!")
+        elif not isinstance(colum_span, int):
+            raise TypeError("The given colum span is not an Integer!")
+        elif not isinstance(row_span, int):
+            raise TypeError("The given row span is not an Integer!")
+        elif not isinstance(sticky, str):
+            raise TypeError("The attribute sticky is not a String!")
+        elif colum_span < SMALLEST_COLUM_SPAN_AND_ROW_SPAN_VALUE or row_span < SMALLEST_COLUM_SPAN_AND_ROW_SPAN_VALUE:
+            raise ValueError("The Value of colum span and row span can't negative!")
+        elif colum < SMALLEST_COLUM_AND_ROW_VALUE or row < SMALLEST_COLUM_AND_ROW_VALUE:
+            raise ValueError("The Value of colum or row can't negative!")
+        else:
+            self._frame: TopLevelFrame = frame
+            self._colum: int = colum
+            self._row: int = row
+            self._colum_span: int = colum_span
+            self._row_span: int = row_span
+            self._sticky: str = sticky
+
+    def get_frame(self) -> TopLevelFrame:
         """
         This method returns the frame this PositionedFrame holds.
 
         Returns:
             top_level_frame.TopLevelFrame: The Frame this PositionedFrame holds
         """
-        pass
+        return self._frame
 
-    def get_column(self):
+    def get_column(self) -> int:
         """
         This method Returns the column the frame is placed in.
 
         Returns:
             int: The Column the Frame is placed in.
         """
-        pass
+        return self._colum
 
-    def get_line(self):
+    def get_row(self) -> int:
         """
         This method returns the line the frame is placed in.
 
         Returns:
             int: The Line the frame is placed in
         """
-        pass
+        return self._row
+
+    def get_row_span(self) -> int:
+        """
+        This method returns the row span of the frame.
+
+        Returns:
+            int: The row span of the frame
+        """
+        return self._row_span
+
+    def get_colum_span(self) -> int:
+        """
+        This method returns the colum span of the frame.
+
+        Returns:
+            int: The colum span of the frame
+        """
+        return self._colum_span
+
+    def get_sticky(self) -> str:
+        """
+        This method returns the sticky Type of how the frame is placed in a grid.
+
+        Returns:
+            str: The sticky Type of the frame
+        """
+        return self._sticky

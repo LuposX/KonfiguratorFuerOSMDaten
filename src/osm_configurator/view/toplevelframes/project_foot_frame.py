@@ -4,9 +4,10 @@ import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.project_controller_interface
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
 
-class ProjectFootFrame(TopLevelFrame):
+class ProjectFootFrame(TopLevelFrame, Lockable):
     """
     This frame shows two arrows on the bottom of the Window. The user can navigate the pipeline by going left or right.
     """
@@ -23,4 +24,10 @@ class ProjectFootFrame(TopLevelFrame):
         pass
 
     def activate(self):
+        pass
+
+    def lock(self) -> bool:
+        pass
+
+    def unlock(self) -> bool:
         pass
