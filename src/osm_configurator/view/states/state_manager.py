@@ -12,8 +12,6 @@ class StateManager:
     It knows what state is currently active and provides methods to change the state.
     """
 
-    # TODO: Adjust customtkinter attributes to the given enums
-
     def __init__(self, main_window, export_controller, category_controller, project_controller, settings_controller,
                  aggregation_controller, application_controller, calculation_controller, cut_out_controller,
                  data_visualization_controller, osm_data_controller):
