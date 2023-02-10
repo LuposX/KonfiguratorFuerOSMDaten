@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
@@ -21,7 +21,7 @@ class State:
     Those states can be 'none' in order so signify that there is no further right or left.
     """
 
-    def __init__(self, active_frames: list[PositionedFrame], own_state_name: StateName, default_left: StateName | None,
+    def __init__(self, active_frames: List[PositionedFrame], own_state_name: StateName, default_left: StateName | None,
                  default_right: StateName | None):
         """
         This method creates a new state, that holds the given frames, has the given state name,
@@ -52,12 +52,12 @@ class State:
             raise TypeError("default_left is no StateName, and not None! "
                             "The default_left, shall be a StateName or None!")
         else:
-            self._active_frames = active_frames
-            self._own_state_name = own_state_name
-            self._default_left = default_left
-            self._default_right = default_right
+            self._active_frames: List[PositionedFrame] = active_frames
+            self._own_state_name: StateName = own_state_name
+            self._default_left: StateName = default_left
+            self._default_right: StateName = default_right
 
-    def get_active_frames(self) -> list[PositionedFrame]:
+    def get_active_frames(self) -> List[PositionedFrame]:
         """
         The list of frames this state holds and shall be shown on a window, if it is active.
 
@@ -93,7 +93,7 @@ class State:
         """
         return self._own_state_name
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         """
         Test if a state is equal to a given object.
         Two states are defined as equal, if their name is equal.

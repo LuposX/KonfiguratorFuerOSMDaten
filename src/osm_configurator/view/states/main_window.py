@@ -21,7 +21,7 @@ import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from typing import Final
@@ -36,6 +36,10 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
     from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
     from src.osm_configurator.view.states.state import State
+    from src.osm_configurator.view.states.state_manager import StateManager
+    from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+    from src.osm_configurator.view.states.positioned_frame import PositionedFrame
+    from screeninfo import Monitor
 
 # Final Variablen
 TOP_ROW_WEIGHT: Final = 1
@@ -69,21 +73,22 @@ class MainWindow:
             osm_data_controller (osm_data_controller.OSMDataController): Respective controller.
         """
         # Creating the mainWindow and setting its position, and making it resizable
-        self._window = customtkinter.CTk()
+        self._window: customtkinter.CTk = customtkinter.CTk()
         self._window.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
 
         # Selecting the primary Monitor to get accurate location for centering the window
-        primary_monitor = None
+        primary_monitor: Monitor = None
+        monitor: Monitor
         for monitor in screeninfo.get_monitors():
             if monitor.is_primary:
-                primary_monitor = monitor
+                primary_monitor: Monitor = monitor
                 break
 
-        screen_height = primary_monitor.height
-        screen_width = primary_monitor.width
+        screen_height: int = primary_monitor.height
+        screen_width: int = primary_monitor.width
 
-        true_height = screen_height / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value / 2
-        true_width = screen_width / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value / 2
+        true_height: int = screen_height / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value / 2
+        true_width: int = screen_width / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value / 2
 
         self._window.geometry("%dx%d+%d+%d" % (main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value,
                                                main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value,
@@ -99,14 +104,17 @@ class MainWindow:
         self._window.grid_rowconfigure(2, weight=BOTTOM_ROW_WEIGHT)
 
         # Creating the StateManager
-        self._state_manager = state_manager_i.StateManager(self, export_controller, category_controller,
+        self._state_manager: StateManager = state_manager_i.StateManager(self, export_controller, category_controller,
                                                            project_controller,
                                                            settings_controller, aggregation_controller,
                                                            calculation_controller,
                                                            cut_out_controller, data_visualization_controller,
                                                            osm_data_controller)
 
-        # Starting the mainloop
+    def start_main_window(self):
+        """
+        Starts the Loop of the MainWindow and therefor the whole View
+        """
         self._window.mainloop()
 
     def change_state(self, last_state: State, new_state: State) -> bool:
@@ -125,15 +133,15 @@ class MainWindow:
             return False
 
         # First making the last State invisible
-        succsess = self._make_invisible(last_state)
+        success: bool = self._make_invisible(last_state)
 
         # If last State was succesfully removed, then we try to make the new state visible
-        if not succsess:
+        if not success:
             return False
         else:
-            succsess = succsess and self._make_visible(new_state)
+            success: bool = success and self._make_visible(new_state)
 
-            return succsess
+            return success
 
     def _make_visible(self, state: State) -> bool:
         """
@@ -148,15 +156,15 @@ class MainWindow:
         if state is None:
             return False
 
-        frames: list[positioned_frame_i.PositionedFrame] = state.get_active_frames()
+        frames: List[positioned_frame_i.PositionedFrame] = state.get_active_frames()
 
         # First getting all information about position and then placing the actual_frame there
         for frame in frames:
-            column = frame.get_column()
-            row = frame.get_row()
-            column_span = frame.get_colum_span()
-            row_span = frame.get_row_span()
-            actual_frame = frame.get_frame()
+            column: int = frame.get_column()
+            row: int = frame.get_row()
+            column_span: int = frame.get_colum_span()
+            row_span: int = frame.get_row_span()
+            actual_frame: TopLevelFrame = frame.get_frame()
             sticky_type = frame.get_sticky()
 
             actual_frame.master = self._window
@@ -179,11 +187,12 @@ class MainWindow:
         if state is None:
             return False
 
-        frames: list[positioned_frame_i.PositionedFrame] = state.get_active_frames()
+        frames: List[positioned_frame_i.PositionedFrame] = state.get_active_frames()
 
         # Getting all frames and removing them from the grid
+        frame: PositionedFrame
         for frame in frames:
-            actual_frame = frame.get_frame()
+            actual_frame: TopLevelFrame = frame.get_frame()
             actual_frame.grid_remove()
 
         return True

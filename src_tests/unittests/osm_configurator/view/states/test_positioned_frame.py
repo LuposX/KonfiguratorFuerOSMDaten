@@ -5,6 +5,7 @@ import src.osm_configurator.view.toplevelframes.top_level_frame as top_level_fra
 import src.osm_configurator.view.states.state_manager as state_manager_i
 
 
+# Testing if incorrect innits will cause an TypeError
 def test_type_errors():
     with pytest.raises(TypeError):
         positioned_frame_i.PositionedFrame(top_level_frame_i.TopLevelFrame(None), "0", 0, 0, 0,
@@ -27,6 +28,7 @@ def test_type_errors():
                                            69)
 
 
+# Testing if only positive Values are accepted, fo row, column, rowspan and columnspan
 def test_value_errors():
     with pytest.raises(ValueError):
         positioned_frame_i.PositionedFrame(top_level_frame_i.TopLevelFrame(None),
@@ -49,6 +51,7 @@ def test_value_errors():
                                            state_manager_i.FRAME_STICKY_WHOLE_CELL)
 
 
+# Testing if attributes are set properly, and you get the same values back you put in
 @pytest.mark.parametrize("frame,column,row,column_span,row_span,sticky",
                          [(top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0, state_manager_i.FRAME_STICKY_WHOLE_CELL),
                           (top_level_frame_i.TopLevelFrame(None), 1, 0, 0, 0, state_manager_i.FRAME_STICKY_WHOLE_CELL),

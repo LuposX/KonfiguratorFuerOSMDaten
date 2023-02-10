@@ -45,12 +45,12 @@ class PositionedFrame:
         elif colum < SMALLEST_COLUM_AND_ROW_VALUE or row < SMALLEST_COLUM_AND_ROW_VALUE:
             raise ValueError("The Value of colum or row can't negative!")
         else:
-            self._frame = frame
-            self._colum = colum
-            self._row = row
-            self._colum_span = colum_span
-            self._row_span = row_span
-            self._sticky = sticky
+            self._frame: TopLevelFrame = frame
+            self._colum: int = colum
+            self._row: int = row
+            self._colum_span: int = colum_span
+            self._row_span: int = row_span
+            self._sticky: str = sticky
 
     def get_frame(self) -> TopLevelFrame:
         """
