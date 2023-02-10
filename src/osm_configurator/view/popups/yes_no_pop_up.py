@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import src.osm_configurator.view.states.view_constants as vc
+
 import customtkinter
 
-POPUPSIZE = "400x200"  # Holds the size of the Popup
+POPUPSIZE = vc.ViewConstants.POPUPSIZE.value  # Holds the size of the Popup
 
 
 class YesNoPopUp(customtkinter.CTk):
@@ -48,6 +50,7 @@ class YesNoPopUp(customtkinter.CTk):
         It will return "True" to the given function.
         """
         self.func(True)
+        return True
 
     def cancel(self):
         """
@@ -55,6 +58,7 @@ class YesNoPopUp(customtkinter.CTk):
         It will return "False" to the given function.
         """
         self.func(False)
+        return False
 
 
 def combine_funcs(*funcs):

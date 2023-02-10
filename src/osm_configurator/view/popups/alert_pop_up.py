@@ -1,8 +1,10 @@
 from __future__ import annotations
 
+import src.osm_configurator.view.states.view_constants as vc
+
 import customtkinter
 
-POPUPSIZE = "400x200"  # Holds the size of the Popup
+POPUPSIZE = vc.ViewConstants.POPUPSIZE.value  # Holds the size of the Popup
 
 
 class AlertPopUp(customtkinter.CTk):
