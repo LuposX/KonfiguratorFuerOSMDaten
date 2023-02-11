@@ -9,7 +9,8 @@ import src.osm_configurator.model.project.active_project
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
-from typing import TYPE_CHECKING
+from src.osm_configurator.model.project.configuration.category import Category
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
@@ -179,10 +180,10 @@ class ProjectSaver:
 
         # Iterates throw every category and makes a csv-file for it
         for category in category_manager.get_categories():
-            filename = self._create_category_filename(category.get_category_name)
+            filename = self._create_category_filename(category.get_category_name())
 
             # Converts active attributes
-            active_attributes: list[str] = []
+            active_attributes: List[str] = []
             for attribute in category.get_activated_attribute():
                 active_attributes.append(attribute.get_name())
 
@@ -210,7 +211,7 @@ class ProjectSaver:
                              ["black_list", category.get_blacklist()],
                              ["calculation_method_of_area", category.get_calculation_method_of_area()],
                              ["active_attributes", active_attributes],
-                             ["strictly_use_default_values", category.get_strictly_use_default_values],
+                             ["strictly_use_default_values", category.get_strictly_use_default_values()],
                              ["attractivity_attributes", all_attractivity_attributes_list],
                              ["default_value_list", all_default_value_entries_list]]
             _write_csv_file(category_data, filename)

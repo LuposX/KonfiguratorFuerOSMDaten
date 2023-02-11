@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.configuration.category
+from src.osm_configurator.model.project.configuration.category import Category
 
 from typing import TYPE_CHECKING
 
@@ -18,7 +18,7 @@ class CategoryManager:
         """
         Constructor of the class.
         """
-        self._categories = []
+        self._categories: List[Category] = []
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -51,7 +51,7 @@ class CategoryManager:
             return None
         return self._categories[index]
 
-    def get_categories(self) -> List:
+    def get_categories(self) -> List[Category]:
         """
         Getter for all the Categories.
 
@@ -60,7 +60,7 @@ class CategoryManager:
         """
         return self._categories
 
-    def create_category(self, new_category: List):
+    def create_category(self, new_category: Category):
         """
         Creates a new category, that will be empty.
 
