@@ -16,8 +16,7 @@ from src.osm_configurator.model.project.configuration.attractivity_attribute imp
 
 class MyTestCase(unittest.TestCase):
     def test_build(self):
-        # shutil.rmtree("C:\Arbeitsplatz\AA_PSE_tests\TestProject1")
-        path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
+        path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "Das sollte funktionieren")
         self.active_project.get_project_saver().save_project()
 
@@ -29,36 +28,36 @@ class MyTestCase(unittest.TestCase):
         self.active_project.get_project_saver().save_project()
 
     def test_save_config_phase(self):
-        path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
+        path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
         self.active_project.get_project_saver().save_project()
 
     def test_save_osm_configurator(self):
-        path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
+        path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.active_project.get_config_manager().get_osm_data_configuration() \
-            .set_osm_data(Path("C:\Arbeitsplatz\KIT.docx"))
+            .set_osm_data(Path("C:"))
         self.active_project.get_project_saver().save_project()
 
     def test_save_aggregation_configurator(self):
-        path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
+        path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.active_project.get_config_manager().get_aggregation_configuration() \
             .set_aggregation_method_active(AggregationMethod.LOWER_QUARTILE, True)
         self.active_project.get_project_saver().save_project()
 
     def test_save_cut_out_configurator(self):
-        path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
+        path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.active_project.get_config_manager().get_cut_out_configuration() \
-            .set_cut_out_path(Path("C:\Arbeitsplatz\KIT.docx"))
+            .set_cut_out_path(Path("C:"))
         self.active_project.get_config_manager().get_cut_out_configuration() \
             .set_cut_out_mode(CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
         self.active_project.get_project_saver().save_project()
 
     def test_save_categories(self):
-        path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
+        path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         test_category: Category = Category()
         test_category.set_category_name("Category1")
