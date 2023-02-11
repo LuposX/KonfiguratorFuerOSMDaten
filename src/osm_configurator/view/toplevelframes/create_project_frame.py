@@ -4,6 +4,7 @@ import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.project_controller_interface
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
+from src.osm_configurator.view.toplevelframes import main_menu_frame
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 import src.osm_configurator.view.states.state_name_enum as sne
 

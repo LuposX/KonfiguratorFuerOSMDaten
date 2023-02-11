@@ -38,14 +38,10 @@ class YesNoPopUp(customtkinter.CTk):
             func (typing.Callable): Function taking one Boolean and has no return for the PopUp to return a message
         """
 
-        self.func = func
+        self._func = func
 
         super().__init__(
-            master=None,
-            corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
             fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
-            title="Alert",
-            geometry=pop_up_constants_i.PopUpConstants.POPUPSIZE.value
         )
 
         # Configuring the grid
@@ -62,7 +58,7 @@ class YesNoPopUp(customtkinter.CTk):
                                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value, ) \
-            .grid(row=1, column=1, rowspan=1, columnspan=1, padx=10, pady=10)
+            .grid(row=1, column=1, rowspan=1, columnspan=1, padx=20, pady=20)
 
         self.accept_button = \
             customtkinter.CTkButton(master=self,
@@ -90,20 +86,24 @@ class YesNoPopUp(customtkinter.CTk):
                                     ) \
             .grid(row=2, column=2, rowspan=1, columnspan=1, padx=10, pady=10)
 
-    def accept(self):
+    def accept(self) -> bool:
         """
         Models the acceptance-process if a button is pressed.
         It will return "True" to the given function.
+        Returns:
+            bool: True (every time)
         """
-        self.func(True)
+        self._func(True)
         return True
 
-    def cancel(self):
+    def cancel(self) -> bool:
         """
         Models the cancelling-process if a button is pressed.
         It will return "False" to the given function.
+        Returns:
+            bool: False (every time)
         """
-        self.func(False)
+        self._func(False)
         return False
 
 
@@ -126,3 +126,4 @@ def combine_funcs(*funcs):
             f(*args, **kwargs)
 
     return inner_combined_funcs
+

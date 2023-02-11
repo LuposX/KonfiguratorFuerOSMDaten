@@ -167,3 +167,4 @@ class MainMenuFrame(Activatable, TopLevelFrame):
             filedialog.askopenfilename(title="Please select Your File",
                                        filetypes=".geojson")
         return new_path
+
