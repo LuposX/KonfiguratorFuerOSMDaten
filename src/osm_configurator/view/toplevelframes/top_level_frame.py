@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import customtkinter
+
 from customtkinter import CTkFrame
 
 import src.osm_configurator.view.states.state_manager

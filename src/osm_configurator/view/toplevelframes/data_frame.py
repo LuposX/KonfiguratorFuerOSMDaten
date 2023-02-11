@@ -4,6 +4,7 @@ import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.data_visualization_controller_interface
 import src.osm_configurator.control.cut_out_controller_interface
 import src.osm_configurator.control.category_controller_interface
+import src.osm_configurator.control.osm_data_controller_interface
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -18,7 +19,7 @@ class DataFrame(TopLevelFrame):
     - Copy in category configurations
     """
 
-    def __init__(self, state_manager, data_visualization_controller, cut_out_controller, category_controller):
+    def __init__(self, state_manager, data_visualization_controller, cut_out_controller, category_controller, osm_data_controller):
         """
         This method creates a DataFrame, that lets the User input data into the project.
 
@@ -27,6 +28,7 @@ class DataFrame(TopLevelFrame):
             data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
             cut_out_controller (cut_out_controller.CutOutController): Respective controller
             category_controller (category_controller.CategoryController): Respective controller
+            osm_data_controller (osm_data_controller_interface.IOSMDataController): Respective controller
         """
         # super().__init__(state_manager, control)
         pass
