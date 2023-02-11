@@ -161,7 +161,7 @@ class ProjectSaver:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
         filename = self._create_config_file("aggregation_methods")
-        aggregation_methods: list = []
+        aggregation_methods: list[str] = []
         aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
             aggregation_methods.append([method.get_name(), str(aggregation_configurator.is_aggregation_method_active(method))])
@@ -196,7 +196,7 @@ class ProjectSaver:
         for category in category_manager.get_categories():
 
             # Converts active attributes
-            active_attributes: List[str] = []
+            active_attributes: list[str] = []
             for attribute in category.get_activated_attribute():
                 active_attributes.append(attribute.get_name())
 
@@ -207,7 +207,7 @@ class ProjectSaver:
                 for attribute in Attribute:
                     attractivity_attribute_values.append(attribute.get_name() + ":" + str(attractivity_attribute.get_attribute_factor(attribute)))
                 attractivity_attribute_values.append("base:" + str(attractivity_attribute.get_base_factor()))
-                all_attractivity_attributes_list.append(";".join(attractivity_attribute_values))
+                all_attractivity_attributes_list.append(",".join(attractivity_attribute_values))
 
             # Saves all default value entry
             all_default_value_entries_list: list[str] = []
@@ -215,16 +215,16 @@ class ProjectSaver:
                 default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag()]
                 for attribute in Attribute:
                     default_value_entry_values.append(attribute.get_name() + ":" + str(default_value_entry.get_attribute_default(attribute)))
-                all_default_value_entries_list.append(";".join(default_value_entry_values))
+                all_default_value_entries_list.append(",".join(default_value_entry_values))
             category_data = [["name", category.get_category_name()],
                              ["status", category.is_active()],
-                             ["white_list", category.get_whitelist()],
-                             ["black_list", category.get_blacklist()],
+                             ["white_list", ";".join(category.get_whitelist())],
+                             ["black_list", ";".join(category.get_blacklist())],
                              ["calculation_method_of_area", category.get_calculation_method_of_area().get_calculation_method()],
-                             ["active_attributes", active_attributes],
+                             ["active_attributes", ";".join(active_attributes)],
                              ["strictly_use_default_values", category.get_strictly_use_default_values()],
-                             ["attractivity_attributes", all_attractivity_attributes_list],
-                             ["default_value_list", all_default_value_entries_list]]
+                             ["attractivity_attributes", ";".join(all_attractivity_attributes_list)],
+                             ["default_value_list", ";".join(all_default_value_entries_list)]]
             filename = self._create_category_file(category.get_category_name())
             _write_csv_file(category_data, filename)
         return True

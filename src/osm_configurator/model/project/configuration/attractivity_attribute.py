@@ -29,7 +29,7 @@ class AttractivityAttribute:
 
         attribute: Attribute
         for attribute in attribute_enum.Attribute:
-            self._attribute_factors[attribute] = 0
+            self._attribute_factors[attribute] = 0.0
 
         self._base_attractivity: float = base_attractivity
 

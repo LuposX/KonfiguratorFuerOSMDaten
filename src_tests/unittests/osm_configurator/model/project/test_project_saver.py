@@ -75,7 +75,12 @@ class MyTestCase(unittest.TestCase):
         test_category.add_attractivity_attribute(test_attractivity_attribute_one)
         test_category.add_attractivity_attribute(test_attractivity_attribute_two)
 
+        test_category_two: Category = Category()
+        test_category_two.set_category_name("Category2")
+        test_category_two.activate()
+
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
+        self.active_project.get_config_manager().get_category_manager().create_category(test_category_two)
         self.active_project.get_project_saver().save_project()
 
 

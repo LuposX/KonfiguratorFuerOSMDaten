@@ -253,7 +253,7 @@ class Category:
         Getter for the AttractivityAttributes of the category.
 
         Returns:
-            list[attractivity_attribute.AttractivityAttribute]: List of all used attractivity attributes
+            List[attractivity_attribute.AttractivityAttribute]: List of all used attractivity attributes
         """
         return self._attractivity_attributes
 

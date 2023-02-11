@@ -37,7 +37,7 @@ class CategoryManager:
                     _activated_attributes.append(attribute)
         return _activated_attributes
 
-    def get_category(self, index):
+    def get_category(self, index: int) -> Category:
         """
         Gets a category based on the index.
 
@@ -47,7 +47,8 @@ class CategoryManager:
         Returns:
             category.Category: The Category we wanted.
         """
-        if index <= 0 or index > len(self._categories):
+        if index < 0 or index > len(self._categories):
+            print("test")
             return None
         return self._categories[index]
 
@@ -60,19 +61,22 @@ class CategoryManager:
         """
         return self._categories
 
-    def create_category(self, new_category: Category):
+    def create_category(self, new_category: Category) -> bool:
         """
         Creates a new category, that will be empty.
 
-        Returns:
+        Args:
             category.Category: The newly created category.
+
+        Returns:
+            bool: True, if creating works, otherwise false.
         """
         if new_category not in self._categories:
             self._categories.append(new_category)
             return True
         return False
 
-    def remove_category(self, category):
+    def remove_category(self, category) -> bool:
         """
         Removes the given category from the categories list, if element is inside the List.
 
@@ -87,21 +91,21 @@ class CategoryManager:
             return True
         return False
 
-    def override_categories(self, new_category_list):
+    def override_categories(self, new_category_list: List[Category]):
         """
         Overwrites the list of categories with the given list, if both lists are not identical.
 
         Args:
-            new_category_list (list[Categories]): List of categories, that will overwrite the already existing list.
+            new_category_list (List[Categories]): List of categories, that will overwrite the already existing list.
         """
         self._categories = new_category_list
 
-    def merge_categories(self, category_input_list):
+    def merge_categories(self, category_input_list: List[Category]):
         """
         Merges the existing category list with the given list if both lists are not identical.
 
         Args:
-            category_input_list (list[Category]): New list of categories that will be merged into the existing list.
+            category_input_list (List[Category]): New list of categories that will be merged into the existing list.
         """
         for category in category_input_list:
             if category not in self._categories:
