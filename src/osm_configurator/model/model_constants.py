@@ -24,6 +24,7 @@ CL_AREA: Final = "area"
 CL_AREA_WITHOUT_FLOORS: Final = "area_of_osm_element"
 CL_AREA_WITH_FLOORS: Final = "area_of_osm_element_with_floors"
 CL_NUMBER_OF_FLOORS: Final = "number_of_floors"
+CL_LOCATION: Final = "location"
 
 
 # Misc
