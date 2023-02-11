@@ -2,18 +2,21 @@ from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 import src.osm_configurator.model.project.configuration.attractivity_attribute
-import src.osm_configurator.model.project.configuration.default_value_entry
+import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
+
+import src.osm_configurator.model.model_constants as model_constants_i
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
-    from typing import Tuple
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
+    from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
+    from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 
 class Category:
@@ -28,21 +31,27 @@ class Category:
         Creates a new instance of a "Category" class.
         """
         self._active: bool = False
-        self._whitelist = []
-        self._blacklist = []
-        self._category_name = "Category Name"
-        self._calculation_method_of_area = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
-        self._attractivity_attributes = []
-        self._default_value_list = []
-        self._length = 3
+        self._whitelist: List = []
+        self._blacklist: List = []
+        self._category_name: str = "Category Name"
+        self._calculation_method_of_area: CalculationMethodOfArea = None
+        self._attractivity_attributes: List = []
+        self._default_value_list: List = []
+        self._strictly_use_default_values: bool = False
+
+        # Adds DEFAULT-Tag to the tag-list
+        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
+        self._default_value_list.append(self._default_tag)
+
+        self._strictly_use_default_values: bool = False
 
         # Create the Attribute dictionary
-        self._attributes: Dict = {}
-        all_enums_names = [member.name for member in attribute_enum_i.Attribute]
-        for enum_name in all_enums_names:
-            self._attributes.update({enum_name: False})
+        self._attributes: Dict[Attribute, bool] = {}
+        attribute: Attribute
+        for attribute in attribute_enum_i.Attribute:
+            self._attributes.update({attribute: False})
 
-    def is_active(self):
+    def is_active(self) -> bool:
         """
         Checks if value "active" is set.
 
@@ -51,7 +60,7 @@ class Category:
         """
         return self._active
 
-    def activate(self):
+    def activate(self) -> bool:
         """
         Sets the active-value to True.
 
@@ -63,7 +72,7 @@ class Category:
             return True
         return False
 
-    def deactivate(self):
+    def deactivate(self) -> bool:
         """
         Sets the active-value to False.
 
@@ -75,16 +84,16 @@ class Category:
             return True
         return False
 
-    def get_whitelist(self):
+    def get_whitelist(self) -> list[str]:
         """
         Getter for the whitelist of the category.
 
         Returns:
-            List[Tuple[str, str]]: List containing all tags in the form of key,value pairs.
+            list[str]: List containing all tags in the form of key,value pairs.
         """
         return self._whitelist
 
-    def set_whitelist(self, new_whitelist):
+    def set_whitelist(self, new_whitelist: list[str]) -> bool:
         """
         Changes the old whitelist to a new one.
 
@@ -108,7 +117,7 @@ class Category:
         """
         return self._blacklist
 
-    def set_blacklist(self, new_blacklist):
+    def set_blacklist(self, new_blacklist: list[str]) -> bool:
         """
         Overwrites the old Blacklist with a new value.
 
@@ -123,7 +132,7 @@ class Category:
             return True
         return False
 
-    def get_category_name(self):
+    def get_category_name(self) -> str:
         """
         Getter for the category name.
 
@@ -132,38 +141,46 @@ class Category:
         """
         return self._category_name
 
-    def set_category_name(self, new_category_name):
+    def set_category_name(self, new_category_name: str) -> bool:
         """
         Overwrites the old category_name.
 
         Args:
             new_category_name (str): new value for the category_name.
-
-        Returns:
-            bool: True, if the overwriting process concluded successfully, else False.
         """
-        if new_category_name:
-            self._category_name = new_category_name
-            return True
-        return False
+        self._category_name = new_category_name
 
-    def get_activated_attribute(self) -> List[Attribute]:
+    def get_activated_attribute(self) -> list[Attribute]:
         """
         Return a list of all used attributes, of the categories.
         This is used to know which tags we need to save.
 
         Returns:
-            List[Attribute]: A list that contains all used attributes
+            list[Attribute]: A list that contains all used attributes
         """
         _activated = []
-
-        for enum_name in self._attributes:
-            if self._attributes.get(enum_name) == True:
-                _activated.append(enum_name)
+        for enum in self._attributes:
+            if self._attributes.get(enum) == True:
+                _activated.append(enum)
 
         return _activated
 
-    def get_attribute(self, attribute) -> bool:
+    def get_not_activated_attribute(self) -> List[Attribute]:
+        """
+        Return a list of all attributes, that are not activated.
+
+        Returns:
+            List[Attribute]: A list that contains all used attributes
+        """
+        _not_activated = []
+
+        for enum in self._attributes:
+            if self._attributes.get(enum) == False:
+                _not_activated.append(enum)
+
+        return _not_activated
+
+    def get_attribute(self, attribute: Attribute) -> bool:
         """
         Returns if a given attribute is activated or not.
 
@@ -173,12 +190,12 @@ class Category:
         Returns:
             bool: True when the attribute is active, otherwise false.
         """
-        if self._attributes.get(attribute.name):
+        if self._attributes.get(attribute):
             return True
         else:
             return False
 
-    def set_attribute(self, attribute, boolean):
+    def set_attribute(self, attribute: Attribute, boolean: bool) -> bool:
         """
         Activates and deactivates a given attribute .
 
@@ -189,10 +206,31 @@ class Category:
         Returns:
             bool: True when it works, otherwise false.
         """
-        self._attributes[attribute.name] = boolean
-        return True
+        if attribute in attribute_enum_i.Attribute:
+            self._attributes[attribute] = boolean
+            return True
+        else:
+            return False
 
-    def get_calculation_method_of_area(self):
+    def get_strictly_use_default_values(self) -> bool:
+        """
+        Getter for _strictly_use_default_values.
+
+        Returns:
+            bool: True when the default values should be used strictly.
+        """
+        return self._strictly_use_default_values
+
+    def set_strictly_use_default_values(self, boolean: bool):
+        """
+        Setter for _strictly_use_default_values.
+
+        Args:
+            boolean (bool): The new value _strictly_use_default_values should be set to.
+        """
+        self._strictly_use_default_values = boolean
+
+    def get_calculation_method_of_area(self) -> CalculationMethodOfArea:
         """
         Getter for the calculated area method.
 
@@ -201,7 +239,7 @@ class Category:
         """
         return self._calculation_method_of_area
 
-    def set_calculation_method_of_area(self, new_calculation_method_of_area):
+    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea) -> bool:
         """
         Overwrites current calculate_area with the given value.
 
@@ -210,7 +248,7 @@ class Category:
         """
         self._calculation_method_of_area = new_calculation_method_of_area
 
-    def get_attractivity_attributes(self):
+    def get_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
         Getter for the AttractivityAttributes of the category.
 
@@ -219,7 +257,7 @@ class Category:
         """
         return self._attractivity_attributes
 
-    def add_attractivity_attribute(self, new_attractivity_attribute):
+    def add_attractivity_attribute(self, new_attractivity_attribute: AttractivityAttribute) -> bool:
         """
         Adds a new attractivity attribute to the list.
 
@@ -235,7 +273,7 @@ class Category:
             return True
         return False
 
-    def remove_attractivity_attribute(self, attractivity_attribute):
+    def remove_attractivity_attribute(self, attractivity_attribute: AttractivityAttribute) -> bool:
         """
         Removes an already existing attribute from the list.
 
@@ -251,7 +289,7 @@ class Category:
             return True
         return False
 
-    def get_default_value_list(self):
+    def get_default_value_list(self) -> list[DefaultValueEntry]:
         """
         Getter for the default values of the category.
 
@@ -260,7 +298,7 @@ class Category:
         """
         return self._default_value_list
 
-    def add_default_value_entry(self, new_default_value_entry):
+    def add_default_value_entry(self, new_default_value_entry: DefaultValueEntry) -> bool:
         """
         Adds a new value to the default_value_entry list.
 
@@ -275,7 +313,7 @@ class Category:
             return True
         return False
 
-    def remove_default_value_entry(self, default_value_entry):
+    def remove_default_value_entry(self, default_value_entry: DefaultValueEntry) -> bool:
         """
         Removes an already existing element from the default_value_entry list.
 
@@ -290,7 +328,7 @@ class Category:
             return True
         return False
 
-    def move_default_value_entry_up(self, default_value_entry):
+    def move_default_value_entry_up(self, default_value_entry: DefaultValueEntry) -> bool:
         """
         Moves an already existing default value from the list one element up.
 
@@ -309,7 +347,7 @@ class Category:
             = self._default_value_list[index], self._default_value_list[index - 1]
         return True
 
-    def move_default_value_entry_down(self, default_value_entry):
+    def move_default_value_entry_down(self, default_value_entry: DefaultValueEntry) -> bool:
         """
         Moves an already existing default value from list one element down.
 
@@ -327,3 +365,6 @@ class Category:
         self._default_value_list[index + 1], self._default_value_list[index] \
             = self._default_value_list[index], self._default_value_list[index + 1]
         return True
+
+    def get_strictly_use_default_values(self) -> bool:
+        return self._strictly_use_default_values
