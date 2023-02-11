@@ -27,6 +27,20 @@ def _write_csv_file(data: list, filename: Path) -> bool:
     return True
 
 
+def _create_filename(name: str) -> Path:
+    """
+    Creates a name for the file to store data.
+
+    Args:
+        name (str): The name of the new file.
+
+    Returns:
+        pathlib.Path: The created File.
+    """
+    filename: str = name + ".csv"
+    return Path(filename)
+
+
 class ProjectSaver:
     """
     The ProjectSave is responsible for saving the internal representation of the
@@ -103,7 +117,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename: Path = self._create_filename("project_settings")
+        filename: Path = self._create_file("project_settings")
         settings_data = [["name", self.active_project.get_project_settings().get_name()],
                          ["description", self.active_project.get_project_settings().get_description()],
                          ["location", self.active_project.get_project_settings().get_location()],
@@ -146,7 +160,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_config_filename("active_methods")
+        filename = self._create_config_file("active_methods")
         aggregation_methods: list = []
         aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
@@ -161,7 +175,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_config_filename("cut_out_configuration")
+        filename = self._create_config_file("cut_out_configuration")
         cut_out_data = [["cut_out_path",
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
                         ["cut_out_mode",
@@ -180,7 +194,6 @@ class ProjectSaver:
 
         # Iterates throw every category and makes a csv-file for it
         for category in category_manager.get_categories():
-            filename = self._create_category_filename(category.get_category_name())
 
             # Converts active attributes
             active_attributes: List[str] = []
@@ -189,35 +202,35 @@ class ProjectSaver:
 
             # Saves all attractivity attributes
             all_attractivity_attributes_list: list[str] = []
-            for attractivity_attribute in category.get_activated_attribute():
-                attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name + "_"]
-                for attribute in Attribute:
-                    attractivity_attribute_values.append(attribute.get_name() + ":" + \
-                                                    attractivity_attribute.get_attribute_factor(attribute))
-                attractivity_attribute_values.append("base:" + attractivity_attribute.get_base_factor())
+            for attractivity_attribute in category.get_attractivity_attributes():
+                attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name]
+                for attribute_tuple in attractivity_attribute.get_attractivity_attribute_list():
+                    attractivity_attribute_values.append(attribute_tuple[0].get_name() + ":" + str(attribute_tuple[1]))
+                attractivity_attribute_values.append("base:" + str(attractivity_attribute.get_base_factor()))
                 all_attractivity_attributes_list.append(";".join(attractivity_attribute_values))
 
             # Saves all default value entry
             all_default_value_entries_list: list[str] = []
             for default_value_entry in category.get_default_value_list():
-                default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag + "_"]
+                default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag()]
                 for attribute in Attribute:
-                    default_value_entry_values.append(attribute.get_name() + ":" \
-                                                      + default_value_entry.get_attribute_default_value(attribute))
+                    default_value_entry_values.append(attribute.get_name() + ":" + str(default_value_entry.get_attribute_default(attribute)))
+                print(";".join(default_value_entry_values))
                 all_default_value_entries_list.append(";".join(default_value_entry_values))
             category_data = [["name", category.get_category_name()],
                              ["status", category.is_active()],
                              ["white_list", category.get_whitelist()],
                              ["black_list", category.get_blacklist()],
-                             ["calculation_method_of_area", category.get_calculation_method_of_area()],
+                             ["calculation_method_of_area", category.get_calculation_method_of_area().get_calculation_method()],
                              ["active_attributes", active_attributes],
                              ["strictly_use_default_values", category.get_strictly_use_default_values()],
                              ["attractivity_attributes", all_attractivity_attributes_list],
                              ["default_value_list", all_default_value_entries_list]]
+            filename = self._create_category_file(category.get_category_name())
             _write_csv_file(category_data, filename)
         return True
 
-    def _create_filename(self, name: str) -> Path:
+    def _create_file(self, name: str) -> Path:
         """
         Creates a filename to store data from the given str and destination.
 
@@ -227,10 +240,9 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        file: str = name + ".csv"
-        return self.destination.joinpath(file)
+        return self.destination.joinpath(_create_filename(name))
 
-    def _create_config_filename(self, name: str) -> Path:
+    def _create_config_file(self, name: str) -> Path:
         """
         Creates a filename to store data from the given str and destination.
 
@@ -241,9 +253,9 @@ class ProjectSaver:
             pathlib.Path: The created path.
         """
         config_directory: Path = self.destination.joinpath("configuration")
-        return config_directory.joinpath(name + ".csv")
+        return config_directory.joinpath(_create_filename(name))
 
-    def _create_category_filename(self, name: str) -> Path:
+    def _create_category_file(self, name: str) -> Path:
         """
         Creates a filename to store category-data from the given str and destination.
 
@@ -255,4 +267,4 @@ class ProjectSaver:
         """
         config_directory: Path = self.destination.joinpath("configuration")
         category_directory: Path = config_directory.joinpath("categories")
-        return category_directory.joinpath(self._create_filename(name))
+        return category_directory.joinpath(_create_filename(name))

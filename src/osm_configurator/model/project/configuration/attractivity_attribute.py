@@ -1,6 +1,11 @@
 from __future__ import annotations
 
+from typing import List, TYPE_CHECKING
+
 import src.osm_configurator.model.project.configuration.attribute_enum
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 
 class AttractivityAttribute:
@@ -12,7 +17,7 @@ class AttractivityAttribute:
     - A base factor
     """
 
-    def __init__(self, attractivity_attribute_name, attractivity_attribute_list, base_attractivity):
+    def __init__(self, attractivity_attribute_name: str, attractivity_attribute_list: List[(Attribute, float)], base_attractivity: float):
         """
         Creates a new instance of a "AttractivityAttribute" class.
 
@@ -25,9 +30,9 @@ class AttractivityAttribute:
         Examples:
             An example for attractivity_attribute_list: [(AREA, 1.0), (NUMER_OF_FLOOR, 2.0), (GROUND_AREA, 6.9)]
         """
-        self._attractivity_attribute_name = attractivity_attribute_name
-        self._attractivity_attribute_list = attractivity_attribute_list
-        self._base_attractivity = base_attractivity
+        self._attractivity_attribute_name: str = attractivity_attribute_name
+        self._attractivity_attribute_list: List[(Attribute, float)] = attractivity_attribute_list
+        self._base_attractivity: float = base_attractivity
 
     def get_attractivity_attribute_name(self):
         """
@@ -51,21 +56,21 @@ class AttractivityAttribute:
         self._attractivity_attribute_name = new_name
         return True
 
-    def get_attractivity_attribute_list(self):
+    def get_attractivity_attribute_list(self) -> List[(Attribute, float)]:
         """
         Getter for the list of attributes and factors.
 
         Returns:
-            list[(attribute_enum.Attribute, float)]: The list of attribute factor pairs.
+            List[(attribute_enum.Attribute, float)]: The list of attribute factor pairs.
         """
         return self._attractivity_attribute_list
 
-    def set_attractivity_attribute_list(self, new_attractivity_attribute_list):
+    def set_attractivity_attribute_list(self, new_attractivity_attribute_list: List[(Attribute, float)]):
         """
          Setter for the list of attributes and factors.
 
         Args:
-            new_attractivity_attribute_list (list[(attribute_enum.Attribute, float)]): A list of attribute factor pairs
+            new_attractivity_attribute_list (List[(attribute_enum.Attribute, float)]): A list of attribute factor pairs
             we want to set as the new list of attributes and factors.
         """
         self._attractivity_attribute_name = new_attractivity_attribute_list

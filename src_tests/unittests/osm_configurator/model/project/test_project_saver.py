@@ -2,12 +2,16 @@ import shutil
 import unittest
 
 from pathlib import Path
+from typing import List
+
 from src.osm_configurator.model.project.active_project import ActiveProject
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from src.osm_configurator.model.project.configuration.category import Category
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
+from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 
 class MyTestCase(unittest.TestCase):
@@ -58,6 +62,15 @@ class MyTestCase(unittest.TestCase):
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         test_category: Category = Category()
         test_category.set_category_name("Category1")
+        test_category.activate()
+        test_category.set_whitelist(list("buildings=True"))
+        test_category.set_blacklist(list("buildings=True"))
+        test_category.set_calculation_method_of_area(CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
+        test_category.set_attribute(Attribute.PROPERTY_AREA, True)
+        test_category.set_strictly_use_default_values(True)
+        test_list: List[(Attribute, float)] = [(Attribute.PROPERTY_AREA, 0)]
+        test_attractivity_attribute: AttractivityAttribute = AttractivityAttribute("floors", test_list, 0)
+        test_category.add_attractivity_attribute(test_attractivity_attribute)
 
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
         self.active_project.get_project_saver().save_project()

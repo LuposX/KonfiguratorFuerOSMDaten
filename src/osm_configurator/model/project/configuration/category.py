@@ -34,7 +34,7 @@ class Category:
         self._whitelist: List = []
         self._blacklist: List = []
         self._category_name: str = "Category Name"
-        self._calculation_method_of_area: CalculationMethodOfArea = None
+        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA
         self._attractivity_attributes: List = []
         self._default_value_list: List = []
         self._strictly_use_default_values: bool = False
@@ -150,7 +150,7 @@ class Category:
         """
         self._category_name = new_category_name
 
-    def get_activated_attribute(self) -> list[Attribute]:
+    def get_activated_attribute(self) -> List[Attribute]:
         """
         Return a list of all used attributes, of the categories.
         This is used to know which tags we need to save.
@@ -160,7 +160,7 @@ class Category:
         """
         _activated = []
         for enum in self._attributes:
-            if self._attributes.get(enum) == True:
+            if self._attributes.get(enum):
                 _activated.append(enum)
 
         return _activated
@@ -289,7 +289,7 @@ class Category:
             return True
         return False
 
-    def get_default_value_list(self) -> list[DefaultValueEntry]:
+    def get_default_value_list(self) -> List[DefaultValueEntry]:
         """
         Getter for the default values of the category.
 
