@@ -160,7 +160,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_config_file("active_methods")
+        filename = self._create_config_file("aggregation_methods")
         aggregation_methods: list = []
         aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:

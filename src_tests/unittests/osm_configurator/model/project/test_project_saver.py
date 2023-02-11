@@ -19,19 +19,19 @@ class MyTestCase(unittest.TestCase):
         # shutil.rmtree("C:\Arbeitsplatz\AA_PSE_tests\TestProject1")
         path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
         self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "Das sollte funktionieren")
+        self.active_project.get_project_saver().save_project()
 
     def test_save_settings(self):
         self.test_build()
-        self.active_project.get_project_settings().set_name("ChangedName")
+        self.active_project.get_project_settings().change_name("ChangedName")
         self.active_project.get_project_settings().set_description("Hat bombe funktioniert")
-        self.active_project.get_project_settings().set_calculation_phase_checkpoints_folder("tniokcehc")
-        self.active_project.get_project_settings().set_location(Path("C:\Arbeitsplatz\Studium"))
+        self.active_project.get_project_settings().change_calculation_phase_checkpoints_folder("tniokcehc")
         self.active_project.get_project_saver().save_project()
 
     def test_save_config_phase(self):
         path: Path = Path("C:\Arbeitsplatz\AA_PSE_tests")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
-        self.active_project.set_last_step(ConfigPhase.DATA_CONFIG_PHASE)
+        self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
         self.active_project.get_project_saver().save_project()
 
     def test_save_osm_configurator(self):

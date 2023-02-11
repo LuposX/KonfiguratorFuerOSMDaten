@@ -47,6 +47,8 @@ class ProjectIOHandler:
         """
         self._active_project: ActiveProject = active_project
         self.destination: Path = Path()
+        self.config_directory: Path = Path()
+        self.category_directory: Path = Path()
 
     def build_project(self, path: Path) -> bool:
         """
@@ -62,9 +64,10 @@ class ProjectIOHandler:
 
         if not os.path.exists(path):
             os.makedirs(path)
-            config_directory: Path = path.joinpath("configuration")
-            os.makedirs(config_directory)
-            os.makedirs(config_directory.joinpath("categories"))
+            self.config_directory = path.joinpath("configuration")
+            os.makedirs(self.config_directory)
+            self.category_directory = self.config_directory.joinpath("categories")
+            os.makedirs(self.category_directory)
             os.makedirs(path.joinpath(self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder()))
             return True
         return False
@@ -80,6 +83,8 @@ class ProjectIOHandler:
             bool: True if creating the project works, otherwise false.
         """
         self.destination = path
+        self.config_directory = self.destination.joinpath("configuration")
+        self.category_directory = self.config_directory.joinpath("categories")
 
         # Loads the different parts of the project
         if not self._load_project_settings():
@@ -92,6 +97,9 @@ class ProjectIOHandler:
             return False
 
         if not self._load_aggregation_configuration():
+            return False
+
+        if not self._load_cut_out_configurator():
             return False
 
         if not self._load_category_configuration():
@@ -125,7 +133,7 @@ class ProjectIOHandler:
         return False
 
     def _load_osm_configurator(self) -> bool:
-        filepath: Path = self.destination.joinpath("osm_path.txt")
+        filepath: Path = self.config_directory.joinpath("osm_path.txt")
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 osm_path: str = f.read()
@@ -134,30 +142,30 @@ class ProjectIOHandler:
         return False
 
     def _load_aggregation_configuration(self) -> bool:
-        filepath: Path = self.destination.joinpath("active_methods.csv")
+        filepath: Path = self.config_directory.joinpath("aggregation_methods.csv")
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 reader = csv.reader(f)
                 aggregation = list(reader)
             for row in aggregation:
-                method: AggregationMethod = AggregationMethod.equals(row[0])
-                state: bool = False
-                if row[1] is "True":
-                    _state = True
-                if row[1] is not "False":
+                if row[1] == "True":
+                    self._active_project.get_config_manager().get_aggregation_configuration() \
+                        .set_aggregation_method_active(AggregationMethod.equals(row[0]), True)
+                elif row[1] == "False":
+                    self._active_project.get_config_manager().get_aggregation_configuration() \
+                        .set_aggregation_method_active(AggregationMethod.equals(row[0]), False)
+                else:
                     return False
-                self._active_project.get_config_manager().get_aggregation_configuration() \
-                    .set_aggregation_method_active(method, state)
             return True
         return False
 
     def _load_cut_out_configurator(self) -> bool:
-        filepath: Path = self.destination.joinpath("cut_out_configuration.csv")
+        filepath: Path = self.config_directory.joinpath("cut_out_configuration.csv")
+
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 reader = csv.reader(f)
                 cut_out = list(reader)
-
             cut_out_path: Path = Path(cut_out[0][1])
             cut_out_mode: CutOutMode = CutOutMode.equals(cut_out[1][1])
             if os.path.exists(cut_out_path):
@@ -177,7 +185,7 @@ class ProjectIOHandler:
 
         for file in os.listdir(self.destination):
             if file.endswith(".csv"):
-                filepath: Path = self.destination.joinpath(str(file))
+                filepath: Path = self.category_directory.joinpath(str(file))
                 with open(filepath, "r") as f:
                     reader = csv.reader(f)
                     category_data: list[str] = list(reader)
@@ -191,10 +199,10 @@ class ProjectIOHandler:
                     return False
 
                 # Loads whitelist
-                loaded_category.set_whitelist(category_data[2][1])
+                loaded_category.set_whitelist(category_data[2][1].split(","))
 
                 # Loads blacklist
-                loaded_category.set_blacklist(category_data[3][1])
+                loaded_category.set_blacklist(category_data[3][1].split(","))
 
                 # Loads calculation method of area
                 loaded_category.set_calculation_method_of_area(CalculationMethodOfArea.equals(category_data[4][1]))
