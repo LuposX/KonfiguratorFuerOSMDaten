@@ -113,7 +113,7 @@ class ProjectIOHandler:
             with open(filepath, "r") as f:
                 reader = csv.reader(f)
                 project_settings_data = list(reader)
-            if len(project_settings_data) is 4:
+            if len(project_settings_data) == 4:
                 self._active_project.get_project_settings().set_name(project_settings_data[0][1])
                 self._active_project.get_project_settings().set_description(project_settings_data[1][1])
                 self._active_project.get_project_settings().set_location(Path(project_settings_data[2][1]))
