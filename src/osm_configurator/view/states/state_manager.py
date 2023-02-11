@@ -3,11 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, List
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
-import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
-import src.osm_configurator.view.states.main_window as main_window_i
-
-import src.osm_configurator.view.toplevelframes.top_level_frame as top_level_frame_i
 
 import src.osm_configurator.view.toplevelframes.aggregation_frame as aggregation_frame_i
 import src.osm_configurator.view.toplevelframes.main_menu_frame as main_menu_frame_i
@@ -39,7 +35,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
     from src.osm_configurator.control.project_controller_interface import IProjectController
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
-    from src.osm_configurator.control.application_controller import ApplicationController
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
     from src.osm_configurator.view.toplevelframes.aggregation_frame import AggregationFrame
     from src.osm_configurator.view.toplevelframes.main_menu_frame import MainMenuFrame
