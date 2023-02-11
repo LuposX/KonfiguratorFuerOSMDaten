@@ -63,14 +63,17 @@ class MyTestCase(unittest.TestCase):
         test_category: Category = Category()
         test_category.set_category_name("Category1")
         test_category.activate()
-        test_category.set_whitelist(list("buildings=True"))
-        test_category.set_blacklist(list("buildings=True"))
+        white_list: list[str] = ["buildings=True", "test_False"]
+        black_list: list[str] = ["buildings=False"]
+        test_category.set_whitelist(white_list)
+        test_category.set_blacklist(black_list)
         test_category.set_calculation_method_of_area(CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
         test_category.set_attribute(Attribute.PROPERTY_AREA, True)
         test_category.set_strictly_use_default_values(True)
-        test_list: List[(Attribute, float)] = [(Attribute.PROPERTY_AREA, 0)]
-        test_attractivity_attribute: AttractivityAttribute = AttractivityAttribute("floors", test_list, 0)
-        test_category.add_attractivity_attribute(test_attractivity_attribute)
+        test_attractivity_attribute_one: AttractivityAttribute = AttractivityAttribute("attribute1", 0)
+        test_attractivity_attribute_two: AttractivityAttribute = AttractivityAttribute("attribute2", 5)
+        test_category.add_attractivity_attribute(test_attractivity_attribute_one)
+        test_category.add_attractivity_attribute(test_attractivity_attribute_two)
 
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
         self.active_project.get_project_saver().save_project()

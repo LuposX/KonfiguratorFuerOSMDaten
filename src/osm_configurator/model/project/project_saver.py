@@ -203,9 +203,9 @@ class ProjectSaver:
             # Saves all attractivity attributes
             all_attractivity_attributes_list: list[str] = []
             for attractivity_attribute in category.get_attractivity_attributes():
-                attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name]
-                for attribute_tuple in attractivity_attribute.get_attractivity_attribute_list():
-                    attractivity_attribute_values.append(attribute_tuple[0].get_name() + ":" + str(attribute_tuple[1]))
+                attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name()]
+                for attribute in Attribute:
+                    attractivity_attribute_values.append(attribute.get_name() + ":" + str(attractivity_attribute.get_attribute_factor(attribute)))
                 attractivity_attribute_values.append("base:" + str(attractivity_attribute.get_base_factor()))
                 all_attractivity_attributes_list.append(";".join(attractivity_attribute_values))
 
@@ -215,7 +215,6 @@ class ProjectSaver:
                 default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag()]
                 for attribute in Attribute:
                     default_value_entry_values.append(attribute.get_name() + ":" + str(default_value_entry.get_attribute_default(attribute)))
-                print(";".join(default_value_entry_values))
                 all_default_value_entries_list.append(";".join(default_value_entry_values))
             category_data = [["name", category.get_category_name()],
                              ["status", category.is_active()],
