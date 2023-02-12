@@ -84,10 +84,10 @@ class CalculationFrame(TopLevelFrame, Activatable):
             customtkinter.CTkButton(master=self,
                                     text="Reduction",
                                     command=self.__reduction_pressed),
-            customtkinter.CTkButton(master=self.window,
+            customtkinter.CTkButton(master=self,
                                     text="Attractivity",
                                     command=self.__attractivity_pressed),
-            customtkinter.CTkButton(master=self.window,
+            customtkinter.CTkButton(master=self,
                                     text="Aggregation",
                                     command=self.__aggregation_pressed)
         ]

@@ -163,7 +163,7 @@ class MainWindow:
             sticky_type = frame.get_sticky()
 
             actual_frame.master = self._window
-            actual_frame.grid(row=row, column=column, rowspan=row_span, column_span=column_span, sticky=sticky_type)
+            actual_frame.grid(row=row, column=column, rowspan=row_span, columnspan=column_span, sticky=sticky_type)
             # After Frame is placed, activate it, so it starts its job
             actual_frame.activate()
 

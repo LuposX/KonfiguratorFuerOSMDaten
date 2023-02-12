@@ -135,13 +135,10 @@ class MainMenuFrame(TopLevelFrame, Activatable):
         """
         self._state_manager.change_state(sne.StateName.SETTINGS.value)
 
-    def __load_external_project(self) -> bool:
+    def __load_external_project(self):
         """
         Loads a project from an external source. opens the explorer and lets the user choose the project.
         if the chosen project-path is not valid, an error occurs
-        Returns:
-            bool: True, if a valid path was chosen and the loading process is initialised by calling the controller,
-                  else false
         """
         new_path = Path(self.__browse_files())
 
@@ -150,11 +147,10 @@ class MainMenuFrame(TopLevelFrame, Activatable):
             popup = AlertPopUp("No valid Path entered. Please choose a valid Path")
             popup.mainloop()
             self.activate()
-            return False
+            return
 
         # Correct path was chosen, loading process will be initialised
         self._project_controller.load_project(new_path)
-        return True
 
     def __browse_files(self) -> str:
         """

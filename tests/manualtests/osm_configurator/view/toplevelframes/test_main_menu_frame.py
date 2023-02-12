@@ -7,9 +7,11 @@ from tests.manualtests.osm_configurator.view.controller_stub.project_controller_
 from tests.manualtests.osm_configurator.view.controller_stub.settings_controller_stub import SettingsControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.aggregation_controller_stub import AggreationControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.cut_out_controller_stub import CutOutControllerStub
-from tests.manualtests.osm_configurator.view.controller_stub.data_visualization_controller_stub import DataVisualizationControllerStub
+from tests.manualtests.osm_configurator.view.controller_stub.data_visualization_controller_stub import \
+    DataVisualizationControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.osm_data_controller_stub import OSMDataControllerStub
-from tests.manualtests.osm_configurator.view.controller_stub.calculation_controller_stub import CalculationControllerStub
+from tests.manualtests.osm_configurator.view.controller_stub.calculation_controller_stub import \
+    CalculationControllerStub
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 
