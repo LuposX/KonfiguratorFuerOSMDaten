@@ -22,7 +22,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_load_without_name(self):
         self.test_build()
-        path: Path = Path("C:")
+        path: Path = Path("C:\TestProject1")
         self.active_project: ActiveProject = ActiveProject(path, False,)
         self.assertEqual(self.active_project.get_last_step(), ConfigPhase.CATEGORY_CONFIG_PHASE)
 

@@ -15,6 +15,48 @@ from src.osm_configurator.model.project.configuration.category import Category
 
 
 class MyTestCase(unittest.TestCase):
+    def prepare(self):
+        path: Path = Path("C:")
+        self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "This project is to test!")
+
+        self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
+        self.active_project.get_project_saver().save_project()
+
+        self.active_project.get_config_manager().get_osm_data_configuration() \
+            .set_osm_data(Path("C:"))
+        self.active_project.get_project_saver().save_project()
+
+        self.active_project.get_config_manager().get_aggregation_configuration() \
+            .set_aggregation_method_active(AggregationMethod.LOWER_QUARTILE, True)
+        self.active_project.get_project_saver().save_project()
+
+        self.active_project.get_config_manager().get_cut_out_configuration() \
+            .set_cut_out_path(Path("C:"))
+        self.active_project.get_config_manager().get_cut_out_configuration() \
+            .set_cut_out_mode(CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+        self.active_project.get_project_saver().save_project()
+
+        test_category: Category = Category()
+        test_category.set_category_name("Category1")
+        test_category.activate()
+        white_list: list[str] = ["buildings=True", "test_False"]
+        black_list: list[str] = ["buildings=False"]
+        test_category.set_whitelist(white_list)
+        test_category.set_blacklist(black_list)
+        test_category.set_calculation_method_of_area(CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
+        test_category.set_attribute(Attribute.PROPERTY_AREA, True)
+        test_category.set_strictly_use_default_values(True)
+        test_attractivity_attribute_one: AttractivityAttribute = AttractivityAttribute("attribute1", 0)
+        test_attractivity_attribute_two: AttractivityAttribute = AttractivityAttribute("attribute2", 5)
+        test_category.add_attractivity_attribute(test_attractivity_attribute_one)
+        test_category.add_attractivity_attribute(test_attractivity_attribute_two)
+        test_category_two: Category = Category()
+        test_category_two.set_category_name("Category2")
+        test_category_two.activate()
+        self.active_project.get_config_manager().get_category_manager().create_category(test_category)
+        self.active_project.get_config_manager().get_category_manager().create_category(test_category_two)
+        self.active_project.get_project_saver().save_project()
+
     def test_load_settings(self):
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
@@ -51,6 +93,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED, test_cut_out_configurator.get_cut_out_mode())
 
     def test_categories(self):
+        self.prepare()
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         test_category_manager: CategoryManager = self.active_project.get_config_manager().get_category_manager()
