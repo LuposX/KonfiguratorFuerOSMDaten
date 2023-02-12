@@ -40,7 +40,6 @@ class Export:
         shutil.copytree(self._active_project.get_project_settings().get_location(),
                         path.joinpath(self._active_project.get_project_settings().get_name()))
 
-
     def export_configuration(self, path: Path) -> bool:
         """
         Exports the configuration to the given path. More specific, exports all the categories and their configurations,

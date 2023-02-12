@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
+
 class CategoryManager:
     """
     Category Manager holds a list of categories and changes them according to the given needs.
@@ -38,7 +39,7 @@ class CategoryManager:
                     _activated_attributes.append(attribute)
         return _activated_attributes
 
-    def get_category(self, name) -> Category:
+    def get_category(self, name: str) -> Category:
         """
         Gets a category based on the index.
 
@@ -127,7 +128,6 @@ class CategoryManager:
         for category in category_input_list:
             if category.get_category_name() not in self._get_all_categories_names():
                 self._categories.append(category)
-
 
     def get_all_defined_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
