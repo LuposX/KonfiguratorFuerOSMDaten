@@ -67,7 +67,7 @@ class Category:
             return True
         return False
 
-    def get_whitelist(self):
+    def get_whitelist(self) -> List[str]:
         """
         Getter for the whitelist of the category.
 
