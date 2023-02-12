@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING
 
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 
-from src.osm_configurator.model.application.application import Application
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
@@ -37,9 +36,11 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
     with open(os.path.join(path_to_new_project, "application_settings.csv"), "w") as file:
         file.write(str(path_to_new_project))
 
+
 class TestProjectSaver:
     def test_build(self):
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject1", "Das sollte funktionieren")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True,
+                                                           "TestProject1", "Das sollte funktionieren")
         self.active_project.get_project_saver().save_project()
 
     def test_save_settings(self):
@@ -98,4 +99,3 @@ class TestProjectSaver:
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
         self.active_project.get_config_manager().get_category_manager().create_category(test_category_two)
         self.active_project.get_project_saver().save_project()
-

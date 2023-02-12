@@ -1,4 +1,11 @@
-import unittest
+from __future__ import annotations
+
+import os
+import shutil
+from typing import TYPE_CHECKING
+
+import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
+
 from pathlib import Path
 
 from src.osm_configurator.model.project.active_project import ActiveProject
@@ -12,23 +19,39 @@ from src.osm_configurator.model.project.configuration.cut_out_configuration impo
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
 from src.osm_configurator.model.project.configuration.category import Category
+from src_tests.definitions import TEST_DIR
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
+
+def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
+    # Prepare result folder
+    deleter: FileDeletion = file_deletion.FileDeletion()
+    deleter.reset_folder(path_to_new_project)
+
+    # move the files from data to it
+    try:
+        shutil.copytree(path_old_data, path_to_new_project)
+    except:
+        pass
+    with open(os.path.join(path_to_new_project, "application_settings.csv"), "w") as file:
+        file.write(str(path_to_new_project))
 
 
 class TestProjectIO:
     def prepare(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "This project is to test!")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject1", "This project is to test!")
 
         self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
 
         self.active_project.get_config_manager().get_osm_data_configuration() \
-            .set_osm_data(Path("C:"))
+            .set_osm_data(Path(os.path.join(TEST_DIR, "data/monaco-latest.osm")))
 
         self.active_project.get_config_manager().get_aggregation_configuration() \
-            .set_aggregation_method_active(AggregationMethod.LOWER_QUARTILE, True)
+            .set_aggregation_method_active(AggregationMethod.MAXIMUM, True)
 
         self.active_project.get_config_manager().get_cut_out_configuration() \
-            .set_cut_out_path(Path("C:"))
+            .set_cut_out_path(Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
         self.active_project.get_config_manager().get_cut_out_configuration() \
             .set_cut_out_mode(CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
 
@@ -54,73 +77,60 @@ class TestProjectIO:
         self.active_project.get_project_saver().save_project()
 
     def test_load_settings(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
-        self.assertEqual("TestProject1", self.active_project.get_project_settings().get_name())
-        self.assertEqual("This project is to test!", self.active_project.get_project_settings().get_description())
-        self.assertEqual(Path("C:TestProject1"), self.active_project.get_project_settings().get_location())
-        self.assertEqual("calculation_check_points",
-                         self.active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
+        self.prepare()
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        assert "TestProject1" == self.active_project.get_project_settings().get_name()
+        assert "This project is to test!" == self.active_project.get_project_settings().get_description()
+        assert Path(os.path.join(TEST_DIR, "build/Projects/TestProject1")) == self.active_project.get_project_settings().get_location()
+        assert "calculation_check_points" == self.active_project.get_project_settings().get_calculation_phase_checkpoints_folder()
 
     def test_load_config(self):
         self.prepare()
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
-        self.assertEqual(ConfigPhase.CATEGORY_CONFIG_PHASE, self.active_project.get_last_step())
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        assert ConfigPhase.CATEGORY_CONFIG_PHASE == self.active_project.get_last_step()
 
     def test_load_osm(self):
         self.prepare()
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
-        self.assertEqual(Path("C:"),
-                         self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        assert Path(os.path.join(TEST_DIR, "data/monaco-latest.osm")) == self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data()
 
     def test_load_aggregation(self):
         self.prepare()
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
         test_aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
-        self.assertEqual(False, test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.AVERAGE))
-        self.assertEqual(True,
-                         test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.LOWER_QUARTILE))
+        assert test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.MAXIMUM)
+        assert not test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.MEDIAN)
 
     def test_cut_out_config(self):
         self.prepare()
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
         test_cut_out_configurator: CutOutConfiguration = self.active_project.get_config_manager().get_cut_out_configuration()
-        self.assertEqual(Path("C:"), test_cut_out_configurator.get_cut_out_path())
-        self.assertEqual(CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED, test_cut_out_configurator.get_cut_out_mode())
+        assert Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")) == test_cut_out_configurator.get_cut_out_path()
+        assert CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED == test_cut_out_configurator.get_cut_out_mode()
 
     def test_categories(self):
         self.prepare()
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
         test_category_manager: CategoryManager = self.active_project.get_config_manager().get_category_manager()
-        test_cat_one: Category = test_category_manager.get_category(0)
-        test_cat_two: Category = test_category_manager.get_category(1)
-        self.assertEqual("Category1", test_cat_one.get_category_name())
-        self.assertEqual("Category2", test_cat_two.get_category_name())
+        test_cat_one: Category = test_category_manager.get_category("Category1")
+        test_cat_two: Category = test_category_manager.get_category("Category2")
+        assert "Category1" == test_cat_one.get_category_name()
+        assert "Category2" == test_cat_two.get_category_name()
 
-        self.assertEqual(True, test_cat_one.is_active())
+        assert test_cat_one.is_active()
         white_list: list[str] = ["buildings=True", "test_False"]
         black_list: list[str] = ["buildings=False"]
-        self.assertEqual(white_list, test_cat_one.get_whitelist())
-        self.assertEqual(black_list, test_cat_one.get_blacklist())
+        assert white_list == test_cat_one.get_whitelist()
+        assert black_list == test_cat_one.get_blacklist()
 
-        self.assertEqual(CalculationMethodOfArea.CALCULATE_BUILDING_AREA, test_cat_one.get_calculation_method_of_area())
-        self.assertEqual(True, test_cat_one.get_attribute(Attribute.PROPERTY_AREA))
-        self.assertEqual(False, test_cat_one.get_attribute(Attribute.FLOOR_AREA))
-        self.assertEqual(True, test_cat_one.get_strictly_use_default_values())
+        assert CalculationMethodOfArea.CALCULATE_BUILDING_AREA == test_cat_one.get_calculation_method_of_area()
+        assert test_cat_one.get_attribute(Attribute.PROPERTY_AREA)
+        assert not test_cat_one.get_attribute(Attribute.FLOOR_AREA)
+        assert test_cat_one.get_strictly_use_default_values()
 
         test_attractivity_attribute_one: AttractivityAttribute = AttractivityAttribute("attribute1", 0)
         test_attractivity_attribute_two: AttractivityAttribute = AttractivityAttribute("attribute2", 5)
-        self.assertEqual(test_attractivity_attribute_one.get_attractivity_attribute_name(),
-                         test_cat_one.get_attractivity_attributes()[0].get_attractivity_attribute_name())
-        self.assertEqual(test_attractivity_attribute_one.get_base_factor(),
-                         test_cat_one.get_attractivity_attributes()[0].get_base_factor())
-        self.assertEqual(test_attractivity_attribute_two.get_attractivity_attribute_name(),
-                         test_cat_one.get_attractivity_attributes()[1].get_attractivity_attribute_name())
-        self.assertEqual(test_attractivity_attribute_two.get_base_factor(),
-                         test_cat_one.get_attractivity_attributes()[1].get_base_factor())
-
+        assert test_attractivity_attribute_one.get_attractivity_attribute_name() == test_cat_one.get_attractivity_attributes()[0].get_attractivity_attribute_name()
+        assert test_attractivity_attribute_one.get_base_factor() == test_cat_one.get_attractivity_attributes()[0].get_base_factor()
+        assert test_attractivity_attribute_two.get_attractivity_attribute_name() == test_cat_one.get_attractivity_attributes()[1].get_attractivity_attribute_name()
+        assert test_attractivity_attribute_two.get_base_factor() == test_cat_one.get_attractivity_attributes()[1].get_base_factor()
