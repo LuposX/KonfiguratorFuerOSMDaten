@@ -1,0 +1,9 @@
+name,Category1
+status,True
+white_list,buildings=True;test_False
+black_list,buildings=False
+calculation_method_of_area,Calculate Building Area
+active_attributes,Property Area
+strictly_use_default_values,True
+attractivity_attributes,"attribute1,Property Area:0,Number of Floors:0,Floor Area:0,base:0;attribute2,Property Area:0,Number of Floors:0,Floor Area:0,base:5"
+default_value_list,"default,Property Area:0,Number of Floors:0,Floor Area:0"
