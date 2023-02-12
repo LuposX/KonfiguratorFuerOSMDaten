@@ -31,14 +31,17 @@ class Export:
         Exports the whole project to the given path.
 
         Args:
-            path (pathlib.Path): The path where the project shall be exported to
+            path (pathlib.Path): The path where the project shall be exported to with the name of the zip included.
 
         Returns:
             bool: true, if export was successful, otherwise false.
         """
         self._active_project.get_project_saver().save_project()
-        shutil.copytree(self._active_project.get_project_settings().get_location(),
-                        path.joinpath(self._active_project.get_project_settings().get_name()))
+        try:
+            shutil.make_archive(path, "zip", self._active_project.get_project_settings().get_location())
+            return True
+        except OSError:
+            return False
 
     def export_configuration(self, path: Path) -> bool:
         """
@@ -60,15 +63,18 @@ class Export:
         calculation step in it.
 
         Args:
-            path (Path): The path where the results of the calculation shall be exported to
+            path (Path): The path where the results of the calculation shall be exported to with the name of the zip included.
 
         Returns:
             bool: true, if export was successful, otherwise false.
         """
         if not os.path.exists(path):
             return False
-        shutil.copytree(self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder(), path)
-        return True
+        try:
+            shutil.make_archive(str(path), "zip", self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
+            return True
+        except OSError:
+            return False
 
     def export_map(self, path: Path) -> bool:
         """
