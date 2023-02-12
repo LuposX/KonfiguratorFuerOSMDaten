@@ -67,10 +67,10 @@ class ProjectSettings:
         """
         if os.path.exists(new_location):
             save_path = self._path
-            self._path = new_location.joinpath(self._name)
+            self._path = os.path.join(new_location, self._name)
             if not os.path.exists(self._path):
                 os.makedirs(self._path)
-                config_directory: Path = self._path.joinpath("configuration")
+                config_directory: Path = os.path.join(self._path, "configuration")
                 os.makedirs(config_directory)
                 os.makedirs(config_directory.joinpath("categories"))
                 os.makedirs(self._path.joinpath(self._calculation_phase_checkpoints_folder))
@@ -181,8 +181,8 @@ class ProjectSettings:
             bool: true if change successful, false else.
         """
         if isinstance(new_folder_name, str):
-            old_path: Path = self._path.joinpath(self._calculation_phase_checkpoints_folder)
-            new_path: Path = self._path.joinpath(new_folder_name)
+            old_path: Path = os.path.join(self._path, self._calculation_phase_checkpoints_folder)
+            new_path: Path = os.path.join(self._path, new_folder_name)
             if not os.path.exists(new_path):
                 os.rename(old_path, new_path)
                 self._calculation_phase_checkpoints_folder = new_folder_name

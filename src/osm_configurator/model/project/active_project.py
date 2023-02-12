@@ -46,7 +46,7 @@ class ActiveProject:
         """
 
         if project_name is not None:
-            self.project_directory: Path = project_folder.joinpath(project_name)
+            self.project_directory: Path = os.path.join(project_folder, project_name)
         else:
             self.project_directory: Path = project_folder
             project_name = os.path.basename(project_folder)

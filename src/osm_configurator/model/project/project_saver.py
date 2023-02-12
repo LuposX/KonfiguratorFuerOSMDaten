@@ -135,7 +135,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename: Path = self.destination.joinpath(Path("last_step.txt"))
+        filename: Path = os.path.join(self.destination, Path("last_step.txt"))
         config_phase_data = self.active_project.get_last_step().get_name()
         with open(filename, "w") as f:
             f.write(config_phase_data)
@@ -148,8 +148,8 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        config_directory: Path = self.destination.joinpath("configuration")
-        filename: Path = config_directory.joinpath("osm_path.txt")
+        config_directory: Path = os.path.join(self.destination, "configuration")
+        filename: Path = os.path.join(config_directory, "osm_path.txt")
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
         with open(filename, "w") as f:
             f.write(osm_path_data)
@@ -241,7 +241,7 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        return self.destination.joinpath(_create_filename(name))
+        return os.path.join(self.destination, _create_filename(name))
 
     def _create_config_file(self, name: str) -> Path:
         """
@@ -253,8 +253,8 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        config_directory: Path = self.destination.joinpath("configuration")
-        return config_directory.joinpath(_create_filename(name))
+        config_directory: Path = os.path.join(self.destination, "configuration")
+        return os.path.join(config_directory, _create_filename(name))
 
     def _create_category_file(self, name: str) -> Path:
         """
@@ -266,6 +266,6 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        config_directory: Path = self.destination.joinpath("configuration")
-        category_directory: Path = config_directory.joinpath("categories")
-        return category_directory.joinpath(_create_filename(name))
+        config_directory: Path = os.path.join(self.destination, "configuration")
+        category_directory: Path = os.path.join(config_directory, "categories")
+        return os.path.join(category_directory, _create_filename(name))

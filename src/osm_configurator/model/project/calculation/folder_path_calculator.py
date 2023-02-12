@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -30,6 +32,6 @@ class FolderPathCalculator:
         result_folder_name: str = CALCULATION_PHASE_CHECKPOINT_FOLDER_NAME
         phase_folder_name: str = phase.get_folder_name_for_results()
 
-        checkpoint_folder_path: Path = project_path.joinpath(result_folder_name).joinpath(phase_folder_name)
+        checkpoint_folder_path: Path = os.path.join(os.path.join(project_path, result_folder_name), phase_folder_name)
 
         return checkpoint_folder_path

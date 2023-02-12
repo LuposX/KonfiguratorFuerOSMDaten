@@ -50,26 +50,27 @@ class ProjectIOHandler:
         self.config_directory: Path = Path()
         self.category_directory: Path = Path()
 
-    def build_project(self, path: Path) -> bool:
+    def build_project(self, project_path: Path) -> bool:
         """
         This method is to build the given project. To do this it reads out the configurations and builds a folder
         structure on the disk.
 
         Args:
-            path (pathlib.Path): The path pointing towards the project folder.
+            project_path (pathlib.Path): The path pointing towards the project folder.
 
         Returns:
             bool: True if creating the project works, otherwise false.
         """
 
-        if not os.path.exists(path):
-            os.makedirs(path)
-            self.config_directory = path.joinpath("configuration")
+        if not os.path.exists(project_path):
+            os.makedirs(project_path)
+            self.config_directory = os.path.join(project_path, "configuration")
             os.makedirs(self.config_directory)
-            self.category_directory = self.config_directory.joinpath("categories")
+            self.category_directory = os.path.join(self.config_directory, "categories")
             os.makedirs(self.category_directory)
-            os.makedirs(
-                path.joinpath(self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder()))
+            os.makedirs(os.path.join(project_path,
+                                     self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
+                                     )
             return True
         return False
 
@@ -84,8 +85,8 @@ class ProjectIOHandler:
             bool: True if creating the project works, otherwise false.
         """
         self.destination = path
-        self.config_directory = self.destination.joinpath("configuration")
-        self.category_directory = self.config_directory.joinpath("categories")
+        self.config_directory = os.path.join(self.destination, "configuration")
+        self.category_directory = os.path.join(self.config_directory, "categories")
 
         # Loads the different parts of the project
         if not self._load_project_settings():
@@ -108,7 +109,7 @@ class ProjectIOHandler:
         return True
 
     def _load_project_settings(self) -> bool:
-        filepath = self.destination.joinpath("project_settings.csv")
+        filepath = os.path.join(self.destination, "project_settings.csv")
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 reader = csv.reader(f)
@@ -123,7 +124,7 @@ class ProjectIOHandler:
         return False
 
     def _load_config_phase(self) -> bool:
-        filepath: Path = self.destination.joinpath("last_step.txt")
+        filepath: Path = os.path.join(self.destination, "last_step.txt")
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 last_step: str = f.read()
@@ -134,7 +135,7 @@ class ProjectIOHandler:
         return False
 
     def _load_osm_configurator(self) -> bool:
-        filepath: Path = self.config_directory.joinpath("osm_path.txt")
+        filepath: Path = os.path.join(self.config_directory, "osm_path.txt")
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 osm_path: str = f.read()
@@ -143,7 +144,7 @@ class ProjectIOHandler:
         return False
 
     def _load_aggregation_configuration(self) -> bool:
-        filepath: Path = self.config_directory.joinpath("aggregation_methods.csv")
+        filepath: Path = os.path.join(self.config_directory, "aggregation_methods.csv")
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 reader = csv.reader(f)
@@ -159,7 +160,7 @@ class ProjectIOHandler:
         return False
 
     def _load_cut_out_configurator(self) -> bool:
-        filepath: Path = self.config_directory.joinpath("cut_out_configuration.csv")
+        filepath: Path = os.path.join(self.config_directory, "cut_out_configuration.csv")
 
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
@@ -184,7 +185,7 @@ class ProjectIOHandler:
 
         for file in os.listdir(self.category_directory):
             if file.endswith(".csv"):
-                filepath: Path = self.category_directory.joinpath(str(file))
+                filepath: Path = os.path.join(self.category_directory, str(file))
                 with open(filepath, "r") as f:
                     reader = csv.reader(f)
                     category_data: list[str] = list(reader)
