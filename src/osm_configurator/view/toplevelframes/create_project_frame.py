@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 
 # TODO remove bool-return values at button functions
 
-class CreateProjectFrame(Activatable, TopLevelFrame):
+class CreateProjectFrame(TopLevelFrame, Activatable):
     """
     This frame shows the project creation page to the User.
     A name, a description and a path for storing the project can be set here.
@@ -53,9 +53,9 @@ class CreateProjectFrame(Activatable, TopLevelFrame):
         self._state_manager = state_manager
         self._project_controller = project_controller
 
-        self._project_description: str
-        self._project_name: str
-        self._project_path: Path
+        self._project_description: str = ""
+        self._project_name: str = ""
+        self._project_path: Path = None
 
         # Configuring the rows and columns
         self.grid_columnconfigure(0, weight=1)
@@ -65,17 +65,13 @@ class CreateProjectFrame(Activatable, TopLevelFrame):
 
         self.name_field = \
             customtkinter.CTkEntry(master=self,
-                                   text="Project Name: ",
-                                   title="ProjectName",
-                                   name=self._project_name) \
-                .grid(row=0, column=0, rowspan=1, columnspan=1)
+                                   placeholder_text="Project Name")
+        self.name_field.grid(row=0, column=0, rowspan=1, columnspan=1)
 
         self.description_field = \
             customtkinter.CTkEntry(master=self,
-                                   text="Description: ",
-                                   title="Description",
-                                   description=self._project_description) \
-                .grid(row=1, column=0, rowspan=1, columnspan=1)
+                                   placeholder_text="Description: ")
+        self.description_field.grid(row=1, column=0, rowspan=1, columnspan=1)
 
         self.destination_button = \
             customtkinter.CTkButton(master=self,
@@ -86,8 +82,8 @@ class CreateProjectFrame(Activatable, TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
-                                    ) \
-                .grid(row=2, column=0, rowspan=1, columnspan=1)
+                                    )
+        self.destination_button.grid(row=2, column=0, rowspan=1, columnspan=1)
 
         self.create_button = \
             customtkinter.CTkButton(master=self,
@@ -98,20 +94,20 @@ class CreateProjectFrame(Activatable, TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value) \
-                .grid(row=3, column=3, rowspan=1, columnpan=1)
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+        self.create_button.grid(row=3, column=3, rowspan=1, columnspan=1)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
-                                    name="Cancel",
+                                    text="Cancel",
                                     command=self.__cancel_pressed,
                                     corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                     border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_RED.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value) \
-                .grid(row=3, column=4, rowspan=1, columnspan=1)
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+        self.cancel_button.grid(row=3, column=4, rowspan=1, columnspan=1)
 
     def activate(self):
         pass
@@ -133,11 +129,9 @@ class CreateProjectFrame(Activatable, TopLevelFrame):
         self._project_path = new_path
         self._project_controller.load_project(new_path)
 
-    def __create_pressed(self) -> bool:
+    def __create_pressed(self):
         """
         The create-button was pressed, the project is created, the user is redirected to the data-phase-window
-        Returns:
-            bool: True, if project has all valid attributes and creation was given to the controller, false else
         """
         self._project_name = self.name_field.get()
 
@@ -146,14 +140,14 @@ class CreateProjectFrame(Activatable, TopLevelFrame):
             popup = AlertPopUp("No Projectname entered. Please enter a valid Projectname.")
             popup.mainloop()  # Displays the popup
             self.__reload()  # Reloads the page
-            return False
+            return
 
         if not self._project_path.exists():
             # No valid path chosen
             popup = AlertPopUp("No valid Path entered. Please choose a valid Path.")
             popup.mainloop()
             self.__reload()
-            return False
+            return
 
         self._project_description = self.description_field.get()
         self._state_manager.change_state(sne.StateName.DATA.value)
@@ -163,7 +157,7 @@ class CreateProjectFrame(Activatable, TopLevelFrame):
             destination=self._project_path
         )
 
-        return True
+        return
 
     def __cancel_pressed(self):
         """

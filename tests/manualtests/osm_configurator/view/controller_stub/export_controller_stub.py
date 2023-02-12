@@ -3,7 +3,7 @@ import pathlib
 from src.osm_configurator.control.export_controller_interface import IExportController
 
 
-class ExportControllerInterface(IExportController):
+class ExportControllerStub(IExportController):
     def export_project(self, path: pathlib.Path) -> bool:
         pass
 

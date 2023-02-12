@@ -1,22 +1,15 @@
 from __future__ import annotations
 
-from src.osm_configurator.view.states.state_manager import StateManager
-from src.osm_configurator.control.settings_controller_interface import ISettingsController
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-from src.osm_configurator.view.utilityframes.settings_application_frame import SettingsApplicationFrame
-from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
 
 # Constants
-import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 
 from typing import TYPE_CHECKING
 import customtkinter
 
 if TYPE_CHECKING:
-    from src.osm_configurator.view.states.state_manager import StateManager
-    from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.activatable import Activatable
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
     from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
@@ -48,18 +41,24 @@ class SettingsFrame(Activatable, TopLevelFrame):
             fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
         )
 
+        # Defining the grid
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+
         self._state_manager = state_manager
         self._settings_controller = settings_controller
 
         self.title = "Settings Frame"
 
         self.settings_application_frame = \
-            SettingsApplicationFrame(self, self._settings_controller) \
-            .pack(side="top", padx=10, pady=10)
+            settings_application_frame_i.SettingsApplicationFrame(self, self._settings_controller)
+        self.settings_application_frame.grid(row=0, column=0, padx=10, pady=10)
 
         self.create_project_frame = \
-            SettingsProjectFrame(self, self._settings_controller) \
-            .pack(side="bottom", padx=10, pady=10)
+            settings_project_frame_i.SettingsProjectFrame(self, self._settings_controller)
+        self.create_project_frame.grid(row=1, column=0, padx=10, pady=10)
 
     def activate(self) -> bool:
         """

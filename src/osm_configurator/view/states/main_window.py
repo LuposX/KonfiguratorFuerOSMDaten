@@ -95,12 +95,12 @@ class MainWindow:
         # Creating the StateManager
         from src.osm_configurator.view.states.state_manager import StateManager
         self._state_manager: StateManager = StateManager(self, export_controller, category_controller,
-                                                                         project_controller,
-                                                                         settings_controller, aggregation_controller,
-                                                                         calculation_controller,
-                                                                         cut_out_controller,
-                                                                         data_visualization_controller,
-                                                                         osm_data_controller)
+                                                         project_controller,
+                                                         settings_controller, aggregation_controller,
+                                                         calculation_controller,
+                                                         cut_out_controller,
+                                                         data_visualization_controller,
+                                                         osm_data_controller)
 
     def start_main_window(self):
         """
@@ -126,7 +126,7 @@ class MainWindow:
         # First making the last State invisible
         success: bool = self._make_invisible(last_state)
 
-        # If last State was succesfully removed, then we try to make the new state visible
+        # If last State was successfully removed, then we try to make the new state visible
         if not success:
             return False
         else:

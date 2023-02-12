@@ -24,7 +24,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
 
 
-class MainMenuFrame(Activatable, TopLevelFrame):
+class MainMenuFrame(TopLevelFrame, Activatable):
     """
     This frame shows the application's main menu.
     The user can create a new project, or load an already existing project. Projects stored in the default folder

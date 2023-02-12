@@ -14,6 +14,8 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
+from pathlib import Path
+
 
 from PIL import Image
 
@@ -212,6 +214,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
             light_image=Image.open("../view_icons/options.png"),
             dark_image=Image.open("../view_icons/options.png"),
             size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
+
         self._options_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT,
                                                                                 width=BUTTON_WIDTH,
                                                                                 corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,

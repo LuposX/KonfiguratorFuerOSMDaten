@@ -4,6 +4,9 @@ from enum import Enum
 
 
 class ButtonConstants(Enum):
+    """
+    This Enum holds the constant values to create a standard button
+    """
     BUTTON_CORNER_RADIUS = 8
     BUTTON_BORDER_WIDTH = 0
     BUTTON_FG_COLOR_ACTIVE = "#D9D9D9"
