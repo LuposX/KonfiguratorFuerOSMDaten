@@ -120,11 +120,15 @@ class MainWindow:
             bool: True, if the state change was successful, false if not.
         """
         # Making sure both states are not None
-        if (last_state is None) or (new_state is None):
+        if new_state is None:
             return False
 
         # First making the last State invisible
-        success: bool = self._make_invisible(last_state)
+        success: bool = False
+        if last_state is not None:
+            success: bool = self._make_invisible(last_state)
+        else:
+            success: bool = True
 
         # If last State was successfully removed, then we try to make the new state visible
         if not success:

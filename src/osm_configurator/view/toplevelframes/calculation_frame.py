@@ -48,13 +48,11 @@ class CalculationFrame(TopLevelFrame, Activatable):
              calculation_controller (calculation_controller.CalculationController): Respective controller.
              data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller.
         """
-        self.window = super().__init__(
-            master=None,
-            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
-            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
-            corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
-        )
+        super().__init__(master=None,
+                         width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
+                         height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+                         fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value)
 
         self._starting_point = CalculationPhase.NONE
         self._state_manager = state_manager

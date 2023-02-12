@@ -11,7 +11,7 @@ from tests.manualtests.osm_configurator.view.controller_stub.data_visualization_
 from tests.manualtests.osm_configurator.view.controller_stub.osm_data_controller_stub import OSMDataControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.calculation_controller_stub import CalculationControllerStub
 
-
+import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 
 # This Test will perform manual tests on the main window
 export_controller = ExportControllerStub()
@@ -37,3 +37,4 @@ def test_display_main_window():
                                 osm_data_controller=osm_data_controller,
                                 )
     main_window.start_main_window()
+    main_window._state_manager.change_state(state_name_enum_i.StateName.CREATE_PROJECT)
