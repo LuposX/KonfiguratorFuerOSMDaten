@@ -64,5 +64,6 @@ class Application(IApplication):
             if not os.path.isfile(directory):
                 project: Path = destination.joinpath(str(directory))
                 filepath: Path = project.joinpath("project_settings.csv")
-                passive_project_list.append(PassiveProject(filepath))
+                if os.path.exists(filepath):
+                    passive_project_list.append(PassiveProject(filepath))
         return passive_project_list
