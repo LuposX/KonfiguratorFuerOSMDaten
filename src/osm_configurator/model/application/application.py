@@ -17,21 +17,29 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from src.osm_configurator.model.application.application_settings_saver import ApplicationSettingsSaver
     import pathlib
+    from typing import Final
 
+
+PROJECT_SETTING: Final = "project_settings.csv"
 
 class Application(IApplication):
     __doc__ = IApplication.__doc__
 
-    def __init__(self):
+    def __init__(self, application_settings_file: Path):
         """
         Creates a new instance of the application_interface.Application.
+
+        Args:
+            application_settings_file (Path): Name of the file, which saved the default project folder.
         """
         self.active_project: ActiveProject = None
-        self.application_settings: ApplicationSettings = ApplicationSettings()
+
+        self.application_settings: ApplicationSettings = ApplicationSettings(application_settings_file)
+
         self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
-            self.application_settings.get_default_location())
+            self.application_settings.get_default_project_folder())
         self.recommender_system: RecommenderSystem = RecommenderSystem()
-        self.application_settings_saver: ApplicationSettingsSaver = ApplicationSettingsSaver()
+        self.application_settings_saver: ApplicationSettingsSaver = ApplicationSettingsSaver(application_settings_file)
 
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
         self.active_project = ActiveProject(destination, True, name, description)
@@ -53,17 +61,21 @@ class Application(IApplication):
     def get_application_settings(self) -> ApplicationSettings:
         return self.application_settings
 
-    def save(self, destination: Path) -> bool:
-        self.application_settings_saver.save_settings(destination)
-        return True
+    def save(self):
+        self.application_settings_saver.save_settings(self.application_settings.get_default_project_folder())
 
-    def _create_passive_project_list(self, destination: pathlib.Path) -> List[PassiveProject]:
+    def _create_passive_project_list(self, destination: Path) -> List[PassiveProject] | None:
         passive_project_list: List[PassiveProject] = []
 
-        for directory in os.listdir(destination):
-            if not os.path.isfile(directory):
-                project: Path = destination.joinpath(str(directory))
-                filepath: Path = project.joinpath("project_settings.csv")
-                if os.path.exists(filepath):
-                    passive_project_list.append(PassiveProject(filepath))
-        return passive_project_list
+        if destination:
+            for directory in os.listdir(destination):
+                if not os.path.isfile(directory):
+                    project: Path = os.path.join(destination, Path(str(directory)))
+                    filepath: Path = os.path.join(project, PROJECT_SETTING)
+                    if os.path.exists(filepath):
+                        passive_project_list.append(PassiveProject(filepath))
+
+            return passive_project_list
+
+        else:
+            return None

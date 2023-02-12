@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import os
 
-from src.osm_configurator.model.application.application import Application
 from typing import TYPE_CHECKING
 
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application import Application
+    from pathlib import Path
 
 
 class ApplicationSettingsIOHandler:
@@ -15,23 +14,24 @@ class ApplicationSettingsIOHandler:
     This class job is to build the settings in the application.
     """
 
-    def __init__(self):
+    def __init__(self, application_settings_file: Path):
         """
         Creates a new instance of the ApplicationSettingsIOHandler.
-        """
-        pass
 
-    def load_settings(self) -> bool:
+        Args:
+            application_settings_file (Path): name of the file
         """
-        This method saves the default path where new projects should be stored.
+        self.filename: Path = application_settings_file
+
+    def load_settings_file(self) -> Path:
+        """
+        This method loads the settings file.
+
         Returns:
             bool: True when building the path works, otherwise false.
         """
-        filename = "data/application/default_project_folder.txt"
+        with open(self.filename, 'r') as f:
+            location = f.read()
+            return location
 
-        if os.path.exists(filename):
-            with open(filename, 'r') as f:
-                location = f.read()
-                self.application.get_application_settings().set_default_location(location)
-            return True
-        return False
+

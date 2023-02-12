@@ -5,10 +5,11 @@ from pathlib import Path
 
 from typing import TYPE_CHECKING
 
-from src.osm_configurator.model.application.application_settings_io_handler import ApplicationSettingsIOHandler
+import  src.osm_configurator.model.application.application_settings_io_handler as application_settings_io_handler_i
 
 if TYPE_CHECKING:
     from pathlib import Path
+    from src.osm_configurator.model.application.application_settings_io_handler import ApplicationSettingsIOHandler
 
 
 class ApplicationSettings:
@@ -17,14 +18,19 @@ class ApplicationSettings:
     to save projects can be changed.
     """
 
-    def __init__(self):
+    def __init__(self, application_settings_file: Path):
         """
-        Creates a new instance of the ApplicationSettings.
-        """
-        application_settings_io_handler: ApplicationSettingsIOHandler = ApplicationSettings()
-        self.path: Path = application_settings_io_handler.load_settings()
+        Creates a new instance of the application_settings_file.
 
-    def get_default_location(self) -> Path:
+        Args:
+            application_settings_file (Path): name of the file
+        """
+        application_settings_io_handler: ApplicationSettingsIOHandler = application_settings_io_handler_i\
+            .ApplicationSettingsIOHandler(application_settings_file)
+
+        self.path: Path = application_settings_io_handler.load_settings_file()
+
+    def get_default_project_folder(self) -> Path:
         """
         Gives back the path pointing towards the project.
 

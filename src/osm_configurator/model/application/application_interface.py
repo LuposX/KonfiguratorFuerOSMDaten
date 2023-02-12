@@ -91,15 +91,9 @@ class IApplication(ABC):
         pass
 
     @abstractmethod
-    def save(self, destination) -> bool:
+    def save(self):
         """
         Saves the active Project and the application settings to the drive.
-
-        Args:
-            destination (pathlib.Path): The path where everything should be stored.
-
-        Returns:
-            bool: True when saving works, otherwise false.
         """
         pass
 
