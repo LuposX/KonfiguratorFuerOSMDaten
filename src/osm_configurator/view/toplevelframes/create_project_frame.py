@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 
 # TODO remove bool-return values at button functions
 
-class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
+class CreateProjectFrame(Activatable, TopLevelFrame):
     """
     This frame shows the project creation page to the User.
     A name, a description and a path for storing the project can be set here.

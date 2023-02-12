@@ -5,19 +5,6 @@ from typing import TYPE_CHECKING, List
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 
-import src.osm_configurator.view.toplevelframes.aggregation_frame as aggregation_frame_i
-import src.osm_configurator.view.toplevelframes.main_menu_frame as main_menu_frame_i
-import src.osm_configurator.view.toplevelframes.create_project_frame as create_project_frame_i
-import src.osm_configurator.view.toplevelframes.project_head_frame as project_head_frame_i
-import src.osm_configurator.view.toplevelframes.project_foot_frame as project_foot_frame_i
-import src.osm_configurator.view.toplevelframes.attractivity_view_frame as attractivity_view_frame_i
-import src.osm_configurator.view.toplevelframes.attractivity_edit_frame as attractivity_edit_frame_i
-import src.osm_configurator.view.toplevelframes.calculation_frame as calculate_frame_i
-import src.osm_configurator.view.toplevelframes.category_frame as category_frame_i
-import src.osm_configurator.view.toplevelframes.data_frame as data_frame_i
-import src.osm_configurator.view.toplevelframes.reduction_frame as reduction_frame_i
-import src.osm_configurator.view.toplevelframes.settings_frame as settings_frame_i
-
 import src.osm_configurator.view.toplevelframes.lockable as lockable_i
 
 if TYPE_CHECKING:
@@ -180,7 +167,8 @@ class StateManager:
         all_states: List[State] = []
 
         # Main Menu State
-        main_menu_frame: MainMenuFrame = main_menu_frame_i.MainMenuFrame(self, project_controller)
+        from src.osm_configurator.view.toplevelframes.main_menu_frame import MainMenuFrame
+        main_menu_frame: MainMenuFrame = MainMenuFrame(self, project_controller)
         positioned_main_menu_frame: PositionedFrame = positioned_frame_i.PositionedFrame(main_menu_frame,
                                                                                          MAIN_MENU_COLUM,
                                                                                          MAIN_MENU_ROW,
@@ -191,7 +179,8 @@ class StateManager:
         all_states.append(state_main_menu)
 
         # Create Project State
-        create_project_frame: CreateProjectFrame = create_project_frame_i.CreateProjectFrame(self, project_controller)
+        from src.osm_configurator.view.toplevelframes.create_project_frame import CreateProjectFrame
+        create_project_frame: CreateProjectFrame = CreateProjectFrame(self, project_controller)
         positioned_create_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(create_project_frame,
                                                                                               CREATE_PROJECT_COLUM,
                                                                                               CREATE_PROJECT_ROW,
@@ -204,7 +193,8 @@ class StateManager:
         all_states.append(state_create_project)
 
         # Project Head Frame
-        project_head_frame: ProjectHeadFrame = project_head_frame_i.ProjectHeadFrame(self, export_controller,
+        from src.osm_configurator.view.toplevelframes.project_head_frame import ProjectHeadFrame
+        project_head_frame: ProjectHeadFrame = ProjectHeadFrame(self, export_controller,
                                                                                      project_controller)
         positioned_project_head_frame: PositionedFrame = positioned_frame_i.PositionedFrame(project_head_frame,
                                                                                             PROJECT_HEAD_FRAME_COLUM,
@@ -214,7 +204,8 @@ class StateManager:
                                                                                             FRAME_STICKY_WHOLE_CELL)
 
         # Project Foot Frame
-        project_foot_frame: ProjectFootFrame = project_foot_frame_i.ProjectFootFrame(self, project_controller)
+        from src.osm_configurator.view.toplevelframes.project_foot_frame import ProjectFootFrame
+        project_foot_frame: ProjectFootFrame = ProjectFootFrame(self, project_controller)
         positioned_project_foot_frame: PositionedFrame = positioned_frame_i.PositionedFrame(project_foot_frame,
                                                                                             PROJECT_FOOT_FRAME_COLUM,
                                                                                             PROJECT_FOOT_FRAME_ROW,
@@ -223,7 +214,8 @@ class StateManager:
                                                                                             FRAME_STICKY_WHOLE_CELL)
 
         # Aggregation Frame State
-        aggregation_frame: AggregationFrame = aggregation_frame_i.AggregationFrame(self, aggregation_controller)
+        from src.osm_configurator.view.toplevelframes.aggregation_frame import AggregationFrame
+        aggregation_frame: AggregationFrame = AggregationFrame(self, aggregation_controller)
         positioned_aggregation_frame: PositionedFrame = positioned_frame_i.PositionedFrame(aggregation_frame,
                                                                                            AGGREGATION_COLUM,
                                                                                            AGGREGATION_ROW,
@@ -237,7 +229,8 @@ class StateManager:
         all_states.append(state_aggregation_frame)
 
         # Attractivity Frame States
-        attractivity_edit_frame: AttractivityEditFrame = attractivity_edit_frame_i.AttractivityEditFrame(self,
+        from src.osm_configurator.view.toplevelframes.attractivity_edit_frame import AttractivityEditFrame
+        attractivity_edit_frame: AttractivityEditFrame = AttractivityEditFrame(self,
                                                                                                          category_controller)
         positioned_attractivity_edit_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
             attractivity_edit_frame,
@@ -246,8 +239,8 @@ class StateManager:
             ATTRACTIVITY_EDIT_FRAME_COLUM_SPAN,
             ATTRACTIVITY_EDIT_FRAME_ROW_SPAN,
             FRAME_STICKY_WHOLE_CELL)
-        attractivity_view_frame: AttractivityViewFrame = attractivity_view_frame_i.AttractivityViewFrame(self,
-                                                                                                         category_controller)
+        from src.osm_configurator.view.toplevelframes.attractivity_view_frame import AttractivityViewFrame
+        attractivity_view_frame: AttractivityViewFrame = AttractivityViewFrame(self, category_controller)
         positioned_attractivity_view_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
             attractivity_view_frame,
             ATTRACTIVITY_VIEW_FRAME_COLUM,

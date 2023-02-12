@@ -4,8 +4,6 @@ import customtkinter
 
 import screeninfo
 
-import src.osm_configurator.view.states.state_manager as state_manager_i
-import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
@@ -95,7 +93,8 @@ class MainWindow:
         self._window.grid_rowconfigure(2, weight=BOTTOM_ROW_WEIGHT)
 
         # Creating the StateManager
-        self._state_manager: StateManager = state_manager_i.StateManager(self, export_controller, category_controller,
+        from src.osm_configurator.view.states.state_manager import StateManager
+        self._state_manager: StateManager = StateManager(self, export_controller, category_controller,
                                                                          project_controller,
                                                                          settings_controller, aggregation_controller,
                                                                          calculation_controller,
