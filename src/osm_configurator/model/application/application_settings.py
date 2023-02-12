@@ -5,6 +5,8 @@ from pathlib import Path
 
 from typing import TYPE_CHECKING
 
+from src.osm_configurator.model.application.application_settings_io_handler import ApplicationSettingsIOHandler
+
 if TYPE_CHECKING:
     from pathlib import Path
 
@@ -19,7 +21,8 @@ class ApplicationSettings:
         """
         Creates a new instance of the ApplicationSettings.
         """
-        self.path: Path = None
+        application_settings_io_handler: ApplicationSettingsIOHandler = ApplicationSettings()
+        self.path: Path = application_settings_io_handler.load_settings()
 
     def get_default_location(self) -> Path:
         """

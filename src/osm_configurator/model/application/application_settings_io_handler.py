@@ -27,7 +27,7 @@ class ApplicationSettingsIOHandler:
         Returns:
             bool: True when building the path works, otherwise false.
         """
-        filename = "default_project_folder.txt"
+        filename = "data/application/default_project_folder.txt"
 
         if os.path.exists(filename):
             with open(filename, 'r') as f:
