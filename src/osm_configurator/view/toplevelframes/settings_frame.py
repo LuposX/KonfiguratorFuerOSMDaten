@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.activatable import Activatable
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
     from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
-    from src.osm_configurator.view.utilityframes.settings_application_frame import SettingsApplicationFrame
 
 
 class SettingsFrame(Activatable, TopLevelFrame):
