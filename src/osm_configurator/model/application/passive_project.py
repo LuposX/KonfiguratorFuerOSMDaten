@@ -47,7 +47,6 @@ class PassiveProject:
         Returns:
             str: The last edit date of the passive project.
         """
-        # TODO machen
         return self.data[4][1]
 
     def get_project_folder_path(self) -> Path:
