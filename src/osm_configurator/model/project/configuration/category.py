@@ -34,7 +34,7 @@ class Category:
         self._whitelist: List = []
         self._blacklist: List = []
         self._category_name: str = "Category Name"
-        self._calculation_method_of_area: CalculationMethodOfArea = None
+        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA
         self._attractivity_attributes: List = []
         self._default_value_list: List = []
         self._strictly_use_default_values: bool = False

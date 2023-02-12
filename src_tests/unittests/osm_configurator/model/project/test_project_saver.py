@@ -1,22 +1,45 @@
-import shutil
+from __future__ import annotations
 
-from pathlib import Path
-from typing import List
+from typing import TYPE_CHECKING
 
-from src.osm_configurator.model.project.active_project import ActiveProject
-from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
+
+from src.osm_configurator.model.application.application import Application
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
-from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
-from src.osm_configurator.model.project.configuration.category import Category
+from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
-from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+from src.osm_configurator.model.project.configuration.category import Category
+from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+from src_tests.definitions import TEST_DIR
+from src.osm_configurator.model.project.active_project import ActiveProject
+from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 
+from pathlib import Path
+import os
+import shutil
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
+
+
+def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
+    # Prepare result folder
+    deleter: FileDeletion = file_deletion.FileDeletion()
+    deleter.reset_folder(path_to_new_project)
+
+    # move the files from data to it
+    try:
+        shutil.copytree(path_old_data, path_to_new_project)
+    except:
+        pass
+
+    with open(os.path.join(path_to_new_project, "application_settings.csv"), "w") as file:
+        file.write(str(path_to_new_project))
 
 class TestProjectSaver:
     def test_build(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "Das sollte funktionieren")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject1", "Das sollte funktionieren")
         self.active_project.get_project_saver().save_project()
 
     def test_save_settings(self):
@@ -27,37 +50,32 @@ class TestProjectSaver:
         self.active_project.get_project_saver().save_project()
 
     def test_save_config_phase(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.test_build()
         self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
         self.active_project.get_project_saver().save_project()
 
     def test_save_osm_configurator(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.test_build()
         self.active_project.get_config_manager().get_osm_data_configuration() \
-            .set_osm_data(Path("C:"))
+            .set_osm_data(Path(os.path.join(TEST_DIR, "data/monaco-latest.osm")))
         self.active_project.get_project_saver().save_project()
 
     def test_save_aggregation_configurator(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.test_build()
         self.active_project.get_config_manager().get_aggregation_configuration() \
-            .set_aggregation_method_active(AggregationMethod.LOWER_QUARTILE, True)
+            .set_aggregation_method_active(AggregationMethod.MAXIMUM, True)
         self.active_project.get_project_saver().save_project()
 
     def test_save_cut_out_configurator(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.test_build()
         self.active_project.get_config_manager().get_cut_out_configuration() \
-            .set_cut_out_path(Path("C:"))
+            .set_cut_out_path(Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
         self.active_project.get_config_manager().get_cut_out_configuration() \
             .set_cut_out_mode(CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
         self.active_project.get_project_saver().save_project()
 
     def test_save_categories(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.test_build()
         test_category: Category = Category()
         test_category.set_category_name("Category1")
         test_category.activate()
