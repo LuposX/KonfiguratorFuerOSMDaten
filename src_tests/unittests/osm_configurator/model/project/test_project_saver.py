@@ -1,5 +1,4 @@
 import shutil
-import unittest
 
 from pathlib import Path
 from typing import List
@@ -14,7 +13,7 @@ from src.osm_configurator.model.project.configuration.calculation_method_of_area
 from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 
-class MyTestCase(unittest.TestCase):
+class TestProjectSaver:
     def test_build(self):
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "Das sollte funktionieren")
@@ -82,6 +81,3 @@ class MyTestCase(unittest.TestCase):
         self.active_project.get_config_manager().get_category_manager().create_category(test_category_two)
         self.active_project.get_project_saver().save_project()
 
-
-if __name__ == '__main__':
-    unittest.main()

@@ -1,5 +1,3 @@
-import unittest
-
 import shutil
 
 from src.osm_configurator.model.project.active_project import ActiveProject
@@ -7,7 +5,7 @@ from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 from pathlib import Path
 
 
-class MyTestCase(unittest.TestCase):
+class TestActiveProject:
     def test_build(self):
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "Das sollte funktionieren")
@@ -48,7 +46,3 @@ class MyTestCase(unittest.TestCase):
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.active_project.get_project_settings().change_name("TestProjectNewName")
         self.active_project.get_project_saver().save_project()
-
-
-if __name__ == '__main__':
-    unittest.main()

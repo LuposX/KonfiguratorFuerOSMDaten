@@ -14,7 +14,7 @@ from src.osm_configurator.model.project.configuration.category_manager import Ca
 from src.osm_configurator.model.project.configuration.category import Category
 
 
-class MyTestCase(unittest.TestCase):
+class TestProjectIO:
     def prepare(self):
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "This project is to test!")
@@ -124,6 +124,3 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(test_attractivity_attribute_two.get_base_factor(),
                          test_cat_one.get_attractivity_attributes()[1].get_base_factor())
 
-
-if __name__ == '__main__':
-    unittest.main()
