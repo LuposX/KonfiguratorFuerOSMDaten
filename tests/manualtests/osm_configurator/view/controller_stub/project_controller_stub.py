@@ -1,4 +1,5 @@
 import pathlib
+from typing import List
 
 from src.osm_configurator.control.project_controller_interface import IProjectController
 from src.osm_configurator.model.application.passive_project import PassiveProject
@@ -6,8 +7,8 @@ from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 
 
 class ProjectControllerStub(IProjectController):
-    def get_list_of_passive_projects(self) -> list[PassiveProject]:
-        pass
+    def get_list_of_passive_projects(self) -> List[PassiveProject]:
+        return []
 
     def load_project(self, path: pathlib.Path) -> bool:
         pass

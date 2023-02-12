@@ -5,19 +5,19 @@ from src.osm_configurator.control.settings_controller_interface import ISettings
 
 class SettingsControllerStub(ISettingsController):
     def get_project_name(self) -> str:
-        pass
+        return ""
 
     def set_project_name(self, name: str) -> bool:
-        pass
+        return True
 
     def get_project_description(self) -> str:
-        pass
+        return ""
 
     def set_project_description(self, description: str) -> bool:
-        pass
+        return True
 
     def get_project_default_folder(self) -> pathlib.Path:
-        pass
+        return None
 
     def set_project_default_folder(self, default_folder: pathlib.Path) -> bool:
-        pass
+        return True

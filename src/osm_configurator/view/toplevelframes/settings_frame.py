@@ -5,6 +5,8 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 # Constants
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.utilityframes.settings_application_frame as settings_application_frame_i
+import src.osm_configurator.view.utilityframes.settings_project_frame as settings_project_frame_i
 
 from typing import TYPE_CHECKING
 import customtkinter
@@ -15,7 +17,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
 
 
-class SettingsFrame(Activatable, TopLevelFrame):
+class SettingsFrame(TopLevelFrame, Activatable):
     """
     This frame shows the user the settings for:
     - The application

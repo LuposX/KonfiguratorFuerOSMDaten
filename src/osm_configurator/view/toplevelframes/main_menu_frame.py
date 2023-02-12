@@ -4,7 +4,6 @@ from src.osm_configurator.model.application.passive_project import PassiveProjec
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-from src.osm_configurator.view.states.state_manager import StateManager
 import src.osm_configurator.view.states.state_name_enum as sne
 
 # Constants
@@ -72,7 +71,7 @@ class MainMenuFrame(TopLevelFrame, Activatable):
                                     command=self.__load_external_project),
             customtkinter.CTkButton(master=self,
                                     text="Settings",
-                                    command=self.__call_settings())
+                                    command=self.__call_settings)
         ]
 
         # Align the buttons and give them the standard style-attributes

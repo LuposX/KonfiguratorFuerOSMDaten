@@ -14,15 +14,15 @@ from tests.manualtests.osm_configurator.view.controller_stub.calculation_control
 
 
 # This Test will perform manual tests on the main window
-export_controller = IExportController()
-category_controller = ICategoryController()
-project_controller = IProjectController()
-settings_controller = ISettingsController()
-aggregation_controller = IAggregationController()
-calculation_controller = ICalculationController()
-cut_out_controller = ICutOutController()
-data_visualization_controller = IDataVisualizationController()
-osm_data_controller = IOSMDataController()
+export_controller = ExportControllerStub()
+category_controller = CategoryControllerStub()
+project_controller = ProjectControllerStub()
+settings_controller = SettingsControllerStub()
+aggregation_controller = AggreationControllerStub()
+calculation_controller = CalculationControllerStub()
+cut_out_controller = CutOutControllerStub()
+data_visualization_controller = DataVisualizationControllerStub()
+osm_data_controller = OSMDataControllerStub()
 
 
 def test_display_main_window():
@@ -36,3 +36,4 @@ def test_display_main_window():
                                 data_visualization_controller=data_visualization_controller,
                                 osm_data_controller=osm_data_controller,
                                 )
+    main_window.start_main_window()

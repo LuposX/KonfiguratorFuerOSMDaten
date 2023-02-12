@@ -2,6 +2,10 @@ from __future__ import annotations
 
 import customtkinter
 
+import os
+
+from definitions import PROJECT_DIR
+
 import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.control.project_controller_interface
 import src.osm_configurator.view.constants.button_constants as button_constants_i

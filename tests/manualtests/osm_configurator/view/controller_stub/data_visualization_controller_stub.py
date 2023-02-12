@@ -9,5 +9,5 @@ class DataVisualizationControllerStub(IDataVisualizationController):
     def generate_cut_out_map(self) -> pathlib.Path:
         pass
 
-    def get_calculation_visualization(self) -> matplotlib.axes.Axes:
+    def get_calculation_visualization(self):
         pass

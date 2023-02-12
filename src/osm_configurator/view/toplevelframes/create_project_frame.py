@@ -75,7 +75,7 @@ class CreateProjectFrame(TopLevelFrame, Activatable):
 
         self.destination_button = \
             customtkinter.CTkButton(master=self,
-                                    name="Choose Destination",
+                                    text="Choose Destination",
                                     command=self._choose_destination,
                                     border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
@@ -87,7 +87,7 @@ class CreateProjectFrame(TopLevelFrame, Activatable):
 
         self.create_button = \
             customtkinter.CTkButton(master=self,
-                                    name="Create",
+                                    text="Create",
                                     command=self.__create_pressed,
                                     corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                     border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,

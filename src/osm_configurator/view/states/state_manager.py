@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
+from src.osm_configurator.view.states.state import State
+
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 
@@ -163,7 +165,7 @@ class StateManager:
                         calculation_controller: ICalculationController,
                         cut_out_controller: ICutOutController,
                         data_visualization_controller: IDataVisualizationController,
-                        osm_data_controller: IOSMDataController) -> list[State]:
+                        osm_data_controller: IOSMDataController) -> List[State]:
         all_states: List[State] = []
 
         # Main Menu State

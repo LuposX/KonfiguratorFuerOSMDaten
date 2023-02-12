@@ -46,7 +46,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
         self._parent = parent
         self._settings_controller = settings_controller
 
-        self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
+        self._project_default_folder: Path = self._settings_controller.get_project_default_folder()
 
         # Defining the grid-structure
         self.grid_columnconfigure(0, weight=1)

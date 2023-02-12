@@ -63,7 +63,6 @@ class SettingsProjectFrame(TopLevelFrame, Activatable):
 
         self.project_name_box: customtkinter.CTkTextbox = \
             customtkinter.CTkTextbox(master=self,
-                                     text=self._project_name,
                                      corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
                                      border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                      fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
