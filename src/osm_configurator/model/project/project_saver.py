@@ -21,27 +21,6 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 
-def _write_csv_file(data: list, filename: Path) -> bool:
-    with open(filename, "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerows(data)
-    return True
-
-
-def _create_filename(name: str) -> Path:
-    """
-    Creates a name for the file to store data.
-
-    Args:
-        name (str): The name of the new file.
-
-    Returns:
-        pathlib.Path: The created File.
-    """
-    filename: str = name + ".csv"
-    return Path(filename)
-
-
 class ProjectSaver:
     """
     The ProjectSave is responsible for saving the internal representation of the
@@ -59,22 +38,6 @@ class ProjectSaver:
         """
         self.active_project: ActiveProject = active_project
         self.destination: Path = self.active_project.get_project_settings().get_location()
-
-    def save_to_export(self, export_destination: Path) -> bool:
-        """
-        Stores all the configurations of the project at the given path.
-
-        Args:
-            export_destination (pathlib.Path): The path, where the config should be stored.
-
-        Returns:
-            bool: True, if the project was stored successfully, False, if an error occurred.
-        """
-        if os.path.exists(export_destination):
-            self.save_project()
-            shutil.copytree(self.active_project.get_project_settings().get_location(), export_destination.joinpath(self.active_project.get_project_settings().get_name()))
-            return True
-        return False
 
     def save_project(self) -> bool:
         """
@@ -125,7 +88,7 @@ class ProjectSaver:
                          ["calculation_phase_checkpoints_folder", self.active_project.get_project_settings()
                          .get_calculation_phase_checkpoints_folder()],
                          ["last_edit_date", str(date.today())]]
-        _write_csv_file(settings_data, filename)
+        self._write_csv_file(settings_data, filename)
         return True
 
     def _save_config_phase(self) -> bool:
@@ -167,7 +130,7 @@ class ProjectSaver:
         aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
             aggregation_methods.append([method.get_name(), aggregation_configurator.is_aggregation_method_active(method)])
-        _write_csv_file(aggregation_methods, filename)
+        self._write_csv_file(aggregation_methods, filename)
         return True
 
     def _save_cut_out_configurator(self):
@@ -182,7 +145,7 @@ class ProjectSaver:
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
                         ["cut_out_mode",
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_mode().get_name()]]
-        _write_csv_file(cut_out_data, filename)
+        self._write_csv_file(cut_out_data, filename)
         return True
 
     def _save_categories(self):
@@ -228,7 +191,7 @@ class ProjectSaver:
                              ["attractivity_attributes", ";".join(all_attractivity_attributes_list)],
                              ["default_value_list", ";".join(all_default_value_entries_list)]]
             filename = self._create_category_file(category.get_category_name())
-            _write_csv_file(category_data, filename)
+            self._write_csv_file(category_data, filename)
         return True
 
     def _create_file(self, name: str) -> Path:
@@ -241,7 +204,7 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        return os.path.join(self.destination, _create_filename(name))
+        return os.path.join(self.destination, self._create_filename(name))
 
     def _create_config_file(self, name: str) -> Path:
         """
@@ -254,7 +217,7 @@ class ProjectSaver:
             pathlib.Path: The created path.
         """
         config_directory: Path = os.path.join(self.destination, "configuration")
-        return os.path.join(config_directory, _create_filename(name))
+        return os.path.join(config_directory, self._create_filename(name))
 
     def _create_category_file(self, name: str) -> Path:
         """
@@ -268,4 +231,23 @@ class ProjectSaver:
         """
         config_directory: Path = os.path.join(self.destination, "configuration")
         category_directory: Path = os.path.join(config_directory, "categories")
-        return os.path.join(category_directory, _create_filename(name))
+        return os.path.join(category_directory, self._create_filename(name))
+
+    def _write_csv_file(self, data: list, filename: Path) -> bool:
+        with open(filename, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerows(data)
+        return True
+
+    def _create_filename(self, name: str) -> Path:
+        """
+        Creates a name for the file to store data.
+
+        Args:
+            name (str): The name of the new file.
+
+        Returns:
+            pathlib.Path: The created File.
+        """
+        filename: str = name + ".csv"
+        return Path(filename)

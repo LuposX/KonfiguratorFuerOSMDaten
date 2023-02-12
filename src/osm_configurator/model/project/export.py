@@ -54,7 +54,13 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        return self._active_project.get_project_saver().save_to_export(path)
+        if not os.path.exists(path):
+            return False
+        try:
+            shutil.make_archive(str(path), "zip", os.path.join(self._active_project.get_project_settings().get_location(), "configuration"))
+            return True
+        except OSError:
+            return False
 
     def export_calculation(self, path: Path) -> bool:
         """

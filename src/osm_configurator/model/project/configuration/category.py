@@ -31,12 +31,12 @@ class Category:
         Creates a new instance of a "Category" class.
         """
         self._active: bool = False
-        self._whitelist: List = []
-        self._blacklist: List = []
+        self._whitelist: List[str] = []
+        self._blacklist: List[str] = []
         self._category_name: str = "Category Name"
         self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA
-        self._attractivity_attributes: List = []
-        self._default_value_list: List = []
+        self._attractivity_attributes: List[AttractivityAttribute] = []
+        self._default_value_list: List[DefaultValueEntry] = []
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
@@ -84,7 +84,7 @@ class Category:
             return True
         return False
 
-    def get_whitelist(self) -> list[str]:
+    def get_whitelist(self) -> List[str]:
         """
         Getter for the whitelist of the category.
 
@@ -93,12 +93,12 @@ class Category:
         """
         return self._whitelist
 
-    def set_whitelist(self, new_whitelist: list[str]) -> bool:
+    def set_whitelist(self, new_whitelist: List[str]) -> bool:
         """
         Changes the old whitelist to a new one.
 
         Args:
-            new_whitelist (list[str]): value for the new whitelist.
+            new_whitelist (List[str]): value for the new whitelist.
 
         Returns:
              bool: True, if the whitelist was overwritten successfully, else False.
@@ -113,16 +113,16 @@ class Category:
         Getter for the blacklist of the category.
 
         Returns
-           List[Tuple[str, str]]: List containing all tags in the form of key,value pairs.
+           List[str]: List containing all tags in the form of key,value pairs.
         """
         return self._blacklist
 
-    def set_blacklist(self, new_blacklist: list[str]) -> bool:
+    def set_blacklist(self, new_blacklist: List[str]) -> bool:
         """
         Overwrites the old Blacklist with a new value.
 
         Args:
-            new_blacklist (list[str]): new value for the blacklist.
+            new_blacklist (List[str]): new value for the blacklist.
 
         Returns:
             bool: True, if the blacklist was overwritten successfully, else False.
