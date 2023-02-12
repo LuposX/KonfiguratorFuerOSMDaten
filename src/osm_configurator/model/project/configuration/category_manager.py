@@ -9,7 +9,6 @@ from pathlib import Path
 from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.parser.category_parser import CategoryParser
-from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
 
 if TYPE_CHECKING:
     from typing import List, Dict, Set
