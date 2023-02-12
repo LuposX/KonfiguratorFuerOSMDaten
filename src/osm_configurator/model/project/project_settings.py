@@ -15,7 +15,7 @@ class ProjectSettings:
     This class saves all the different settings of a project and provides methods to view and change them.
     """
 
-    def __init__(self, location, project_name, description, calculation_phase_checkpoints_folder):
+    def __init__(self, location: Path, project_name: str, description: str, calculation_phase_checkpoints_folder: str):
         """
         This method creates a new ProjectSettings class with the given settings.
 
@@ -29,6 +29,7 @@ class ProjectSettings:
         self._name: str = project_name
         self._description: str = description
         self._calculation_phase_checkpoints_folder: str = calculation_phase_checkpoints_folder
+        self._last_edit_date: str = ""
 
     def get_location(self) -> Path:
         """
@@ -189,4 +190,20 @@ class ProjectSettings:
             return True
         return False
 
+    def get_last_edit_date(self) -> str:
+        """
+        This method return the last edit of the project.
 
+        Return:
+            str: The date.
+        """
+        return self._last_edit_date
+
+    def set_last_edit_date(self, date: str):
+        """
+        This method sets the last edit of the project.
+
+        Args:
+            The date.
+        """
+        self._last_edit_date = date

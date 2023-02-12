@@ -4,6 +4,7 @@ import os
 import csv
 import shutil
 
+from datetime import date
 from pathlib import Path
 import src.osm_configurator.model.project.active_project
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
@@ -122,7 +123,8 @@ class ProjectSaver:
                          ["description", self.active_project.get_project_settings().get_description()],
                          ["location", self.active_project.get_project_settings().get_location()],
                          ["calculation_phase_checkpoints_folder", self.active_project.get_project_settings()
-                         .get_calculation_phase_checkpoints_folder()]]
+                         .get_calculation_phase_checkpoints_folder()],
+                         ["last_edit_date", str(date.today())]]
         _write_csv_file(settings_data, filename)
         return True
 

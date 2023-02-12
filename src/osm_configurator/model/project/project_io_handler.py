@@ -113,13 +113,13 @@ class ProjectIOHandler:
             with open(filepath, "r") as f:
                 reader = csv.reader(f)
                 project_settings_data = list(reader)
-            if len(project_settings_data) == 4:
-                self._active_project.get_project_settings().set_name(project_settings_data[0][1])
-                self._active_project.get_project_settings().set_description(project_settings_data[1][1])
-                self._active_project.get_project_settings().set_location(Path(project_settings_data[2][1]))
-                self._active_project.get_project_settings().set_calculation_phase_checkpoints_folder(
-                    project_settings_data[3][1])
-                return True
+            self._active_project.get_project_settings().set_name(project_settings_data[0][1])
+            self._active_project.get_project_settings().set_description(project_settings_data[1][1])
+            self._active_project.get_project_settings().set_location(Path(project_settings_data[2][1]))
+            self._active_project.get_project_settings().set_calculation_phase_checkpoints_folder(
+                project_settings_data[3][1])
+            self._active_project.get_project_settings().set_last_edit_date(project_settings_data[4][1])
+            return True
         return False
 
     def _load_config_phase(self) -> bool:
