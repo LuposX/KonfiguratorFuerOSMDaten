@@ -31,6 +31,7 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
     with open(os.path.join(path_to_new_project, "application_settings.csv"), "w") as file:
         file.write(str(path_to_new_project))
 
+
 class TestActiveProject:
     def test_build(self):
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject1", "Das sollte funktionieren")
