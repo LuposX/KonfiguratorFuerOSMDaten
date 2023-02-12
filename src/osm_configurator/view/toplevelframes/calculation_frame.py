@@ -75,13 +75,13 @@ class CalculationFrame(TopLevelFrame, Activatable):
         #  Creating the entries on the left
 
         self.buttons = [
-            customtkinter.CTkButton(master=self.window,
+            customtkinter.CTkButton(master=self,
                                     text="Data Input and Geofilter",
                                     command=self.__data_and_geofilter_pressed),
-            customtkinter.CTkButton(master=self.window,
+            customtkinter.CTkButton(master=self,
                                     text="Tag-Filter",
                                     command=self.__tag_filter_pressed),
-            customtkinter.CTkButton(master=self.window,
+            customtkinter.CTkButton(master=self,
                                     text="Reduction",
                                     command=self.__reduction_pressed),
             customtkinter.CTkButton(master=self.window,
