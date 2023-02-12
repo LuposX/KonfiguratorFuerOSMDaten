@@ -2,16 +2,14 @@ from __future__ import annotations
 
 import geopandas as gpd
 
-import src.osm_configurator.model.parser.osm_data_handler as osm_data_handler
-from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataParserInterface
-
+import src.osm_configurator.model.parser.osm_data_handler as osm_data_handler_i
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
-import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser
-import src.osm_configurator.model.model_constants as model_constants
-
-from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
-
+import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser_i
+import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
+
+from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataParserInterface
+from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
 
 from typing import TYPE_CHECKING
 
@@ -49,7 +47,7 @@ class OSMDataParser(OSMDataParserInterface):
                 raise OSMDataWronglyFormatted
 
             # create a new cutout parser and parse the cutout file
-            cut_out_parser_o = cut_out_parser.CutOutParser()
+            cut_out_parser_o = cut_out_parser_i.CutOutParser()
             cut_out_data: GeoDataFrame = cut_out_parser_o.parse_cutout_file(cut_out_path)
 
             # get the entry in tha dataframe which corresponds to the file we are currently working on
@@ -60,11 +58,11 @@ class OSMDataParser(OSMDataParserInterface):
 
             idx = int(idx[0])
 
-            osm_handler = osm_data_handler.DataOSMHandler(categories,
-                                                          cut_out_data[model_constants.CL_LOCATION].loc[idx])
+            osm_handler = osm_data_handler_i.DataOSMHandler(categories,
+                                                            cut_out_data[model_constants_i.CL_GEOMETRY].loc[idx])
 
         elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
-            osm_handler = osm_data_handler.DataOSMHandler(categories)
+            osm_handler = osm_data_handler_i.DataOSMHandler(categories)
 
         else:
             pass
@@ -73,14 +71,6 @@ class OSMDataParser(OSMDataParserInterface):
         # Process the data
         osm_handler.apply_file(data_file_path)
 
-        # transform the data from osm_handler into  geoDataFrame
-        # TODO: not final, check what we need to save
-        data_col_names = [model_constants.CL_OSM_TYPE,
-                          model_constants.CL_OSM_ELEMENT_NAME,
-                          model_constants.CL_LOCATION,
-                          model_constants.CL_TAGS,
-                          model_constants.CL_CATEGORY]
-
-        df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=data_col_names)
+        df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=model_constants_i.DF_CL_TAG_FILTER_PHASE)
 
         return df_osm

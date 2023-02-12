@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import pathlib
 from pathlib import Path
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 
@@ -20,10 +21,10 @@ class CutOutConfiguration:
         """
         Creates a new instance of the "CutOutConfiguration" class.
         """
-        self._cut_out_mode = cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
-        self._cut_out_path = None
+        self._cut_out_mode: CutOutMode = cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
+        self._cut_out_path: pathlib.Path = Path()
 
-    def get_cut_out_mode(self):
+    def get_cut_out_mode(self) -> CutOutMode:
         """
         Gives back the used cut-out mode.
 
@@ -32,7 +33,7 @@ class CutOutConfiguration:
         """
         return self._cut_out_mode
 
-    def set_cut_out_mode(self, new_cut_out_mode):
+    def set_cut_out_mode(self, new_cut_out_mode: CutOutMode) -> bool:
         """
         Changes the cut-out mode used during the reduction phase in the calculation.
 
@@ -47,7 +48,7 @@ class CutOutConfiguration:
             return True
         return False
 
-    def get_cut_out_path(self):
+    def get_cut_out_path(self) -> pathlib.Path:
         """
         Gives back the path pointing towards the cut-out file.
 
@@ -56,7 +57,7 @@ class CutOutConfiguration:
         """
         return self._cut_out_path
 
-    def set_cut_out_path(self, new_path):
+    def set_cut_out_path(self, new_path: pathlib.Path) -> bool:
         """
         Changes the path pointing towards the cut-out file.
 

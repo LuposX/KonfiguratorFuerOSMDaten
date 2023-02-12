@@ -1,6 +1,11 @@
 from __future__ import annotations
+from typing import TYPE_CHECKING
 
-import shapely
+import osmnx as ox
+import geopandas as gpd
+
+if TYPE_CHECKING:
+    from shapely import Polygon
 
 
 class DownloadData:
@@ -12,9 +17,8 @@ class DownloadData:
         """
         Creates a new instance of the DownloadData.
         """
-        pass
 
-    def download_data(self, coordinates):
+    def download_data(self, coordinates: Polygon) -> bool:
         """
         Downloads the OSM data which the coordinates dictate.
 
@@ -24,4 +28,4 @@ class DownloadData:
         Returns:
             bool: True when the download works, otherwise false.
         """
-        pass
+        return True

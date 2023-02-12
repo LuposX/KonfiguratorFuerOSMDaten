@@ -31,6 +31,7 @@ class AttractivityAttribute:
         for attribute in attribute_enum.Attribute:
             self._attribute_factors[attribute] = 0.0
 
+
         self._base_attractivity: float = base_attractivity
 
     def get_attractivity_attribute_name(self) -> str:

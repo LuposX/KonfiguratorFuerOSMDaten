@@ -15,6 +15,7 @@ class CalculationState(Enum):
 
     NOT_STARTED_YET = ("Not started yet", "The calculation was not started yet.")
     RUNNING = ("Running", "The calculations are currently running.")
+    CANCELED = ("Canceled", "The calculations was canceled")
     ENDED_SUCCESSFULLY = ("Done", "The calculations ended successfully.")
     ERROR_INVALID_OSM_DATA = ("Invalid OSM Data", "Error: The osm data are not valid.")
     ERROR_INVALID_CUT_OUT_DATA = ("Invalid Cut Out Data", "Error: The cut out data are not valid.")
@@ -24,6 +25,7 @@ class CalculationState(Enum):
     ERROR_TAGS_WRONGLY_FORMATTED = ("Tags wrongly formatted", "Error: while trying to parse your tags, the tags are not correctly formaatted.")
     ERROR_COULDNT_OPEN_FILE = ("Couldnt open a file", "ERROR: While trying to open a file, do you have permission?")
     ERROR_ENCODING_THE_FILE = ("Encoding error", "ERROR: While writing to the file there was an encoding error.")
+    ERROR_FILE_NOT_FOUND = ("File not found", "ERROW: While trying to open the file couldn't find the file.")
 
     def get_name(self):
         """
