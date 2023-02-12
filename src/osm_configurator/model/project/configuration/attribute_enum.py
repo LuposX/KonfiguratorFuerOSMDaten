@@ -184,7 +184,16 @@ class Attribute(Enum):
         """
         return self.value[2](category, osm_element, prev_calculated_attributes, curr_default_value, data)
 
-    def equals(self, name: str) -> Attribute | None:
+    def convert_str_to_attribute(name: str) -> Attribute | None:
+        """
+        Converts a given string to the associated Attribute.
+
+        Args:
+            name (str): The string.
+
+        Returns:
+            Attribute: Associated Attribute.
+        """
         for attribute in Attribute:
             if attribute.get_name() == name:
                 return attribute

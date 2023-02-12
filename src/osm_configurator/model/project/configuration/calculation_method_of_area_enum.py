@@ -22,9 +22,17 @@ class CalculationMethodOfArea(Enum):
         """
         return self.value
 
-    def equals(name: str) -> CalculationMethodOfArea | None:
+    def convert_str_to_calculation_method_of_area(name: str) -> CalculationMethodOfArea | None:
+        """
+        Converts a given string to the associated CalculationMethodOfArea.
+
+        Args:
+            name (str): The string.
+
+        Returns:
+            CalculationMethodOfArea: Associated CalculationMethodOfArea.
+        """
         for method in CalculationMethodOfArea:
             if method.get_calculation_method() == name:
                 return method
         return None
-

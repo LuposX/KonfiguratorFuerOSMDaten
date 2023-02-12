@@ -20,10 +20,9 @@ class AggregationConfiguration:
         """
         Creates a new instance of the AggregationConfiguration.
         """
-        self._aggregation_method_state: Dict[str, bool] = {}
-        all_aggregation_methods = [member.name for member in aggregation_method_enum_i.AggregationMethod]
-        for enum_name in all_aggregation_methods:
-            self._aggregation_method_state.update({enum_name: False})
+        self._aggregation_method_state: Dict[AggregationMethod, bool] = {}
+        for method in aggregation_method_enum_i.AggregationMethod:
+            self._aggregation_method_state.update({method: False})
 
     def get_all_aggregation_methods(self) -> List[AggregationMethod]:
         """
@@ -49,7 +48,7 @@ class AggregationConfiguration:
         Returns:
             bool: True if the aggregation method is active, otherwise false.
         """
-        return self._aggregation_method_state.get(method.get_name())
+        return self._aggregation_method_state.get(method)
 
     def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
         """
@@ -64,7 +63,7 @@ class AggregationConfiguration:
             bool: True if changing the state works, otherwise false.
         """
         if method in aggregation_method_enum_i.AggregationMethod:
-            self._aggregation_method_state.update({method.get_name(): active})
+            self._aggregation_method_state.update({method: active})
             return True
         return False
 

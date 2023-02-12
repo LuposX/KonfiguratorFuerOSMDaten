@@ -128,7 +128,7 @@ class ProjectIOHandler:
         if os.path.exists(filepath):
             with open(filepath, "r") as f:
                 last_step: str = f.read()
-            last_step_config_phase: ConfigPhase = ConfigPhase.equals(last_step)
+            last_step_config_phase: ConfigPhase = ConfigPhase.convert_str_to_config_phase(last_step)
             if last_step_config_phase is not None:
                 self._active_project.set_last_step(last_step_config_phase)
                 return True
@@ -153,7 +153,7 @@ class ProjectIOHandler:
                 value: bool = convert_bool(row[1])
                 if value is not None:
                     self._active_project.get_config_manager().get_aggregation_configuration() \
-                        .set_aggregation_method_active(AggregationMethod.equals(row[0]), value)
+                        .set_aggregation_method_active(AggregationMethod.convert_str_to_aggregation_method(row[0]), value)
                 else:
                     return False
             return True
@@ -167,7 +167,7 @@ class ProjectIOHandler:
                 reader = csv.reader(f)
                 cut_out = list(reader)
             cut_out_path: Path = Path(cut_out[0][1])
-            cut_out_mode: CutOutMode = CutOutMode.equals(cut_out[1][1])
+            cut_out_mode: CutOutMode = CutOutMode.convert_str_to_cut_out_mode(cut_out[1][1])
             if os.path.exists(cut_out_path):
                 self._active_project.get_config_manager().get_cut_out_configuration().set_cut_out_path(cut_out_path)
             else:
@@ -205,14 +205,13 @@ class ProjectIOHandler:
                 loaded_category.set_blacklist(category_data[3][1].split(";"))
 
                 # Loads calculation method of area
-                loaded_category.set_calculation_method_of_area(CalculationMethodOfArea.equals(category_data[4][1]))
+                loaded_category.set_calculation_method_of_area(CalculationMethodOfArea.convert_str_to_calculation_method_of_area(category_data[4][1]))
 
                 # Loads active attributes
                 if category_data[5][1] != "":
                     active_attributes: list[str] = category_data[5][1].split(";")
                     for active_attribute_str in active_attributes:
-                        test_attribute: Attribute = Attribute.PROPERTY_AREA
-                        active_attribute: Attribute = test_attribute.equals(active_attribute_str)
+                        active_attribute: Attribute = Attribute.convert_str_to_attribute(active_attribute_str)
                         if active_attribute is not None:
                             loaded_category.set_attribute(active_attribute, True)
                         else:
@@ -236,8 +235,7 @@ class ProjectIOHandler:
                         if attribute_str_split_up[0] == "base":
                             attractivity_attribute.set_base_factor(float(attribute_str_split_up[1]))
                         else:
-                            helper_attribute: Attribute = Attribute.PROPERTY_AREA
-                            attractivity_attribute.set_attribute_factor(helper_attribute.equals(attribute_str_split_up[0]),
+                            attractivity_attribute.set_attribute_factor(Attribute.convert_str_to_attribute(attribute_str_split_up[0]),
                                                                         float(attribute_str_split_up[1]))
                     loaded_category.add_attractivity_attribute(attractivity_attribute)
 
@@ -249,8 +247,7 @@ class ProjectIOHandler:
                     input_str.remove(input_str[0])
                     for default_value_entry_str in input_str:
                         attribute_str_split_up: list[str] = default_value_entry_str.split(":")
-                        helper_attribute: Attribute = Attribute.PROPERTY_AREA
-                        default_value_entry.set_attribute_default(helper_attribute.equals(attribute_str_split_up[0]),
+                        default_value_entry.set_attribute_default(Attribute.convert_str_to_attribute(attribute_str_split_up[0]),
                                                                   float(attribute_str_split_up[1]))
                     loaded_category.add_default_value_entry(default_value_entry)
                 category_list.append(loaded_category)

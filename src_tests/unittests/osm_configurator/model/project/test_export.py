@@ -28,6 +28,6 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
 
 
 class TestExport:
-    def test_build(self):
+    def test_export(self):
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProjectExport", "Das sollte funktionieren")
         self.active_project.get_export_manager().export_project(Path(os.path.join(TEST_DIR, "build/Export")))

@@ -87,7 +87,16 @@ class AggregationMethod(Enum):
         """
         return self.value[1]
 
-    def equals(mode: str) -> AggregationMethod | None:
+    def convert_str_to_aggregation_method(mode: str) -> AggregationMethod | None:
+        """
+        Converts a given string to the associated AggregationMethod.
+
+        Args:
+            mode (str): The string.
+
+        Returns:
+            AggregationMethod: Associated AggregationMethod.
+        """
         for method in AggregationMethod:
             if method.get_name() == mode:
                 return method
