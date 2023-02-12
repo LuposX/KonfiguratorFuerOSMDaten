@@ -1,9 +1,0 @@
-name,Category2
-status,True
-white_list,
-black_list,
-calculation_method_of_area,Calculate Site Area
-active_attributes,
-strictly_use_default_values,False
-attractivity_attributes,
-default_value_list,"default,Property Area:0,Number of Floors:0,Floor Area:0"
