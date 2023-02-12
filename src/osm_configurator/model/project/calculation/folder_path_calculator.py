@@ -4,6 +4,8 @@ import os
 
 from typing import TYPE_CHECKING
 
+from pathlib import Path
+
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
@@ -34,4 +36,4 @@ class FolderPathCalculator:
 
         checkpoint_folder_path: Path = os.path.join(os.path.join(project_path, result_folder_name), phase_folder_name)
 
-        return checkpoint_folder_path
+        return Path(checkpoint_folder_path)
