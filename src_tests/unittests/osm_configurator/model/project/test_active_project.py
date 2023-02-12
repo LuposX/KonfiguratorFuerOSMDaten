@@ -31,45 +31,34 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
     with open(os.path.join(path_to_new_project, "application_settings.csv"), "w") as file:
         file.write(str(path_to_new_project))
 
-
-
 class TestActiveProject:
     def test_build(self):
-        self.active_project: ActiveProject = ActiveProject(os.path.join(TEST_DIR, "data/"), True, "TestProject1", "Das sollte funktionieren")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject1", "Das sollte funktionieren")
         self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
         self.active_project.get_project_saver().save_project()
 
     def test_load(self):
-        self.test_build()
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
-        self.assertEqual(self.active_project.get_last_step(), ConfigPhase.CATEGORY_CONFIG_PHASE)
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        assert self.active_project.get_last_step() == ConfigPhase.CATEGORY_CONFIG_PHASE
 
     def test_load_without_name(self):
-        self.test_build()
-        path: Path = Path("C:\TestProject1")
-        self.active_project: ActiveProject = ActiveProject(path, False,)
-        self.assertEqual(self.active_project.get_last_step(), ConfigPhase.CATEGORY_CONFIG_PHASE)
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects/TestProject1")), False)
+        assert self.active_project.get_last_step() == ConfigPhase.CATEGORY_CONFIG_PHASE
 
     def test_getter_config(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, True, "TestProject3", "Das sollte funktionieren")
-        self.assertEqual(self.active_project.get_last_step(), ConfigPhase.DATA_CONFIG_PHASE)
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject3", "Das sollte funktionieren")
+        assert self.active_project.get_last_step() == ConfigPhase.DATA_CONFIG_PHASE
 
     def test_setter_config(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, True, "TestProject4", "Das sollte funktionieren")
-        self.assertEqual(self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE), True)
-        self.assertEqual(self.active_project.get_last_step(), ConfigPhase.CATEGORY_CONFIG_PHASE)
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject4", "Das sollte funktionieren")
+        assert self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
+        assert self.active_project.get_last_step() == ConfigPhase.CATEGORY_CONFIG_PHASE
 
     def test_path(self):
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, True, "TestProject4", "Das sollte sda")
-        self.assertEqual(self.active_project.get_project_path(), Path("C:TestProject4"))
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject4", "Das sollte sda")
+        assert Path(self.active_project.get_project_path()) == Path(os.path.join(TEST_DIR, "build/Projects/TestProject4"))
 
     def test_name_edit(self):
-        self.test_build()
-        path: Path = Path("C:")
-        self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
         self.active_project.get_project_settings().change_name("TestProjectNewName")
         self.active_project.get_project_saver().save_project()
