@@ -4,17 +4,6 @@ import customtkinter
 
 import screeninfo
 
-import src.osm_configurator.control.export_controller_interface
-import src.osm_configurator.control.category_controller_interface
-import src.osm_configurator.control.project_controller_interface
-import src.osm_configurator.control.settings_controller_interface
-import src.osm_configurator.control.aggregation_controller_interface
-import src.osm_configurator.control.application_controller
-import src.osm_configurator.control.calculation_controller_interface
-import src.osm_configurator.control.cut_out_controller_interface
-import src.osm_configurator.control.data_visualization_controller_interface
-import src.osm_configurator.control.osm_data_controller_interface
-
 import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i

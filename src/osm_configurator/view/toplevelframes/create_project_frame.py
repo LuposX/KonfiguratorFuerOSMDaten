@@ -25,6 +25,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
+# TODO remove bool-return values at button functions
+
 class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
     """
     This frame shows the project creation page to the User.
@@ -66,14 +68,14 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
                                    text="Project Name: ",
                                    title="ProjectName",
                                    name=self._project_name) \
-            .grid(row=0, column=0, rowspan=1, columnspan=1)
+                .grid(row=0, column=0, rowspan=1, columnspan=1)
 
         self.description_field = \
             customtkinter.CTkEntry(master=self,
                                    text="Description: ",
                                    title="Description",
                                    description=self._project_description) \
-            .grid(row=1, column=0, rowspan=1, columnspan=1)
+                .grid(row=1, column=0, rowspan=1, columnspan=1)
 
         self.destination_button = \
             customtkinter.CTkButton(master=self,
@@ -85,7 +87,7 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     ) \
-            .grid(row=2, column=0, rowspan=1, columnspan=1)
+                .grid(row=2, column=0, rowspan=1, columnspan=1)
 
         self.create_button = \
             customtkinter.CTkButton(master=self,
@@ -97,7 +99,7 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value) \
-            .grid(row=3, column=3, rowspan=1, columnpan=1)
+                .grid(row=3, column=3, rowspan=1, columnpan=1)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
@@ -109,16 +111,14 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value) \
-            .grid(row=3, column=4, rowspan=1, columnspan=1)
+                .grid(row=3, column=4, rowspan=1, columnspan=1)
 
     def activate(self):
         pass
 
-    def _choose_destination(self) -> bool:
+    def _choose_destination(self):
         """
         Opens the explorer making the user choose the wanted destination
-        Returns:
-            bool: True, if a valid path was chosen and project-loading process was given to the controller, else false
         """
         new_path = Path(self.__browse_files())
 
@@ -127,12 +127,11 @@ class CreateProjectFrame(customtkinter.CTkToplevel, Activatable):
             popup = AlertPopUp("No valid Path chosen! Please enter a valid Path.")
             popup.mainloop()
             self.activate()
-            return False
+            return
 
         # valid Path was chosen => project will be loaded
         self._project_path = new_path
         self._project_controller.load_project(new_path)
-        return True
 
     def __create_pressed(self) -> bool:
         """

@@ -268,7 +268,8 @@ class StateManager:
         all_states.append(state_attractivity_view)
 
         # Calculation Frame State
-        calculation_frame: CalculationFrame = calculate_frame_i.CalculationFrame(self, calculation_controller,
+        from src.osm_configurator.view.toplevelframes.calculation_frame import CalculationFrame
+        calculation_frame: CalculationFrame = CalculationFrame(self, calculation_controller,
                                                                                  data_visualization_controller)
         positioned_calcualtion_frame: PositionedFrame = positioned_frame_i.PositionedFrame(calculation_frame,
                                                                                            CALCULATION_FRAME_COLUM,
@@ -282,7 +283,8 @@ class StateManager:
         all_states.append(state_calculation_frame)
 
         # Category Frame State
-        category_frame: CategoryFrame = category_frame_i.CategoryFrame(self, category_controller)
+        from src.osm_configurator.view.toplevelframes.category_frame import CategoryFrame
+        category_frame: CategoryFrame = CategoryFrame(self, category_controller)
         positioned_category_frame: PositionedFrame = positioned_frame_i.PositionedFrame(category_frame,
                                                                                         CATEGORY_FRAME_COLUM,
                                                                                         CATEGORY_FRAME_ROW,
@@ -296,7 +298,8 @@ class StateManager:
         all_states.append(state_category_frame)
 
         # Data Frame State
-        data_frame: DataFrame = data_frame_i.DataFrame(self, data_visualization_controller, cut_out_controller,
+        from src.osm_configurator.view.toplevelframes.data_frame import DataFrame
+        data_frame: DataFrame = DataFrame(self, data_visualization_controller, cut_out_controller,
                                                        category_controller,
                                                        osm_data_controller)
         positioned_data_frame: PositionedFrame = positioned_frame_i.PositionedFrame(data_frame, DATA_FRAME_COLUM,
@@ -311,7 +314,8 @@ class StateManager:
         all_states.append(state_data_frame)
 
         # Reduction Frame State
-        reduction_frame: ReductionFrame = reduction_frame_i.ReductionFrame(self, category_controller)
+        from src.osm_configurator.view.toplevelframes.reduction_frame import ReductionFrame
+        reduction_frame: ReductionFrame = ReductionFrame(self, category_controller)
         positioned_reduction_frame: PositionedFrame = positioned_frame_i.PositionedFrame(reduction_frame,
                                                                                          REDUCTION_FRAME_COLUM,
                                                                                          REDUCTION_FRAME_ROW,
@@ -325,7 +329,8 @@ class StateManager:
         all_states.append(state_reduction_frame)
 
         # Settings Frame State
-        settings_frame: SettingsFrame = settings_frame_i.SettingsFrame(self, settings_controller)
+        from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
+        settings_frame: SettingsFrame = SettingsFrame(self, settings_controller)
         positioned_settings_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame,
                                                                                         SETTINGS_FRAME_COLUM,
                                                                                         SETTINGS_FRAME_ROW,
