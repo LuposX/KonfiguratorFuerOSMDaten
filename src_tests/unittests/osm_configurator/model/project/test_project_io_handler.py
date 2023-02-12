@@ -20,21 +20,17 @@ class MyTestCase(unittest.TestCase):
         self.active_project: ActiveProject = ActiveProject(path, True, "TestProject1", "This project is to test!")
 
         self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
-        self.active_project.get_project_saver().save_project()
 
         self.active_project.get_config_manager().get_osm_data_configuration() \
             .set_osm_data(Path("C:"))
-        self.active_project.get_project_saver().save_project()
 
         self.active_project.get_config_manager().get_aggregation_configuration() \
             .set_aggregation_method_active(AggregationMethod.LOWER_QUARTILE, True)
-        self.active_project.get_project_saver().save_project()
 
         self.active_project.get_config_manager().get_cut_out_configuration() \
             .set_cut_out_path(Path("C:"))
         self.active_project.get_config_manager().get_cut_out_configuration() \
             .set_cut_out_mode(CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
-        self.active_project.get_project_saver().save_project()
 
         test_category: Category = Category()
         test_category.set_category_name("Category1")
@@ -67,17 +63,20 @@ class MyTestCase(unittest.TestCase):
                          self.active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
 
     def test_load_config(self):
+        self.prepare()
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.assertEqual(ConfigPhase.CATEGORY_CONFIG_PHASE, self.active_project.get_last_step())
 
     def test_load_osm(self):
+        self.prepare()
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.assertEqual(Path("C:"),
                          self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
 
     def test_load_aggregation(self):
+        self.prepare()
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         test_aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
@@ -86,6 +85,7 @@ class MyTestCase(unittest.TestCase):
                          test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.LOWER_QUARTILE))
 
     def test_cut_out_config(self):
+        self.prepare()
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         test_cut_out_configurator: CutOutConfiguration = self.active_project.get_config_manager().get_cut_out_configuration()

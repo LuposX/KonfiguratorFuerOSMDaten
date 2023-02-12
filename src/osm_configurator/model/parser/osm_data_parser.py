@@ -79,7 +79,7 @@ class OSMDataParser(OSMDataParserInterface):
                           model_constants.CL_OSM_ELEMENT_NAME,
                           model_constants.CL_LOCATION,
                           model_constants.CL_TAGS,
-                          model_constants.CL_CATEGORIES]
+                          model_constants.CL_CATEGORY]
 
         df_osm = gpd.GeoDataFrame(osm_handler.get_osm_data(), columns=data_col_names)
 
