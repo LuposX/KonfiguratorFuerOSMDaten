@@ -22,7 +22,7 @@ class PassiveProject:
             reader = csv.reader(f)
             self.data = list(reader)
 
-    def get_name(self):
+    def get_name(self) -> str:
         """
         Gives back the name of the passive project.
 
@@ -31,7 +31,7 @@ class PassiveProject:
         """
         return self.data[0][1]
 
-    def get_description(self):
+    def get_description(self) -> str:
         """
         Gives back the description of the passive project.
 
@@ -47,13 +47,14 @@ class PassiveProject:
         Returns:
             str: The last edit date of the passive project.
         """
-        return self.data[2][1]
+        # TODO machen
+        return self.data[4][1]
 
-    def get_project_folder_path(self):
+    def get_project_folder_path(self) -> Path:
         """
         Gives back the path pointing towards the passive project.
 
         Returns:
             pathlib.Path: The path pointing towards the passive project.
         """
-        return self.data[3][1]
+        return Path(self.data[2][1])

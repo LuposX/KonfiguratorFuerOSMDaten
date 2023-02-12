@@ -3,9 +3,6 @@ from __future__ import annotations
 import os.path
 import pathlib
 from typing import TYPE_CHECKING
-import csv
-
-from src.osm_configurator.model.application.application_interface import IApplication
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -34,9 +31,9 @@ class ApplicationSettingsSaver:
         """
         if os.path.exists(destination):
             filename = "default_project_folder.txt"
-            default_project_folder = str(destination)
+            default_project_folder: Path = destination.joinpath(filename)
 
-            with open(filename, 'w') as f:
-                f.write(default_project_folder)
+            with open(default_project_folder, 'w', newline="") as f:
+                f.write(str(destination))
             return True
         return False

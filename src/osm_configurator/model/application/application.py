@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-import pathlib
+from pathlib import Path
 import os
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 from src.osm_configurator.model.application.application_interface import IApplication
 from src.osm_configurator.model.application.application_settings import ApplicationSettings
@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from src.osm_configurator.model.application.application_settings_saver import ApplicationSettingsSaver
-    from pathlib import Path
+    import pathlib
 
 
 class Application(IApplication):
@@ -28,7 +28,7 @@ class Application(IApplication):
         """
         self.active_project: ActiveProject = None
         self.application_settings: ApplicationSettings = ApplicationSettings()
-        self.passive_project_list: list[PassiveProject] = self._create_passive_project_list(
+        self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
             self.application_settings.get_default_location())
         self.recommender_system: RecommenderSystem = RecommenderSystem()
         self.application_settings_saver: ApplicationSettingsSaver = ApplicationSettingsSaver()
@@ -55,15 +55,14 @@ class Application(IApplication):
 
     def save(self, destination: Path) -> bool:
         self.application_settings_saver.save_settings(destination)
-        self.active_project.get_project_saver.save_project(destination)
         return True
 
-    def _create_passive_project_list(self, destination: pathlib.Path) -> list[PassiveProject]:
-        passive_project_list: list[PassiveProject] = []
+    def _create_passive_project_list(self, destination: pathlib.Path) -> List[PassiveProject]:
+        passive_project_list: List[PassiveProject] = []
 
-        for files in os.walk(destination):
-            for filename in files:
-                if filename.endswith("settings.csv"):
-                    filepath = os.path.join(destination, filename)
-                    passive_project_list.append(PassiveProject(Path(filepath)))
+        for directory in os.listdir(destination):
+            if not os.path.isfile(directory):
+                project: Path = destination.joinpath(str(directory))
+                filepath: Path = project.joinpath("project_settings.csv")
+                passive_project_list.append(PassiveProject(filepath))
         return passive_project_list

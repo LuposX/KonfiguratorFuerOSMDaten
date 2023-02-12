@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os.path
-import pathlib
+from pathlib import Path
 
 from typing import TYPE_CHECKING
 
@@ -19,7 +19,7 @@ class ApplicationSettings:
         """
         Creates a new instance of the ApplicationSettings.
         """
-        self.path: pathlib.Path = Path('')
+        self.path: Path = Path("C:")
 
     def get_default_location(self) -> Path:
         """
