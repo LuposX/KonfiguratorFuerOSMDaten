@@ -57,7 +57,7 @@ class MyTestCase(unittest.TestCase):
         path: Path = Path("C:")
         self.active_project: ActiveProject = ActiveProject(path, False, "TestProject1")
         self.assertEqual("TestProject1", self.active_project.get_project_settings().get_name())
-        self.assertEqual("Das sollte funktionieren", self.active_project.get_project_settings().get_description())
+        self.assertEqual("This project is to test!", self.active_project.get_project_settings().get_description())
         self.assertEqual(Path("C:TestProject1"), self.active_project.get_project_settings().get_location())
         self.assertEqual("calculation_check_points",
                          self.active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
