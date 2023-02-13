@@ -8,8 +8,6 @@ from src.osm_configurator.model.application.application_interface import IApplic
 import src.osm_configurator.model.application.recommender_system as recommender_system_i
 import src.osm_configurator.model.application.application_settings as application_settings_i
 import src.osm_configurator.model.application.application_settings_saver as application_settings_saver_i
-import src.osm_configurator.model.project.active_project
-import src.osm_configurator.model.application.passive_project
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
@@ -39,8 +37,8 @@ class Application(IApplication):
         self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
             self.application_settings.get_default_project_folder())
         self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem()
-        self.application_settings_saver: ApplicationSettingsSaver = application_settings_saver_i.ApplicationSettingsSaver(
-            application_settings_file)
+        self.application_settings_saver: ApplicationSettingsSaver = \
+            application_settings_saver_i.ApplicationSettingsSaver(application_settings_file)
 
     def create_project(self, name: str, description: str, destination: Path) -> bool:
         self.active_project = ActiveProject(destination, True, name, description)
@@ -71,8 +69,8 @@ class Application(IApplication):
         if destination:
             for directory in os.listdir(destination):
                 if not os.path.isfile(directory):
-                    project: Path = os.path.join(destination, Path(str(directory)))
-                    filepath: Path = os.path.join(project, PROJECT_SETTING)
+                    project: Path = Path(os.path.join(destination, Path(str(directory))))
+                    filepath: Path = Path(os.path.join(project, PROJECT_SETTING))
                     if os.path.exists(filepath):
                         passive_project_list.append(PassiveProject(filepath))
             return passive_project_list
