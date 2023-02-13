@@ -9,11 +9,6 @@ if TYPE_CHECKING:
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from typing import Tuple, List, Dict
-
 
 class DefaultValueEntry:
     """
@@ -27,10 +22,9 @@ class DefaultValueEntry:
         Creates an empty DefaultValueEntry with 0 for all the factor values.
         """
         self._tag: str = tag
-        self._all_attribute_default_values: Dict = {}
-        attribute: Attribute
+        self._all_attribute_default_values: Dict[Attribute, float] = {}
         for attribute in attribute_enum_i.Attribute:
-            self._all_attribute_default_values.update({attribute: 0})
+            self._all_attribute_default_values.update({attribute: 0.0})
 
     def get_default_value_entry_tag(self) -> str:
         """

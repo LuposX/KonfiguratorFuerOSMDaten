@@ -33,7 +33,6 @@ class AggregationConfiguration:
         """
         all_methods: List[AggregationMethod] = []
 
-        method: AggregationMethod
         for method in aggregation_method_enum_i.AggregationMethod:
             all_methods.append(method)
         return all_methods

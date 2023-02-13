@@ -17,6 +17,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
+CSV_ENDING: str = ".csv"
+
 
 class CategoryManager:
     """
@@ -116,7 +118,7 @@ class CategoryManager:
         category_parser: CategoryParser = CategoryParser()
 
         for file in os.listdir(new_category_list_path):
-            if file.endswith(".csv"):
+            if file.endswith(CSV_ENDING):
                 new_categories.append(category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
         self._categories = new_categories
 
@@ -131,7 +133,7 @@ class CategoryManager:
         category_parser: CategoryParser = CategoryParser()
 
         for file in os.listdir(new_category_list_path):
-            if file.endswith(".csv"):
+            if file.endswith(CSV_ENDING):
                 new_categories.append(
                     category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
         self.add_categories(new_categories)
