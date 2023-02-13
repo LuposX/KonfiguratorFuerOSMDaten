@@ -452,24 +452,71 @@ class CategoryFrame(TopLevelFrame):
         yes_no_pop_up_i.YesNoPopUp("Do you want to delete, the currently selected Category?", self._pop_up_answer)
 
     def _load_category(self, category: category_i.Category):
-        # Fill in Name
-        self._category_name_entry.configure(text=category.get_category_name())
 
-        # Edit Checkbox
-        if category.is_active():
-            self._category_checkbox.select()
+        if category is None:
+            self._deactivate_editing()
         else:
-            self._category_checkbox.deselect()
+            self._activate_editing()
 
-        # WhiteList
-        self._override_white_list(category.get_whitelist())
-        self._white_list_was_last_edited: bool = True
-        # BlackList
-        self._override_black_list(category.get_blacklist())
-        self._black_list_was_last_edited: bool = False
+            # Fill in Name
+            self._category_name_entry.configure(text=category.get_category_name())
 
-        # Key Recommendations
-        self._set_recommendations_based_on_input(self._white_list.get("end-1c linestart", "end-1c"))
+            # Edit Checkbox
+            if category.is_active():
+                self._category_checkbox.select()
+            else:
+                self._category_checkbox.deselect()
+
+            # WhiteList
+            self._override_white_list(category.get_whitelist())
+            self._white_list_was_last_edited: bool = True
+            # BlackList
+            self._override_black_list(category.get_blacklist())
+            self._black_list_was_last_edited: bool = False
+
+            # Key Recommendations
+            self._set_recommendations_based_on_input(self._white_list.get("end-1c linestart", "end-1c"))
+
+    def _activate_editing(self):
+        # Activating all the Buttons etc. but not giving them any text/information
+
+        self._category_name_entry.configure(state="normal")
+
+        self._category_checkbox.configure(state=tkinter.NORMAL)
+
+        self._white_list.configure(state="normal")
+
+        self._black_list.configure(state="normal")
+
+        self._delete_button.configure(state="normal")
+
+    def _deactivate_editing(self):
+        # Deleting all information in the editing buttons/textboxes etc
+        # And also disabling them, so they can't be edited anymore
+        # Only the create new button and the drop down menu stay active!
+
+        # For the DropDown Menu it will only be set to an empty string, if there are Categories in this Menu
+        # It should be still possible to select them, but if selected category is None,
+        # Then there is probably no category at all
+        self._category_drop_down_menu.set("")
+
+        self._category_name_entry.delete(1.0, "end-1c")
+        self._category_name_entry.configure(state="disabled")
+
+        self._category_checkbox.deselect()
+        self._category_checkbox.configure(state=tkinter.DISABLED)
+
+        self._override_white_list([""])
+        self._white_list.configure(state="disabled")
+
+        self._override_black_list([""])
+        self._black_list.configure(state="disabled")
+
+        button: customtkinter.CTkButton
+        for button in self._recommender_frame_button_list:
+            button.destroy()
+
+        self._delete_button.configure(state="disabled")
 
     def _override_white_list(self, tags: List[str]):
         self._white_list.delete(1.0, "end-1c")
@@ -490,16 +537,17 @@ class CategoryFrame(TopLevelFrame):
     def _set_category_drop_down_menu(self, category_list: List[category_i.Category],
                                      active_category: category_i.Category | None):
 
-        if active_category is None:
-            self._create_new_category_pressed()
-        else:
-            # Getting all category Names
-            category_names: List[str] = []
-            category: category_i.Category
-            for category in category_list:
-                category_names.append(category.get_category_name())
+        # Getting all category Names
+        category_names: List[str] = []
+        category: category_i.Category
+        for category in category_list:
+            category_names.append(category.get_category_name())
 
-            self._category_drop_down_menu.configure(values=category_names)
+        self._category_drop_down_menu.configure(values=category_names)
+
+        if active_category is None:
+            self._category_drop_down_menu.set("")
+        else:
             self._category_drop_down_menu.set(active_category.get_category_name())
 
     def _pop_up_answer(self, answer: bool):
