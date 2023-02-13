@@ -22,7 +22,7 @@ class OSMDataConfiguration:
         """
         Creates a new instance of the "OSMDataConfiguration" class.
         """
-        self._osm_data_path: Path = None
+        self._osm_data_path: Path = Path()
         self._downloader: DownloadData = download_data.DownloadData()
 
     def get_osm_data(self) -> Path:
@@ -34,7 +34,7 @@ class OSMDataConfiguration:
         """
         return self._osm_data_path
 
-    def set_osm_data(self, new_osm_data: pathlib.Path) -> bool:
+    def set_osm_data(self, new_osm_data: Path) -> bool:
         """
         Edits the path pointing towards the OSM data file.
 

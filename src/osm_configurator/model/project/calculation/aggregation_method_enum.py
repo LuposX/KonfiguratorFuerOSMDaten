@@ -86,3 +86,18 @@ class AggregationMethod(Enum):
             str: Name of the enum type
         """
         return self.value[1]
+
+    def convert_str_to_aggregation_method(mode: str) -> AggregationMethod | None:
+        """
+        Converts a given string to the associated AggregationMethod.
+
+        Args:
+            mode (str): The string.
+
+        Returns:
+            AggregationMethod: Associated AggregationMethod.
+        """
+        for method in AggregationMethod:
+            if method.get_name() == mode:
+                return method
+        return None

@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+
+DEFAULT_VALUE: float = 0.0  # The default value of every attribute set at the beginning.
 
 
 class AttractivityAttribute:
@@ -25,13 +27,11 @@ class AttractivityAttribute:
             base_attractivity (float): The base attractivity value.
         """
         self._attractivity_attribute_name: str = attractivity_attribute_name
+        self._base_attractivity: float = base_attractivity
         self._attribute_factors: Dict[Attribute, float] = {}
 
-        attribute: Attribute
         for attribute in attribute_enum.Attribute:
-            self._attribute_factors[attribute] = 0
-
-        self._base_attractivity: float = base_attractivity
+            self._attribute_factors[attribute] = DEFAULT_VALUE
 
     def get_attractivity_attribute_name(self) -> str:
         """
@@ -41,16 +41,13 @@ class AttractivityAttribute:
         """
         return self._attractivity_attribute_name
 
-    def set_attractivity_attribute_name(self, new_name) -> bool:
+    def set_attractivity_attribute_name(self, new_name: str):
         """
         Setter for the attractivity attribute name.
         Args:
             new_name (str): name of the attractivity attribute.
-        Returns:
-            bool: true, if the name was successfully set, false otherwise
         """
         self._attractivity_attribute_name = new_name
-        return True
 
     def get_attribute_factor(self, attribute: Attribute) -> float:
         """
@@ -62,17 +59,14 @@ class AttractivityAttribute:
         """
         return self._attribute_factors[attribute]
 
-    def set_attribute_factor(self, attribute: Attribute, factor: float) -> bool:
+    def set_attribute_factor(self, attribute: Attribute, factor: float):
         """
          Setter for the list of attributes and factors.
         Args:
             attribute: The attribute we for which we want to set the factor.
             factor: The factor we want to set
-        Return:
-            bool: true, on success
         """
         self._attribute_factors[attribute] = factor
-        return True
 
     def get_base_factor(self) -> float:
         """
@@ -82,13 +76,10 @@ class AttractivityAttribute:
         """
         return self._base_attractivity
 
-    def set_base_factor(self, new_base_factor) -> bool:
+    def set_base_factor(self, new_base_factor):
         """
         Setter for the base factor.
         Args:
             new_base_factor (float): New value for the base factor
-        Returns:
-            bool: true if the base factor eas successful set, false else
         """
         self._base_attractivity = new_base_factor
-        return True

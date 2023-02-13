@@ -8,7 +8,7 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 
 import src.osm_configurator.model.model_constants as model_constants_i
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from typing import List
@@ -17,6 +17,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+
+DEFAULT_NAME: str = "Category Name"
 
 
 class Category:
@@ -31,12 +33,12 @@ class Category:
         Creates a new instance of a "Category" class.
         """
         self._active: bool = False
-        self._whitelist: List = []
-        self._blacklist: List = []
-        self._category_name: str = "Category Name"
-        self._calculation_method_of_area: CalculationMethodOfArea = None
-        self._attractivity_attributes: List = []
-        self._default_value_list: List = []
+        self._whitelist: List[str] = []
+        self._blacklist: List[str] = []
+        self._category_name: str = DEFAULT_NAME
+        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA
+        self._attractivity_attributes: List[AttractivityAttribute] = []
+        self._default_value_list: List[DefaultValueEntry] = []
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
@@ -47,7 +49,6 @@ class Category:
 
         # Create the Attribute dictionary
         self._attributes: Dict[Attribute, bool] = {}
-        attribute: Attribute
         for attribute in attribute_enum_i.Attribute:
             self._attributes.update({attribute: False})
 
@@ -84,7 +85,7 @@ class Category:
             return True
         return False
 
-    def get_whitelist(self) -> list[str]:
+    def get_whitelist(self) -> List[str]:
         """
         Getter for the whitelist of the category.
 
@@ -93,12 +94,12 @@ class Category:
         """
         return self._whitelist
 
-    def set_whitelist(self, new_whitelist: list[str]) -> bool:
+    def set_whitelist(self, new_whitelist: List[str]) -> bool:
         """
         Changes the old whitelist to a new one.
 
         Args:
-            new_whitelist (list[str]): value for the new whitelist.
+            new_whitelist (List[str]): value for the new whitelist.
 
         Returns:
              bool: True, if the whitelist was overwritten successfully, else False.
@@ -113,16 +114,16 @@ class Category:
         Getter for the blacklist of the category.
 
         Returns
-           List[Tuple[str, str]]: List containing all tags in the form of key,value pairs.
+           List[str]: List containing all tags in the form of key,value pairs.
         """
         return self._blacklist
 
-    def set_blacklist(self, new_blacklist: list[str]) -> bool:
+    def set_blacklist(self, new_blacklist: List[str]) -> bool:
         """
         Overwrites the old Blacklist with a new value.
 
         Args:
-            new_blacklist (list[str]): new value for the blacklist.
+            new_blacklist (List[str]): new value for the blacklist.
 
         Returns:
             bool: True, if the blacklist was overwritten successfully, else False.
@@ -150,19 +151,18 @@ class Category:
         """
         self._category_name = new_category_name
 
-    def get_activated_attribute(self) -> list[Attribute]:
+    def get_activated_attribute(self) -> List[Attribute]:
         """
         Return a list of all used attributes, of the categories.
         This is used to know which tags we need to save.
 
         Returns:
-            list[Attribute]: A list that contains all used attributes
+            List[Attribute]: A list that contains all used attributes
         """
-        _activated = []
+        _activated: List[Attribute] = []
         for enum in self._attributes:
-            if self._attributes.get(enum) == True:
+            if self._attributes.get(enum):
                 _activated.append(enum)
-
         return _activated
 
     def get_not_activated_attribute(self) -> List[Attribute]:
@@ -172,12 +172,10 @@ class Category:
         Returns:
             List[Attribute]: A list that contains all used attributes
         """
-        _not_activated = []
-
+        _not_activated: List[Attribute] = []
         for enum in self._attributes:
-            if self._attributes.get(enum) == False:
+            if not self._attributes.get(enum):
                 _not_activated.append(enum)
-
         return _not_activated
 
     def get_attribute(self, attribute: Attribute) -> bool:
@@ -253,7 +251,7 @@ class Category:
         Getter for the AttractivityAttributes of the category.
 
         Returns:
-            list[attractivity_attribute.AttractivityAttribute]: List of all used attractivity attributes
+            List[attractivity_attribute.AttractivityAttribute]: List of all used attractivity attributes
         """
         return self._attractivity_attributes
 
@@ -328,40 +326,40 @@ class Category:
             return True
         return False
 
-    def move_default_value_entry_up(self, default_value_entry: DefaultValueEntry) -> bool:
+    def move_default_value_entry_up(self, moved_default_value_entry: DefaultValueEntry) -> bool:
         """
         Moves an already existing default value from the list one element up.
 
         Args:
-            default_value_entry (default_value_entry.DefaultValueEntry): element from the list, that will be
+            moved_default_value_entry (default_value_entry.DefaultValueEntry): element from the list, that will be
             incremented by one.
 
         Returns:
             bool: True, if the change was successful, else False.
         """
         if (default_value_entry not in self._default_value_list) \
-                or self._default_value_list.index(default_value_entry) <= 0:
+                or self._default_value_list.index(moved_default_value_entry) <= 0:
             return False
-        index = self._default_value_list.index(default_value_entry)
+        index = self._default_value_list.index(moved_default_value_entry)
         self._default_value_list[index - 1], self._default_value_list[index] \
             = self._default_value_list[index], self._default_value_list[index - 1]
         return True
 
-    def move_default_value_entry_down(self, default_value_entry: DefaultValueEntry) -> bool:
+    def move_default_value_entry_down(self, moved_default_value_entry: DefaultValueEntry) -> bool:
         """
         Moves an already existing default value from list one element down.
 
         Args:
-            default_value_entry (default_value_entry.DefaultValueEntry): element from the list, that will be
+            moved_default_value_entry (default_value_entry.DefaultValueEntry): element from the list, that will be
             decremented by one.
 
         Returns:
             bool: True, if the change was successful, else false.
         """
         if (default_value_entry not in self._default_value_list) \
-                or self._default_value_list.index(default_value_entry) <= 0:
+                or self._default_value_list.index(moved_default_value_entry) <= 0:
             return False
-        index = self._default_value_list.index(default_value_entry)
+        index = self._default_value_list.index(moved_default_value_entry)
         self._default_value_list[index + 1], self._default_value_list[index] \
             = self._default_value_list[index], self._default_value_list[index + 1]
         return True

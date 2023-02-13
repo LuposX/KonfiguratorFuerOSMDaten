@@ -1,15 +1,24 @@
 from __future__ import annotations
 
+import os
+
 import src.osm_configurator.model.project.configuration.category
-import src.osm_configurator.model.project.configuration.category as Category
+import src.osm_configurator.model.project.configuration.category as category_i
+from pathlib import Path
 
 from typing import TYPE_CHECKING
 
+from src.osm_configurator.model.parser.category_parser import CategoryParser
+
 if TYPE_CHECKING:
-    from typing import List, Dict, Set
+    from typing import List, Set, Final
+    from pathlib import Path
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+
+CSV_ENDING: str = ".csv"
+
 
 class CategoryManager:
     """
@@ -22,7 +31,6 @@ class CategoryManager:
         """
         self._categories: List[Category] = []
 
-
     def get_activated_attribute(self) -> List[Attribute]:
         """
         Return a list of all used attributes, of all categories.
@@ -31,7 +39,7 @@ class CategoryManager:
         Returns:
             List[Attribute]: A list that contains all used attributes
         """
-        _activated_attributes = []
+        _activated_attributes: List[Attribute] = []
 
         for category in self._categories:
             for attribute in category.get_activated_attribute():
@@ -39,7 +47,7 @@ class CategoryManager:
                     _activated_attributes.append(attribute)
         return _activated_attributes
 
-    def get_category(self, name) -> Category:
+    def get_category(self, name: str) -> Category:
         """
         Gets a category based on the index.
 
@@ -47,9 +55,8 @@ class CategoryManager:
             name (str): IThe name of the category.
 
         Returns:
-            category.Category: The Category we wanted.
+            Category: The Category we wanted.
         """
-        item: Category
         for item in self._categories:
             if item.get_category_name() == name:
                 return item
@@ -77,10 +84,8 @@ class CategoryManager:
             bool: True, if the element was created correctly, else false.
         """
         # Check that the category is not already saved
-        found: bool = False
         if new_category.get_category_name() in self._get_all_categories_names():
             return False
-
         else:
             self._categories.append(new_category)
             return True
@@ -96,27 +101,42 @@ class CategoryManager:
             bool: True, if the element was removed correctly, else false.
         """
         # Check if the element is in the list
-        found: bool = False
-        category: Category
         for category in self._categories:
             if category_to_remove.get_category_name() == category.get_category_name():
-                found = True
                 self._categories.remove(category_to_remove)
-                break
+                return True
+        return False
 
-        if found:
-            return True
-        else:
-            return False
-
-    def override_categories(self, new_category_list: List[Category]):
+    def override_categories(self, new_category_list_path: Path):
         """
-        Overwrites the list of categories with the given list, if both lists are not identical.
+        Overwrites the list of categories with the given list.
 
         Args:
-            new_category_list (List[Categories]): List of categories, that will overwrite the already existing list.
+            new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
         """
-        self._categories = new_category_list
+        new_categories: List[Category] = []
+        category_parser: CategoryParser = CategoryParser()
+
+        for file in os.listdir(new_category_list_path):
+            if file.endswith(CSV_ENDING):
+                new_categories.append(category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
+        self._categories = new_categories
+
+    def merge_categories(self, new_category_list_path: Path):
+        """
+        Overwrites the list of categories with the given list.
+
+        Args:
+            new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
+        """
+        new_categories: List[Category] = []
+        category_parser: CategoryParser = CategoryParser()
+
+        for file in os.listdir(new_category_list_path):
+            if file.endswith(CSV_ENDING):
+                new_categories.append(
+                    category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
+        self.add_categories(new_categories)
 
     def add_categories(self, category_input_list: List[Category]):
         """
@@ -128,7 +148,6 @@ class CategoryManager:
         for category in category_input_list:
             if category.get_category_name() not in self._get_all_categories_names():
                 self._categories.append(category)
-
 
     def get_all_defined_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
