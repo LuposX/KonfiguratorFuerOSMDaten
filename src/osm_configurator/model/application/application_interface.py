@@ -38,7 +38,7 @@ class IApplication(ABC):
         pass
 
     @abstractmethod
-    def load_project(self, destination) -> bool:
+    def load_project(self, destination: Path) -> bool:
         """
         This method loads an existing project. This project can be internal or external ones. The path is pointing
         towards the folder, where the project is saved.

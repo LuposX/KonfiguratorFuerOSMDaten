@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import TYPE_CHECKING, Final
+import pathlib
 
 
 if TYPE_CHECKING:
@@ -19,7 +20,7 @@ class ApplicationSettingsIOHandler:
         Creates a new instance of the ApplicationSettingsIOHandler.
 
         Args:
-            application_settings_file (Path): name of the file
+            application_settings_file (pathlib.Path): name of the file
         """
         self.filename: Path = application_settings_file
 
@@ -28,7 +29,7 @@ class ApplicationSettingsIOHandler:
         This method loads the settings file.
 
         Returns:
-            bool: True when building the path works, otherwise false.
+            pathlib.Path: True when building the path works, otherwise false.
         """
         with open(self.filename, READ) as f:
             location = f.read()
