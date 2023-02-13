@@ -7,14 +7,12 @@ from typing import TYPE_CHECKING, List, Final
 from src.osm_configurator.model.application.application_interface import IApplication
 import src.osm_configurator.model.application.recommender_system as recommender_system_i
 import src.osm_configurator.model.application.application_settings as application_settings_i
-import src.osm_configurator.model.application.application_settings_saver as application_settings_saver_i
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.application.recommender_system import RecommenderSystem
     from src.osm_configurator.model.project.active_project import ActiveProject
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
-    from src.osm_configurator.model.application.application_settings_saver import ApplicationSettingsSaver
     from pathlib import Path
 
 PROJECT_SETTING: str = "project_settings.csv"
@@ -37,8 +35,6 @@ class Application(IApplication):
         self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
             self.application_settings.get_default_project_folder())
         self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem()
-        self.application_settings_saver: ApplicationSettingsSaver = \
-            application_settings_saver_i.ApplicationSettingsSaver(application_settings_file)
 
     def create_project(self, name: str, description: str, destination: Path) -> bool:
         self.active_project = ActiveProject(destination, True, self.application_settings, name, description)
