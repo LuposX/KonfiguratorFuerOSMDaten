@@ -10,8 +10,8 @@ if TYPE_CHECKING:
 
 
 @unique
-class ApplicationSettingsEnum(Enum):
-    # The first value of the tuple is teh name of teh setting.
+class ApplicationSettingsDefault(Enum):
+    # The first value of the tuple is the name of the setting.
     # The second value is the default value the setting will have if it didn't get changed.
     DEFAULT_PROJECT_FOLDER = ("default_project_folder", None)
     NUMBER_OF_PROCESSES = ("number_of_processes_for_calculation", multiprocessing.cpu_count())

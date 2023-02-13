@@ -91,13 +91,6 @@ class IApplication(ABC):
         pass
 
     @abstractmethod
-    def save(self):
-        """
-        Saves the active Project and the application settings to the drive.
-        """
-        pass
-
-    @abstractmethod
     def _create_passive_project_list(self, destination: Path) -> List[PassiveProject]:
         """
         Creates the list of passive projects.
