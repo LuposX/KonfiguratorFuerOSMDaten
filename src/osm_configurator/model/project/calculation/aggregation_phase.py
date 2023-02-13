@@ -24,6 +24,8 @@ import pandas as pd
 import geopandas as gpd
 from fiona.errors import DriverError
 
+from pathlib import Path
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -82,7 +84,7 @@ class AggregationPhase(ICalculationPhase):
         deleter.reset_folder(checkpoint_folder_path_current_phase)
 
         # check if the folder exist
-        if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
+        if Path(checkpoint_folder_path_last_phase).exists() and Path(checkpoint_folder_path_current_phase).exists():
             list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
 
         else:

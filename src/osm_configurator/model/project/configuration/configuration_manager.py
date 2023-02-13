@@ -7,13 +7,15 @@ import src.osm_configurator.model.project.configuration.aggregation_configuratio
 import src.osm_configurator.model.project.configuration.cut_out_configuration as cut_out_configuration
 import src.osm_configurator.model.project.configuration.category_manager as category_manager
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.osm_data_configuration import OSMDataConfiguration
     from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
     from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
+
+DEFAULT_CHECKPOINTS_FOLDER_NAME: str = "Results"
 
 
 class ConfigurationManager:
@@ -30,7 +32,7 @@ class ConfigurationManager:
             active_project_path (pathLib.Path): The path pointing towards the project folder.
         """
         self._active_project_path: pathlib.Path = active_project_path
-        self._calculation_phase_checkpoints_folder_name: str = "Results"  # TODO: remove Magic String
+        self._calculation_phase_checkpoints_folder_name: str = DEFAULT_CHECKPOINTS_FOLDER_NAME
         self._osm_data_configurator: OSMDataConfiguration = osm_data_configuration.OSMDataConfiguration()
         self._aggregation_configurator: AggregationConfiguration = aggregation_configuration.AggregationConfiguration()
         self._cut_out_configurator: CutOutConfiguration = cut_out_configuration.CutOutConfiguration()

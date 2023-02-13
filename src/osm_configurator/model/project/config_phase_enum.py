@@ -25,3 +25,18 @@ class ConfigPhase(Enum):
             str: Name of the Phase.
         """
         return self.value
+
+    def convert_str_to_config_phase(phase: str) -> ConfigPhase | None:
+        """
+        Converts a given string to the associated ConfigPhase.
+
+        Args:
+            phase (str): The string.
+
+        Returns:
+            ConfigPhase: Associated ConfigPhase.
+        """
+        for config_phase in ConfigPhase:
+            if config_phase.get_name() == phase:
+                return config_phase
+        return None

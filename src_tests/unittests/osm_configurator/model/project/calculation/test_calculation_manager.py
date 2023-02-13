@@ -80,5 +80,5 @@ def test_illegal_cancel2():
     calc_manager.start_calculation(calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE)
 
     assert calc_manager.cancel_calculation()
-    time.sleep(1)
+    time.sleep(0.5)
     assert not calc_manager.cancel_calculation()

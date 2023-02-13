@@ -20,10 +20,9 @@ class AggregationConfiguration:
         """
         Creates a new instance of the AggregationConfiguration.
         """
-        self._aggregation_method_state: Dict = {}
-        all_aggregation_methods = [member.name for member in aggregation_method_enum_i.AggregationMethod]
-        for enum_name in all_aggregation_methods:
-            self._aggregation_method_state.update({enum_name: False})
+        self._aggregation_method_state: Dict[AggregationMethod, bool] = {}
+        for method in aggregation_method_enum_i.AggregationMethod:
+            self._aggregation_method_state.update({method: False})
 
     def get_all_aggregation_methods(self) -> List[AggregationMethod]:
         """
@@ -34,7 +33,6 @@ class AggregationConfiguration:
         """
         all_methods: List[AggregationMethod] = []
 
-        method: AggregationMethod
         for method in aggregation_method_enum_i.AggregationMethod:
             all_methods.append(method)
         return all_methods
@@ -49,7 +47,6 @@ class AggregationConfiguration:
         Returns:
             bool: True if the aggregation method is active, otherwise false.
         """
-
         return self._aggregation_method_state.get(method)
 
     def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
@@ -64,7 +61,6 @@ class AggregationConfiguration:
         Returns:
             bool: True if changing the state works, otherwise false.
         """
-
         if method in aggregation_method_enum_i.AggregationMethod:
             self._aggregation_method_state.update({method: active})
             return True
@@ -79,9 +75,7 @@ class AggregationConfiguration:
         """
         activated_methods: List[AggregationMethod] = []
 
-        method: AggregationMethod
-        for method in list(aggregation_method_enum_i.AggregationMethod):
+        for method in aggregation_method_enum_i.AggregationMethod:
             if self.is_aggregation_method_active(method):
                 activated_methods.append(method)
-
         return activated_methods

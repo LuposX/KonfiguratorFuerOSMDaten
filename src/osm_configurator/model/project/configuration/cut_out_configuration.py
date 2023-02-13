@@ -68,6 +68,6 @@ class CutOutConfiguration:
             bool: True if changing the path, otherwise false.
         """
         if os.path.exists(new_path):
-            self._cut_out_path = path = new_path
+            self._cut_out_path = new_path
             return True
         return False

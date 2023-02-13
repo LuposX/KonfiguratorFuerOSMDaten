@@ -54,3 +54,4 @@ DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES: Final = [CL_OSM_TYPE,
                                                    CL_TAGS,
                                                    CL_CATEGORY,
                                                    ]
+

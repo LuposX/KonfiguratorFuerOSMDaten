@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum, unique
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 import ast
 import json
@@ -183,6 +183,21 @@ class Attribute(Enum):
             float: the calculated value
         """
         return self.value[2](category, osm_element, prev_calculated_attributes, curr_default_value, data)
+
+    def convert_str_to_attribute(name: str) -> Attribute | None:
+        """
+        Converts a given string to the associated Attribute.
+
+        Args:
+            name (str): The string.
+
+        Returns:
+            Attribute: Associated Attribute.
+        """
+        for attribute in Attribute:
+            if attribute.get_name() == name:
+                return attribute
+        return None
 
     @classmethod
     def get_all_tags(cls) -> List[str]:

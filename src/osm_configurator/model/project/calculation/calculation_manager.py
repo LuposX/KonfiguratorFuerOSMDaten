@@ -6,7 +6,8 @@ import src.osm_configurator.model.project.calculation.reduction_phase as reducti
 import src.osm_configurator.model.project.calculation.attractivity_phase as attractivity_phase
 import src.osm_configurator.model.project.calculation.aggregation_phase as aggregation_phase
 
-import src.osm_configurator.model.project.calculation.calculation_state_enum  as calculation_state_enum
+import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
+import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import multiprocessing
 
 from typing import TYPE_CHECKING
@@ -44,10 +45,13 @@ class CalculationManager:
             attractivity_phase.AttractivityPhase(),
             aggregation_phase.AggregationPhase()
         ]
-        self._calculation_state: Tuple[CalculationState,str] = (calculation_state_enum.CalculationState.NOT_STARTED_YET,
+        self._calculation_state: Tuple[CalculationState, str] = (calculation_state_enum.CalculationState.NOT_STARTED_YET,
                                    "The calculation has not started yet")
         self._process: Process = multiprocessing.Process()
-        self._message_queue: SimpleQueue = multiprocessing.SimpleQueue()
+        self._state_queue: SimpleQueue = multiprocessing.SimpleQueue()
+        self._phase_queue: SimpleQueue = multiprocessing.SimpleQueue()
+        self._current_phase: CalculationPhase = calculation_phase_enum.CalculationPhase.NONE
+        self._progress = 0
 
     def cancel_calculation(self) -> bool:
         """
@@ -57,6 +61,7 @@ class CalculationManager:
         Returns:
             bool: True if it is successful and false if something goes wrong, or no calculation is going on.
         """
+        self._current_phase: CalculationPhase = calculation_phase_enum.CalculationPhase.NONE
         if self._process.is_alive():
             self._process.terminate()
             self._calculation_state = (calculation_state_enum.CalculationState.CANCELED, "The calculation was canceled")
@@ -73,8 +78,8 @@ class CalculationManager:
         return self._calculation_state
 
     def _update_calculation_state(self):
-        while not self._message_queue.empty():
-            self._new_state = self._message_queue.get()
+        while not self._state_queue.empty():
+            self._calculation_state = self._state_queue.get()
 
     def start_calculation(self, starting_point: CalculationPhase) -> Tuple[CalculationState, str]:
         """
@@ -96,12 +101,40 @@ class CalculationManager:
             self._process.terminate()
 
         # Start process that executes _do_calculations
-        self._process = multiprocessing.Process(target=self._do_calculations, args=(starting_point, self._message_queue))
+        self._process = multiprocessing.Process(target=self._do_calculations,
+                                                args=(starting_point, self._state_queue, self._phase_queue))
         self._process.start()
 
         return calculation_state_enum.CalculationState.RUNNING, "The calculations are currently running"
 
-    def _do_calculations(self, starting_point: CalculationPhase, message_queue: SimpleQueue):
+    def get_current_calculation_phase(self) -> CalculationPhase:
+        """
+        Returns the calculation phase the calculations are in
+
+        Returns:
+            CalculationPhase: the calculation phase the calculations are in
+        """
+        self._update_calculation_phase()
+        return self._current_phase
+
+    def _update_calculation_phase(self):
+        while not self._phase_queue.empty():
+            self._current_phase = self._phase_queue.get()
+
+    def get_calculation_progress(self) -> float:
+        """
+        Returns an approximation of the progress of the calculations in the currently selected project.
+        The progress is given as a number between 0 and 1, where 0 indicates that the calculation has not started yet
+        and 1 indicates, that the calculations are done. The approximation is done by dividing the number of done
+        phases by the number of total phases
+
+        Returns:
+            float: The value of the approximation.
+        """
+        self._update_calculation_phase()
+        return (self._current_phase.get_order() - 1) / len(self._phases)
+
+    def _do_calculations(self, starting_point: CalculationPhase, state_queue: SimpleQueue, phase_queue: SimpleQueue):
         # Get index of the phase where the calculation should start
         starting_index: int = 0
         while self._phases[starting_index].get_calculation_phase_enum() != starting_point:
@@ -111,10 +144,14 @@ class CalculationManager:
         current_index: int = starting_index
         result: Tuple[CalculationState, str] = calculation_state_enum.CalculationState.RUNNING
         while current_index < len(self._phases) and result[0] == calculation_state_enum.CalculationState.RUNNING:
+            phase_queue.put(self._phases[current_index].get_calculation_phase_enum())
             result = self._phases[current_index].calculate(self._config_manager)
-            message_queue.put(result)  # Put the return value of the phases in the queue to the main process
+            state_queue.put(result)  # Put the return value of the phases in the queue to the main process
+
+        self._current_phase: CalculationPhase = calculation_phase_enum.CalculationPhase.NONE
+        self._progress = 1
 
         # If all calculation is done and the calculations aer still running: switch state to ENDED_SUCCESSFULLY
         if result[0] == calculation_state_enum.CalculationState.RUNNING:
-            message_queue.put((calculation_state_enum.CalculationState.ENDED_SUCCESSFULLY,
+            state_queue.put((calculation_state_enum.CalculationState.ENDED_SUCCESSFULLY,
                                "The calculation have finished successfully"))
