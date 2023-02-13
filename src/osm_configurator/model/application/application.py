@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import os
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Final
 
 from src.osm_configurator.model.application.application_interface import IApplication
 import src.osm_configurator.model.application.recommender_system as recommender_system_i
@@ -18,9 +18,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from src.osm_configurator.model.application.application_settings_saver import ApplicationSettingsSaver
     from pathlib import Path
-    from typing import Final
 
-PROJECT_SETTING: Final = "project_settings.csv"
+PROJECT_SETTING: str = "project_settings.csv"
 
 
 class Application(IApplication):

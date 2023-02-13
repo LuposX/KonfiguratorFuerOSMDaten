@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import os.path
 import pathlib
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from pathlib import Path
