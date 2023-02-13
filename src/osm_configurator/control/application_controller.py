@@ -14,6 +14,11 @@ import src.osm_configurator.model.application.application as application
 
 import src.osm_configurator.view.states.main_window as main_window
 
+from definitions import PROJECT_DIR
+
+from pathlib import Path
+import os
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -30,6 +35,10 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application import Application
 
     from src.osm_configurator.view.states.main_window import MainWindow
+    from typing import Final
+
+
+APPLICATION_SETTINGS_FOLDER: Final = Path(os.path.join(PROJECT_DIR, "build/application_setting.json"))
 
 
 class ApplicationController:
@@ -44,7 +53,7 @@ class ApplicationController:
         everything up and to prepare the normal workflow of the application.
         """
         # Create Model
-        self._application: Application = application.Application()
+        self._application: Application = application.Application(APPLICATION_SETTINGS_FOLDER)
 
         # Create Control
         self._aggregation_controller: AggregationController = aggregation_controller.AggregationController(
