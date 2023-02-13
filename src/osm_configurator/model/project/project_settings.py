@@ -9,6 +9,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from pathlib import Path
 
+EMPTY_STRING: str = ""
+
 
 class ProjectSettings:
     """
@@ -29,7 +31,7 @@ class ProjectSettings:
         self._name: str = project_name
         self._description: str = description
         self._calculation_phase_checkpoints_folder: str = calculation_phase_checkpoints_folder
-        self._last_edit_date: str = ""
+        self._last_edit_date: str = EMPTY_STRING
 
     def get_location(self) -> Path:
         """

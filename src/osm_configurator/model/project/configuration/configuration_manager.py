@@ -7,7 +7,7 @@ import src.osm_configurator.model.project.configuration.aggregation_configuratio
 import src.osm_configurator.model.project.configuration.cut_out_configuration as cut_out_configuration
 import src.osm_configurator.model.project.configuration.category_manager as category_manager
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.osm_data_configuration import OSMDataConfiguration

@@ -1,13 +1,14 @@
 from __future__ import annotations
 
-from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+
+DEFAULT_VALUE: float = 0.0  # The default value of every attribute set at the beginning.
 
 
 class DefaultValueEntry:
@@ -24,7 +25,7 @@ class DefaultValueEntry:
         self._tag: str = tag
         self._all_attribute_default_values: Dict[Attribute, float] = {}
         for attribute in attribute_enum_i.Attribute:
-            self._all_attribute_default_values.update({attribute: 0.0})
+            self._all_attribute_default_values.update({attribute: DEFAULT_VALUE})
 
     def get_default_value_entry_tag(self) -> str:
         """

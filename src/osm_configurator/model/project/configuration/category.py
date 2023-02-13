@@ -8,7 +8,7 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 
 import src.osm_configurator.model.model_constants as model_constants_i
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from typing import List

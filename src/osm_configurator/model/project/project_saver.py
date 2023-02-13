@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import os
 import csv
-import shutil
 
 from datetime import date
 from pathlib import Path
@@ -11,7 +10,7 @@ from src.osm_configurator.model.project.calculation.aggregation_method_enum impo
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 from src.osm_configurator.model.project.configuration.category import Category
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
@@ -48,11 +47,10 @@ STATUS: str = "status"
 WHITE_LIST: str = "white_list"
 BLACK_LIST: str = "black_list"
 CALCULATION_METHOD_OF_AREA: str = "calculation_method_of_area"
-ACTIVE_ATTRIBUTES: str ="active_attributes"
+ACTIVE_ATTRIBUTES: str = "active_attributes"
 STRICTLY_USE_DEFAULT_VALUES: str = "strictly_use_default_values"
 ATTRACTIVITY_ATTRIBUTES: str = "attractivity_attributes"
 DEFAULT_VALUE_LIST: str = "default_value_list"
-
 
 
 class ProjectSaver:
@@ -163,7 +161,8 @@ class ProjectSaver:
         aggregation_methods: list[list[str]] = []
         aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
-            aggregation_methods.append([method.get_name(), aggregation_configurator.is_aggregation_method_active(method)])
+            aggregation_methods.append(
+                [method.get_name(), aggregation_configurator.is_aggregation_method_active(method)])
         self._write_csv_file(aggregation_methods, filename)
         return True
 
@@ -204,8 +203,10 @@ class ProjectSaver:
             for attractivity_attribute in category.get_attractivity_attributes():
                 attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name()]
                 for attribute in Attribute:
-                    attractivity_attribute_values.append(attribute.get_name() + DELIMITER_COLON + str(attractivity_attribute.get_attribute_factor(attribute)))
-                attractivity_attribute_values.append(BASE + DELIMITER_COLON + str(attractivity_attribute.get_base_factor()))
+                    attractivity_attribute_values.append(attribute.get_name() + DELIMITER_COLON + str(
+                        attractivity_attribute.get_attribute_factor(attribute)))
+                attractivity_attribute_values.append(
+                    BASE + DELIMITER_COLON + str(attractivity_attribute.get_base_factor()))
                 all_attractivity_attributes_list.append(DELIMITER_COMMA.join(attractivity_attribute_values))
 
             # Saves all default value entry
@@ -213,13 +214,15 @@ class ProjectSaver:
             for default_value_entry in category.get_default_value_list():
                 default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag()]
                 for attribute in Attribute:
-                    default_value_entry_values.append(attribute.get_name() + DELIMITER_COLON + str(default_value_entry.get_attribute_default(attribute)))
+                    default_value_entry_values.append(attribute.get_name() + DELIMITER_COLON + str(
+                        default_value_entry.get_attribute_default(attribute)))
                 all_default_value_entries_list.append(DELIMITER_COMMA.join(default_value_entry_values))
             category_data = [[NAME, category.get_category_name()],
                              [STATUS, category.is_active()],
                              [WHITE_LIST, DELIMITER_SEMICOLON.join(category.get_whitelist())],
                              [BLACK_LIST, DELIMITER_SEMICOLON.join(category.get_blacklist())],
-                             [CALCULATION_METHOD_OF_AREA, category.get_calculation_method_of_area().get_calculation_method()],
+                             [CALCULATION_METHOD_OF_AREA,
+                              category.get_calculation_method_of_area().get_calculation_method()],
                              [ACTIVE_ATTRIBUTES, DELIMITER_SEMICOLON.join(active_attributes)],
                              [STRICTLY_USE_DEFAULT_VALUES, category.get_strictly_use_default_values()],
                              [ATTRACTIVITY_ATTRIBUTES, DELIMITER_SEMICOLON.join(all_attractivity_attributes_list)],

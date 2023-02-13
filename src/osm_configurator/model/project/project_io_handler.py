@@ -8,7 +8,7 @@ import src.osm_configurator.model.project.active_project
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
@@ -27,6 +27,23 @@ OSM_PATH: str = "osm_path"
 AGGREGATION_METHOD: str = "aggregation_methods"
 CUT_OUT_CONFIGURATION: str = "cut_out_configuration"
 
+# The data loaded by this class is stored in csv or txt files
+# The data in those files are stored as described below
+SETTINGS_TABLE_FIRST_COLUMN: int = 0  # Describes the type of data stored in the following columns.
+SETTINGS_TABLE_SECOND_COLUMN: int = 1  # In this column specific data is stored
+SETTING_TABLE_FIRST_ROW: int = 0  # This row stores the name of the project
+SETTING_TABLE_SECOND_ROW: int = 1  # This row stores the description of the project
+SETTING_TABLE_THIRD_ROW: int = 2  # This row stores the location of the project
+SETTING_TABLE_FOURTH_ROW: int = 3  # This row stores the calculation_check_points of the project
+SETTING_TABLE_FIFTH_ROW: int = 4  # This row stores the last_edit_date of the project
+
+NAME_OF_AGGREGATION: int = 0  # The name of the aggregation is stored in the first column of a csv
+VALUE_OF_AGGREGATION: int = 1  # The value of the aggregation is stored in the first column of a csv
+
+CUT_OUT_TABLE_FIRST_COLUMN: int = 0  # Describes the type of data stored in the second column.
+CUT_OUT_TABLE_SECOND_COLUMN: int = 1  # In this column specific data is stored
+CUT_OUT_TABLE_FIRST_ROW: int = 0  # In this row the cut-out-path is stored
+CUT_OUT_TABLE_SECOND_ROW: int = 1  # In this row the cut-out-mode is stored
 
 
 def convert_bool(string: str) -> bool | None:
@@ -86,8 +103,8 @@ class ProjectIOHandler:
             os.makedirs(self.config_directory)
             self.category_directory = os.path.join(self.config_directory, CATEGORIES)
             os.makedirs(self.category_directory)
-            os.makedirs(os.path.join(project_path,
-                                     self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder()))
+            os.makedirs(os.path.join(
+                project_path, self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder()))
             return True
         return False
 
@@ -127,27 +144,28 @@ class ProjectIOHandler:
 
     def _load_project_settings(self) -> bool:
         filepath: Path = Path(os.path.join(self.destination, PROJECT_SETTINGS + CSV))
-        print(filepath)
         if os.path.exists(filepath):
             with open(filepath, READ) as f:
                 reader = csv.reader(f)
                 project_settings_data = list(reader)
-            self._active_project.get_project_settings().set_name(project_settings_data[0][1])
-            self._active_project.get_project_settings().set_description(project_settings_data[1][1])
-            self._active_project.get_project_settings().set_location(Path(project_settings_data[2][1]))
+            self._active_project.get_project_settings().set_name(
+                project_settings_data[SETTING_TABLE_FIRST_ROW][SETTINGS_TABLE_SECOND_COLUMN])
+            self._active_project.get_project_settings().set_description(
+                project_settings_data[SETTING_TABLE_SECOND_ROW][SETTINGS_TABLE_SECOND_COLUMN])
+            self._active_project.get_project_settings().set_location(Path(
+                project_settings_data[SETTING_TABLE_THIRD_ROW][SETTINGS_TABLE_SECOND_COLUMN]))
             self._active_project.get_project_settings().set_calculation_phase_checkpoints_folder(
-                project_settings_data[3][1])
-            self._active_project.get_project_settings().set_last_edit_date(project_settings_data[4][1])
+                project_settings_data[SETTING_TABLE_FOURTH_ROW][SETTINGS_TABLE_SECOND_COLUMN])
+            self._active_project.get_project_settings().set_last_edit_date(
+                project_settings_data[SETTING_TABLE_FIFTH_ROW][SETTINGS_TABLE_SECOND_COLUMN])
             return True
         return False
 
     def _load_config_phase(self) -> bool:
         filepath: Path = Path(os.path.join(self.destination, LAST_STEP + TXT))
-        print(filepath)
         if os.path.exists(filepath):
             with open(filepath, READ) as f:
                 last_step: str = f.read()
-                print(last_step)
             last_step_config_phase: ConfigPhase = ConfigPhase.convert_str_to_config_phase(last_step)
             if last_step_config_phase is not None:
                 self._active_project.set_last_step(last_step_config_phase)
@@ -170,10 +188,10 @@ class ProjectIOHandler:
                 reader = csv.reader(f)
                 aggregation: list[str] = list(reader)
             for row in aggregation:
-                value: bool = convert_bool(row[1])
+                value: bool = convert_bool(row[VALUE_OF_AGGREGATION])
                 if value is not None:
-                    self._active_project.get_config_manager().get_aggregation_configuration() \
-                        .set_aggregation_method_active(AggregationMethod.convert_str_to_aggregation_method(row[0]), value)
+                    self._active_project.get_config_manager().get_aggregation_configuration().set_aggregation_method_active(
+                        AggregationMethod.convert_str_to_aggregation_method(row[NAME_OF_AGGREGATION]), value)
                 else:
                     return False
             return True
@@ -181,13 +199,13 @@ class ProjectIOHandler:
 
     def _load_cut_out_configurator(self) -> bool:
         filepath: Path = Path(os.path.join(self.config_directory, CUT_OUT_CONFIGURATION + CSV))
-
         if os.path.exists(filepath):
             with open(filepath, READ) as f:
                 reader = csv.reader(f)
                 cut_out: list[str] = list(reader)
-            cut_out_path: Path = Path(cut_out[0][1])
-            cut_out_mode: CutOutMode = CutOutMode.convert_str_to_cut_out_mode(cut_out[1][1])
+            cut_out_path: Path = Path(cut_out[CUT_OUT_TABLE_FIRST_ROW][CUT_OUT_TABLE_SECOND_COLUMN])
+            cut_out_mode: CutOutMode = CutOutMode.convert_str_to_cut_out_mode(
+                cut_out[CUT_OUT_TABLE_SECOND_ROW][CUT_OUT_TABLE_SECOND_COLUMN])
             if os.path.exists(cut_out_path):
                 self._active_project.get_config_manager().get_cut_out_configuration().set_cut_out_path(cut_out_path)
             else:

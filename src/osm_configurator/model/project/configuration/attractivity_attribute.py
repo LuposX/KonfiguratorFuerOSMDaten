@@ -1,11 +1,13 @@
 from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+
+DEFAULT_VALUE: float = 0.0  # The default value of every attribute set at the beginning.
 
 
 class AttractivityAttribute:
@@ -29,7 +31,7 @@ class AttractivityAttribute:
         self._attribute_factors: Dict[Attribute, float] = {}
 
         for attribute in attribute_enum.Attribute:
-            self._attribute_factors[attribute] = 0.0
+            self._attribute_factors[attribute] = DEFAULT_VALUE
 
     def get_attractivity_attribute_name(self) -> str:
         """

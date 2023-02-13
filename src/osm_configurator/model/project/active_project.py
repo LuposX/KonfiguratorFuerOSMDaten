@@ -11,7 +11,7 @@ from src.osm_configurator.model.project.project_saver import ProjectSaver
 from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager

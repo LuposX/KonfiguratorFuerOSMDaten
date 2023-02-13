@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum, unique
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 import ast
 import json

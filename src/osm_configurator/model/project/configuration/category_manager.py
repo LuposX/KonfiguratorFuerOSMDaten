@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING
 from src.osm_configurator.model.parser.category_parser import CategoryParser
 
 if TYPE_CHECKING:
-    from typing import List, Dict, Set
+    from typing import List, Set, Final
     from pathlib import Path
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.category import Category

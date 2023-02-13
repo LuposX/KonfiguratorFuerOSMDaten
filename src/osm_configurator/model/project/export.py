@@ -4,7 +4,7 @@ import os.path
 import pathlib
 import shutil
 import src.osm_configurator.model.project.active_project
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
