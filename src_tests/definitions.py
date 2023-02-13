@@ -12,12 +12,23 @@ import src.osm_configurator.model.project.configuration.calculation_method_of_ar
 import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry_i
 import src.osm_configurator.model.project.configuration.attractivity_attribute as attractivity_attribute
 
+import src.osm_configurator.model.application.application_settings as application_settings
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_default_enum
+
+from pathlib import Path
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Final
     from typing import List
+
+
+# Folder Paths
+# ---------------
+TEST_DIR: Final = os.path.dirname(os.path.abspath(__file__))
+PROJECT_MAIN_FOLDER: Final = pathlib.Path(__file__).parent.parent
+
 
 # DO NOT CHANGE THE MONACO CUTOUT-FILE, CUTOUT-PARSER DEPENDS ON IT
 # -----------------------------------------------------------------
@@ -100,11 +111,9 @@ CATEGORY_MANAGER = category_manager_i.CategoryManager()
 CATEGORY_MANAGER.add_categories([TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILDING, TEST_CATEGORY_SHOP])
 
 
-
-# Folder Paths
-# ---------------
-TEST_DIR: Final = os.path.dirname(os.path.abspath(__file__))
-PROJECT_MAIN_FOLDER: Final = pathlib.Path(__file__).parent.parent
+# Define example APPLICATIONSettings
+APPLICATION_MANAGER: Final = application_settings.ApplicationSettings(Path(os.path.join(TEST_DIR, "build/example_settings/settings.json")))
+APPLICATION_MANAGER.set_setting(application_settings_default_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES, 1)
 
 # Test polygons of the cutout file, monaco-regions
 # ------------------------------------------------

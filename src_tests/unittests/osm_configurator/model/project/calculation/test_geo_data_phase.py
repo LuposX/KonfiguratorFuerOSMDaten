@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from src_tests.definitions import TEST_DIR
+from src_tests.definitions import APPLICATION_MANAGER
 import src.osm_configurator.model.project.calculation.geo_data_phase as geo_data_phase
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
@@ -34,7 +35,7 @@ def test_no_configuration():
 
     # Execute phase, without setting any path's to the geojson and osm data
     phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result: CalculationState = phase.calculate(config_manager)[0]
+    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
     assert result == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA or \
            calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
@@ -49,7 +50,7 @@ def test_invalid_osm_path():
 
     # Execute test
     phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
+    result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
     assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
 
 
@@ -63,7 +64,7 @@ def test_invalid_geojson_path():
 
     # Execute test
     phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
+    result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
     assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
@@ -78,7 +79,7 @@ def test_corrupted_osm_data():
 
     # Execute test
     phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
+    result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
     assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
 
 
@@ -93,7 +94,7 @@ def test_corrupted_geojson_data():
 
     # Execute test
     phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
+    result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
     assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
@@ -108,7 +109,7 @@ def test_small_instance_successful():
 
     # Execute test
     phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
+    result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
     assert result1 == calculation_state_enum.CalculationState.RUNNING
 
     folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
@@ -121,5 +122,5 @@ def test_small_instance_successful():
     assert os.path.exists(test_file_path)
 
     # Test if execution works a second time
-    result2: CalculationState = phase.calculate(config_manager)[0]
+    result2: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
     assert result2 == calculation_state_enum.CalculationState.RUNNING
