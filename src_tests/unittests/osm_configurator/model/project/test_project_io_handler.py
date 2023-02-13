@@ -20,6 +20,7 @@ from src.osm_configurator.model.project.configuration.cut_out_mode_enum import C
 from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
 from src.osm_configurator.model.project.configuration.category import Category
 from src_tests.definitions import TEST_DIR
+import src.osm_configurator.model.application.application_settings as application_settings_i
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
@@ -77,40 +78,60 @@ class TestProjectIO:
         self.active_project.get_project_saver().save_project()
 
     def test_load_settings(self):
+        application_settings_o = application_settings_i.ApplicationSettings(
+            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+
         self.prepare()
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o,  "TestProject1")
         assert "TestProject1" == self.active_project.get_project_settings().get_name()
         assert "This project is to test!" == self.active_project.get_project_settings().get_description()
         assert Path(os.path.join(TEST_DIR, "build/Projects/TestProject1")) == self.active_project.get_project_settings().get_location()
         assert "calculation_check_points" == self.active_project.get_project_settings().get_calculation_phase_checkpoints_folder()
 
     def test_load_config(self):
+        application_settings_o = application_settings_i.ApplicationSettings(
+            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+
+
         self.prepare()
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         assert ConfigPhase.CATEGORY_CONFIG_PHASE == self.active_project.get_last_step()
 
     def test_load_osm(self):
+        application_settings_o = application_settings_i.ApplicationSettings(
+            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+
+
         self.prepare()
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         assert Path(os.path.join(TEST_DIR, "data/monaco-latest.osm")) == self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data()
 
     def test_load_aggregation(self):
+        application_settings_o = application_settings_i.ApplicationSettings(
+            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+
         self.prepare()
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         test_aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         assert test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.MAXIMUM)
         assert not test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.MEDIAN)
 
     def test_cut_out_config(self):
+        application_settings_o = application_settings_i.ApplicationSettings(
+            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+
         self.prepare()
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         test_cut_out_configurator: CutOutConfiguration = self.active_project.get_config_manager().get_cut_out_configuration()
         assert Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")) == test_cut_out_configurator.get_cut_out_path()
         assert CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED == test_cut_out_configurator.get_cut_out_mode()
 
     def test_categories(self):
+        application_settings_o = application_settings_i.ApplicationSettings(
+            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+
         self.prepare()
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, "TestProject1")
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         test_category_manager: CategoryManager = self.active_project.get_config_manager().get_category_manager()
         test_cat_one: Category = test_category_manager.get_category("Category1")
         test_cat_two: Category = test_category_manager.get_category("Category2")
