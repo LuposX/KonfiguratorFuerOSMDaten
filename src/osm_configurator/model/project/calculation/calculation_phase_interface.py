@@ -10,6 +10,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 class ICalculationPhase(ABC):
@@ -22,7 +23,8 @@ class ICalculationPhase(ABC):
     """
 
     @abstractmethod
-    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager_o: ConfigurationManager,
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         Performs the calculations of the calculation phase.
         This consists of the following steps:\n
@@ -32,6 +34,7 @@ class ICalculationPhase(ABC):
 
         Args:
             configuration_manager_o (ConfigurationManager): The ConfigurationManager where the information about the configuration of the configuration is stored.
+            application_manager (ApplicationSettings): The settings of the application
 
         Returns:
             Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.

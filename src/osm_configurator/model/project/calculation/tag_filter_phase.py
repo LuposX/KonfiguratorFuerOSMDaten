@@ -17,6 +17,7 @@ from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_format
     OSMDataWronglyFormatted
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 from typing import TYPE_CHECKING
@@ -43,7 +44,8 @@ class TagFilterPhase(ICalculationPhase):
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE
 
-    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager_o: ConfigurationManager,
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         Sorts OSM-elements into their corresponding categories.
         Firstly this method reads in the OSM-files of the previously executed calculation phase. Every category has
@@ -56,6 +58,7 @@ class TagFilterPhase(ICalculationPhase):
 
         Args:
             configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration needed for an execution.
+            application_manager (ApplicationSettings): The settings of the application
 
         Returns:
             Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
