@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category
 
 EMPTY_STRING: str = ""
-READ: str = "w"
+READ: str = "r"
 TRUE: str = "True"
 FALSE: str = "False"
 DELIMITER_SEMICOLON: str = ";"

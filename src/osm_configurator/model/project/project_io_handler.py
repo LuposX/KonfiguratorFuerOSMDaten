@@ -14,6 +14,20 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
     from pathlib import Path
 
+READ: str = "r"
+TRUE: str = "True"
+FALSE: str = "False"
+CONFIGURATION: str = "configuration"
+CATEGORIES: str = "categories"
+CSV: str = ".csv"
+TXT: str = ".txt"
+PROJECT_SETTINGS: str = "project_settings"
+LAST_STEP: str = "last_step"
+OSM_PATH: str = "osm_path"
+AGGREGATION_METHOD: str = "aggregation_methods"
+CUT_OUT_CONFIGURATION: str = "cut_out_configuration"
+
+
 
 def convert_bool(string: str) -> bool | None:
     """
@@ -25,9 +39,9 @@ def convert_bool(string: str) -> bool | None:
     Returns:
         bool: The value of the string.
     """
-    if string == "True":
+    if string == TRUE:
         return True
-    if string == "False":
+    if string == FALSE:
         return False
     else:
         return None
@@ -68,13 +82,12 @@ class ProjectIOHandler:
 
         if not os.path.exists(project_path):
             os.makedirs(project_path)
-            self.config_directory = os.path.join(project_path, "configuration")
+            self.config_directory = os.path.join(project_path, CONFIGURATION)
             os.makedirs(self.config_directory)
-            self.category_directory = os.path.join(self.config_directory, "categories")
+            self.category_directory = os.path.join(self.config_directory, CATEGORIES)
             os.makedirs(self.category_directory)
             os.makedirs(os.path.join(project_path,
-                                     self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
-                                     )
+                                     self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder()))
             return True
         return False
 
@@ -89,8 +102,8 @@ class ProjectIOHandler:
             bool: True if creating the project works, otherwise false.
         """
         self.destination = path
-        self.config_directory = os.path.join(self.destination, "configuration")
-        self.category_directory = os.path.join(self.config_directory, "categories")
+        self.config_directory = os.path.join(self.destination, CONFIGURATION)
+        self.category_directory = os.path.join(self.config_directory, CATEGORIES)
 
         # Loads the different parts of the project
         if not self._load_project_settings():
@@ -113,9 +126,10 @@ class ProjectIOHandler:
         return True
 
     def _load_project_settings(self) -> bool:
-        filepath = os.path.join(self.destination, "project_settings.csv")
+        filepath: Path = Path(os.path.join(self.destination, PROJECT_SETTINGS + CSV))
+        print(filepath)
         if os.path.exists(filepath):
-            with open(filepath, "r") as f:
+            with open(filepath, READ) as f:
                 reader = csv.reader(f)
                 project_settings_data = list(reader)
             self._active_project.get_project_settings().set_name(project_settings_data[0][1])
@@ -128,10 +142,12 @@ class ProjectIOHandler:
         return False
 
     def _load_config_phase(self) -> bool:
-        filepath: Path = os.path.join(self.destination, "last_step.txt")
+        filepath: Path = Path(os.path.join(self.destination, LAST_STEP + TXT))
+        print(filepath)
         if os.path.exists(filepath):
-            with open(filepath, "r") as f:
+            with open(filepath, READ) as f:
                 last_step: str = f.read()
+                print(last_step)
             last_step_config_phase: ConfigPhase = ConfigPhase.convert_str_to_config_phase(last_step)
             if last_step_config_phase is not None:
                 self._active_project.set_last_step(last_step_config_phase)
@@ -139,20 +155,20 @@ class ProjectIOHandler:
         return False
 
     def _load_osm_configurator(self) -> bool:
-        filepath: Path = os.path.join(self.config_directory, "osm_path.txt")
+        filepath: Path = Path(os.path.join(self.config_directory, OSM_PATH + TXT))
         if os.path.exists(filepath):
-            with open(filepath, "r") as f:
+            with open(filepath, READ) as f:
                 osm_path: str = f.read()
             self._active_project.get_config_manager().get_osm_data_configuration().set_osm_data(Path(osm_path))
             return True
         return False
 
     def _load_aggregation_configuration(self) -> bool:
-        filepath: Path = os.path.join(self.config_directory, "aggregation_methods.csv")
+        filepath: Path = Path(os.path.join(self.config_directory, AGGREGATION_METHOD + CSV))
         if os.path.exists(filepath):
-            with open(filepath, "r") as f:
+            with open(filepath, READ) as f:
                 reader = csv.reader(f)
-                aggregation = list(reader)
+                aggregation: list[str] = list(reader)
             for row in aggregation:
                 value: bool = convert_bool(row[1])
                 if value is not None:
@@ -164,12 +180,12 @@ class ProjectIOHandler:
         return False
 
     def _load_cut_out_configurator(self) -> bool:
-        filepath: Path = os.path.join(self.config_directory, "cut_out_configuration.csv")
+        filepath: Path = Path(os.path.join(self.config_directory, CUT_OUT_CONFIGURATION + CSV))
 
         if os.path.exists(filepath):
-            with open(filepath, "r") as f:
+            with open(filepath, READ) as f:
                 reader = csv.reader(f)
-                cut_out = list(reader)
+                cut_out: list[str] = list(reader)
             cut_out_path: Path = Path(cut_out[0][1])
             cut_out_mode: CutOutMode = CutOutMode.convert_str_to_cut_out_mode(cut_out[1][1])
             if os.path.exists(cut_out_path):

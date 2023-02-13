@@ -24,6 +24,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.export import Export
     from pathlib import Path
 
+DEFAULT_CHECKPOINTS_FOLDER_NAME: str = "calculation_check_points"
+
 
 class ActiveProject:
     """
@@ -46,7 +48,7 @@ class ActiveProject:
         """
 
         if project_name is not None:
-            self.project_directory: Path = os.path.join(project_folder, project_name)
+            self.project_directory: Path = Path(os.path.join(project_folder, project_name))
         else:
             self.project_directory: Path = project_folder
             project_name = os.path.basename(project_folder)
@@ -55,7 +57,7 @@ class ActiveProject:
         self._configurator_manager: ConfigurationManager = ConfigurationManager(project_folder)
         self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager)
         self._project_settings: ProjectSettings = ProjectSettings(self.project_directory, project_name,
-                                                                  project_description, "calculation_check_points")
+                                                                  project_description, DEFAULT_CHECKPOINTS_FOLDER_NAME)
         self._last_step: ConfigPhase = ConfigPhase.DATA_CONFIG_PHASE
 
         if is_newly_created:

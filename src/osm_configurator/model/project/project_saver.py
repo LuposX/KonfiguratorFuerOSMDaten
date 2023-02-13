@@ -20,6 +20,40 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from pathlib import Path
 
+EMPTY_STRING: str = ""
+WRITE: str = "w"
+TRUE: str = "True"
+FALSE: str = "False"
+DELIMITER_SEMICOLON: str = ";"
+DELIMITER_COMMA: str = ","
+DELIMITER_COLON: str = ":"
+BASE: str = "base"
+CONFIGURATION: str = "configuration"
+CATEGORIES: str = "categories"
+CSV: str = ".csv"
+TXT: str = ".txt"
+PROJECT_SETTINGS: str = "project_settings"
+LAST_STEP: str = "last_step"
+OSM_PATH: str = "osm_path"
+AGGREGATION_METHOD: str = "aggregation_methods"
+CUT_OUT_CONFIGURATION: str = "cut_out_configuration"
+NAME: str = "name"
+DESCRIPTION: str = "description"
+LOCATION: str = "location"
+DEFAULT_CHECKPOINTS_FOLDER_NAME: str = "calculation_check_points"
+LAST_EDIT_DATE: str = "last_edit_date"
+CUT_OUT_PATH: str = "cut_out_path"
+CUT_OUT_MODE: str = "cut_out_mode"
+STATUS: str = "status"
+WHITE_LIST: str = "white_list"
+BLACK_LIST: str = "black_list"
+CALCULATION_METHOD_OF_AREA: str = "calculation_method_of_area"
+ACTIVE_ATTRIBUTES: str ="active_attributes"
+STRICTLY_USE_DEFAULT_VALUES: str = "strictly_use_default_values"
+ATTRACTIVITY_ATTRIBUTES: str = "attractivity_attributes"
+DEFAULT_VALUE_LIST: str = "default_value_list"
+
+
 
 class ProjectSaver:
     """
@@ -81,13 +115,13 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename: Path = self._create_file("project_settings")
-        settings_data = [["name", self.active_project.get_project_settings().get_name()],
-                         ["description", self.active_project.get_project_settings().get_description()],
-                         ["location", self.active_project.get_project_settings().get_location()],
-                         ["calculation_phase_checkpoints_folder", self.active_project.get_project_settings()
+        filename: Path = self._create_file(PROJECT_SETTINGS)
+        settings_data = [[NAME, self.active_project.get_project_settings().get_name()],
+                         [DESCRIPTION, self.active_project.get_project_settings().get_description()],
+                         [LOCATION, self.active_project.get_project_settings().get_location()],
+                         [DEFAULT_CHECKPOINTS_FOLDER_NAME, self.active_project.get_project_settings()
                          .get_calculation_phase_checkpoints_folder()],
-                         ["last_edit_date", str(date.today())]]
+                         [LAST_EDIT_DATE, str(date.today())]]
         self._write_csv_file(settings_data, filename)
         return True
 
@@ -98,9 +132,9 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename: Path = os.path.join(self.destination, Path("last_step.txt"))
+        filename: Path = Path(os.path.join(self.destination, Path(LAST_STEP + TXT)))
         config_phase_data = self.active_project.get_last_step().get_name()
-        with open(filename, "w") as f:
+        with open(filename, WRITE) as f:
             f.write(config_phase_data)
         return True
 
@@ -111,10 +145,10 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        config_directory: Path = os.path.join(self.destination, "configuration")
-        filename: Path = os.path.join(config_directory, "osm_path.txt")
+        config_directory: Path = Path(os.path.join(self.destination, CONFIGURATION))
+        filename: Path = Path(os.path.join(config_directory, OSM_PATH + TXT))
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
-        with open(filename, "w") as f:
+        with open(filename, WRITE) as f:
             f.write(osm_path_data)
         return True
 
@@ -125,7 +159,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_config_file("aggregation_methods")
+        filename = self._create_config_file(AGGREGATION_METHOD)
         aggregation_methods: list[list[str]] = []
         aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
@@ -140,10 +174,10 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename = self._create_config_file("cut_out_configuration")
-        cut_out_data = [["cut_out_path",
+        filename = self._create_config_file(CUT_OUT_CONFIGURATION)
+        cut_out_data = [[CUT_OUT_PATH,
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
-                        ["cut_out_mode",
+                        [CUT_OUT_MODE,
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_mode().get_name()]]
         self._write_csv_file(cut_out_data, filename)
         return True
@@ -170,26 +204,26 @@ class ProjectSaver:
             for attractivity_attribute in category.get_attractivity_attributes():
                 attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name()]
                 for attribute in Attribute:
-                    attractivity_attribute_values.append(attribute.get_name() + ":" + str(attractivity_attribute.get_attribute_factor(attribute)))
-                attractivity_attribute_values.append("base:" + str(attractivity_attribute.get_base_factor()))
-                all_attractivity_attributes_list.append(",".join(attractivity_attribute_values))
+                    attractivity_attribute_values.append(attribute.get_name() + DELIMITER_COLON + str(attractivity_attribute.get_attribute_factor(attribute)))
+                attractivity_attribute_values.append(BASE + DELIMITER_COLON + str(attractivity_attribute.get_base_factor()))
+                all_attractivity_attributes_list.append(DELIMITER_COMMA.join(attractivity_attribute_values))
 
             # Saves all default value entry
             all_default_value_entries_list: list[str] = []
             for default_value_entry in category.get_default_value_list():
                 default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag()]
                 for attribute in Attribute:
-                    default_value_entry_values.append(attribute.get_name() + ":" + str(default_value_entry.get_attribute_default(attribute)))
-                all_default_value_entries_list.append(",".join(default_value_entry_values))
-            category_data = [["name", category.get_category_name()],
-                             ["status", category.is_active()],
-                             ["white_list", ";".join(category.get_whitelist())],
-                             ["black_list", ";".join(category.get_blacklist())],
-                             ["calculation_method_of_area", category.get_calculation_method_of_area().get_calculation_method()],
-                             ["active_attributes", ";".join(active_attributes)],
-                             ["strictly_use_default_values", category.get_strictly_use_default_values()],
-                             ["attractivity_attributes", ";".join(all_attractivity_attributes_list)],
-                             ["default_value_list", ";".join(all_default_value_entries_list)]]
+                    default_value_entry_values.append(attribute.get_name() + DELIMITER_COLON + str(default_value_entry.get_attribute_default(attribute)))
+                all_default_value_entries_list.append(DELIMITER_COMMA.join(default_value_entry_values))
+            category_data = [[NAME, category.get_category_name()],
+                             [STATUS, category.is_active()],
+                             [WHITE_LIST, DELIMITER_SEMICOLON.join(category.get_whitelist())],
+                             [BLACK_LIST, DELIMITER_SEMICOLON.join(category.get_blacklist())],
+                             [CALCULATION_METHOD_OF_AREA, category.get_calculation_method_of_area().get_calculation_method()],
+                             [ACTIVE_ATTRIBUTES, DELIMITER_SEMICOLON.join(active_attributes)],
+                             [STRICTLY_USE_DEFAULT_VALUES, category.get_strictly_use_default_values()],
+                             [ATTRACTIVITY_ATTRIBUTES, DELIMITER_SEMICOLON.join(all_attractivity_attributes_list)],
+                             [DEFAULT_VALUE_LIST, DELIMITER_SEMICOLON.join(all_default_value_entries_list)]]
             filename = self._create_category_file(category.get_category_name())
             self._write_csv_file(category_data, filename)
         return True
@@ -204,7 +238,7 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        return os.path.join(self.destination, self._create_filename(name))
+        return Path(os.path.join(self.destination, self._create_filename(name)))
 
     def _create_config_file(self, name: str) -> Path:
         """
@@ -216,8 +250,8 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        config_directory: Path = os.path.join(self.destination, "configuration")
-        return os.path.join(config_directory, self._create_filename(name))
+        config_directory: Path = Path(os.path.join(self.destination, CONFIGURATION))
+        return Path(os.path.join(config_directory, self._create_filename(name)))
 
     def _create_category_file(self, name: str) -> Path:
         """
@@ -229,12 +263,22 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        config_directory: Path = os.path.join(self.destination, "configuration")
-        category_directory: Path = os.path.join(config_directory, "categories")
-        return os.path.join(category_directory, self._create_filename(name))
+        config_directory: Path = Path(os.path.join(self.destination, CONFIGURATION))
+        category_directory: Path = Path(os.path.join(config_directory, CATEGORIES))
+        return Path(os.path.join(category_directory, self._create_filename(name)))
 
     def _write_csv_file(self, data: list, filename: Path) -> bool:
-        with open(filename, "w", newline="") as f:
+        """
+        This method is to write the given data in a csv-file.
+
+        Args:
+            data (list): The data which should be stored.
+            filename (pathlib.Path): The path where the csv-file with the data should be stored
+
+        Returns:
+            bool: True if saving works, otherwise false.
+        """
+        with open(filename, WRITE, newline=EMPTY_STRING) as f:
             writer = csv.writer(f)
             writer.writerows(data)
         return True
@@ -249,5 +293,5 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created File.
         """
-        filename: str = name + ".csv"
+        filename: str = name + CSV
         return Path(filename)

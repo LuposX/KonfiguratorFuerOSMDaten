@@ -10,6 +10,9 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
     from pathlib import Path
 
+ZIP: str = "zip"
+CONFIGURATION: str = "configuration"
+
 
 class Export:
     """
@@ -38,7 +41,7 @@ class Export:
         """
         self._active_project.get_project_saver().save_project()
         try:
-            shutil.make_archive(path, "zip", self._active_project.get_project_settings().get_location())
+            shutil.make_archive(path, ZIP, self._active_project.get_project_settings().get_location())
             return True
         except OSError:
             return False
@@ -57,7 +60,7 @@ class Export:
         if not os.path.exists(path):
             return False
         try:
-            shutil.make_archive(str(path), "zip", os.path.join(self._active_project.get_project_settings().get_location(), "configuration"))
+            shutil.make_archive(str(path), ZIP, os.path.join(self._active_project.get_project_settings().get_location(), CONFIGURATION))
             return True
         except OSError:
             return False
@@ -77,7 +80,7 @@ class Export:
         if not os.path.exists(path):
             return False
         try:
-            shutil.make_archive(str(path), "zip", self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
+            shutil.make_archive(str(path), ZIP, self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
             return True
         except OSError:
             return False
