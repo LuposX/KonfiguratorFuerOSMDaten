@@ -23,7 +23,7 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
         shutil.copytree(path_old_data, path_to_new_project)
     except:
         pass
-    with open(os.path.join(path_to_new_project, "application_settings.csv"), "w") as file:
+    with open(os.path.join(path_to_new_project, "application_settings.json"), "w") as file:
         file.write(str(path_to_new_project))
 
 
