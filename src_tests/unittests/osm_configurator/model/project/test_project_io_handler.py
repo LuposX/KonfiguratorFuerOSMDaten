@@ -41,7 +41,10 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
 
 class TestProjectIO:
     def prepare(self):
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, "TestProject1", "This project is to test!")
+        application_settings_o = application_settings_i.ApplicationSettings(
+            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject1", "This project is to test!")
 
         self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
 
