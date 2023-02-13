@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-import os
-
 from typing import TYPE_CHECKING
 
 
 if TYPE_CHECKING:
     from pathlib import Path
+
+READ: str = "r"
 
 
 class ApplicationSettingsIOHandler:
@@ -30,7 +30,7 @@ class ApplicationSettingsIOHandler:
         Returns:
             bool: True when building the path works, otherwise false.
         """
-        with open(self.filename, 'r') as f:
+        with open(self.filename, READ) as f:
             location = f.read()
             return location
 

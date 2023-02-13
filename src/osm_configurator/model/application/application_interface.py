@@ -8,7 +8,7 @@ import src.osm_configurator.model.application.passive_project
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
@@ -51,12 +51,12 @@ class IApplication(ABC):
         pass
 
     @abstractmethod
-    def get_passive_project_list(self) -> list[PassiveProject]:
+    def get_passive_project_list(self) -> List[PassiveProject]:
         """
         Returns the list of all passive project in the current project default folder.
 
         Returns:
-            list[passive_project.PassiveProject]: The list of the passive projects.
+            List[passive_project.PassiveProject]: The list of the passive projects.
         """
         pass
 
@@ -98,7 +98,7 @@ class IApplication(ABC):
         pass
 
     @abstractmethod
-    def _create_passive_project_list(self, destination: Path) -> list[PassiveProject]:
+    def _create_passive_project_list(self, destination: Path) -> List[PassiveProject]:
         """
         Creates the list of passive projects.
 

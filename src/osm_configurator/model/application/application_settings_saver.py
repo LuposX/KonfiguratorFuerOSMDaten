@@ -6,7 +6,10 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from pathlib import Path
-    from typing import Final
+
+EMPTY_STRING: str = ""
+WRITE: str = "w"
+
 
 class ApplicationSettingsSaver:
     """
@@ -30,8 +33,7 @@ class ApplicationSettingsSaver:
             bool: True when saving the path works, otherwise false.
         """
         if os.path.exists(self.application_settings_file):
-            with open(self.application_settings_file, 'w', newline="") as f:
+            with open(self.application_settings_file, WRITE, newline=EMPTY_STRING) as f:
                 f.write(str(default_folder_path))
-
             return True
         return False

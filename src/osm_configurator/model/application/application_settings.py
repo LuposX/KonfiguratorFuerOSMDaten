@@ -35,7 +35,7 @@ class ApplicationSettings:
         Gives back the path pointing towards the project.
 
         Returns:
-            pathlib.Path: Returns the path of the default location.
+            Path: Returns the path of the default location.
         """
         return self.path
 
@@ -44,7 +44,7 @@ class ApplicationSettings:
         Sets the default path pointing towards the project to a new Location.
 
         Args:
-            new_location (pathlib.Path): The new Location, where the user wants to save new projects.
+            new_location (Path): The new Location, where the user wants to save new projects.
         """
         if os.path.exists(new_location):
             self.path = new_location
