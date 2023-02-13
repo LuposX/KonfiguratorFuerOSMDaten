@@ -41,11 +41,11 @@ class Application(IApplication):
             application_settings_saver_i.ApplicationSettingsSaver(application_settings_file)
 
     def create_project(self, name: str, description: str, destination: Path) -> bool:
-        self.active_project = ActiveProject(destination, True, name, description)
+        self.active_project = ActiveProject(destination, True, self.application_settings, name, description)
         return True
 
     def load_project(self, destination: Path) -> bool:
-        self.active_project = ActiveProject(destination, False)
+        self.active_project = ActiveProject(destination, False, self.application_settings)
         return True
 
     def get_passive_project_list(self) -> List[PassiveProject]:

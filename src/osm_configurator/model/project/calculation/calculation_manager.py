@@ -18,6 +18,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from multiprocessing import Process
     from multiprocessing import SimpleQueue
 
@@ -28,13 +29,14 @@ class CalculationManager:
     phases which are also managed by the CalculationController.
     """
 
-    def __init__(self, configuration_manager: ConfigurationManager):
+    def __init__(self, configuration_manager: ConfigurationManager, application_manager: ApplicationSettings):
         """
         Gets called when we first create an object of this class. It saves all information it needs for
         managing the calculations.
 
         Args:
             configuration_manager (configuration_manager.ConfigurationManager): Saves all information required to configure the calculation.
+            application_manager (ApplicationSettings): Needed for some settings on how we calculate.
         """
         self._config_manager = configuration_manager
         self._phases: List[ICalculationPhase] = [
@@ -48,6 +50,8 @@ class CalculationManager:
                                    "The calculation has not started yet")
         self._process: Process = multiprocessing.Process()
         self._message_queue: SimpleQueue = multiprocessing.SimpleQueue()
+
+        self._application_manager = application_manager
 
     def cancel_calculation(self) -> bool:
         """

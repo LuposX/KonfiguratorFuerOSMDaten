@@ -16,6 +16,7 @@ from typing import TYPE_CHECKING, Final
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.calculation.calculation_manager import CalculationManager
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
     from src.osm_configurator.model.project.project_saver import ProjectSaver
     from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
@@ -34,7 +35,8 @@ class ActiveProject:
     created.
     """
 
-    def __init__(self, project_folder: Path, is_newly_created: bool, project_name=None, project_description=None):
+    def __init__(self, project_folder: Path, is_newly_created: bool, application_manager: ApplicationSettings,
+                 project_name=None, project_description=None):
         """
         Creates a new instance of the ActiveProject. In this process it creates the ConfigurationManager and also
         differentiate between the case that the project is new or loaded. In the case of an existing project it
@@ -43,6 +45,7 @@ class ActiveProject:
         Args:
             project_folder (pathlib.Path): This is path pointing towards the folder, where the project is saved.
             is_newly_created (bool): This argument is true if the project is newly created, otherwise false.
+            application_manager (ApplicationSettings): Needed for some settings on how we calculate.
             project_name (str): How we want to name the project.
             project_description (str): The description of our project.
         """
@@ -55,7 +58,7 @@ class ActiveProject:
 
         self._project_io_handler: ProjectIOHandler = ProjectIOHandler(self)
         self._configurator_manager: ConfigurationManager = ConfigurationManager(project_folder)
-        self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager)
+        self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager, application_manager)
         self._project_settings: ProjectSettings = ProjectSettings(self.project_directory, project_name,
                                                                   project_description, DEFAULT_CHECKPOINTS_FOLDER_NAME)
         self._last_step: ConfigPhase = ConfigPhase.DATA_CONFIG_PHASE
