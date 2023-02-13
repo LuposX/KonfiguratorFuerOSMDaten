@@ -78,6 +78,7 @@ class ApplicationController:
         Starts up the Application. Enters the normal workflow of the application
         """
         pass
+        # TODO: Enter the GUI loop of the main window. This should look like:
         # self._main_window.start()
 
 
