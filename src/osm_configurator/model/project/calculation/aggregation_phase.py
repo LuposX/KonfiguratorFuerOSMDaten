@@ -1,47 +1,31 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum_i
-import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser_i
-import src.osm_configurator.model.project.calculation.file_deletion as file_deletion_i
-import src.osm_configurator.model.parser.cut_out_parser as cut_out_parser_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
-
-import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
-
-
+import src.osm_configurator.model.model_constants as model_constants_i
+import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
+import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
 from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import \
     OSMDataWronglyFormatted
-from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
-import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
-
-import src.osm_configurator.model.model_constants as model_constants_i
 
 import pandas as pd
-import geopandas as gpd
 from fiona.errors import DriverError
-
-from pathlib import Path
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
     from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
-    from src.osm_configurator.model.parser.osm_data_parser import OSMDataParser
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
-    from src.osm_configurator.model.parser.cut_out_parser import CutOutParserInterface
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
-    from typing import Tuple, Dict, List
-    from geopandas import GeoDataFrame
-    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
+    from typing import Tuple, Dict, List, Any
     from pandas import DataFrame
 
 
@@ -67,29 +51,20 @@ class AggregationPhase(ICalculationPhase):
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.
         """
-        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
+        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase \
+            .prepare_phase(configuration_manager_o=configuration_manager_o,
+                           current_calculation_phase=calculation_phase_enum.CalculationPhase.AGGREGATION_PHASE,
+                           last_calculation_phase=calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
 
-        # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
-            configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.ATTRACTIVITY_PHASE)
-
-        # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
-            configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.AGGREGATION_PHASE)
-
-        # Prepare result folder
-        deleter: FileDeletion = file_deletion_i.FileDeletion()
-        deleter.reset_folder(checkpoint_folder_path_current_phase)
-
-        # check if the folder exist
-        if Path(checkpoint_folder_path_last_phase).exists() and Path(checkpoint_folder_path_current_phase).exists():
-            list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
+        # Return if we got an error
+        if type(prepare_calc_tuple[0]) == calculation_state_enum.CalculationState:
+            return prepare_calc_tuple[0], prepare_calc_tuple[1]
 
         else:
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_PREVIOUS_CALCULATIONS, \
-                "Data folder from the previous phase doesn't exists."
+            cut_out_dataframe = prepare_calc_tuple[0]
+            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
+            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
+            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
 
         # Get the CategoryManager
         aggregation_configuration: AggregationConfiguration = configuration_manager_o.get_aggregation_configuration()

@@ -10,7 +10,10 @@ import src.osm_configurator.model.project.calculation.osm_file_format_enum as os
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
-
+import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
+import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
+import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
 
 import geopandas as gpd
 from fiona.errors import DriverError
@@ -22,7 +25,7 @@ from src.osm_configurator.model.project.calculation.calculation_phase_interface 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import Tuple, List, Dict
+    from typing import Tuple, List, Dict, Any
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
@@ -42,6 +45,7 @@ class ReductionPhase(ICalculationPhase):
     the values of the attributes for alle OSM-elements.
     For details see the method calculate().
     """
+
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.REDUCTION_PHASE
 
@@ -62,31 +66,28 @@ class ReductionPhase(ICalculationPhase):
         Returns:
               Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
-        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
-        # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
-            configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE)
+        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase \
+            .prepare_phase(configuration_manager_o=configuration_manager_o,
+                           current_calculation_phase=calculation_phase_enum.CalculationPhase.REDUCTION_PHASE,
+                           last_calculation_phase=calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
 
-        # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
-            configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.REDUCTION_PHASE)
+        # Return if we got an error
+        if type(prepare_calc_tuple[0]) == calculation_state_enum.CalculationState:
+            return prepare_calc_tuple[0], prepare_calc_tuple[1]
 
-        # Prepare result folder
-        deleter: FileDeletion = file_deletion_i.FileDeletion()
-        deleter.reset_folder(checkpoint_folder_path_current_phase)
+        else:
+            cut_out_dataframe = prepare_calc_tuple[0]
+            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
+            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
+            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
 
         # get the category manager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
 
-        # check if the folder exist
-        if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
-            list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
-        else:
-            return (calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, "")
-
-        return self._parse_the_data_file(list_of_traffic_cell_checkpoints, category_manager_o, checkpoint_folder_path_current_phase)
+        return self._parse_the_data_file(list_of_traffic_cell_checkpoints=list_of_traffic_cell_checkpoints,
+                                         category_manager_o=category_manager_o,
+                                         checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase,
+                                         )
 
     def _parse_the_data_file(self,
                              list_of_traffic_cell_checkpoints: List[Path],
@@ -138,10 +139,12 @@ class ReductionPhase(ICalculationPhase):
                 curr_default_value_list: List[DefaultValueEntry] = curr_category.get_default_value_list()
 
                 # make the string to a list of string
-                osm_elements_list_tags: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(row[model_constants_i.CL_TAGS])
+                osm_elements_list_tags: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(
+                    row[model_constants_i.CL_TAGS])
                 osm_elements_list_tags: Dict[str, str] = tag_parser_o.list_to_dict(osm_elements_list_tags)
 
-                curr_default_value: DefaultValueEntry = default_value_finder_o.find_default_value_entry_which_applies(curr_default_value_list, osm_elements_list_tags)
+                curr_default_value: DefaultValueEntry = default_value_finder_o.find_default_value_entry_which_applies(
+                    curr_default_value_list, osm_elements_list_tags)
 
                 # This means we don't need to calculate anything
                 if curr_category.get_strictly_use_default_values():
@@ -179,7 +182,8 @@ class ReductionPhase(ICalculationPhase):
                         # Do point reduction
                         if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
                             # Returns a representation of the object’s geometric centroid (point).
-                            data_entry[model_constants_i.CL_GEOMETRY].append(row[model_constants_i.CL_GEOMETRY].centroid)
+                            data_entry[model_constants_i.CL_GEOMETRY].append(
+                                row[model_constants_i.CL_GEOMETRY].centroid)
 
                         else:
                             data_entry[DF_CL_NAME].append(row[DF_CL_NAME])
@@ -222,8 +226,8 @@ class ReductionPhase(ICalculationPhase):
 
                         else:
                             # STH WENT REALLY WRONG HERE IF HE CAME INTO THIS ELSE
-                            print("ERROR REDUCTION PHASE: TRIED ADDING AN OSM ELEMENT TO MAIN MEMORY, MORE THAN ONE ENTRY.")
-
+                            print(
+                                "ERROR REDUCTION PHASE: TRIED ADDING AN OSM ELEMENT TO MAIN MEMORY, MORE THAN ONE ENTRY.")
 
             # We now need to construct our dataframe from the data
             column_name = []
@@ -300,7 +304,7 @@ class ReductionPhase(ICalculationPhase):
         # if yes we check if they have the same category and if yes we delete them, otherwise they can stay.
         # TODO: the index of new geodatframe should have the same index as the old ones, if not here is the issue.
         area_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_WAY_NAME) | (
-                    df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
+                df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
         node_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME)]
         idx: int
         node_row: GeoSeries

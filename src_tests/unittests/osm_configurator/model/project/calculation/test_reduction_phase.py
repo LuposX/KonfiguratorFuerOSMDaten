@@ -32,7 +32,7 @@ os.environ["PROJ_LIB"] = ""
 
 
 def _prepare_config(geojson: Path, project: Path, assert_existence: bool,
-                    cut_out_mode: CutOutMode) -> ConfigurationManager:
+                    cut_out_mode: CutOutMode, geojson_path: Path) -> ConfigurationManager:
     if assert_existence:
         assert os.path.exists(geojson)
 
@@ -44,6 +44,9 @@ def _prepare_config(geojson: Path, project: Path, assert_existence: bool,
                                                           TEST_CATEGORY_BUILDING_AREA,
                                                           TEST_CATEGORY_SHOP,
                                                           TEST_CATEGORY_NO_BUILDING])
+
+    # set geojson path
+    config_manager.get_cut_out_configuration().set_cut_out_path(geojson_path)
 
     return config_manager
 
@@ -78,7 +81,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
@@ -110,7 +114,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
@@ -143,7 +148,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
@@ -167,7 +173,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, False,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()

@@ -32,7 +32,7 @@ if TYPE_CHECKING:
 os.environ["PROJ_LIB"] = ""
 
 
-def _prepare_config(project: Path, aggregation_methods: List[AggregationMethod]) -> ConfigurationManager:
+def _prepare_config(project: Path, aggregation_methods: List[AggregationMethod], geojson_path: Path) -> ConfigurationManager:
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project)
 
     for agg in aggregation_methods:
@@ -56,6 +56,9 @@ def _prepare_config(project: Path, aggregation_methods: List[AggregationMethod])
 
     # add the category to category manager
     config_manager.get_category_manager().add_categories([category])
+
+    # set geojson path
+    config_manager.get_cut_out_configuration().set_cut_out_path(geojson_path)
 
     return config_manager
 
@@ -88,7 +91,9 @@ class TestAggregationPhase:
                                        )
 
         # Set up configurator
-        config_manager: ConfigurationManager = _prepare_config(project_path, [aggregation_method_enum_i.AggregationMethod.SUM])
+        config_manager: ConfigurationManager = _prepare_config(project_path,
+                                                               [aggregation_method_enum_i.AggregationMethod.SUM],
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: AggregationPhase = aggregation_phase_i.AggregationPhase()
@@ -116,7 +121,10 @@ class TestAggregationPhase:
                                                                 aggregation_method_enum_i.AggregationMethod.QUANTILE_25,
                                                                 aggregation_method_enum_i.AggregationMethod.MAXIMUM,
                                                                 aggregation_method_enum_i.AggregationMethod.MEAN
-                                                                ])
+                                                                ],
+                                                               Path(os.path.join(TEST_DIR,
+                                                                                 "data/monaco-regions.geojson"))
+                                                               )
 
         # Execute test
         phase: AggregationPhase = aggregation_phase_i.AggregationPhase()

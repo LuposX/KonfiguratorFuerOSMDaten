@@ -27,99 +27,100 @@ def _prepare_config(osm: Path, geojson: Path, project: Path, assert_existence: b
     return config_manager
 
 
-def test_no_configuration():
-    # Set up
-    project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectXYZ"))
-    config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project_path)
+class TestGeoDataPhase:
+    def test_no_configuration(self):
+        # Set up
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectXYZ"))
+        config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project_path)
 
-    # Execute phase, without setting any path's to the geojson and osm data
-    phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result: CalculationState = phase.calculate(config_manager)[0]
-    assert result == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA or \
-           calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
-
-
-def test_invalid_osm_path():
-    # Set up paths
-    osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco/suiadhoadh/asas.osm.pbf"))
-    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-    project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectABC"))
-
-    config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
-
-    # Execute test
-    phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
-    assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+        # Execute phase, without setting any path's to the geojson and osm data
+        phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
+        result: CalculationState = phase.calculate(config_manager)[0]
+        assert result == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA or \
+               calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
-def test_invalid_geojson_path():
-    # Set up paths
-    osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
-    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/adhsiadh/auhdhidsa.geojson"))
-    project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectABC"))
+    def test_invalid_osm_path(self):
+        # Set up paths
+        osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco/suiadhoadh/asas.osm.pbf"))
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectABC"))
 
-    config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
+        config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
 
-    # Execute test
-    phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
-    assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
-
-
-def test_corrupted_osm_data():
-    # Set up paths
-    osm_path: Path = Path(os.path.join(TEST_DIR, "data/invalid_data.txt"))
-    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-    project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectAZ"))
-
-    # Set up configurator
-    config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
-
-    # Execute test
-    phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
-    assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
+        # Execute test
+        phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
+        result1: CalculationState = phase.calculate(config_manager)[0]
+        assert result1 == calculation_state_enum.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY
 
 
-def test_corrupted_geojson_data():
-    # Set up paths
-    osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
-    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/invalid_data.txt"))
-    project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectAZ"))
+    def test_invalid_geojson_path(self):
+        # Set up paths
+        osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/adhsiadh/auhdhidsa.geojson"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectABC"))
 
-    # Set up configurator
-    config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
+        config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
 
-    # Execute test
-    phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
-    assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
+        # Execute test
+        phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
+        result1: CalculationState = phase.calculate(config_manager)[0]
+        assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
-def test_small_instance_successful():
-    # Set up paths
-    osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
-    geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-    project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectXY"))
+    def test_corrupted_osm_data(self):
+        # Set up paths
+        osm_path: Path = Path(os.path.join(TEST_DIR, "data/invalid_data.txt"))
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectAZ"))
 
-    # Set up configurator
-    config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
+        # Set up configurator
+        config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
 
-    # Execute test
-    phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-    result1: CalculationState = phase.calculate(config_manager)[0]
-    assert result1 == calculation_state_enum.CalculationState.RUNNING
+        # Execute test
+        phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
+        result1: CalculationState = phase.calculate(config_manager)[0]
+        assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
 
-    folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
 
-    # Test if files were created
-    test_file_path: Path = Path(os.path.join(TEST_DIR,
-                                             folder_path_calculator_o.get_checkpoints_folder_path_from_phase
-                                             (config_manager, calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE)),
-                                "0_super_traffic_cell.pbf")
-    assert os.path.exists(test_file_path)
+    def test_corrupted_geojson_data(self):
+        # Set up paths
+        osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/invalid_data.txt"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectAZ"))
 
-    # Test if execution works a second time
-    result2: CalculationState = phase.calculate(config_manager)[0]
-    assert result2 == calculation_state_enum.CalculationState.RUNNING
+        # Set up configurator
+        config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
+
+        # Execute test
+        phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
+        result1: CalculationState = phase.calculate(config_manager)[0]
+        assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
+
+
+    def test_small_instance_successful(self):
+        # Set up paths
+        osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
+        geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectXY"))
+
+        # Set up configurator
+        config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
+
+        # Execute test
+        phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
+        result1: CalculationState = phase.calculate(config_manager)[0]
+        assert result1 == calculation_state_enum.CalculationState.RUNNING
+
+        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
+
+        # Test if files were created
+        test_file_path: Path = Path(os.path.join(TEST_DIR,
+                                                 folder_path_calculator_o.get_checkpoints_folder_path_from_phase
+                                                 (config_manager, calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE)),
+                                    "0_super_traffic_cell.pbf")
+        assert os.path.exists(test_file_path)
+
+        # Test if execution works a second time
+        result2: CalculationState = phase.calculate(config_manager)[0]
+        assert result2 == calculation_state_enum.CalculationState.RUNNING
