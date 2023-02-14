@@ -12,6 +12,7 @@ import src.osm_configurator.control.osm_data_controller_interface as osm_data_co
 from src.osm_configurator.view.activatable import Activatable
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
+import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -23,6 +24,7 @@ if TYPE_CHECKING:
     import src.osm_configurator.control.category_controller_interface as category_controller_interface
     import src.osm_configurator.control.osm_data_controller_interface as osm_data_controller_interface
     import src.osm_configurator.view.constants.button_constants as button_constants_i
+    import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
     import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 
@@ -169,6 +171,19 @@ class DataFrame(TopLevelFrame, Activatable):
                 text="Buildings on the edges are in"
             )
 
+        # Implementing the checkbox
+
+        self._edge_building_are_in_checkbox: customtkinter.CTkCheckBox = \
+            customtkinter.CTkCheckBox(
+                master=self,
+                command=self.__edge_buildings_clicked,
+                fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
+                hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
+                text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
+                corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
+                border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value
+            )
+
     def activate(self):
         pass
 
@@ -201,5 +216,11 @@ class DataFrame(TopLevelFrame, Activatable):
             filetype (str): Accepted types of the files
         Returns:
             Path: Path of the chosen file
+        """
+        pass
+
+    def __edge_buildings_clicked(self):
+        """
+        Activated if the checkbox is clicked
         """
         pass
