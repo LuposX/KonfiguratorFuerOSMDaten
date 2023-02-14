@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import TYPE_CHECKING
+from tkinter import filedialog
+from typing import TYPE_CHECKING, Iterable
 import customtkinter
 
 import src.osm_configurator.view.states.state_manager as state_manager
@@ -13,6 +14,7 @@ from src.osm_configurator.view.activatable import Activatable
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
+from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -249,7 +251,8 @@ class DataFrame(TopLevelFrame, Activatable):
         Lets the user view the cutout.
         Activated if the view_cutout button is activated
         """
-        pass
+        # TODO: the return value needs to be shown
+        self._data_visualization_controller.get_calculation_visualization()
 
     def __copy_category_configurations(self):
         pass
@@ -258,13 +261,39 @@ class DataFrame(TopLevelFrame, Activatable):
         """
         Opens the explorer letting the user choose a file selecting the cut-out
         """
-        pass
+        chosen_path: Path = self.__open_explorer(None)  # TODO: insert needed filetypes
+
+        if not chosen_path.exists():
+            # Chosen path is invalid
+            popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
+            popup.mainloop()
+            self.activate()
+            return
+
+        self._cut_out_controller.set_cut_out_reference(path=chosen_path)  # Gives the reference to the controller
+        self._selected_cut_out_path = chosen_path  # Updates path in its own class
+        self._cut_out_select_label.configure(
+            text=str(chosen_path)
+        )  # Updates the label showing the chosen path
 
     def __select_osm_data(self):
         """
         Opens the explorer letting the user choose a file selecting the osm-data
         """
-        pass
+        chosen_path: Path = self.__open_explorer(None)  # TODO: insert needed filetypes
+
+        if not chosen_path.exists():
+            # chosen path is invalid
+            popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
+            popup.mainloop()
+            self.activate()
+            return False
+
+        self._osm_data_controller.set_osm_data_reference(path=chosen_path)  # Gives the reference to the controller
+        self._selected_osm_data_path = chosen_path  # Updates the path in its own class
+        self._osm_data_select_label.configure(
+            text=str(chosen_path)
+        )  # Updates the label showing the chosen path
 
     def __chose_file(self, filetype: str) -> Path:
         """
@@ -282,10 +311,13 @@ class DataFrame(TopLevelFrame, Activatable):
         """
         pass
 
-    def __open_explorer(self) -> Path:
+    def __open_explorer(self, file_types: Iterable[tuple[str, str | list[str] | tuple[str, ...]]] | None) -> Path:
         """
         Opens explorer and lets the user choose a path
         Returns:
             Path: The chosen path
         """
-        pass
+        new_path = \
+            filedialog.askopenfilename(title="Please select Your File",
+                                       filetypes=file_types)
+        return Path(new_path)
