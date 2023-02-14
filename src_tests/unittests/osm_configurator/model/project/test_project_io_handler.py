@@ -25,6 +25,7 @@ import src.osm_configurator.model.application.application_settings as applicatio
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
 
+
 def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
     # Prepare result folder
     deleter: FileDeletion = file_deletion.FileDeletion()

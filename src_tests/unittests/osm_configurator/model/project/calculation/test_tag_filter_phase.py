@@ -47,14 +47,14 @@ def _prepare_config(geojson: Path, project: Path, assert_existence: bool,
     return config_manager
 
 
-def _prepare_previous_phase_folder(path_to_new_proejct: Path, path_old_data: Path):
+def _prepare_previous_phase_folder(path_to_new_project: Path, path_old_data: Path):
     # Prepare result folder
     deleter: FileDeletion = file_deletion.FileDeletion()
-    deleter.reset_folder(path_to_new_proejct)
+    deleter.reset_folder(path_to_new_project)
 
     # move the files from data to it
     for file_name in os.listdir(path_old_data):
-        shutil.copy2(os.path.join(path_old_data, file_name), path_to_new_proejct)
+        shutil.copy2(os.path.join(path_old_data, file_name), path_to_new_project)
 
 
 class TestTagFilterPhase:
