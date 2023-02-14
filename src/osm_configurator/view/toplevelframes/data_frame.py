@@ -59,8 +59,8 @@ class DataFrame(TopLevelFrame, Activatable):
         self._category_controller: category_controller_interface = category_controller
         self._osm_data_controller: osm_data_controller_interface = osm_data_controller
 
-        self._chosen_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
-        self._chosen_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
+        self._selected_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
+        self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
         self._buildings_on_the_edge_are_in: bool = False  # Buildings on the edge are not in by default
 
         # Defining the grid
@@ -175,6 +175,26 @@ class DataFrame(TopLevelFrame, Activatable):
                 text="Buildings on the edges are in"
             )
 
+        self._osm_data_selected_path_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(
+                master=self,
+                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                text=str(self._selected_osm_data_path)
+            )
+
+        self._cut_out_selected_path_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(
+                master=self,
+                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                text=str(self._selected_cut_out_path)
+            )
+
         # Implementing the checkbox
 
         self._edge_building_are_in_checkbox: customtkinter.CTkCheckBox = \
@@ -188,8 +208,14 @@ class DataFrame(TopLevelFrame, Activatable):
                 border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value
             )
 
+        # TODO: Everything needs to be aligned in the grid
+
     def activate(self):
-        pass
+        """
+        Updates the data if the page is reloaded
+        """
+        self._selected_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
+        self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
 
     def __view_cut_out(self):
         """
