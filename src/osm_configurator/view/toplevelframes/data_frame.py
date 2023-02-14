@@ -63,6 +63,9 @@ class DataFrame(TopLevelFrame, Activatable):
         self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
         self._buildings_on_the_edge_are_in: bool = False  # Buildings on the edge are not in by default
 
+        self._buttons: list[customtkinter.CTkButton] = []  # Holds all buttons to make equal styling easier
+        self._labels: list[customtkinter.CTkLabel] = []  # Holds all labels to make equal styling easier
+
         # Defining the grid
         self.grid_columnconfigure(0, weight=1)  # Space between top and first label
         self.grid_columnconfigure(1, weight=2)  # Space for the top labels
@@ -84,53 +87,44 @@ class DataFrame(TopLevelFrame, Activatable):
         self._osm_data_select_button: customtkinter.CTkButton = \
             customtkinter.CTkButton(
                 master=self,
-                corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                 command=self.__select_osm_data,
                 text="Select"
             )
+        self._buttons.append(self._osm_data_select_button)
 
         self._cut_out_select_button: customtkinter.CTkButton = \
             customtkinter.CTkButton(
                 master=self,
-                corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                 command=self.__select_cut_out,
                 text="Select"
             )
+        self._buttons.append(self._cut_out_select_button)
 
         self._copy_button: customtkinter.CTkButton = \
             customtkinter.CTkButton(
                 master=self,
-                corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                 command=self.__copy_category_configurations,
                 text="Select"
             )
+        self._buttons.append(self._copy_button)
 
         self._view_cutout_buttons: customtkinter.CTkButton = \
             customtkinter.CTkButton(
                 master=self,
+                command=self.__view_cut_out,
+                text="Select"
+            )
+        self._buttons.append(self._view_cutout_buttons)
+
+        # Equal styling for all buttons
+        for button in self._buttons:
+            button.configure(
                 corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                 text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
-                command=self.__view_cut_out,
-                text="Select"
             )
 
         # Implementing the labels
@@ -138,61 +132,54 @@ class DataFrame(TopLevelFrame, Activatable):
         self._osm_data_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                 text="Select OSM Data",
             )
+        self._labels.append(self._osm_data_select_label)
 
         self._cut_out_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                 text="Select Cut-Out",
             )
+        self._labels.append(self._cut_out_select_label)
 
         self._copy_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                 text="Copy in Category Configurations"
             )
+        self._labels.append(self._copy_label)
 
         self._edge_building_are_in_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                 text="Buildings on the edges are in"
             )
+        self._labels.append(self._edge_building_are_in_label)
 
         self._osm_data_selected_path_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                 text=str(self._selected_osm_data_path)
             )
+        self._labels.append(self._osm_data_selected_path_label)
 
         self._cut_out_selected_path_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
+                text=str(self._selected_cut_out_path)
+            )
+        self._labels.append(self._cut_out_selected_path_label)
+
+        # Styles all labels the same way
+        for label in self._labels:
+            label.configure(
                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
+                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                text=str(self._selected_cut_out_path)
             )
 
         # Implementing the checkbox
@@ -252,5 +239,13 @@ class DataFrame(TopLevelFrame, Activatable):
     def __edge_buildings_clicked(self):
         """
         Activated if the checkbox is clicked
+        """
+        pass
+
+    def __open_explorer(self) -> Path:
+        """
+        Opens explorer and lets the user choose a path
+        Returns:
+            Path: The chosen path
         """
         pass
