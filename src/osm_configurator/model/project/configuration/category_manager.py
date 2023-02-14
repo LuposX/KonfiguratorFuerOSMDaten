@@ -19,7 +19,6 @@ if TYPE_CHECKING:
 
 CSV_ENDING: str = ".csv"
 BUILDING_CATEGORY_NAME: str = "Gebäude"
-BUILDING_CATEGORY_WHITELIST: str = "building=*"
 
 
 class CategoryManager:
@@ -32,10 +31,9 @@ class CategoryManager:
         Constructor of the class.
         """
         self._categories: List[Category] = []
-        self.building_category: Category = Category()
+        self.building_category: Category = category_i.Category()
 
         self.building_category.set_category_name(BUILDING_CATEGORY_NAME)
-        self.building_category.set_whitelist(BUILDING_CATEGORY_WHITELIST)
 
         self._categories.append(self.building_category)
 
