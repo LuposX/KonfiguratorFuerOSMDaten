@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os.path
 
 from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
@@ -30,6 +32,13 @@ class DataVisualizationController(IDataVisualizationController):
         self._model = model
 
     def generate_cut_out_map(self) -> Path | None:
+        """
+        Generates a cut out map, which visualizes the cut out data.
+
+        Returns:
+            Path: The Path towards the cut out data.
+            None: If there was an error during saving creation of the map.
+        """
         cut_out_file: Path = self._model.get_active_project().get_config_manager().get_cut_out_configuration() \
             .get_cut_out_path()
 
@@ -45,7 +54,14 @@ class DataVisualizationController(IDataVisualizationController):
         else:
             return None
 
-    def get_calculation_visualization(self) -> Path:
+    def generate_calculation_visualization(self) -> Path | None:
+        """
+        Generates a boxplot which visualizes the final data.
+
+        Returns:
+            Path: The path point towards the image which visualizes the data.
+            None: If sth. went wrong.
+        """
         boxplot_saving_path: Path = self._model.get_active_project().get_project_path()
 
         # Get where the data is saved for the results

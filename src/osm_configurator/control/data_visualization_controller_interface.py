@@ -32,7 +32,7 @@ class IDataVisualizationController(ABC):
         pass
 
     @abstractmethod
-    def get_calculation_visualization(self) -> pathlib.Path | None:
+    def generate_calculation_visualization(self) -> pathlib.Path | None:
         """
         Generates a graphic that visualizes the results of the calculations of the currently selected project.
 
