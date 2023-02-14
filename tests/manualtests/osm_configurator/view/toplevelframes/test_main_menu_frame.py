@@ -1,5 +1,4 @@
 import src.osm_configurator.view.states.main_window as mw
-from tests.manualtests.osm_configurator.view.controller_stub.category_controller_stub import CategoryControllerStub
 
 from tests.manualtests.osm_configurator.view.controller_stub.export_controller_stub import ExportControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.category_controller_stub import CategoryControllerStub

@@ -12,7 +12,6 @@ from src.osm_configurator.view.states.state_manager import StateManager
 from src.osm_configurator.control.calculation_controller_interface import ICalculationController
 from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-from src.osm_configurator.view.states.view_constants import ViewConstants
 
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
@@ -25,7 +24,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.calculation_controller_interface import ICalculationController
     from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-    from src.osm_configurator.view.states.view_constants import ViewConstants
 
 
 class CalculationFrame(TopLevelFrame, Activatable):

@@ -6,9 +6,6 @@ import os
 
 from definitions import PROJECT_DIR
 
-import src.osm_configurator.view.states.state_manager as state_manager_i
-import src.osm_configurator.control.export_controller_interface
-import src.osm_configurator.control.project_controller_interface
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.states.state as state_i
@@ -17,8 +14,6 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.toplevelframes.lockable import Lockable
-
-from pathlib import Path
 
 
 from PIL import Image
