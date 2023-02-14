@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import tkinter
 from pathlib import Path
 from tkinter import filedialog
 from typing import TYPE_CHECKING, Iterable
@@ -10,6 +11,7 @@ import src.osm_configurator.control.data_visualization_controller_interface as d
 import src.osm_configurator.control.cut_out_controller_interface as cut_out_controller_interface
 import src.osm_configurator.control.category_controller_interface as category_controller_interface
 import src.osm_configurator.control.osm_data_controller_interface as osm_data_controller_interface
+from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from src.osm_configurator.view.activatable import Activatable
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
@@ -194,7 +196,8 @@ class DataFrame(TopLevelFrame, Activatable):
                 hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
                 text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
                 corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
-                border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value
+                border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
+                variable=tkinter.BooleanVar()
             )
 
         # Aligning everything nicely in the predefined grid
@@ -287,7 +290,7 @@ class DataFrame(TopLevelFrame, Activatable):
             popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
             popup.mainloop()
             self.activate()
-            return False
+            return
 
         self._osm_data_controller.set_osm_data_reference(path=chosen_path)  # Gives the reference to the controller
         self._selected_osm_data_path = chosen_path  # Updates the path in its own class
@@ -295,21 +298,25 @@ class DataFrame(TopLevelFrame, Activatable):
             text=str(chosen_path)
         )  # Updates the label showing the chosen path
 
-    def __chose_file(self, filetype: str) -> Path:
-        """
-        Opens the explorer letting the user choose a file
-        Args:
-            filetype (str): Accepted types of the files
-        Returns:
-            Path: Path of the chosen file
-        """
-        pass
-
     def __edge_buildings_clicked(self):
         """
-        Activated if the checkbox is clicked
+        Activated if the checkbox is clicked.
+        Updates the cut_out_mode and shows a popup if an error occured
         """
-        pass
+        check_box_value: bool = self._edge_building_are_in_checkbox.getvar(name="value")  # Gets the bool-value
+        cut_out_mode: CutOutMode
+
+        if check_box_value:
+            cut_out_mode = CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED  # Checkbox marked => buildings on edge accepted
+        else:
+            cut_out_mode = CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED.value  # Checkbox unmarked => not accepted
+
+        worked = self._cut_out_controller.set_cut_out_mode(cut_out_mode)  # updates the cut-out-mode
+
+        if not worked:
+            popup = AlertPopUp(message="Sorry, this did not work!")
+            popup.mainloop()
+            self.activate()
 
     def __open_explorer(self, file_types: Iterable[tuple[str, str | list[str] | tuple[str, ...]]] | None) -> Path:
         """
