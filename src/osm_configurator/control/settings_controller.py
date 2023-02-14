@@ -42,3 +42,13 @@ class SettingsController(ISettingsController):
         return self._model.get_application_settings()\
             .set_setting(application_settings_default_enum_i
                          .ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER, default_folder)
+
+    def get_number_of_processes(self) -> int:
+        return self._model.get_application_settings() \
+            .get_setting(application_settings_default_enum_i
+                         .ApplicationSettingsDefault.NUMBER_OF_PROCESSES)
+
+    def set_number_of_processes(self, number_of_processes: int) -> bool:
+        return self._model.get_application_settings() \
+            .set_setting(application_settings_default_enum_i
+                         .ApplicationSettingsDefault.NUMBER_OF_PROCESSES, number_of_processes)
