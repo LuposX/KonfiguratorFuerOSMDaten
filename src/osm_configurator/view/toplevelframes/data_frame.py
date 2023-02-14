@@ -258,13 +258,14 @@ class DataFrame(TopLevelFrame, Activatable):
         self._data_visualization_controller.get_calculation_visualization()
 
     def __copy_category_configurations(self):
+        # TODO: implement
         pass
 
     def __select_cut_out(self):
         """
         Opens the explorer letting the user choose a file selecting the cut-out
         """
-        chosen_path: Path = self.__open_explorer(None)  # TODO: insert needed filetypes
+        chosen_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
 
         if not chosen_path.exists():
             # Chosen path is invalid
@@ -283,7 +284,7 @@ class DataFrame(TopLevelFrame, Activatable):
         """
         Opens the explorer letting the user choose a file selecting the osm-data
         """
-        chosen_path: Path = self.__open_explorer(None)  # TODO: insert needed filetypes
+        chosen_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
 
         if not chosen_path.exists():
             # chosen path is invalid
