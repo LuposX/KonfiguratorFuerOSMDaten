@@ -2,6 +2,10 @@ from __future__ import annotations
 
 import customtkinter
 
+import os
+
+from definitions import PROJECT_DIR
+
 import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.control.export_controller_interface
 import src.osm_configurator.control.project_controller_interface
@@ -13,6 +17,8 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.toplevelframes.lockable import Lockable
+
+from pathlib import Path
 
 
 from PIL import Image
@@ -209,9 +215,10 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
         # Options Icon Used: https://www.flaticon.com/free-icon/cogwheel_44427
         options_icon: customtkinter.CTkImage = customtkinter.CTkImage(
-            light_image=Image.open("../view_icons/options.png"),
-            dark_image=Image.open("../view_icons/options.png"),
+            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/options.png")),
+            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/options.png")),
             size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
+
         self._options_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self, height=BUTTON_HEIGHT,
                                                                                 width=BUTTON_WIDTH,
                                                                                 corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,

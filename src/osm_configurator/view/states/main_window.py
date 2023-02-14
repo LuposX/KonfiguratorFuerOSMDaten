@@ -4,19 +4,6 @@ import customtkinter
 
 import screeninfo
 
-import src.osm_configurator.control.export_controller_interface
-import src.osm_configurator.control.category_controller_interface
-import src.osm_configurator.control.project_controller_interface
-import src.osm_configurator.control.settings_controller_interface
-import src.osm_configurator.control.aggregation_controller_interface
-import src.osm_configurator.control.application_controller
-import src.osm_configurator.control.calculation_controller_interface
-import src.osm_configurator.control.cut_out_controller_interface
-import src.osm_configurator.control.data_visualization_controller_interface
-import src.osm_configurator.control.osm_data_controller_interface
-
-import src.osm_configurator.view.states.state_manager as state_manager_i
-import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
@@ -106,13 +93,14 @@ class MainWindow:
         self._window.grid_rowconfigure(2, weight=BOTTOM_ROW_WEIGHT)
 
         # Creating the StateManager
-        self._state_manager: StateManager = state_manager_i.StateManager(self, export_controller, category_controller,
-                                                                         project_controller,
-                                                                         settings_controller, aggregation_controller,
-                                                                         calculation_controller,
-                                                                         cut_out_controller,
-                                                                         data_visualization_controller,
-                                                                         osm_data_controller)
+        from src.osm_configurator.view.states.state_manager import StateManager
+        self._state_manager: StateManager = StateManager(self, export_controller, category_controller,
+                                                         project_controller,
+                                                         settings_controller, aggregation_controller,
+                                                         calculation_controller,
+                                                         cut_out_controller,
+                                                         data_visualization_controller,
+                                                         osm_data_controller)
 
     def start_main_window(self):
         """
@@ -132,13 +120,17 @@ class MainWindow:
             bool: True, if the state change was successful, false if not.
         """
         # Making sure both states are not None
-        if (last_state is None) or (new_state is None):
+        if new_state is None:
             return False
 
         # First making the last State invisible
-        success: bool = self._make_invisible(last_state)
+        success: bool = False
+        if last_state is not None:
+            success: bool = self._make_invisible(last_state)
+        else:
+            success: bool = True
 
-        # If last State was succesfully removed, then we try to make the new state visible
+        # If last State was successfully removed, then we try to make the new state visible
         if not success:
             return False
         else:
@@ -171,7 +163,7 @@ class MainWindow:
             sticky_type = frame.get_sticky()
 
             actual_frame.master = self._window
-            actual_frame.grid(row=row, column=column, rowspan=row_span, column_span=column_span, sticky=sticky_type)
+            actual_frame.grid(row=row, column=column, rowspan=row_span, columnspan=column_span, sticky=sticky_type)
             # After Frame is placed, activate it, so it starts its job
             actual_frame.activate()
 

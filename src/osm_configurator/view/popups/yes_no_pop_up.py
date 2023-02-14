@@ -1,10 +1,20 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.states.view_constants as vc
+# Constants
+import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.pop_up_constants as pop_up_constants_i
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
 
+# Other
+from typing import TYPE_CHECKING
 import customtkinter
 
-POPUPSIZE = vc.ViewConstants.POPUPSIZE.value  # Holds the size of the Popup
+if TYPE_CHECKING:
+    import src.osm_configurator.view.constants.button_constants as button_constants_i
+    import src.osm_configurator.view.constants.pop_up_constants as pop_up_constants_i
+    import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+    import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 
 class YesNoPopUp(customtkinter.CTk):
@@ -27,37 +37,73 @@ class YesNoPopUp(customtkinter.CTk):
             message (str): The message to be shown in the PopUp.
             func (typing.Callable): Function taking one Boolean and has no return for the PopUp to return a message
         """
-        self.func = func
 
-        popup = super().__init__()
-        self.geometry(POPUPSIZE)
+        self._func = func
 
-        self.title("Alert")
+        super().__init__(
+            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
+        )
 
-        customtkinter.CTkLabel(popup, text=message) \
-            .pack(side="top", fill="both", expand="True", padx=10, pady=10)
+        # Configuring the grid
+        self.grid_columnconfigure(0, weight=1)  # Topbar: showing nothing
+        self.grid_columnconfigure(1, weight=4)  # Shows the error message
+        self.grid_columnconfigure(2, weight=2)  # Displays the buttons
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(1, weight=5)
+        self.grid_rowconfigure(2, weight=1)
 
-        customtkinter.CTkButton(self, text="Accept", command=combine_funcs(self.accept, self.destroy)) \
-            .pack(side="bottom", padx=10, pady=10)
+        customtkinter.CTkLabel(master=self,
+                               text=message,
+                               corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                               fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                               text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                               anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value, ) \
+            .grid(row=1, column=1, rowspan=1, columnspan=1, padx=20, pady=20)
 
-        self.button = customtkinter.CTkButton(self, text="Cancel",
-                                              command=combine_funcs(self.cancel, self.destroy)) \
-            .pack(side="bottom", padx=10, pady=10)
+        self.accept_button = \
+            customtkinter.CTkButton(master=self,
+                                    text="Accept",
+                                    command=combine_funcs(self.accept, self.destroy),
+                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    ) \
+            .grid(row=2, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
 
-    def accept(self):
+        self.cancel_button = \
+            customtkinter.CTkButton(master=self,
+                                    text="Cancel",
+                                    command=combine_funcs(self.cancel, self.destroy),
+                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    ) \
+            .grid(row=2, column=2, rowspan=1, columnspan=1, padx=10, pady=10)
+
+    def accept(self) -> bool:
         """
         Models the acceptance-process if a button is pressed.
         It will return "True" to the given function.
+        Returns:
+            bool: True (every time)
         """
-        self.func(True)
+        self._func(True)
         return True
 
-    def cancel(self):
+    def cancel(self) -> bool:
         """
         Models the cancelling-process if a button is pressed.
         It will return "False" to the given function.
+        Returns:
+            bool: False (every time)
         """
-        self.func(False)
+        self._func(False)
         return False
 
 
