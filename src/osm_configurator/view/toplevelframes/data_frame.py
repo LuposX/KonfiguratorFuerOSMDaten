@@ -54,10 +54,14 @@ class DataFrame(TopLevelFrame, Activatable):
         """
         super().__init__()
 
-        self._data_visualization_controller = data_visualization_controller
-        self._cut_out_controller = cut_out_controller
-        self._category_controller = category_controller
-        self._osm_data_controller = osm_data_controller
+        self._data_visualization_controller: data_visualization_controller_interface = data_visualization_controller
+        self._cut_out_controller: cut_out_controller_interface = cut_out_controller
+        self._category_controller: category_controller_interface = category_controller
+        self._osm_data_controller: osm_data_controller_interface = osm_data_controller
+
+        self._chosen_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
+        self._chosen_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
+        self._buildings_on_the_edge_are_in: bool = False  # Buildings on the edge are not in by default
 
         # Defining the grid
         self.grid_columnconfigure(0, weight=1)  # Space between top and first label
