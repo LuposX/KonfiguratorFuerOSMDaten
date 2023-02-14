@@ -11,6 +11,7 @@ import src.osm_configurator.control.category_controller_interface as category_co
 import src.osm_configurator.control.osm_data_controller_interface as osm_data_controller_interface
 from src.osm_configurator.view.activatable import Activatable
 import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -22,6 +23,7 @@ if TYPE_CHECKING:
     import src.osm_configurator.control.category_controller_interface as category_controller_interface
     import src.osm_configurator.control.osm_data_controller_interface as osm_data_controller_interface
     import src.osm_configurator.view.constants.button_constants as button_constants_i
+    import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 
 class DataFrame(TopLevelFrame, Activatable):
@@ -123,6 +125,48 @@ class DataFrame(TopLevelFrame, Activatable):
                 text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                 command=self.__view_cut_out,
                 text="Select"
+            )
+
+        # Implementing the labels
+
+        self._osm_data_select_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(
+                master=self,
+                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                text="Select OSM Data",
+            )
+
+        self._cut_out_select_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(
+                master=self,
+                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                text="Select Cut-Out",
+            )
+
+        self._copy_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(
+                master=self,
+                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                text="Copy in Category Configurations"
+            )
+
+        self._edge_building_are_in_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(
+                master=self,
+                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                text="Buildings on the edges are in"
             )
 
     def activate(self):
