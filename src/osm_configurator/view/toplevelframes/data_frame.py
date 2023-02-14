@@ -68,7 +68,7 @@ class DataFrame(TopLevelFrame, Activatable):
 
         # Defining the grid
         self.grid_columnconfigure(0, weight=1)  # Space between top and first label
-        self.grid_columnconfigure(1, weight=2)  # Space for the top labels
+        self.grid_columnconfigure(1, weight=2)  # Space for the top labels (Select OSM, Select Cutout, Copy in)
         self.grid_columnconfigure(2, weight=3)  # Space for the upper buttons
         self.grid_columnconfigure(3, weight=2)  # Space for the displayed buttons values
         self.grid_columnconfigure(4, weight=2)  # Space for the Checkbox
@@ -108,13 +108,13 @@ class DataFrame(TopLevelFrame, Activatable):
             )
         self._buttons.append(self._copy_button)
 
-        self._view_cutout_buttons: customtkinter.CTkButton = \
+        self._view_cutout_button: customtkinter.CTkButton = \
             customtkinter.CTkButton(
                 master=self,
                 command=self.__view_cut_out,
                 text="Select"
             )
-        self._buttons.append(self._view_cutout_buttons)
+        self._buttons.append(self._view_cutout_button)
 
         # Equal styling for all buttons
         for button in self._buttons:
@@ -195,7 +195,47 @@ class DataFrame(TopLevelFrame, Activatable):
                 border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value
             )
 
-        # TODO: Everything needs to be aligned in the grid
+        # Aligning everything nicely in the predefined grid
+
+        # Labels at the top
+        self._osm_data_select_label.grid(
+            row=1, column=1, rowspan=1, columnspan=1, padx=10, pady=10
+        )
+
+        self._cut_out_select_label.grid(
+            row=2, column=1, rowspan=2, columnspan=1, padx=10, pady=10
+        )
+
+        self._copy_label.grid(
+            row=4, column=1, rowspan=1, columnspan=1, padx=10, pady=10
+        )
+
+        # Buttons underneath the labels
+        self._osm_data_select_button.grid(
+            row=1, column=2, rowspan=1, columnspan=1, padx=10, pady=10
+        )
+
+        self._cut_out_select_button.grid(
+            row=2, column=2, rowspan=2, columnspan=1, padx=10, pady=10
+        )
+
+        self._copy_button.grid(
+            row=4, column=2, rowspan=1, columnspan=1, padx=10, pady=10
+        )
+
+        # Checkbox with label
+        self._edge_building_are_in_label.grid(
+            row=1, column=3, rowspan=2, columnspan=1, padx=10, pady=10
+        )
+
+        self._edge_building_are_in_checkbox.grid(
+            row=3, column=3, rowspan=1, columnspan=1, padx=10, pady=10
+        )
+
+        # Last button at the bottom
+        self._view_cutout_button.grid(
+            row=2, column=4, rowspan=2, columnspan=1, padx=10, pady=10
+        )
 
     def activate(self):
         """
