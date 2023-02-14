@@ -61,13 +61,13 @@ class DataVisualizer:
 
         return True
 
-    def create_boxplot(self, data_path: Path, map_saving_path: Path, filename: str) -> bool:
+    def create_boxplot(self, data_path: Path, boxplot_saving_path: Path, filename: str) -> bool:
         """
         This method creates a boxplot which is saved and can later be viewed.
 
         Args:
             data_path (Path): The path towards our data.
-            map_saving_path (Path): the path where we want to save the file, doesn't include filename.
+            boxplot_saving_path (Path): the path where we want to save the file, doesn't include filename.
             filename (str): the name under which the file should be saved, need to have the ".png" extension.
 
         Returns:
@@ -77,7 +77,7 @@ class DataVisualizer:
         try:
             data: DataFrame = pd.read_csv(data_path)
             fig = sb.boxplot(data)
-            fig.get_figure().savefig(os.path.join(map_saving_path, filename))
+            fig.get_figure().savefig(os.path.join(boxplot_saving_path, filename))
 
         # I use "Exception" here because seaborn nor matplotlib say on their documentation page which error they throw
         except Exception:
