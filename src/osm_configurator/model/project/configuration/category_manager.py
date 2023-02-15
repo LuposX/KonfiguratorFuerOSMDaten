@@ -31,9 +31,7 @@ class CategoryManager:
         Constructor of the class.
         """
         self._categories: List[Category] = []
-        self.building_category: Category = category_i.Category()
-
-        self.building_category.set_category_name(BUILDING_CATEGORY_NAME)
+        self.building_category: Category = category_i.Category(BUILDING_CATEGORY_NAME)
 
         self._categories.append(self.building_category)
 

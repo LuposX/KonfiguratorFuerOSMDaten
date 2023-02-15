@@ -19,15 +19,14 @@ class AttractivityAttribute:
     - A base factor
     """
 
-    def __init__(self, attractivity_attribute_name: str, base_attractivity: float):
+    def __init__(self, attractivity_attribute_name: str):
         """
         Creates a new instance of a "AttractivityAttribute" class.
         Args:
             attractivity_attribute_name (str): The name of the Attractivity Attributes
-            base_attractivity (float): The base attractivity value.
         """
         self._attractivity_attribute_name: str = attractivity_attribute_name
-        self._base_attractivity: float = base_attractivity
+        self._base_attractivity: float = DEFAULT_VALUE
         self._attribute_factors: Dict[Attribute, float] = {}
 
         for attribute in attribute_enum.Attribute:

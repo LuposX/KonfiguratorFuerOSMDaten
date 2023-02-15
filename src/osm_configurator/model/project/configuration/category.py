@@ -8,7 +8,7 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 
 import src.osm_configurator.model.model_constants as model_constants_i
 
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
@@ -18,8 +18,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
-CATEGORY_NAME: str = "Category Name"
-
 
 class Category:
     """
@@ -28,14 +26,17 @@ class Category:
     affect does OSM-elements.
     """
 
-    def __init__(self):
+    def __init__(self, category_name: str):
         """
         Creates a new instance of a "Category" class.
+
+        Args:
+            category_name (str): The name of the newly created category.
         """
         self._active: bool = False
         self._whitelist: List[str] = []
         self._blacklist: List[str] = []
-        self._category_name: str = CATEGORY_NAME
+        self._category_name: str = category_name
         self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA
         self._attractivity_attributes: List[AttractivityAttribute] = []
         self._default_value_list: List[DefaultValueEntry] = []
