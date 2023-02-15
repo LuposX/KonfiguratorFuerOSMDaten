@@ -10,4 +10,5 @@ class EntryConstants(Enum):
     ENTRY_CORNER_RADIUS = 8
     ENTRY_FG_COLOR = "#FFFFFF"
     ENTRY_TEXT_COLOR = "#FFFFFF"
+    ENTRY_TEXT_COLOR_INVALID = "#000000"
 
