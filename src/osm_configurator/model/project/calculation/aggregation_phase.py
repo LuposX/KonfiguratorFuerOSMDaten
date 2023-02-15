@@ -21,6 +21,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
     from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
+    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
@@ -66,8 +67,9 @@ class AggregationPhase(ICalculationPhase):
             checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
             list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
 
-        # Get the CategoryManager
+        # Get the manager
         aggregation_configuration: AggregationConfiguration = configuration_manager_o.get_aggregation_configuration()
+        category_manager: CategoryManager = configuration_manager_o.get_category_manager()
 
         # get all activated aggregation methods
         active_aggregation_methods: List[AggregationMethod] = aggregation_configuration.get_all_active_aggregation_methods()
@@ -75,53 +77,18 @@ class AggregationPhase(ICalculationPhase):
         # For each active aggregation method create one dataframe with all traffic cells in it
         aggregation_method: AggregationMethod
         for aggregation_method in active_aggregation_methods:
-
-            # Create a dict where we save the dataframe
-            # it has as key the name of a attractivity attribute and as value the list of calculated data entries
-            # for each traffic cell.
-            # Another key, value pair is the traffic cell name, per entry in a list.
-            aggregation_phase_data: Dict[str, List] = {}
-            aggregation_phase_data.update({model_constants_i.CL_TRAFFIC_CELL_NAME: []})
-
-            attractivity_attribute: AttractivityAttribute
-            for attractivity_attribute in configuration_manager_o.get_category_manager()\
-                    .get_all_defined_attractivity_attributes():
-                aggregation_phase_data.update({attractivity_attribute.get_attractivity_attribute_name(): []})
-
-            # For each traffic cell.
-            file_path: Path
-            for file_path in list_of_traffic_cell_checkpoints:
-                try:
-                    traffic_cell_data_frame: DataFrame = pd.read_csv(file_path, index_col=0)
-
-                except TagsWronglyFormatted as err:
-                    return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
-
-                except (OSMDataWronglyFormatted, DriverError, UnicodeDecodeError) as err:
-                    return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
-
-                # add the name of the cell
-                aggregation_phase_data[model_constants_i.CL_TRAFFIC_CELL_NAME].append(file_path.stem)
-
-                # iterate over the column of the dataframe, each column corresponds to one attractivity attribute
-                # This ignores the index column
-                column_name: str
-                for column_name in traffic_cell_data_frame.columns.values:
-                    # Calculate the given method
-                    column_result: float = aggregation_method.calculate_aggregation(traffic_cell_data_frame[column_name])
-
-                    aggregation_phase_data[column_name].append(column_result)
-
-            aggregation_method_df: DataFrame = pd.DataFrame.from_dict(aggregation_phase_data)
-
-            # Save the dataframe to the disk
-            # This is the dataframe where all traffic cells and attractivity attributes are in it for a single
-            # aggregation method.
             try:
-                aggregation_method_df. \
-                    to_csv(checkpoint_folder_path_current_phase.
-                           joinpath(aggregation_method.get_name()
-                                    + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
+                self._parse_the_data(aggregation_method=aggregation_method,
+                                     category_manager=category_manager,
+                                     checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase,
+                                     list_of_traffic_cell_checkpoints=list_of_traffic_cell_checkpoints
+                                     )
+
+            except TagsWronglyFormatted as err:
+                return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
+
+            except (OSMDataWronglyFormatted, DriverError, UnicodeDecodeError) as err:
+                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
             # If there's an error while encoding the file.
             except ValueError as err:
@@ -132,3 +99,46 @@ class AggregationPhase(ICalculationPhase):
                 return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
 
         return calculation_state_enum_i.CalculationState.RUNNING, ""
+
+    def _parse_the_data(self, aggregation_method: AggregationMethod,
+                        category_manager: CategoryManager,
+                        checkpoint_folder_path_current_phase: Path,
+                        list_of_traffic_cell_checkpoints: List[Path]):
+
+        # Create a dict where we save the dataframe
+        # it has as key the name of a attractivity attribute and as value the list of calculated data entries
+        # for each traffic cell.
+        # Another key, value pair is the traffic cell name, per entry in a list.
+        aggregation_phase_data: Dict[str, List] = {}
+        aggregation_phase_data.update({model_constants_i.CL_TRAFFIC_CELL_NAME: []})
+
+        attractivity_attribute: AttractivityAttribute
+        for attractivity_attribute in category_manager.get_all_defined_attractivity_attributes():
+            aggregation_phase_data.update({attractivity_attribute.get_attractivity_attribute_name(): []})
+
+        # For each traffic cell.
+        file_path: Path
+        for file_path in list_of_traffic_cell_checkpoints:
+            traffic_cell_data_frame: DataFrame = pd.read_csv(file_path, index_col=0)
+
+            # add the name of the cell
+            aggregation_phase_data[model_constants_i.CL_TRAFFIC_CELL_NAME].append(file_path.stem)
+
+            # iterate over the column of the dataframe, each column corresponds to one attractivity attribute
+            # This ignores the index column
+            column_name: str
+            for column_name in traffic_cell_data_frame.columns.values:
+                # Calculate the given method
+                column_result: float = aggregation_method.calculate_aggregation(traffic_cell_data_frame[column_name])
+
+                aggregation_phase_data[column_name].append(column_result)
+
+        aggregation_method_df: DataFrame = pd.DataFrame.from_dict(aggregation_phase_data)
+
+        # Save the dataframe to the disk
+        # This is the dataframe where all traffic cells and attractivity attributes are in it for a single
+        # aggregation method.
+        aggregation_method_df. \
+            to_csv(checkpoint_folder_path_current_phase.
+                   joinpath(aggregation_method.get_name()
+                            + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))

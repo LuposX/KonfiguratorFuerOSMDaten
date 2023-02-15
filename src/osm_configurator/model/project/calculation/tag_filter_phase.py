@@ -11,6 +11,7 @@ from src.osm_configurator.model.project.calculation.calculation_phase_interface 
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
 from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import \
     OSMDataWronglyFormatted
+from fiona.errors import DriverError
 
 from typing import TYPE_CHECKING
 
@@ -88,7 +89,7 @@ class TagFilterPhase(ICalculationPhase):
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
             # If there's an error while encoding the file.
-            except ValueError as err:
+            except (ValueError, DriverError, UnicodeDecodeError) as err:
                 return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
 
             # If the file cannot be opened.

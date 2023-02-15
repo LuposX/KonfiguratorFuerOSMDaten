@@ -95,7 +95,7 @@ class ReductionPhase(ICalculationPhase):
                 return calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)
 
             # If there's an error while encoding the file.
-            except ValueError as err:
+            except (ValueError, DriverError, UnicodeDecodeError) as err:
                 return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
 
             # If the file cannot be opened.
