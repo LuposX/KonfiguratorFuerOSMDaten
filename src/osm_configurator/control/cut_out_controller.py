@@ -18,16 +18,17 @@ class CutOutController(ICutOutController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        pass
+        self._cut_out_manager = model.get_active_project().get_config_manager().get_cut_out_configuration()
 
     def get_cut_out_mode(self) -> CutOutMode:
-        pass
+        return self._cut_out_manager.get_cut_out_mode()
 
     def set_cut_out_mode(self, mode: CutOutMode) -> bool:
-        pass
-
-    def set_cut_out_reference(self, path: pathlib.Path) -> bool:
-        pass
+        return self._cut_out_manager.set_cut_out_mode(mode)
 
     def get_cut_out_reference(self) -> pathlib.Path:
-        pass
+        return self._cut_out_manager.get_cut_out_path()
+
+    def set_cut_out_reference(self, path: pathlib.Path) -> bool:
+        return self._cut_out_manager.set_cut_out_path(path)
+
