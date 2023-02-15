@@ -72,3 +72,9 @@ class Application(IApplication):
             return passive_project_list
         else:
             return None
+
+    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
+        os.rmdir(passive_project.get_project_folder_path())
+        self.passive_project_list.remove(passive_project)
+        return True
+
