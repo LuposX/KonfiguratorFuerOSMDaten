@@ -73,45 +73,19 @@ class TagFilterPhase(ICalculationPhase):
         osm_data_parser_o: OSMDataParser = osm_data_parser_i.OSMDataParser()
 
         # parse the osm data  with the parser
-        return self._parse_the_data_file(osm_data_parser_o=osm_data_parser_o,
-                                         list_of_traffic_cell_checkpoints=list_of_traffic_cell_checkpoints,
-                                         category_manager_o=category_manager_o,
-                                         configuration_manager_o=configuration_manager_o,
-                                         checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase)
-
-    def _parse_the_data_file(self,
-                             osm_data_parser_o: OSMDataParser,
-                             list_of_traffic_cell_checkpoints: List,
-                             category_manager_o: CategoryManager,
-                             configuration_manager_o: ConfigurationManager,
-                             checkpoint_folder_path_current_phase: Path) -> Tuple[CalculationState, str]:
-
-        for file_path in list_of_traffic_cell_checkpoints:
+        for traffic_cell_file_path in list_of_traffic_cell_checkpoints:
             try:
-                traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o \
-                    .parse_osm_data_file(file_path,
-                                         category_manager_o,
-                                         configuration_manager_o
-                                         .get_cut_out_configuration()
-                                         .get_cut_out_mode(),
-                                         configuration_manager_o
-                                         .get_cut_out_configuration()
-                                         .get_cut_out_path())
+                self._parse_the_data_file(osm_data_parser_o=osm_data_parser_o,
+                                          traffic_cell_file_path=traffic_cell_file_path,
+                                          category_manager_o=category_manager_o,
+                                          configuration_manager_o=configuration_manager_o,
+                                          checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase)
 
             except TagsWronglyFormatted as err:
                 return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
 
             except OSMDataWronglyFormatted as err:
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
-
-                # name of the file
-            file_name = file_path.stem
-
-            # save the parsed osm data
-            try:
-                traffic_cell_data_frame. \
-                    to_csv(checkpoint_folder_path_current_phase.
-                           joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
 
             # If there's an error while encoding the file.
             except ValueError as err:
@@ -122,3 +96,28 @@ class TagFilterPhase(ICalculationPhase):
                 return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
 
         return calculation_state_enum_i.CalculationState.RUNNING, ""
+
+    def _parse_the_data_file(self,
+                             osm_data_parser_o: OSMDataParser,
+                             traffic_cell_file_path: Path,
+                             category_manager_o: CategoryManager,
+                             configuration_manager_o: ConfigurationManager,
+                             checkpoint_folder_path_current_phase: Path):
+
+            traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o \
+                .parse_osm_data_file(traffic_cell_file_path,
+                                     category_manager_o,
+                                     configuration_manager_o
+                                     .get_cut_out_configuration()
+                                     .get_cut_out_mode(),
+                                     configuration_manager_o
+                                     .get_cut_out_configuration()
+                                     .get_cut_out_path())
+
+            # name of the file
+            file_name = traffic_cell_file_path.stem
+
+            # save the parsed osm data
+            traffic_cell_data_frame. \
+                to_csv(checkpoint_folder_path_current_phase.
+                       joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
