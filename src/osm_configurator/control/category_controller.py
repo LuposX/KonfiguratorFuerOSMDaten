@@ -30,7 +30,7 @@ class CategoryController(ICategoryController):
     def get_list_of_categories(self) -> list[Category]:
         pass
 
-    def create_category(self) -> Category:
+    def create_category(self, category_name: str) -> Category:
         pass
 
     def delete_category(self, category: Category) -> bool:

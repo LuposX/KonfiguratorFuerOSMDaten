@@ -37,6 +37,9 @@ CHECKBOX_TEXT_ACTIVE: Final = "Category Active"
 CHECKBOX_TEXT_DISABLED: Final = "Category Disabled"
 RECOMMEND_BUTTON_HEIGHT: Final = 42
 
+PADX: Final = 4
+PADY: Final = 4
+
 # ID of the TabButton
 TAB_BUTTON_ID: Final = 805306377
 
@@ -347,18 +350,60 @@ class CategoryFrame(TopLevelFrame):
             alert_pop_up_i.AlertPopUp("There was an Error with the Category selection! The Frame has been refreshed!")
 
     def _category_name_edited(self, event: tkinter.Event):
+        # Getting what is written in the name entry
         new_category_name: str = self._category_name_entry.get()
-        self._selected_category.set_category_name(new_category_name)
+
+        successes: bool = True
+        category: category_i.Category
+        for category in self._categories:
+            if (category is not self._selected_category) and (category.get_category_name() == new_category_name):
+                # If there is another Category that has that name already, the value will not be saved and be amrked red!
+                self._category_name_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
+                successes: bool = False
+                break
+
+        # If there was no conflickt with the name, the name will be set
+        if successes:
+            if self._selected_category.set_category_name(new_category_name):
+                # If name was seuccesfully set, the text is normal again
+                self._category_name_entry.configure(
+                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+            else:
+                # If name could not be set, there will be an error message, and the text will be shown as invalid again!
+                alert_pop_up_i.AlertPopUp("Category Name, could not ne set!")
+                self._category_name_entry.configure(
+                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
     def _category_checkbox_edited(self):
+        # Checking if checkbox got chekcer or unchecked
         active: int = self._category_checkbox.get()
 
+        # If checked, set the category active
         if active == 1:
-            self._selected_category.activate()
-            self._category_checkbox.configure(text=CHECKBOX_TEXT_DISABLED)
+            if self._selected_category.activate():
+                self._category_checkbox.configure(text=CHECKBOX_TEXT_ACTIVE)
+            else:
+                # If category could not be set active, revert change
+                alert_pop_up_i.AlertPopUp("Could not activate Category!")
+                if self._selected_category.is_active():
+                    self._category_checkbox.configure(text=CHECKBOX_TEXT_ACTIVE)
+                    self._category_checkbox.select()
+                else:
+                    self._category_checkbox.configure(text=CHECKBOX_TEXT_DISABLED)
+                    self._category_checkbox.deselect()
         else:
-            self._selected_category.deactivate()
-            self._category_checkbox.configure(text=CHECKBOX_TEXT_ACTIVE)
+            # if unchecked, deactivae category
+            if self._selected_category.deactivate():
+                self._category_checkbox.configure(text=CHECKBOX_TEXT_DISABLED)
+            else:
+                # if not deactivatable, revert change
+                alert_pop_up_i.AlertPopUp("Could not deactivate Category!")
+                if self._selected_category.is_active():
+                    self._category_checkbox.configure(text=CHECKBOX_TEXT_DISABLED)
+                    self._category_checkbox.deselect()
+                else:
+                    self._category_checkbox.configure(text=CHECKBOX_TEXT_ACTIVE)
+                    self._category_checkbox.select()
 
     def _white_list_edited(self, event: tkinter.Event):
         # Checking if TabButton was pressed
@@ -369,7 +414,8 @@ class CategoryFrame(TopLevelFrame):
         # Get new recommendations, based on the last line
         self._set_recommendations_based_on_input(self._white_list.get("end-1c linestart", "end-1c"))
         # Setting the new information contained in the whiteList into the Category
-        self._selected_category.set_whitelist(self._white_list.get(1.0, "end-1c").splitlines())
+        if not self._selected_category.set_whitelist(self._white_list.get(1.0, "end-1c").splitlines()):
+            alert_pop_up_i.AlertPopUp("Could not save WhiteList!")
 
         self._white_list_was_last_edited: bool = True
         self._black_list_was_last_edited: bool = False
@@ -383,7 +429,8 @@ class CategoryFrame(TopLevelFrame):
         # Get new recommendations, based on the last input
         self._set_recommendations_based_on_input(self._black_list.get("end-1c linestart", "end-1c"))
         # Setting the information in the BlackList in the Category
-        self._selected_category.set_blacklist(self._black_list.get(1.0, "end-1c").splitlines())
+        if not self._selected_category.set_blacklist(self._black_list.get(1.0, "end-1c").splitlines()):
+            alert_pop_up_i.AlertPopUp("Could not save BlackList!")
 
         self._white_list_was_last_edited: bool = False
         self._black_list_was_last_edited: bool = True
@@ -393,25 +440,30 @@ class CategoryFrame(TopLevelFrame):
             self._white_list.delete("end-1c linestart", "end-1c")
             self._white_list.insert("end-1c linestart", self._get_recommended_string(button_id))
             self._set_recommendations_based_on_input(self._white_list.get("end-1c linestart", "end-1c"))
-            self._selected_category.set_whitelist(self._white_list.get(1.0, "end-1c").splitlines())
+
+            if not self._selected_category.set_whitelist(self._white_list.get(1.0, "end-1c").splitlines()):
+                alert_pop_up_i.AlertPopUp("Could not save WhiteList!")
+
             self._white_list.focus_force()
         elif self._black_list_was_last_edited:
             self._black_list.delete("end-1c linestart", "end-1c")
             self._black_list.insert("end-1c linestart", self._get_recommended_string(button_id))
             self._set_recommendations_based_on_input(self._black_list.get("end-1c linestart", "end-1c"))
-            self._selected_category.set_blacklist(self._black_list.get(1.0, "end-1c").splitlines())
+
+            if not self._selected_category.set_blacklist(self._black_list.get(1.0, "end-1c").splitlines()):
+                alert_pop_up_i.AlertPopUp("Could not save BlackList!")
+
             self._black_list.focus_force()
         else:
             alert_pop_up_i.AlertPopUp("Could not autocomplete Text!")
 
     def _get_recommended_string(self, index: int) -> str:
 
-        # If the index is out of bounds, we let the application crash!
-        # Because the index should never be out of bounds!
-        # If he is, then something is clearly wrong!
-        recommended_string: str = self._recommender_frame_button_list[index].cget("text")
-
-        return recommended_string
+        # if there are no recommendations, an empty string will be returned!
+        if len(self._recommender_frame_button_list) == 0:
+            return ""
+        else:
+            return self._recommender_frame_button_list[index].cget("text")
 
     def _set_recommendations_based_on_input(self, current_input: str):
         # First deleting all recommendation Buttons
@@ -437,16 +489,42 @@ class CategoryFrame(TopLevelFrame):
                                                                                     text=recommended_string,
                                                                                     command=partial(
                                                                                         self._recommend_button_pressed,
-                                                                                        button_id))
+                                                                                        button_id),
+                                                                                    padx=PADX,
+                                                                                    pady=PADY)
             new_recommend_button.grid(row=button_id, column=0, rowspan=1, columnspan=1)
             self._recommender_frame_button_list.append(new_recommend_button)
             button_id += 1
 
     def _create_new_category_pressed(self):
-        new_category: category_i.Category = self._category_controller.create_category()
-        self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
-        self._set_category_drop_down_menu(self._categories, new_category)
-        self._load_category(new_category)
+
+        dialog = customtkinter.CTkInputDialog(title="Creating new Category",
+                                              text="Type in the name, for the Category:",
+                                              fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
+                                              button_fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                              button_hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                              button_text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                              entry_fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                              entry_text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+
+        new_category_name: str = dialog.get_input()
+
+        # checking if the name isn't a duplicate!
+        no_duplicate: bool = True
+        category: category_i.Category
+        for category in self._categories:
+            if category.get_category_name() == new_category_name:
+                alert_pop_up_i.AlertPopUp("Category with name '" + new_category_name + "' already exists!")
+                no_duplicate: bool = False
+                break
+
+        if no_duplicate:
+            # If there is no duplicate, we create, the new category
+            new_category: category_i.Category = self._category_controller.create_category()
+            self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
+            self._set_category_drop_down_menu(self._categories, new_category)
+            self._load_category(new_category)
 
     def _delete_category_pressed(self):
         yes_no_pop_up_i.YesNoPopUp("Do you want to delete, the currently selected Category?", self._pop_up_answer)
@@ -459,13 +537,15 @@ class CategoryFrame(TopLevelFrame):
             self._activate_editing()
 
             # Fill in Name
-            self._category_name_entry.configure(text=category.get_category_name())
+            self._category_name_entry.configure(text=category.get_category_name(), text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
             # Edit Checkbox
             if category.is_active():
                 self._category_checkbox.select()
+                self._category_checkbox.configure(text=CHECKBOX_TEXT_ACTIVE)
             else:
                 self._category_checkbox.deselect()
+                self._category_checkbox.configure(text=CHECKBOX_TEXT_DISABLED)
 
             # WhiteList
             self._override_white_list(category.get_whitelist())
@@ -555,6 +635,8 @@ class CategoryFrame(TopLevelFrame):
             self._delete_category()
 
     def _delete_category(self):
-        self._category_controller.delete_category(self._selected_category)
+        if not self._category_controller.delete_category(self._selected_category):
+            alert_pop_up_i.AlertPopUp("Could not delete Category!\nFrame has been refreshed!")
+
         # Doing activate after category got deleted, to refresh frame and select automatiaclly another category
         self.activate()
