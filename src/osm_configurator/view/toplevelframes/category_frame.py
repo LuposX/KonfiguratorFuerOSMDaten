@@ -153,9 +153,9 @@ class CategoryFrame(TopLevelFrame):
         # Making the TextField / Entry for the Category Name
         self._category_name_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self._category_menu_frame,
                                                                                    width=((
-                                                                                                      frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) * 2 - ELEMENT_BORDER_DISTANCE),
+                                                                                                  frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) * 2 - ELEMENT_BORDER_DISTANCE),
                                                                                    height=(
-                                                                                               frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE),
+                                                                                           frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE),
                                                                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                                                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                                                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -193,7 +193,7 @@ class CategoryFrame(TopLevelFrame):
         self._white_list_frame: customtkinter.CTkFrame = customtkinter.CTkFrame(master=self,
                                                                                 width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3,
                                                                                 height=(
-                                                                                                   frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 3) * 2,
+                                                                                               frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 3) * 2,
                                                                                 corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
                                                                                 fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value)
         # The grid has two rows, with the second one being heigher weighted
@@ -205,7 +205,7 @@ class CategoryFrame(TopLevelFrame):
         self._white_list_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._white_list_frame,
                                                                                 width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
                                                                                 height=(
-                                                                                            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9 - ELEMENT_BORDER_DISTANCE),
+                                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9 - ELEMENT_BORDER_DISTANCE),
                                                                                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -218,9 +218,9 @@ class CategoryFrame(TopLevelFrame):
         # The TextBox which contains the WhiteList
         self._white_list = customtkinter.CTkTextbox(master=self._white_list_frame,
                                                     width=((
-                                                                       frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - ELEMENT_BORDER_DISTANCE),
+                                                                   frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - ELEMENT_BORDER_DISTANCE),
                                                     height=((
-                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - ELEMENT_BORDER_DISTANCE),
+                                                                    frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - ELEMENT_BORDER_DISTANCE),
                                                     corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
                                                     border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                                     fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
@@ -234,7 +234,7 @@ class CategoryFrame(TopLevelFrame):
         self._black_list_frame: customtkinter.CTkFrame = customtkinter.CTkFrame(master=self,
                                                                                 width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3,
                                                                                 height=(
-                                                                                                   frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 3) * 2,
+                                                                                               frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 3) * 2,
                                                                                 corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
                                                                                 fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value)
         # The grid is just two rows, with the second one being heigher weighted
@@ -246,7 +246,7 @@ class CategoryFrame(TopLevelFrame):
         self._black_list_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._black_list_frame,
                                                                                 width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
                                                                                 height=(
-                                                                                            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9 - ELEMENT_BORDER_DISTANCE),
+                                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9 - ELEMENT_BORDER_DISTANCE),
                                                                                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -259,9 +259,9 @@ class CategoryFrame(TopLevelFrame):
         # Making the TextBox which contains the BlackList
         self._black_list: customtkinter.CTkTextbox = customtkinter.CTkTextbox(master=self._black_list_frame,
                                                                               width=((
-                                                                                                 frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - ELEMENT_BORDER_DISTANCE),
+                                                                                             frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - ELEMENT_BORDER_DISTANCE),
                                                                               height=((
-                                                                                                  frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - ELEMENT_BORDER_DISTANCE),
+                                                                                              frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - ELEMENT_BORDER_DISTANCE),
                                                                               corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
                                                                               border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                                                               fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
@@ -358,7 +358,8 @@ class CategoryFrame(TopLevelFrame):
         for category in self._categories:
             if (category is not self._selected_category) and (category.get_category_name() == new_category_name):
                 # If there is another Category that has that name already, the value will not be saved and be amrked red!
-                self._category_name_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
+                self._category_name_entry.configure(
+                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
                 successes: bool = False
                 break
 
@@ -537,7 +538,8 @@ class CategoryFrame(TopLevelFrame):
             self._activate_editing()
 
             # Fill in Name
-            self._category_name_entry.configure(text=category.get_category_name(), text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+            self._category_name_entry.configure(text=category.get_category_name(),
+                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
             # Edit Checkbox
             if category.is_active():
