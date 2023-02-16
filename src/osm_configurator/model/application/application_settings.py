@@ -31,7 +31,7 @@ class ApplicationSettings:
         """
         self._application_settings_file: Path = application_settings_file
 
-    def get_setting(self, settings_enum: ApplicationSettingsDefault) -> str | None:
+    def get_setting(self, settings_enum: ApplicationSettingsDefault) -> Any:
         """
         This method gets a specific setting from the setting file.
 
@@ -40,7 +40,7 @@ class ApplicationSettings:
             None: if it failed to read it, this could be because user used an invalid value.
 
         Returns:
-            str: The value of the setting.
+            Any: The value of the setting.
         """
         try:
             settings: Dict[Any] = self._load_settings_file()

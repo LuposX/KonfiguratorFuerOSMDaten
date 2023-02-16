@@ -87,3 +87,26 @@ class ISettingsController(ABC):
             bool: True, if the default folder was set successfully; False if an error occurred: The path is not valid or occupied.
         """
         pass
+
+    @abstractmethod
+    def get_number_of_processes(self) -> int:
+        """
+        Gets the number of processes that should be used via the calculation.
+
+        Returns:
+            int: The number of processes.
+        """
+        pass
+
+    @abstractmethod
+    def set_number_of_processes(self, number_of_processes: int) -> bool:
+        """
+        Sets the number of processes we want to use for our project.
+
+        Args:
+            number_of_processes (int): The number of processes we want to use.
+
+        Returns:
+            bool: True, if s set successfully; False if an error occurred.
+        """
+        pass
