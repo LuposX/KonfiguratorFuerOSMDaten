@@ -49,13 +49,13 @@ class ApplicationSettings:
         except:
             return None
 
-    def set_setting(self, settings_enum: ApplicationSettingsDefault, setting_value: str) -> bool:
+    def set_setting(self, settings_enum: ApplicationSettingsDefault, setting_value: Any) -> bool:
         """
         This method sets a setting in the setting file.
 
         Args:
             settings_enum (ApplicationSettingsDefault): The setting we want to set.
-            setting_value (str): The value we want the setting to have.
+            setting_value (Any): The value we want the setting to have.
 
         Returns:
             bool: true if value got set successfully.

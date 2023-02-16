@@ -34,6 +34,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from geopandas import GeoDataFrame, GeoSeries
     from src.osm_configurator.model.parser.tag_parser import TagParser
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 class ReductionPhase(ICalculationPhase):
@@ -45,7 +46,8 @@ class ReductionPhase(ICalculationPhase):
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.REDUCTION_PHASE
 
-    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager_o: ConfigurationManager,
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         Reduces OSM-elements on single points and calculates their attributes.
         The calculation phase reads the data of the previous calculation phase. OSM-elements that are not just a single
@@ -58,6 +60,7 @@ class ReductionPhase(ICalculationPhase):
 
         Args:
             configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration required for an execution.
+            application_manager (ApplicationSettings): The settings of the application
 
         Returns:
               Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.

@@ -10,7 +10,6 @@ import src.osm_configurator.model.project.calculation.osm_file_format_enum as os
 import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 
 
-
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
 from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import \
@@ -21,7 +20,6 @@ import src.osm_configurator.model.project.calculation.calculation_phase_enum as 
 import src.osm_configurator.model.model_constants as model_constants_i
 
 import pandas as pd
-import geopandas as gpd
 from fiona.errors import DriverError
 
 from pathlib import Path
@@ -43,6 +41,7 @@ if TYPE_CHECKING:
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
     from pandas import DataFrame
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 class AggregationPhase(ICalculationPhase):
@@ -53,7 +52,8 @@ class AggregationPhase(ICalculationPhase):
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.AGGREGATION_PHASE
 
-    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager_o: ConfigurationManager,
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         Aggregates the attractivity attributes in the given traffic cells.
         The calculation phase reads the data of the previous calculation phase. Now for every traffic cell all selected
@@ -63,6 +63,7 @@ class AggregationPhase(ICalculationPhase):
 
         Args:
             configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration needed for execution.
+            application_manager (ApplicationSettings): The settings of the application
 
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.
