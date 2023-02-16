@@ -1,5 +1,6 @@
 from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
 
+from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -17,7 +18,7 @@ class AggregationController(IAggregationController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        self._aggregation_configurator = model.get_active_project().get_config_manager().get_aggregation_configuration()
+        self._aggregation_configurator: AggregationConfiguration = model.get_active_project().get_config_manager().get_aggregation_configuration()
 
     def get_aggregation_methods(self) -> list[AggregationMethod]:
         return self._aggregation_configurator.get_all_aggregation_methods()
