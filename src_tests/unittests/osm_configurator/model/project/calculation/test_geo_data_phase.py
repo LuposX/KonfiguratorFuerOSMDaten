@@ -8,6 +8,9 @@ import src.osm_configurator.model.project.calculation.calculation_state_enum as 
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
 import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+
+import src.osm_configurator.model.application.application_settings as application_settings_i
+
 from pathlib import Path
 import os
 
@@ -34,9 +37,11 @@ class TestGeoDataPhase:
         project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectXYZ"))
         config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project_path)
 
+        app_settings = application_settings_i.ApplicationSettings("idk")
+
         # Execute phase, without setting any path's to the geojson and osm data
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-        result: CalculationState = phase.calculate(config_manager)[0]
+        result: CalculationState = phase.calculate(config_manager, app_settings)[0]
         assert result == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA or \
                calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
@@ -48,10 +53,12 @@ class TestGeoDataPhase:
         project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectABC"))
 
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
-        
+
+        app_settings = application_settings_i.ApplicationSettings("idk")
+
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-        result1: CalculationState = phase.calculate(config_manager)[0]
+        result1: CalculationState = phase.calculate(config_manager, app_settings)[0]
         assert result1 == calculation_state_enum.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY
 
 
@@ -63,9 +70,11 @@ class TestGeoDataPhase:
 
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
 
+        app_settings = application_settings_i.ApplicationSettings("idk")
+
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-        result1: CalculationState = phase.calculate(config_manager)[0]
+        result1: CalculationState = phase.calculate(config_manager, app_settings)[0]
         assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
@@ -78,9 +87,11 @@ class TestGeoDataPhase:
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
 
+        app_settings = application_settings_i.ApplicationSettings("idk")
+
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-        result1: CalculationState = phase.calculate(config_manager)[0]
+        result1: CalculationState = phase.calculate(config_manager, app_settings)[0]
         assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
 
 
@@ -93,9 +104,11 @@ class TestGeoDataPhase:
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
 
+        app_settings = application_settings_i.ApplicationSettings("idk")
+
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-        result1: CalculationState = phase.calculate(config_manager)[0]
+        result1: CalculationState = phase.calculate(config_manager, app_settings)[0]
         assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
@@ -108,9 +121,11 @@ class TestGeoDataPhase:
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
 
+        app_settings = application_settings_i.ApplicationSettings("idk")
+
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
-        result1: CalculationState = phase.calculate(config_manager)[0]
+        result1: CalculationState = phase.calculate(config_manager, app_settings)[0]
         assert result1 == calculation_state_enum.CalculationState.RUNNING
 
         folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
@@ -123,5 +138,5 @@ class TestGeoDataPhase:
         assert os.path.exists(test_file_path)
 
         # Test if execution works a second time
-        result2: CalculationState = phase.calculate(config_manager)[0]
+        result2: CalculationState = phase.calculate(config_manager, app_settings)[0]
         assert result2 == calculation_state_enum.CalculationState.RUNNING
