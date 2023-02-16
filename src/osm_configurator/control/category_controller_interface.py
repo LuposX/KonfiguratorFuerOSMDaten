@@ -56,17 +56,17 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def create_category(self, category: Category) -> bool:
+    def create_category(self, name: str) -> Category:
         """
         Creates a new category in the currently selected project.
         A new category is added to the list of categories of the project. The category has empty properties, except for an arbitrary name.
         If the creation fails, none will be returned and there won't be a category added.
 
         Args:
-            category.Category: The newly created category, none if there was an error.
+            name (str): The name, of the new Category.
 
-        Return:
-            bool: True if creating the category works, otherwise false.
+        Returns:
+            category.Category: The newly created category, none if there was an error.
         """
         pass
 

@@ -39,8 +39,12 @@ class CategoryController(ICategoryController):
     def get_list_of_categories(self) -> List[Category]:
         return self._category_manager.get_categories()
 
-    def create_category(self, new_category: Category) -> bool:
-        return self._category_manager.create_category(new_category)
+    def create_category(self, name: str) -> Category:
+        new_category: Category = Category(name)
+        if self._category_manager.create_category(new_category):
+            return new_category
+        else:
+            return None
 
     def delete_category(self, category: Category) -> bool:
         return self._category_manager.remove_category(category)
