@@ -84,7 +84,7 @@ class CategoryManager:
             bool: True, if the element was created correctly, else false.
         """
         # Check that the category is not already saved
-        if new_category.get_category_name() in self._get_all_categories_names():
+        if new_category.get_category_name() in self.get_all_categories_names():
             return False
         else:
             self._categories.append(new_category)
@@ -146,7 +146,7 @@ class CategoryManager:
            category_input_list (List[Category]): New list of categories that will be merged into the existing list.
        """
         for category in category_input_list:
-            if category.get_category_name() not in self._get_all_categories_names():
+            if category.get_category_name() not in self.get_all_categories_names():
                 self._categories.append(category)
 
     def get_all_defined_attractivity_attributes(self) -> List[AttractivityAttribute]:
@@ -165,7 +165,7 @@ class CategoryManager:
 
         return list(result)
 
-    def _get_all_categories_names(self) -> List[str]:
+    def get_all_categories_names(self) -> List[str]:
         """
         This method return the names of all categories currently saved.
         """
