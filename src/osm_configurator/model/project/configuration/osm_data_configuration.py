@@ -49,7 +49,7 @@ class OSMDataConfiguration:
             return True
         return False
 
-    def get_download_data(self) -> DownloadData:
+    def get_download_data_manager(self) -> DownloadData:
         """
         Getter for the download data class.
 
