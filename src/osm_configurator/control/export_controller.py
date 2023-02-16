@@ -1,6 +1,7 @@
 from src.osm_configurator.control.export_controller_interface import IExportController
 
 import pathlib
+from src.osm_configurator.model.project.export import Export
 
 from typing import TYPE_CHECKING
 
@@ -18,16 +19,16 @@ class ExportController(IExportController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        pass
+        self._export_manager: Export = model.get_active_project().get_export_manager()
 
     def export_project(self, path: pathlib.Path) -> bool:
-        pass
+        return self._export_manager.export_project(path)
 
     def export_calculations(self, path: pathlib.Path) -> bool:
-        pass
+        return self._export_manager.export_calculation(path)
 
     def export_configurations(self, path: pathlib.Path) -> bool:
-        pass
+        return self._export_manager.export_configuration(path)
 
     def export_cut_out_map(self, path: pathlib.Path) -> bool:
-        pass
+        return self._export_manager.export_map(path)
