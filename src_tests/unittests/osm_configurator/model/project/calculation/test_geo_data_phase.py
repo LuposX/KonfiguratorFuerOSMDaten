@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from src_tests.definitions import TEST_DIR
+from src_tests.definitions import APPLICATION_MANAGER
 import src.osm_configurator.model.project.calculation.geo_data_phase as geo_data_phase
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
@@ -47,7 +48,7 @@ class TestGeoDataPhase:
         project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectABC"))
 
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
-
+        
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
         result1: CalculationState = phase.calculate(config_manager)[0]

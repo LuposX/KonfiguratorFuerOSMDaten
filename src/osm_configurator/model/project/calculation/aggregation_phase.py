@@ -28,6 +28,7 @@ if TYPE_CHECKING:
     from pathlib import Path
     from typing import Tuple, Dict, List, Any
     from pandas import DataFrame
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 class AggregationPhase(ICalculationPhase):
@@ -38,7 +39,8 @@ class AggregationPhase(ICalculationPhase):
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.AGGREGATION_PHASE
 
-    def calculate(self, configuration_manager_o: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager_o: ConfigurationManager,
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         Aggregates the attractivity attributes in the given traffic cells.
         The calculation phase reads the data of the previous calculation phase. Now for every traffic cell all selected
@@ -48,6 +50,7 @@ class AggregationPhase(ICalculationPhase):
 
         Args:
             configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration needed for execution.
+            application_manager (ApplicationSettings): The settings of the application
 
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.

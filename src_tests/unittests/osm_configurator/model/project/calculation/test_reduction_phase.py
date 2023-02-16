@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from src_tests.definitions import TEST_DIR
+from src_tests.definitions import APPLICATION_MANAGER
 import src.osm_configurator.model.project.calculation.tag_filter_phase as tag_filter_phase_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
@@ -86,17 +87,17 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager)
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
 
-        assert result1[0] == calculation_state_enum.CalculationState.RUNNING
+        assert result1 == calculation_state_enum.CalculationState.RUNNING
 
         # Test if files were created
         assert len(
             os.listdir(os.path.join(project_path, "results/" + calculation_phase_enum.CalculationPhase.REDUCTION_PHASE.get_folder_name_for_results()))) == 1
 
         # Test if execution works a second time
-        result2: CalculationState = phase.calculate(config_manager)
-        assert result2[0] == calculation_state_enum.CalculationState.RUNNING
+        result2: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        assert result2 == calculation_state_enum.CalculationState.RUNNING
 
 
     def test_reduction_phase_fully(self):
@@ -119,9 +120,9 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager)
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
 
-        assert result1[0] == calculation_state_enum.CalculationState.RUNNING
+        assert result1 == calculation_state_enum.CalculationState.RUNNING
 
         # Test if files were created
         assert len(
@@ -129,8 +130,8 @@ class TestReductionPhase:
                                     .get_folder_name_for_results()))) == 2
 
         # Test if execution works a second time
-        result2: CalculationState = phase.calculate(config_manager)
-        assert result2[0] == calculation_state_enum.CalculationState.RUNNING
+        result2: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        assert result2 == calculation_state_enum.CalculationState.RUNNING
 
     def test_reduction_phase_corrupted_data(self):
         # Set up paths
@@ -153,9 +154,9 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager)
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
 
-        assert result1[0] == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND
+        assert result1 == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND
 
     def test_reduction_phase_invalid_path(self):
         # Set up paths
@@ -178,6 +179,6 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager)
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
 
-        assert result1[0] == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND
+        assert result1 == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND

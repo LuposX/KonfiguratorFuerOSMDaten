@@ -26,6 +26,12 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from typing import Tuple, List, Dict, Any
     from pandas import DataFrame, Series
+    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
+    from geopandas import GeoDataFrame
+    from src.osm_configurator.model.parser.cut_out_parser import CutOutParser
+    from pandas.core.series import Series
+    from pandas import DataFrame
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 class AttractivityPhase(ICalculationPhase):
@@ -36,7 +42,8 @@ class AttractivityPhase(ICalculationPhase):
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE
 
-    def calculate(self, configuration_manager: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager: ConfigurationManager,
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """Calculates the attractivity attributes of the osm-elements
         The calculation phase reads the data of the previous calculation phase. Now it calculates the attractivity
         attributes of every OSM-element. The attractivity attributes that are calculated for an osm-element are dependent
@@ -46,6 +53,7 @@ class AttractivityPhase(ICalculationPhase):
 
         Args:
             configuration_manager (configuration_manager.ConfigurationManager): The object containing all the configuration needed for execution.
+            application_manager (ApplicationSettings): The settings of the application
 
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.

@@ -149,7 +149,7 @@ class CalculationManager:
         result: Tuple[CalculationState, str] = calculation_state_enum.CalculationState.RUNNING
         while current_index < len(self._phases) and result[0] == calculation_state_enum.CalculationState.RUNNING:
             phase_queue.put(self._phases[current_index].get_calculation_phase_enum())
-            result = self._phases[current_index].calculate(self._config_manager)
+            result = self._phases[current_index].calculate(self._config_manager, self._application_manager)
             state_queue.put(result)  # Put the return value of the phases in the queue to the main process
 
         self._current_phase: CalculationPhase = calculation_phase_enum.CalculationPhase.NONE

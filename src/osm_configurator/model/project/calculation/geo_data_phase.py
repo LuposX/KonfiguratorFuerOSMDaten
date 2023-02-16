@@ -26,6 +26,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.split_up_files import SplitUpFile
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
     from typing import Tuple, Any
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 class GeoDataPhase(ICalculationPhase):
@@ -35,7 +36,8 @@ class GeoDataPhase(ICalculationPhase):
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE
 
-    def calculate(self, configuration_manager: ConfigurationManager) -> Tuple[CalculationState, str]:
+    def calculate(self, configuration_manager: ConfigurationManager,
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         This method does:
         It splits the big input osm_data file into multiple smaller one. There are three main reason to do that
@@ -48,6 +50,7 @@ class GeoDataPhase(ICalculationPhase):
 
         Args:
             configuration_manager (configuration_manager.ConfigurationManager): The object containing all the configuration needed for an execution.
+            application_manager (ApplicationSettings): The settings of the application
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
         """
