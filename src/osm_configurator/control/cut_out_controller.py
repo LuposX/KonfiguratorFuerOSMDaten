@@ -1,6 +1,7 @@
 import pathlib
 from src.osm_configurator.control.cut_out_controller_interface import ICutOutController
 
+from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -18,7 +19,7 @@ class CutOutController(ICutOutController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        self._cut_out_manager = model.get_active_project().get_config_manager().get_cut_out_configuration()
+        self._cut_out_manager: CutOutConfiguration = model.get_active_project().get_config_manager().get_cut_out_configuration()
 
     def get_cut_out_mode(self) -> CutOutMode:
         return self._cut_out_manager.get_cut_out_mode()
