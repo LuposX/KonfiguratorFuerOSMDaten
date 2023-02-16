@@ -17,7 +17,7 @@ class SettingsControllerStub(ISettingsController):
         return True
 
     def get_project_default_folder(self) -> pathlib.Path:
-        return None
+        return pathlib.Path("")
 
     def set_project_default_folder(self, default_folder: pathlib.Path) -> bool:
         return True

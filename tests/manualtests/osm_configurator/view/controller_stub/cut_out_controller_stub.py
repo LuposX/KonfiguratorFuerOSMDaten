@@ -6,13 +6,13 @@ from src.osm_configurator.model.project.configuration.cut_out_mode_enum import C
 
 class CutOutControllerStub(ICutOutController):
     def get_cut_out_mode(self) -> CutOutMode:
-        pass
+        return CutOutMode
 
     def set_cut_out_mode(self, mode: CutOutMode) -> bool:
-        pass
+        return CutOutMode
 
     def set_cut_out_reference(self, path: pathlib.Path) -> bool:
-        pass
+        return True
 
     def get_cut_out_reference(self) -> pathlib.Path:
-        pass
+        return pathlib.Path("")

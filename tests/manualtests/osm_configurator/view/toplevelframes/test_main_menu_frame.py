@@ -4,7 +4,7 @@ from tests.manualtests.osm_configurator.view.controller_stub.export_controller_s
 from tests.manualtests.osm_configurator.view.controller_stub.category_controller_stub import CategoryControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.project_controller_stub import ProjectControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.settings_controller_stub import SettingsControllerStub
-from tests.manualtests.osm_configurator.view.controller_stub.aggregation_controller_stub import AggreationControllerStub
+from tests.manualtests.osm_configurator.view.controller_stub.aggregation_controller_stub import AggregationControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.cut_out_controller_stub import CutOutControllerStub
 from tests.manualtests.osm_configurator.view.controller_stub.data_visualization_controller_stub import \
     DataVisualizationControllerStub
@@ -19,7 +19,7 @@ export_controller = ExportControllerStub()
 category_controller = CategoryControllerStub()
 project_controller = ProjectControllerStub()
 settings_controller = SettingsControllerStub()
-aggregation_controller = AggreationControllerStub()
+aggregation_controller = AggregationControllerStub()
 calculation_controller = CalculationControllerStub()
 cut_out_controller = CutOutControllerStub()
 data_visualization_controller = DataVisualizationControllerStub()

@@ -5,11 +5,11 @@ from src.osm_configurator.control.osm_data_controller_interface import IOSMDataC
 
 class OSMDataControllerStub(IOSMDataController, ABC):
     def set_osm_data_reference(self, path: pathlib.Path) -> bool:
-        pass
+        return True
 
     def get_osm_data_reference(self) -> pathlib.Path:
-        pass
+        return pathlib.Path("")
 
     def download_osm_data(self, path: pathlib.Path) -> bool:
-        pass
+        return True
 

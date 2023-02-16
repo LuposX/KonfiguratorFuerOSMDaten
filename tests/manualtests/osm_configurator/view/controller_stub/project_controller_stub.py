@@ -11,22 +11,22 @@ class ProjectControllerStub(IProjectController):
         return []
 
     def load_project(self, path: pathlib.Path) -> bool:
-        pass
+        return True
 
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
-        pass
+        return True
 
     def delete_passive_project(self, project: PassiveProject) -> bool:
-        pass
+        return True
 
     def save_project(self) -> bool:
-        pass
+        return True
 
     def set_current_config_phase(self, config_phase: ConfigPhase) -> bool:
-        pass
+        return True
 
     def get_current_config_phase(self) -> ConfigPhase:
-        pass
+        return ConfigPhase.DATA_CONFIG_PHASE
 
     def is_project_loaded(self) -> bool:
-        pass
+        return True
