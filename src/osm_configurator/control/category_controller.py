@@ -22,32 +22,36 @@ class CategoryController(ICategoryController):
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         self._model = model
-        self._category_manager: CategoryManager = model.get_active_project().get_config_manager().get_category_manager()
 
     def check_conflicts_in_category_configuration(self, path: pathlib.Path) -> bool:
+        category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
         category_parser: CategoryParser = CategoryParser()
         new_category: Category = category_parser.parse_category_file(path)
         if new_category is None:
             return False
-        elif new_category.get_category_name() in self._category_manager.get_all_categories_names():
+        elif new_category.get_category_name() in self.category_manager.get_all_categories_names():
             return False
         return True
 
     def import_category_configuration(self, path: pathlib.Path) -> bool:
-        return self._category_manager.merge_categories(path)
+        category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
+        return self.category_manager.merge_categories(path)
 
     def get_list_of_categories(self) -> List[Category]:
-        return self._category_manager.get_categories()
+        category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
+        return self.category_manager.get_categories()
 
     def create_category(self, name: str) -> Category:
+        category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
         new_category: Category = Category(name)
-        if self._category_manager.create_category(new_category):
+        if category_manager.create_category(new_category):
             return new_category
         else:
             return None
 
     def delete_category(self, category: Category) -> bool:
-        return self._category_manager.remove_category(category)
+        category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
+        return category_manager.remove_category(category)
 
     def get_list_of_key_recommendations(self, current_input: str) -> list[str]:
         return self._model.get_key_recommendation_system().recommend_key(current_input)
