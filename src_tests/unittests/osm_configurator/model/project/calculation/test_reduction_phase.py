@@ -33,7 +33,7 @@ os.environ["PROJ_LIB"] = ""
 
 
 def _prepare_config(geojson: Path, project: Path, assert_existence: bool,
-                    cut_out_mode: CutOutMode) -> ConfigurationManager:
+                    cut_out_mode: CutOutMode, geojson_path: Path) -> ConfigurationManager:
     if assert_existence:
         assert os.path.exists(geojson)
 
@@ -46,20 +46,23 @@ def _prepare_config(geojson: Path, project: Path, assert_existence: bool,
                                                           TEST_CATEGORY_SHOP,
                                                           TEST_CATEGORY_NO_BUILDING])
 
+    # set geojson path
+    config_manager.get_cut_out_configuration().set_cut_out_path(geojson_path)
+
     return config_manager
 
 
-def _prepare_previous_phase_folder(path_to_new_proejct: Path, path_old_data: Path, iddir: bool):
+def _prepare_previous_phase_folder(path_to_new_project: Path, path_old_data: Path, iddir: bool):
     # Prepare result folder
     deleter: FileDeletion = file_deletion.FileDeletion()
-    deleter.reset_folder(path_to_new_proejct)
+    deleter.reset_folder(path_to_new_project)
 
     if iddir:
         # move the files from data to it
         for file_name in os.listdir(path_old_data):
-            shutil.copy2(os.path.join(path_old_data, file_name), path_to_new_proejct)
+            shutil.copy2(os.path.join(path_old_data, file_name), path_to_new_project)
     else:
-        shutil.copy2(path_old_data, path_to_new_proejct)
+        shutil.copy2(path_old_data, path_to_new_project)
 
 
 class TestReductionPhase:
@@ -79,7 +82,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
@@ -111,7 +115,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
@@ -144,7 +149,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, True,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
@@ -168,7 +174,8 @@ class TestReductionPhase:
 
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(geojson_path, project_path, False,
-                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED)
+                                                               cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
+                                                               Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson")))
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()

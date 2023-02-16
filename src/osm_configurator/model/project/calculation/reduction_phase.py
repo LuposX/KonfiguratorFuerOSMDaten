@@ -10,7 +10,10 @@ import src.osm_configurator.model.project.calculation.osm_file_format_enum as os
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
-
+import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
+import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
+import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
 
 import geopandas as gpd
 from fiona.errors import DriverError
@@ -22,7 +25,7 @@ from src.osm_configurator.model.project.calculation.calculation_phase_interface 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import Tuple, List, Dict
+    from typing import Tuple, List, Dict, Any
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
@@ -43,6 +46,7 @@ class ReductionPhase(ICalculationPhase):
     the values of the attributes for alle OSM-elements.
     For details see the method calculate().
     """
+
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.REDUCTION_PHASE
 
@@ -65,193 +69,206 @@ class ReductionPhase(ICalculationPhase):
         Returns:
               Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
-        folder_path_calculator_o = folder_path_calculator_i.FolderPathCalculator()
-        # Get path to the results of the last Phase
-        checkpoint_folder_path_last_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
-            configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE)
+        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase \
+            .prepare_phase(configuration_manager_o=configuration_manager_o,
+                           current_calculation_phase=calculation_phase_enum.CalculationPhase.REDUCTION_PHASE,
+                           last_calculation_phase=calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
 
-        # Get path to the results of the current Phase
-        checkpoint_folder_path_current_phase: Path = folder_path_calculator_o.get_checkpoints_folder_path_from_phase(
-            configuration_manager_o,
-            calculation_phase_enum_i.CalculationPhase.REDUCTION_PHASE)
+        # Return if we got an error
+        if type(prepare_calc_tuple[0]) == calculation_state_enum.CalculationState:
+            return prepare_calc_tuple[0], prepare_calc_tuple[1]
 
-        # Prepare result folder
-        deleter: FileDeletion = file_deletion_i.FileDeletion()
-        deleter.reset_folder(checkpoint_folder_path_current_phase)
+        else:
+            cut_out_dataframe = prepare_calc_tuple[0]
+            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
+            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
+            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
 
         # get the category manager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
 
-        # check if the folder exist
-        if checkpoint_folder_path_last_phase.exists() and checkpoint_folder_path_current_phase.exists():
-            list_of_traffic_cell_checkpoints: List = list(checkpoint_folder_path_last_phase.iterdir())
-        else:
-            return (calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, "")
+        for traffic_cell_file_path in list_of_traffic_cell_checkpoints:
+            try:
+                self._parse_the_data_file(traffic_cell_file_path=traffic_cell_file_path,
+                                          category_manager_o=category_manager_o,
+                                          checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase,
+                                          )
 
-        return self._parse_the_data_file(list_of_traffic_cell_checkpoints, category_manager_o, checkpoint_folder_path_current_phase)
+            except (FileNotFoundError, DriverError) as err:
+                return calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)
+
+            # If there's an error while encoding the file.
+            except (ValueError, DriverError, UnicodeDecodeError) as err:
+                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
+
+            # If the file cannot be opened.
+            except OSError as err:
+                return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
+
+            except Exception as err:
+                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
+
+        return calculation_state_enum_i.CalculationState.RUNNING, ""
 
     def _parse_the_data_file(self,
-                             list_of_traffic_cell_checkpoints: List[Path],
+                             traffic_cell_file_path: Path,
                              category_manager_o: CategoryManager,
                              checkpoint_folder_path_current_phase: Path):
 
         tag_parser_o: TagParser = tag_parser_i.TagParser()
 
-        for file_path in list_of_traffic_cell_checkpoints:
-            try:
-                # Read out dataframe from disk into memory
-                df = gpd.read_file(file_path,
-                                   GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
-                                   KEEP_GEOM_COLUMNS="NO"
-                                   )
-            except (FileNotFoundError, DriverError) as err:
-                return [calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)]
+        # Read out dataframe from disk into memory
+        df = gpd.read_file(traffic_cell_file_path,
+                           GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
+                           KEEP_GEOM_COLUMNS="NO"
+                           )
 
-            except Exception as err:
-                return (calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args))
+        # Remove unwanted nodes
+        # ---------------------
+        # We remove all nodes which are in an area and have the same category as them
+        # Why? Because they are most likely doubled elements.
+        self._remove_nodes_in_areas_with_same_category(df)
 
-            # Remove unwanted nodes
-            # ---------------------
-            # We remove all nodes which are in an area and have the same category as them
-            # Why? Because they are most likely doubled elements.
-            self._remove_nodes_in_areas_with_same_category(df)
+        # Initialize Data
+        # --------------.
+        # Initialize a dictionary in which we will save our calculated data
+        reduction_phase_data = self._initialize_data_save()
 
-            # Initialize Data
-            # --------------.
-            # Initialize a dictionary in which we will save our calculated data
-            reduction_phase_data = self._initialize_data_save()
+        default_value_finder_o = default_value_finder_i.DefaultValueFinder()
 
-            default_value_finder_o = default_value_finder_i.DefaultValueFinder()
+        # Calculate data
+        # --------------
+        # This for-loop is for the calculation
+        # iterate over the dataframe
+        idx: int
+        row: GeoSeries
+        for idx, row in df.iterrows():
+            # Initialize a temporal data save location
+            # just used for a single osm element
+            # we do this, so we can compare at the end if we have an entry for each key.
+            data_entry: Dict = self._initialize_data_save()
 
-            # Calculate data
-            # --------------
-            # This for-loop is for the calculation
-            # iterate over the dataframe
-            idx: int
-            row: GeoSeries
-            for idx, row in df.iterrows():
-                # Initialize a temporal data save location
-                # just used for a single osm element
-                # we do this, so we can compare at the end if we have an entry for each key.
-                data_entry: Dict = self._initialize_data_save()
+            curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
 
-                curr_category: Category = category_manager_o.get_category(row[model_constants_i.CL_CATEGORY])
+            curr_default_value_list: List[DefaultValueEntry] = curr_category.get_default_value_list()
 
-                curr_default_value_list: List[DefaultValueEntry] = curr_category.get_default_value_list()
+            # make the string to a list of string
+            osm_elements_list_tags: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(
+                row[model_constants_i.CL_TAGS])
+            osm_elements_list_tags: Dict[str, str] = tag_parser_o.list_to_dict(osm_elements_list_tags)
 
-                # make the string to a list of string
-                osm_elements_list_tags: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(row[model_constants_i.CL_TAGS])
-                osm_elements_list_tags: Dict[str, str] = tag_parser_o.list_to_dict(osm_elements_list_tags)
+            curr_default_value: DefaultValueEntry = default_value_finder_o.find_default_value_entry_which_applies(
+                curr_default_value_list, osm_elements_list_tags)
 
-                curr_default_value: DefaultValueEntry = default_value_finder_o.find_default_value_entry_which_applies(curr_default_value_list, osm_elements_list_tags)
+            # This means we don't need to calculate anything
+            if curr_category.get_strictly_use_default_values():
+                self._set_data_entry_from_default_value(curr_default_value, reduction_phase_data, row, data_entry)
 
-                # This means we don't need to calculate anything
-                if curr_category.get_strictly_use_default_values():
-                    self._set_data_entry_from_default_value(curr_default_value, reduction_phase_data, row, data_entry)
+            # If strictly-use-default-values isn't activated, we need to calculate the data
+            else:
+                # These are the attributes we need to calculate
+                activated_attributes: List[Attribute] = curr_category.get_activated_attribute()
+                # get the not activated
+                not_activated_attributes: List[Attribute] = curr_category.get_not_activated_attribute()
 
-                # If strictly-use-default-values isn't activated, we need to calculate the data
-                else:
-                    # These are the attributes we need to calculate
-                    activated_attributes: List[Attribute] = curr_category.get_activated_attribute()
-                    # get the not activated
-                    not_activated_attributes: List[Attribute] = curr_category.get_not_activated_attribute()
+                # previously calculated attributes temp data saver
+                already_calculated_attributes: Dict[str, float] = {}
 
-                    # previously calculated attributes temp data saver
-                    already_calculated_attributes: Dict[str, float] = {}
+                # Add the attributes to the list that are not activated(which means that don't get calculated)
+                # The data saver is from which we later built our geodataframe
+                self._add_attributes_to_data_saver(already_calculated_attributes, curr_default_value, data_entry,
+                                                   not_activated_attributes)
 
-                    # Add the attributes t o the list that are not activated(which means that don't get calculated)
-                    not_act_attribute: Attribute
-                    for not_act_attribute in not_activated_attributes:
-                        tmp_default_value: float = curr_default_value.get_attribute_default(
-                            not_act_attribute)
-                        data_entry[not_act_attribute.get_name()].append(tmp_default_value)
+                # transform list into a dictionary
+                activated_attributes_dict: Dict = {}
+                for attribute_entry in activated_attributes:
+                    activated_attributes_dict.update({attribute_entry.get_name(): attribute_entry})
 
-                        # we save already calculated attributes in this list if we have attributes
-                        # which are dependent on other attributes which need to be calculated first.
-                        already_calculated_attributes.update({not_act_attribute.get_name(): tmp_default_value})
+                # Insert the data which isn't calculated from the attributes
+                # This is data such as the name of the traffic cell
+                self._save_non_calculated_non_attribute_data(data_entry, row)
 
-                    # transform list into a dictionary
-                    activated_attributes_dict: Dict = {}
-                    for attribute_entry in activated_attributes:
-                        activated_attributes_dict.update({attribute_entry.get_name(): attribute_entry})
+                # calculate the activated attributes
+                self._calculate_activated_attributes(activated_attributes_dict, already_calculated_attributes,
+                                                     curr_category, curr_default_value, data_entry, df, row)
 
-                    # Insert the data which isn't calculated from the attributes
-                    DF_CL_NAME: str
-                    for DF_CL_NAME in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
-                        # Do point reduction
-                        if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
-                            # Returns a representation of the object’s geometric centroid (point).
-                            data_entry[model_constants_i.CL_GEOMETRY].append(row[model_constants_i.CL_GEOMETRY].centroid)
+                # Add the calculated data for a single osm element to the main saving point
+                self._add_calculated_data_to_data_saver(data_entry, reduction_phase_data)
 
-                        else:
-                            data_entry[DF_CL_NAME].append(row[DF_CL_NAME])
+        # We now need to construct our dataframe from the data
+        column_name = []
+        column_name.extend(model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES)
+        column_name.extend([e.get_name() for e in attribute_enum_i.Attribute])
+        traffic_cell_data_frame = gpd.GeoDataFrame(data=reduction_phase_data, columns=column_name)
 
-                    # calculate the not activated attributes
-                    key_act_attribute: str
-                    value_act_attribute: Attribute
-                    for key_act_attribute, value_act_attribute in activated_attributes_dict.items():
-                        if value_act_attribute == attribute_enum_i.Attribute.PROPERTY_AREA:
-                            # property needs to be treated special, because it depends on special data
-                            # i.e. all osm element which lie in its border.
+        # save the parsed osm data
+        # name of the file
+        file_name = traffic_cell_file_path.stem
 
-                            curr_category.get_calculation_method_of_area()
+        traffic_cell_data_frame. \
+            to_csv(checkpoint_folder_path_current_phase.
+                   joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
 
-                            calculated_value: float = value_act_attribute.calculate_attribute_value(curr_category,
-                                                                                                    row,
-                                                                                                    already_calculated_attributes,
-                                                                                                    curr_default_value,
-                                                                                                    df)
+    def _add_attributes_to_data_saver(self, already_calculated_attributes, curr_default_value, data_entry,
+                                      not_activated_attributes):
+        not_act_attribute: Attribute
+        for not_act_attribute in not_activated_attributes:
+            tmp_default_value: float = curr_default_value.get_attribute_default(
+                not_act_attribute)
+            data_entry[not_act_attribute.get_name()].append(tmp_default_value)
 
-                        else:
-                            # Calculate the value of the osm element for the given attribute
-                            calculated_value: float = value_act_attribute.calculate_attribute_value(curr_category,
-                                                                                                    row,
-                                                                                                    already_calculated_attributes,
-                                                                                                    curr_default_value,
-                                                                                                    None)
-                        # we save already calculated attributes in this list if we have attributes
-                        # which are dependent on other attributes which need to be calculated first.
-                        already_calculated_attributes.update({key_act_attribute: calculated_value})
+            # we save already calculated attributes in this list if we have attributes
+            # which are dependent on other attributes which need to be calculated first.
+            already_calculated_attributes.update({not_act_attribute.get_name(): tmp_default_value})
 
-                        # The data entry will later be saved to our main memory for all osm elements
-                        data_entry[key_act_attribute].append(calculated_value)
+    def _add_calculated_data_to_data_saver(self, data_entry, reduction_phase_data):
+        for key_data_entry, value_data_entry in data_entry.items():
+            if len(value_data_entry) == 1:
+                # since we only save one value per entry we can do [0]
+                reduction_phase_data[key_data_entry].append(value_data_entry[0])
 
-                    # Add the calculated data for a single osm element to the main saving point
-                    for key_data_entry, value_data_entry in data_entry.items():
-                        if len(value_data_entry) == 1:
-                            # since we only save one value per entry we can do [0]
-                            reduction_phase_data[key_data_entry].append(value_data_entry[0])
+    def _calculate_activated_attributes(self, activated_attributes_dict, already_calculated_attributes,
+                                        curr_category, curr_default_value, data_entry, df, row):
+        key_act_attribute: str
+        value_act_attribute: Attribute
+        for key_act_attribute, value_act_attribute in activated_attributes_dict.items():
+            if value_act_attribute == attribute_enum_i.Attribute.PROPERTY_AREA:
+                # property needs to be treated special, because it depends on special data
+                # i.e. all osm element which lie in its border.
 
-                        else:
-                            # STH WENT REALLY WRONG HERE IF HE CAME INTO THIS ELSE
-                            print("ERROR REDUCTION PHASE: TRIED ADDING AN OSM ELEMENT TO MAIN MEMORY, MORE THAN ONE ENTRY.")
+                curr_category.get_calculation_method_of_area()
 
+                calculated_value: float = value_act_attribute.calculate_attribute_value(curr_category,
+                                                                                        row,
+                                                                                        already_calculated_attributes,
+                                                                                        curr_default_value,
+                                                                                        df)
 
-            # We now need to construct our dataframe from the data
-            column_name = []
-            column_name.extend(model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES)
-            column_name.extend([e.get_name() for e in attribute_enum_i.Attribute])
-            traffic_cell_data_frame = gpd.GeoDataFrame(data=reduction_phase_data, columns=column_name)
+            else:
+                # Calculate the value of the osm element for the given attribute
+                calculated_value: float = value_act_attribute.calculate_attribute_value(curr_category,
+                                                                                        row,
+                                                                                        already_calculated_attributes,
+                                                                                        curr_default_value,
+                                                                                        None)
+            # we save already calculated attributes in this list if we have attributes
+            # which are dependent on other attributes which need to be calculated first.
+            already_calculated_attributes.update({key_act_attribute: calculated_value})
 
-            # save the parsed osm data
-            # name of the file
-            file_name = file_path.stem
+            # The data entry will later be saved to our main memory for all osm elements
+            data_entry[key_act_attribute].append(calculated_value)
 
-            try:
-                traffic_cell_data_frame. \
-                    to_csv(checkpoint_folder_path_current_phase.
-                           joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
+    def _save_non_calculated_non_attribute_data(self, data_entry, row):
+        DF_CL_NAME: str
+        for DF_CL_NAME in model_constants_i.DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES:
+            # Do point reduction
+            if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
+                # Returns a representation of the object’s geometric centroid (point).
+                data_entry[model_constants_i.CL_GEOMETRY].append(
+                    row[model_constants_i.CL_GEOMETRY].centroid)
 
-            # If there's an error while encoding the file.
-            except ValueError as err:
-                return (calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err)))
-
-            # If the file cannot be opened.
-            except OSError as err:
-                return (calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err)))
-
-        return (calculation_state_enum_i.CalculationState.RUNNING, "")
+            else:
+                data_entry[DF_CL_NAME].append(row[DF_CL_NAME])
 
     def _initialize_data_save(self):
         """
@@ -303,7 +320,7 @@ class ReductionPhase(ICalculationPhase):
         # if yes we check if they have the same category and if yes we delete them, otherwise they can stay.
         # TODO: the index of new geodatframe should have the same index as the old ones, if not here is the issue.
         area_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_WAY_NAME) | (
-                    df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
+                df[model_constants_i.CL_OSM_TYPE] == model_constants_i.AREA_RELATION_NAME)]
         node_df: GeoDataFrame = df.loc[(df[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME)]
         idx: int
         node_row: GeoSeries
