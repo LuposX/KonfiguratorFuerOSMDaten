@@ -2,6 +2,7 @@ from src.osm_configurator.control.project_controller_interface import IProjectCo
 
 import pathlib
 
+from src.osm_configurator.model.application.application import Application
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -20,7 +21,7 @@ class ProjectController(IProjectController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        self._model = model
+        self._model: Application = model
 
     def get_list_of_passive_projects(self) -> list[PassiveProject]:
         return self._model.get_passive_project_list()
