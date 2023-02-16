@@ -117,3 +117,10 @@ class IApplication(ABC):
             bool: True if deleting the project works, otherwise false.
         """
         pass
+
+    @abstractmethod
+    def unload_project(self):
+        """
+        This method is to set the active_project to None, which is used when getting into the Main Menu.
+        """
+        pass

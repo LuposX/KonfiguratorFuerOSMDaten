@@ -44,8 +44,11 @@ class ProjectController(IProjectController):
     def get_current_config_phase(self) -> ConfigPhase:
         return self._model.get_active_project().get_last_step()
 
+    def unload_project(self):
+        return self._model.unload_project()
+
     def is_project_loaded(self) -> bool:
-        if self._model.get_active_project() is None:
+        if self._model.get_active_project() is not None:
             return True
         else:
             return False

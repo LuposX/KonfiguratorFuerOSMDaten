@@ -78,3 +78,5 @@ class Application(IApplication):
         self.passive_project_list.remove(passive_project)
         return True
 
+    def unload_project(self):
+        self.active_project = None

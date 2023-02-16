@@ -107,6 +107,13 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
+    def unload_project(self):
+        """
+        This method is to set the active_project to None, which is used when getting into the Main Menu.
+        """
+        pass
+
+    @abstractmethod
     def is_project_loaded(self) -> bool:
         """
         Checks, whether any project is currently loaded/selected.
