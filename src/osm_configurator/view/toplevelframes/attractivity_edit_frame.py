@@ -216,31 +216,31 @@ class AttractivityEditFrame(TopLevelFrame):
                                                                           text="Area:")
         self._area_label.grid(row=4, column=0, rowspan=1, columnspan=1)
 
-        # Floors Label
-        self._floors_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                                                            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                                                            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                                            text="Floors:")
-        self._floors_label.grid(row=5, column=0, rowspan=1, columnspan=1)
+        # Numbers of Floors Label
+        self._number_of_floors_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
+                                                                                      width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+                                                                                      height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                                                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                                                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                                                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                                                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                                                                      padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
+                                                                                      pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                                                      text="Number of Floors:")
+        self._number_of_floors_label.grid(row=5, column=0, rowspan=1, columnspan=1)
 
-        # Ground Area Label
-        self._ground_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                 width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                                                                 height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                                                                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                 pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                                                 text="Ground Area:")
-        self._ground_area_label.grid(row=6, column=0, rowspan=1, columnspan=1)
+        # Floor Area Label
+        self._floor_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
+                                                                                width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+                                                                                height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                                                                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                                                                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                                                                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                                                                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                                                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
+                                                                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                                                text="Floor Area:")
+        self._floor_area_label.grid(row=6, column=0, rowspan=1, columnspan=1)
 
         # Base Attractivity Label
         self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -266,29 +266,26 @@ class AttractivityEditFrame(TopLevelFrame):
                                                                           text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._area_entry.bind("<KeyRelease>", self._area_entry_edited)
         self._area_entry.grid(row=4, column=1, rowspan=1, columnspsan=1)
-        self._area_previous_value: float = 0.0
 
-        # The Floors Entry
-        self._floors_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
-                                                                            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                                                            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                                                            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                                                            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                                                            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
-        self._floors_entry.bind("<KeyRelease>", self._floors_entry_edited)
-        self._floors_entry.grid(row=5, column=1, rowspan=1, columnspan=1)
-        self._floors_previous_value: float = 0.0
+        # The Number of Floors Entry
+        self._numbers_of_floors_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
+                                                                                       width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+                                                                                       height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                                                                       corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                                                                       fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                                                                       text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._numbers_of_floors_entry.bind("<KeyRelease>", self._number_of_floors_entry_edited)
+        self._numbers_of_floors_entry.grid(row=5, column=1, rowspan=1, columnspan=1)
 
-        # The Ground Area Entry
-        self._ground_area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
-                                                                                 width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                                                                 height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                                                                 corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                                                                 fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                                                                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
-        self._ground_area_entry.bind("<KeyRelease>", self._ground_area_entry_edited)
-        self._ground_area_entry.grid(row=6, column=1, rowspan=1, columnspan=1)
-        self._ground_area_previous_value: float = 0.0
+        # The Floor Area Entry
+        self._floor_area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
+                                                                                width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+                                                                                height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                                                                corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                                                                fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._floor_area_entry.bind("<KeyRelease>", self._floor_area_entry_edited)
+        self._floor_area_entry.grid(row=6, column=1, rowspan=1, columnspan=1)
 
         # The Base Attractivity Entry
         self._base_attractivity_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
@@ -299,7 +296,6 @@ class AttractivityEditFrame(TopLevelFrame):
                                                                                        text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._base_attractivity_entry.bind("<KeyRelease>", self._base_attractivity_entry_edited)
         self._base_attractivity_entry.grid(row=7, column=1, rowspan=1, columnspan=1)
-        self._base_attractivity_previous_value: float = 0.0
 
         # Now the Buttons to change to the attractivity view
         # and to create and delete attractivities
@@ -427,38 +423,38 @@ class AttractivityEditFrame(TopLevelFrame):
             # If not make text invalid colored and don't save value
             self._area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def _floors_entry_edited(self, event: tkinter.Event):
+    def _number_of_floors_entry_edited(self, event: tkinter.Event):
         # Checking if the value is castable to a float
         try:
             # if possible set the new value
-            factor: float = float(self._floors_entry.get())
-            self._floors_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+            factor: float = float(self._numbers_of_floors_entry.get())
+            self._numbers_of_floors_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-            if not self._selected_attribute.set_attribute_factor(attribute_enum_i.Attribute.NUMER_OF_FLOOR, factor):
+            if not self._selected_attribute.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, factor):
                 # if setting factor fails, text shows invalid and popup emerges!
                 alert_pop_up_i.AlertPopUp("Could not set the floor-factor, for this Attractivity-Attribute!")
-                self._floors_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
+                self._numbers_of_floors_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
         except ValueError:
             # If not possible, set text red and don't save Value
-            self._floors_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
+            self._numbers_of_floors_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def _ground_area_entry_edited(self, event: tkinter.Event):
+    def _floor_area_entry_edited(self, event: tkinter.Event):
         # Checking if value is castable to a float
         try:
             # if possible save factor
-            factor: float = float(self._ground_area_entry.get())
-            self._ground_area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+            factor: float = float(self._floor_area_entry.get())
+            self._floor_area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-            if not self._selected_attribute.set_attribute_factor(attribute_enum_i.Attribute.FIRST_FLOOR_AREA, factor):
+            if not self._selected_attribute.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, factor):
                 # If not possible to set, show error through popup and invalid text color!
                 alert_pop_up_i.AlertPopUp("Could not set the ground-area-factor, for this Attractivity-Attribute!")
-                self._ground_area_entry.configure(
+                self._floor_area_entry.configure(
                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
         except ValueError:
             # If not possible, set text red and don't save Value
-            self._ground_area_entry.configure(
+            self._floor_area_entry.configure(
                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
     def _base_attractivity_entry_edited(self, event: tkinter.Event):
@@ -588,24 +584,17 @@ class AttractivityEditFrame(TopLevelFrame):
             self._area_entry.delete(1.0, "end-1c")
             self._area_entry.insert(1.0,
                                     str(attractivity.get_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA)))
-            self._area_previous_value: float = attractivity.get_attribute_factor(
-                attribute_enum_i.Attribute.PROPERTY_AREA)
 
-            self._floors_entry.delete(1.0, "end-1c")
-            self._floors_entry.insert(1.0,
-                                      str(attractivity.get_attribute_factor(attribute_enum_i.Attribute.NUMER_OF_FLOOR)))
-            self._floors_previous_value: float = attractivity.get_attribute_factor(
-                attribute_enum_i.Attribute.NUMER_OF_FLOOR)
+            self._numbers_of_floors_entry.delete(1.0, "end-1c")
+            self._numbers_of_floors_entry.insert(1.0,
+                                                 str(attractivity.get_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR)))
 
-            self._ground_area_entry.delete(1.0, "end-1c")
-            self._ground_area_entry.insert(1.0, str(attractivity.get_attribute_factor(
-                attribute_enum_i.Attribute.FIRST_FLOOR_AREA)))
-            self._ground_area_previous_value: float = attractivity.get_attribute_factor(
-                attribute_enum_i.Attribute.FIRST_FLOOR_AREA)
+            self._floor_area_entry.delete(1.0, "end-1c")
+            self._floor_area_entry.insert(1.0, str(attractivity.get_attribute_factor(
+                attribute_enum_i.Attribute.NUMBER_OF_FLOOR)))
 
             self._base_attractivity_entry.delete(1.0, "end-1c")
             self._base_attractivity_entry.insert(1.0, str(attractivity.get_base_factor()))
-            self._base_attractivity_previous_value: float = attractivity.get_base_factor()
 
     def _deactivate_whole_editing(self):
 
@@ -638,12 +627,12 @@ class AttractivityEditFrame(TopLevelFrame):
         self._area_entry.delete(1.0, "end-1c")
         self._area_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
-        self._floors_entry.delete(1.0, "end-1c")
-        self._floors_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+        self._numbers_of_floors_entry.delete(1.0, "end-1c")
+        self._numbers_of_floors_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
-        self._ground_area_entry.delete(1.0, "end-1c")
-        self._ground_area_entry.configure(state="disabled",
-                                          text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+        self._floor_area_entry.delete(1.0, "end-1c")
+        self._floor_area_entry.configure(state="disabled",
+                                         text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
         self._base_attractivity_entry.delete(1.0, "end-1c")
         self._base_attractivity_entry.configure(state="disabled",
@@ -662,8 +651,8 @@ class AttractivityEditFrame(TopLevelFrame):
 
         # ACtivating all Factor Entries
         self._area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
-        self._floors_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
-        self._ground_area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+        self._numbers_of_floors_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+        self._floor_area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
         self._base_attractivity_entry.configure(state="normal",
                                                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 

@@ -311,6 +311,3 @@ class Category:
         self._default_value_list[index + 1], self._default_value_list[index] \
             = self._default_value_list[index], self._default_value_list[index + 1]
         return True
-
-    def get_strictly_use_default_values(self) -> bool:
-        return self._strictly_use_default_values

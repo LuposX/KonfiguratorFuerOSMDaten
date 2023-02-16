@@ -181,39 +181,39 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                  text="Area-Factor:")
         self._area_factor_label.grid(row=0, column=4, rowspan=1, columnspan=1, sticky="W")
 
-        # Floors Factor Label
-        self._floors_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                   width=int(
+        # Numbers of Floors Factor
+        self._number_of_floors_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
+                                                                                             width=int(
                                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
                                                                                                    2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                   height=int(
+                                                                                             height=int(
                                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
                                                                                                    1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                   padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                                                   text="Floors-Factor:")
-        self._floors_factor_label.grid(row=0, column=5, rowspan=1, columnspan=1, sticky="W")
+                                                                                             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                                                                             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                                                                             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                                                                             anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                                                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
+                                                                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                                                             text="Numbers-of-Floors-Factor:")
+        self._number_of_floors_factor_label.grid(row=0, column=5, rowspan=1, columnspan=1, sticky="W")
 
-        # The Ground Area Factor label
-        self._ground_area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                        width=int(
+        # Floor Area Label
+        self._floor_area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
+                                                                                       width=int(
                                                                                             frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
                                                                                                         2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                        height=int(
+                                                                                       height=int(
                                                                                             frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
                                                                                                         1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                        corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                        fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                        text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                        anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                        padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                        pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                                                        text="Ground-Area-Factor:")
-        self._ground_area_factor_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W")
+                                                                                       corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                                                                       fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                                                                       text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                                                                       anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                                                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
+                                                                                       pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                                                       text="Floor-Area-Factor:")
+        self._floor_area_factor_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W")
 
         # Base Attractivity Label
         self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -311,14 +311,14 @@ class AttractivityViewFrame(TopLevelFrame):
                 # This tuple has:
                 # name of Attractivity,
                 # Area Factor,
-                # Floors Factor,
-                # Ground Area Factor,
+                # Number of Floors Factor,
+                # Floor Area Factor,
                 # Base Factor
                 # In that specific order!
                 label_name_tuple = (attractivity.get_attractivity_attribute_name(),
                                     attractivity.get_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA),
                                     attractivity.get_attribute_factor(attribute_enum_i.Attribute.NUMER_OF_FLOOR),
-                                    attractivity.get_attribute_factor(attribute_enum_i.Attribute.FIRST_FLOOR_AREA),
+                                    attractivity.get_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA),
                                     attractivity.get_base_factor())
                 self._add_attractivity_to_scrollable_frame(label_name_tuple, row_for_tuple)
                 row_for_tuple += 1
