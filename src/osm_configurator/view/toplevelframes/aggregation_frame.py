@@ -8,9 +8,12 @@ import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.aggregation_controller_interface
 import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum_i
 
+import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
+
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -22,8 +25,9 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
 
 # Finals
-SCROLLABLE_FRAME_FG_COLOR: Final = "#FFFFFF"
-LABLE_TEXT_COLOR: Final = "#FFFFFF"
+SCROLLABLE_FRAME_FG_COLOR: Final = scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value
+LABEL_TEXT_COLOR: Final = label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value
+# Checkboxes are squared!
 CHECKBOX_WIDTH_AND_HEIGHT: Final = 69
 
 
@@ -74,7 +78,7 @@ class AggregationFrame(TopLevelFrame):
             scrollbar_button_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_COLOR.value,
             scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
             label_text="Aggregation Methods:",
-            label_text_color=LABLE_TEXT_COLOR)
+            label_text_color=LABEL_TEXT_COLOR)
         self._aggregation_scrollable_frame.grid(row=1, column=1, rowspan=1, columnspan=1, sticky="NSEW")
 
         # Making all the checkboxes for all Aggregation Methods
@@ -128,12 +132,19 @@ class AggregationFrame(TopLevelFrame):
 
         active: bool = self._aggregation_checkboxes[checkbox_id].get() == 1
 
-        self._aggregation_controller.set_aggregation_method_active(aggregation_method, active)
+        if not self._aggregation_controller.set_aggregation_method_active(aggregation_method, active):
+            alert_pop_up_i.AlertPopUp("Activating/Deactivating Aggregation Failed!")
 
-        # Changing the Text Color
+        # Changing the Text Color and selecting or deselecting
+        # Selecting and deseletcing might sound weird, since the suer does that
+        # This is done bacause, if the setting or disbling failed, wen want to return to the previous value
+        # If the setting was successfull, nothing will change
+        # this ist just a fail save
         if active:
+            self._aggregation_checkboxes[checkbox_id].select()
             self._aggregation_checkboxes[checkbox_id].configure(
                 text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR)
         else:
+            self._aggregation_checkboxes[checkbox_id].deselect()
             self._aggregation_checkboxes[checkbox_id].configure(
                 text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED)
