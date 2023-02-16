@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 
 import pathlib
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
@@ -46,7 +46,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def get_list_of_categories(self) -> list[Category]:
+    def get_list_of_categories(self) -> List[Category]:
         """
         Returns the list of all categories, that are currently in the currently selected project.
 
@@ -56,16 +56,20 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def create_category(self) -> Category:
+    def create_category(self, category: Category) -> bool:
         """
         Creates a new category in the currently selected project.
         A new category is added to the list of categories of the project. The category has empty properties, except for an arbitrary name.
         If the creation fails, none will be returned and there won't be a category added.
 
-        Returns:
+        Args:
             category.Category: The newly created category, none if there was an error.
+
+        Return:
+            bool: True if creating the category works, otherwise false.
         """
         pass
+
 
     @abstractmethod
     def delete_category(self, category: Category) -> bool:
@@ -95,7 +99,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def get_attractivities_of_category(self, category: Category) -> list[AttractivityAttribute]:
+    def get_attractivities_of_category(self, category: Category) -> List[AttractivityAttribute]:
         """
         Returns the attractivity attributes that are defined for the given category.
 

@@ -1,7 +1,9 @@
 from src.osm_configurator.control.category_controller_interface import ICategoryController
 import pathlib
 
-from typing import TYPE_CHECKING
+from src.osm_configurator.model.parser.category_parser import CategoryParser
+from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
+from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
@@ -19,25 +21,33 @@ class CategoryController(ICategoryController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        pass
+        self._model = model
+        self._category_manager: CategoryManager = model.get_active_project().get_config_manager().get_category_manager()
 
     def check_conflicts_in_category_configuration(self, path: pathlib.Path) -> bool:
-        pass
+        category_parser: CategoryParser = CategoryParser()
+        new_category: Category = category_parser.parse_category_file(path)
+        if new_category is None:
+            return False
+        elif new_category.get_category_name() in self._category_manager.get_all_categories_names():
+            return False
+        return True
 
     def import_category_configuration(self, path: pathlib.Path) -> bool:
-        pass
+        return self._category_manager.merge_categories(path)
 
-    def get_list_of_categories(self) -> list[Category]:
-        pass
+    def get_list_of_categories(self) -> List[Category]:
+        return self._category_manager.get_categories()
 
-    def create_category(self) -> Category:
-        pass
+    def create_category(self, new_category: Category) -> bool:
+        return self._category_manager.create_category(new_category)
 
     def delete_category(self, category: Category) -> bool:
-        pass
+        return self._category_manager.remove_category(category)
 
     def get_list_of_key_recommendations(self, current_input: str) -> list[str]:
-        pass
+        return self._model.get_key_recommendation_system().recommend_key(current_input)
+    # Todo which path should be given to the method
 
-    def get_attractivities_of_category(self, category: Category) -> list[AttractivityAttribute]:
-        pass
+    def get_attractivities_of_category(self, category: Category) -> List[AttractivityAttribute]:
+        return category.get_attractivity_attributes()
