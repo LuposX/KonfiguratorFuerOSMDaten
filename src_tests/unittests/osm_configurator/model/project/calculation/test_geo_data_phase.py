@@ -37,7 +37,7 @@ class TestGeoDataPhase:
         project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectXYZ"))
         config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project_path)
 
-        app_settings = application_settings_i.ApplicationSettings("idk")
+        app_settings = application_settings_i.ApplicationSettings()
 
         # Execute phase, without setting any path's to the geojson and osm data
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
@@ -54,7 +54,7 @@ class TestGeoDataPhase:
 
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
 
-        app_settings = application_settings_i.ApplicationSettings("idk")
+        app_settings = application_settings_i.ApplicationSettings()
 
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
@@ -70,7 +70,7 @@ class TestGeoDataPhase:
 
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, False)
 
-        app_settings = application_settings_i.ApplicationSettings("idk")
+        app_settings = application_settings_i.ApplicationSettings()
 
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
@@ -87,7 +87,7 @@ class TestGeoDataPhase:
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
 
-        app_settings = application_settings_i.ApplicationSettings("idk")
+        app_settings = application_settings_i.ApplicationSettings()
 
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
@@ -104,7 +104,7 @@ class TestGeoDataPhase:
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
 
-        app_settings = application_settings_i.ApplicationSettings("idk")
+        app_settings = application_settings_i.ApplicationSettings()
 
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()
@@ -121,7 +121,7 @@ class TestGeoDataPhase:
         # Set up configurator
         config_manager: ConfigurationManager = _prepare_config(osm_path, geojson_path, project_path, True)
 
-        app_settings = application_settings_i.ApplicationSettings("idk")
+        app_settings = application_settings_i.ApplicationSettings()
 
         # Execute test
         phase: GeoDataPhase = geo_data_phase.GeoDataPhase()

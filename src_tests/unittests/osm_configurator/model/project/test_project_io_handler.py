@@ -42,9 +42,7 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
 
 class TestProjectIO:
     def prepare(self):
-        application_settings_o = application_settings_i.ApplicationSettings(
-            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+        application_settings_o = application_settings_i.ApplicationSettings()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject1", "This project is to test!")
 
         self.active_project.set_last_step(ConfigPhase.CATEGORY_CONFIG_PHASE)
@@ -82,9 +80,7 @@ class TestProjectIO:
         self.active_project.get_project_saver().save_project()
 
     def test_load_settings(self):
-        application_settings_o = application_settings_i.ApplicationSettings(
-            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+        application_settings_o = application_settings_i.ApplicationSettings()
         self.prepare()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o,  "TestProject1")
         assert "TestProject1" == self.active_project.get_project_settings().get_name()
@@ -93,27 +89,21 @@ class TestProjectIO:
         assert "calculation_check_points" == self.active_project.get_project_settings().get_calculation_phase_checkpoints_folder()
 
     def test_load_config(self):
-        application_settings_o = application_settings_i.ApplicationSettings(
-            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+        application_settings_o = application_settings_i.ApplicationSettings()
 
         self.prepare()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         assert ConfigPhase.CATEGORY_CONFIG_PHASE == self.active_project.get_last_step()
 
     def test_load_osm(self):
-        application_settings_o = application_settings_i.ApplicationSettings(
-            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+        application_settings_o = application_settings_i.ApplicationSettings()
 
         self.prepare()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         assert Path(os.path.join(TEST_DIR, "data/monaco-latest.osm")) == self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data()
 
     def test_load_aggregation(self):
-        application_settings_o = application_settings_i.ApplicationSettings(
-            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+        application_settings_o = application_settings_i.ApplicationSettings()
         self.prepare()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         test_aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
@@ -121,9 +111,7 @@ class TestProjectIO:
         assert not test_aggregation_configurator.is_aggregation_method_active(AggregationMethod.MEDIAN)
 
     def test_cut_out_config(self):
-        application_settings_o = application_settings_i.ApplicationSettings(
-            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+        application_settings_o = application_settings_i.ApplicationSettings()
         self.prepare()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         test_cut_out_configurator: CutOutConfiguration = self.active_project.get_config_manager().get_cut_out_configuration()
@@ -131,9 +119,7 @@ class TestProjectIO:
         assert CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED == test_cut_out_configurator.get_cut_out_mode()
 
     def test_categories(self):
-        application_settings_o = application_settings_i.ApplicationSettings(
-            Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+        application_settings_o = application_settings_i.ApplicationSettings()
         self.prepare()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
         test_category_manager: CategoryManager = self.active_project.get_config_manager().get_category_manager()
