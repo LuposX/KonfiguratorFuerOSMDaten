@@ -29,6 +29,7 @@ ELEMENT_BORDER_DISTANCE: Final = 4
 ENTRY_BUTTON_HEIGHT: Final = 44
 ARROW_BUTTON_HEIGHT: Final = 20
 
+
 class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
     """
     This frame shows all the default values of a category, listed in priority.
@@ -43,7 +44,7 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
         ordered in, low on top, to high on bottom priorities.
 
         Args:
-            parent (customtkinter.CTkFrame): The parent frame of this frame
+            parent (ReductionDefaultValueFrame): The parent frame of this frame
             width (int): The width of this frame
             height (int): The height of this frame
         """
@@ -61,6 +62,8 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
         self._selected_category: category_i.Category = None
         self._selected_entry: default_value_entry_i.DefaultValueEntry = None
 
+        self._selected_button_id: int = 0
+
         self._entries: [default_value_entry_i.DefaultValueEntry] = []
 
         # The images used for moving entries up and down
@@ -69,8 +72,8 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
                                                       size=(UP_ARROW_SIZE, UP_ARROW_SIZE))
 
         self._down_arrow_image = customtkinter.CTkImage(light_image=Image.open("HERE PATH!!!!"),
-                                                      dark_image=Image.open("HERE PATH!!!!"),
-                                                      size=(DOWN_ARROW_SIZE, DOWN_ARROW_SIZE))
+                                                        dark_image=Image.open("HERE PATH!!!!"),
+                                                        size=(DOWN_ARROW_SIZE, DOWN_ARROW_SIZE))
 
         # The different List for all the Buttons
         self._entry_button_list: [customtkinter.CTkButton] = []
@@ -82,7 +85,8 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
         self.grid_columnconfigure(0, weight=4)
         self.grid_columnconfigure(1, weight=1)
 
-    def load_category(self, category: category_i.Category, entry: default_value_entry_i.DefaultValueEntry | None) -> bool:
+    def load_category(self, category: category_i.Category | None,
+                      entry: default_value_entry_i.DefaultValueEntry | None) -> bool:
         """
         Loads in all the default value entries of the given category into the frame, so their priority can be edited.
 
@@ -135,14 +139,18 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
 
             # Now disabling all "bad" arrow buttons, such as the 2 atn the default value, the down on the 2nd entry,
             # and the up on the last entry
-            self._up_button_list[0].configure(state="disabled", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
-            self._down_button_list[0].configure(state="disabled", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+            self._up_button_list[0].configure(state="disabled",
+                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+            self._down_button_list[0].configure(state="disabled",
+                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
             if len(self._up_button_list) > 1:
-                self._up_button_list[len(self._up_button_list) - 1].configure(state="disabled", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+                self._up_button_list[len(self._up_button_list) - 1].configure(state="disabled",
+                                                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
             if len(self._down_button_list) > 1:
-                self._down_button_list[len(self._down_button_list) - 1].configure(state="disabled", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+                self._down_button_list[len(self._down_button_list) - 1].configure(state="disabled",
+                                                                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
             # Pretending the corrosponding button was pressed
             self._entry_button_pressed(entry_id)
@@ -164,9 +172,10 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
             self._entry_button_list[button_id] = entry_button
             # Swapping the buttons on the Frame
             # (they are swapped in list so just give them their new position, that is the position in the List)
-            self._entry_button_list[button_id].grid(row=button_id, column=0, rowspan=2, columnspan=1, padx=PADX, pady=PADY)
-            self._entry_button_list[button_id - 1].grid(row=button_id - 1, column=0, rowspan=2, columnspan=1, padx=PADX,
+            self._entry_button_list[button_id].grid(row=button_id, column=0, rowspan=2, columnspan=1, padx=PADX,
                                                     pady=PADY)
+            self._entry_button_list[button_id - 1].grid(row=button_id - 1, column=0, rowspan=2, columnspan=1, padx=PADX,
+                                                        pady=PADY)
 
             # refreshing the entries
             self._entries: [default_value_entry_i.DefaultValueEntry] = self._selected_category.get_default_value_list()
@@ -203,8 +212,9 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
 
         # Disabling the pressed button
         self._entry_button_list[button_id].configure(state="disabled",
-                                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
-                                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+                                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
+                                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+        self._selected_button_id: int = button_id
 
         # telling parent what entry was pressed
         # since buttons and entries alling in theri id, we can just use the button_id to find it
@@ -212,7 +222,8 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
 
     def _add_entry_to_list(self, entry: default_value_entry_i.DefaultValueEntry):
         entry_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self,
-                                                                        width=int(self._width*(4/5) - ELEMENT_BORDER_DISTANCE),
+                                                                        width=int(self._width * (
+                                                                                4 / 5) - ELEMENT_BORDER_DISTANCE),
                                                                         height=ENTRY_BUTTON_HEIGHT,
                                                                         corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                                                         border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
@@ -221,35 +232,54 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
                                                                         border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
                                                                         text=entry.get_default_value_entry_tag(),
-                                                                        command=partial(self._entry_button_pressed, len(self._entry_button_list)))
-        entry_button.grid(row=len(self._entry_button_list)*2, column=0, rowspan=2, columnspan=1, padx=PADX, pady=PADY)
+                                                                        command=partial(self._entry_button_pressed,
+                                                                                        len(self._entry_button_list)))
+        entry_button.grid(row=len(self._entry_button_list) * 2, column=0, rowspan=2, columnspan=1, padx=PADX, pady=PADY)
 
         up_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self,
-                                                                        width=int(self._width*(1/5) - ELEMENT_BORDER_DISTANCE),
-                                                                        height=ARROW_BUTTON_HEIGHT,
-                                                                        corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                        border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value,
-                                                                        hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR_DELETE.value,
-                                                                        border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
-                                                                        text=entry.get_default_value_entry_tag(),
-                                                                        command=partial(self._up_button_pressed, len(self._up_button_list)))
+                                                                     width=int(self._width * (
+                                                                             1 / 5) - ELEMENT_BORDER_DISTANCE),
+                                                                     height=ARROW_BUTTON_HEIGHT,
+                                                                     corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                                     border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value,
+                                                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR_DELETE.value,
+                                                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
+                                                                     text=entry.get_default_value_entry_tag(),
+                                                                     command=partial(self._up_button_pressed,
+                                                                                     len(self._up_button_list)))
         up_button.grid(row=len(self._entry_button_list), column=1, rowspan=1, columnspan=1, padx=PADX, pady=PADY)
 
         down_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self,
-                                                                        width=int(self._width*(1/5) - ELEMENT_BORDER_DISTANCE),
-                                                                        height=ARROW_BUTTON_HEIGHT,
-                                                                        corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                        border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value,
-                                                                        hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR_DELETE.value,
-                                                                        border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
-                                                                        text=entry.get_default_value_entry_tag(),
-                                                                        command=partial(self._down_button_pressed, len(self._down_button_list)))
+                                                                       width=int(self._width * (
+                                                                               1 / 5) - ELEMENT_BORDER_DISTANCE),
+                                                                       height=ARROW_BUTTON_HEIGHT,
+                                                                       corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                                                       border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value,
+                                                                       hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR_DELETE.value,
+                                                                       border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
+                                                                       text=entry.get_default_value_entry_tag(),
+                                                                       command=partial(self._down_button_pressed,
+                                                                                       len(self._down_button_list)))
         down_button.grid(row=len(self._entry_button_list) + 1, column=1, rowspan=1, columnspan=1, padx=PADX, pady=PADY)
 
         self._entry_button_list.append(entry_button)
         self._up_button_list.append(up_button)
         self._down_button_list.append(down_button)
+
+    def update_button(self, text: str) -> bool:
+        """
+        Method to update the text of the tag button, that is currently selected
+
+        Args:
+            text (str): The text that shall be seen on the currently selected button
+
+        Returns:
+            bool: True if text was changed successfully, False else
+        """
+
+        self._entry_button_list[self._selected_button_id].configure(text=text)
+        return True

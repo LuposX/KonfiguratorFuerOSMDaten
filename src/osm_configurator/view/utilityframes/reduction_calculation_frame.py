@@ -12,7 +12,8 @@ import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.switch_constants as switch_constants_i
-import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
+import \
+    src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
@@ -68,7 +69,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame):
         # The calculate Area Checkbox
         self._calculate_area_checkbox: customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(master=self,
                                                                                              width=self._width - ELEMENT_BORDER_DISTANCE,
-                                                                                             height=int(self._height/4 - ELEMENT_BORDER_DISTANCE),
+                                                                                             height=int(
+                                                                                                 self._height / 4 - ELEMENT_BORDER_DISTANCE),
                                                                                              corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
                                                                                              border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
                                                                                              fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
@@ -80,8 +82,10 @@ class ReductionCalculationFrame(customtkinter.CTkFrame):
         # The switch between Calculate site Area and Calculate Building Area
         # Labels
         self._calculate_site_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                         width=int(self._width/3 - ELEMENT_BORDER_DISTANCE),
-                                                                                         height=int(self._height/4 - ELEMENT_BORDER_DISTANCE),
+                                                                                         width=int(
+                                                                                             self._width / 3 - ELEMENT_BORDER_DISTANCE),
+                                                                                         height=int(
+                                                                                             self._height / 4 - ELEMENT_BORDER_DISTANCE),
                                                                                          corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                                          fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                          text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -92,21 +96,25 @@ class ReductionCalculationFrame(customtkinter.CTkFrame):
         self._calculate_site_area_label.grid(row=3, column=0, rowspan=1, columnspan=1)
 
         self._calculate_building_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                         width=int(self._width/3 - ELEMENT_BORDER_DISTANCE),
-                                                                                         height=int(self._height/4 - ELEMENT_BORDER_DISTANCE),
-                                                                                         corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                         fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                         text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                         padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                         pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                                                         anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                         text="Calculate\nBuilding Area")
+                                                                                             width=int(
+                                                                                                 self._width / 3 - ELEMENT_BORDER_DISTANCE),
+                                                                                             height=int(
+                                                                                                 self._height / 4 - ELEMENT_BORDER_DISTANCE),
+                                                                                             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                                                                             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                                                                             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                                                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
+                                                                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                                                             anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                                                                             text="Calculate\nBuilding Area")
         self._calculate_building_area_label.grid(row=3, column=2, rowspan=1, columnspan=1)
 
         # The switch inbetween
         self._site_building_switch: customtkinter.CTkSwitch = customtkinter.CTkSwitch(master=self,
-                                                                                      width=int(self._width/3 - ELEMENT_BORDER_DISTANCE),
-                                                                                      height=int(self._height/4 - ELEMENT_BORDER_DISTANCE),
+                                                                                      width=int(
+                                                                                          self._width / 3 - ELEMENT_BORDER_DISTANCE),
+                                                                                      height=int(
+                                                                                          self._height / 4 - ELEMENT_BORDER_DISTANCE),
                                                                                       corner_radius=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_CORNER_RADIUS.value,
                                                                                       border_width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BORDER_WIDTH.value,
                                                                                       fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR.value,
@@ -121,26 +129,28 @@ class ReductionCalculationFrame(customtkinter.CTkFrame):
 
         # The Checkbox for Calculate Floor Area
         self._calculate_floor_area_checkbox: customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(master=self,
-                                                                                            width=self._width - ELEMENT_BORDER_DISTANCE,
-                                                                                            height=int(self._height/4 - ELEMENT_BORDER_DISTANCE),
-                                                                                            corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
-                                                                                            border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
-                                                                                            fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
-                                                                                            hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
-                                                                                            text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                                                                            text="Calculate Floor Area")
+                                                                                                   width=self._width - ELEMENT_BORDER_DISTANCE,
+                                                                                                   height=int(
+                                                                                                       self._height / 4 - ELEMENT_BORDER_DISTANCE),
+                                                                                                   corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
+                                                                                                   border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
+                                                                                                   fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
+                                                                                                   hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
+                                                                                                   text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
+                                                                                                   text="Calculate Floor Area")
         self._calculate_floor_area_checkbox.grid(row=1, column=0, rowspan=1, columnspan=3)
 
         # The Checkbox for Strictly Use Default Values
         self._strictly_use_default_values_checkbox = customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(master=self,
-                                                                                            width=self._width - ELEMENT_BORDER_DISTANCE,
-                                                                                            height=int(self._height/4 - ELEMENT_BORDER_DISTANCE),
-                                                                                            corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
-                                                                                            border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
-                                                                                            fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
-                                                                                            hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
-                                                                                            text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                                                                            text="Strictly use default values")
+                                                                                                           width=self._width - ELEMENT_BORDER_DISTANCE,
+                                                                                                           height=int(
+                                                                                                               self._height / 4 - ELEMENT_BORDER_DISTANCE),
+                                                                                                           corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
+                                                                                                           border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
+                                                                                                           fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
+                                                                                                           hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
+                                                                                                           text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
+                                                                                                           text="Strictly use default values")
         self._strictly_use_default_values_checkbox.grid(row=0, column=0, rowspan=1, columnspan=3)
 
     def load_category(self, category: category_i.Category) -> bool:
@@ -187,6 +197,9 @@ class ReductionCalculationFrame(customtkinter.CTkFrame):
             else:
                 raise ValueError("Category has to be either one of the calculation Methods!")
 
+            # Category loaded, so return True
+            return True
+
     def _calculate_are_checkbox_edited(self):
         if self._calculate_area_checkbox.get() == 1:
             self._activate_switch()
@@ -206,12 +219,14 @@ class ReductionCalculationFrame(customtkinter.CTkFrame):
 
     def _site_building_switch_edited(self):
         if self._site_building_switch.get() == 1:
-            if not self._selected_category.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA):
+            if not self._selected_category.set_calculation_method_of_area(
+                    calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA):
                 alert_pop_up_i.AlertPopUp("Could not switch calculation Method!")
                 # reloading frame
                 self.load_category(self._selected_category)
         else:
-            if not self._selected_category.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA):
+            if not self._selected_category.set_calculation_method_of_area(
+                    calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA):
                 alert_pop_up_i.AlertPopUp("Could not switch calculation Method!")
                 # reloading frame
                 self.load_category(self._selected_category)
