@@ -10,6 +10,7 @@ import math
 
 from src_tests.definitions import TEST_DIR
 from src_tests.definitions import APPLICATION_MANAGER
+from src_tests.definitions import APPLICATION_MANAGER2
 import src_tests.definitions as definitions
 
 import src.osm_configurator.model.project.calculation.attractivity_phase as attractivity_phase
@@ -18,6 +19,8 @@ import src.osm_configurator.model.project.configuration.configuration_manager as
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
@@ -61,7 +64,7 @@ def test_minimal_input_successfully():
 
     # Execute attractivity phase
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
-    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER2)[0]
     assert result == calculation_state_enum.CalculationState.RUNNING
 
     # Check whether calculation has correct results
@@ -79,10 +82,11 @@ def test_minimal_input_successfully():
 
 
 def test_illegal_configuration():
+    assert APPLICATION_MANAGER2.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES) == 4
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(
         Path(os.path.join(TEST_DIR, "build/attractivity_phase/projectIllegal")))
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
-    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER2)[0]
     assert result == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
@@ -105,7 +109,7 @@ def test_big_input_successfully():
 
     # Execute attractivity phase
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
-    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER2)[0]
     assert result == calculation_state_enum.CalculationState.RUNNING
 
     # Do further testing
