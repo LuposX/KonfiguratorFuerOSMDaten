@@ -18,6 +18,8 @@ import src.osm_configurator.model.project.configuration.configuration_manager as
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager

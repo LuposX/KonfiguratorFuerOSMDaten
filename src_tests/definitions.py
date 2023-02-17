@@ -108,7 +108,8 @@ CATEGORY_MANAGER.add_categories([TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILD
 
 # Define example APPLICATIONSettings
 APPLICATION_MANAGER: Final = application_settings.ApplicationSettings()
-APPLICATION_MANAGER.set_setting(application_settings_default_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES, 1)
+APPLICATION_MANAGER.set_setting(application_settings_default_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES, 2)
+
 
 # Test polygons of the cutout file, monaco-regions
 # ------------------------------------------------
