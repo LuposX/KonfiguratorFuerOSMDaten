@@ -108,11 +108,8 @@ CATEGORY_MANAGER.add_categories([TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILD
 
 # Define example APPLICATIONSettings
 APPLICATION_MANAGER: Final = application_settings.ApplicationSettings()
-APPLICATION_MANAGER.set_setting(application_settings_default_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES, 1)
+APPLICATION_MANAGER.set_setting(application_settings_default_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES, 2)
 
-# Define example second APPLICATIONSetting with more processes
-APPLICATION_MANAGER2: Final = application_settings.ApplicationSettings(Path(os.path.join(TEST_DIR, "build/example_settings/settings.json")))
-APPLICATION_MANAGER2.set_setting(application_settings_default_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES, 4)
 
 # Test polygons of the cutout file, monaco-regions
 # ------------------------------------------------
