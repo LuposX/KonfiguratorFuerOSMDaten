@@ -40,7 +40,7 @@ class TestSettingsSaver:
     def test_save_settings(self):
         _prepare_application_folder(os.path.join(TEST_DIR, "build/application"), os.path.join(TEST_DIR, "data/application"))
 
-        app: Application = Application(Path(os.path.join(TEST_DIR, "build/application/application_settings.json")))
+        app: Application = Application()
 
         app.get_application_settings().set_setting(application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
                                                    os.path.join(TEST_DIR, "build/application"))
