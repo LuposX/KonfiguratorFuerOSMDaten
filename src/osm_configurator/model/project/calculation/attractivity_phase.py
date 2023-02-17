@@ -15,6 +15,10 @@ import src.osm_configurator.model.project.calculation.prepare_calculation_phase 
 
 from src.osm_configurator.model.parser.custom_exceptions.category_exception import CategoryException
 
+import src.osm_configurator.model.project.calculation.paralellization.work_manager as work_manager_i
+import src.osm_configurator.model.project.calculation.paralellization.work as work_i
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -26,12 +30,11 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from typing import Tuple, List, Dict, Any
     from pandas import DataFrame, Series
-    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
-    from geopandas import GeoDataFrame
-    from src.osm_configurator.model.parser.cut_out_parser import CutOutParser
     from pandas.core.series import Series
     from pandas import DataFrame
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
+    from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
+    from src.osm_configurator.model.project.calculation.paralellization.work import Work
 
 
 class AttractivityPhase(ICalculationPhase):
@@ -73,14 +76,23 @@ class AttractivityPhase(ICalculationPhase):
             checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
             list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
 
-        # Iterate over all traffic cells and generate the attractivities
+        # Iterate over all traffic cells and generate the attractivities (using multiprocessing)
+        work_manager: WorkManager = work_manager_i.WorkManager(
+            application_manager.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES))
+
         index: int
         row: Series
         for index, row in cut_out_dataframe.iterrows():
             cell_name: str = row[model_constants.CL_TRAFFIC_CELL_NAME]
-            result: calculation_state_enum
-            msg: str
-            result, msg = self._calculate_attractivity_in_traffic_cell(cell_name, configuration_manager)
+            execute_traffic_cell: Work = work_i.Work(
+                target=self._calculate_attractivity_in_traffic_cell,
+                args=(cell_name, configuration_manager,))
+            work_manager.append_work(execute_traffic_cell)
+
+        results: List[Tuple[CalculationState, str]] = work_manager.do_all_work()
+
+        # Find return value
+        for result, msg in results:
             if result != calculation_state_enum.CalculationState.RUNNING:
                 return result, msg
 
