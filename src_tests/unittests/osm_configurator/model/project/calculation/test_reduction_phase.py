@@ -2,11 +2,9 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from src_tests.definitions import TEST_DIR
-from src_tests.definitions import APPLICATION_MANAGER
-import src.osm_configurator.model.project.calculation.tag_filter_phase as tag_filter_phase_i
+from src_tests.definitions import APPLICATION_MANAGER_2
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
-import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 import src.osm_configurator.model.project.calculation.reduction_phase as reduction_phase_i
@@ -14,6 +12,9 @@ import src.osm_configurator.model.project.calculation.reduction_phase as reducti
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum_i
 
 from src_tests.definitions import TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_BUILDING_AREA, TEST_CATEGORY_SHOP, TEST_CATEGORY_NO_BUILDING
+
+import src.osm_configurator.model.application.application_settings as application_settings_i
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_default_enum_i
 
 from pathlib import Path
 import os
@@ -87,7 +88,7 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
 
         assert result1 == calculation_state_enum.CalculationState.RUNNING
 
@@ -96,7 +97,7 @@ class TestReductionPhase:
             os.listdir(os.path.join(project_path, "results/" + calculation_phase_enum.CalculationPhase.REDUCTION_PHASE.get_folder_name_for_results()))) == 1
 
         # Test if execution works a second time
-        result2: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        result2: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
         assert result2 == calculation_state_enum.CalculationState.RUNNING
 
 
@@ -120,7 +121,7 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
 
         assert result1 == calculation_state_enum.CalculationState.RUNNING
 
@@ -130,7 +131,7 @@ class TestReductionPhase:
                                     .get_folder_name_for_results()))) == 2
 
         # Test if execution works a second time
-        result2: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        result2: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
         assert result2 == calculation_state_enum.CalculationState.RUNNING
 
     def test_reduction_phase_corrupted_data(self):
@@ -154,7 +155,7 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
 
         assert result1 == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND
 
@@ -179,6 +180,6 @@ class TestReductionPhase:
 
         # Execute test
         phase: ReductionPhase = reduction_phase_i.ReductionPhase()
-        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
 
         assert result1 == calculation_state_enum.CalculationState.ERROR_FILE_NOT_FOUND

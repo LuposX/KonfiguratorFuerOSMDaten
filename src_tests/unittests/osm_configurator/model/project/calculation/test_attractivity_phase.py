@@ -9,7 +9,7 @@ import pandas
 import math
 
 from src_tests.definitions import TEST_DIR
-from src_tests.definitions import APPLICATION_MANAGER
+from src_tests.definitions import APPLICATION_MANAGER_2
 import src_tests.definitions as definitions
 
 import src.osm_configurator.model.project.calculation.attractivity_phase as attractivity_phase
@@ -63,7 +63,7 @@ def test_minimal_input_successfully():
 
     # Execute attractivity phase
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
-    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
     assert result == calculation_state_enum.CalculationState.RUNNING
 
     # Check whether calculation has correct results
@@ -84,7 +84,7 @@ def test_illegal_configuration():
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(
         Path(os.path.join(TEST_DIR, "build/attractivity_phase/projectIllegal")))
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
-    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
     assert result == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
 
@@ -107,7 +107,7 @@ def test_big_input_successfully():
 
     # Execute attractivity phase
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
-    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+    result: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
     assert result == calculation_state_enum.CalculationState.RUNNING
 
     # Do further testing

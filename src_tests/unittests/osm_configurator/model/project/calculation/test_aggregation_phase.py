@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from src_tests.definitions import TEST_DIR
-from src_tests.definitions import APPLICATION_MANAGER
+from src_tests.definitions import APPLICATION_MANAGER_2
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
@@ -97,7 +97,7 @@ class TestAggregationPhase:
 
         # Execute test
         phase: AggregationPhase = aggregation_phase_i.AggregationPhase()
-        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER)[0]
+        result1: CalculationState = phase.calculate(config_manager, APPLICATION_MANAGER_2)[0]
 
         assert result1 == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA
 
@@ -128,7 +128,7 @@ class TestAggregationPhase:
 
         # Execute test
         phase: AggregationPhase = aggregation_phase_i.AggregationPhase()
-        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER)
+        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER_2)
 
         assert result1[0] == calculation_state_enum.CalculationState.RUNNING
 
@@ -138,5 +138,5 @@ class TestAggregationPhase:
                                     .get_folder_name_for_results()))) == 5
 
         # Test if execution works a second time
-        result2: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER)
+        result2: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER_2)
         assert result2[0] == calculation_state_enum.CalculationState.RUNNING

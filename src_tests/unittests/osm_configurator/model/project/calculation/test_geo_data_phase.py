@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from src_tests.definitions import TEST_DIR
-from src_tests.definitions import APPLICATION_MANAGER
+from src_tests.definitions import APPLICATION_MANAGER_2
 import src.osm_configurator.model.project.calculation.geo_data_phase as geo_data_phase
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
