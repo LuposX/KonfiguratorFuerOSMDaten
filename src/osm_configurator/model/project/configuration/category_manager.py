@@ -4,6 +4,7 @@ import os
 
 import src.osm_configurator.model.project.configuration.category
 import src.osm_configurator.model.project.configuration.category as category_i
+import src.osm_configurator.model.project.configuration.default_categories as default_categories_i
 from pathlib import Path
 
 from typing import TYPE_CHECKING, Final
@@ -18,8 +19,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 CSV_ENDING: str = ".csv"
-BUILDING_CATEGORY_NAME: str = "Gebäude"
-BUIlDING_CATEGORY_WHITELIST: str = "building=*"
 
 
 class CategoryManager:
@@ -32,11 +31,9 @@ class CategoryManager:
         Constructor of the class.
         """
         self._categories: List[Category] = []
-        self.building_category: Category = category_i.Category(BUILDING_CATEGORY_NAME)
-        white_list: list[str] = [BUIlDING_CATEGORY_WHITELIST]
-        self.building_category.set_whitelist(white_list)
+        building_category: Category = default_categories_i.create_building_category()
 
-        self._categories.append(self.building_category)
+        self._categories.append(building_category)
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
