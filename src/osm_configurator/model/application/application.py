@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
-import os
+import os, sys
 from typing import TYPE_CHECKING, List, Final
 
 from src.osm_configurator.model.application.application_interface import IApplication
@@ -22,20 +22,18 @@ PROJECT_SETTING: str = "project_settings.csv"
 class Application(IApplication):
     __doc__ = IApplication.__doc__
 
-    def __init__(self, application_settings_file: Path):
+    def __init__(self):
         """
         Creates a new instance of the application_interface.Application.
 
-        Args:
-            application_settings_file (Path): Name of the file, which saved the default project folder.
         """
         self.active_project: ActiveProject = None
 
-        self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings(
-            application_settings_file)
+        self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings()
 
         self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
-            self.application_settings.get_setting(application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
+            self.application_settings.get_setting(
+                application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
 
         self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem()
 
@@ -72,3 +70,11 @@ class Application(IApplication):
             return passive_project_list
         else:
             return None
+
+    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
+        os.rmdir(passive_project.get_project_folder_path())
+        self.passive_project_list.remove(passive_project)
+        return True
+
+    def unload_project(self):
+        self.active_project = None

@@ -40,17 +40,16 @@ def _prepare_config(project: Path, aggregation_methods: List[AggregationMethod],
         config_manager.get_aggregation_configuration().set_aggregation_method_active(agg, True)
 
     # create the test attractivity
-    test1: AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute("coolness", 1)
+    test1: AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute("coolness")
     test1.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 1)
     test1.set_base_factor(1)
 
-    test2: AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute("trading", 1)
+    test2: AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute("trading")
     test2.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 1)
     test2.set_base_factor(1)
 
     # create test category
-    category: Category = category_i.Category()
-    category.set_category_name("test")
+    category: Category = category_i.Category("test")
     category.set_attribute(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, True)
     category.add_attractivity_attribute(test1)
     category.add_attractivity_attribute(test2)

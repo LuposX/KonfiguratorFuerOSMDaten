@@ -22,9 +22,7 @@ if TYPE_CHECKING:
 
 
 def test_correct_state_passing_on_error():
-    application_settings_o = application_settings_i.ApplicationSettings(
-        Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+    application_settings_o = application_settings_i.ApplicationSettings()
     project_path: Path = Path(os.path.join(TEST_DIR, "build/calculation_manager/project1"))
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project_path)
 
@@ -49,9 +47,7 @@ def test_correct_state_passing_on_error():
     calculation_phase_enum.CalculationPhase.AGGREGATION_PHASE
 ])
 def test_cancel_calculations(phase: CalculationPhase):
-    application_settings_o = application_settings_i.ApplicationSettings(
-        Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+    application_settings_o = application_settings_i.ApplicationSettings()
     # Start calculations in every phase and cancels them immediately
     project_path: Path = Path(os.path.join(TEST_DIR, "build/calculation_manager/project2"))
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project_path)
@@ -70,8 +66,7 @@ def test_cancel_calculations(phase: CalculationPhase):
 
 
 def test_illegal_cancel1():
-    application_settings_o = application_settings_i.ApplicationSettings(
-        Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
+    application_settings_o = application_settings_i.ApplicationSettings()
 
     # Cancels the calculation before it even started
     project_path: Path = Path(os.path.join(TEST_DIR, "build/calculation_manager/project3"))
@@ -83,9 +78,7 @@ def test_illegal_cancel1():
 
 
 def test_illegal_cancel2():
-    application_settings_o = application_settings_i.ApplicationSettings(
-        Path(os.path.join(TEST_DIR, "data/application/application_settings.json")))
-
+    application_settings_o = application_settings_i.ApplicationSettings()
     # Cancels the calculation after it was already canceled
     project_path: Path = Path(os.path.join(TEST_DIR, "build/calculation_manager/project4"))
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(project_path)

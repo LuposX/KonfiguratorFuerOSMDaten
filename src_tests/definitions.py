@@ -41,10 +41,8 @@ osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.NUM
 osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.PROPERTY_AREA, 1)
 osm_element_1_default_value.set_attribute_default(attribute_enum_i.Attribute.FLOOR_AREA, 1)
 
-name: str = "building_category_site_area"
 whitelist: List = ["building=*"]
-TEST_CATEGORY_SITE_AREA: Final = category_i.Category()
-TEST_CATEGORY_SITE_AREA.set_category_name(name)
+TEST_CATEGORY_SITE_AREA: Final = category_i.Category("building_category_site_area")
 TEST_CATEGORY_SITE_AREA.set_whitelist(whitelist)
 
 for member in attribute_enum_i.Attribute:
@@ -53,29 +51,23 @@ for member in attribute_enum_i.Attribute:
 TEST_CATEGORY_SITE_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA)
 TEST_CATEGORY_SITE_AREA.add_default_value_entry(osm_element_1_default_value)
 
-name: str = "building_category_building_area"
 whitelist: List = ["building=*"]
-TEST_CATEGORY_BUILDING_AREA: Final = category_i.Category()
-TEST_CATEGORY_BUILDING_AREA.set_category_name(name)
+TEST_CATEGORY_BUILDING_AREA: Final = category_i.Category("building_category_building_area")
 TEST_CATEGORY_BUILDING_AREA.set_whitelist(whitelist)
 for member in attribute_enum_i.Attribute:
     TEST_CATEGORY_BUILDING_AREA.set_attribute(member, True)
 TEST_CATEGORY_BUILDING_AREA.set_calculation_method_of_area(calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
 TEST_CATEGORY_BUILDING_AREA.add_default_value_entry(osm_element_1_default_value)
 
-name: str = "no_building_category"
 blacklist: List = ["building=*"]
-TEST_CATEGORY_NO_BUILDING: Final = category_i.Category()
-TEST_CATEGORY_NO_BUILDING.set_category_name(name)
+TEST_CATEGORY_NO_BUILDING: Final = category_i.Category("no_building_category")
 TEST_CATEGORY_NO_BUILDING.set_blacklist(blacklist)
 for member in attribute_enum_i.Attribute:
     TEST_CATEGORY_NO_BUILDING.set_attribute(member, True)
 TEST_CATEGORY_NO_BUILDING.add_default_value_entry(osm_element_1_default_value)
 
-name: str = "shop_category"
 blacklist: List = ["shop=*"]
-TEST_CATEGORY_SHOP: Final = category_i.Category()
-TEST_CATEGORY_SHOP.set_category_name(name)
+TEST_CATEGORY_SHOP: Final = category_i.Category("shop_category")
 TEST_CATEGORY_SHOP.set_whitelist(blacklist)
 for member in attribute_enum_i.Attribute:
     TEST_CATEGORY_SHOP.set_attribute(member, True)
@@ -83,17 +75,20 @@ TEST_CATEGORY_SHOP.add_default_value_entry(osm_element_1_default_value)
 
 
 # Define attractivity attributes
-TEST_ATTRACTIVITY_COOLNESS: Final = attractivity_attribute.AttractivityAttribute("coolness", 0)
+TEST_ATTRACTIVITY_COOLNESS: Final = attractivity_attribute.AttractivityAttribute("coolness")
+TEST_ATTRACTIVITY_COOLNESS.set_base_factor(0)
 TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
 TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 1)
 TEST_ATTRACTIVITY_COOLNESS.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 0)
 
-TEST_ATTRACTIVITY_TRADING: Final = attractivity_attribute.AttractivityAttribute("trading", 100)
+TEST_ATTRACTIVITY_TRADING: Final = attractivity_attribute.AttractivityAttribute("trading")
+TEST_ATTRACTIVITY_TRADING.set_base_factor(100)
 TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 1)
 TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 2)
 TEST_ATTRACTIVITY_TRADING.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 3)
 
-TEST_ATTRACTIVITY_TRADING2: Final = attractivity_attribute.AttractivityAttribute("trading", 42)
+TEST_ATTRACTIVITY_TRADING2: Final = attractivity_attribute.AttractivityAttribute("trading")
+TEST_ATTRACTIVITY_TRADING2.set_base_factor(42)
 TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR, 0)
 TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA, 0)
 TEST_ATTRACTIVITY_TRADING2.set_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA, 0)
@@ -112,7 +107,7 @@ CATEGORY_MANAGER.add_categories([TEST_CATEGORY_SITE_AREA, TEST_CATEGORY_NO_BUILD
 
 
 # Define example APPLICATIONSettings
-APPLICATION_MANAGER: Final = application_settings.ApplicationSettings(Path(os.path.join(TEST_DIR, "build/example_settings/settings.json")))
+APPLICATION_MANAGER: Final = application_settings.ApplicationSettings()
 APPLICATION_MANAGER.set_setting(application_settings_default_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES, 1)
 
 # Define example second APPLICATIONSetting with more processes

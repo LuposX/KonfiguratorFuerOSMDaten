@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import pathlib
+
 import src.osm_configurator.model.application.recommender_system
 import src.osm_configurator.model.project.active_project
 import src.osm_configurator.model.application.application_settings
@@ -100,5 +102,25 @@ class IApplication(ABC):
 
         Returns:
             list[passive_project.PassiveProject]: The list of passive projects.
+        """
+        pass
+
+    @abstractmethod
+    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
+        """
+        Deletes a project which is not loaded at the time.
+
+        Args:
+            passive_project (passive_project.PassiveProject): The Project which should be deleted.
+
+        Returns:
+            bool: True if deleting the project works, otherwise false.
+        """
+        pass
+
+    @abstractmethod
+    def unload_project(self):
+        """
+        This method is to set the active_project to None, which is used when getting into the Main Menu.
         """
         pass

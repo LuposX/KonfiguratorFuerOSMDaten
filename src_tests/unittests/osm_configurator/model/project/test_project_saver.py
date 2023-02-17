@@ -77,8 +77,7 @@ class TestProjectSaver:
 
     def test_save_categories(self):
         self.test_build()
-        test_category: Category = Category()
-        test_category.set_category_name("Category1")
+        test_category: Category = Category("Category1")
         test_category.activate()
         white_list: list[str] = ["buildings=True", "test_False"]
         black_list: list[str] = ["buildings=False"]
@@ -87,13 +86,14 @@ class TestProjectSaver:
         test_category.set_calculation_method_of_area(CalculationMethodOfArea.CALCULATE_BUILDING_AREA)
         test_category.set_attribute(Attribute.PROPERTY_AREA, True)
         test_category.set_strictly_use_default_values(True)
-        test_attractivity_attribute_one: AttractivityAttribute = AttractivityAttribute("attribute1", 0)
-        test_attractivity_attribute_two: AttractivityAttribute = AttractivityAttribute("attribute2", 5)
+        test_attractivity_attribute_one: AttractivityAttribute = AttractivityAttribute("attribute1")
+        test_attractivity_attribute_one.set_base_factor(10)
+        test_attractivity_attribute_two: AttractivityAttribute = AttractivityAttribute("attribute2")
+        test_attractivity_attribute_two.set_base_factor(20)
         test_category.add_attractivity_attribute(test_attractivity_attribute_one)
         test_category.add_attractivity_attribute(test_attractivity_attribute_two)
 
-        test_category_two: Category = Category()
-        test_category_two.set_category_name("Category2")
+        test_category_two: Category = Category("Category2")
         test_category_two.activate()
 
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
