@@ -29,19 +29,21 @@ class CategoryController(ICategoryController):
         new_category: Category = category_parser.parse_category_file(path)
         if new_category is None:
             return False
-        elif new_category.get_category_name() in self.category_manager.get_all_categories_names():
+        elif new_category.get_category_name() in category_manager.get_all_categories_names():
             return False
         return True
 
     def import_category_configuration(self, path: pathlib.Path) -> bool:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
-        return self.category_manager.merge_categories(path)
+        return category_manager.merge_categories(path)
 
     def get_list_of_categories(self) -> List[Category]:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
-        return self.category_manager.get_categories()
+        return category_manager.get_categories()
 
     def create_category(self, name: str) -> Category:
+        if name == "":
+            return None
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
         new_category: Category = Category(name)
         if category_manager.create_category(new_category):
