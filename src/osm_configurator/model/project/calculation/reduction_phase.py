@@ -9,11 +9,12 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
-import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
-import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
+import src.osm_configurator.model.project.calculation.paralellization.work_manager as work_manager_i
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+import src.osm_configurator.model.project.calculation.paralellization.work as work_i
 
 import geopandas as gpd
 from fiona.errors import DriverError
@@ -38,6 +39,8 @@ if TYPE_CHECKING:
     from geopandas import GeoDataFrame, GeoSeries
     from src.osm_configurator.model.parser.tag_parser import TagParser
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
+    from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
+    from src.osm_configurator.model.project.calculation.paralellization.work import Work
 
 
 class ReductionPhase(ICalculationPhase):
@@ -87,12 +90,22 @@ class ReductionPhase(ICalculationPhase):
         # get the category manager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
 
+        # Iterate over all traffic cells and generate the attractiveness (using multiprocessing)
+        work_manager: WorkManager = work_manager_i.WorkManager(
+            application_manager.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES))
+
         for traffic_cell_file_path in list_of_traffic_cell_checkpoints:
+            execute_traffic_cell: Work = work_i.Work(
+                target=self._parse_the_data_file,
+                args=(traffic_cell_file_path,
+                      category_manager_o,
+                      checkpoint_folder_path_current_phase,
+                      )
+            )
+            work_manager.append_work(execute_traffic_cell)
+
             try:
-                self._parse_the_data_file(traffic_cell_file_path=traffic_cell_file_path,
-                                          category_manager_o=category_manager_o,
-                                          checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase,
-                                          )
+                work_manager.do_all_work()
 
             except (FileNotFoundError, DriverError) as err:
                 return calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)
