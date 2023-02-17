@@ -84,7 +84,7 @@ class ApplicationSettings:
             return json.load(settings_file)
 
     @classmethod
-    def create_application_settings_file(cls, saving_path: Path, application_settings_file_name: str) -> bool:
+    def create_application_settings_file(cls, saving_path: Path, application_settings_file_name: str) -> Path | None:
         """
         Creates the Application Settings file in the project.
 
@@ -93,7 +93,7 @@ class ApplicationSettings:
             application_settings_file_name (str) The name of the settings file, should have the extension '.json'.
 
         Returns:
-            bool: True if successful, otherwise false.
+            Path | None: The path towards the created file, none if didnt work.
         """
         settings_dict: Dict[str, Any] = {}
 
@@ -103,6 +103,12 @@ class ApplicationSettings:
             settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
 
         # save the dict to disk
-        full_path: Path = Path(os.path.join(saving_path, application_settings_file_name))
-        with open(full_path, WRITE_MODE) as settings_file:
-            json.dump(settings_dict, settings_file)
+        try:
+            full_path: Path = Path(os.path.join(saving_path, application_settings_file_name))
+            with open(full_path, WRITE_MODE) as settings_file:
+                json.dump(settings_dict, settings_file)
+
+            return full_path
+
+        except OSError:
+            return None
