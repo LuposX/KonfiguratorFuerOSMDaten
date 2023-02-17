@@ -1,19 +1,22 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 import os.path
 import json
-
-from typing import TYPE_CHECKING
+import sys
 from pathlib import Path
+
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum_i
 
 if TYPE_CHECKING:
     from pathlib import Path
     from src.osm_configurator.model.application.application_settings_default_enum import ApplicationSettingsDefault
-    from typing import Dict, Any
+    from typing import Dict, Any, Final
 
 READ_MODE: str = "r"
 WRITE_MODE: str = "w"
+APPLICATION_SETTINGS_FILE: Final = "application_setting.json"
 
 
 class ApplicationSettings:
@@ -22,14 +25,31 @@ class ApplicationSettings:
     to save projects can be changed.
     """
 
-    def __init__(self, application_settings_file: Path):
+    def __init__(self):
         """
         Creates a new instance of the application_settings_file.
-
-        Args:
-            application_settings_file (Path): name of the file
         """
-        self._application_settings_file: Path = application_settings_file
+        # Get the path of the application
+        if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+            # If the application is run as a bundle, the PyInstaller bootloader
+            # extends the sys module by a flag frozen=True and sets the app
+            # path into variable _MEIPASS'.
+            application_path = sys._MEIPASS
+        else:
+            application_path = os.path.dirname(os.path.abspath(__file__))
+
+        # check for the application settings file.
+        self._application_settings_file: Path = None
+        file: str
+        for file in os.listdir(application_path):
+            if os.path.isfile(file):
+                if os.path.basename(file) == APPLICATION_SETTINGS_FILE:
+                    self._application_settings_file = Path(file)
+
+        # This mean the application_Settings file doesn't exist yet and we need to create it
+        if self._application_settings_file is None:
+            self._application_settings_file = ApplicationSettings.create_application_settings_file(application_path,
+                                                                APPLICATION_SETTINGS_FILE)
 
     def get_setting(self, settings_enum: ApplicationSettingsDefault) -> Any:
         """
@@ -84,7 +104,7 @@ class ApplicationSettings:
             return json.load(settings_file)
 
     @classmethod
-    def create_application_settings_file(cls, saving_path: Path, application_settings_file_name: str) -> bool:
+    def create_application_settings_file(cls, saving_path: Path, application_settings_file_name: str) -> Path | None:
         """
         Creates the Application Settings file in the project.
 
@@ -93,7 +113,7 @@ class ApplicationSettings:
             application_settings_file_name (str) The name of the settings file, should have the extension '.json'.
 
         Returns:
-            bool: True if successful, otherwise false.
+            Path | None: The path towards the created file, none if didnt work.
         """
         settings_dict: Dict[str, Any] = {}
 
@@ -103,6 +123,12 @@ class ApplicationSettings:
             settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
 
         # save the dict to disk
-        full_path: Path = Path(os.path.join(saving_path, application_settings_file_name))
-        with open(full_path, WRITE_MODE) as settings_file:
-            json.dump(settings_dict, settings_file)
+        try:
+            full_path: Path = Path(os.path.join(saving_path, application_settings_file_name))
+            with open(full_path, WRITE_MODE) as settings_file:
+                json.dump(settings_dict, settings_file)
+
+            return full_path
+
+        except OSError:
+            return None
