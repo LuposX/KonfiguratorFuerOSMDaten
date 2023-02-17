@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
+from src.osm_configurator.model.parser.custom_exceptions.category_exception import CategoryException
 
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.model_constants as model_constants
@@ -12,9 +13,6 @@ import src.osm_configurator.model.project.calculation.folder_path_calculator as 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
-
-from src.osm_configurator.model.parser.custom_exceptions.category_exception import CategoryException
-
 import src.osm_configurator.model.project.calculation.paralellization.work_manager as work_manager_i
 import src.osm_configurator.model.project.calculation.paralellization.work as work_i
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
