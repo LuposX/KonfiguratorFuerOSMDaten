@@ -37,7 +37,6 @@ TABLE_SEVENTH_ROW: int = 6  # This row stores the status of strictly_use_default
 TABLE_EIGHT_ROW: int = 7  # This row stores the attractivity_attributes of the category
 TABLE_NINE_ROW: int = 8  # This row stores the default_value_list of the category
 
-BASE_ATTRACTIVITY_TO_ZERO: int = 0
 NAME: int = 0  # The name of an attractivity_attribute and a default_value_entry is stored in the first place of the list representing it
 NAME_OF_ATTRIBUTE: int = 0  # The name of an attribute of an attractivity_attribute or a default_value_entry is stored in the second place of the list representing it
 VALUE_OF_ATTRIBUTE: int = 1  # The value of an attribute of an attractivity_attribute or a default_value_entry is stored in the second place of the list representing it
@@ -70,14 +69,17 @@ class CategoryParser(CategoryParserInterface):
         """
         pass
 
-    def parse_category_file(self, filepath: Path) -> Category:
+    def parse_category_file(self, filepath: Path) -> Category | None:
         with open(filepath, READ) as f:
             reader = csv.reader(f)
             category_data: list[str] = list(reader)
-        loaded_category: Category = Category()
-        loaded_category.set_category_name(category_data[TABLE_FIRST_ROW][TABLE_SECOND_COLUMN])
+        category_name: str = category_data[TABLE_FIRST_ROW][TABLE_SECOND_COLUMN]
+        if isinstance(category_name, str):
+            loaded_category: Category = Category(category_data[TABLE_FIRST_ROW][TABLE_SECOND_COLUMN])
+        else:
+            return None
         if convert_bool(category_data[TABLE_SECOND_ROW][TABLE_SECOND_COLUMN]) is None:
-            return False
+            return None
         elif convert_bool(category_data[TABLE_SECOND_ROW][TABLE_SECOND_COLUMN]):
             loaded_category.activate()
         else:
@@ -103,14 +105,14 @@ class CategoryParser(CategoryParserInterface):
                 if active_attribute is not None:
                     loaded_category.set_attribute(active_attribute, True)
                 else:
-                    return False
+                    return None
 
         # Loads strictly use default values
         strictly_use_default_value_bool: bool = convert_bool(category_data[TABLE_SEVENTH_ROW][TABLE_SECOND_COLUMN])
         if strictly_use_default_value_bool is not None:
             loaded_category.set_strictly_use_default_values(strictly_use_default_value_bool)
         else:
-            return False
+            return None
 
         # Loads attractivity attributes
         attractivity_attribute_list: list[str] = category_data[TABLE_EIGHT_ROW][TABLE_SECOND_COLUMN].split(
@@ -118,7 +120,7 @@ class CategoryParser(CategoryParserInterface):
         for input_attractivity_attribute in attractivity_attribute_list:
             input_str: list[str] = input_attractivity_attribute.split(DELIMITER_COMMA)
             attractivity_attribute: AttractivityAttribute = AttractivityAttribute(
-                input_str[NAME], BASE_ATTRACTIVITY_TO_ZERO)
+                input_str[NAME])
             input_str.remove(input_str[NAME])
             for attribute_str in input_str:
                 attribute_str_split_up: list[str] = attribute_str.split(DELIMITER_COLON)

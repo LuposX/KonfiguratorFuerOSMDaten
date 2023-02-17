@@ -4,14 +4,15 @@ import os
 
 import src.osm_configurator.model.project.configuration.category
 import src.osm_configurator.model.project.configuration.category as category_i
+import src.osm_configurator.model.project.configuration.default_categories as default_categories_i
 from pathlib import Path
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 from src.osm_configurator.model.parser.category_parser import CategoryParser
 
 if TYPE_CHECKING:
-    from typing import List, Set, Final
+    from typing import List, Set
     from pathlib import Path
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.category import Category
@@ -30,6 +31,9 @@ class CategoryManager:
         Constructor of the class.
         """
         self._categories: List[Category] = []
+        building_category: Category = default_categories_i.create_building_category()
+
+        self._categories.append(building_category)
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -47,7 +51,7 @@ class CategoryManager:
                     _activated_attributes.append(attribute)
         return _activated_attributes
 
-    def get_category(self, name: str) -> Category:
+    def get_category(self, name: str) -> Category | None:
         """
         Gets a category based on the index.
 
@@ -60,8 +64,6 @@ class CategoryManager:
         for item in self._categories:
             if item.get_category_name() == name:
                 return item
-
-        # TODO: IDK WHAT TO DO HERE
         return None
 
     def get_categories(self) -> List[Category]:
@@ -101,6 +103,8 @@ class CategoryManager:
             bool: True, if the element was removed correctly, else false.
         """
         # Check if the element is in the list
+        if category_to_remove == self.building_category:
+            return False
         for category in self._categories:
             if category_to_remove.get_category_name() == category.get_category_name():
                 self._categories.remove(category_to_remove)
@@ -162,7 +166,6 @@ class CategoryManager:
         category: Category
         for category in self._categories:
             result.update(category.get_attractivity_attributes())
-
         return list(result)
 
     def get_all_categories_names(self) -> List[str]:
@@ -172,6 +175,5 @@ class CategoryManager:
         name_list: List[str] = []
         for category in self._categories:
             name_list.append(category.get_category_name())
-
         return name_list
 

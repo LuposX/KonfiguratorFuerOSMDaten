@@ -8,7 +8,7 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 
 import src.osm_configurator.model.model_constants as model_constants_i
 
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List
@@ -18,8 +18,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
-DEFAULT_NAME: str = "Category Name"
-
 
 class Category:
     """
@@ -28,14 +26,17 @@ class Category:
     affect does OSM-elements.
     """
 
-    def __init__(self):
+    def __init__(self, category_name: str):
         """
         Creates a new instance of a "Category" class.
+
+        Args:
+            category_name (str): The name of the newly created category.
         """
         self._active: bool = False
         self._whitelist: List[str] = []
         self._blacklist: List[str] = []
-        self._category_name: str = DEFAULT_NAME
+        self._category_name: str = category_name
         self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA
         self._attractivity_attributes: List[AttractivityAttribute] = []
         self._default_value_list: List[DefaultValueEntry] = []
@@ -64,26 +65,14 @@ class Category:
     def activate(self) -> bool:
         """
         Sets the active-value to True.
-
-        Returns:
-             bool: True, if value was set correctly, False if value was already True.
         """
-        if not self._active:
-            self._active = True
-            return True
-        return False
+        self._active = True
 
     def deactivate(self) -> bool:
         """
         Sets the active-value to False.
-
-        Returns:
-            bool: True, if value was set correctly, False if value was already False.
         """
-        if self._active:
-            self._active = False
-            return True
-        return False
+        self._active = False
 
     def get_whitelist(self) -> List[str]:
         """
@@ -100,14 +89,8 @@ class Category:
 
         Args:
             new_whitelist (List[str]): value for the new whitelist.
-
-        Returns:
-             bool: True, if the whitelist was overwritten successfully, else False.
         """
-        if self._whitelist != new_whitelist:
-            self._whitelist = new_whitelist
-            return True
-        return False
+        self._whitelist = new_whitelist
 
     def get_blacklist(self) -> List[str]:
         """
@@ -125,13 +108,8 @@ class Category:
         Args:
             new_blacklist (List[str]): new value for the blacklist.
 
-        Returns:
-            bool: True, if the blacklist was overwritten successfully, else False.
         """
-        if self._blacklist != new_blacklist:
-            self._blacklist = new_blacklist
-            return True
-        return False
+        self._blacklist = new_blacklist
 
     def get_category_name(self) -> str:
         """
@@ -148,6 +126,7 @@ class Category:
 
         Args:
             new_category_name (str): new value for the category_name.
+
         """
         self._category_name = new_category_name
 
@@ -159,11 +138,11 @@ class Category:
         Returns:
             List[Attribute]: A list that contains all used attributes
         """
-        _activated: List[Attribute] = []
+        activated: List[Attribute] = []
         for enum in self._attributes:
             if self._attributes.get(enum):
-                _activated.append(enum)
-        return _activated
+                activated.append(enum)
+        return activated
 
     def get_not_activated_attribute(self) -> List[Attribute]:
         """
@@ -172,11 +151,11 @@ class Category:
         Returns:
             List[Attribute]: A list that contains all used attributes
         """
-        _not_activated: List[Attribute] = []
+        not_activated: List[Attribute] = []
         for enum in self._attributes:
             if not self._attributes.get(enum):
-                _not_activated.append(enum)
-        return _not_activated
+                not_activated.append(enum)
+        return not_activated
 
     def get_attribute(self, attribute: Attribute) -> bool:
         """
@@ -188,10 +167,7 @@ class Category:
         Returns:
             bool: True when the attribute is active, otherwise false.
         """
-        if self._attributes.get(attribute):
-            return True
-        else:
-            return False
+        return self._attributes.get(attribute)
 
     def set_attribute(self, attribute: Attribute, boolean: bool) -> bool:
         """
@@ -322,6 +298,8 @@ class Category:
             bool: True, if the element was removed successfully, else False.
         """
         if default_value_entry in self._default_value_list:
+            if default_value_entry == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+                return False
             self._default_value_list.remove(default_value_entry)
             return True
         return False
@@ -337,8 +315,10 @@ class Category:
         Returns:
             bool: True, if the change was successful, else False.
         """
-        if (default_value_entry not in self._default_value_list) \
-                or self._default_value_list.index(moved_default_value_entry) <= 0:
+        if moved_default_value_entry not in self._default_value_list:
+            return False
+        # To make sure that "default" is always at the bottom, you cant move the last item up
+        if self._default_value_list.index(moved_default_value_entry) <= 0:
             return False
         index = self._default_value_list.index(moved_default_value_entry)
         self._default_value_list[index - 1], self._default_value_list[index] \
@@ -356,8 +336,10 @@ class Category:
         Returns:
             bool: True, if the change was successful, else false.
         """
-        if (default_value_entry not in self._default_value_list) \
-                or self._default_value_list.index(moved_default_value_entry) <= 0:
+        if moved_default_value_entry not in self._default_value_list:
+            return False
+        # To make sure that "default" is always at the bottom, you cant move the second last item down
+        if self._default_value_list.index(moved_default_value_entry) <= 1:
             return False
         index = self._default_value_list.index(moved_default_value_entry)
         self._default_value_list[index + 1], self._default_value_list[index] \
