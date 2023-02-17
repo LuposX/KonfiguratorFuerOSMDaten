@@ -81,8 +81,11 @@ def test_minimal_input_successfully():
     assert df["trading"][5] == 42
 
 
-def test_illegal_configuration():
+def test_temp_test():
     assert APPLICATION_MANAGER2.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES) == 4
+
+
+def test_illegal_configuration():
     config_manager: ConfigurationManager = configuration_manager.ConfigurationManager(
         Path(os.path.join(TEST_DIR, "build/attractivity_phase/projectIllegal")))
     phase: AttractivityPhase = attractivity_phase.AttractivityPhase()
