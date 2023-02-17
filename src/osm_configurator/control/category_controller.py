@@ -42,8 +42,6 @@ class CategoryController(ICategoryController):
         return category_manager.get_categories()
 
     def create_category(self, name: str) -> Category:
-        if name == "":
-            return None
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
         new_category: Category = Category(name)
         if category_manager.create_category(new_category):
