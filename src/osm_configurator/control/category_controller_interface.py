@@ -56,7 +56,7 @@ class ICategoryController(ABC):
         pass
 
     @abstractmethod
-    def create_category(self) -> Category:
+    def create_category(self, category_name: str) -> Category:
         """
         Creates a new category in the currently selected project.
         A new category is added to the list of categories of the project. The category has empty properties, except for an arbitrary name.
