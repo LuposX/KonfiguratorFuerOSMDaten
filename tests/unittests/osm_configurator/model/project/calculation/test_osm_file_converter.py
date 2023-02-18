@@ -1,5 +1,5 @@
 import os.path
-from src_tests.definitions import TEST_DIR
+from tests.definitions import TEST_DIR
 
 from pathlib import Path
 import src.osm_configurator.model.project.calculation.osm_file_converter as ofc

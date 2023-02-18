@@ -2,6 +2,10 @@ from __future__ import annotations
 
 import customtkinter
 
+import os
+
+from definitions import PROJECT_DIR
+
 import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.control.project_controller_interface
 import src.osm_configurator.view.constants.button_constants as button_constants_i
@@ -68,12 +72,12 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         # There is only one row
         self.grid_rowconfigure(0, weight=1)
 
-        # Making all the Buttons
-        # Left Arrow
+        # Making all the Buttons.
+        # Left Arrow.
         # Arrow Used: https://www.flaticon.com/free-icon/right-arrow_626053?term=arrow+right&page=1&position=85&origin=search&related_id=626053
         left_arrow_icon: customtkinter.CTkImage = customtkinter.CTkImage(
-            light_image=Image.open("../view_icons/arrow_left.png"),
-            dark_image=Image.open("../view_icons/arrow_left.png"),
+            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_left.png")),
+            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_left.png")),
             size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
         self._left_arrow: customtkinter.CTkButton = customtkinter.CTkButton(master=self, width=BUTTON_WIDTH,
                                                                             height=BUTTON_HEIGHT,
@@ -91,8 +95,8 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
 
         # Right Arrow
         right_arrow_icon: customtkinter.CTkImage = customtkinter.CTkImage(
-            light_image=Image.open("../view_icons/arrow_right.png"),
-            dark_image=Image.open("../view_icons/arrow_right.png"),
+            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_right.png")),
+            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_right.png")),
             size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
         self._right_arrow: customtkinter.CTkButton = customtkinter.CTkButton(master=self, width=BUTTON_WIDTH,
                                                                              height=BUTTON_HEIGHT,
