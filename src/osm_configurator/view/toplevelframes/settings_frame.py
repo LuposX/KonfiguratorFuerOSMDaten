@@ -3,10 +3,11 @@ from __future__ import annotations
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
-# Constants
+
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.utilityframes.settings_application_frame as settings_application_frame_i
 import src.osm_configurator.view.utilityframes.settings_project_frame as settings_project_frame_i
+
 
 from typing import TYPE_CHECKING
 import customtkinter
