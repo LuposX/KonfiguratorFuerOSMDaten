@@ -6,6 +6,9 @@ import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
+import src.osm_configurator.model.project.calculation.paralellization.work_manager as work_manager_i
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+import src.osm_configurator.model.project.calculation.paralellization.work as work_i
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
@@ -29,7 +32,9 @@ if TYPE_CHECKING:
     from typing import Tuple, Dict, List, Any
     from pandas import DataFrame
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
-
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
+    from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
+    from src.osm_configurator.model.project.calculation.paralellization.work import Work
 
 class AggregationPhase(ICalculationPhase):
     """
@@ -77,15 +82,25 @@ class AggregationPhase(ICalculationPhase):
         # get all activated aggregation methods
         active_aggregation_methods: List[AggregationMethod] = aggregation_configuration.get_all_active_aggregation_methods()
 
+        # Iterate over all traffic cells and generate the attractiveness (using multiprocessing)
+        work_manager: WorkManager = work_manager_i.WorkManager(
+            application_manager.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES))
+
         # For each active aggregation method create one dataframe with all traffic cells in it
         aggregation_method: AggregationMethod
         for aggregation_method in active_aggregation_methods:
+            execute_traffic_cell: Work = work_i.Work(
+                target=self._parse_the_data,
+                args=(aggregation_method,
+                      category_manager,
+                      checkpoint_folder_path_current_phase,
+                      list_of_traffic_cell_checkpoints,
+                      )
+            )
+            work_manager.append_work(execute_traffic_cell)
+
             try:
-                self._parse_the_data(aggregation_method=aggregation_method,
-                                     category_manager=category_manager,
-                                     checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase,
-                                     list_of_traffic_cell_checkpoints=list_of_traffic_cell_checkpoints
-                                     )
+                work_manager.do_all_work()
 
             except TagsWronglyFormatted as err:
                 return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))

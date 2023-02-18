@@ -120,15 +120,15 @@ class Category:
         """
         return self._category_name
 
-    def set_category_name(self, new_category_name: str) -> bool:
+    def set_category_name(self, new_category_name: str):
         """
         Overwrites the old category_name.
 
         Args:
             new_category_name (str): new value for the category_name.
-
         """
-        self._category_name = new_category_name
+        if new_category_name != "":
+            self._category_name = new_category_name
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -242,7 +242,9 @@ class Category:
         Returns:
             bool: True, if the attribute was added successfully, else False.
         """
-        if new_attractivity_attribute not in self._attractivity_attributes:
+        if new_attractivity_attribute.get_attractivity_attribute_name() == "":
+            return False
+        if new_attractivity_attribute.get_attractivity_attribute_name() not in self.get_all_attractivity_attributes_names():
             self._attractivity_attributes.append(new_attractivity_attribute)
             return True
         return False
@@ -282,17 +284,19 @@ class Category:
         Returns:
             bool: True, if element was added successfully, else False
         """
-        if new_default_value_entry not in self._default_value_list:
+        if new_default_value_entry.get_default_value_entry_tag() == "":
+            return False
+        if new_default_value_entry.get_default_value_entry_tag() not in self.get_all_default_values_names():
             self._default_value_list.append(new_default_value_entry)
             return True
         return False
 
-    def remove_default_value_entry(self, default_value_entry: DefaultValueEntry) -> bool:
+    def remove_default_value_entry(self, removed_default_value_entry: DefaultValueEntry) -> bool:
         """
         Removes an already existing element from the default_value_entry list.
 
         Args:
-            default_value_entry (default_value_entry.DefaultValueEntry): value that will be removed.
+            removed_default_value_entry (default_value_entry.DefaultValueEntry): value that will be removed.
 
         Returns:
             bool: True, if the element was removed successfully, else False.
@@ -300,7 +304,7 @@ class Category:
         if default_value_entry in self._default_value_list:
             if default_value_entry == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
                 return False
-            self._default_value_list.remove(default_value_entry)
+            self._default_value_list.remove(removed_default_value_entry)
             return True
         return False
 
@@ -346,5 +350,20 @@ class Category:
             = self._default_value_list[index], self._default_value_list[index + 1]
         return True
 
-    def get_strictly_use_default_values(self) -> bool:
-        return self._strictly_use_default_values
+    def get_all_attractivity_attributes_names(self) -> list[str]:
+        """
+        This method return the names of all attractivity attributes currently saved.
+        """
+        name_list: List[str] = []
+        for attractivity_attribute in self._attractivity_attributes:
+            name_list.append(attractivity_attribute.get_attractivity_attribute_name())
+        return name_list
+
+    def get_all_default_values_names(self) -> list[str]:
+        """
+        This method return the names of all default values currently saved.
+        """
+        name_list: List[str] = []
+        for default_value in self._default_value_list:
+            name_list.append(default_value.get_default_value_entry_tag())
+        return name_list

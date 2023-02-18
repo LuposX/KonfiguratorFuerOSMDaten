@@ -85,6 +85,8 @@ class CategoryManager:
         Returns:
             bool: True, if the element was created correctly, else false.
         """
+        if new_category.get_category_name() == "":
+            return False
         # Check that the category is not already saved
         if new_category.get_category_name() in self.get_all_categories_names():
             return False
@@ -144,11 +146,11 @@ class CategoryManager:
 
     def add_categories(self, category_input_list: List[Category]):
         """
-       Merges the existing category list with the given list if both lists are not identical.
+        Merges the existing category list with the given list if both lists are not identical.
 
-       Args:
+        Args:
            category_input_list (List[Category]): New list of categories that will be merged into the existing list.
-       """
+        """
         for category in category_input_list:
             if category.get_category_name() not in self.get_all_categories_names():
                 self._categories.append(category)

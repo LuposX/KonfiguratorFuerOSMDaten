@@ -42,7 +42,8 @@ class DefaultValueEntry:
         Args:
             new_tag (str): value for overwriting the current tag, must be a valid OSM-tag
         """
-        self._tag = new_tag
+        if new_tag != "":
+            self._tag = new_tag
 
     def set_attribute_default(self, attribute: Attribute, value: float) -> bool:
         """

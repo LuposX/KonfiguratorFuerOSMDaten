@@ -4,16 +4,17 @@ import src.osm_configurator.model.project.calculation.calculation_phase_enum as 
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum_i
 import src.osm_configurator.model.parser.osm_data_parser as osm_data_parser_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
-import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
 import src.osm_configurator.model.project.calculation.prepare_calculation_phase as prepare_calculation_phase_i
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum
+import src.osm_configurator.model.project.calculation.paralellization.work_manager as work_manager_i
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+import src.osm_configurator.model.project.calculation.paralellization.work as work_i
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
 from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import \
     OSMDataWronglyFormatted
 from fiona.errors import DriverError
-from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 from typing import TYPE_CHECKING
@@ -27,6 +28,8 @@ if TYPE_CHECKING:
     from pathlib import Path
     from typing import Tuple, List, Any
     from geopandas import GeoDataFrame
+    from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
+    from src.osm_configurator.model.project.calculation.paralellization.work import Work
 
 
 class TagFilterPhase(ICalculationPhase):
@@ -78,30 +81,38 @@ class TagFilterPhase(ICalculationPhase):
         # create a new osm data parser, which is used to parse the osm data
         osm_data_parser_o: OSMDataParser = osm_data_parser_i.OSMDataParser()
 
+        # Iterate over all traffic cells and generate the attractiveness (using multiprocessing)
+        work_manager: WorkManager = work_manager_i.WorkManager(
+            application_manager.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES))
+
         # parse the osm data  with the parser
         for traffic_cell_file_path in list_of_traffic_cell_checkpoints:
-            try:
-                self._parse_the_data_file(osm_data_parser_o=osm_data_parser_o,
-                                          traffic_cell_file_path=traffic_cell_file_path,
-                                          category_manager_o=category_manager_o,
-                                          configuration_manager_o=configuration_manager_o,
-                                          checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase)
+            execute_traffic_cell: Work = work_i.Work(
+                target=self._parse_the_data_file,
+                args=(osm_data_parser_o,
+                      traffic_cell_file_path,
+                      category_manager_o,
+                      configuration_manager_o,
+                      checkpoint_folder_path_current_phase
+                      )
+            )
+            work_manager.append_work(execute_traffic_cell)
 
-            except TagsWronglyFormatted as err:
-                return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
+        # Start the processes
+        try:
+            work_manager.do_all_work()
 
-            except OSMDataWronglyFormatted as err:
-                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
+        except TagsWronglyFormatted as err:
+            return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
 
-            # If there's an error while encoding the file.
-            except (ValueError, DriverError, UnicodeDecodeError) as err:
-                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
+        except OSMDataWronglyFormatted as err:
+            return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
-            # If the file cannot be opened.
-            except OSError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
+        # If there's an error while encoding the file.
+        except (ValueError, DriverError, UnicodeDecodeError) as err:
+            return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
 
-        return calculation_state_enum_i.CalculationState.RUNNING, ""
+        return calculation_state_enum_i.CalculationState.RUNNING, "running"
 
     def _parse_the_data_file(self,
                              osm_data_parser_o: OSMDataParser,

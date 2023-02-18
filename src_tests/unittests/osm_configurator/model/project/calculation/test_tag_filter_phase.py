@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 from src_tests.definitions import TEST_DIR
-from src_tests.definitions import APPLICATION_MANAGER
+from src_tests.definitions import APPLICATION_MANAGER_2
 import src.osm_configurator.model.project.calculation.tag_filter_phase as tag_filter_phase_i
 import src.osm_configurator.model.project.calculation.calculation_state_enum as calculation_state_enum
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager
@@ -66,7 +66,7 @@ class TestTagFilterPhase:
 
         # Execute phase, without setting any path's to the geojson and osm data
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER)
+        result: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER_2)
         assert result[0] == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
     def test_invalid_geojson_path(self):
@@ -80,7 +80,7 @@ class TestTagFilterPhase:
 
         # Execute test
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER)
+        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER_2)
         assert result1[0] == calculation_state_enum.CalculationState.ERROR_INVALID_CUT_OUT_DATA
 
     def test_full_monaco_instance_successful(self):
@@ -100,7 +100,7 @@ class TestTagFilterPhase:
 
         # Execute test
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER)
+        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER_2)
         assert result1[0] == calculation_state_enum.CalculationState.RUNNING
 
         # Test if files were created
@@ -109,7 +109,7 @@ class TestTagFilterPhase:
                                     .get_folder_name_for_results()))) == 8
 
         # Test if execution works a second time
-        result2: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER)
+        result2: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER_2)
         assert result2[0] == calculation_state_enum.CalculationState.RUNNING
 
     def test_corrupted_osm_data(self):
@@ -129,5 +129,5 @@ class TestTagFilterPhase:
 
         # Execute test
         phase: TagFilterPhase = tag_filter_phase_i.TagFilterPhase()
-        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER)
+        result1: (CalculationState, str) = phase.calculate(config_manager, APPLICATION_MANAGER_2)
         assert result1[0] == calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA

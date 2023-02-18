@@ -46,7 +46,8 @@ class AttractivityAttribute:
         Args:
             new_name (str): name of the attractivity attribute.
         """
-        self._attractivity_attribute_name = new_name
+        if new_name != "":
+            self._attractivity_attribute_name = new_name
 
     def get_attribute_factor(self, attribute: Attribute) -> float:
         """
