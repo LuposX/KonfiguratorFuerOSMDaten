@@ -99,6 +99,10 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
 
+        self.path_default_label.configure(
+            text=self._project_default_folder
+        )
+
     def __change_default_folder(self):
         """
         Opens the explorer making the user choose a new path for the default folder

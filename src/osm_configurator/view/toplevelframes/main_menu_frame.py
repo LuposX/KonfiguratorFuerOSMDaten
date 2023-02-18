@@ -125,13 +125,13 @@ class MainMenuFrame(TopLevelFrame):
         """
         Calls the create_project-window switching states
         """
-        self._state_manager.change_state(sne.StateName.CREATE_PROJECT.value)
+        self._state_manager.change_state(sne.StateName.CREATE_PROJECT)
 
     def __call_settings(self):
         """
         Calls the settings-menu switching states
         """
-        self._state_manager.change_state(sne.StateName.SETTINGS.value)
+        self._state_manager.change_state(sne.StateName.SETTINGS)
 
     def __load_external_project(self):
         """

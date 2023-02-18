@@ -260,6 +260,13 @@ class DataFrame(TopLevelFrame):
         self._selected_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
         self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
 
+        self._cut_out_selected_path_label.configure(
+            text=self._selected_cut_out_path
+        )
+        self._osm_data_select_label.configure(
+            text=self._selected_osm_data_path
+        )
+
     def __view_cut_out(self):
         """
         Lets the user view the cutout.

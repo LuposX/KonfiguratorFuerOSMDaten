@@ -45,12 +45,12 @@ class YesNoPopUp(customtkinter.CTk):
         )
 
         # Configuring the grid
-        self.grid_columnconfigure(0, weight=1)  # Topbar: showing nothing
-        self.grid_columnconfigure(1, weight=4)  # Shows the error message
-        self.grid_columnconfigure(2, weight=2)  # Displays the buttons
-        self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=5)
-        self.grid_rowconfigure(2, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=5)
+        self.grid_columnconfigure(2, weight=1)
+        self.grid_rowconfigure(0, weight=1)  # Topbar: showing nothing
+        self.grid_rowconfigure(1, weight=4)  # Shows the error message
+        self.grid_rowconfigure(2, weight=2)  # Displays the buttons
 
         self.message = \
             customtkinter.CTkLabel(master=self,
