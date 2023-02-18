@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.project_controller_interface
-from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes import main_menu_frame
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
@@ -21,13 +20,10 @@ from tkinter import filedialog
 if TYPE_CHECKING:
     from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.control.project_controller_interface import IProjectController
-    from src.osm_configurator.view.activatable import Activatable
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
-# TODO remove bool-return values at button functions
-
-class CreateProjectFrame(TopLevelFrame, Activatable):
+class CreateProjectFrame(TopLevelFrame):
     """
     This frame shows the project creation page to the User.
     A name, a description and a path for storing the project can be set here.
@@ -44,18 +40,19 @@ class CreateProjectFrame(TopLevelFrame, Activatable):
         """
 
         # Creating the window
-        window = super().__init__(master=None,
-                                  width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
-                                  height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
-                                  corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-                                  fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value)
+        super().__init__(master=None,
+                         width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
+                         height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+                         fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
+                         )
 
         self._state_manager = state_manager
         self._project_controller = project_controller
 
         self._project_description: str = ""
         self._project_name: str = ""
-        self._project_path: Path = None
+        self._project_path: Path = Path()
 
         # Configuring the rows and columns
         self.grid_columnconfigure(0, weight=1)
@@ -154,7 +151,8 @@ class CreateProjectFrame(TopLevelFrame, Activatable):
 
         self._project_controller.create_project(
             name=self._project_name,
-            destination=self._project_path
+            destination=self._project_path,
+            description=self._project_description,
         )
 
         return

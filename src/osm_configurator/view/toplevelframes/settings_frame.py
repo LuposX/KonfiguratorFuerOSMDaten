@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
 
 
-class SettingsFrame(TopLevelFrame, Activatable):
+class SettingsFrame(TopLevelFrame):
     """
     This frame shows the user the settings for:
     - The application
@@ -62,7 +62,7 @@ class SettingsFrame(TopLevelFrame, Activatable):
             settings_project_frame_i.SettingsProjectFrame(self, self._settings_controller)
         self.create_project_frame.grid(row=1, column=0, padx=10, pady=10)
 
-    def activate(self) -> bool:
+    def activate(self):
         """
         Gets called if the window is called.
         Calls the activate functions of the frames
@@ -71,7 +71,3 @@ class SettingsFrame(TopLevelFrame, Activatable):
         """
         settings_activation = self.settings_application_frame.activate()
         create_project_activation = self.create_project_frame.activate()
-
-        if settings_activation and create_project_activation:
-            return True  # Activation successful
-        return False

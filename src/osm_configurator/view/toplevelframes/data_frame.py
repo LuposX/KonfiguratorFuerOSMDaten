@@ -13,10 +13,13 @@ import src.osm_configurator.control.category_controller_interface as category_co
 import src.osm_configurator.control.osm_data_controller_interface as osm_data_controller_interface
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from src.osm_configurator.view.activatable import Activatable
+from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
+
+# Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
-from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -30,9 +33,10 @@ if TYPE_CHECKING:
     import src.osm_configurator.view.constants.button_constants as button_constants_i
     import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
     import src.osm_configurator.view.constants.label_constants as label_constants_i
+    import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 
 
-class DataFrame(TopLevelFrame, Activatable):
+class DataFrame(TopLevelFrame):
     """
     This frame lets the user edit various following Data:
     - Selection of the OSM-Data
@@ -42,7 +46,7 @@ class DataFrame(TopLevelFrame, Activatable):
     - Copy in category configurations
     """
 
-    def __init__(self, _state_manager: state_manager,
+    def __init__(self, state_manager: state_manager,
                  data_visualization_controller: data_visualization_controller_interface,
                  cut_out_controller: cut_out_controller_interface, category_controller: category_controller_interface,
                  osm_data_controller: osm_data_controller_interface):
@@ -50,14 +54,21 @@ class DataFrame(TopLevelFrame, Activatable):
         This method creates a DataFrame, that lets the User input data into the project.
 
         Args:
-            _state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
+            state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
             data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
             cut_out_controller (cut_out_controller.CutOutController): Respective controller
             category_controller (category_controller.CategoryController): Respective controller
             osm_data_controller (osm_data_controller_interface.IOSMDataController): Respective controller
         """
-        super().__init__()
+        super().__init__(
+            master=None,
+            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
+            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+            corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
+        )
 
+        self._state_manager = state_manager
         self._data_visualization_controller: data_visualization_controller_interface = data_visualization_controller
         self._cut_out_controller: cut_out_controller_interface = cut_out_controller
         self._category_controller: category_controller_interface = category_controller

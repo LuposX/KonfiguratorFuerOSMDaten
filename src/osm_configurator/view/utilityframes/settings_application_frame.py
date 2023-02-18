@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from src.osm_configurator.view.activatable import Activatable
-
 import src.osm_configurator.control.settings_controller_interface as settings_controller_i
 
 # Constants
@@ -16,13 +14,14 @@ from tkinter import filedialog
 
 from typing import TYPE_CHECKING
 
+from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+
 if TYPE_CHECKING:
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
-    from src.osm_configurator.view.activatable import Activatable
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 
 
-class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
+class SettingsApplicationFrame(TopLevelFrame):
     """
     This frame shows the settings of the application.
     """
@@ -94,18 +93,11 @@ class SettingsApplicationFrame(customtkinter.CTkFrame, Activatable):
                                     )
         self.change_default_path_button.grid(row=3, column=0, padx=10, pady=10)  # button to browse for a new default folder
 
-    def activate(self) -> bool:
+    def activate(self):
         """
         Tells the current frame to activate and collect all the data it needs.
-
-        Returns:
-            bool: True, if activation was successful, otherwise false.
         """
         self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
-
-        if self._project_default_folder != "":
-            return True
-        return False
 
     def __change_default_folder(self):
         """

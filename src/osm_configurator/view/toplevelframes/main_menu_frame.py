@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from src.osm_configurator.model.application.passive_project import PassiveProject
-from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 import src.osm_configurator.view.states.state_name_enum as sne
@@ -21,9 +20,11 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.project_controller_interface import IProjectController
     from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.model.application.passive_project import PassiveProject
+    import src.osm_configurator.view.constants.button_constants as button_constants_i
+    import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 
 
-class MainMenuFrame(TopLevelFrame, Activatable):
+class MainMenuFrame(TopLevelFrame):
     """
     This frame shows the application's main menu.
     The user can create a new project, or load an already existing project. Projects stored in the default folder
@@ -104,15 +105,12 @@ class MainMenuFrame(TopLevelFrame, Activatable):
                                     ) \
                 .grid(column=3, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
 
-    def activate(self) -> bool:
+    def activate(self):
         """
         Overwrites the activate function from the Activatable-Interface
         Fetches all the data needed to update the window accordingly
-        Returns:
-            bool: True if activation was successful, else false
         """
         self._passive_projects = self._project_controller.get_list_of_passive_projects()
-        return True
 
     def __load_project(self, passive_project: PassiveProject):
         """

@@ -52,13 +52,14 @@ class YesNoPopUp(customtkinter.CTk):
         self.grid_rowconfigure(1, weight=5)
         self.grid_rowconfigure(2, weight=1)
 
-        customtkinter.CTkLabel(master=self,
-                               text=message,
-                               corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                               fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                               text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                               anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value, ) \
-            .grid(row=1, column=1, rowspan=1, columnspan=1, padx=20, pady=20)
+        self.message = \
+            customtkinter.CTkLabel(master=self,
+                                   text=message,
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value, )
+        self.message.grid(row=1, column=1, rowspan=1, columnspan=1, padx=20, pady=20)
 
         self.accept_button = \
             customtkinter.CTkButton(master=self,
@@ -70,8 +71,8 @@ class YesNoPopUp(customtkinter.CTk):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                    ) \
-            .grid(row=2, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
+                                    )
+        self.accept_button.grid(row=2, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
@@ -83,8 +84,8 @@ class YesNoPopUp(customtkinter.CTk):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                    ) \
-            .grid(row=2, column=2, rowspan=1, columnspan=1, padx=10, pady=10)
+                                    )
+        self.cancel_button.grid(row=2, column=2, rowspan=1, columnspan=1, padx=10, pady=10)
 
     def accept(self) -> bool:
         """
@@ -126,4 +127,3 @@ def combine_funcs(*funcs):
             f(*args, **kwargs)
 
     return inner_combined_funcs
-

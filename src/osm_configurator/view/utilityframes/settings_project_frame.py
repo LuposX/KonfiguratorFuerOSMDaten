@@ -19,7 +19,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.activatable import Activatable
 
 
-class SettingsProjectFrame(TopLevelFrame, Activatable):
+class SettingsProjectFrame(TopLevelFrame):
     """
     This frame shows the current project settings.
     """
@@ -103,7 +103,7 @@ class SettingsProjectFrame(TopLevelFrame, Activatable):
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
         self.change_project_name_button.grid(column=3, row=1, rowspan=1, columnspan=1)
 
-    def activate(self) -> bool:
+    def activate(self):
         """
         Tells the current frame to activate and collect all the data it needs.
 
@@ -112,10 +112,6 @@ class SettingsProjectFrame(TopLevelFrame, Activatable):
         """
         self._project_name = ISettingsController.get_project_name(self._settings_controller)
         self._project_description = ISettingsController.get_project_description(self._settings_controller)
-
-        if self._project_name != "":
-            return True
-        return False
 
     def __change_project_name(self):
         """
