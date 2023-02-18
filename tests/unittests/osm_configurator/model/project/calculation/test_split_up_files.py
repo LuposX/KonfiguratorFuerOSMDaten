@@ -1,5 +1,5 @@
 import os.path
-from src_tests.definitions import TEST_DIR
+from tests.definitions import TEST_DIR
 
 import geopandas as gpd
 from pathlib import Path
@@ -50,7 +50,7 @@ def test_no_name_column():
     result_folder = os.path.join(TEST_DIR, "build/split_up_files")
     geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
 
-    # Clean up last src_tests
+    # Clean up last tests
     _prepare(result_folder)
 
     # Begin test
