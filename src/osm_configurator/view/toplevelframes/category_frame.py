@@ -461,7 +461,8 @@ class CategoryFrame(TopLevelFrame):
     def _get_recommended_string(self, index: int) -> str:
 
         # if there are no recommendations, an empty string will be returned!
-        if len(self._recommender_frame_button_list) == 0:
+        # Or if the index is out of bounds, an empty string is returned!
+        if (len(self._recommender_frame_button_list) == 0) or (index >= len(self._recommender_frame_button_list)):
             return ""
         else:
             return self._recommender_frame_button_list[index].cget("text")

@@ -126,6 +126,7 @@ class AggregationFrame(TopLevelFrame):
                 self._aggregation_checkboxes[checkbox_id].deselect()
                 self._aggregation_checkboxes[checkbox_id].configure(
                     text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED)
+            checkbox_id += 1
 
     def _checkbox_edited(self, checkbox_id: int):
         aggregation_method: aggregation_method_enum_i.AggregationMethod = self._aggregation_methods[checkbox_id]
