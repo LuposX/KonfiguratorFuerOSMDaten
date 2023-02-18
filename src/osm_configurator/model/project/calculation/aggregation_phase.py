@@ -36,6 +36,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
     from src.osm_configurator.model.project.calculation.paralellization.work import Work
 
+
 class AggregationPhase(ICalculationPhase):
     """
     This calculation phase is responsible for aggregating the attractivity attributes in the given traffic cells.

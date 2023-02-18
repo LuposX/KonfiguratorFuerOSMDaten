@@ -31,7 +31,7 @@ class CalculationPhase(Enum):
     ATTRACTIVITY_PHASE = ("Attractivity", "attractivity_phase_results", 4)
     AGGREGATION_PHASE = ("Aggregation", "aggregation_phase_result", 5)
 
-    def get_name(self):
+    def get_name(self) -> str:
         """
         Getter for the name of the enum type.
 
@@ -40,7 +40,7 @@ class CalculationPhase(Enum):
         """
         return self.value[0]
 
-    def get_folder_name_for_results(self):
+    def get_folder_name_for_results(self) -> str:
         """
         Getter for the folder name of the enum type.
 
@@ -49,7 +49,7 @@ class CalculationPhase(Enum):
         """
         return self.value[1]
 
-    def get_order(self):
+    def get_order(self) -> int:
         """
         Getter for the order of the enum type.
 

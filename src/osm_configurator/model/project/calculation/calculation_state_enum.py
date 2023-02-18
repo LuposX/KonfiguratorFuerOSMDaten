@@ -27,7 +27,7 @@ class CalculationState(Enum):
     ERROR_ENCODING_THE_FILE = ("Encoding error", "ERROR: While writing to the file there was an encoding error.")
     ERROR_FILE_NOT_FOUND = ("File not found", "ERROW: While trying to open the file couldn't find the file.")
 
-    def get_name(self):
+    def get_name(self) -> str:
         """
         Gives back the name of a calculation state.
 
@@ -36,7 +36,7 @@ class CalculationState(Enum):
         """
         return self.value[0]
 
-    def get_description(self):
+    def get_description(self) -> str:
         """
         Gives back the description of a calculation state.
 

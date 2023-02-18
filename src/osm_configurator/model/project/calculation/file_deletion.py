@@ -9,7 +9,8 @@ class FileDeletion:
     Responsible for deleting files.
     """
 
-    def reset_folder(self, path: Path) -> bool:
+    @classmethod
+    def reset_folder(cls, path: Path) -> bool:
         """
         Deletes all files in the given folder. If the folder does not exist it will create it.
         Args:
