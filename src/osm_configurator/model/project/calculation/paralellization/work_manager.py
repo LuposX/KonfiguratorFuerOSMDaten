@@ -44,7 +44,10 @@ class WorkManager:
         """
         pool: Pool
         with multiprocessing.Pool(processes=self._max_workers) as pool:
-            return pool.map(self._worker_entry_point, self._work_to_do)
+            result = pool.map(self._worker_entry_point, self._work_to_do)
+            pool.terminate()
+            pool.join()
+            return result
 
     def _worker_entry_point(self, work: Work):
         """
