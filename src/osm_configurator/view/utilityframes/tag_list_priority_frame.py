@@ -78,15 +78,15 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
         self._entries: [default_value_entry_i.DefaultValueEntry] = []
 
         # The images used for moving entries up and down
-        arrow_up_image: customtkinter.CTkImage = customtkinter.CTkImage()
+        self._up_arrow_image: customtkinter.CTkImage = customtkinter.CTkImage(
+            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_up.png")),
+            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_up.png")),
+            size=(UP_ARROW_SIZE, UP_ARROW_SIZE))
 
-        self._up_arrow_image = customtkinter.CTkImage(light_image=Image.open("HERE PATH!!!!"),
-                                                      dark_image=Image.open("HERE PATH!!!!"),
-                                                      size=(UP_ARROW_SIZE, UP_ARROW_SIZE))
-
-        self._down_arrow_image = customtkinter.CTkImage(light_image=Image.open("HERE PATH!!!!"),
-                                                        dark_image=Image.open("HERE PATH!!!!"),
-                                                        size=(DOWN_ARROW_SIZE, DOWN_ARROW_SIZE))
+        self._down_arrow_image: customtkinter.CTkImage = customtkinter.CTkImage(
+            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_down.png")),
+            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_down.png")),
+            size=(DOWN_ARROW_SIZE, DOWN_ARROW_SIZE))
 
         # The different List for all the Buttons
         self._entry_button_list: [customtkinter.CTkButton] = []
@@ -274,7 +274,8 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
                                                                      text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
                                                                      text=entry.get_default_value_entry_tag(),
                                                                      command=partial(self._up_button_pressed,
-                                                                                     len(self._up_button_list)))
+                                                                                     len(self._up_button_list)),
+                                                                     image=self._up_arrow_image)
         up_button.grid(row=len(self._entry_button_list), column=1, rowspan=1, columnspan=1, padx=PADX, pady=PADY)
 
         down_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self,
@@ -289,7 +290,8 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
                                                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
                                                                        text=entry.get_default_value_entry_tag(),
                                                                        command=partial(self._down_button_pressed,
-                                                                                       len(self._down_button_list)))
+                                                                                       len(self._down_button_list)),
+                                                                       image=self._down_arrow_image)
         down_button.grid(row=len(self._entry_button_list) + 1, column=1, rowspan=1, columnspan=1, padx=PADX, pady=PADY)
 
         self._entry_button_list.append(entry_button)
