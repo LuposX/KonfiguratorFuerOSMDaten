@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from enum import Enum
 
+from src.osm_configurator.view.constants.button_constants import ButtonConstants
+
 
 class CheckBoxConstants(Enum):
     CHECK_BOX_CORNER_RADIUS = 8
