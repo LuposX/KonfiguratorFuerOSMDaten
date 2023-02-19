@@ -97,7 +97,7 @@ class ReductionFrame(TopLevelFrame):
                                                                                                        scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
                                                                                                        label_text="Categories:",
                                                                                                        label_text_color=CATEGORY_LIST_LABEL_COLOR)
-        self._category_list_frame.grid(row=0, column=0, rowpsan=2, columnspan=1)
+        self._category_list_frame.grid(row=0, column=0, rowspan=2, columnspan=1)
 
         # The Categories displayed on the scrollable Frame
         # Starts empty

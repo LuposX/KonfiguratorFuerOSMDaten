@@ -4,7 +4,7 @@ from src.osm_configurator.model.project.calculation.aggregation_method_enum impo
 
 class AggregationControllerStub(IAggregationController):
     def get_aggregation_methods(self) -> list[AggregationMethod]:
-        pass
+        return [AggregationMethod.AVERAGE, AggregationMethod.LOWER_QUARTILE, AggregationMethod.MAXIMUM]
 
     def is_aggregation_method_active(self, method: AggregationMethod) -> bool:
         return True

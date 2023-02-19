@@ -108,10 +108,10 @@ class AggregationFrame(TopLevelFrame):
             # This will be overriden when activate() is called, but it is here do make sure, that checkboxes start defined
             if self._aggregation_controller.is_aggregation_method_active(method):
                 checkbox.select()
-                checkbox.configure(text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR)
+                checkbox.configure(text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value)
             else:
                 checkbox.deselect()
-                checkbox.configure(text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED)
+                checkbox.configure(text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED.value)
 
             self._aggregation_checkboxes.append(checkbox)
             checkbox.grid(row=checkbox_id, column=0, rowspan=1, columnspan=1)
@@ -127,11 +127,11 @@ class AggregationFrame(TopLevelFrame):
             if self._aggregation_controller.is_aggregation_method_active(method):
                 self._aggregation_checkboxes[checkbox_id].select()
                 self._aggregation_checkboxes[checkbox_id].configure(
-                    text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR)
+                    text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value)
             else:
                 self._aggregation_checkboxes[checkbox_id].deselect()
                 self._aggregation_checkboxes[checkbox_id].configure(
-                    text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED)
+                    text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED.value)
             checkbox_id += 1
 
     def _checkbox_edited(self, checkbox_id: int):
@@ -150,11 +150,11 @@ class AggregationFrame(TopLevelFrame):
         if active:
             self._aggregation_checkboxes[checkbox_id].select()
             self._aggregation_checkboxes[checkbox_id].configure(
-                text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR)
+                text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value)
         else:
             self._aggregation_checkboxes[checkbox_id].deselect()
             self._aggregation_checkboxes[checkbox_id].configure(
-                text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED)
+                text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED.value)
 
     def freeze(self):
         """

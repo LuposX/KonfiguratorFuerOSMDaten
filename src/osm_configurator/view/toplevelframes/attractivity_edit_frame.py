@@ -153,7 +153,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                                                                          padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
                                                                                          pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                          text="Choose Attractivity:")
-        self._choose_attractivity_label.grid(row=1, column=0, rowpsan=1, columnspan=1)
+        self._choose_attractivity_label.grid(row=1, column=0, rowspan=1, columnspan=1)
 
         # Now the Label for the Attractivity Name
         self._attractivity_name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -268,7 +268,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                                                           fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                                                           text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._area_entry.bind("<KeyRelease>", self._area_entry_edited)
-        self._area_entry.grid(row=4, column=1, rowspan=1, columnspsan=1)
+        self._area_entry.grid(row=4, column=1, rowspan=1, columnspan=1)
 
         # The Number of Floors Entry
         self._numbers_of_floors_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,

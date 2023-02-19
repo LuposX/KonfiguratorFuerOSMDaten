@@ -8,7 +8,6 @@ import json
 
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
-import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
 import \
     src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 
@@ -19,7 +18,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from geopandas import GeoSeries, GeoDataFrame
     from pandas import Series
-    from src.osm_configurator.model.project.calculation.default_value_finder import DefaultValueFinder
 
 
 NUMBER_FLOOR_KEY: Final = "building:levels"
@@ -41,8 +39,6 @@ def _calculate_property_area(category: Category,
                              curr_default_value: DefaultValueEntry,
                              data: Any) -> float:
     df: GeoDataFrame = data
-
-    default_value_finder_o: DefaultValueFinder = default_value_finder_i.DefaultValueFinder()
 
     # if the osm element we look at is a node, we can't calculate the value of it
     if osm_element[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
@@ -84,13 +80,6 @@ def _calculate_property_area(category: Category,
                 # if its a node use default values for it
                 if found_series[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
                     curr_default_value_list: List[DefaultValueEntry] = category.get_default_value_list()
-
-                    default_value: DefaultValueEntry = default_value_finder_o\
-                        .find_default_value_entry_which_applies(curr_default_value_list,
-                                                                dict_transformed_list)
-
-                    # add default values to the sum
-                    area_sum += default_value.get_attribute_default(Attribute.PROPERTY_AREA)
 
                 else:
                     # add the calculated area to the area sum of all osm elements.

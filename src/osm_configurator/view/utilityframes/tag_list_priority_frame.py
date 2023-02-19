@@ -6,6 +6,10 @@ import customtkinter
 
 from PIL import Image
 
+import os
+
+from definitions import PROJECT_DIR
+
 import src.osm_configurator.model.project.configuration.category as category_i
 import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
@@ -74,6 +78,8 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
         self._entries: [default_value_entry_i.DefaultValueEntry] = []
 
         # The images used for moving entries up and down
+        arrow_up_image: customtkinter.CTkImage = customtkinter.CTkImage()
+
         self._up_arrow_image = customtkinter.CTkImage(light_image=Image.open("HERE PATH!!!!"),
                                                       dark_image=Image.open("HERE PATH!!!!"),
                                                       size=(UP_ARROW_SIZE, UP_ARROW_SIZE))
