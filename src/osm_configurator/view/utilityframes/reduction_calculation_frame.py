@@ -58,6 +58,9 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         # At the beginning, no Category is loaded
         self._selected_category: category_i.Category = None
 
+        # starts unfrozen
+        self._frozen: bool = False
+
         # Making the grid
         # It is a 4x3 grid, with equal weight
         self.grid_columnconfigure(0, weight=1)
@@ -165,6 +168,9 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         Returns:
             bool: True if category was successfully loaded, False else
         """
+        # Unfreezing first
+        self.unfreeze()
+
         self._selected_category: category_i.Category = category
 
         if self._selected_category is None:
@@ -295,10 +301,30 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        if not self._frozen:
+            self._strictly_use_default_values_checkbox.configure(state=tkinter.DISABLED)
+            self._calculate_floor_area_checkbox.configure(state=tkinter.DISABLED)
+            self._calculate_area_checkbox.configure(state=tkinter.DISABLED)
+            self._site_building_switch.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        if self._frozen:
+            self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
+            self._calculate_floor_area_checkbox.configure(state=tkinter.NORMAL)
+            self._calculate_area_checkbox.configure(state=tkinter.NORMAL)
+            self._site_building_switch.configure(state="normal")
+
+            # Deactivating checkboxes again, depending on what is checked and loaded
+            if self._selected_category is None:
+                self._deactivate_editing()
+            elif self._strictly_use_default_values_checkbox.get() == 0:
+                self._deactivate_below_strictly_use_default_values()
+            elif self._calculate_area_checkbox.get() == 0:
+                self._deactivate_switch()
+
+            self._frozen: bool = False

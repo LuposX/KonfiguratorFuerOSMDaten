@@ -61,6 +61,11 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
         self._width: int = width
         self._height: int = height
 
+        # starts unfrozen
+        self._frozen: bool = False
+
+        self._last_pressed_entry_button: customtkinter.CTkButton = None
+
         self._selected_category: category_i.Category = None
         self._selected_entry: default_value_entry_i.DefaultValueEntry = None
 
@@ -99,6 +104,12 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
         Returns:
             bool: True if category was successfully loaded, else False
         """
+        # unfreezing first
+        self.unfreeze()
+
+        # no button has been pressed yet
+        self._last_pressed_entry_button: customtkinter.CTkButton = None
+
         # First deleting everything on the Frame
         entry_button: customtkinter.CTkButton
         for entry_button in self._entry_button_list:
@@ -139,26 +150,33 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
                     break
                 entry_id += 1
 
-            # Now disabling all "bad" arrow buttons, such as the 2 atn the default value, the down on the 2nd entry,
+            # Now disabling all "bad" arrow buttons, such as the 2 at the default value, the down on the 2nd entry,
             # and the up on the last entry
-            self._up_button_list[0].configure(state="disabled",
-                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
-            self._down_button_list[0].configure(state="disabled",
-                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
-
-            if len(self._up_button_list) > 1:
-                self._up_button_list[len(self._up_button_list) - 1].configure(state="disabled",
-                                                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
-
-            if len(self._down_button_list) > 1:
-                self._down_button_list[len(self._down_button_list) - 1].configure(state="disabled",
-                                                                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+            self._disabling_bad_arrows()
 
             # Pretending the corrosponding button was pressed
             self._entry_button_pressed(entry_id)
 
         # category is loaded
         return True
+
+    def _disabling_bad_arrows(self):
+        # Disables all arrow buttons, thats should not be press able
+        # the 2 on the Default shall not be pressable
+        # the up on the 2nd entry shall not be pressable
+        # the down on the last shall not be pressable
+        self._up_button_list[0].configure(state="disabled",
+                                          fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+        self._down_button_list[0].configure(state="disabled",
+                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+
+        if len(self._up_button_list) > 1:
+            self._up_button_list[1].configure(state="disabled",
+                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+
+        if len(self._down_button_list) > 1:
+            self._down_button_list[len(self._down_button_list) - 1].configure(state="disabled",
+                                                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
     def _up_button_pressed(self, button_id: int):
 
@@ -290,10 +308,44 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        if not self._frozen:
+            entry_button: customtkinter.CTkButton
+            for entry_button in self._entry_button_list:
+                entry_button.configure(state="disabled")
+
+            up_button: customtkinter.CTkButton
+            for up_button in self._up_button_list:
+                up_button.configure(state="disabled")
+
+            down_button: customtkinter.CTkButton
+            for down_button in self._down_button_list:
+                down_button.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        if self._frozen:
+            # First activating everything
+            entry_button: customtkinter.CTkButton
+            for entry_button in self._entry_button_list:
+                entry_button.configure(state="normal")
+
+            up_button: customtkinter.CTkButton
+            for up_button in self._up_button_list:
+                up_button.configure(state="normal")
+
+            down_button: customtkinter.CTkButton
+            for down_button in self._down_button_list:
+                down_button.configure(state="normal")
+
+            # Now disabling what shall stay disabled
+            self._disabling_bad_arrows()
+
+            self._last_pressed_entry_button.configure(state="disabled",
+                                                      text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
+                                                      fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+
+            self._frozen: bool = False

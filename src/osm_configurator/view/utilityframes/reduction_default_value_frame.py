@@ -28,6 +28,7 @@ from typing import TYPE_CHECKING, List
 if TYPE_CHECKING:
     from typing import Final
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+    from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.control.category_controller_interface import ICategoryController
 
 # Finals
@@ -40,7 +41,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
     These tags can hold default values on attributes that can be used in the calculation.
     """
 
-    def __init__(self, parent: TopLevelFrame, width: int, height: int):
+    def __init__(self, parent: TopLevelFrame, width: int, height: int, state_manager: StateManager):
         """
         This method creates a ReductionDefaultValueFrame where the User can edit default-values on tags for
         categories.
@@ -49,6 +50,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
             parent (reduction_frame.ReductionFrame): This is the parent frame of this frame. The frame will be located here.
             width (int): The width of the frame
             height (int): The height of the frame
+            state_manager (StateManager): The StateManager to call if states need to be freezed
         """
         super().__init__(master=parent,
                          width=width,
@@ -60,6 +62,10 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._parent: TopLevelFrame = parent
         self._width: int = width
         self._height: int = height
+        self._state_manager: StateManager = state_manager
+
+        # starts unfrozen
+        self._frozen: bool = False
 
         self._selected_category: category_i.Category = None
         self._selected_entry: default_value_entry_i.DefaultValueEntry = None
@@ -252,6 +258,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         Returns:
             bool: True if category was loaded successfully, false else
         """
+        # First unfreeze
+        self.unfreeze()
 
         self._selected_category: category_i.Category = category
 
@@ -413,9 +421,11 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
             alert_pop_up_i.AlertPopUp("Default Value Tag, with the tag '" + tag + "' already exists!")
 
     def _delete_tag_button_pressed(self):
+        self._state_manager.freeze_state()
         yes_no_pop_up_i.YesNoPopUp("Want to delete, selected default value entry?", self._pop_up_answer)
 
     def _pop_up_answer(self, answer: bool):
+        self._state_manager.unfreeze_state()
 
         if answer:
             if self._selected_category.remove_default_value_entry(self._selected_entry):
@@ -481,10 +491,34 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        if not self._frozen:
+            self._tag_entry.configure(state="disabled")
+            self._area_entry.configure(state="disabled")
+            self._number_of_floors_entry.configure(state="disabled")
+            self._floor_area_entry.configure(state="disabled")
+
+            self._create_tag_button.configure(state="disabled")
+            self._delete_tag_button.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        if self._frozen:
+            self._tag_entry.configure(state="normal")
+            self._area_entry.configure(state="normal")
+            self._number_of_floors_entry.configure(state="normal")
+            self._floor_area_entry.configure(state="normal")
+
+            self._create_tag_button.configure(state="normal")
+            self._delete_tag_button.configure(state="normal")
+
+            # Deactivating stuff again if nothing is loaded
+            if self._selected_category is None:
+                self._deactivate_frame()
+            elif self._selected_entry is None:
+                self._deactivate_editing()
+
+            self._frozen: bool = False

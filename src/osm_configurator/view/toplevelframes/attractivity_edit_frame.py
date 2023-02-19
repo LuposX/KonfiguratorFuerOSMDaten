@@ -63,6 +63,9 @@ class AttractivityEditFrame(TopLevelFrame):
         self._state_manager: StateManager = state_manager
         self._category_controller: ICategoryController = category_controller
 
+        # Frame starts unfrozen
+        self._frozen: bool = False
+
         self._categories: [category_i.Category] = []
         self._attractivities: [attractivity_attribute_i.AttractivityAttribute] = []
 
@@ -346,6 +349,10 @@ class AttractivityEditFrame(TopLevelFrame):
         self._delete_attractivity_button.grid(row=6, column=2, rowspan=2, columnspan=1)
 
     def activate(self):
+
+        # unfreezing the frame
+        self.unfreeze()
+
         # First getting all categories, that are active!
         all_categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
         # Also resetting the categories, that the frame knows of
@@ -518,9 +525,11 @@ class AttractivityEditFrame(TopLevelFrame):
                 self._load_attractivity(new_attractivity)
 
     def _delete_attractivity_button_pressed(self):
+        self._state_manager.freeze_state()
         yes_no_pop_up_i.YesNoPopUp("Want to delete, currently selected Attractivity-Attribute?", self._pop_up_answer)
 
     def _pop_up_answer(self, answer: bool):
+        self._state_manager.unfreeze_state()
 
         if answer:
             if not self._selected_category.remove_attractivity_attribute(self._selected_attribute):
@@ -680,4 +689,21 @@ class AttractivityEditFrame(TopLevelFrame):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        if self._frozen:
+            self._category_drop_down_menu.configure(state="normal")
+            self._attractivity_drop_down_menu.configure(state="normal")
+            self._attractivity_name_entry.configure(state="normal")
+            self._area_entry.configure(state="normal")
+            self._numbers_of_floors_entry.configure(state="normal")
+            self._floor_area_entry.configure(state="normal")
+            self._view_attractivity_list_button.configure(state="normal")
+            self._create_new_attractivity_button.configure(state="normal")
+            self._delete_attractivity_button.configure(state="normal")
+
+            # Deactivating stuff if needed again!
+            if self._selected_category is None:
+                self._deactivate_whole_editing()
+            elif self._selected_attribute is None:
+                self._deactivate_attractivity_editing()
+
+            self._frozen: bool = False

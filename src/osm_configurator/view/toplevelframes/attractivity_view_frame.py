@@ -65,6 +65,11 @@ class AttractivityViewFrame(TopLevelFrame):
         self._state_manager: StateManager = state_manager
         self._category_controller: ICategoryController = category_controller
 
+        # Starts unfrozen
+        self._frozen: bool = False
+
+        self._last_pressed_category_button: customtkinter.CTkButton = None
+
         self._categories: [category_i.Category] = []
         self._selected_category: category_i.Category = None
 
@@ -248,6 +253,12 @@ class AttractivityViewFrame(TopLevelFrame):
         self._edit_attractivity_button.grid(row=2, column=4, rowspan=1, columnspan=1)
 
     def activate(self):
+        # unfreezing first
+        self.unfreeze()
+
+        # There has no button been pressed yet
+        self._last_pressed_category_button: customtkinter.CTkButton = None
+
         # First getting all the active categories
         all_categories: [category_i.Category] = self._category_controller.get_list_of_categories()
 
@@ -452,6 +463,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
                                  text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
+        # Reminding what was the last pressed button
+        self._last_pressed_category_button: customtkinter.CTkButton = pressed_button
+
         self._load_category(self._categories[button_id])
 
     def _edit_attractivity_button_pressed(self):
@@ -475,4 +489,17 @@ class AttractivityViewFrame(TopLevelFrame):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        if self._frozen:
+            self._edit_attractivity_button.configure(state="normal")
+
+            button: customtkinter.CTkButton
+            for button in self._category_button_list:
+                button.configure(state="normal")
+
+            # Disabling the last pressed button again!
+            if self._last_pressed_category_button is not None:
+                self._last_pressed_category_button.configure(state="disabled",
+                                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            self._frozen: bool = False

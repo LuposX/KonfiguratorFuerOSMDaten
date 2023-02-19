@@ -69,6 +69,12 @@ class ReductionFrame(TopLevelFrame):
         self._categories: [category_i.Category] = []
         self._selected_category: category_i.Category = None
 
+        # starts unfrozen
+        self._frozen: bool = False
+
+        # Remembering what category was pressed last
+        self._last_pressed_category_button: customtkinter.CTkButton = None
+
         self._calculation_shown: bool = False
         self._default_values_shown: bool = False
 
@@ -125,9 +131,13 @@ class ReductionFrame(TopLevelFrame):
 
         self._reduction_default_value_frame: reduction_default_value_frame_i.ReductionDefaultValueFrame = reduction_default_value_frame_i.ReductionDefaultValueFrame(
             self, frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (3 / 4),
-            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (5 / 6))
+            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (5 / 6),
+            self._state_manager)
 
     def activate(self):
+        # There has no button been pressed yet
+        self._last_pressed_category_button: customtkinter.CTkButton = None
+
         # Getting all categories
         all_categories: [category_i.Category] = self._category_controller.get_list_of_categories()
 
@@ -216,6 +226,9 @@ class ReductionFrame(TopLevelFrame):
                                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
+        # Remembering that button
+        self._last_pressed_category_button: customtkinter.CTkButton = self._category_button_list[button_id]
+
         # Selecting the category
         self._selected_category: category_i.Category = self._categories[button_id]
 
@@ -232,10 +245,36 @@ class ReductionFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        if not self._frozen:
+            button: customtkinter.CTkButton
+            for button in self._category_button_list:
+                button.configure(state="disabled")
+
+            self._segmented_button.configure(state="disabled")
+
+            self._reduction_calculation_frame.freeze()
+            self._reduction_default_value_frame.freeze()
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        if self._frozen:
+            button: customtkinter.CTkButton
+            for button in self._category_button_list:
+                button.configure(state="normal")
+
+            # Disabling the last pressed category button again!
+            if self._last_pressed_category_button is not None:
+                self._last_pressed_category_button.configure(state="disabled",
+                                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            self._segmented_button.configure(state="normal")
+
+            self._reduction_calculation_frame.freeze()
+            self._reduction_default_value_frame.freeze()
+
+            self._frozen: bool = False

@@ -74,6 +74,10 @@ class CategoryFrame(TopLevelFrame):
         # Starting with no Category
         self._categories: List[category_i.Category] = []
         self._selected_category: category_i.Category = None
+
+        # starts unfrozen
+        self._frozen: bool = False
+
         # Last edited List (Black or White List)
         # Important for, where to auto fill in keys
         # As default, the whiteList was last edited
@@ -529,6 +533,7 @@ class CategoryFrame(TopLevelFrame):
             self._load_category(new_category)
 
     def _delete_category_pressed(self):
+        self._state_manager.freeze_state()
         yes_no_pop_up_i.YesNoPopUp("Do you want to delete, the currently selected Category?", self._pop_up_answer)
 
     def _load_category(self, category: category_i.Category):
@@ -634,6 +639,7 @@ class CategoryFrame(TopLevelFrame):
             self._category_drop_down_menu.set(active_category.get_category_name())
 
     def _pop_up_answer(self, answer: bool):
+        self._state_manager.unfreeze_state()
         if answer:
             self._delete_category()
 
@@ -648,10 +654,38 @@ class CategoryFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        if not self._frozen:
+            self._category_drop_down_menu.configure(state="disabled")
+            self._category_name_entry.configure(state="disabled")
+            self._white_list.configure(state="disabled")
+            self._black_list.configure(state="disabled")
+            self._create_button.configure(state="disabled")
+            self._delete_button.configure(state="disabled")
+
+            button: customtkinter.CTkButton
+            for button in self._recommender_frame_button_list:
+                button.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        if self._frozen:
+            self._category_drop_down_menu.configure(state="normal")
+            self._category_name_entry.configure(state="normal")
+            self._white_list.configure(state="normal")
+            self._black_list.configure(state="normal")
+            self._create_button.configure(state="normal")
+            self._delete_button.configure(state="normal")
+
+            button: customtkinter.CTkButton
+            for button in self._recommender_frame_button_list:
+                button.configure(state="normal")
+
+            # If no category is selected, return to a defined state
+            if self._selected_category is None:
+                self._deactivate_editing()
+
+            self._frozen: bool = False
