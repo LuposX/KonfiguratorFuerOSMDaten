@@ -7,7 +7,7 @@ import customtkinter
 POPUPSIZE = vc.ViewConstants.POPUPSIZE.value  # Holds the size of the Popup
 
 
-class AlertPopUp(customtkinter.CTk):
+class AlertPopUp(customtkinter.CTkToplevel):
     """
     This class creates popups, that will pop up in front of the GUI.
     This instance is an Alert-PopUp. It provides a message and one 'OK' button, to close the PopUp again.
@@ -19,12 +19,12 @@ class AlertPopUp(customtkinter.CTk):
         Args:
             message (str): String containing the message that will be shown
         """
-        popup = super().__init__()
+        super().__init__()
         self.geometry(POPUPSIZE)
 
         self.title("Alert")
 
-        label = customtkinter.CTkLabel(popup, text=message)
+        label = customtkinter.CTkLabel(self, text=message)
         label.pack(side="top", fill="both", expand="True", padx=10, pady=10)
 
         self.button = customtkinter.CTkButton(self, text="OK", command=self.destroy)

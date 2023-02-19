@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 
-class YesNoPopUp(customtkinter.CTk):
+class YesNoPopUp(customtkinter.CTkToplevel):
     """
     This class creates PopUps, that will pop up in front of the GUI.
     This instance is a YesNoPopUp: It will provide a message, an 'OK' and an 'Cancel' button.
@@ -43,6 +43,9 @@ class YesNoPopUp(customtkinter.CTk):
         super().__init__(
             fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
         )
+
+        # When the PopUp is closed rather than an option selected, this method will be called!
+        self.wm_protocol("WM_DELETE_WINDOW", self._pop_up_closed)
 
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)
@@ -95,6 +98,8 @@ class YesNoPopUp(customtkinter.CTk):
             bool: True (every time)
         """
         self._func(True)
+
+        self.destroy()
         return True
 
     def cancel(self) -> bool:
@@ -105,7 +110,13 @@ class YesNoPopUp(customtkinter.CTk):
             bool: False (every time)
         """
         self._func(False)
+
+        self.destroy()
         return False
+
+    def _pop_up_closed(self):
+        # If the PopUp just gets closed, it will act as cancel was pressed!
+        self.cancel()
 
 
 def combine_funcs(*funcs):
