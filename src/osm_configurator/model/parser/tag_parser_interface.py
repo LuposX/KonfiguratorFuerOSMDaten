@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-import pathlib
-import geopandas
 
 from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
@@ -27,6 +25,8 @@ class TagParserInterface(ABC):
 
         Returns:
            List[Tuple[str, str]]: A list of key,value tag pairs.
+
+        Raises:
+            TagsWronglyFormatted: If a tag wasn't correctly formatted.
         """
         pass
-

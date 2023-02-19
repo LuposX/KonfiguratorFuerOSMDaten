@@ -1,11 +1,24 @@
 from __future__ import annotations
 
-import src.osm_configurator.model.project.configuration.category
+import os
 
-from typing import TYPE_CHECKING
+import src.osm_configurator.model.project.configuration.category
+import src.osm_configurator.model.project.configuration.category as category_i
+import src.osm_configurator.model.project.configuration.default_categories as default_categories_i
+from pathlib import Path
+
+from typing import TYPE_CHECKING, Final
+
+from src.osm_configurator.model.parser.category_parser import CategoryParser
 
 if TYPE_CHECKING:
-    from typing import List
+    from typing import List, Set
+    from pathlib import Path
+    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+    from src.osm_configurator.model.project.configuration.category import Category
+    from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+
+CSV_ENDING: str = ".csv"
 
 
 class CategoryManager:
@@ -13,96 +26,156 @@ class CategoryManager:
     Category Manager holds a list of categories and changes them according to the given needs.
     """
 
-    _categories = [] # List of categories
-
-    def __init__(self, categories):
+    def __init__(self):
         """
         Constructor of the class.
-
-        Args:
-            categories (Category): Starting list of categories.
         """
-        self._categories = categories
+        self._categories: List[Category] = []
+        building_category: Category = default_categories_i.create_building_category()
 
-    def get_category(self, index):
+        self._categories.append(building_category)
+
+    def get_activated_attribute(self) -> List[Attribute]:
+        """
+        Return a list of all used attributes, of all categories.
+        This is used to know which tags we need to save.
+
+        Returns:
+            List[Attribute]: A list that contains all used attributes
+        """
+        _activated_attributes: List[Attribute] = []
+
+        for category in self._categories:
+            for attribute in category.get_activated_attribute():
+                if attribute not in _activated_attributes:
+                    _activated_attributes.append(attribute)
+        return _activated_attributes
+
+    def get_category(self, name: str) -> Category | None:
         """
         Gets a category based on the index.
 
         Args:
-            index (int): Index in the categories-list, that will be returned.
+            name (str): IThe name of the category.
 
         Returns:
-            category.Category: The Category we wanted.
+            Category: The Category we wanted.
         """
-        if index < 0 or index > len(self._categories):
-            return -1
-        return self._categories[index]
+        for item in self._categories:
+            if item.get_category_name() == name:
+                return item
+        return None
 
-    def get_categories(self) -> List:
+    def get_categories(self) -> List[Category]:
         """
         Getter for all the Categories.
 
         Returns:
-            list[Category]: List of the chosen categories.
+            List[Category]: List of the chosen categories.
         """
         return self._categories
 
-    def create_category(self, new_category):
+    def create_category(self, new_category: Category) -> bool:
         """
         Creates a new category, that will be empty.
 
+        Args:
+            new_category (Category): Category that will be created.
+
         Returns:
-            category.Category: The newly created category.
+            bool: True, if the element was created correctly, else false.
         """
-        if new_category not in self._categories:
+        if new_category.get_category_name() == "":
+            return False
+        # Check that the category is not already saved
+        if new_category.get_category_name() in self.get_all_categories_names():
+            return False
+        else:
             self._categories.append(new_category)
             return True
-        return False
 
-    def remove_category(self, category):
+    def remove_category(self, category_to_remove: Category) -> bool:
         """
         Removes the given category from the categories list, if element is inside the List.
 
         Args:
-            category (Category): Category that will be removed.
+            category_to_remove (Category): Category that will be removed.
 
         Returns:
             bool: True, if the element was removed correctly, else false.
         """
-        if category in self._categories:
-            self._categories.remove(category)
-            return True
+        # Check if the element is in the list
+        if category_to_remove == self.building_category:
+            return False
+        for category in self._categories:
+            if category_to_remove.get_category_name() == category.get_category_name():
+                self._categories.remove(category_to_remove)
+                return True
         return False
 
-    def override_categories(self, new_category_list):
+    def override_categories(self, new_category_list_path: Path):
         """
-        Overwrites the list of categories with the given list, if both lists are not identical.
+        Overwrites the list of categories with the given list.
 
         Args:
-            new_category_list (list[Categories]): List of categories, that will overwrite the already existing list.
-
-        Returns:
-            bool: True, if the replacement was successful, else False.
+            new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
         """
-        if self._categories != new_category_list:
-            self._categories = new_category_list
-            return True
-        return False
+        new_categories: List[Category] = []
+        category_parser: CategoryParser = CategoryParser()
 
-    def merge_categories(self, category_input_list):
+        for file in os.listdir(new_category_list_path):
+            if file.endswith(CSV_ENDING):
+                new_categories.append(category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
+        self._categories = new_categories
+
+    def merge_categories(self, new_category_list_path: Path):
+        """
+        Overwrites the list of categories with the given list.
+
+        Args:
+            new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
+        """
+        new_categories: List[Category] = []
+        category_parser: CategoryParser = CategoryParser()
+
+        for file in os.listdir(new_category_list_path):
+            if file.endswith(CSV_ENDING):
+                new_categories.append(
+                    category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
+        self.add_categories(new_categories)
+
+    def add_categories(self, category_input_list: List[Category]):
         """
         Merges the existing category list with the given list if both lists are not identical.
 
         Args:
-            category_input_list (list[Category]): New list of categories that will be merged into the existing list.
+           category_input_list (List[Category]): New list of categories that will be merged into the existing list.
+        """
+        for category in category_input_list:
+            if category.get_category_name() not in self.get_all_categories_names():
+                self._categories.append(category)
+
+    def get_all_defined_attractivity_attributes(self) -> List[AttractivityAttribute]:
+        """
+        Gets all defined attractivity attributes.
+        Doesn't have dupplicates.
 
         Returns:
-            bool: True, if the merging was successful, else False.
+            (List[AttractivityAttribute]): Attractivity Attributes
         """
-        if self._categories == category_input_list:
-            return False
+        result: Set[AttractivityAttribute] = set([])
 
-        for category in category_input_list:
-            if category not in self._categories:
-                self._categories.append(category)
-        return True
+        category: Category
+        for category in self._categories:
+            result.update(category.get_attractivity_attributes())
+        return list(result)
+
+    def get_all_categories_names(self) -> List[str]:
+        """
+        This method return the names of all categories currently saved.
+        """
+        name_list: List[str] = []
+        for category in self._categories:
+            name_list.append(category.get_category_name())
+        return name_list
+

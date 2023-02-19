@@ -1,36 +1,48 @@
 from __future__ import annotations
 
 from enum import Enum, unique
-from typing import Tuple, Callable
-from geopandas import GeoDataFrame
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import Tuple, Callable
+    from pandas import Series
 
 
-def _sum(data, attractivity_name):
-    pass
+def _sum(df: Series):
+    return df.sum()
 
 
-def _average(data, attractivity_name):
-    pass
+def _mean(df: Series) -> float:
+    return df.mean()
 
 
-def _mean(data, attractivity_name):
-    pass
+def _maximum(df: Series) -> float:
+    return df.max()
 
 
-def _upper_quartile(data, attractivity_name):
-    pass
+def _minimum(df: Series) -> float:
+    return df.min()
 
 
-def _lower_quartile(data, attractivity_name):
-    pass
+def _variance(df: Series) -> float:
+    return df.var()
 
 
-def _maximum(data, attractivity_name):
-    pass
+def _standard_deviation(df: Series) -> float:
+    return df.std()
 
 
-def _minimum(data, attractivity_name):
-    pass
+def _median(df: Series) -> float:
+    return df.median()
+
+
+def _25_quantile(df: Series) -> float:
+    return df.quantile(0.25)
+
+
+def _75_quantile(df: Series) -> float:
+    return df.quantile(0.75)
 
 
 @unique
@@ -43,26 +55,28 @@ class AggregationMethod(Enum):
     """
     # Attributes are from the type (Tuple[Callable, str])
     SUM = (_sum, "sum")  #: Calculates the sum of the attractivity attribute over all osm elements from the data.
-    AVERAGE = (_average, "average")  #: Calculates the average of the attractivity attribute over all osm elements from the data.
     MEAN = (_mean, "mean")  #: Calculates the mean of the attractivity attribute over all osm elements from the data.
-    UPPER_QUARTILE = (_upper_quartile, "upper quartile")  #: Calculates the upper_quartile of the attractivity attribute over all osm elements from the data.
-    LOWER_QUARTILE = (_lower_quartile, "lower quartile")  #: Calculates the lower quartile of the attractivity attribute over all osm elements from the data.
-    MAXIMUM = (_maximum, "maximum")  #: Calculates the maximum of the attractivity attribute over all osm elements from the data.
-    MINIMUM = (_minimum, "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
+    MAXIMUM = (
+    _maximum, "maximum")  #: Calculates the maximum of the attractivity attribute over all osm elements from the data.
+    MINIMUM = (
+    _minimum, "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
+    VARIANCE = (_variance, "variance")
+    STANDARD_DERIVATIVE = (_standard_deviation, "Standard deviation")
+    MEDIAN = (_median, "Median")
+    QUANTILE_25 = (_25_quantile, "25_Quantile")
+    QUANTILE_75 = (_75_quantile, "75_Quantile")
 
-    def calculate_aggregation(self, data, attractivity_name):
+    def calculate_aggregation(self, data: Series) -> float:
         """
         Executes the aggregation method of the called enum type.
 
         Args:
-            data (geopandas.GeoDataFrame): The data on which we want to execute the function on, should be a GeoDataFrame containing osm elements.
-            attractivity_name (str): This is the name of the attractivity through which we want to call the function,
-                                        the attractivity_name should be the name of a column in the data GeoDataFrame.
+            data (Series): The data on which we want to execute the function on, should be a Series containing attractitivity attributes.
 
         Returns:
             float: The aggregated value of the attractivity values from all osm elements.
         """
-        return self.value[0](data, attractivity_name)
+        return self.value[0](data)
 
     def get_name(self):
         """
@@ -72,3 +86,18 @@ class AggregationMethod(Enum):
             str: Name of the enum type
         """
         return self.value[1]
+
+    def convert_str_to_aggregation_method(mode: str) -> AggregationMethod | None:
+        """
+        Converts a given string to the associated AggregationMethod.
+
+        Args:
+            mode (str): The string.
+
+        Returns:
+            AggregationMethod: Associated AggregationMethod.
+        """
+        for method in AggregationMethod:
+            if method.get_name() == mode:
+                return method
+        return None

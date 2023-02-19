@@ -21,3 +21,18 @@ class CutOutMode(Enum):
             str: the name of the enum
         """
         return self.value
+
+    def convert_str_to_cut_out_mode(mode: str) -> CutOutMode | None:
+        """
+        Converts a given string to the associated CutOutMode.
+
+        Args:
+            mode (str): The string.
+
+        Returns:
+            CutOutMode: Associated CutOutMode.
+        """
+        for cut_out_mode in CutOutMode:
+            if cut_out_mode.get_name() == mode:
+                return cut_out_mode
+        return None

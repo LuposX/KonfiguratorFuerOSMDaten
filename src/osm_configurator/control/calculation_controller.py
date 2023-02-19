@@ -1,72 +1,38 @@
-from __future__ import annotations
+from src.osm_configurator.control.calculation_controller_interface import ICalculationController
 
-import src.osm_configurator.model.application.application_interface
-import src.osm_configurator.model.project.calculation.calculation_state_enum
-import src.osm_configurator.model.project.calculation.calculation_phase_enum
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.application.application_interface import IApplication
+    from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
+    from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
+
+    from typing import Tuple
 
 
-class CalculationController:
-    """
-    The CalculationController is responsible for forwarding requests to the model, regarding calculations.
-    It may be used to gather information and to control the calculation-process of the currently selected project.
-    """
+class CalculationController(ICalculationController):
+    __doc__ = ICalculationController.__doc__
 
-    def __init__(self, model):
+    def __init__(self, model: IApplication):
         """
         Creates a new instance of the CalculationController, with an association to the model.
 
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        pass
+        self._model: IApplication = model
 
-    def start_calculations(self, starting_phase):
-        """
-        Starts the calculations in the given calculation phase in the currently selected project.
-        The calculation process is split in different calculation phases. This function starts the calculation in a given phase.
+    def start_calculations(self, starting_phase: CalculationPhase) -> Tuple[CalculationState, str]:
+        return self._model.get_active_project().get_calculation_manager().start_calculation(starting_phase)
 
-        Args:
-            starting_phase (calculation_phase_enum.CalculationPhase): The phase in which the calculation should start.
+    def get_calculation_state(self) -> Tuple[CalculationState, str]:
+        return self._model.get_active_project().get_calculation_manager().get_calculation_state()
 
-        Returns:
-            calculation_state_enum.CalculationState: The status of the calculation: RUNNING, if the calculation was started successfully. For details on the meaning of this return value, see CalculationState.
-        """
-        pass
+    def get_current_calculation_phase(self) -> CalculationPhase:
+        return self._model.get_active_project().get_calculation_manager().get_current_calculation_phase()
 
-    def get_calculation_state(self):
-        """
-        Gives the current calculation state of the selected project.
+    def get_current_calculation_process(self) -> float:
+        return self._model.get_active_project().get_calculation_manager().get_calculation_progress()
 
-        Returns:
-            calculation_state_enum.CalculationState: Returns the current state of the calculation. For details see documentation of CalculationState.
-        """
-        pass
-
-    def get_current_calculation_phase(self):
-        """
-        Returns the calculation phase of the currently selected project.
-
-        Returns:
-            calculation_phase_enum.CalculationPhase: The phase that is currently running. NONE, if no phase is currently running.
-        """
-        pass
-
-    def get_current_calculation_process(self):
-        """
-        Returns an approximation of the progress of the calculations in the currently selected project.
-        The progress is given as a number between 0 and 1, where 0 indicates that the calculation has not started yet and 1 indicates, that the calculations are done.
-
-        Returns:
-            float: The value of the approximation.
-        """
-        pass
-
-    def cancel_calculations(self):
-        """
-        Cancels the calculations of the currently selected project.
-        The calculation phase that is currently running will be stopped.
-
-        Returns:
-            bool: True, if the calculation was canceled successfully; False, otherwise.
-        """
-        pass
+    def cancel_calculations(self) -> bool:
+        return self._model.get_active_project().get_calculation_manager().cancel_calculation()

@@ -1,6 +1,22 @@
 from __future__ import annotations
 
+from pathlib import Path
+import os, sys
+from typing import TYPE_CHECKING, List, Final
+
 from src.osm_configurator.model.application.application_interface import IApplication
+import src.osm_configurator.model.application.recommender_system as recommender_system_i
+import src.osm_configurator.model.application.application_settings as application_settings_i
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum_i
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.application.passive_project import PassiveProject
+    from src.osm_configurator.model.application.recommender_system import RecommenderSystem
+    from src.osm_configurator.model.project.active_project import ActiveProject
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
+    from pathlib import Path
+
+PROJECT_SETTING: str = "project_settings.csv"
 
 
 class Application(IApplication):
@@ -9,98 +25,56 @@ class Application(IApplication):
     def __init__(self):
         """
         Creates a new instance of the application_interface.Application.
+
         """
-        pass
+        self.active_project: ActiveProject = None
 
-    def get_passive_project_list(self):
-        pass
+        self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings()
 
-    def get_key_recommendation(self, input):
-        pass
+        self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
+            self.application_settings.get_setting(
+                application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
 
-    def create_project(self, name, description, destination):
-        pass
+        self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem()
 
-    def load_project(self, path):
-        pass
+    def create_project(self, name: str, description: str, destination: Path) -> bool:
+        self.active_project = ActiveProject(destination, True, self.application_settings, name, description)
+        return True
 
-    def start_calculation(self, calculation_phase):
-        pass
+    def load_project(self, destination: Path) -> bool:
+        self.active_project = ActiveProject(destination, False, self.application_settings)
+        return True
 
-    def get_osm_data(self):
-        pass
+    def get_passive_project_list(self) -> List[PassiveProject]:
+        return self.passive_project_list
 
-    def set_osm_data(self, osm_data):
-        pass
+    def get_key_recommendation_system(self) -> RecommenderSystem:
+        return self.recommender_system
 
-    def get_all_aggregation_methods(self):
-        pass
+    def get_active_project(self) -> ActiveProject:
+        return self.active_project
 
-    def is_aggregation_method_active(self, method):
-        pass
+    def get_application_settings(self) -> ApplicationSettings:
+        return self.application_settings
 
-    def set_aggregation_method_active(self, method, active):
-        pass
+    def _create_passive_project_list(self, destination: Path) -> List[PassiveProject] | None:
+        passive_project_list: List[PassiveProject] = []
 
-    def get_cut_out_mode(self):
-        pass
+        if destination:
+            for directory in os.listdir(destination):
+                if not os.path.isfile(directory):
+                    project: Path = Path(os.path.join(destination, Path(str(directory))))
+                    filepath: Path = Path(os.path.join(project, PROJECT_SETTING))
+                    if os.path.exists(filepath):
+                        passive_project_list.append(PassiveProject(filepath))
+            return passive_project_list
+        else:
+            return None
 
-    def set_cut_out_mode(self, new_cut_out_mode):
-        pass
+    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
+        os.rmdir(passive_project.get_project_folder_path())
+        self.passive_project_list.remove(passive_project)
+        return True
 
-    def get_cut_out_path(self):
-        pass
-
-    def set_cut_out_path(self, path):
-        pass
-
-    def get_category(self, index):
-        pass
-
-    def get_categories(self):
-        pass
-
-    def create_category(self):
-        pass
-
-    def remove_category(self, category):
-        pass
-
-    def override_categories(self, new_category_list):
-        pass
-
-    def merge_categories(self, category_input_list):
-        pass
-
-    def create_map(self, cut_out):
-        pass
-
-    def create_boxplot(self, data):
-        pass
-
-    def get_location(self):
-        pass
-
-    def set_name(self, new_name):
-        pass
-
-    def get_name(self):
-        pass
-
-    def set_description(self, new_description):
-        pass
-
-    def get_description(self):
-        pass
-
-    def export_project(self, path):
-        pass
-
-    def export_configuration(self, path):
-        pass
-
-    def export_calculation(self, path):
-        pass
-
-    def export_map(self, path):
-        pass
+    def unload_project(self):
+        self.active_project = None

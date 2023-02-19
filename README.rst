@@ -45,7 +45,7 @@ for example using ``pip`` or ``conda``:
 
 .. code-block:: console
 
-      Hier könnte etwas wichtigeres stehen   
+    Here will stand sth. in the future
 
 
 Usage
@@ -71,5 +71,3 @@ To contribute to the project:
 3. Commit your changes (``git commit -am 'Add some fooBar'``)
 4. Push to the branch (``git push origin feature/fooBar``)
 5. Create a new Pull Request
-
-a

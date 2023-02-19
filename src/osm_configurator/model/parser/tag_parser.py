@@ -1,8 +1,14 @@
 from __future__ import annotations
 
-from typing import List
-
 from src.osm_configurator.model.parser.tag_parser_interface import TagParserInterface
+from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_exception import TagsWronglyFormatted
+
+import re
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing import List, Dict, Tuple
 
 
 class TagParser(TagParserInterface):
@@ -14,5 +20,51 @@ class TagParser(TagParserInterface):
         """
         pass
 
-    def parse_tags(self, tags: List[str]):
-        pass
+    def parse_tags(self, tags: List[str]) -> Dict[str, str]:
+
+        if not tags:
+            return {}
+
+        parsed_tags: Dict[str, str] = {}
+        tag: str
+        for tag in tags:
+            split_string = tag.split("=")
+
+            if len(split_string) != 2:
+                raise TagsWronglyFormatted(str(tag))
+
+            parsed_tags.update({split_string[0]: split_string[1]})
+
+        return parsed_tags
+
+    def user_tag_parser(self, string: str) -> List[str]:
+        """
+        This method parses a string representation of a list to an actual list.
+        This methods gets used to parse the input the string fro mthe GUI.
+        e.g. format '["building=yes", "pooop=funny_Cat"]'
+        """
+        tmp_str: str = re.sub(r'["\[\]\']', '', string)
+        tmp_str: str = tmp_str.split(",")
+
+        # remove trailing whitespaces
+        tmp_str = [x.strip(' ') for x in tmp_str]
+
+        if len(tmp_str) != 0:
+            return list(filter(None, tmp_str))
+        else:
+            return []
+
+    def dataframe_tag_parser(self, string: str) -> List[Tuple[str, str]]:
+        """
+        This method parses a string representation of a list to an actual list.
+        This method is used to parse teh tags from the dataframe file.
+        The input format is in the form:
+        e.g. "[('addr:country', 'MC'), ('building', 'terrace'), ('building:levels', '8')]"
+        """
+        return eval(string)
+
+    def list_to_dict(self, string: List[Tuple[str, str]]) -> Dict[str, str]:
+        """
+        This function is used to convert a list of tuples into a dicitonary.
+        """
+        return dict(string)
