@@ -6,10 +6,10 @@ from src.osm_configurator.model.project.configuration.cut_out_mode_enum import C
 
 class CutOutControllerStub(ICutOutController):
     def get_cut_out_mode(self) -> CutOutMode:
-        return CutOutMode
+        return CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED
 
     def set_cut_out_mode(self, mode: CutOutMode) -> bool:
-        return CutOutMode
+        return True
 
     def set_cut_out_reference(self, path: pathlib.Path) -> bool:
         return True

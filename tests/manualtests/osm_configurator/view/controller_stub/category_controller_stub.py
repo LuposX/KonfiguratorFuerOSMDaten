@@ -19,11 +19,12 @@ class CategoryControllerStub(ICategoryController):
     def get_list_of_categories(self) -> list[Category]:
         return []
 
-    def create_category(self) -> Category:
-        return Category()
+    def create_category(self, name: str) -> Category:
+        category = Category(name)
+        return category
 
     def delete_category(self, category: Category) -> bool:
-        return category.deactivate()
+        return True
 
     def get_list_of_key_recommendations(self, current_input: str) -> list[str]:
         return []

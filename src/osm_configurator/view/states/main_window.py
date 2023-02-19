@@ -31,11 +31,11 @@ if TYPE_CHECKING:
 # Final Variablen
 TOP_ROW_WEIGHT: Final = 1
 BOTTOM_ROW_WEIGHT: Final = 1
-MIDDLE_ROW_WEIGHT: Final = 4
+MIDDLE_ROW_WEIGHT: Final = 10
 COLUM_WEIGHT: Final = 1
 
 
-class MainWindow:
+class MainWindow(customtkinter.CTk):
     """
     This class provides the GUI, the user will be working on.
     It is made dynamic and can change between different frames, to show different information and buttons to the user.
@@ -45,8 +45,8 @@ class MainWindow:
     def __init__(self, export_controller: IExportController, category_controller: ICategoryController,
                  project_controller: IProjectController, settings_controller: ISettingsController,
                  aggregation_controller: IAggregationController, calculation_controller: ICalculationController,
-                 cut_out_controller: ICutOutController,
-                 data_visualization_controller: IDataVisualizationController, osm_data_controller: IOSMDataController):
+                 cut_out_controller: ICutOutController, data_visualization_controller: IDataVisualizationController,
+                 osm_data_controller: IOSMDataController):
         """
         This method creates a MainWindow with a connection to the given control.
 
@@ -62,8 +62,8 @@ class MainWindow:
             osm_data_controller (osm_data_controller.OSMDataController): Respective controller.
         """
         # Creating the mainWindow and setting its position, and making it resizable
-        self._window: customtkinter.CTk = customtkinter.CTk()
-        self._window.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
+        super().__init__()
+        self.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
 
         # Selecting the primary Monitor to get accurate location for centering the window
         primary_monitor: Monitor = None
@@ -79,18 +79,18 @@ class MainWindow:
         true_height: int = screen_height / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value / 2
         true_width: int = screen_width / 2 - main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value / 2
 
-        self._window.geometry("%dx%d+%d+%d" % (main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value,
-                                               main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value,
-                                               true_width, true_height))
-        self._window.minsize(main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH_MINIMUM.value,
-                             main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT_MINIMUM.value)
-        self._window.resizable(True, True)
+        self.geometry("%dx%d+%d+%d" % (main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH.value,
+                                       main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT.value,
+                                       true_width, true_height))
+        self.minsize(main_window_constants_i.MainWindowConstants.MAIN_WINDOW_WIDTH_MINIMUM.value,
+                     main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT_MINIMUM.value)
+        self.resizable(True, True)
 
         # Configurating the grid for the Application
-        self._window.grid_columnconfigure(0, weight=COLUM_WEIGHT)
-        self._window.grid_rowconfigure(0, weight=TOP_ROW_WEIGHT)
-        self._window.grid_rowconfigure(1, weight=MIDDLE_ROW_WEIGHT)
-        self._window.grid_rowconfigure(2, weight=BOTTOM_ROW_WEIGHT)
+        self.grid_columnconfigure(0, weight=COLUM_WEIGHT)
+        self.grid_rowconfigure(0, weight=TOP_ROW_WEIGHT)
+        self.grid_rowconfigure(1, weight=MIDDLE_ROW_WEIGHT)
+        self.grid_rowconfigure(2, weight=BOTTOM_ROW_WEIGHT)
 
         # Creating the StateManager
         from src.osm_configurator.view.states.state_manager import StateManager
@@ -106,9 +106,9 @@ class MainWindow:
         """
         Starts the Loop of the MainWindow and therefor the whole View
         """
-        self._window.mainloop()
+        self.mainloop()
 
-    def change_state(self, last_state: State, new_state: State) -> bool:
+    def change_state(self, last_state: State | None, new_state: State | None) -> bool:
         """
         This method changes from an old given state to a new given state to show on the MainWindow.
 
@@ -119,7 +119,7 @@ class MainWindow:
         Returns:
             bool: True, if the state change was successful, false if not.
         """
-        # Making sure both states are not None
+        # Making sure the new state is not None
         if new_state is None:
             return False
 
@@ -128,6 +128,7 @@ class MainWindow:
         if last_state is not None:
             success: bool = self._make_invisible(last_state)
         else:
+            # If Last state is none, there is no need to make anything invisible
             success: bool = True
 
         # If last State was successfully removed, then we try to make the new state visible
@@ -138,7 +139,7 @@ class MainWindow:
 
             return success
 
-    def _make_visible(self, state: State) -> bool:
+    def _make_visible(self, state: State | None) -> bool:
         """
         This method makes the given State visible on the MainWindow.
 
@@ -149,6 +150,7 @@ class MainWindow:
             bool: True if the state could be made visible, false if not.
         """
         if state is None:
+            # If there is no new state given, then you can't make anything visible
             return False
 
         frames: List[positioned_frame_i.PositionedFrame] = state.get_active_frames()
@@ -162,14 +164,14 @@ class MainWindow:
             actual_frame: TopLevelFrame = frame.get_frame()
             sticky_type = frame.get_sticky()
 
-            actual_frame.master = self._window
+            actual_frame.master = self
             actual_frame.grid(row=row, column=column, rowspan=row_span, columnspan=column_span, sticky=sticky_type)
             # After Frame is placed, activate it, so it starts its job
             actual_frame.activate()
 
         return True
 
-    def _make_invisible(self, state: State) -> bool:
+    def _make_invisible(self, state: State | None) -> bool:
         """
         This method removes a given State from the MainWindow, so it cant be seen or interacted with anymore.
 
@@ -180,7 +182,8 @@ class MainWindow:
             bool: True, if the given state could be made invisible, false if not.
         """
         if state is None:
-            return False
+            # If there is nothing, then it is already invisible!
+            return True
 
         frames: List[positioned_frame_i.PositionedFrame] = state.get_active_frames()
 

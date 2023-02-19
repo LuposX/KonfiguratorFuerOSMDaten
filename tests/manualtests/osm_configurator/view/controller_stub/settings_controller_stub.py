@@ -5,13 +5,13 @@ from src.osm_configurator.control.settings_controller_interface import ISettings
 
 class SettingsControllerStub(ISettingsController):
     def get_project_name(self) -> str:
-        return ""
+        return "EXAMPLE PROJECT NAME"
 
     def set_project_name(self, name: str) -> bool:
         return True
 
     def get_project_description(self) -> str:
-        return ""
+        return "EXAMPLE PROJECT DESCRIPTION"
 
     def set_project_description(self, description: str) -> bool:
         return True

@@ -401,6 +401,9 @@ class StateManager:
             else:
                 success: bool = self._main_window.change_state(self._previous_state, next_state)
                 if success:
+                    # If state change worked, save the state before as previous state
+                    # and set the new state as the current one
+                    self._previous_state = self._current_state
                     self._current_state = next_state
                 return success
 
