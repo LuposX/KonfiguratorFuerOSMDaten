@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import tkinter
 from functools import partial
 
 import customtkinter
@@ -56,6 +57,8 @@ class AggregationFrame(TopLevelFrame):
         # Setting Attributes
         self._state_manager: StateManager = state_manager
         self._aggregation_controller: IAggregationController = aggregation_controller
+
+        self._frozen: bool = False
 
         # Making the Grid
         # The grid is a 3x3 grid, with the middle cell beeing the biggest
@@ -115,6 +118,9 @@ class AggregationFrame(TopLevelFrame):
             checkbox_id += 1
 
     def activate(self):
+        # Unfreeze Frame on activation!
+        self.unfreeze()
+
         method: aggregation_method_enum_i.AggregationMethod
         checkbox_id: int = 0
         for method in self._aggregation_methods:
@@ -154,10 +160,23 @@ class AggregationFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+
+        if not self._frozen:
+            checkbox: customtkinter.CTkCheckBox
+            for checkbox in self._aggregation_checkboxes:
+                checkbox.configure(state=tkinter.DISABLED)
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+
+        if self._frozen:
+            checkbox: customtkinter.CTkCheckBox
+            for checkbox in self._aggregation_checkboxes:
+                checkbox.configure(state=tkinter.NORMAL)
+
+            self._frozen: bool = False
+
