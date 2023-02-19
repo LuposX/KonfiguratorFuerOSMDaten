@@ -48,7 +48,7 @@ class MainWindow(customtkinter.CTk):
                  cut_out_controller: ICutOutController, data_visualization_controller: IDataVisualizationController,
                  osm_data_controller: IOSMDataController):
         """
-        This method creates a MainWindow with a connection to the given control.
+        This method creates a MainWindow that shows the GUI.
 
         Args:
             export_controller (export_controller.ExportController): Respective controller.
