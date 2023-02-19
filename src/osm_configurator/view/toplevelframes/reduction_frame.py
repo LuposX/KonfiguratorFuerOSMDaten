@@ -227,3 +227,15 @@ class ReductionFrame(TopLevelFrame):
             alert_pop_up_i.AlertPopUp("Could not load category!\nFrame has been refreshed!")
             # Refresh Frame, since something went wrong!
             self.activate()
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass

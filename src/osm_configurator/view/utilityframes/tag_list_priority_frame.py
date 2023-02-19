@@ -13,6 +13,8 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 
+from src.osm_configurator.view.freezable import Freezable
+
 from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
@@ -30,7 +32,7 @@ ENTRY_BUTTON_HEIGHT: Final = 44
 ARROW_BUTTON_HEIGHT: Final = 20
 
 
-class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
+class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
     """
     This frame shows all the default values of a category, listed in priority.
     The higher an entry is, the lower its priority is.
@@ -283,3 +285,15 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame):
 
         self._entry_button_list[self._selected_button_id].configure(text=text)
         return True
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass

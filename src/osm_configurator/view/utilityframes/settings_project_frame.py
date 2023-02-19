@@ -137,3 +137,15 @@ class SettingsProjectFrame(TopLevelFrame):
         #  no null-checks required since description is optional
         self._project_description = textbox_input
         ISettingsController.set_project_description(self._settings_controller, textbox_input)
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass

@@ -149,3 +149,15 @@ class AggregationFrame(TopLevelFrame):
             self._aggregation_checkboxes[checkbox_id].deselect()
             self._aggregation_checkboxes[checkbox_id].configure(
                 text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED)
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass

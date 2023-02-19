@@ -643,3 +643,15 @@ class CategoryFrame(TopLevelFrame):
 
         # Doing activate after category got deleted, to refresh frame and select automatiaclly another category
         self.activate()
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass

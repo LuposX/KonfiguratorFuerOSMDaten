@@ -17,6 +17,8 @@ import \
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
+from src.osm_configurator.view.freezable import Freezable
+
 from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
@@ -28,7 +30,7 @@ if TYPE_CHECKING:
 ELEMENT_BORDER_DISTANCE: Final = 20
 
 
-class ReductionCalculationFrame(customtkinter.CTkFrame):
+class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
     """
     This frame provides the ability to the user to set how the calculation of the reduction of a category
     will be done.
@@ -288,3 +290,15 @@ class ReductionCalculationFrame(customtkinter.CTkFrame):
 
     def _activate_switch(self):
         self._site_building_switch.configure(state="normal")
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass

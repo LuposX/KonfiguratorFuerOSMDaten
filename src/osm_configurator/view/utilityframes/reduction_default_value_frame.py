@@ -21,6 +21,8 @@ import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.entry_constants as entry_constants_i
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 
+from src.osm_configurator.view.freezable import Freezable
+
 from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
@@ -32,7 +34,7 @@ if TYPE_CHECKING:
 ELEMENT_BORDER_DISTANCE: Final = 12
 
 
-class ReductionDefaultValueFrame(customtkinter.CTkFrame):
+class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
     """
     This frame shows a list of tags in a priority order, that can be expanded by adding or removing tags.
     These tags can hold default values on attributes that can be used in the calculation.
@@ -474,3 +476,15 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame):
 
         self._floor_area_entry.delete(1.0, "end-1c")
         self._floor_area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass

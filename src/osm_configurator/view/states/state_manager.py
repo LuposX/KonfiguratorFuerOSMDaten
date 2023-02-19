@@ -137,6 +137,10 @@ class StateManager:
         """
         # The StateManager starts unlocked
         self._locked: bool = False
+
+        # The StateManager starts unfrozen
+        self._frozen: bool = False
+
         # Setting other attributes
         self._main_window: MainWindow = main_window
         self._states: List[State] = self.__create_states(export_controller, category_controller, project_controller,
@@ -413,26 +417,72 @@ class StateManager:
         """
         This method locks the Application in the current State
         """
-        # Locking himself up
-        self._locked: bool = True
 
-        # Locking up all Frames, that can be locked
-        frame: PositionedFrame
-        for frame in self._current_state.get_active_frames():
-            real_frame: TopLevelFrame = frame.get_frame()
-            if isinstance(real_frame, lockable_i.Lockable):
-                real_frame.lock()
+        # Can only lock if not frozen, because frozen is a higher hyrachie!
+        if not self._frozen:
+            # Locking himself up
+            self._locked: bool = True
+
+            # Locking up all Frames, that can be locked
+            frame: PositionedFrame
+            for frame in self._current_state.get_active_frames():
+                real_frame: TopLevelFrame = frame.get_frame()
+                if isinstance(real_frame, lockable_i.Lockable):
+                    real_frame.lock()
 
     def unlock_state(self):
         """
         This Method unlocks the Application to be able to change States again
         """
-        # Unlocking himself
-        self._locked: bool = False
 
-        # Unlocking all Frames, that can be unlocked
-        frame: PositionedFrame
-        for frame in self._current_state.get_active_frames():
-            real_frame: TopLevelFrame = frame.get_frame()
-            if isinstance(real_frame, lockable_i.Lockable):
-                real_frame.unlock()
+        # Can only unlock state if not frozen, since frozen is a higher hyrachie!
+        if not self._frozen:
+            # Unlocking himself
+            self._locked: bool = False
+
+            # Unlocking all Frames, that can be unlocked
+            frame: PositionedFrame
+            for frame in self._current_state.get_active_frames():
+                real_frame: TopLevelFrame = frame.get_frame()
+                if isinstance(real_frame, lockable_i.Lockable):
+                    real_frame.unlock()
+
+    def freeze_state(self):
+        """
+        This method freezes all frames that are currently active, and making then not interactable anymore.
+        The state will also be locked and can't be changed, until unfrozen!
+        """
+
+        # Also locking the state, to not allow state changes!
+        self.lock_state()
+
+        # Freezing all frames in the current state
+        # All Frames have to be freezable!
+        positioned_frame: PositionedFrame
+        for positioned_frame in self._current_state.get_active_frames():
+            frame: TopLevelFrame = positioned_frame.get_frame()
+            frame.freeze()
+
+        # freezing himself
+        # Doing the freezing after, since lock_state() only works for unfrozen stateManager
+        self._frozen: bool = True
+
+    def unfreeze_state(self):
+        """
+        Unfreezes the state, by making all active frames interactable again and unlocking the state, allowing
+        state changes again!
+        """
+
+        # Unfreezing himself
+        # Unfreezing first, since unlock_state() only works for unfrozen stateManager!
+        self._frozen: bool = False
+
+        # Unlocking the state, to allow state changes again!
+        self.unlock_state()
+
+        # Unfreezing all frames in the current state
+        # All Frames have to be unfreezable!
+        positioned_frame: PositionedFrame
+        for positioned_frame in self._current_state.get_active_frames():
+            frame: TopLevelFrame = positioned_frame.get_frame()
+            frame.unfreeze()

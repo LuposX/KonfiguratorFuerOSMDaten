@@ -457,3 +457,15 @@ class AttractivityViewFrame(TopLevelFrame):
     def _edit_attractivity_button_pressed(self):
         if not self._state_manager.change_state(state_name_enum_i.StateName.ATTRACTIVITY_EDIT):
             alert_pop_up_i.AlertPopUp("Changing to edit Attractivity Failed!")
+
+    def freeze(self):
+        """
+        If this method is called, the frame will freeze by disabling all possible interactions with it.
+        """
+        pass
+
+    def unfreeze(self):
+        """
+        If this method is called, the frame returns into its previous interactable state.
+        """
+        pass
