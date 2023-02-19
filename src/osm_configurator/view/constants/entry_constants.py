@@ -8,7 +8,7 @@ class EntryConstants(Enum):
     Holds all constants to define an Entry after the applications standards
     """
     ENTRY_CORNER_RADIUS = 8
-    ENTRY_FG_COLOR = "#FFFFFF"
-    ENTRY_TEXT_COLOR = "#FFFFFF"
-    ENTRY_TEXT_COLOR_INVALID = "#000000"
+    ENTRY_FG_COLOR = ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value
+    ENTRY_TEXT_COLOR = ButtonConstants.BUTTON_TEXT_COLOR.value
+    ENTRY_TEXT_COLOR_INVALID = "#EA5353"
 
