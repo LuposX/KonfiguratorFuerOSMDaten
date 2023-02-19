@@ -60,7 +60,9 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         # Setting private Attributes
         self._state_manager = state_manager
         self._project_controller = project_controller
-        self._locked: bool = None
+        # Locked and Frozen start as False
+        self._locked: bool = False
+        self._frozen: bool = False
         self._button_list: List[customtkinter.CTkButton] = []
 
         # Making the grid of the frame
@@ -114,28 +116,11 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
 
     def activate(self):
         # If Frame is activated, it is unlocked
-        self._locked: bool = False
+        self.unlock()
+        # Also starts unfrozen
+        self.unfreeze()
 
-        # Getting what is the current state
-        current_state: state_i.State = self._state_manager.get_state()
-
-        # Activating all buttons, so they don't all end up beeing disabled
-        button: customtkinter.CTkButton
-        for button in self._button_list:
-            button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
-                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
-
-        # If there is no default left, the left arrow is disabled
-        if current_state.get_default_left() is None:
-            self._left_arrow.configure(state="disabled",
-                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-        # If there is no default right, the right arrow is disabled
-        if current_state.get_default_right() is None:
-            self._right_arrow.configure(state="disabled",
-                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+        self._disable_buttons_based_on_state()
 
     def _left_arrow_pressed(self):
         # Button activation and deactivation happens in activate()
@@ -159,6 +144,28 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         # If the project can't be saved, an PopUp will pop up
         if not self._project_controller.save_project():
             alert_pop_up_i.AlertPopUp("Project could not be saved!")
+
+    def _disable_buttons_based_on_state(self):
+        # Getting what is the current state
+        current_state: state_i.State = self._state_manager.get_state()
+
+        # Activating all buttons, so they don't all end up beeing disabled
+        button: customtkinter.CTkButton
+        for button in self._button_list:
+            button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
+                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+
+        # If there is no default left, the left arrow is disabled
+        if current_state.get_default_left() is None:
+            self._left_arrow.configure(state="disabled",
+                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+        # If there is no default right, the right arrow is disabled
+        if current_state.get_default_right() is None:
+            self._right_arrow.configure(state="disabled",
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
     def lock(self) -> bool:
         if self._locked:
@@ -188,10 +195,24 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+
+        if not self._frozen:
+            button: customtkinter.CTkButton
+            for button in self._button_list:
+                button.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+
+        if self._frozen:
+            button: customtkinter.CTkButton
+            for button in self._button_list:
+                button.configure(state="normal")
+
+            self._frozen: bool = False
+
+            self._disable_buttons_based_on_state()

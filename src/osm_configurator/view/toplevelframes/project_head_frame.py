@@ -2,12 +2,17 @@ from __future__ import annotations
 
 import customtkinter
 
+from tkinter import filedialog
+
+from pathlib import Path
+
 import os
 
 from definitions import PROJECT_DIR
 
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.constants.options_menu_constants as options_menu_constants_i
 import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
@@ -34,7 +39,14 @@ ICON_HEIGHT_AND_WIDTH: Final = 42
 
 BUTTON_SPACE_TO_BORDER: Final = 10
 BUTTON_HEIGHT: Final = frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value - (2 * BUTTON_SPACE_TO_BORDER)
-BUTTON_WIDTH: Final = frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value / 8 - (2 * BUTTON_SPACE_TO_BORDER)
+BUTTON_WIDTH: Final = frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value / 9 - (2 * BUTTON_SPACE_TO_BORDER)
+
+EXPORT_DISPLAYED_VALUE: Final = "Export"
+
+EXPORT_PROJECT_STRING: Final = "Export Project"
+EXPORT_CALCULATIONS_STRING: Final = "Export Calculation"
+EXPORT_CONFIGURATION_STRING: Final = "Export Configurations"
+EXPORT_CUT_OUT_MAP_STRING: Final = "Export Cut-Out-Map"
 
 
 class ProjectHeadFrame(TopLevelFrame, Lockable):
@@ -75,7 +87,9 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         self._state_manager: StateManager = state_manager
         self._export_controller: IExportController = export_controller
         self._project_controller: IProjectController = project_controller
-        self._locked: bool = None
+        # Locked and Frozen start as False
+        self._locked: bool = False
+        self._frozen: bool = False
         self._button_list: List[customtkinter.CTkButton] = []
 
         # Making the grid of the Frame
@@ -88,6 +102,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         self.grid_columnconfigure(5, weight=1)
         self.grid_columnconfigure(6, weight=1)
         self.grid_columnconfigure(7, weight=1)
+        self.grid_columnconfigure(8, weight=1)
 
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
@@ -206,6 +221,27 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         self._calculate_button.grid(row=0, column=6, rowspan=2, columnspan=1)
         self._button_list.append(self._calculate_button)
 
+        # Export drop down menu
+        self._export_values: List[str] = [EXPORT_PROJECT_STRING, EXPORT_CALCULATIONS_STRING,
+                                          EXPORT_CONFIGURATION_STRING, EXPORT_CUT_OUT_MAP_STRING]
+        self._export_drop_down_menu: customtkinter.CTkOptionMenu = customtkinter.CTkOptionMenu(
+            master=self,
+            width=BUTTON_WIDTH,
+            height=BUTTON_HEIGHT,
+            corner_radius=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
+            button_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
+            button_hover_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_HOVER_COLOR.value,
+            dropdown_fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_FG_COLOR.value,
+            dropdown_hover_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_HOVER_COLOR.value,
+            dropdown_text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
+            anchor=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_ANCHOR.value,
+            hover=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_HOVER.value,
+            state=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_STATE.value,
+            values=self._export_values,
+            command=self._export_drop_down_menu_edited)
+        self._export_drop_down_menu.grid(row=0, column=7, rowspan=2, columnspan=1)
+
         # Options Button
 
         # Options Icon Used: https://www.flaticon.com/free-icon/cogwheel_44427
@@ -225,16 +261,14 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
                                                                                 command=self._options_button_pressed,
                                                                                 text="",
                                                                                 image=options_icon)
-        self._options_button.grid(row=0, column=7, rowspan=2, columnspan=1)
+        self._options_button.grid(row=0, column=8, rowspan=2, columnspan=1)
         self._button_list.append(self._options_button)
 
     def activate(self):
         # IF frame is activated, it is unlocked
-        self._locked: bool = False
-
-        # Getting what is the current state
-        current_state: state_i.State = self._state_manager.get_state()
-        current_state_name: state_name_enum_i.StateName = current_state.get_state_name()
+        self.unlock()
+        # And unfrozen
+        self.unfreeze()
 
         # Activating all Buttons first, to prevent all buttons getting disabled eventually
         button: customtkinter.CTkButton
@@ -243,53 +277,13 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
 
-        # Now checking what state is active and disabling the corrosponding button
-        match current_state_name:
-            case state_name_enum_i.StateName.MAIN_MENU:
-                raise RuntimeError("Can't be in MainMenu State with this Frame active!")
+        # Activating the Export Drop Down Menu
+        self._export_drop_down_menu.configure(state="normal")
+        # Setting it to its displayed Value
+        self._export_drop_down_menu.set(EXPORT_DISPLAYED_VALUE)
 
-            case state_name_enum_i.StateName.CREATE_PROJECT:
-                raise RuntimeError("Can't be in CreateProject State with this Frame active!")
-
-            case state_name_enum_i.StateName.DATA:
-                self._data_button.configure(state="disabled",
-                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-            case state_name_enum_i.StateName.CATEGORY:
-                self._category_button.configure(state="disabled",
-                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-            case state_name_enum_i.StateName.REDUCTION:
-                self._reduction_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-            case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
-                self._attractivity_button.configure(state="disabled",
-                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-            case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
-                self._attractivity_button.configure(state="disabled",
-                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-            case state_name_enum_i.StateName.AGGREGATION:
-                self._aggregation_button.configure(state="disabled",
-                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-            case state_name_enum_i.StateName.CALCULATION:
-                self._calculate_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
-
-            case state_name_enum_i.StateName.SETTINGS:
-                self._options_button.configure(state="disabled",
-                                               fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                               text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+        # Disabling the button corrosponding to the current state
+        self._disable_button_of_current_state()
 
     def _main_menu_button_pressed(self):
         # Buttons don't get activated or disabled, because if we change back into a state with the HeadFrame
@@ -385,10 +379,92 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         if not self._state_manager.change_state(state_name_enum_i.StateName.SETTINGS):
             alert_pop_up_i.AlertPopUp("Opening Settings Failed!")
 
+    def _export_drop_down_menu_edited(self):
+
+        # First checking what was selected
+        # And then trying the export, if it fails an alertPopUp will be shown
+        if self._export_drop_down_menu.get() == EXPORT_PROJECT_STRING:
+            if not self._export_controller.export_project(self._file_dialog("Select Directory to export Project to")):
+                alert_pop_up_i.AlertPopUp("Export of Project Failed!")
+        elif self._export_drop_down_menu.get() == EXPORT_CALCULATIONS_STRING:
+            if not self._export_controller.export_calculations(self._file_dialog("Select Directory to export Calculations to")):
+                alert_pop_up_i.AlertPopUp("Export of Calculations Failed!")
+        elif self._export_drop_down_menu.get() == EXPORT_CONFIGURATION_STRING:
+            if not self._export_controller.export_configurations(self._file_dialog("Select Directory to export Configurations to")):
+                alert_pop_up_i.AlertPopUp("Export of Configurations Failed!")
+        elif self._export_drop_down_menu.get() == EXPORT_CUT_OUT_MAP_STRING:
+            if not self._export_controller.export_cut_out_map(self._file_dialog("Select Directory to export Cut-Out-Map to")):
+                alert_pop_up_i.AlertPopUp("Export of Cut-Out-Map Failed!")
+
+        # No Else, since if none of those options where selected something that isn't an export option was selected
+
+        # Also setting the Drop Down Menu again to its display value
+        self._export_drop_down_menu.set(EXPORT_DISPLAYED_VALUE)
+
+    def _file_dialog(self, title: str) -> Path:
+        # Opens a file dialog, that will ask for a directory to save stuff in
+        file_path: str = filedialog.askopenfilename(initialdir="/", title=title)
+        # A Path will be returned
+        return Path(file_path)
+
     def _save_project(self):
         # If the project can't be saved, an PopUp will pop up
+        # No file type given since directories don't have that
         if not self._project_controller.save_project():
             alert_pop_up_i.AlertPopUp("Project could not be saved!")
+
+    def _disable_button_of_current_state(self):
+        # Getting what is the current state
+        current_state: state_i.State = self._state_manager.get_state()
+        current_state_name: state_name_enum_i.StateName = current_state.get_state_name()
+
+        # Now checking what state is active and disabling the corrosponding button
+        match current_state_name:
+            case state_name_enum_i.StateName.MAIN_MENU:
+                raise RuntimeError("Can't be in MainMenu State with this Frame active!")
+
+            case state_name_enum_i.StateName.CREATE_PROJECT:
+                raise RuntimeError("Can't be in CreateProject State with this Frame active!")
+
+            case state_name_enum_i.StateName.DATA:
+                self._data_button.configure(state="disabled",
+                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            case state_name_enum_i.StateName.CATEGORY:
+                self._category_button.configure(state="disabled",
+                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            case state_name_enum_i.StateName.REDUCTION:
+                self._reduction_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
+                self._attractivity_button.configure(state="disabled",
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
+                self._attractivity_button.configure(state="disabled",
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            case state_name_enum_i.StateName.AGGREGATION:
+                self._aggregation_button.configure(state="disabled",
+                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            case state_name_enum_i.StateName.CALCULATION:
+                self._calculate_button.configure(state="disabled",
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+
+            case state_name_enum_i.StateName.SETTINGS:
+                self._options_button.configure(state="disabled",
+                                               fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
+                                               text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
 
     def lock(self) -> bool:
         if self._locked:
@@ -421,10 +497,39 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+
+        if not self._frozen:
+            self._main_menu_button.configure(state="disabled")
+            self._save_button.configure(state="disabled")
+            self._data_button.configure(state="disabled")
+            self._category_button.configure(state="disabled")
+            self._reduction_button.configure(state="disabled")
+            self._attractivity_button.configure(state="disabled")
+            self._aggregation_button.configure(state="disabled")
+            self._calculate_button.configure(state="disabled")
+            self._options_button.configure(state="disabled")
+            self._export_drop_down_menu.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+
+        if self._frozen:
+            self._main_menu_button.configure(state="normal")
+            self._save_button.configure(state="normal")
+            self._data_button.configure(state="normal")
+            self._category_button.configure(state="normal")
+            self._reduction_button.configure(state="normal")
+            self._attractivity_button.configure(state="normal")
+            self._aggregation_button.configure(state="normal")
+            self._calculate_button.configure(state="normal")
+            self._options_button.configure(state="normal")
+            self._export_drop_down_menu.configure(state="normal")
+
+            # Disabling the button corrosponding to current state again
+            self._disable_button_of_current_state()
+
+            self._frozen: bool = False
