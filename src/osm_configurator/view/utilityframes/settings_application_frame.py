@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import tkinter
+
 import src.osm_configurator.control.settings_controller_interface as settings_controller_i
 
 # Constants
@@ -21,7 +23,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 
 
-class SettingsApplicationFrame(TopLevelFrame):
+class SettingsApplicationFrame(customtkinter.CTkFrame):
     """
     This frame shows the settings of the application.
     """
@@ -47,6 +49,11 @@ class SettingsApplicationFrame(TopLevelFrame):
 
         self._project_default_folder: Path = self._settings_controller.get_project_default_folder()
 
+        self._labels: list[customtkinter.CTkLabel] = []  # holds all labels to allow uniform styling
+        self._buttons: list[customtkinter.CTkButton] = []  # holds all buttons to allow uniform styling
+
+        self._frozen: bool = False  # indicates whether the window is frozen or not
+
         # Defining the grid-structure
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
@@ -61,6 +68,7 @@ class SettingsApplicationFrame(TopLevelFrame):
             customtkinter.CTkLabel(master=self,
                                    text="General Settings")
         self.header.grid(row=0, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
+        self._labels.append(self.header)
 
         self.path_default_header = \
             customtkinter.CTkLabel(master=self,
@@ -70,6 +78,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value)
         self.path_default_header.grid(row=1, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
+        self._labels.append(self.path_default_header)
 
         self.path_default_label = \
             customtkinter.CTkLabel(master=self,
@@ -79,6 +88,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value)
         self.path_default_label.grid(row=2, column=0, padx=10, pady=10)  # Creates a read-only textbox showing the default-filepath
+        self._labels.append(self.path_default_label)
 
         self.change_default_path_button = \
             customtkinter.CTkButton(master=self,
@@ -92,6 +102,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
         self.change_default_path_button.grid(row=3, column=0, padx=10, pady=10)  # button to browse for a new default folder
+        self._buttons.append(self.change_default_path_button)
 
     def activate(self):
         """
@@ -137,10 +148,22 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        self._frozen = True
+
+        for button in self._buttons:
+            button.configure(state=tkinter.DISABLED)
+
+        for label in self._labels:
+            label.configure(state=tkinter.DISABLED)
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        self._frozen = False
+
+        for button in self._buttons:
+            button.configure(state=tkinter.NORMAL)
+
+        for label in self._labels:
+            label.configure(state=tkinter.NORMAL)

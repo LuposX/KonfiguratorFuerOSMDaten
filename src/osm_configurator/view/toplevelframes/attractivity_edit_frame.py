@@ -663,7 +663,18 @@ class AttractivityEditFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        if not self._frozen:
+            self._category_drop_down_menu.configure(state="disabled")
+            self._attractivity_drop_down_menu.configure(state="disabled")
+            self._attractivity_name_entry.configure(state="disabled")
+            self._area_entry.configure(state="disabled")
+            self._numbers_of_floors_entry.configure(state="disabled")
+            self._floor_area_entry.configure(state="disabled")
+            self._view_attractivity_list_button.configure(state="disabled")
+            self._create_new_attractivity_button.configure(state="disabled")
+            self._delete_attractivity_button.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """

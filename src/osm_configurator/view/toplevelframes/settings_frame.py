@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from src.osm_configurator.view.activatable import Activatable
+from src.osm_configurator.view.freezable import Freezable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
@@ -52,15 +53,19 @@ class SettingsFrame(TopLevelFrame):
         self._state_manager = state_manager
         self._settings_controller = settings_controller
 
+        self._frames = []  # holds all shown frames to allow equals styling
+
         self.title = "Settings Frame"
 
         self.settings_application_frame = \
             settings_application_frame_i.SettingsApplicationFrame(self, self._settings_controller)
         self.settings_application_frame.grid(row=0, column=0, padx=10, pady=10)
+        self._frames.append(self.settings_application_frame)
 
         self.create_project_frame = \
             settings_project_frame_i.SettingsProjectFrame(self, self._settings_controller)
         self.create_project_frame.grid(row=1, column=0, padx=10, pady=10)
+        self._frames.append(self.create_project_frame)
 
     def activate(self):
         """
@@ -76,10 +81,12 @@ class SettingsFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        for frame in self._frames:
+            frame.freeze()
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        for frame in self._frames:
+            frame.freeze()

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import tkinter
+
 import customtkinter
 from typing import TYPE_CHECKING
 
@@ -54,6 +56,8 @@ class CalculationFrame(TopLevelFrame):
         self._state_manager = state_manager
         self._calculation_controller = calculation_controller
         self._data_visualization_controller = data_visualization_controller
+
+        self._frozen: bool = False  # indicates whether the window is frozen or not
 
         # Configuring the rows and columns
 
@@ -218,7 +222,7 @@ class CalculationFrame(TopLevelFrame):
         starting_index = self._starting_point.get_order()
 
         for i, button in enumerate(self.buttons):
-            button.configure(state="disable",
+            button.configure(state=tkinter.DISABLED,
                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED,
                              )
@@ -233,13 +237,14 @@ class CalculationFrame(TopLevelFrame):
         Reactivates the buttons of the class and makes them clickable again
         """
         for button in self.buttons:
-            button.configure(state="enable",
+            button.configure(state=tkinter.NORMAL,
                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value)
 
     def __stop_calculation_init(self):
         """
         Initializes the cancel process to make the process communicate with the yes-no-popup
         """
+        self.freeze()
         self.__show_yes_no_popup(func=self.__stop_calculation, message="Do You really want to cancel the Calculation?")
 
     def __stop_calculation(self, cancel: bool):
@@ -254,6 +259,7 @@ class CalculationFrame(TopLevelFrame):
         Args:
             cancel (bool): True, if the calculation will be canceled, false else (value from the popup)
         """
+        self.unfreeze()
         if self._calculation_controller.get_calculation_state() != CalculationState.RUNNING:
             # Calculation can't be stopped, because it has already stopped
             popup = AlertPopUp(message="The Calculation has already stopped!")
@@ -269,6 +275,7 @@ class CalculationFrame(TopLevelFrame):
             func (function): function that will receive the return-value of the popup
             message (str): message the popup will display
         """
+        self.freeze()
         popup = YesNoPopUp(message=message, func=func)
         popup.mainloop()
 
@@ -400,10 +407,16 @@ class CalculationFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        for button in self.buttons:
+            button.configure(state=tkinter.DISABLED)
+
+        self._frozen = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        for button in self.buttons:
+            button.configure(state=tkinter.NORMAL)
+
+        self._frozen = False

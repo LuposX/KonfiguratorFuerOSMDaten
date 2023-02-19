@@ -74,12 +74,15 @@ class DataFrame(TopLevelFrame):
         self._category_controller: category_controller_interface = category_controller
         self._osm_data_controller: osm_data_controller_interface = osm_data_controller
 
+        self._frozen: bool = False  # indicates whether the window is frozen or not
+
         self._selected_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
         self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
         self._buildings_on_the_edge_are_in: bool = False  # Buildings on the edge are not in by default
 
         self._buttons: list[customtkinter.CTkButton] = []  # Holds all buttons to make equal styling easier
         self._labels: list[customtkinter.CTkLabel] = []  # Holds all labels to make equal styling easier
+        self._checkboxes: list[customtkinter.CTkCheckBox] = []  # Holds all checkboxes to makes equals styling easier
 
         # Defining the grid
         self.grid_columnconfigure(0, weight=1)  # Space between top and first label
@@ -352,10 +355,28 @@ class DataFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        for button in self._buttons:
+            button.configure(state=tkinter.DISABLED)
+
+        for label in self._labels:
+            label.configure(state=tkinter.DISABLED)
+
+        for checkbox in self._checkboxes:
+            checkbox.configure(state=tkinter.DISABLED)
+
+        self._frozen = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        for button in self._buttons:
+            button.configure(state=tkinter.NORMAL)
+
+        for label in self._labels:
+            label.configure(state=tkinter.NORMAL)
+
+        for checkbox in self._checkboxes:
+            checkbox.configure(state=tkinter.NORMAL)
+
+        self._frozen = False

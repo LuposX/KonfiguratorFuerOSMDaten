@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import tkinter
+
 from src.osm_configurator.model.application.passive_project import PassiveProject
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
@@ -48,7 +50,10 @@ class MainMenuFrame(TopLevelFrame):
 
         self._project_controller = project_controller
         self._state_manager = state_manager
-        self._passive_projects = []
+        self._passive_projects: list[PassiveProject] = []
+
+        self.main_buttons_left: list[customtkinter.CTkButton] = []  # holds all buttons on the left to allow uniform styling
+        self.entries: list[customtkinter.CTkButton] = []  # holds all entries formatted as buttons to allow uniform styling
 
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)
@@ -63,7 +68,7 @@ class MainMenuFrame(TopLevelFrame):
 
         # Implementing the buttons
 
-        self.main_buttons_left = [
+        self.main_buttons_left: list[customtkinter.CTkButton] = [
             customtkinter.CTkButton(master=self,
                                     text="New Project",
                                     command=self.__create_project),
@@ -92,18 +97,19 @@ class MainMenuFrame(TopLevelFrame):
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
 
-            customtkinter.CTkButton(master=self,
-                                    name=name,
-                                    text=name,
-                                    description=description,
-                                    command=self.__load_project(passive_project),
-                                    rder_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
-                                    ) \
-                .grid(column=3, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
+            entry = customtkinter.CTkButton(master=self,
+                                            name=name,
+                                            text=name,
+                                            description=description,
+                                            command=self.__load_project(passive_project),
+                                            rder_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                            hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                            border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                            )
+            entry.grid(column=3, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
+            self.entries.append(entry)
 
     def activate(self):
         """
@@ -165,10 +171,18 @@ class MainMenuFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        for button in self.main_buttons_left:
+            button.configure(state=tkinter.DISABLED)
+
+        for entry in self.entries:
+            entry.configure(state=tkinter.DISABLED)
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        for button in self.main_buttons_left:
+            button.configure(state=tkinter.NORMAL)
+
+        for entry in self.entries:
+            entry.configure(state=tkinter.NORMAL)

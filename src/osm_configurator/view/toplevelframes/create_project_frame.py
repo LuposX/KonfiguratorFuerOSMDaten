@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import tkinter
+
 import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.project_controller_interface
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
@@ -54,6 +56,11 @@ class CreateProjectFrame(TopLevelFrame):
         self._project_name: str = ""
         self._project_path: Path = Path()
 
+        self._frozen: bool = False  # indicates whether the window is frozen or not
+
+        self._buttons: list[customtkinter.CTkButton] = []  # holds all buttons to make uniform styling easier
+        self._entries: list[customtkinter.CTkEntry] = []  # holds all entries to make uniform styling easier
+
         # Configuring the rows and columns
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=2)
@@ -64,11 +71,13 @@ class CreateProjectFrame(TopLevelFrame):
             customtkinter.CTkEntry(master=self,
                                    placeholder_text="Project Name")
         self.name_field.grid(row=0, column=0, rowspan=1, columnspan=1)
+        self._entries.append(self.name_field)
 
         self.description_field = \
             customtkinter.CTkEntry(master=self,
                                    placeholder_text="Description: ")
         self.description_field.grid(row=1, column=0, rowspan=1, columnspan=1)
+        self._entries.append(self.description_field)
 
         self.destination_button = \
             customtkinter.CTkButton(master=self,
@@ -81,6 +90,7 @@ class CreateProjectFrame(TopLevelFrame):
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
         self.destination_button.grid(row=2, column=0, rowspan=1, columnspan=1)
+        self._buttons.append(self.destination_button)
 
         self.create_button = \
             customtkinter.CTkButton(master=self,
@@ -93,6 +103,7 @@ class CreateProjectFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
         self.create_button.grid(row=3, column=3, rowspan=1, columnspan=1)
+        self._buttons.append(self.create_button)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
@@ -105,6 +116,7 @@ class CreateProjectFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
         self.cancel_button.grid(row=3, column=4, rowspan=1, columnspan=1)
+        self._buttons.append(self.cancel_button)
 
     def activate(self):
         pass
@@ -180,10 +192,22 @@ class CreateProjectFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        for button in self._buttons:
+            button.configure(state=tkinter.DISABLED)
+
+        for entry in self._entries:
+            entry.configure(state=tkinter.DISABLED)
+
+        self._frozen = True
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        for button in self._buttons:
+            button.configure(state=tkinter.NORMAL)
+
+        for entry in self._entries:
+            entry.configure(state=tkinter.NORMAL)
+
+        self._frozen = False

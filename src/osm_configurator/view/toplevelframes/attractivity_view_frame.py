@@ -462,7 +462,14 @@ class AttractivityViewFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        if not self._frozen:
+            self._edit_attractivity_button.configure(state="disabled")
+
+            button: customtkinter.CTkButton
+            for button in self._category_button_list:
+                button.configure(state="disabled")
+
+            self._frozen: bool = True
 
     def unfreeze(self):
         """

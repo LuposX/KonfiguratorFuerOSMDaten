@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import tkinter
+
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
@@ -41,6 +43,12 @@ class SettingsProjectFrame(TopLevelFrame):
         self._parent = parent
         self._settings_controller: ISettingsController = settings_controller
 
+        self._frozen: bool = False  # indicates whether the window is frozen or not
+
+        self._labels: list[customtkinter.CTkLabel] = []  # holds all shown labels to allow uniform styling
+        self._textbox: list[customtkinter.CTkTextbox] = []  # holds all shown boxes to allow uniform styling
+        self._buttons: list[customtkinter.CTkButton] = []  # holds all shown buttons to allow uniform styling
+
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=3)
         self.grid_columnconfigure(2, weight=1)
@@ -60,6 +68,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value)
         self.header.grid(column=0, row=0, rowspan=1, columnspan=1)
+        self._labels.append(self.header)
 
         self.project_name_box: customtkinter.CTkTextbox = \
             customtkinter.CTkTextbox(master=self,
@@ -71,6 +80,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                      )
         self.project_name_box.insert(1.0, str(self._project_name))
         self.project_name_box.grid(column=1, row=0, rowspan=1, columnspan=1)
+        self._textbox.append(self.project_name_box)
 
         self.change_project_name_button: customtkinter.CTkButton = \
             customtkinter.CTkButton(master=self,
@@ -81,6 +91,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
         self.change_project_name_button.grid(column=2, row=0, rowspan=1, columnspan=1)
+        self._buttons.append(self.change_project_name_button)
 
         self.description_box: customtkinter.CTkTextbox = \
             customtkinter.CTkTextbox(master=self,
@@ -92,6 +103,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                      )
         self.description_box.insert(1.0, str(self._project_description))
         self.description_box.grid(column=3, row=0, rowspan=1, columnspan=1)
+        self._textbox.append(self.description_box)
 
         self.change_description_button: customtkinter.CTkButton = \
             customtkinter.CTkButton(master=self,
@@ -102,6 +114,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
         self.change_project_name_button.grid(column=3, row=1, rowspan=1, columnspan=1)
+        self._buttons.append(self.change_description_button)
 
     def activate(self):
         """
@@ -142,10 +155,28 @@ class SettingsProjectFrame(TopLevelFrame):
         """
         If this method is called, the frame will freeze by disabling all possible interactions with it.
         """
-        pass
+        self._frozen = True
+
+        for button in self._buttons:
+            button.configure(state=tkinter.DISABLED)
+
+        for label in self._labels:
+            label.configure(state=tkinter.DISABLED)
+
+        for textbox in self._textbox:
+            textbox.configure(state=tkinter.DISABLED)
 
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
         """
-        pass
+        self._frozen = False
+
+        for button in self._buttons:
+            button.configure(state=tkinter.NORMAL)
+
+        for label in self._labels:
+            label.configure(state=tkinter.NORMAL)
+
+        for textbox in self._textbox:
+            textbox.configure(state=tkinter.NORMAL)
