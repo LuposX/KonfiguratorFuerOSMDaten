@@ -27,8 +27,3 @@ class OSMDataController(IOSMDataController):
     def get_osm_data_reference(self) -> pathlib.Path:
         return self._model.get_active_project().get_config_manager()\
             .get_osm_data_configuration().get_osm_data()
-
-    def download_osm_data(self, path_to_data_which_should_bew_downloaded: pathlib.Path) -> bool:
-        return self._model.get_active_project().get_config_manager()\
-            .get_osm_data_configuration().get_download_data_manager()\
-            .download_data(path_to_data_which_should_bew_downloaded)
