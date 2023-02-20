@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import tkinter
+
 import customtkinter
 
 import os
@@ -17,11 +19,9 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 from src.osm_configurator.view.toplevelframes.lockable import Lockable
 
-
 from PIL import Image
 
 from typing import TYPE_CHECKING, List
-
 
 if TYPE_CHECKING:
     from typing import Final
@@ -81,17 +81,18 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
             light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_left.png")),
             dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_left.png")),
             size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
-        self._left_arrow: customtkinter.CTkButton = customtkinter.CTkButton(master=self, width=BUTTON_WIDTH,
-                                                                            height=BUTTON_HEIGHT,
-                                                                            corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                            border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                                            hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                                                            border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                                                            command=self._left_arrow_pressed,
-                                                                            text="",
-                                                                            image=left_arrow_icon)
+        self._left_arrow: customtkinter.CTkButton = \
+            customtkinter.CTkButton(master=self, width=BUTTON_WIDTH,
+                                    height=BUTTON_HEIGHT,
+                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    command=self._left_arrow_pressed,
+                                    text="",
+                                    image=left_arrow_icon)
         self._left_arrow.grid(row=0, column=0, rowspan=1, columnspan=1)
         self._button_list.append(self._left_arrow)
 
@@ -100,17 +101,18 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
             light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_right.png")),
             dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_right.png")),
             size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
-        self._right_arrow: customtkinter.CTkButton = customtkinter.CTkButton(master=self, width=BUTTON_WIDTH,
-                                                                             height=BUTTON_HEIGHT,
-                                                                             corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                             border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                                             hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                                                             border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                                                             command=self._right_arrow_pressed,
-                                                                             text="",
-                                                                             image=right_arrow_icon)
+        self._right_arrow: customtkinter.CTkButton = \
+            customtkinter.CTkButton(master=self, width=BUTTON_WIDTH,
+                                    height=BUTTON_HEIGHT,
+                                    corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                    border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                    hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                    border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    command=self._right_arrow_pressed,
+                                    text="",
+                                    image=right_arrow_icon)
         self._right_arrow.grid(row=0, column=2, rowspan=1, columnspan=1)
         self._button_list.append(self._right_arrow)
 
@@ -148,18 +150,18 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         # Activating all buttons, so they don't all end up beeing disabled
         button: customtkinter.CTkButton
         for button in self._button_list:
-            button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+            button.configure(state=tkinter.NORMAL, fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
 
         # If there is no default left, the left arrow is disabled
         if current_state.get_default_left() is None:
-            self._left_arrow.configure(state="disabled",
+            self._left_arrow.configure(state=tkinter.DISABLED,
                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
         # If there is no default right, the right arrow is disabled
         if current_state.get_default_right() is None:
-            self._right_arrow.configure(state="disabled",
+            self._right_arrow.configure(state=tkinter.DISABLED,
                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
@@ -170,7 +172,7 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
             # Disabling all Buttons
             button: customtkinter.CTkButton
             for button in self._button_list:
-                button.configure(state="disabled",
+                button.configure(state=tkinter.DISABLED,
                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
                                  text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
@@ -185,7 +187,7 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
             # Activating all Buttons
             button: customtkinter.CTkButton
             for button in self._button_list:
-                button.configure(state="normal",
+                button.configure(state=tkinter.NORMAL,
                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                  text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
 
@@ -202,7 +204,7 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         if not self._frozen:
             button: customtkinter.CTkButton
             for button in self._button_list:
-                button.configure(state="disabled")
+                button.configure(state=tkinter.DISABLED)
 
             self._frozen: bool = True
 
@@ -214,7 +216,7 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         if self._frozen:
             button: customtkinter.CTkButton
             for button in self._button_list:
-                button.configure(state="normal")
+                button.configure(state=tkinter.NORMAL)
 
             self._frozen: bool = False
 

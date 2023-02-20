@@ -66,8 +66,7 @@ class MainMenuFrame(TopLevelFrame):
 
         self.main_buttons_left: list[
             customtkinter.CTkButton] = []  # holds all buttons on the left to allow uniform styling
-        self.entries: list[
-            customtkinter.CTkButton] = []  # holds all entries formatted as buttons to allow uniform styling
+        self.entries: list[customtkinter.CTkButton] = []  # holds all entries formatted as buttons to allow uniform styling
 
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)

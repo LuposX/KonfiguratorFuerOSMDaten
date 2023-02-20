@@ -38,7 +38,7 @@ def test_display_main_window():
                                 osm_data_controller=osm_data_controller,
                                 )
 
-    #main_window._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
+    main_window._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
 
     main_window.start_main_window()
 
