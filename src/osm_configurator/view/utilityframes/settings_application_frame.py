@@ -37,7 +37,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
             settings_controller (settings_controller.SettingsController): Respective controller.
         """
         super().__init__(
-            master=None,
+            master=parent,
             width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
             height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value / 2,
             corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,

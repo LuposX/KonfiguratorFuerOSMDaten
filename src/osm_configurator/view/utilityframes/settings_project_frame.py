@@ -34,7 +34,7 @@ class SettingsProjectFrame(TopLevelFrame):
             parent (settings_frame.SettingsFrame): The parent of this frame where this frame will be located.
             settings_controller (settings_controller.SettingsController): Respective controller.
         """
-        super().__init__(master=None,
+        super().__init__(master=parent,
                          width=frame_constants_i.FrameConstants.FOOT_FRAME_WIDTH.value,
                          height=frame_constants_i.FrameConstants.FOOT_FRAME_HEIGHT.value,
                          corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
