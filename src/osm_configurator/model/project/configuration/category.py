@@ -33,7 +33,7 @@ class Category:
         Args:
             category_name (str): The name of the newly created category.
         """
-        self._active: bool = False
+        self._active: bool = True
         self._whitelist: List[str] = []
         self._blacklist: List[str] = []
         self._category_name: str = category_name
@@ -62,13 +62,13 @@ class Category:
         """
         return self._active
 
-    def activate(self) -> bool:
+    def activate(self):
         """
         Sets the active-value to True.
         """
         self._active = True
 
-    def deactivate(self) -> bool:
+    def deactivate(self):
         """
         Sets the active-value to False.
         """
@@ -83,7 +83,7 @@ class Category:
         """
         return self._whitelist
 
-    def set_whitelist(self, new_whitelist: List[str]) -> bool:
+    def set_whitelist(self, new_whitelist: List[str]):
         """
         Changes the old whitelist to a new one.
 
@@ -101,13 +101,12 @@ class Category:
         """
         return self._blacklist
 
-    def set_blacklist(self, new_blacklist: List[str]) -> bool:
+    def set_blacklist(self, new_blacklist: List[str]):
         """
         Overwrites the old Blacklist with a new value.
 
         Args:
             new_blacklist (List[str]): new value for the blacklist.
-
         """
         self._blacklist = new_blacklist
 
@@ -213,7 +212,7 @@ class Category:
         """
         return self._calculation_method_of_area
 
-    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea) -> bool:
+    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea):
         """
         Overwrites current calculate_area with the given value.
 
