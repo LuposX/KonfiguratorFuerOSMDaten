@@ -248,7 +248,9 @@ class CalculationFrame(TopLevelFrame):
         """
         for button in self.buttons:
             button.configure(state=tkinter.NORMAL,
-                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value)
+                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                             )
 
     def __stop_calculation_init(self):
         """
@@ -269,6 +271,7 @@ class CalculationFrame(TopLevelFrame):
         Args:
             cancel (bool): True, if the calculation will be canceled, false else (value from the popup)
         """
+        self._state_manager.unfreeze_state()
         if cancel:
             self._state_manager.unlock_state()
             if self._calculation_controller.get_calculation_state() != CalculationState.RUNNING:
@@ -279,8 +282,12 @@ class CalculationFrame(TopLevelFrame):
                 self._calculation_controller.cancel_calculations()
                 self.__activate_buttons()
                 AlertPopUp(message="Calculation has stopped successfully")
+
+                # Beating the shit out of these fucks (nah we killing those bois) the progressbar and the cancel button
+                self.progressbar.destroy()
+                self.cancel_button.destroy()
         else:
-            AlertPopUp(message="Calculation continues")
+            AlertPopUp(message="Calculation will continue")
 
     def __show_calculation_utilities(self):
         """
@@ -300,7 +307,7 @@ class CalculationFrame(TopLevelFrame):
                                          corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value)
         self.progressbar.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
 
-        cancel_button = \
+        self.cancel_button = \
             customtkinter.CTkButton(master=self,
                                     text="Cancel",
                                     corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
@@ -309,15 +316,15 @@ class CalculationFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                    command=self.__stop_calculation)
-        cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
+                                    command=self.__stop_calculation_init)
+        self.cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
 
         self.progressbar_label = \
             customtkinter.CTkLabel(master=self,
                                    text="Calculation started")
         self.progressbar_label.grid(column=2, row=1, rowspan=1, columnspace=1, padx=30, pady=10)
 
-        self.buttons.append(cancel_button)  # Add cancel button to buttons-list
+        self.buttons.append(self.cancel_button)  # Add cancel button to buttons-list
 
         self._calculation_controller.start_calculations(
             self._starting_point)  # starts the calculation from the chosen starting point
