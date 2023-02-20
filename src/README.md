@@ -11,7 +11,7 @@ For the develop enviroment you need to have the following tools installed:
 - conda (python package managment sytem, alternatively use venv)
 - git  
 
-For how to install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).  
+To install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).  
 For what is conda, check [this out](https://conda.io/projects/conda/en/latest/user-guide/concepts/index.html).  
 
 ### Installation
