@@ -43,7 +43,7 @@ class PassiveProject:
         Returns:
             str: The last edit date of the passive project.
         """
-        pass
+        return "69/420/69"
 
     def get_project_folder_path(self):
         """

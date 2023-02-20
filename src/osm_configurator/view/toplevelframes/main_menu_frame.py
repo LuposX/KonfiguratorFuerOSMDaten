@@ -10,6 +10,13 @@ import src.osm_configurator.view.states.state_name_enum as sne
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
+import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
+
+import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
+
+import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 
 # Other
 import customtkinter
@@ -50,10 +57,12 @@ class MainMenuFrame(TopLevelFrame):
 
         self._project_controller = project_controller
         self._state_manager = state_manager
-        self._passive_projects: list[PassiveProject] = []
+        self._passive_projects: list[PassiveProject] = self._project_controller.get_list_of_passive_projects()
 
-        self.main_buttons_left: list[customtkinter.CTkButton] = []  # holds all buttons on the left to allow uniform styling
-        self.entries: list[customtkinter.CTkButton] = []  # holds all entries formatted as buttons to allow uniform styling
+        self.main_buttons_left: list[
+            customtkinter.CTkButton] = []  # holds all buttons on the left to allow uniform styling
+        self.entries: list[
+            customtkinter.CTkButton] = []  # holds all entries formatted as buttons to allow uniform styling
 
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)
@@ -90,7 +99,17 @@ class MainMenuFrame(TopLevelFrame):
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
             )
 
-            button.grid(row=i, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
+            button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
+
+        self._entry_subframe: customtkinter.CTkScrollableFrame = \
+            customtkinter.CTkScrollableFrame(
+                master=self,
+                width=frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value * (9 / 10) - ELEMENT_BORDER_DISTANCE,
+                height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (4/5) - ELEMENT_BORDER_DISTANCE,
+                corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
+                fg_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value
+            )
+        self._entry_subframe.grid(row=1, column=1, rowspan=4, columnspan=1)
 
         # showing all entries in custom boxes
         for i, passive_project in enumerate(self._passive_projects):

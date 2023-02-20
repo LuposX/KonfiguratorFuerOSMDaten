@@ -397,7 +397,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
         # No Else, since if none of those options where selected something that isn't an export option was selected
 
-        # Also setting the Drop Down Menu again to its display value
+        # Also setting the Drop-Down Menu again to its display value
         self._export_drop_down_menu.set(EXPORT_DISPLAYED_VALUE)
 
     def _file_dialog(self, title: str) -> Path:
