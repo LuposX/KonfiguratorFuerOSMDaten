@@ -85,10 +85,10 @@ class MainMenuFrame(TopLevelFrame):
                                    fg_color=label_constants_i.LabelConstants.LABEL_TITLE_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                   padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                    text=main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
-        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW")
+        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW",
+                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Implementing the buttons
 

@@ -14,6 +14,7 @@ import src.osm_configurator.control.osm_data_controller_interface as osm_data_co
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
+import src.osm_configurator.view.popups.yes_no_pop_up as yes_no_pop_up_i
 
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
@@ -145,14 +146,14 @@ class DataFrame(TopLevelFrame):
         self._osm_data_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text="Select OSM Data",
+                text="Select OSM Data"
             )
         self._labels.append(self._osm_data_select_label)
 
         self._cut_out_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text="Select Cut-Out",
+                text="Select Cut-Out"
             )
         self._labels.append(self._cut_out_select_label)
 
@@ -183,8 +184,6 @@ class DataFrame(TopLevelFrame):
                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
             )
 
@@ -206,7 +205,7 @@ class DataFrame(TopLevelFrame):
 
         # Labels at the top
         self._osm_data_select_label.grid(
-            row=1, column=1, rowspan=1, columnspan=1, padx=10, pady=10
+            row=0, column=0, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
         self._cut_out_select_label.grid(
@@ -228,6 +227,15 @@ class DataFrame(TopLevelFrame):
 
         self._copy_button.grid(
             row=1, column=2, rowspan=1, columnspan=1, padx=10, pady=10
+        )
+
+        # Path Labels
+        self._cut_out_selected_path_label.grid(
+            row=2, column=1, rowspan=1, columnspan=1, padx=10, pady=10
+        )
+
+        self._osm_data_selected_path_label.grid(
+            row=2, column=0, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
         # Le Checkbox
@@ -283,12 +291,11 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the cut-out
         """
-        chosen_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
+        chosen_path: Path = self.__open_explorer(list["png"])  # TODO: insert accepted filetypes
 
         if not chosen_path.exists():
             # Chosen path is invalid
             popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
-            popup.mainloop()
             self.activate()
             return
 
@@ -312,7 +319,7 @@ class DataFrame(TopLevelFrame):
 
         self._osm_data_controller.set_osm_data_reference(path=chosen_path)  # Gives the reference to the controller
         self._selected_osm_data_path = chosen_path  # Updates the path in its own class
-        self._osm_data_select_label.configure(
+        self._osm_data_selected_path_label.configure(
             text=str(chosen_path)
         )  # Updates the label showing the chosen path
 
@@ -333,7 +340,6 @@ class DataFrame(TopLevelFrame):
 
         if not worked:
             popup = AlertPopUp(message="Sorry, this did not work!")
-            popup.mainloop()
             self.activate()
 
     def __open_explorer(self, filetypes: Iterable[tuple[str, str | list[str] | tuple[str, ...]]] | None) -> Path:
