@@ -204,7 +204,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             # Category loaded, so return True
             return True
 
-    def _calculate_are_checkbox_edited(self):
+    def _calculate_area_checkbox_edited(self):
         if self._calculate_area_checkbox.get() == 1:
             self._activate_switch()
 

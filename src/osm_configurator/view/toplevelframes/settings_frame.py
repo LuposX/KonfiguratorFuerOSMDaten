@@ -38,15 +38,14 @@ class SettingsFrame(TopLevelFrame):
         """
         super().__init__(
             master=None,
-            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
-            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value,
             corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
+            fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
         )
 
         # Defining the grid
         self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
@@ -60,11 +59,13 @@ class SettingsFrame(TopLevelFrame):
         self.settings_application_frame = \
             settings_application_frame_i.SettingsApplicationFrame(self, self._settings_controller)
         self.settings_application_frame.grid(row=0, column=0, padx=10, pady=10)
+        self.settings_application_frame.configure(border_width=2, border_color="#000000")
         self._frames.append(self.settings_application_frame)
 
         self.create_project_frame = \
             settings_project_frame_i.SettingsProjectFrame(self, self._settings_controller)
         self.create_project_frame.grid(row=1, column=0, padx=10, pady=10)
+        self.create_project_frame.configure(border_width=2, border_color="#000000")
         self._frames.append(self.create_project_frame)
 
     def activate(self):
@@ -74,8 +75,8 @@ class SettingsFrame(TopLevelFrame):
         Returns:
             bool: True, if activation was successful, else false
         """
-        settings_activation = self.settings_application_frame.activate()
-        create_project_activation = self.create_project_frame.activate()
+        self.settings_application_frame.activate()
+        self.create_project_frame.activate()
 
     def freeze(self):
         """

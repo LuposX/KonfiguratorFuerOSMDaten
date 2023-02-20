@@ -35,10 +35,11 @@ class SettingsProjectFrame(TopLevelFrame):
             settings_controller (settings_controller.SettingsController): Respective controller.
         """
         super().__init__(master=parent,
-                         width=frame_constants_i.FrameConstants.FOOT_FRAME_WIDTH.value,
-                         height=frame_constants_i.FrameConstants.FOOT_FRAME_HEIGHT.value,
+                         width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value,
+                         height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2,
                          corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-                         fg_color=frame_constants_i.FrameConstants.FOOT_FRAME_FG_COLOR.value)
+                         fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
+                         )
 
         self._parent = parent
         self._settings_controller: ISettingsController = settings_controller
@@ -51,11 +52,11 @@ class SettingsProjectFrame(TopLevelFrame):
 
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=3)
-        self.grid_columnconfigure(2, weight=1)
-        self.grid_columnconfigure(3, weight=3)
 
-        self.grid_rowconfigure(0, weight=3)
+        self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(2, weight=1)
+        self.grid_rowconfigure(3, weight=1)
 
         self._project_name: str = self._settings_controller.get_project_name()
         self._project_description: str = self._settings_controller.get_project_description()
@@ -66,8 +67,9 @@ class SettingsProjectFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value)
-        self.header.grid(column=0, row=0, rowspan=1, columnspan=1)
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   )
+        self.header.grid(column=0, row=0, rowspan=1, columnspan=1, padx=10, pady=10)
         self._labels.append(self.header)
 
         self.project_name_box: customtkinter.CTkTextbox = \
@@ -76,10 +78,10 @@ class SettingsProjectFrame(TopLevelFrame):
                                      border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                      fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
                                      border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
-                                     text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value
+                                     text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
                                      )
         self.project_name_box.insert(1.0, str(self._project_name))
-        self.project_name_box.grid(column=1, row=0, rowspan=1, columnspan=1)
+        self.project_name_box.grid(column=0, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
         self._textbox.append(self.project_name_box)
 
         self.change_project_name_button: customtkinter.CTkButton = \
@@ -90,7 +92,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
-        self.change_project_name_button.grid(column=2, row=0, rowspan=1, columnspan=1)
+        self.change_project_name_button.grid(column=1, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
         self._buttons.append(self.change_project_name_button)
 
         self.description_box: customtkinter.CTkTextbox = \
@@ -102,7 +104,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                      text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
                                      )
         self.description_box.insert(1.0, str(self._project_description))
-        self.description_box.grid(column=3, row=0, rowspan=1, columnspan=1)
+        self.description_box.grid(column=0, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self._textbox.append(self.description_box)
 
         self.change_description_button: customtkinter.CTkButton = \
@@ -113,7 +115,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
-        self.change_project_name_button.grid(column=3, row=1, rowspan=1, columnspan=1)
+        self.change_project_name_button.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self._buttons.append(self.change_description_button)
 
     def activate(self):

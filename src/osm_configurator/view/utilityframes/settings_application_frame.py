@@ -23,7 +23,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 
 
-class SettingsApplicationFrame(customtkinter.CTkFrame):
+class SettingsApplicationFrame(TopLevelFrame):
     """
     This frame shows the settings of the application.
     """
@@ -38,10 +38,10 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
         """
         super().__init__(
             master=parent,
-            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
-            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value / 2,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2,
             corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
+            fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
         )
 
         self._parent = parent
@@ -56,17 +56,19 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
 
         # Defining the grid-structure
         self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
+        self.grid_columnconfigure(1, weight=2)
         self.grid_columnconfigure(2, weight=1)
-        self.grid_columnconfigure(3, weight=1)
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
-        self.grid_rowconfigure(2, weight=1)
-        self.grid_rowconfigure(3, weight=1)
 
         self.header = \
             customtkinter.CTkLabel(master=self,
-                                   text="General Settings")
+                                   text="General Settings",
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   )
         self.header.grid(row=0, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.header)
 
@@ -76,7 +78,8 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value)
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   )
         self.path_default_header.grid(row=1, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_default_header)
 
@@ -86,8 +89,9 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value)
-        self.path_default_label.grid(row=2, column=0, padx=10, pady=10)  # Creates a read-only textbox showing the default-filepath
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   )
+        self.path_default_label.grid(row=1, column=1, padx=10, pady=10)  # Creates a read-only textbox showing the default-filepath
         self._labels.append(self.path_default_label)
 
         self.change_default_path_button = \
@@ -101,7 +105,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
-        self.change_default_path_button.grid(row=3, column=0, padx=10, pady=10)  # button to browse for a new default folder
+        self.change_default_path_button.grid(row=1, column=3, padx=10, pady=10)  # button to browse for a new default folder
         self._buttons.append(self.change_default_path_button)
 
     def activate(self):
@@ -128,8 +132,7 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
             self._settings_controller.set_project_default_folder(new_path)  # Updates the path
             self.path_default_label.configure(text=new_path.name)  # Updates the textbox
             return
-        popup = AlertPopUp("Please enter a valid path!")
-        popup.mainloop()  # shows the popup
+        AlertPopUp("Please enter a valid path!")
         self.activate()  # reloads the page
 
     def __browse_files(self) -> str:
@@ -139,9 +142,8 @@ class SettingsApplicationFrame(customtkinter.CTkFrame):
             str: Name of the chosen path
         """
         new_path = \
-            filedialog.askopenfilename(initialdir=self._project_default_folder,
-                                       title="Select a File",
-                                       filetypes=".geojson")
+            filedialog.askopenfilename(initialdir=str(self._project_default_folder),
+                                       title="Select a File")
         return new_path
 
     def freeze(self):
