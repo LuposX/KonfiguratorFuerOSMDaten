@@ -62,10 +62,10 @@ class DataFrame(TopLevelFrame):
         """
         super().__init__(
             master=None,
-            width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
-            height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value,
             corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
+            fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
         )
 
         self._state_manager = state_manager
@@ -85,20 +85,15 @@ class DataFrame(TopLevelFrame):
         self._checkboxes: list[customtkinter.CTkCheckBox] = []  # Holds all checkboxes to makes equals styling easier
 
         # Defining the grid
-        self.grid_columnconfigure(0, weight=1)  # Space between top and first label
-        self.grid_columnconfigure(1, weight=2)  # Space for the top labels (Select OSM, Select Cutout, Copy in)
-        self.grid_columnconfigure(2, weight=3)  # Space for the upper buttons
-        self.grid_columnconfigure(3, weight=2)  # Space for the displayed buttons values
-        self.grid_columnconfigure(4, weight=2)  # Space for the Checkbox
-        self.grid_columnconfigure(5, weight=3)  # Space for the lower button
-        self.grid_columnconfigure(6, weight=2)  # Free space
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=1)
+        self.grid_columnconfigure(2, weight=1)
 
-        self.grid_rowconfigure(0, weight=1)  # Free Space on the left edge
-        self.grid_rowconfigure(1, weight=4)  # Space for the buttons on the left
-        self.grid_rowconfigure(2, weight=2)  # Space for the middle buttons
-        self.grid_rowconfigure(3, weight=2)  # Space for the middle buttons
-        self.grid_rowconfigure(4, weight=4)  # Space for the buttons on the right
-        self.grid_rowconfigure(5, weight=1)  # Free Space on the right edge
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(2, weight=1)
+        self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(4, weight=1)
 
         #  Implementing the buttons
 
@@ -130,7 +125,7 @@ class DataFrame(TopLevelFrame):
             customtkinter.CTkButton(
                 master=self,
                 command=self.__view_cut_out,
-                text="Select"
+                text="View Cutout"
             )
         self._buttons.append(self._view_cutout_button)
 
@@ -168,13 +163,6 @@ class DataFrame(TopLevelFrame):
             )
         self._labels.append(self._copy_label)
 
-        self._edge_building_are_in_label: customtkinter.CTkLabel = \
-            customtkinter.CTkLabel(
-                master=self,
-                text="Buildings on the edges are in"
-            )
-        self._labels.append(self._edge_building_are_in_label)
-
         self._osm_data_selected_path_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
@@ -201,7 +189,6 @@ class DataFrame(TopLevelFrame):
             )
 
         # Implementing the checkbox
-
         self._edge_building_are_in_checkbox: customtkinter.CTkCheckBox = \
             customtkinter.CTkCheckBox(
                 master=self,
@@ -211,7 +198,8 @@ class DataFrame(TopLevelFrame):
                 text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
                 corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
                 border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
-                variable=tkinter.BooleanVar()
+                variable=tkinter.BooleanVar(),
+                text="Buildings on the edge are in",
             )
 
         # Aligning everything nicely in the predefined grid
@@ -222,38 +210,34 @@ class DataFrame(TopLevelFrame):
         )
 
         self._cut_out_select_label.grid(
-            row=2, column=1, rowspan=2, columnspan=1, padx=10, pady=10
+            row=0, column=1, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
         self._copy_label.grid(
-            row=4, column=1, rowspan=1, columnspan=1, padx=10, pady=10
+            row=0, column=2, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
         # Buttons underneath the labels
         self._osm_data_select_button.grid(
-            row=1, column=2, rowspan=1, columnspan=1, padx=10, pady=10
+            row=1, column=0, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
         self._cut_out_select_button.grid(
-            row=2, column=2, rowspan=2, columnspan=1, padx=10, pady=10
+            row=1, column=1, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
         self._copy_button.grid(
-            row=4, column=2, rowspan=1, columnspan=1, padx=10, pady=10
+            row=1, column=2, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
-        # Checkbox with label
-        self._edge_building_are_in_label.grid(
-            row=1, column=3, rowspan=2, columnspan=1, padx=10, pady=10
-        )
-
+        # Le Checkbox
         self._edge_building_are_in_checkbox.grid(
-            row=3, column=3, rowspan=1, columnspan=1, padx=10, pady=10
+            row=3, column=1, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
         # Last button at the bottom
         self._view_cutout_button.grid(
-            row=2, column=4, rowspan=2, columnspan=1, padx=10, pady=10
+            row=4, column=1, rowspan=1, columnspan=1, padx=10, pady=10
         )
 
     def activate(self):
@@ -266,7 +250,7 @@ class DataFrame(TopLevelFrame):
         self._cut_out_selected_path_label.configure(
             text=self._selected_cut_out_path
         )
-        self._osm_data_select_label.configure(
+        self._osm_data_selected_path_label.configure(
             text=self._selected_osm_data_path
         )
 
@@ -275,12 +259,25 @@ class DataFrame(TopLevelFrame):
         Lets the user view the cutout.
         Activated if the view_cutout button is activated
         """
-        # TODO: the return value needs to be shown
         self._data_visualization_controller.get_calculation_visualization()
 
     def __copy_category_configurations(self):
-        # TODO: implement
-        pass
+        self._selected_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
+
+        if self._category_controller.check_conflicts_in_category_configuration(self._selected_path):
+            if not self._category_controller.import_category_configuration(self._selected_path):
+                AlertPopUp("Importing Categories Failed!")
+        else:
+            self._state_manager.freeze_state()
+            yes_no_pop_up_i.YesNoPopUp("Do you really want to overwrite conflicting Categories?", self.__pop_up_answer)
+
+    def __pop_up_answer(self, answer: bool):
+        self._state_manager.unfreeze_state()
+        if answer:
+            if not self._category_controller.import_category_configuration(self._selected_path):
+                AlertPopUp("Importing Categories Failed!")
+
+        self._selected_path = None
 
     def __select_cut_out(self):
         """
@@ -297,7 +294,7 @@ class DataFrame(TopLevelFrame):
 
         self._cut_out_controller.set_cut_out_reference(path=chosen_path)  # Gives the reference to the controller
         self._selected_cut_out_path = chosen_path  # Updates path in its own class
-        self._cut_out_select_label.configure(
+        self._cut_out_selected_path_label.configure(
             text=str(chosen_path)
         )  # Updates the label showing the chosen path
 
@@ -310,7 +307,6 @@ class DataFrame(TopLevelFrame):
         if not chosen_path.exists():
             # chosen path is invalid
             popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
-            popup.mainloop()
             self.activate()
             return
 
@@ -340,7 +336,7 @@ class DataFrame(TopLevelFrame):
             popup.mainloop()
             self.activate()
 
-    def __open_explorer(self, file_types: Iterable[tuple[str, str | list[str] | tuple[str, ...]]] | None) -> Path:
+    def __open_explorer(self, filetypes: Iterable[tuple[str, str | list[str] | tuple[str, ...]]] | None) -> Path:
         """
         Opens explorer and lets the user choose a path
         Returns:
@@ -348,7 +344,7 @@ class DataFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askopenfilename(title="Please select Your File",
-                                       filetypes=file_types)
+                                       initialdir="/")
         return Path(new_path)
 
     def freeze(self):

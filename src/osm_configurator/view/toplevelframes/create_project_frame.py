@@ -7,11 +7,13 @@ import src.osm_configurator.control.project_controller_interface
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes import main_menu_frame
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-import src.osm_configurator.view.states.state_name_enum as sne
 
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.states.state_name_enum as view_states_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
+import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 
 # Other
 from typing import TYPE_CHECKING
@@ -66,6 +68,19 @@ class CreateProjectFrame(TopLevelFrame):
         self.grid_columnconfigure(1, weight=2)
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
+
+        self._title_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(master=self,
+                                   width=frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value,
+                                   height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (1 / 5),
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_TITLE_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   text="Create a new Project")
+        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW",
+                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         self.name_field = \
             customtkinter.CTkEntry(master=self,
@@ -159,7 +174,6 @@ class CreateProjectFrame(TopLevelFrame):
             return
 
         self._project_description = self.description_field.get()
-        self._state_manager.change_state(sne.StateName.DATA.value)
 
         self._project_controller.create_project(
             name=self._project_name,
@@ -167,16 +181,16 @@ class CreateProjectFrame(TopLevelFrame):
             description=self._project_description,
         )
 
-        return
+        self._state_manager.change_state(view_states_i.StateName.DATA)
 
     def __cancel_pressed(self):
         """
         The cancel button was pressed, the user is redirected to the main menu
         """
-        self._state_manager.change_state(sne.StateName.MAIN_MENU.value)
+        self._state_manager.change_state(view_states_i.StateName.MAIN_MENU)
 
     def __reload(self):
-        self._state_manager.change_state(sne.StateName.CREATE_PROJECT.value)
+        self._state_manager.change_state(view_states_i.StateName.CREATE_PROJECT)
 
     def __browse_files(self) -> str:
         """
@@ -185,7 +199,7 @@ class CreateProjectFrame(TopLevelFrame):
             str: Name of the chosen path
         """
         new_path = filedialog.askopenfilename(title="Select a project to load",
-                                              filetypes=".geojson")  # opens the file explorer in the current dir
+                                              initialdir="/", )  # opens the file explorer in the current dir
         return new_path
 
     def freeze(self):
