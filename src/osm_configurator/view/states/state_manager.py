@@ -406,8 +406,11 @@ class StateManager:
                     self._previous_state = self._current_state
                     self._current_state = next_state
 
-                    # Now activating all the new frames
-                    self._main_window.activate_current_frames()
+                    # Now activating all the frames of the current state
+                    positioned_frame: positioned_frame_i.PositionedFrame
+                    for positioned_frame in self._current_state.get_active_frames():
+                        toplevel_frame: TopLevelFrame = positioned_frame.get_frame()
+                        toplevel_frame.activate()
 
                 return success
 

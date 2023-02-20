@@ -65,9 +65,6 @@ class MainWindow(customtkinter.CTk):
         super().__init__()
         self.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
 
-        # Private Attributes, to keep track of the Frames placed in the mainWindow
-        self._current_frames: List[TopLevelFrame] = []
-
         # Selecting the primary Monitor to get accurate location for centering the window
         primary_monitor: Monitor = None
         monitor: Monitor
@@ -156,25 +153,18 @@ class MainWindow(customtkinter.CTk):
             # If there is no new state given, then you can't make anything visible
             return False
 
-        # Resetting what Frames are currently Placed on the MainWindow
-        self._current_frames: List[TopLevelFrame] = []
+        positioned_frame: PositionedFrame
+        for positioned_frame in state.get_active_frames():
+            column: int = positioned_frame.get_column()
+            row: int = positioned_frame.get_row()
+            column_span: int = positioned_frame.get_colum_span()
+            row_span: int = positioned_frame.get_row_span()
+            sticky_type: str = positioned_frame.get_sticky()
 
-        frames: List[positioned_frame_i.PositionedFrame] = state.get_active_frames()
+            toplevel_frame: TopLevelFrame = positioned_frame.get_frame()
 
-        # First getting all information about position and then placing the actual_frame there
-        for frame in frames:
-            column: int = frame.get_column()
-            row: int = frame.get_row()
-            column_span: int = frame.get_colum_span()
-            row_span: int = frame.get_row_span()
-            actual_frame: TopLevelFrame = frame.get_frame()
-            sticky_type = frame.get_sticky()
-
-            actual_frame.master = self
-            actual_frame.grid(row=row, column=column, rowspan=row_span, columnspan=column_span, sticky=sticky_type)
-
-            # The Frames first, will be just saved and not be activated directly!
-            self._current_frames.append(actual_frame)
+            toplevel_frame.master = self
+            toplevel_frame.grid(row=row, column=column, rowspan=row_span, columnspan=column_span, sticky=sticky_type)
 
         return True
 
@@ -192,22 +182,9 @@ class MainWindow(customtkinter.CTk):
             # If there is nothing, then it is already invisible!
             return True
 
-        frames: List[positioned_frame_i.PositionedFrame] = state.get_active_frames()
-
-        # Getting all frames and removing them from the grid
-        frame: PositionedFrame
-        for frame in frames:
-            actual_frame: TopLevelFrame = frame.get_frame()
-            actual_frame.grid_remove()
+        positioned_frame: PositionedFrame
+        for positioned_frame in state.get_active_frames():
+            toplevel_frame: TopLevelFrame = positioned_frame.get_frame()
+            toplevel_frame.grid_remove()
 
         return True
-
-    def activate_current_frames(self):
-        """
-        Activates all the Frames that are currently placed in the MainWindow
-        """
-
-        if not len(self._current_frames) == 0:
-            frame: TopLevelFrame
-            for frame in self._current_frames:
-                frame.activate()
