@@ -171,10 +171,8 @@ class ReductionFrame(TopLevelFrame):
                                                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                                       text=active_category.get_category_name(),
                                                                       command=partial(self._category_button_pressed,
-                                                                                      button_id),
-                                                                      padx=PADX,
-                                                                      pady=PADY)
-            button.grid(row=button_id, column=0, rowspan=1, columnspan=1)
+                                                                                      button_id))
+            button.grid(row=button_id, column=0, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
             self._category_button_list.append(button)
             button_id += 1
 

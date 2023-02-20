@@ -110,8 +110,6 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
         Returns:
             bool: True if category was successfully loaded, else False
         """
-        # unfreezing first
-        self.unfreeze()
 
         # no button has been pressed yet
         self._last_pressed_entry_button: customtkinter.CTkButton = None

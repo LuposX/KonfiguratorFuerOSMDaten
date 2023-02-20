@@ -94,10 +94,9 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                                                               fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                               text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                               anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                               text="Tag-List:")
-        self._tag_list_label.grid(row=0, column=0, rowspan=1, columnspan=1)
+        self._tag_list_label.grid(row=0, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                  padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Tag List
         self._tag_list: tag_list_priority_frame_i.TagListPriorityFrame = tag_list_priority_frame_i.TagListPriorityFrame(
@@ -117,10 +116,9 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                                                          fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                          text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                          anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                         padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                         pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                          text="Tag")
-        self._tag_label.grid(row=1, column=1, rowspan=1, columnspan=1)
+        self._tag_label.grid(row=1, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Area label
         self._area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -132,10 +130,9 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                                                           fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                           text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                           anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                          padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                          pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                           text="Area")
-        self._area_label.grid(row=2, column=1, rowspan=1, columnspan=1)
+        self._area_label.grid(row=2, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Number of Floors Label
         self._number_of_floors_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -147,10 +144,9 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                                                                       fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                       text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                       anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                      padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                      pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                       text="Number of floors")
-        self._number_of_floors_label.grid(row=3, column=1, rowspan=1, columnspan=1)
+        self._number_of_floors_label.grid(row=3, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                          padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Floor Area Label
         self._floor_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -162,10 +158,9 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                 text="Floor area")
-        self._floor_area_label.grid(row=4, column=1, rowspan=1, columnspan=1)
+        self._floor_area_label.grid(row=4, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The text field (Entries) for the Labels
         # Tag Entry
@@ -258,8 +253,6 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         Returns:
             bool: True if category was loaded successfully, false else
         """
-        # First unfreeze
-        self.unfreeze()
 
         self._selected_category: category_i.Category = category
 

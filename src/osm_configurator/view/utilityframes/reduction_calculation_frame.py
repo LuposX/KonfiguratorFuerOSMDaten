@@ -94,11 +94,10 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                          corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                                          fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                          text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                         padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                         pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                          anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                                                                          text="Calculate\nsite Area")
-        self._calculate_site_area_label.grid(row=3, column=0, rowspan=1, columnspan=1)
+        self._calculate_site_area_label.grid(row=3, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         self._calculate_building_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
                                                                                              width=int(
@@ -108,11 +107,10 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                              corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                                              fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                              text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                              anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                                                                              text="Calculate\nBuilding Area")
-        self._calculate_building_area_label.grid(row=3, column=2, rowspan=1, columnspan=1)
+        self._calculate_building_area_label.grid(row=3, column=2, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The switch inbetween
         self._site_building_switch: customtkinter.CTkSwitch = customtkinter.CTkSwitch(master=self,
@@ -168,8 +166,6 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         Returns:
             bool: True if category was successfully loaded, False else
         """
-        # Unfreezing first
-        self.unfreeze()
 
         self._selected_category: category_i.Category = category
 

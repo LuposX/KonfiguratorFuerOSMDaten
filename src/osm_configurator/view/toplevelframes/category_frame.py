@@ -117,10 +117,9 @@ class CategoryFrame(TopLevelFrame):
                                                                                        fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                        text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                        anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                       pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                        text="Choose Categories")
-        self._choose_categories_label.grid(row=0, column=0, rowspan=1, columnspan=1)
+        self._choose_categories_label.grid(row=0, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # CategoryNameLabel
         self._category_name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._category_menu_frame,
@@ -130,10 +129,9 @@ class CategoryFrame(TopLevelFrame):
                                                                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                   padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                    text="Category Name")
-        self._category_name_label.grid(row=1, column=0, rowspan=1, columnspan=1)
+        self._category_name_label.grid(row=1, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Making the dropdown Menu
         self._category_drop_down_menu: customtkinter.CTkOptionMenu = customtkinter.CTkOptionMenu(
@@ -175,10 +173,9 @@ class CategoryFrame(TopLevelFrame):
                                                                                        fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                        text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                        anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                       pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                        text="Activate or Deactivate Category:")
-        self._category_checkbox_label.grid(row=0, column=2, rowspan=1, columnspan=1)
+        self._category_checkbox_label.grid(row=0, column=2, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Making the Checkbox, to activate and disable Categories
         self._category_checkbox: customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(master=self._category_menu_frame,
@@ -215,10 +212,9 @@ class CategoryFrame(TopLevelFrame):
                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                 text="White List:")
-        self._white_list_label.grid(row=0, column=0, rowspan=1, columnspan=1)
+        self._white_list_label.grid(row=0, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The TextBox which contains the WhiteList
         self._white_list = customtkinter.CTkTextbox(master=self._white_list_frame,
@@ -257,10 +253,9 @@ class CategoryFrame(TopLevelFrame):
                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                 text="Black List:")
-        self._black_list_label.grid(row=0, column=0, rowspan=1, columnspan=1)
+        self._black_list_label.grid(row=0, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Making the TextBox which contains the BlackList
         self._black_list: customtkinter.CTkTextbox = customtkinter.CTkTextbox(master=self._black_list_frame,
@@ -500,10 +495,8 @@ class CategoryFrame(TopLevelFrame):
                                                                                     text=recommended_string,
                                                                                     command=partial(
                                                                                         self._recommend_button_pressed,
-                                                                                        button_id),
-                                                                                    padx=PADX,
-                                                                                    pady=PADY)
-            new_recommend_button.grid(row=button_id, column=0, rowspan=1, columnspan=1)
+                                                                                        button_id))
+            new_recommend_button.grid(row=button_id, column=0, rowspan=1, columnspan=1, padx=PADX, pady=PADY)
             self._recommender_frame_button_list.append(new_recommend_button)
             button_id += 1
 

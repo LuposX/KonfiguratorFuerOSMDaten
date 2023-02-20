@@ -191,9 +191,7 @@ class MainMenuFrame(TopLevelFrame):
         """
         Calls the settings-menu switching states
         """
-        print("BEFORE STATE CHANGE")
         self._state_manager.change_state(sne.StateName.SETTINGS)
-        print("CODE HERE WAS REACHED")
         self._state_manager.lock_state()
 
     def __load_external_project(self):

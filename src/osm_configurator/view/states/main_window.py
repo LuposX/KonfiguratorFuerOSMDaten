@@ -106,6 +106,7 @@ class MainWindow(customtkinter.CTk):
         """
         Starts the Loop of the MainWindow and therefor the whole View
         """
+        self.wm_protocol("WM_DELETE_WINDOW", self._window_closed)
         self.mainloop()
 
     def change_state(self, last_state: State | None, new_state: State | None) -> bool:
@@ -188,3 +189,8 @@ class MainWindow(customtkinter.CTk):
             toplevel_frame.grid_remove()
 
         return True
+
+    def _window_closed(self):
+
+
+        self.destroy()

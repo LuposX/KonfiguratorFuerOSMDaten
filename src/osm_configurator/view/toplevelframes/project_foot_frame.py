@@ -115,10 +115,6 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         self._button_list.append(self._right_arrow)
 
     def activate(self):
-        # If Frame is activated, it is unlocked
-        self.unlock()
-        # Also starts unfrozen
-        self.unfreeze()
 
         self._disable_buttons_based_on_state()
 
@@ -185,9 +181,16 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         if not self._locked:
             return False
         else:
-            # Activate does exactly what we want, it enables all buttons, except for those wo shall not be active,
-            # since there is no default left or right
-            self.activate()
+
+            # Activating all Buttons
+            button: customtkinter.CTkButton
+            for button in self._button_list:
+                button.configure(state="normal",
+                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+
+            self._disable_buttons_based_on_state()
+
             self._locked: bool = False
             return True
 

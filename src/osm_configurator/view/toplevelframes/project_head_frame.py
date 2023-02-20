@@ -265,10 +265,6 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         self._button_list.append(self._options_button)
 
     def activate(self):
-        # IF frame is activated, it is unlocked
-        self.unlock()
-        # And unfrozen
-        self.unfreeze()
 
         # Activating all Buttons first, to prevent all buttons getting disabled eventually
         button: customtkinter.CTkButton
@@ -343,7 +339,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         self._save_project()
 
         # Changing to Attractivity_VIEW State
-        if not self._state_manager.change_state(state_name_enum_i.StateName.ATTRACTIVITY_VIEW):
+        if not self._state_manager.change_state(state_name_enum_i.StateName.ATTRACTIVITY_EDIT):
             alert_pop_up_i.AlertPopUp("Opening Attractivity Failed!")
 
     def _aggregation_button_pressed(self):
@@ -486,9 +482,15 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         if not self._locked:
             return False
         else:
-            # Doing the activate method, because that excatly does what we want, it unlocks all buttons, except for the
-            # one of the current state
-            self.activate()
+
+            # Activating all buttons
+            button: customtkinter.CTkButton
+            for button in self._button_list:
+                button.configure(state="normal",
+                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+
+            self._disable_button_of_current_state()
             self._locked: bool = False
             return True
 

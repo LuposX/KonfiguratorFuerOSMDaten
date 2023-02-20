@@ -147,10 +147,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                 text="Categories:")
-        self._categories_label.grid(row=0, column=1, rowspan=1, columnspan=1, sticky="W")
+        self._categories_label.grid(row=0, column=1, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Attractivity Attribute Label
         self._attractivity_attribute_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -164,10 +163,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                             anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                             text="Attractivity-Attribute:")
-        self._attractivity_attribute_label.grid(row=0, column=3, rowspan=1, columnspan=1, sticky="W")
+        self._attractivity_attribute_label.grid(row=0, column=3, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Area Factor Label
         self._area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -181,10 +179,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                  fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                  text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                  anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                 pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                  text="Area-Factor:")
-        self._area_factor_label.grid(row=0, column=4, rowspan=1, columnspan=1, sticky="W")
+        self._area_factor_label.grid(row=0, column=4, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                     padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Numbers of Floors Factor
         self._number_of_floors_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -198,10 +195,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                              fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                              text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                              anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                              text="Numbers-of-Floors-Factor:")
-        self._number_of_floors_factor_label.grid(row=0, column=5, rowspan=1, columnspan=1, sticky="W")
+        self._number_of_floors_factor_label.grid(row=0, column=5, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Floor Area Label
         self._floor_area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -215,10 +211,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                        fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                        text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                        anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                       pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                        text="Floor-Area-Factor:")
-        self._floor_area_factor_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W")
+        self._floor_area_factor_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Base Attractivity Label
         self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
@@ -232,10 +227,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                        fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                        text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                        anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
-                                                                                       pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                                                        text="Base-Attractivity-Factor:")
-        self._base_attractivity_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W")
+        self._base_attractivity_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Button to go back to edit the attractivities
         self._edit_attractivity_button: customtkinter.CTkButton = customtkinter.CTkButton(
@@ -253,8 +247,6 @@ class AttractivityViewFrame(TopLevelFrame):
         self._edit_attractivity_button.grid(row=2, column=4, rowspan=1, columnspan=1)
 
     def activate(self):
-        # unfreezing first
-        self.unfreeze()
 
         # There has no button been pressed yet
         self._last_pressed_category_button: customtkinter.CTkButton = None
@@ -297,10 +289,9 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                           border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                                                           text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                                           text=active_category.get_category_name(),
-                                                                          pady=PADY,
                                                                           command=partial(self._category_button_pressed,
                                                                                           button_id))
-            new_button.grid(row=button_id, column=0, rowspan=1, columnspan=1)
+            new_button.grid(row=button_id, column=0, rowspan=1, columnspan=1, pady=PADY)
             button_id += 1
             self._category_button_list.append(new_button)
 
@@ -373,10 +364,8 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                    padx=PADX,
-                                                                    pady=PADY,
                                                                     text=attractivity_tuple[0])
-        name_label.grid(row=row, column=0, rowspan=1, columnspan=1)
+        name_label.grid(row=row, column=0, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._attractivity_name_labels.append(name_label)
 
         area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
@@ -390,10 +379,8 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                    padx=PADX,
-                                                                    pady=PADY,
                                                                     text=attractivity_tuple[1])
-        area_label.grid(row=row, column=1, rowspan=1, columnspan=1)
+        area_label.grid(row=row, column=1, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._area_factor_labels.append(area_label)
 
         floor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
@@ -407,10 +394,8 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                     padx=PADX,
-                                                                     pady=PADY,
                                                                      text=attractivity_tuple[2])
-        floor_label.grid(row=row, column=2, rowspan=1, columnspan=1)
+        floor_label.grid(row=row, column=2, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._floors_factor_labels.append(floor_label)
 
         ground_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
@@ -424,10 +409,8 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                           padx=PADX,
-                                                                           pady=PADY,
                                                                            text=attractivity_tuple[3])
-        ground_area_label.grid(row=row, column=3, rowspan=1, columnspan=1)
+        ground_area_label.grid(row=row, column=3, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._ground_area_factor_labels.append(ground_area_label)
 
         base_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
@@ -441,10 +424,8 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                    padx=PADX,
-                                                                    pady=PADY,
                                                                     text=attractivity_tuple[4])
-        base_label.grid(row=row, column=4, rowspan=1, columnspan=1)
+        base_label.grid(row=row, column=4, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._base_attractivity_labels.append(base_label)
 
     def _category_button_pressed(self, button_id):

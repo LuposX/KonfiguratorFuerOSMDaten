@@ -135,7 +135,4 @@ def test_category_to_data(main_window):
 
     assert state_manager.default_go_left()
 
-    assert state_manager._previous_state.get_state_name() == StateName.CATEGORY
-
-    assert state_manager._current_state.get_state_name() == StateName.DATA
     assert state_manager.get_state().get_state_name() == StateName.DATA

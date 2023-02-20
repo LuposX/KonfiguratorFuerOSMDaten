@@ -120,8 +120,6 @@ class AggregationFrame(TopLevelFrame):
             checkbox_id += 1
 
     def activate(self):
-        # Unfreeze Frame on activation!
-        self.unfreeze()
 
         method: aggregation_method_enum_i.AggregationMethod
         checkbox_id: int = 0
