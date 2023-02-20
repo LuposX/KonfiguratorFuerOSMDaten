@@ -1,12 +1,10 @@
 import os
 
 import src.osm_configurator.model.parser.cut_out_parser as cop
-from tests.definitions import TEST_DIR, MONACO_TRAFFIC_CELL_0_POLYGON, MONACO_TRAFFIC_CELL_1_POLYGON
+from tests import TEST_DIR, MONACO_TRAFFIC_CELL_0_POLYGON, MONACO_TRAFFIC_CELL_1_POLYGON
 from src.osm_configurator.model.parser import dataframe_column_names
 
 from pathlib import Path
-import shapely as shp
-
 
 # without this you get a weird error, idk why
 os.environ["PROJ_LIB"]=""

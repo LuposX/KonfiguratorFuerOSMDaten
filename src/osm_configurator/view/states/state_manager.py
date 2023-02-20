@@ -149,9 +149,6 @@ class StateManager:
                                                          cut_out_controller, data_visualization_controller,
                                                          osm_data_controller)
 
-        # At the beginning, there is no previous State
-        self._previous_state: State = None
-
         self._current_state: State = None
         main_menu_state_name: StateName = state_name_enum_i.StateName.MAIN_MENU
         state: State
@@ -399,11 +396,9 @@ class StateManager:
             if next_state is None:
                 return False
             else:
-                success: bool = self._main_window.change_state(self._previous_state, next_state)
+                success: bool = self._main_window.change_state(self._current_state, next_state)
                 if success:
-                    # If state change worked, save the state before as previous state
-                    # and set the new state as the current one
-                    self._previous_state = self._current_state
+                    # If state change worked, set the new state as the current one
                     self._current_state = next_state
 
                     # Now activating all the frames of the current state

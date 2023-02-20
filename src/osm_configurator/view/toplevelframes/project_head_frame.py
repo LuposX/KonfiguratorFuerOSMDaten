@@ -202,7 +202,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
                                                                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                                                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                                                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                                                                    command=self._attractivity_button_pressed,
+                                                                                    command=self._aggregation_button_pressed,
                                                                                     text="Aggregation")
         self._aggregation_button.grid(row=0, column=5, rowspan=2, columnspan=1)
         self._button_list.append(self._aggregation_button)
@@ -379,20 +379,19 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         if not self._state_manager.change_state(state_name_enum_i.StateName.SETTINGS):
             alert_pop_up_i.AlertPopUp("Opening Settings Failed!")
 
-    def _export_drop_down_menu_edited(self):
-
+    def _export_drop_down_menu_edited(self, choice):
         # First checking what was selected
         # And then trying the export, if it fails an alertPopUp will be shown
-        if self._export_drop_down_menu.get() == EXPORT_PROJECT_STRING:
+        if choice == EXPORT_PROJECT_STRING:
             if not self._export_controller.export_project(self._file_dialog("Select Directory to export Project to")):
                 alert_pop_up_i.AlertPopUp("Export of Project Failed!")
-        elif self._export_drop_down_menu.get() == EXPORT_CALCULATIONS_STRING:
+        elif choice == EXPORT_CALCULATIONS_STRING:
             if not self._export_controller.export_calculations(self._file_dialog("Select Directory to export Calculations to")):
                 alert_pop_up_i.AlertPopUp("Export of Calculations Failed!")
-        elif self._export_drop_down_menu.get() == EXPORT_CONFIGURATION_STRING:
+        elif choice == EXPORT_CONFIGURATION_STRING:
             if not self._export_controller.export_configurations(self._file_dialog("Select Directory to export Configurations to")):
                 alert_pop_up_i.AlertPopUp("Export of Configurations Failed!")
-        elif self._export_drop_down_menu.get() == EXPORT_CUT_OUT_MAP_STRING:
+        elif choice == EXPORT_CUT_OUT_MAP_STRING:
             if not self._export_controller.export_cut_out_map(self._file_dialog("Select Directory to export Cut-Out-Map to")):
                 alert_pop_up_i.AlertPopUp("Export of Cut-Out-Map Failed!")
 
@@ -403,7 +402,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
     def _file_dialog(self, title: str) -> Path:
         # Opens a file dialog, that will ask for a directory to save stuff in
-        file_path: str = filedialog.askopenfilename(initialdir="/", title=title)
+        file_path: str = filedialog.askdirectory(initialdir="/", title=title)
         # A Path will be returned
         return Path(file_path)
 

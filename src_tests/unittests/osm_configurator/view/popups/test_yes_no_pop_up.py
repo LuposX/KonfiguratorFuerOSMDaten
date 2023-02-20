@@ -1,8 +1,6 @@
 import os.path
-from tests.definitions import TEST_DIR
 
-from pathlib import Path
-import src.osm_configurator.view.popups.alert_pop_up as apu
+import src.osm_configurator.view.popups.yes_no_pop_up as ynpu
 
 
 def _prepare(target_path):
@@ -14,7 +12,7 @@ def _prepare(target_path):
 
 
 @pytest.mark.skip(reason="pytest not supported yet")
-@pytest.mark.parametrize(["Ich Kek", "Du Kek", "Er sie es Kek", "Wir Kek", "Ihr Kek", "Sie Kek"])
-def test_correct_creation(message):
-    popup = apu.AlertPopUp(message)
+@pytest.mark.parametrize(["Ich Kek", "Du Kek", "Er sie es Kek", "Wir Kek", "Ihr Kek", "Sie Kek"], lambda x: print(x))
+def test_correct_init(message, func):
+    popup = ynpu.YesNoPopUp(message=message, func=func)
     popup.destroy()
