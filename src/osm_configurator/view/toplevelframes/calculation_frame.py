@@ -283,9 +283,9 @@ class CalculationFrame(TopLevelFrame):
                 self.__activate_buttons()
                 AlertPopUp(message="Calculation has stopped successfully")
 
-                # Beating the shit out of these fucks (nah we killing those bois) the progressbar and the cancel button
-                self.progressbar.destroy()
-                self.cancel_button.destroy()
+            # Destroying the progressbar and the cancel button
+            self.progressbar.destroy()
+            self.cancel_button.destroy()
         else:
             AlertPopUp(message="Calculation will continue")
 

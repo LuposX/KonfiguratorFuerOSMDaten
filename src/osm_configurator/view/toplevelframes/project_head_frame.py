@@ -475,6 +475,10 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                         text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
 
+            self._export_drop_down_menu.configure(state="disabled",
+                                                  fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR_DISABLED.value,
+                                                  text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_TEXT_COLOR_DISABLED.value)
+
             self._locked: bool = True
             return True
 
@@ -489,6 +493,10 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
                 button.configure(state="normal",
                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                  text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+
+            self._export_drop_down_menu.configure(state="normal",
+                                                  fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
+                                                  text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_TEXT_COLOR.value)
 
             self._disable_button_of_current_state()
             self._locked: bool = False
@@ -518,7 +526,8 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         If this method is called, the frame returns into its previous interactable state.
         """
 
-        if self._frozen:
+        # Only completely unfreeze if not locked!
+        if self._frozen and not self._locked:
             self._main_menu_button.configure(state="normal")
             self._save_button.configure(state="normal")
             self._data_button.configure(state="normal")
@@ -532,5 +541,11 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
             # Disabling the button corrosponding to current state again
             self._disable_button_of_current_state()
+
+            self._frozen: bool = False
+
+        elif self._frozen and self._locked:
+            # If locked, only unfreeze save button
+            self._save_button.configure(state="normal")
 
             self._frozen: bool = False

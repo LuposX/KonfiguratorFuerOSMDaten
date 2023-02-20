@@ -660,6 +660,7 @@ class CategoryFrame(TopLevelFrame):
             self._black_list.configure(state="disabled")
             self._create_button.configure(state="disabled")
             self._delete_button.configure(state="disabled")
+            self._category_checkbox.configure(state=tkinter.DISABLED)
 
             button: customtkinter.CTkButton
             for button in self._recommender_frame_button_list:
@@ -678,6 +679,7 @@ class CategoryFrame(TopLevelFrame):
             self._black_list.configure(state="normal")
             self._create_button.configure(state="normal")
             self._delete_button.configure(state="normal")
+            self._category_checkbox.configure(state=tkinter.NORMAL)
 
             button: customtkinter.CTkButton
             for button in self._recommender_frame_button_list:
