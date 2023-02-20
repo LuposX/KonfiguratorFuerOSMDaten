@@ -267,7 +267,7 @@ class DataFrame(TopLevelFrame):
         Lets the user view the cutout.
         Activated if the view_cutout button is activated
         """
-        self._data_visualization_controller.get_calculation_visualization()
+        path = self._data_visualization_controller.get_calculation_visualization()
 
     def __copy_category_configurations(self):
         self._selected_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes

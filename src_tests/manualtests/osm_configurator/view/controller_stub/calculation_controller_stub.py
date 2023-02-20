@@ -14,7 +14,7 @@ class CalculationControllerStub(ICalculationController):
         return CalculationState.RUNNING
 
     def get_calculation_state(self) -> CalculationState:
-        return CalculationState.RUNNING
+        return CalculationState.ENDED_SUCCESSFULLY
 
     def get_current_calculation_phase(self) -> CalculationPhase:
         return CalculationPhase.AGGREGATION_PHASE

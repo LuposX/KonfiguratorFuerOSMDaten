@@ -109,8 +109,7 @@ class CalculationFrame(TopLevelFrame):
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-            )
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
 
     def activate(self):
@@ -128,7 +127,7 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.TAG_FILTER_PHASE)
-        if checker != CalculationPhase.RUNNING:
+        if checker != CalculationState.RUNNING:
             self.__calculation_start_interrupted()
             self.activate()
             return
@@ -149,7 +148,7 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.GEO_DATA_PHASE)
-        if checker != CalculationPhase.RUNNING:  # Check, if changing states is possible
+        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
             self.__calculation_start_interrupted()
             self.activate()
             return
@@ -214,7 +213,7 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.AGGREGATION_PHASE)
-        if checker != CalculationPhase.RUNNING:  # Check, if changing states is possible
+        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
             # Interrupt calculation start
             self.__calculation_start_interrupted()
             self.activate()
@@ -255,8 +254,8 @@ class CalculationFrame(TopLevelFrame):
         """
         Initializes the cancel process to make the process communicate with the yes-no-popup
         """
-        self.freeze()
-        self.__show_yes_no_popup(func=self.__stop_calculation, message="Do You really want to cancel the Calculation?")
+        self._state_manager.freeze_state()
+        YesNoPopUp(func=self.__stop_calculation, message="Do You really want to cancel the Calculation?")
 
     def __stop_calculation(self, cancel: bool):
         """
@@ -294,7 +293,7 @@ class CalculationFrame(TopLevelFrame):
             customtkinter.CTkProgressBar(master=self,
                                          progress_color=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_PROGRESS_COLOR.value,
                                          width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_WIDTH.value,
-                                         orientation=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_ORIENTATION,
+                                         orientation=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_ORIENTATION.value,
                                          mode=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_MODE.value,
                                          indeterminate_speed=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_INDETERMINATE_SPEED.value,
                                          border_width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_BORDER_WITH.value,
@@ -323,7 +322,7 @@ class CalculationFrame(TopLevelFrame):
         self._calculation_controller.start_calculations(
             self._starting_point)  # starts the calculation from the chosen starting point
 
-        self.window.after(30000, self.__update_progressbar)  # keeps the progressbar up-to-date
+        self.after(30000, self.__update_progressbar)  # keeps the progressbar up-to-date
 
     def __update_progressbar(self) -> None:
         """
@@ -353,7 +352,7 @@ class CalculationFrame(TopLevelFrame):
                 self.progressbar.configure(value=0)  # Reset progressbar
                 self.progressbar_label.configure(text=calculation_phase.get_name())  # change label to the next phase
 
-                self.window.after(30000, self.__update_progressbar)
+                self.after(30000, self.__update_progressbar)
                 return
 
     def __end_calculation(self):
