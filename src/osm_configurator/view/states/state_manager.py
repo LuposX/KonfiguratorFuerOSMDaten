@@ -457,10 +457,6 @@ class StateManager:
         This method freezes all frames that are currently active, and making then not interactable anymore.
         The state will also be locked and can't be changed, until unfrozen!
         """
-
-        # Also locking the state, to not allow state changes!
-        self.lock_state()
-
         # Freezing all frames in the current state
         # All Frames have to be freezable!
         positioned_frame: PositionedFrame
@@ -477,13 +473,8 @@ class StateManager:
         Unfreezes the state, by making all active frames interactable again and unlocking the state, allowing
         state changes again!
         """
-
         # Unfreezing himself
-        # Unfreezing first, since unlock_state() only works for unfrozen stateManager!
         self._frozen: bool = False
-
-        # Unlocking the state, to allow state changes again!
-        self.unlock_state()
 
         # Unfreezing all frames in the current state
         # All Frames have to be unfreezable!
