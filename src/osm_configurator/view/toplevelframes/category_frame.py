@@ -544,8 +544,9 @@ class CategoryFrame(TopLevelFrame):
             self._activate_editing()
 
             # Fill in Name
-            self._category_name_entry.configure(text=category.get_category_name(),
-                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+            self._category_name_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+            self._category_name_entry.delete(0, tkinter.END)
+            self._category_name_entry.insert(0, category.get_category_name())
 
             # Edit Checkbox
             if category.is_active():
@@ -588,7 +589,7 @@ class CategoryFrame(TopLevelFrame):
         # Then there is probably no category at all
         self._category_drop_down_menu.set("")
 
-        self._category_name_entry.delete(1.0, "end-1c")
+        self._category_name_entry.delete(0, tkinter.END)
         self._category_name_entry.configure(state="disabled")
 
         self._category_checkbox.deselect()

@@ -37,5 +37,8 @@ def test_display_main_window():
                                 data_visualization_controller=data_visualization_controller,
                                 osm_data_controller=osm_data_controller,
                                 )
+
+    main_window._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
+
     main_window.start_main_window()
-    main_window._state_manager.change_state(state_name_enum_i.StateName.CREATE_PROJECT)
+

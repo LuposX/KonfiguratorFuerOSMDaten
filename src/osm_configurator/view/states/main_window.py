@@ -65,6 +65,9 @@ class MainWindow(customtkinter.CTk):
         super().__init__()
         self.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
 
+        # Private Attributes, to keep track of the Frames placed in the mainWindow
+        self._current_frames: List[TopLevelFrame] = []
+
         # Selecting the primary Monitor to get accurate location for centering the window
         primary_monitor: Monitor = None
         monitor: Monitor
@@ -153,6 +156,9 @@ class MainWindow(customtkinter.CTk):
             # If there is no new state given, then you can't make anything visible
             return False
 
+        # Resetting what Frames are currently Placed on the MainWindow
+        self._current_frames: List[TopLevelFrame] = []
+
         frames: List[positioned_frame_i.PositionedFrame] = state.get_active_frames()
 
         # First getting all information about position and then placing the actual_frame there
@@ -166,8 +172,9 @@ class MainWindow(customtkinter.CTk):
 
             actual_frame.master = self
             actual_frame.grid(row=row, column=column, rowspan=row_span, columnspan=column_span, sticky=sticky_type)
-            # After Frame is placed, activate it, so it starts its job
-            actual_frame.activate()
+
+            # The Frames first, will be just saved and not be activated directly!
+            self._current_frames.append(actual_frame)
 
         return True
 
@@ -194,3 +201,13 @@ class MainWindow(customtkinter.CTk):
             actual_frame.grid_remove()
 
         return True
+
+    def activate_current_frames(self):
+        """
+        Activates all the Frames that are currently placed in the MainWindow
+        """
+
+        if not len(self._current_frames) == 0:
+            frame: TopLevelFrame
+            for frame in self._current_frames:
+                frame.activate()

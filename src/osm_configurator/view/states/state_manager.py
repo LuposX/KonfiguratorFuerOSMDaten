@@ -405,6 +405,10 @@ class StateManager:
                     # and set the new state as the current one
                     self._previous_state = self._current_state
                     self._current_state = next_state
+
+                    # Now activating all the new frames
+                    self._main_window.activate_current_frames()
+
                 return success
 
     def get_state(self) -> State:

@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-import tkinter
 from functools import partial
 
 import customtkinter
+
+import tkinter
 
 import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.control.aggregation_controller_interface
@@ -24,6 +25,7 @@ if TYPE_CHECKING:
     from typing import Final
     from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
+    from customtkinter import CTkCheckBox
 
 # Finals
 SCROLLABLE_FRAME_FG_COLOR: Final = scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value
@@ -88,22 +90,21 @@ class AggregationFrame(TopLevelFrame):
 
         self._aggregation_methods: List[
             aggregation_method_enum_i.AggregationMethod] = self._aggregation_controller.get_aggregation_methods()
-        self._aggregation_checkboxes: List[customtkinter.CTkCheckBox] = []
+        self._aggregation_checkboxes: List[CTkCheckBox] = []
 
         method: aggregation_method_enum_i.AggregationMethod
         checkbox_id: int = 0
         for method in self._aggregation_methods:
-            checkbox: customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(master=self._aggregation_scrollable_frame,
-                                                                            width=CHECKBOX_WIDTH_AND_HEIGHT,
-                                                                            height=CHECKBOX_WIDTH_AND_HEIGHT,
-                                                                            corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
-                                                                            border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
-                                                                            fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
-                                                                            hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
-                                                                            text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                                                            text=method.value[1],
-                                                                            command=partial(self._checkbox_edited,
-                                                                                            checkbox_id))
+            checkbox: CTkCheckBox = customtkinter.CTkCheckBox(master=self._aggregation_scrollable_frame,
+                                     width=CHECKBOX_WIDTH_AND_HEIGHT,
+                                     height=CHECKBOX_WIDTH_AND_HEIGHT,
+                                     corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
+                                     border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
+                                     fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
+                                     hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
+                                     text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
+                                     text=method.get_name(),
+                                     command=partial(self._checkbox_edited, checkbox_id))
 
             # This will be overriden when activate() is called, but it is here do make sure, that checkboxes start defined
             if self._aggregation_controller.is_aggregation_method_active(method):
@@ -111,7 +112,8 @@ class AggregationFrame(TopLevelFrame):
                 checkbox.configure(text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value)
             else:
                 checkbox.deselect()
-                checkbox.configure(text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED.value)
+                checkbox.configure(
+                    text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED.value)
 
             self._aggregation_checkboxes.append(checkbox)
             checkbox.grid(row=checkbox_id, column=0, rowspan=1, columnspan=1)
@@ -162,7 +164,7 @@ class AggregationFrame(TopLevelFrame):
         """
 
         if not self._frozen:
-            checkbox: customtkinter.CTkCheckBox
+            checkbox: CTkCheckBox
             for checkbox in self._aggregation_checkboxes:
                 checkbox.configure(state=tkinter.DISABLED)
 
@@ -174,7 +176,7 @@ class AggregationFrame(TopLevelFrame):
         """
 
         if self._frozen:
-            checkbox: customtkinter.CTkCheckBox
+            checkbox: CTkCheckBox
             for checkbox in self._aggregation_checkboxes:
                 checkbox.configure(state=tkinter.NORMAL)
 

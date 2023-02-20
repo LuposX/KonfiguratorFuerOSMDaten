@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 import src.osm_configurator.model.project.configuration.attractivity_attribute
-import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry
+import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry_i
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
@@ -32,7 +32,7 @@ class Category:
         Args:
             category_name (str): The name of the newly created category.
         """
-        self._active: bool = False
+        self._active: bool = True
         self._whitelist: List[str] = []
         self._blacklist: List[str] = []
         self._category_name: str = category_name
@@ -42,7 +42,7 @@ class Category:
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
-        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
+        self._default_tag: DefaultValueEntry = default_value_entry_i.DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
         self._default_value_list.append(self._default_tag)
 
         self._strictly_use_default_values: bool = False
@@ -65,12 +65,14 @@ class Category:
         Sets the active-value to True.
         """
         self._active = True
+        return True
 
     def deactivate(self) -> bool:
         """
         Sets the active-value to False.
         """
         self._active = False
+        return True
 
     def get_whitelist(self) -> List[str]:
         """
@@ -119,6 +121,7 @@ class Category:
             new_category_name (str): new value for the category_name.
         """
         self._category_name = new_category_name
+        return True
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
@@ -201,6 +204,7 @@ class Category:
             new_calculation_method_of_area (bool): new value that will overwrite the existing value.
         """
         self._calculation_method_of_area = new_calculation_method_of_area
+        return True
 
     def get_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """

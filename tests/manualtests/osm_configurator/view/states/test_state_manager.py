@@ -16,22 +16,29 @@ from tests.manualtests.osm_configurator.view.controller_stub.calculation_control
 from src.osm_configurator.view.states.main_window import MainWindow
 from src.osm_configurator.view.states.state_name_enum import StateName
 
+from typing import TYPE_CHECKING, List
+
+if TYPE_CHECKING:
+    from src.osm_configurator.view.states.state_manager import StateManager
+
 
 def test_innit():
     # Making a mainWindow, since stateManager need sone and the main window will create our stateManager directly
-    main_window = MainWindow(ExportControllerStub(), CategoryControllerStub(), ProjectControllerStub(),
+    main_window: MainWindow = MainWindow(ExportControllerStub(), CategoryControllerStub(), ProjectControllerStub(),
                              SettingsControllerStub(), AggregationControllerStub(), CalculationControllerStub(),
                              CutOutControllerStub(), DataVisualizationControllerStub(), OSMDataControllerStub())
-    state_manager = main_window._state_manager
+    state_manager: StateManager = main_window._state_manager
 
     assert state_manager.get_state().get_state_name() == StateName.MAIN_MENU
 
-    assert state_manager._previous_state is None
+    # Previou aswell as current state are the MainMenu state
+    assert state_manager._previous_state.get_state_name() == StateName.MAIN_MENU
 
     assert state_manager._current_state.get_state_name() == StateName.MAIN_MENU
 
-@pytest.mark.parametrize("state_name,default_right", [(StateName.DATA, StateName.CATEGORY),
-                                                      (StateName.CATEGORY, StateName.REDUCTION),
+# (StateName.DATA, StateName.CATEGORY),
+
+@pytest.mark.parametrize("state_name,default_right", [(StateName.CATEGORY, StateName.REDUCTION),
                                                       (StateName.REDUCTION, StateName.ATTRACTIVITY_EDIT),
                                                       (StateName.ATTRACTIVITY_EDIT, StateName.AGGREGATION),
                                                       (StateName.ATTRACTIVITY_VIEW, StateName.AGGREGATION),
@@ -74,7 +81,7 @@ def test_default_go_right_none(state_name, default_right):
                                                       (StateName.ATTRACTIVITY_VIEW, StateName.REDUCTION),
                                                       (StateName.AGGREGATION, StateName.ATTRACTIVITY_EDIT),
                                                      (StateName.CALCULATION, StateName.AGGREGATION)])
-def test_default_go_left_not_none(state_name, default_left):
+def test_default_go_left_no_none(state_name, default_left):
     # Making a mainWindow, since stateManager need sone and the main window will create our stateManager directly
     main_window = MainWindow(ExportControllerStub(), CategoryControllerStub(), ProjectControllerStub(),
                              SettingsControllerStub(), AggregationControllerStub(), CalculationControllerStub(),

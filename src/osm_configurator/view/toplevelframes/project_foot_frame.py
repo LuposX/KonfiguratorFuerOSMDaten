@@ -152,20 +152,20 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         # Activating all buttons, so they don't all end up beeing disabled
         button: customtkinter.CTkButton
         for button in self._button_list:
-            button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
-                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+            button.configure(state="normal", fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
 
         # If there is no default left, the left arrow is disabled
         if current_state.get_default_left() is None:
             self._left_arrow.configure(state="disabled",
-                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
         # If there is no default right, the right arrow is disabled
         if current_state.get_default_right() is None:
             self._right_arrow.configure(state="disabled",
-                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
     def lock(self) -> bool:
         if self._locked:
@@ -175,8 +175,8 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
             button: customtkinter.CTkButton
             for button in self._button_list:
                 button.configure(state="disabled",
-                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             self._locked: bool = True
             return True

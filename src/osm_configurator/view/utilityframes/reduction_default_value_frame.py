@@ -296,15 +296,15 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
 
             self._activate_editing()
 
-            self._tag_entry.insert(1.0, self._selected_entry.get_default_value_entry_tag())
+            self._tag_entry.insert(0, self._selected_entry.get_default_value_entry_tag())
 
-            self._area_entry.insert(1.0, self._selected_entry.get_attribute_default(
+            self._area_entry.insert(0, self._selected_entry.get_attribute_default(
                 attribute_enum_i.Attribute.PROPERTY_AREA))
 
-            self._number_of_floors_entry.insert(1.0, self._selected_entry.get_attribute_default(
+            self._number_of_floors_entry.insert(0, self._selected_entry.get_attribute_default(
                 attribute_enum_i.Attribute.NUMBER_OF_FLOOR))
 
-            self._floor_area_entry.insert(1.0, self._selected_entry.get_attribute_default(
+            self._floor_area_entry.insert(0, self._selected_entry.get_attribute_default(
                 attribute_enum_i.Attribute.FLOOR_AREA))
         else:
             self._reset_text_entries()
@@ -475,16 +475,16 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
     def _reset_text_entries(self):
         # Deleting everything in all the Text Entries
         # And setting the color to normal
-        self._tag_entry.delete(1.0, "end-1c")
+        self._tag_entry.delete(0, tkinter.END)
         self._tag_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-        self._area_entry.delete(1.0, "end-1c")
+        self._area_entry.delete(0, tkinter.END)
         self._area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-        self._number_of_floors_entry.delete(1.0, "end-1c")
+        self._number_of_floors_entry.delete(0, tkinter.END)
         self._number_of_floors_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-        self._floor_area_entry.delete(1.0, "end-1c")
+        self._floor_area_entry.delete(0, tkinter.END)
         self._floor_area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
     def freeze(self):

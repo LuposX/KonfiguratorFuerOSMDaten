@@ -274,8 +274,8 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         button: customtkinter.CTkButton
         for button in self._button_list:
             button.configure(state="normal",
-                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
-                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
 
         # Activating the Export Drop Down Menu
         self._export_drop_down_menu.configure(state="normal")
@@ -428,43 +428,43 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
             case state_name_enum_i.StateName.DATA:
                 self._data_button.configure(state="disabled",
-                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             case state_name_enum_i.StateName.CATEGORY:
                 self._category_button.configure(state="disabled",
-                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             case state_name_enum_i.StateName.REDUCTION:
                 self._reduction_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
                 self._attractivity_button.configure(state="disabled",
-                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
                 self._attractivity_button.configure(state="disabled",
-                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             case state_name_enum_i.StateName.AGGREGATION:
                 self._aggregation_button.configure(state="disabled",
-                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             case state_name_enum_i.StateName.CALCULATION:
                 self._calculate_button.configure(state="disabled",
-                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             case state_name_enum_i.StateName.SETTINGS:
                 self._options_button.configure(state="disabled",
-                                               fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                               text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                               fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                               text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
     def lock(self) -> bool:
         if self._locked:
@@ -474,11 +474,11 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
             button: customtkinter.CTkButton
             for button in self._button_list:
                 button.configure(state="disabled",
-                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
             self._save_button.configure(state="normal",
-                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE,
-                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR)
+                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
 
             self._locked: bool = True
             return True

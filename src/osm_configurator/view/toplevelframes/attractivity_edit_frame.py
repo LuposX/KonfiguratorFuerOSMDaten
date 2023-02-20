@@ -586,24 +586,24 @@ class AttractivityEditFrame(TopLevelFrame):
             self._activate_attractivity_editing()
 
             # Inserting the Name
-            self._attractivity_name_entry.delete(1.0, "end-1c")
-            self._attractivity_name_entry.insert(1.0, attractivity.get_attractivity_attribute_name())
+            self._attractivity_name_entry.delete(0, tkinter.END)
+            self._attractivity_name_entry.insert(0, attractivity.get_attractivity_attribute_name())
 
             # Inserting all the Factors
-            self._area_entry.delete(1.0, "end-1c")
-            self._area_entry.insert(1.0,
+            self._area_entry.delete(0, tkinter.END)
+            self._area_entry.insert(0,
                                     str(attractivity.get_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA)))
 
-            self._numbers_of_floors_entry.delete(1.0, "end-1c")
-            self._numbers_of_floors_entry.insert(1.0,
+            self._numbers_of_floors_entry.delete(0, tkinter.END)
+            self._numbers_of_floors_entry.insert(0,
                                                  str(attractivity.get_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR)))
 
-            self._floor_area_entry.delete(1.0, "end-1c")
-            self._floor_area_entry.insert(1.0, str(attractivity.get_attribute_factor(
+            self._floor_area_entry.delete(0, tkinter.END)
+            self._floor_area_entry.insert(0, str(attractivity.get_attribute_factor(
                 attribute_enum_i.Attribute.NUMBER_OF_FLOOR)))
 
-            self._base_attractivity_entry.delete(1.0, "end-1c")
-            self._base_attractivity_entry.insert(1.0, str(attractivity.get_base_factor()))
+            self._base_attractivity_entry.delete(0, tkinter.END)
+            self._base_attractivity_entry.insert(0, str(attractivity.get_base_factor()))
 
     def _deactivate_whole_editing(self):
 
@@ -628,22 +628,22 @@ class AttractivityEditFrame(TopLevelFrame):
     def _deactivate_attractivity_editing(self):
 
         # Disabling Name
-        self._attractivity_name_entry.delete(1.0, "end-1c")
+        self._attractivity_name_entry.delete(0, tkinter.END)
         self._attractivity_name_entry.configure(state="disabled",
                                                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
         # Disabling all the Factor Entries
-        self._area_entry.delete(1.0, "end-1c")
+        self._area_entry.delete(0, tkinter.END)
         self._area_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
-        self._numbers_of_floors_entry.delete(1.0, "end-1c")
+        self._numbers_of_floors_entry.delete(0, tkinter.END)
         self._numbers_of_floors_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
-        self._floor_area_entry.delete(1.0, "end-1c")
+        self._floor_area_entry.delete(0, tkinter.END)
         self._floor_area_entry.configure(state="disabled",
                                          text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
-        self._base_attractivity_entry.delete(1.0, "end-1c")
+        self._base_attractivity_entry.delete(0, tkinter.END)
         self._base_attractivity_entry.configure(state="disabled",
                                                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
 
