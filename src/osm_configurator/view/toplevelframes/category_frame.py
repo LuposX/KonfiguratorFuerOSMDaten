@@ -204,6 +204,7 @@ class CategoryFrame(TopLevelFrame):
         self._white_list_frame.grid_columnconfigure(0, weight=1)
         self._white_list_frame.grid_rowconfigure(0, weight=1)
         self._white_list_frame.grid_rowconfigure(0, weight=5)
+        self._white_list_frame.grid(row=1, column=0, rowspan=2, columnspan=1)
 
         # The Label of the WhiteList
         self._white_list_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._white_list_frame,
@@ -245,6 +246,7 @@ class CategoryFrame(TopLevelFrame):
         self._black_list_frame.grid_columnconfigure(0, weight=1)
         self._black_list_frame.grid_rowconfigure(0, weight=1)
         self._black_list_frame.grid_rowconfigure(1, weight=5)
+        self._black_list_frame.grid(row=1, column=1, rowspan=2, columnspan=1)
 
         # Making the Label of the BlackList
         self._black_list_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._black_list_frame,
@@ -282,6 +284,8 @@ class CategoryFrame(TopLevelFrame):
                                                                    height=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3,
                                                                    corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
                                                                    fg_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value)
+        self._recommender_frame.grid(row=1, column=2, rowspan=1, columnspan=1)
+
         # RecommenderFrame doesn't need a grid, it will have its buttons be stacked upon
         # The RecommenderFrame starts empty
         self._recommender_frame_button_list: List[customtkinter.CTkButton] = []
@@ -296,6 +300,7 @@ class CategoryFrame(TopLevelFrame):
         self._create_delete_frame.grid_columnconfigure(0, weight=1)
         self._create_delete_frame.grid_rowconfigure(0, weight=1)
         self._create_delete_frame.grid_rowconfigure(1, weight=1)
+        self._create_delete_frame.grid(row=2, column=2, rowspan=1, columnspan=1)
 
         # The create Button
         self._create_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self._create_delete_frame,

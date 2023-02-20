@@ -19,6 +19,8 @@ class CategoryControllerStub(ICategoryController):
 
     def get_list_of_categories(self) -> List[c.Category]:
         shit = c.Category("hello")
+        shit.set_whitelist(["EINS EINRAG"])
+        shit.set_blacklist(["AUCH EINS EINTRAG"])
         return [shit]
 
     def create_category(self, name: str) -> c.Category:
