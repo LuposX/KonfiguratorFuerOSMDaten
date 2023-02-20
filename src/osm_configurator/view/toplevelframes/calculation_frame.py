@@ -18,6 +18,7 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.progress_bar_constants as progress_bar_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 if TYPE_CHECKING:
     from src.osm_configurator.view.states.state_manager import StateManager
@@ -46,11 +47,12 @@ class CalculationFrame(TopLevelFrame):
              calculation_controller (calculation_controller.CalculationController): Respective controller.
              data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller.
         """
-        self.window = super().__init__(master=None,
-                                       width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
-                                       height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
-                                       corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-                                       fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value)
+        super().__init__(master=None,
+                         width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value,
+                         height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value,
+                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+                         fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value
+                         )
 
         self._starting_point = CalculationPhase.NONE
         self._state_manager = state_manager
@@ -61,16 +63,15 @@ class CalculationFrame(TopLevelFrame):
 
         # Configuring the rows and columns
 
-        self.grid_columnconfigure(0, weight=2)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure(2, weight=1)
-        self.grid_columnconfigure(3, weight=1)
-        self.grid_columnconfigure(4, weight=1)
-        self.grid_columnconfigure(5, weight=1)
-        self.grid_columnconfigure(6, weight=2)
-
         self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=5)
+        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(2, weight=1)
+        self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(4, weight=1)
+        self.grid_rowconfigure(5, weight=1)
+
+        self.grid_columnconfigure(0, weight=1)
+        self.grid_columnconfigure(1, weight=5)
 
         #  Creating the entries on the left
 
@@ -92,6 +93,16 @@ class CalculationFrame(TopLevelFrame):
                                     command=self.__aggregation_pressed)
         ]
 
+        self.choose_starting_point_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(master=self,
+                                   text="Choose Starting-Point",
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   )
+        self.choose_starting_point_label.grid(row=0, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
+
         # Aligning and configuring the buttons with standard-attributes
         for i, button in enumerate(self.buttons):
             button.configure(
@@ -103,7 +114,7 @@ class CalculationFrame(TopLevelFrame):
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
 
     def activate(self):
-        self.__activate_buttons()
+        pass
 
     def __tag_filter_pressed(self):
         """
@@ -160,7 +171,7 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.REDUCTION_PHASE)
-        if checker != CalculationPhase.RUNNING:  # Check, if changing states is possible
+        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
             self.__calculation_start_interrupted()
             self.activate()
             return
@@ -181,7 +192,7 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.ATTRACTIVITY_PHASE)
-        if checker != CalculationPhase.RUNNING:  # Check, if changing states is possible
+        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
             # Interrupt calculation start
             self.__calculation_start_interrupted()
             self.activate()
@@ -219,12 +230,12 @@ class CalculationFrame(TopLevelFrame):
         Colors the clicked button yellow, the lower buttons are colored green.
         All other buttons keep their original color
         """
-        starting_index = self._starting_point.get_order()
+        starting_index = self._starting_point.get_order() - 1
 
         for i, button in enumerate(self.buttons):
-            button.configure(state=tkinter.DISABLED,
-                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED,
-                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED,
+            button.configure(state="disabled",
+                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                              )
 
             if i == starting_index:
@@ -259,25 +270,18 @@ class CalculationFrame(TopLevelFrame):
         Args:
             cancel (bool): True, if the calculation will be canceled, false else (value from the popup)
         """
-        self.unfreeze()
-        if self._calculation_controller.get_calculation_state() != CalculationState.RUNNING:
-            # Calculation can't be stopped, because it has already stopped
-            popup = AlertPopUp(message="The Calculation has already stopped!")
-            popup.mainloop()
         if cancel:
-            # Calculation will be stopped
-            self._calculation_controller.cancel_calculations()
-
-    def __show_yes_no_popup(self, func, message: str):
-        """
-        Shows a yes_no-popup with the inserted message and function
-        Args:
-            func (function): function that will receive the return-value of the popup
-            message (str): message the popup will display
-        """
-        self.freeze()
-        popup = YesNoPopUp(message=message, func=func)
-        popup.mainloop()
+            self._state_manager.unlock_state()
+            if self._calculation_controller.get_calculation_state() != CalculationState.RUNNING:
+                # Calculation can't be stopped, because it has already stopped
+                AlertPopUp(message="The Calculation has already stopped!")
+            if cancel:
+                # Calculation will be stopped
+                self._calculation_controller.cancel_calculations()
+                self.__activate_buttons()
+                AlertPopUp(message="Calculation has stopped successfully")
+        else:
+            AlertPopUp(message="Calculation continues")
 
     def __show_calculation_utilities(self):
         """
@@ -285,19 +289,20 @@ class CalculationFrame(TopLevelFrame):
             Adds the progressbar and the button to stop the calculation to the window
             Calls the according controller
         """
+        self._state_manager.lock_state()
         self.progressbar = \
-            customtkinter.CTkProgressBar(master=self.window,
+            customtkinter.CTkProgressBar(master=self,
                                          progress_color=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_PROGRESS_COLOR.value,
                                          width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_WIDTH.value,
                                          orientation=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_ORIENTATION,
                                          mode=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_MODE.value,
                                          indeterminate_speed=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_INDETERMINATE_SPEED.value,
                                          border_width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_BORDER_WITH.value,
-                                         corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value) \
-                .grid(column=3, row=1, rowspan=1, columnspan=1, padx=40, pady=40)
+                                         corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value)
+        self.progressbar.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
 
         cancel_button = \
-            customtkinter.CTkButton(master=self.window,
+            customtkinter.CTkButton(master=self,
                                     text="Cancel",
                                     corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                     border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
@@ -305,13 +310,13 @@ class CalculationFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                    command=self.__stop_calculation) \
-                .grid(column=4, row=1, rowspan=1, columnspace=1, padx=30, pady=40)
+                                    command=self.__stop_calculation)
+        cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
 
         self.progressbar_label = \
-            customtkinter.CTkLabel(master=self.window,
-                                   text="Calculation started") \
-                .grid(column=2, row=1, rowspan=1, columnspace=1, padx=30, pady=10)
+            customtkinter.CTkLabel(master=self,
+                                   text="Calculation started")
+        self.progressbar_label.grid(column=2, row=1, rowspan=1, columnspace=1, padx=30, pady=10)
 
         self.buttons.append(cancel_button)  # Add cancel button to buttons-list
 
@@ -331,7 +336,7 @@ class CalculationFrame(TopLevelFrame):
         if calculation_state == CalculationState.RUNNING and calculation_process < 1:
             # Calculation is running and no phase change expected
             self.progressbar.configure(value=calculation_process)
-            self.window.after(30000, self.__update_progressbar)
+            self.after(30000, self.__update_progressbar)
             return
 
         if (calculation_state == CalculationState.RUNNING or calculation_state == CalculationState.ENDED_SUCCESSFULLY) \
@@ -359,7 +364,6 @@ class CalculationFrame(TopLevelFrame):
         self.progressbar_label.configure(text="Calculation finished successfully")
         visualize_button = \
             customtkinter.CTkButton(master=self,
-                                    name="VisualizeResults",
                                     text="Visualize Results",
                                     command=self.__visualize_results,
                                     border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
@@ -367,8 +371,8 @@ class CalculationFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
-                                    ) \
-                .grid(column=3, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
+                                    )
+        visualize_button.grid(column=3, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
         self.buttons.append(visualize_button)
 
     def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
@@ -392,8 +396,7 @@ class CalculationFrame(TopLevelFrame):
         Shown if an error occurs while starting the calculation.
         Creates a popup and reloads the calculation-window
         """
-        AlertPopUp("Calculation couldn't be started, please try again!") \
-            .mainloop()
+        AlertPopUp("Calculation couldn't be started, please try again!")
 
     def __visualize_results(self):
         """
