@@ -274,14 +274,9 @@ class CalculationFrame(TopLevelFrame):
         self._state_manager.unfreeze_state()
         if cancel:
             self._state_manager.unlock_state()
-            if self._calculation_controller.get_calculation_state() != CalculationState.RUNNING:
-                # Calculation can't be stopped, because it has already stopped
-                AlertPopUp(message="The Calculation has already stopped!")
-            if cancel:
-                # Calculation will be stopped
-                self._calculation_controller.cancel_calculations()
-                self.__activate_buttons()
-                AlertPopUp(message="Calculation has stopped successfully")
+            self._calculation_controller.cancel_calculations()
+            self.__activate_buttons()
+            AlertPopUp(message="Calculation has stopped successfully")
 
             # Destroying the progressbar and the cancel button
             self.progressbar.destroy()
