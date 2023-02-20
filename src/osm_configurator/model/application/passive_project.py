@@ -25,7 +25,7 @@ class PassiveProject:
         Returns:
             str: The name of the passive project.
         """
-        pass
+        return "EXAMPLE NAME"
 
     def get_description(self):
         """
@@ -34,7 +34,7 @@ class PassiveProject:
         Returns:
             str: The description of the passive project.
         """
-        pass
+        return "EXAMPLE DESCRIPTION"
 
     def get_edit_date(self):
         """
@@ -52,4 +52,4 @@ class PassiveProject:
         Returns:
             pathlib.Path: The path pointing towards the passive project.
         """
-        pass
+        return Path("./poggers")

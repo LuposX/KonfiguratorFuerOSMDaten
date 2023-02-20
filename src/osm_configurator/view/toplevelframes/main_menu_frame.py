@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import tkinter
+from functools import partial
 
 from src.osm_configurator.model.application.passive_project import PassiveProject
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
@@ -23,7 +24,7 @@ import customtkinter
 from tkinter import filedialog
 from pathlib import Path
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.control.project_controller_interface import IProjectController
@@ -31,6 +32,10 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
     import src.osm_configurator.view.constants.button_constants as button_constants_i
     import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+    import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
+
+# Finals
+ELEMENT_BORDER_DISTANCE: Final = 124
 
 
 class MainMenuFrame(TopLevelFrame):
@@ -50,10 +55,10 @@ class MainMenuFrame(TopLevelFrame):
         """
 
         super().__init__(master=None,
-                         width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
-                         height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
+                         width=frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value,
+                         height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value,
                          corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-                         fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value)
+                         fg_color=frame_constants_i.FrameConstants.FULL_FRAME_FG_COLOR.value)
 
         self._project_controller = project_controller
         self._state_manager = state_manager
@@ -66,14 +71,25 @@ class MainMenuFrame(TopLevelFrame):
 
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure(2, weight=1)
-        self.grid_columnconfigure(3, weight=1)
-        self.grid_columnconfigure(4, weight=1)
+        self.grid_columnconfigure(1, weight=9)
         self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=2)
-        self.grid_rowconfigure(2, weight=2)
+        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(2, weight=1)
         self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(4, weight=1)
+
+        self._title_label: customtkinter.CTkLabel = \
+            customtkinter.CTkLabel(master=self,
+                                   width=frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value,
+                                   height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (1/5),
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_TITLE_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value,
+                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+                                   text=main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
+        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW")
 
         # Implementing the buttons
 
@@ -116,18 +132,18 @@ class MainMenuFrame(TopLevelFrame):
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
 
-            entry = customtkinter.CTkButton(master=self,
-                                            name=name,
-                                            text=name,
-                                            description=description,
-                                            command=self.__load_project(passive_project),
-                                            rder_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+            button_text: str = name + "\n" + description
+
+            entry = customtkinter.CTkButton(master=self._entry_subframe,
+                                            text=button_text,
+                                            command=partial(self.__load_project, i),
+                                            border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                             hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                             border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                             )
-            entry.grid(column=3, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
+            entry.grid(column=0, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
             self.entries.append(entry)
 
     def activate(self):
@@ -137,14 +153,33 @@ class MainMenuFrame(TopLevelFrame):
         """
         self._passive_projects = self._project_controller.get_list_of_passive_projects()
 
-    def __load_project(self, passive_project: PassiveProject):
+    def __load_project(self, index: int):
         """
         Loads the given project
         Args:
             passive_project (PassiveProject): Project that will be loaded
         """
-        project_path = passive_project.get_project_folder_path()
+        project_path = self._passive_projects[index].get_project_folder_path()
         self._project_controller.load_project(project_path)
+
+        config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
+
+        match config_phase:
+            case config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE:
+                self._state_manager.change_state(state_name_enum_i.StateName.DATA)
+
+            case config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE:
+                self._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
+
+            case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
+                self._state_manager.change_state(state_name_enum_i.StateName.REDUCTION)
+
+            case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
+                self._state_manager.change_state(state_name_enum_i.StateName.AGGREGATION)
+
+            case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
+                self._state_manager.change_state(state_name_enum_i.StateName.CALCULATION)
+
 
     def __create_project(self):
         """
@@ -156,7 +191,10 @@ class MainMenuFrame(TopLevelFrame):
         """
         Calls the settings-menu switching states
         """
+        print("BEFORE STATE CHANGE")
         self._state_manager.change_state(sne.StateName.SETTINGS)
+        print("CODE HERE WAS REACHED")
+        self._state_manager.lock_state()
 
     def __load_external_project(self):
         """
@@ -183,7 +221,7 @@ class MainMenuFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askopenfilename(title="Please select Your File",
-                                       filetypes=".geojson")
+                                       initialdir="/")  # TODO: Set accepted filetypes
         return new_path
 
     def freeze(self):

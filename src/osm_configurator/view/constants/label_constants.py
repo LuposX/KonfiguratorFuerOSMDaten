@@ -13,3 +13,4 @@ class LabelConstants(Enum):
     LABEL_CONSTANTS_PADX = 4
     LABEL_CONSTANTS_PADY = 4
     LABEL_CONSTANTS_ANCHOR = "center"  # defines where the text is placed
+    LABEL_TITLE_FG_COLOR = "#E8EAFD"

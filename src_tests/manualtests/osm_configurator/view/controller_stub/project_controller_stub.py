@@ -5,10 +5,16 @@ from src.osm_configurator.control.project_controller_interface import IProjectCo
 from src.osm_configurator.model.application.passive_project import PassiveProject
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 
+from pathlib import Path
+
 
 class ProjectControllerStub(IProjectController):
     def get_list_of_passive_projects(self) -> List[PassiveProject]:
-        return []
+        foo = []
+        for i in range(100):
+            foo.append(PassiveProject(Path("./poggers")))
+
+        return foo
 
     def load_project(self, path: pathlib.Path) -> bool:
         return True
