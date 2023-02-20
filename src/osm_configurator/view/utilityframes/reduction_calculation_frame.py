@@ -81,7 +81,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                              fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
                                                                                              hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
                                                                                              text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                                                                             text="Calculate Area")
+                                                                                             text="Calculate Area",
+                                                                                             command=self._calculate_area_checkbox_edited)
         self._calculate_area_checkbox.grid(row=2, column=0, rowspan=1, columnspan=3)
 
         # The switch between Calculate site Area and Calculate Building Area
@@ -127,7 +128,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                       button_hover_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_HOVER_COLOR.value,
                                                                                       text_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_TEXT_COLOR.value,
                                                                                       state="normal",
-                                                                                      text="")
+                                                                                      text="",
+                                                                                      command=self._site_building_switch_edited)
         self._site_building_switch.grid(row=3, column=1, rowspan=1, columnspan=1)
 
         # The Checkbox for Calculate Floor Area
@@ -140,7 +142,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                                    fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
                                                                                                    hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
                                                                                                    text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                                                                                   text="Calculate Floor Area")
+                                                                                                   text="Calculate Floor Area",
+                                                                                                   command=self._calculate_floor_area_checkbox_edited)
         self._calculate_floor_area_checkbox.grid(row=1, column=0, rowspan=1, columnspan=3)
 
         # The Checkbox for Strictly Use Default Values
@@ -153,7 +156,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                                            fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
                                                                                                            hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
                                                                                                            text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                                                                                           text="Strictly use default values")
+                                                                                                           text="Strictly use default values",
+                                                                                                           command=self._strictly_use_default_values_checkbox_edited)
         self._strictly_use_default_values_checkbox.grid(row=0, column=0, rowspan=1, columnspan=3)
 
     def load_category(self, category: category_i.Category) -> bool:
@@ -270,7 +274,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         # Activating all Checkboxes and switches, so they can be edited
         self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
 
-        self._activate_below_strictly_use_default_values()
+        if self._strictly_use_default_values_checkbox.get() == 1:
+            self._activate_below_strictly_use_default_values()
 
     def _deactivate_below_strictly_use_default_values(self):
         # If strictly use default Values is off, the rest is irrelevant
@@ -285,7 +290,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
         self._calculate_area_checkbox.configure(state=tkinter.NORMAL)
 
-        self._activate_switch()
+        if self._calculate_area_checkbox.get() == 1:
+            self._activate_switch()
 
     def _deactivate_switch(self):
         self._site_building_switch.configure(state="disabled")

@@ -618,22 +618,22 @@ class AttractivityEditFrame(TopLevelFrame):
         # Disabling Name
         self._attractivity_name_entry.delete(0, tkinter.END)
         self._attractivity_name_entry.configure(state="disabled",
-                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
         # Disabling all the Factor Entries
         self._area_entry.delete(0, tkinter.END)
-        self._area_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+        self._area_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
         self._numbers_of_floors_entry.delete(0, tkinter.END)
-        self._numbers_of_floors_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+        self._numbers_of_floors_entry.configure(state="disabled", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
         self._floor_area_entry.delete(0, tkinter.END)
         self._floor_area_entry.configure(state="disabled",
-                                         text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+                                         text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
         self._base_attractivity_entry.delete(0, tkinter.END)
         self._base_attractivity_entry.configure(state="disabled",
-                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
         # Disabling delete Button
         self._delete_attractivity_button.configure(state="disabled")
@@ -644,14 +644,14 @@ class AttractivityEditFrame(TopLevelFrame):
 
         # Activating Name
         self._attractivity_name_entry.configure(state="normal",
-                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
         # ACtivating all Factor Entries
-        self._area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
-        self._numbers_of_floors_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
-        self._floor_area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+        self._area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._numbers_of_floors_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._floor_area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._base_attractivity_entry.configure(state="normal",
-                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR)
+                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
         # Activating the Delete Button
         self._delete_attractivity_button.configure(state="normal")
