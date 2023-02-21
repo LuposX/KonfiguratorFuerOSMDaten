@@ -314,10 +314,15 @@ class CalculationFrame(TopLevelFrame):
                                     command=self.__stop_calculation_init)
         self.cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
 
-        self.progressbar_label = \
+        self.progressbar_phase = \
             customtkinter.CTkLabel(master=self,
-                                   text="Calculation started")
-        self.progressbar_label.grid(column=2, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
+                                   text="No calculation phase")
+        self.progressbar_phase.grid(column=2, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
+
+        self.progressbar_state = \
+            customtkinter.CTkLabel(master=self,
+                                   text="No calculation state")
+        self.progressbar_state.grid(column=1, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
 
         self.buttons.append(self.cancel_button)  # Add cancel button to buttons-list
 
@@ -334,13 +339,13 @@ class CalculationFrame(TopLevelFrame):
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
         calculation_process = self._calculation_controller.get_current_calculation_process()
 
-        if calculation_state == CalculationState.RUNNING and calculation_process < 1:
+        if calculation_state[0] == CalculationState.RUNNING and calculation_process < 1:
             # Calculation is running and no phase change expected
             self.progressbar.set(calculation_process)
             self.after(1000, self.__update_progressbar)
             return
 
-        if (calculation_state == CalculationState.RUNNING or calculation_state == CalculationState.ENDED_SUCCESSFULLY) \
+        if (calculation_state[0] == CalculationState.RUNNING or calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY) \
                 and calculation_process == 1:
             #  Phase change expected
             if calculation_phase == CalculationPhase.AGGREGATION_PHASE:
@@ -352,17 +357,16 @@ class CalculationFrame(TopLevelFrame):
         calculation_phase = self.__get_next_phase(calculation_phase)
 
         self.progressbar.set(0)  # Reset progressbar
-        self.progressbar_label.configure(text=calculation_phase.get_name())  # change label to the next phase
+        self.progressbar_phase.configure(text=calculation_phase.get_name())  # change label to the next phase
+        self.progressbar_state.configure(text=calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
 
         self.after(1000, self.__update_progressbar)
-        return
 
     def __end_calculation(self):
         """
         Function called if calculation finished successfully.
         Configures the shown widgets alerting that the calculation finished successfully
         """
-        self.progressbar_label.configure(text="Calculation finished successfully")
         visualize_button = \
             customtkinter.CTkButton(master=self,
                                     text="Visualize Results",
@@ -373,7 +377,7 @@ class CalculationFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
-        visualize_button.grid(column=3, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
+        visualize_button.grid(column=2, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self.buttons.append(visualize_button)
 
     def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
