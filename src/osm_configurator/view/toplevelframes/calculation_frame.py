@@ -129,8 +129,8 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.TAG_FILTER_PHASE)
-        if checker != CalculationState.RUNNING:
-            self.__calculation_start_interrupted()
+        if checker[0] != CalculationState.RUNNING:
+            self.__calculation_start_interrupted(checker[0], checker[1])
             self.activate()
             return
 
@@ -150,8 +150,8 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.GEO_DATA_PHASE)
-        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
-            self.__calculation_start_interrupted()
+        if checker[0] != CalculationState.RUNNING: # Check, if changing states is possible
+            self.__calculation_start_interrupted(checker[0], checker[1])
             self.activate()
             return
 
@@ -172,8 +172,8 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.REDUCTION_PHASE)
-        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
-            self.__calculation_start_interrupted()
+        if checker[0] != CalculationState.RUNNING:  # Check, if changing states is possible
+            self.__calculation_start_interrupted(checker[0], checker[1])
             self.activate()
             return
 
@@ -193,9 +193,8 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.ATTRACTIVITY_PHASE)
-        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
-            # Interrupt calculation start
-            self.__calculation_start_interrupted()
+        if checker[0] != CalculationState.RUNNING:  # Check, if changing states is possible
+            self.__calculation_start_interrupted(checker[0], checker[1])
             self.activate()
             return
 
@@ -215,9 +214,8 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.AGGREGATION_PHASE)
-        if checker != CalculationState.RUNNING:  # Check, if changing states is possible
-            # Interrupt calculation start
-            self.__calculation_start_interrupted()
+        if checker[0] != CalculationState.RUNNING:  # Check, if changing states is possible
+            self.__calculation_start_interrupted(checker[0], checker[1])
             self.activate()
             return
 
@@ -319,7 +317,7 @@ class CalculationFrame(TopLevelFrame):
         self.progressbar_label = \
             customtkinter.CTkLabel(master=self,
                                    text="Calculation started")
-        self.progressbar_label.grid(column=2, row=1, rowspan=1, columnspace=1, padx=30, pady=10)
+        self.progressbar_label.grid(column=2, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
 
         self.buttons.append(self.cancel_button)  # Add cancel button to buttons-list
 
@@ -394,12 +392,16 @@ class CalculationFrame(TopLevelFrame):
                 take_next = True
         return CalculationPhase.NONE
 
-    def __calculation_start_interrupted(self):
+    def __calculation_start_interrupted(self, error_state: CalculationState, error_message: str):
         """
         Shown if an error occurs while starting the calculation.
         Creates a popup and reloads the calculation-window
+
+        Args:
+            error_state(CalculationState): The error state that describes the type of error that happend
+            error_message(str): A more in depth explanation of the error
         """
-        AlertPopUp("Calculation couldn't be started, please try again!")
+        AlertPopUp("Calculation couldn't be started!\n" + error_state.get_name() + ":" + error_message)
 
     def __visualize_results(self):
         """
