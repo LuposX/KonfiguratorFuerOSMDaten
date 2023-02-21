@@ -83,7 +83,11 @@ class ApplicationSettings:
         try:
             settings: Dict[Any] = self._load_settings_file()
 
-            settings[settings_enum.get_name()] = setting_value
+            if settings_enum == application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER:
+                settings[settings_enum.get_name()] = str(setting_value)
+
+            else:
+                settings[settings_enum.get_name()] = setting_value
 
             with open(self._application_settings_file, WRITE_MODE) as settings_file:
                 json.dump(settings, settings_file)
