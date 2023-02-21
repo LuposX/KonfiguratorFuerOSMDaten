@@ -42,9 +42,9 @@ class ApplicationSettings:
         self._application_settings_file: Path = None
         file: str
         for file in os.listdir(application_path):
-            if os.path.isfile(file):
-                if os.path.basename(file) == APPLICATION_SETTINGS_FILE:
-                    self._application_settings_file = Path(file)
+            if os.path.basename(file) == APPLICATION_SETTINGS_FILE:
+                self._application_settings_file = Path(file)
+                break
 
         # This mean the application_Settings file doesn't exist yet and we need to create it
         if self._application_settings_file is None:
