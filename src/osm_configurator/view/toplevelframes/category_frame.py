@@ -525,7 +525,7 @@ class CategoryFrame(TopLevelFrame):
 
         if no_duplicate:
             # If there is no duplicate, we create, the new category
-            new_category: category_i.Category = self._category_controller.create_category()
+            new_category: category_i.Category = self._category_controller.create_category(new_category_name)
             self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
             self._set_category_drop_down_menu(self._categories, new_category)
             self._load_category(new_category)
