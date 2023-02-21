@@ -89,37 +89,37 @@ class AggregationFrame(TopLevelFrame):
         # Making all the checkboxes for all Aggregation Methods
 
         self._aggregation_methods: List[
-            aggregation_method_enum_i.AggregationMethod] = self._aggregation_controller.get_aggregation_methods()
+            aggregation_method_enum_i.AggregationMethod] = []
         self._aggregation_checkboxes: List[CTkCheckBox] = []
 
+    def activate(self):
+
+        # Destroying old checkboxes
+        old_checkbox: customtkinter.CTkCheckBox
+        for old_checkbox in self._aggregation_checkboxes:
+            old_checkbox.destroy()
+        self._aggregation_checkboxes = []
+
+        # Renewing all checkboxes
+        self._aggregation_methods: List[
+            aggregation_method_enum_i.AggregationMethod] = self._aggregation_controller.get_aggregation_methods()
+
         method: aggregation_method_enum_i.AggregationMethod
-        checkbox_id: int = 0
+        checkbox_index: int = 0
         for method in self._aggregation_methods:
             checkbox: CTkCheckBox = customtkinter.CTkCheckBox(master=self._aggregation_scrollable_frame,
-                                     width=CHECKBOX_WIDTH_AND_HEIGHT,
-                                     height=CHECKBOX_WIDTH_AND_HEIGHT,
-                                     corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
-                                     border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
-                                     fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
-                                     hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
-                                     text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                     text=method.get_name(),
-                                     command=partial(self._checkbox_edited, checkbox_id))
-
-            # This will be overriden when activate() is called, but it is here do make sure, that checkboxes start defined
-            if self._aggregation_controller.is_aggregation_method_active(method):
-                checkbox.select()
-                checkbox.configure(text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value)
-            else:
-                checkbox.deselect()
-                checkbox.configure(
-                    text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR_DISABLED.value)
-
+                                                              width=CHECKBOX_WIDTH_AND_HEIGHT,
+                                                              height=CHECKBOX_WIDTH_AND_HEIGHT,
+                                                              corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
+                                                              border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
+                                                              fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
+                                                              hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
+                                                              text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
+                                                              text=method.get_name(),
+                                                              command=partial(self._checkbox_edited, checkbox_index))
             self._aggregation_checkboxes.append(checkbox)
-            checkbox.grid(row=checkbox_id, column=0, rowspan=1, columnspan=1)
-            checkbox_id += 1
-
-    def activate(self):
+            checkbox.grid(row=checkbox_index, column=0, rowspan=1, columnspan=1)
+            checkbox_index += 1
 
         method: aggregation_method_enum_i.AggregationMethod
         checkbox_id: int = 0
