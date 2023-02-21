@@ -93,7 +93,7 @@ class ActiveProject:
         Return:
             bool: True if changing the state works, otherwise false.
         """
-        if current_step in ConfigPhase:
+        if current_step in config_phase_enum_i.ConfigPhase:
             self._last_step = current_step
             return True
         return False
