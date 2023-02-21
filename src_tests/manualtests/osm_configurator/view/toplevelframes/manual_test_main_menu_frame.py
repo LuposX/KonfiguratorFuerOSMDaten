@@ -4,8 +4,7 @@ from src_tests.manualtests.osm_configurator.view.controller_stub.export_controll
 from src_tests.manualtests.osm_configurator.view.controller_stub.category_controller_stub import CategoryControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.project_controller_stub import ProjectControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.settings_controller_stub import SettingsControllerStub
-from src_tests.manualtests.osm_configurator.view.controller_stub.aggregation_controller_stub import \
-    AggregationControllerStub
+from src_tests.manualtests.osm_configurator.view.controller_stub.aggregation_controller_stub import AggregationControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.cut_out_controller_stub import CutOutControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.data_visualization_controller_stub import \
     DataVisualizationControllerStub
@@ -27,7 +26,7 @@ data_visualization_controller = DataVisualizationControllerStub()
 osm_data_controller = OSMDataControllerStub()
 
 
-def test_view_general():
+def manual_test_display_main_window():
     main_window = mw.MainWindow(export_controller=export_controller,
                                 category_controller=category_controller,
                                 project_controller=project_controller,
@@ -39,4 +38,7 @@ def test_view_general():
                                 osm_data_controller=osm_data_controller,
                                 )
 
+    main_window._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
+
     main_window.start_main_window()
+

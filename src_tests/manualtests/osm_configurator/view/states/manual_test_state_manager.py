@@ -22,7 +22,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.states.state_manager import StateManager
 
 
-def test_innit():
+def manual_test_innit():
     # Making a mainWindow, since stateManager needs one and the main window will create our stateManager directly
     main_window: MainWindow = MainWindow(ExportControllerStub(), CategoryControllerStub(), ProjectControllerStub(),
                              SettingsControllerStub(), AggregationControllerStub(), CalculationControllerStub(),
@@ -45,70 +45,70 @@ def main_window():
 
 # Testing StateChange itself
 
-def test_state_change_to_main_menu(main_window):
+def manual_test_state_change_to_main_menu(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.MAIN_MENU)
 
     assert state_manager.get_state().get_state_name() == StateName.MAIN_MENU
 
-def test_state_change_to_create_project(main_window):
+def manual_test_state_change_to_create_project(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.CREATE_PROJECT)
 
     assert state_manager.get_state().get_state_name() == StateName.CREATE_PROJECT
 
-def test_state_change_to_data(main_window):
+def manual_test_state_change_to_data(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.DATA)
 
     assert state_manager.get_state().get_state_name() == StateName.DATA
 
-def test_state_change_to_category(main_window):
+def manual_test_state_change_to_category(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.CATEGORY)
 
     assert state_manager.get_state().get_state_name() == StateName.CATEGORY
 
-def test_state_change_to_reduction(main_window):
+def manual_test_state_change_to_reduction(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.REDUCTION)
 
     assert state_manager.get_state().get_state_name() == StateName.REDUCTION
 
-def test_state_change_to_attractivity_edit(main_window):
+def manual_test_state_change_to_attractivity_edit(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.ATTRACTIVITY_EDIT)
 
     assert state_manager.get_state().get_state_name() == StateName.ATTRACTIVITY_EDIT
 
-def test_state_change_to_attractivity_view(main_window):
+def manual_test_state_change_to_attractivity_view(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.ATTRACTIVITY_VIEW)
 
     assert state_manager.get_state().get_state_name() == StateName.ATTRACTIVITY_VIEW
 
-def test_state_change_to_aggregation(main_window):
+def manual_test_state_change_to_aggregation(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.AGGREGATION)
 
     assert state_manager.get_state().get_state_name() == StateName.AGGREGATION
 
-def test_state_change_to_calculation(main_window):
+def manual_test_state_change_to_calculation(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.CALCULATION)
 
     assert state_manager.get_state().get_state_name() == StateName.CALCULATION
 
-def test_state_change_to_settings(main_window):
+def manual_test_state_change_to_settings(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.SETTINGS)
@@ -117,7 +117,7 @@ def test_state_change_to_settings(main_window):
 
 # Testing default go left
 
-def test_data_to_none(main_window):
+def manual_test_data_to_none(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.DATA)
@@ -126,7 +126,7 @@ def test_data_to_none(main_window):
 
     assert not state_manager.default_go_left()
 
-def test_category_to_data(main_window):
+def manual_test_category_to_data(main_window):
     state_manager: StateManager = main_window._state_manager
 
     state_manager.change_state(StateName.CATEGORY)
