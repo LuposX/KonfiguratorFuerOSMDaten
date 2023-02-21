@@ -125,8 +125,8 @@ class SettingsProjectFrame(TopLevelFrame):
         Returns:
             bool: True, if activation was successful, otherwise false.
         """
-        self._project_name = ISettingsController.get_project_name(self._settings_controller)
-        self._project_description = ISettingsController.get_project_description(self._settings_controller)
+        self._project_name = self._settings_controller.get_project_name()
+        self._project_description = self._settings_controller.get_project_description()
         # TODO: AKTUALLIESR DIE LABELS DU PIC
 
     def __change_project_name(self):
@@ -142,7 +142,7 @@ class SettingsProjectFrame(TopLevelFrame):
             self.activate()  # reload page
             return
         self._project_name = textbox_input
-        ISettingsController.set_project_name(self._settings_controller, textbox_input)
+        self._settings_controller.set_project_name(textbox_input)
 
     def __change_project_description(self):
         """
@@ -152,7 +152,7 @@ class SettingsProjectFrame(TopLevelFrame):
         textbox_input = self.description_box.get("0.0", "end")
         #  no null-checks required since description is optional
         self._project_description = textbox_input
-        ISettingsController.set_project_description(self._settings_controller, textbox_input)
+        self._settings_controller.set_project_description(textbox_input)
 
     def freeze(self):
         """

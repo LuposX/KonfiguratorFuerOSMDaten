@@ -281,3 +281,4 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+/src/osm_configurator/model/application/application_setting.json
