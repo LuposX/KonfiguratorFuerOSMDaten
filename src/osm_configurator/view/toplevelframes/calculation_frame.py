@@ -324,11 +324,11 @@ class CalculationFrame(TopLevelFrame):
         self._calculation_controller.start_calculations(
             self._starting_point)  # starts the calculation from the chosen starting point
 
-        self.after(30000, self.__update_progressbar)  # keeps the progressbar up-to-date
+        self.after(1000, self.__update_progressbar)  # keeps the progressbar up-to-date
 
     def __update_progressbar(self) -> None:
         """
-        Keeps the progressbar up-to-date. calls itself every five seconds if the calculation is not finished
+        Keeps the progressbar up-to-date. calls itself every second if the calculation is not finished
         """
         calculation_state = self._calculation_controller.get_calculation_state()
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
@@ -336,8 +336,8 @@ class CalculationFrame(TopLevelFrame):
 
         if calculation_state == CalculationState.RUNNING and calculation_process < 1:
             # Calculation is running and no phase change expected
-            self.progressbar.configure(value=calculation_process)
-            self.after(30000, self.__update_progressbar)
+            self.progressbar.set(calculation_process)
+            self.after(1000, self.__update_progressbar)
             return
 
         if (calculation_state == CalculationState.RUNNING or calculation_state == CalculationState.ENDED_SUCCESSFULLY) \
@@ -347,15 +347,15 @@ class CalculationFrame(TopLevelFrame):
                 # Calculation is done
                 self.__end_calculation()
                 return
-            else:
-                # State will be switched
-                calculation_phase = self.__get_next_phase(calculation_phase)
 
-                self.progressbar.configure(value=0)  # Reset progressbar
-                self.progressbar_label.configure(text=calculation_phase.get_name())  # change label to the next phase
+        # State will be switched
+        calculation_phase = self.__get_next_phase(calculation_phase)
 
-                self.after(30000, self.__update_progressbar)
-                return
+        self.progressbar.set(0)  # Reset progressbar
+        self.progressbar_label.configure(text=calculation_phase.get_name())  # change label to the next phase
+
+        self.after(1000, self.__update_progressbar)
+        return
 
     def __end_calculation(self):
         """
