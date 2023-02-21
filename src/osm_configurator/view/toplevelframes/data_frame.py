@@ -27,17 +27,12 @@ import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 if TYPE_CHECKING:
-    import src.osm_configurator.view.states.state_manager
     from \
         src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
     from src.osm_configurator.control.cut_out_controller_interface import ICutOutController
     from src.osm_configurator.control.category_controller_interface import ICategoryController
     from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
     from src.osm_configurator.control.project_controller_interface import IProjectController
-    import src.osm_configurator.view.constants.button_constants as button_constants_i
-    import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
-    import src.osm_configurator.view.constants.label_constants as label_constants_i
-    import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 
 
 class DataFrame(TopLevelFrame):

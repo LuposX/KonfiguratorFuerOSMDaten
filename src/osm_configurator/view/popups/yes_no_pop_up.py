@@ -10,12 +10,6 @@ import src.osm_configurator.view.constants.label_constants as label_constants_i
 from typing import TYPE_CHECKING
 import customtkinter
 
-if TYPE_CHECKING:
-    import src.osm_configurator.view.constants.button_constants as button_constants_i
-    import src.osm_configurator.view.constants.pop_up_constants as pop_up_constants_i
-    import src.osm_configurator.view.constants.frame_constants as frame_constants_i
-    import src.osm_configurator.view.constants.label_constants as label_constants_i
-
 
 class YesNoPopUp(customtkinter.CTkToplevel):
     """
