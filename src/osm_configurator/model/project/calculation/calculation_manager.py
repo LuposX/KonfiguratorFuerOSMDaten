@@ -48,7 +48,7 @@ class CalculationManager:
             aggregation_phase.AggregationPhase()
         ]
         self._calculation_state: Tuple[CalculationState, str] = (calculation_state_enum.CalculationState.NOT_STARTED_YET,
-                                   "The calculation has not started yet")
+                                   "The calculation is starting...")
         self._process: Process = multiprocessing.Process()
         self._state_queue: SimpleQueue = multiprocessing.SimpleQueue()
         self._phase_queue: SimpleQueue = multiprocessing.SimpleQueue()
@@ -146,14 +146,16 @@ class CalculationManager:
 
         # Beginning  at the starting point, calculate all following phases
         current_index: int = starting_index
-        result: Tuple[CalculationState, str] = calculation_state_enum.CalculationState.RUNNING
+        result: Tuple[CalculationState, str] = calculation_state_enum.CalculationState.RUNNING, "The calculation is running"
         while current_index < len(self._phases) and result[0] == calculation_state_enum.CalculationState.RUNNING:
             phase_queue.put(self._phases[current_index].get_calculation_phase_enum())
             result = self._phases[current_index].calculate(self._config_manager, self._application_manager)
+            print(result, flush=True)
+            print(self._phases[current_index].get_calculation_phase_enum().get_name(), flush=True)
             state_queue.put(result)  # Put the return value of the phases in the queue to the main process
+            current_index += 1
 
-        self._current_phase: CalculationPhase = calculation_phase_enum.CalculationPhase.NONE
-        self._progress = 1
+        phase_queue.put(calculation_phase_enum.CalculationPhase.NONE)
 
         # If all calculation is done and the calculations aer still running: switch state to ENDED_SUCCESSFULLY
         if result[0] == calculation_state_enum.CalculationState.RUNNING:
