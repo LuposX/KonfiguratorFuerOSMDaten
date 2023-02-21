@@ -15,6 +15,7 @@ class ApplicationSettingsDefault(Enum):
     # The second value is the default value the setting will have if it didn't get changed.
     DEFAULT_PROJECT_FOLDER = ("default_project_folder", None)
     NUMBER_OF_PROCESSES = ("number_of_processes_for_calculation", multiprocessing.cpu_count())
+    NUMBER_OF_RECOMMENDATIONS = ("number_of_recommendation", 6)
 
     def get_name(self) -> str:
         """

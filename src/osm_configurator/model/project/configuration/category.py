@@ -83,7 +83,7 @@ class Category:
         """
         return self._whitelist
 
-    def set_whitelist(self, new_whitelist: List[str]):
+    def set_whitelist(self, new_whitelist: List[str]) -> bool:
         """
         Changes the old whitelist to a new one.
 
@@ -91,6 +91,7 @@ class Category:
             new_whitelist (List[str]): value for the new whitelist.
         """
         self._whitelist = new_whitelist
+        return True
 
     def get_blacklist(self) -> List[str]:
         """
@@ -101,7 +102,7 @@ class Category:
         """
         return self._blacklist
 
-    def set_blacklist(self, new_blacklist: List[str]):
+    def set_blacklist(self, new_blacklist: List[str]) -> bool:
         """
         Overwrites the old Blacklist with a new value.
 
@@ -109,6 +110,7 @@ class Category:
             new_blacklist (List[str]): new value for the blacklist.
         """
         self._blacklist = new_blacklist
+        return True
 
     def get_category_name(self) -> str:
         """

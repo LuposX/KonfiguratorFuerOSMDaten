@@ -475,6 +475,7 @@ class CategoryFrame(TopLevelFrame):
         # First deleting all recommendation Buttons
         recommend_button: customtkinter.CTkButton
         for recommend_button in self._recommender_frame_button_list:
+            self._recommender_frame_button_list.remove(recommend_button)
             recommend_button.destroy()
 
         new_recommendations: List[str] = self._category_controller.get_list_of_key_recommendations(current_input)

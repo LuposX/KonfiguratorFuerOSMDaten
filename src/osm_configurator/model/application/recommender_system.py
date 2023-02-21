@@ -2,17 +2,23 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from definitions import PROJECT_DIR
+import os
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+
 if TYPE_CHECKING:
     from typing import List, Final
-    from pathlib import Path
     from pandas import Series
-
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 # the name of the data entry in the osm tag key file
 CL_KEY: Final = "key"
+MOST_USED_TAGS_TABLE_PATH: Final = "data/most_used_keys.csv"
 
 
 class RecommenderSystem:
@@ -21,28 +27,30 @@ class RecommenderSystem:
     This class job is to provide recommendations to different classes.
     """
 
-    def __init__(self):
+    def __init__(self, application_settings_manager: ApplicationSettings):
         """
         Creates a new instance of the RecommenderSystem.
         """
-        pass
+        self._number_of_keys_to_recommend: int = application_settings_manager\
+            .get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_RECOMMENDATIONS)
 
-    def recommend_key(self, input: str, path_to_recommender_file: Path) -> List[str]:
+    def recommend_key(self, input: str) -> List[str]:
         """
         Creates recommendations based on user input
 
         Args:
             input (str): The input from which to generate suggestions.
-            path_to_recommender_file (Path):
+
 
         Returns:
             List[str]: Returns a List of strings containing the recommendations depending on the input. If file was not found return None.
         """
+        path_to_recommender_file: Path = Path(os.path.join(PROJECT_DIR, MOST_USED_TAGS_TABLE_PATH))
         try:
             # open the file
             key_df = pd.read_csv(path_to_recommender_file)
         except Exception:
-            return None
+            return []
 
         # gets a series with true and false
         # an entry is true if the entry in the dataframe at that position contains the string
@@ -51,4 +59,4 @@ class RecommenderSystem:
         # Replaces all NaN values with False.
         found_matches.replace(np.NaN, False, inplace=True)
 
-        return key_df.loc[found_matches][CL_KEY].tolist()
+        return key_df.loc[found_matches][CL_KEY].tolist()[:self._number_of_keys_to_recommend]
