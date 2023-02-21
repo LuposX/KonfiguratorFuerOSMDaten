@@ -28,7 +28,7 @@ class AggregationController(IAggregationController):
 
     def is_aggregation_method_active(self, method: AggregationMethod) -> bool:
         _aggregation_configurator: AggregationConfiguration = self._model.get_active_project().get_config_manager().get_aggregation_configuration()
-        return self._aggregation_configurator.is_aggregation_method_active(method)
+        return _aggregation_configurator.is_aggregation_method_active(method)
 
     def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
         _aggregation_configurator: AggregationConfiguration = self._model.get_active_project().get_config_manager().get_aggregation_configuration()

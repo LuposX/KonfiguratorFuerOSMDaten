@@ -69,7 +69,7 @@ class Application(IApplication):
                         passive_project_list.append(PassiveProject(filepath))
             return passive_project_list
         else:
-            return None
+            return []
 
     def delete_passive_project(self, passive_project: PassiveProject) -> bool:
         os.rmdir(passive_project.get_project_folder_path())

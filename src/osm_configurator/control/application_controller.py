@@ -53,7 +53,7 @@ class ApplicationController:
         everything up and to prepare the normal workflow of the application.
         """
         # Create Model
-        self._application: Application = application.Application(APPLICATION_SETTINGS_FOLDER)
+        self._application: Application = application.Application()
 
         # Create Control
         self._aggregation_controller: AggregationController = aggregation_controller.AggregationController(
@@ -76,7 +76,6 @@ class ApplicationController:
             self._project_controller,
             self._settings_controller,
             self._aggregation_controller,
-            None,
             self._calculation_controller,
             self._cut_out_controller,
             self._data_visualization_controller,
@@ -86,9 +85,7 @@ class ApplicationController:
         """
         Starts up the Application. Enters the normal workflow of the application
         """
-        pass
-        # TODO: Enter the GUI loop of the main window. This should look like:
-        # self._main_window.start()
+        self._main_window.start_main_window()
 
 
 def main():
@@ -98,3 +95,7 @@ def main():
     """
     application_controller: ApplicationController = ApplicationController()
     application_controller.start()
+
+
+if __name__ == '__main__':
+    main()
