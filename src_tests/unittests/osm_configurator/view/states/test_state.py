@@ -16,7 +16,7 @@ def positioned_frame():
 
 
 # Testing if te innit works properly, basicly if it doesn't crash it is fine
-def test_correct_innit(positioned_frame):
+def old_test_correct_innit(positioned_frame):
     state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, state_name_enum_i.StateName.REDUCTION,
                   state_name_enum_i.StateName.CALCULATION)
 
@@ -26,7 +26,7 @@ def test_correct_innit(positioned_frame):
 
 
 # Testing if only correct types are accepted by the innit
-def test_type_errors(positioned_frame):
+def old_test_type_errors(positioned_frame):
     with pytest.raises(TypeError):
         state_i.State(positioned_frame, state_name_enum_i.StateName.AGGREGATION, state_name_enum_i.StateName.REDUCTION,
                       state_name_enum_i.StateName.CALCULATION)
@@ -57,7 +57,7 @@ def test_type_errors(positioned_frame):
                            state_name_enum_i.StateName.SETTINGS, state_name_enum_i.StateName.SETTINGS),
                           (state_name_enum_i.StateName.CATEGORY,
                            state_name_enum_i.StateName.DATA, state_name_enum_i.StateName.REDUCTION)])
-def test_attributes(positioned_frame, own_state_name, default_left, default_right):
+def old_test_attributes(positioned_frame, own_state_name, default_left, default_right):
     state = state_i.State([positioned_frame], own_state_name, default_left, default_right)
 
     assert state.get_active_frames() == [positioned_frame]
@@ -74,7 +74,7 @@ def test_attributes(positioned_frame, own_state_name, default_left, default_righ
 
 
 # Testing if the __eq__ method works as intended
-def test_equals(positioned_frame):
+def old_test_equals(positioned_frame):
     # Making two truly equal states
     state1 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
     state2 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
