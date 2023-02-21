@@ -64,7 +64,15 @@ class ApplicationSettings:
         """
         try:
             settings: Dict[Any] = self._load_settings_file()
-            return settings[settings_enum.get_name()]
+
+            if settings_enum == application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER:
+                if settings[settings_enum.get_name()] is None:
+                    return None
+                else:
+                    return Path(settings[settings_enum.get_name()])
+
+            else:
+                return settings[settings_enum.get_name()]
 
         except:
             return None
