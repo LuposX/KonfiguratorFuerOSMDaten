@@ -1,9 +1,10 @@
 import os.path
-from tests import TEST_DIR
+from src_tests.definitions import TEST_DIR
 
 import geopandas as gpd
 from pathlib import Path
 import src.osm_configurator.model.project.calculation.split_up_files as suf
+import src.osm_configurator.model.model_constants as model_constants
 
 
 def _prepare(result_folder):
@@ -25,10 +26,13 @@ def test_illegal_origin_path():
     result_folder = os.path.join(TEST_DIR, "build/split_up_files")
     geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
 
-    df = gpd.read_file(geojson_path)
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df["geometry"])
+    did_work = split_up.split_up_files(df[model_constants.CL_GEOMETRY])
     assert not did_work
 
 
@@ -37,10 +41,13 @@ def test_illegal_result_folder():
     result_folder = os.path.join(TEST_DIR, "build/split_up_filesadadaahsliahfilafiasfga")
     geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
 
-    df = gpd.read_file(geojson_path)
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
-    did_work = split_up.split_up_files(df["geometry"])
+    did_work = split_up.split_up_files(df[model_constants.CL_GEOMETRY])
     assert not did_work
 
 
@@ -50,11 +57,14 @@ def test_no_name_column():
     result_folder = os.path.join(TEST_DIR, "build/split_up_files")
     geojson_path = os.path.join(TEST_DIR, "data/monaco-regions.geojson")
 
-    # Clean up last tests
+    # Clean up last src_tests
     _prepare(result_folder)
 
     # Begin test
-    df = gpd.read_file(geojson_path)
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
     did_work = split_up.split_up_files(df)
@@ -72,9 +82,12 @@ def test_correct_split_up():
     _prepare(result_folder)
 
     # Begin test
-    df = gpd.read_file(geojson_path)
-    df["name"] = df.index
-    df["name"][2] = "cell_with_a_name"
+    df = gpd.read_file(geojson_path,
+                       GEOM_POSSIBLE_NAMES=model_constants.CL_GEOMETRY,
+                       KEEP_GEOM_COLUMNS="NO"
+                       )
+    df[model_constants.CL_TRAFFIC_CELL_NAME] = df.index
+    df[model_constants.CL_TRAFFIC_CELL_NAME][2] = "cell_with_a_name"
     split_up = suf.SplitUpFile(Path(origin_path), Path(result_folder))
 
     did_work = split_up.split_up_files(df)

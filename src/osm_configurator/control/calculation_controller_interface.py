@@ -8,6 +8,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
+    from typing import Tuple
 
 
 class ICalculationController(ABC):
@@ -17,7 +18,7 @@ class ICalculationController(ABC):
     """
 
     @abstractmethod
-    def start_calculations(self, starting_phase: CalculationPhase) -> CalculationState:
+    def start_calculations(self, starting_phase: CalculationPhase) -> Tuple[CalculationState, str]:
         """
         Starts the calculations in the given calculation phase in the currently selected project.
         The calculation process is split in different calculation phases. This function starts the calculation in a given phase.
@@ -31,7 +32,7 @@ class ICalculationController(ABC):
         pass
 
     @abstractmethod
-    def get_calculation_state(self) -> CalculationState:
+    def get_calculation_state(self) -> Tuple[CalculationState, str]:
         """
         Gives the current calculation state of the selected project.
 

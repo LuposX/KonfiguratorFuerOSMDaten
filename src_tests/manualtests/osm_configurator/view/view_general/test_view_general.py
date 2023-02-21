@@ -4,7 +4,8 @@ from src_tests.manualtests.osm_configurator.view.controller_stub.export_controll
 from src_tests.manualtests.osm_configurator.view.controller_stub.category_controller_stub import CategoryControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.project_controller_stub import ProjectControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.settings_controller_stub import SettingsControllerStub
-from src_tests.manualtests.osm_configurator.view.controller_stub.aggregation_controller_stub import AggregationControllerStub
+from src_tests.manualtests.osm_configurator.view.controller_stub.aggregation_controller_stub import \
+    AggregationControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.cut_out_controller_stub import CutOutControllerStub
 from src_tests.manualtests.osm_configurator.view.controller_stub.data_visualization_controller_stub import \
     DataVisualizationControllerStub
@@ -24,6 +25,7 @@ calculation_controller = CalculationControllerStub()
 cut_out_controller = CutOutControllerStub()
 data_visualization_controller = DataVisualizationControllerStub()
 osm_data_controller = OSMDataControllerStub()
+
 
 def test_view_general():
     main_window = mw.MainWindow(export_controller=export_controller,

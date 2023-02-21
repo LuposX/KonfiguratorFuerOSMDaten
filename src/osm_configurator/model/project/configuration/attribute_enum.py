@@ -8,6 +8,7 @@ import json
 
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
+import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
 import \
     src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
 
@@ -18,6 +19,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from geopandas import GeoSeries, GeoDataFrame
     from pandas import Series
+    from src.osm_configurator.model.project.calculation.default_value_finder import DefaultValueFinder
 
 
 NUMBER_FLOOR_KEY: Final = "building:levels"
@@ -40,6 +42,8 @@ def _calculate_property_area(category: Category,
                              data: Any) -> float:
     df: GeoDataFrame = data
 
+    default_value_finder_o: DefaultValueFinder = default_value_finder_i.DefaultValueFinder()
+
     # if the osm element we look at is a node, we can't calculate the value of it
     if osm_element[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
         return curr_default_value.get_attribute_default(Attribute.PROPERTY_AREA)
@@ -56,7 +60,7 @@ def _calculate_property_area(category: Category,
         # Find out all osm element which lie in the given osm element
         # this gives us trues and false for each entry true if it lies in the osm element otherwise false
         found_areas_bool: GeoSeries = df.within(
-            osm_element[model_constants_i.CL_GEOMETRY])
+            osm_element[model_constants_i.CL_GEOMETRY])  # TODO: This could be wrong if yes use contains() instead
 
 
         # we will use this to sum up the area of all buildings
@@ -80,6 +84,13 @@ def _calculate_property_area(category: Category,
                 # if its a node use default values for it
                 if found_series[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
                     curr_default_value_list: List[DefaultValueEntry] = category.get_default_value_list()
+
+                    default_value: DefaultValueEntry = default_value_finder_o\
+                        .find_default_value_entry_which_applies(curr_default_value_list,
+                                                                dict_transformed_list)
+
+                    # add default values to the sum
+                    area_sum += default_value.get_attribute_default(Attribute.PROPERTY_AREA)
 
                 else:
                     # add the calculated area to the area sum of all osm elements.
@@ -122,6 +133,7 @@ class Attribute(Enum):
     """
     This enum provides a list of Attributes, the DefaultValueEntry and AttractivityAttributes can use.
     If you are interested how exactly these Attributes get used checkout AttractivityPhase.
+
     Each Attribute saves the name of the attribute, a list of tags that is needed to calculate the attribute and
     a function which describes how the value of the enum is calculated.
     """
@@ -137,6 +149,7 @@ class Attribute(Enum):
     def get_name(self) -> str:
         """
         Getter for the name of the enum type.
+
         Returns:
             str: Name of the Phase.
         """
@@ -145,6 +158,7 @@ class Attribute(Enum):
     def get_needed_tags(self) -> List[str]:
         """
         Getter for the tags of the enum type.
+
         Returns:
             List[str]: A list of tag names(keys) that the attribute needs.
         """
@@ -157,12 +171,14 @@ class Attribute(Enum):
                                   data: Any):
         """
         Calculates the value of the attribute based on the provided data
+
         Args:
             category (Category): The Category of the osm element.
             osm_element (Series): The osm element from which we want to calculate the attribute value for.
             prev_calculated_attributes (Dict[str, float]): All previously calculated attributes in a dictionary accessible by its name, used if you have attributes which depend on each other.
             curr_default_value (DefaultValueEntry): Default value for the osm element.
             data (Any): Empty, can be used if your function needs additional data which isn't provided, needs to be changed manually.
+
         Returns:
             float: the calculated value
         """
@@ -171,8 +187,10 @@ class Attribute(Enum):
     def convert_str_to_attribute(name: str) -> Attribute | None:
         """
         Converts a given string to the associated Attribute.
+
         Args:
             name (str): The string.
+
         Returns:
             Attribute: Associated Attribute.
         """
@@ -185,6 +203,7 @@ class Attribute(Enum):
     def get_all_tags(cls) -> List[str]:
         """
         Return all used Tags fromm all attributes:
+
         Returns:
             List[str]: A list of tags from the attributes.
         """

@@ -1,7 +1,10 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.project_controller_interface import IProjectController
 
 import pathlib
 
+from src.osm_configurator.model.application.application import Application
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -20,28 +23,31 @@ class ProjectController(IProjectController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        pass
+        self._model: Application = model
 
     def get_list_of_passive_projects(self) -> list[PassiveProject]:
-        pass
+        return self._model.get_passive_project_list()
 
     def load_project(self, path: pathlib.Path) -> bool:
-        pass
+        return self.load_project(path)
 
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
-        pass
+        return self.create_project(name, description, destination)
 
-    def delete_passive_project(self, project: PassiveProject) -> bool:
-        pass
+    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
+        return self._model.delete_passive_project(passive_project)
 
     def save_project(self) -> bool:
-        pass
+        return self._model.get_active_project().get_project_saver().save_project()
 
     def set_current_config_phase(self, config_phase: ConfigPhase) -> bool:
-        pass
+        return self._model.get_active_project().set_last_step(config_phase)
 
     def get_current_config_phase(self) -> ConfigPhase:
-        pass
+        return self._model.get_active_project().get_last_step()
+
+    def unload_project(self):
+        return self._model.unload_project()
 
     def is_project_loaded(self) -> bool:
-        pass
+        return self._model.get_active_project() is not None

@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
+    from pathlib import Path
 
 
 class IDataVisualizationController(ABC):
@@ -18,22 +19,25 @@ class IDataVisualizationController(ABC):
     """
 
     @abstractmethod
-    def generate_cut_out_map(self) -> pathlib.Path:
+    def generate_cut_out_map(self) -> pathlib.Path | None:
         """
         Generates a map of the data of the currently selected project.
-        Using the cut-out file of the project, this function creates a map as a html-file of the project. The path to the html-file is returned.
+        Using the cut-out file of the project, this function creates a map as a html-file of the project.
+        The path to the html-file is returned.
 
         Returns:
             pathlib.Path: The path to the file where the map is stored.
+            None: If the saving of the map failed.
         """
         pass
 
     @abstractmethod
-    def get_calculation_visualization(self) -> matplotlib.axes.Axes:
+    def generate_calculation_visualization(self) -> pathlib.Path | None:
         """
         Generates a graphic that visualizes the results of the calculations of the currently selected project.
 
-        Returns:
-            matplotlib.axes.Axes: The resulting visualization as axes of the matplotlib library.
+         Returns:
+            pathlib.Path: The Path pointing towards the image of the resulting visualization.
+            None: If the saving/generating of the image failed.
         """
         pass

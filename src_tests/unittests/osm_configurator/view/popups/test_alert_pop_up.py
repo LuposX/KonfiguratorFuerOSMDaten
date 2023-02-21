@@ -1,5 +1,8 @@
 import os.path
 
+import pytest
+
+
 import src.osm_configurator.view.popups.alert_pop_up as apu
 
 
@@ -11,8 +14,6 @@ def _prepare(target_path):
         os.remove(target_path)
 
 
-@pytest.mark.skip(reason="pytest not supported yet")
-@pytest.mark.parametrize(["Ich Kek", "Du Kek", "Er sie es Kek", "Wir Kek", "Ihr Kek", "Sie Kek"])
-def test_correct_creation(message):
-    popup = apu.AlertPopUp(message)
+def test_correct_creation():
+    popup = apu.AlertPopUp("Ich Kek")
     popup.destroy()

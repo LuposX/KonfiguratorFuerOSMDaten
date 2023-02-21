@@ -1,9 +1,13 @@
 from __future__ import annotations
 
 import pathlib
-import src.osm_configurator.model.project.configuration.category
 
 from abc import ABC, abstractmethod
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pathlib import Path
+    from src.osm_configurator.model.project.configuration.category import Category
 
 
 class CategoryParserInterface(ABC):
@@ -14,7 +18,7 @@ class CategoryParserInterface(ABC):
     look at the documentation of :obj:`~category.Category`.
     """
     @abstractmethod
-    def parse_category_file(self, path):
+    def parse_category_file(self, path: Path) -> Category:
         """Creates an internal representation of the category file it got as an input.
         What the Category includes, check this: :obj:`~category.Category`.
 
@@ -22,7 +26,7 @@ class CategoryParserInterface(ABC):
             path (pathlib.Path): The path to the category file.
             
         Returns:
-           list[category.Category]: A List of categories, that describe each category from the category file.
+           category.Category: A category.
         """
         pass
 

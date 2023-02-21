@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
 
 import pathlib
@@ -18,13 +20,12 @@ class OSMDataController(IOSMDataController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        pass
+        self._model = model
 
-    def set_osm_data_reference(self, path: pathlib.Path) -> bool:
-        pass
+    def set_osm_data_reference(self, path_to_osm_data: pathlib.Path) -> bool:
+        return self._model.get_active_project().get_config_manager()\
+            .get_osm_data_configuration().set_osm_data(path_to_osm_data)
 
     def get_osm_data_reference(self) -> pathlib.Path:
-        pass
-
-    def download_osm_data(self, path: pathlib.Path) -> bool:
-        pass
+        return self._model.get_active_project().get_config_manager()\
+            .get_osm_data_configuration().get_osm_data()

@@ -2,6 +2,11 @@ from __future__ import annotations
 
 from enum import Enum, unique
 
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    pass
+
 
 @unique
 class CalculationPhase(Enum):
@@ -21,12 +26,12 @@ class CalculationPhase(Enum):
 
     NONE = ("None", "none", 0)
     GEO_DATA_PHASE = ("Data Input and Geo-Filter", "geo_data_phase_results", 1)
-    TAG_FILTER_PHASE = ("Tag-filter", "tag_filter_phase", 2)
+    TAG_FILTER_PHASE = ("Tag-filter", "tag_filter_phase_results", 2)
     REDUCTION_PHASE = ("Reduction", "reduction_phase_results", 3)
     ATTRACTIVITY_PHASE = ("Attractivity", "attractivity_phase_results", 4)
     AGGREGATION_PHASE = ("Aggregation", "aggregation_phase_result", 5)
 
-    def get_name(self):
+    def get_name(self) -> str:
         """
         Getter for the name of the enum type.
 
@@ -44,7 +49,7 @@ class CalculationPhase(Enum):
         """
         return self.value[1]
 
-    def get_order(self):
+    def get_order(self) -> int:
         """
         Getter for the order of the enum type.
 

@@ -2,10 +2,20 @@ from __future__ import annotations
 
 import pathlib
 
-import src.osm_configurator.model.project.configuration.osm_data_configuration
-import src.osm_configurator.model.project.configuration.aggregation_configuration
-import src.osm_configurator.model.project.configuration.cut_out_configuration
-import src.osm_configurator.model.project.configuration.category_manager
+import src.osm_configurator.model.project.configuration.osm_data_configuration as osm_data_configuration
+import src.osm_configurator.model.project.configuration.aggregation_configuration as aggregation_configuration
+import src.osm_configurator.model.project.configuration.cut_out_configuration as cut_out_configuration
+import src.osm_configurator.model.project.configuration.category_manager as category_manager
+
+from typing import TYPE_CHECKING, Final
+
+if TYPE_CHECKING:
+    from src.osm_configurator.model.project.configuration.osm_data_configuration import OSMDataConfiguration
+    from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
+    from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
+    from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
+
+DEFAULT_CHECKPOINTS_FOLDER_NAME: str = "Results"
 
 
 class ConfigurationManager:
@@ -21,6 +31,12 @@ class ConfigurationManager:
         Args:
             active_project_path (pathLib.Path): The path pointing towards the project folder.
         """
+        self._active_project_path: pathlib.Path = active_project_path
+        self._calculation_phase_checkpoints_folder_name: str = DEFAULT_CHECKPOINTS_FOLDER_NAME
+        self._osm_data_configurator: OSMDataConfiguration = osm_data_configuration.OSMDataConfiguration()
+        self._aggregation_configurator: AggregationConfiguration = aggregation_configuration.AggregationConfiguration()
+        self._cut_out_configurator: CutOutConfiguration = cut_out_configuration.CutOutConfiguration()
+        self._category_manager: CategoryManager = category_manager.CategoryManager()
 
     def get_osm_data_configuration(self):
         """
@@ -29,7 +45,7 @@ class ConfigurationManager:
         Returns:
             osm_data_configuration.OSMDataConfiguration: The osm data configuration.
         """
-        pass
+        return self._osm_data_configurator
 
     def get_aggregation_configuration(self):
         """
@@ -38,25 +54,25 @@ class ConfigurationManager:
         Returns:
             aggregation_configuration.AggregationConfiguration: The aggregation configuration.
         """
-        pass
+        return self._aggregation_configurator
 
-    def get_cut_out_configuration(self):
+    def get_cut_out_configuration(self) -> CutOutConfiguration:
         """
         Getter for the cut-out configuration.
 
         Returns:
             cut_out_configuration.CutOutConfiguration: The cut-out configuration.
         """
-        pass
+        return self._cut_out_configurator
 
-    def get_category_manager(self):
+    def get_category_manager(self) -> CategoryManager:
         """
         Getter for the category manager.
 
         Returns:
             category_manager.CategoryManager: The category manager.
         """
-        pass
+        return self._category_manager
 
     def get_active_project_path(self) -> pathlib.Path:
         """
@@ -65,14 +81,13 @@ class ConfigurationManager:
         Returns:
             pathlib.Path: the project path.
         """
-        pass
+        return self._active_project_path
 
-    def get_calculation_phase_checkpoints_folder(self) -> str:
+    def get_calculation_phase_checkpoints_folder_name(self) -> str:
         """
         This method is used to get the name of the folder in which the results will be saved.
 
         Returns:
-            str: the name of the folder
+            str: The name of the folder
         """
-        pass
-
+        return self._calculation_phase_checkpoints_folder_name

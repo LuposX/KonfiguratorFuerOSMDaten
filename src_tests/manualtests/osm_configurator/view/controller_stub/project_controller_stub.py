@@ -9,12 +9,15 @@ from pathlib import Path
 
 
 class ProjectControllerStub(IProjectController):
-    def get_list_of_passive_projects(self) -> List[PassiveProject]:
-        foo = []
-        for i in range(100):
-            foo.append(PassiveProject(Path("./poggers")))
+    def unload_project(self):
+        pass
 
-        return foo
+    def get_list_of_passive_projects(self) -> List[PassiveProject]:
+        #foo = []
+        #for i in range(100):
+            #foo.append(PassiveProject(Path()))
+
+        return []
 
     def load_project(self, path: pathlib.Path) -> bool:
         return True

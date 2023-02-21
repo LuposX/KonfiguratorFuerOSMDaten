@@ -38,17 +38,21 @@ class DefaultValueEntry:
     def set_tag(self, new_tag: str):
         """
         Sets a new value for a given tag
+
         Args:
             new_tag (str): value for overwriting the current tag, must be a valid OSM-tag
         """
-        self._tag = new_tag
+        if new_tag != "":
+            self._tag = new_tag
 
     def set_attribute_default(self, attribute: Attribute, value: float) -> bool:
         """
         Sets the default value of an attribute
+
         Args:
             attribute (attribute_enum.Attribute): Attribute whose value will be overwritten
             value (float): new default value
+
         Returns:
             bool: True, if overwriting process was successful, else false
         """
@@ -60,8 +64,10 @@ class DefaultValueEntry:
     def get_attribute_default(self, attribute: Attribute) -> float:
         """
         Gets the default value of a certain attribute
+
         Args:
             attribute (attribute_enum.Attribute): Attribute whose value is searched for
+
         Returns:
             float: The default value of the attribute
         """

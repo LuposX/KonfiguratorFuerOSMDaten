@@ -1,8 +1,13 @@
 from __future__ import annotations
 
+import os
 import pathlib
+from pathlib import Path
 
-import src.osm_configurator.model.project.configuration.download_data
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 class OSMDataConfiguration:
@@ -14,34 +19,28 @@ class OSMDataConfiguration:
         """
         Creates a new instance of the "OSMDataConfiguration" class.
         """
-        pass
+        self._osm_data_path: Path | None = None
 
-    def get_osm_data(self):
+    def get_osm_data(self) -> Path:
         """
         Gives back the path pointing towards the OSM data file.
 
         Returns:
             pathlib.Path: The path pointing towards the OSM data.
         """
-        pass
+        return self._osm_data_path
 
-    def set_osm_data(self, osm_data):
+    def set_osm_data(self, new_osm_data: Path) -> bool:
         """
         Edits the path pointing towards the OSM data file.
 
         Args:
-            osm_data (pathlib.Path): The new path towards the osm data file.
+            new_osm_data (pathlib.Path): The new path towards the osm data file.
 
         Returns:
             bool: True if changing the path works, otherwise false.
         """
-        pass
-
-    def get_download_data(self, coordinates):
-        """
-        Getter for the download data class.
-
-        Returns:
-            download_data.DownloadData: The download data class.
-        """
-        pass
+        if os.path.exists(new_osm_data):
+            self._osm_data_path = new_osm_data
+            return True
+        return False

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.calculation_controller_interface import ICalculationController
 
 from typing import TYPE_CHECKING
@@ -6,6 +8,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
+
+    from typing import Tuple
 
 
 class CalculationController(ICalculationController):
@@ -18,19 +22,19 @@ class CalculationController(ICalculationController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        pass
+        self._model: IApplication = model
 
-    def start_calculations(self, starting_phase: CalculationPhase) -> CalculationState:
-        pass
+    def start_calculations(self, starting_phase: CalculationPhase) -> Tuple[CalculationState, str]:
+        return self._model.get_active_project().get_calculation_manager().start_calculation(starting_phase)
 
-    def get_calculation_state(self) -> CalculationState:
-        pass
+    def get_calculation_state(self) -> Tuple[CalculationState, str]:
+        return self._model.get_active_project().get_calculation_manager().get_calculation_state()
 
     def get_current_calculation_phase(self) -> CalculationPhase:
-        pass
+        return self._model.get_active_project().get_calculation_manager().get_current_calculation_phase()
 
     def get_current_calculation_process(self) -> float:
-        pass
+        return self._model.get_active_project().get_calculation_manager().get_calculation_progress()
 
     def cancel_calculations(self) -> bool:
-        pass
+        return self._model.get_active_project().get_calculation_manager().cancel_calculation()

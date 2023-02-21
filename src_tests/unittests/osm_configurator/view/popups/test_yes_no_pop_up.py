@@ -1,5 +1,7 @@
 import os.path
 
+import pytest
+
 import src.osm_configurator.view.popups.yes_no_pop_up as ynpu
 
 
@@ -11,8 +13,6 @@ def _prepare(target_path):
         os.remove(target_path)
 
 
-@pytest.mark.skip(reason="pytest not supported yet")
-@pytest.mark.parametrize(["Ich Kek", "Du Kek", "Er sie es Kek", "Wir Kek", "Ihr Kek", "Sie Kek"], lambda x: print(x))
-def test_correct_init(message, func):
-    popup = ynpu.YesNoPopUp(message=message, func=func)
+def test_correct_init():
+    popup = ynpu.YesNoPopUp(message="Wir Kek", func=print)
     popup.destroy()
