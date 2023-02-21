@@ -4,13 +4,13 @@ from src.osm_configurator.control.project_controller_interface import IProjectCo
 
 import pathlib
 
-from src.osm_configurator.model.application.application import Application
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+    from src.osm_configurator.model.application.application import Application
 
 
 class ProjectController(IProjectController):
