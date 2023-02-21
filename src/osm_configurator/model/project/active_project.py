@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
-from src.osm_configurator.model.project.data_visualizer import DataVisualizer
-from src.osm_configurator.model.project.project_settings import ProjectSettings
-from src.osm_configurator.model.project.calculation.calculation_manager import CalculationManager
-from src.osm_configurator.model.project.export import Export
-from src.osm_configurator.model.project.project_saver import ProjectSaver
-from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
-from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager_i
+import src.osm_configurator.model.project.data_visualizer as data_visualizer_i
+import src.osm_configurator.model.project.project_settings as project_settings_i
+import src.osm_configurator.model.project.calculation.calculation_manager as calculation_manager_i
+import src.osm_configurator.model.project.export as export_i
+import src.osm_configurator.model.project.project_saver as project_saver_i
+import src.osm_configurator.model.project.project_io_handler as project_io_handler_i
+import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
 
 from typing import TYPE_CHECKING, Final
 
