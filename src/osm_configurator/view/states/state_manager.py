@@ -171,7 +171,7 @@ class StateManager:
 
         # Main Menu State
         from src.osm_configurator.view.toplevelframes.main_menu_frame import MainMenuFrame
-        main_menu_frame: MainMenuFrame = MainMenuFrame(self, project_controller)
+        main_menu_frame: MainMenuFrame = MainMenuFrame(self, project_controller, settings_controller)
         positioned_main_menu_frame: PositionedFrame = positioned_frame_i.PositionedFrame(main_menu_frame,
                                                                                          MAIN_MENU_COLUM,
                                                                                          MAIN_MENU_ROW,
