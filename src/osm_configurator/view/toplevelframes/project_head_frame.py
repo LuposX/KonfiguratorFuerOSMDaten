@@ -398,7 +398,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
     def _file_dialog(self, title: str) -> Path:
         # Opens a file dialog, that will ask for a directory to save stuff in
-        file_path: str = filedialog.asksaveasfilename(initialdir="/", title=title, initialfile='export.zip')
+        file_path: str = filedialog.asksaveasfilename(initialdir=self._project_controller.get_project_path(), title=title, initialfile='export.zip')
         # A Path will be returned
         return Path(file_path)
 
