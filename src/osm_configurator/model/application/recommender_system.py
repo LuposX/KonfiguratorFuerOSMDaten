@@ -9,10 +9,12 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+
 if TYPE_CHECKING:
     from typing import List, Final
     from pandas import Series
-
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 # the name of the data entry in the osm tag key file
 CL_KEY: Final = "key"
@@ -25,11 +27,12 @@ class RecommenderSystem:
     This class job is to provide recommendations to different classes.
     """
 
-    def __init__(self):
+    def __init__(self, application_settings_manager: ApplicationSettings):
         """
         Creates a new instance of the RecommenderSystem.
         """
-        pass
+        self._number_of_keys_to_recommend: int = application_settings_manager\
+            .get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_RECOMMENDATIONS)
 
     def recommend_key(self, input: str) -> List[str]:
         """
@@ -37,6 +40,7 @@ class RecommenderSystem:
 
         Args:
             input (str): The input from which to generate suggestions.
+
 
         Returns:
             List[str]: Returns a List of strings containing the recommendations depending on the input. If file was not found return None.
@@ -55,4 +59,4 @@ class RecommenderSystem:
         # Replaces all NaN values with False.
         found_matches.replace(np.NaN, False, inplace=True)
 
-        return key_df.loc[found_matches][CL_KEY].tolist()
+        return key_df.loc[found_matches][CL_KEY].tolist()[:self._number_of_keys_to_recommend]

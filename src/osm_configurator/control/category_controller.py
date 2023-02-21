@@ -8,6 +8,8 @@ from src.osm_configurator.model.project.configuration.category_manager import Ca
 from typing import TYPE_CHECKING, List
 import src.osm_configurator.model.project.configuration.category as category_i
 
+import src.osm_configurator.model.application.application_settings_default_enum as application_settings_default_enum_i
+
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.configuration.category import Category
@@ -59,7 +61,6 @@ class CategoryController(ICategoryController):
 
     def get_list_of_key_recommendations(self, current_input: str) -> list[str]:
         return self._model.get_key_recommendation_system().recommend_key(current_input)
-    # Todo which path should be given to the method
 
     def get_attractivities_of_category(self, category: Category) -> List[AttractivityAttribute]:
         return category.get_attractivity_attributes()

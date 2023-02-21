@@ -37,7 +37,7 @@ class Application(IApplication):
             self.application_settings.get_setting(
                 application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
 
-        self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem()
+        self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem(self.application_settings)
 
     def create_project(self, name: str, description: str, destination: Path) -> bool:
         self.active_project = active_project_i.ActiveProject(destination, True, self.application_settings, name, description)
