@@ -33,6 +33,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.cut_out_controller_interface import ICutOutController
     from src.osm_configurator.control.category_controller_interface import ICategoryController
     from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
+    from src.osm_configurator.control.project_controller_interface import IProjectController
     import src.osm_configurator.view.constants.button_constants as button_constants_i
     import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
     import src.osm_configurator.view.constants.label_constants as label_constants_i
@@ -52,7 +53,7 @@ class DataFrame(TopLevelFrame):
     def __init__(self, state_manager: state_manager,
                  data_visualization_controller: IDataVisualizationController,
                  cut_out_controller: ICutOutController, category_controller: ICategoryController,
-                 osm_data_controller: IOSMDataController):
+                 osm_data_controller: IOSMDataController, project_controller: IProjectController):
         """
         This method creates a DataFrame, that lets the User input data into the project.
 
@@ -76,6 +77,7 @@ class DataFrame(TopLevelFrame):
         self._cut_out_controller: ICutOutController = cut_out_controller
         self._category_controller: ICategoryController = category_controller
         self._osm_data_controller: IOSMDataController = osm_data_controller
+        self._project_controller: IProjectController = project_controller
 
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
@@ -354,7 +356,7 @@ class DataFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askopenfilename(title="Please select Your File",
-                                       initialdir="/")
+                                       initialdir=self._project_controller.get_project_path())
         return Path(new_path)
 
     def freeze(self):

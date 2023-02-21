@@ -198,7 +198,7 @@ class StateManager:
         # Project Head Frame
         from src.osm_configurator.view.toplevelframes.project_head_frame import ProjectHeadFrame
         project_head_frame: ProjectHeadFrame = ProjectHeadFrame(self, export_controller,
-                                                                                     project_controller)
+                                                                project_controller)
         positioned_project_head_frame: PositionedFrame = positioned_frame_i.PositionedFrame(project_head_frame,
                                                                                             PROJECT_HEAD_FRAME_COLUM,
                                                                                             PROJECT_HEAD_FRAME_ROW,
@@ -234,7 +234,7 @@ class StateManager:
         # Attractivity Frame States
         from src.osm_configurator.view.toplevelframes.attractivity_edit_frame import AttractivityEditFrame
         attractivity_edit_frame: AttractivityEditFrame = AttractivityEditFrame(self,
-                                                                                                         category_controller)
+                                                                               category_controller)
         positioned_attractivity_edit_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
             attractivity_edit_frame,
             ATTRACTIVITY_EDIT_FRAME_COLUM,
@@ -266,7 +266,7 @@ class StateManager:
         # Calculation Frame State
         from src.osm_configurator.view.toplevelframes.calculation_frame import CalculationFrame
         calculation_frame: CalculationFrame = CalculationFrame(self, calculation_controller,
-                                                                                 data_visualization_controller)
+                                                               data_visualization_controller)
         positioned_calcualtion_frame: PositionedFrame = positioned_frame_i.PositionedFrame(calculation_frame,
                                                                                            CALCULATION_FRAME_COLUM,
                                                                                            CALCULATION_FRAME_ROW,
@@ -296,8 +296,9 @@ class StateManager:
         # Data Frame State
         from src.osm_configurator.view.toplevelframes.data_frame import DataFrame
         data_frame: DataFrame = DataFrame(self, data_visualization_controller, cut_out_controller,
-                                                       category_controller,
-                                                       osm_data_controller)
+                                          category_controller,
+                                          osm_data_controller,
+                                          project_controller)
         positioned_data_frame: PositionedFrame = positioned_frame_i.PositionedFrame(data_frame, DATA_FRAME_COLUM,
                                                                                     DATA_FRAME_ROW,
                                                                                     DATA_FRAME_COLUM_SPAN,
