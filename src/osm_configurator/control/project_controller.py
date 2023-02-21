@@ -29,10 +29,10 @@ class ProjectController(IProjectController):
         return self._model.get_passive_project_list()
 
     def load_project(self, path: pathlib.Path) -> bool:
-        return self.load_project(path)
+        return self._model.load_project(path)
 
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
-        return self.create_project(name, description, destination)
+        return self._model.create_project(name, description, destination)
 
     def delete_passive_project(self, passive_project: PassiveProject) -> bool:
         return self._model.delete_passive_project(passive_project)
