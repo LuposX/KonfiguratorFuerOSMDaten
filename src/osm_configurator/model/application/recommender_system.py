@@ -2,17 +2,21 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from definitions import PROJECT_DIR
+import os
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 
 if TYPE_CHECKING:
     from typing import List, Final
-    from pathlib import Path
     from pandas import Series
 
 
 # the name of the data entry in the osm tag key file
 CL_KEY: Final = "key"
+MOST_USED_TAGS_TABLE_PATH: Final = "data/most_used_keys.csv"
 
 
 class RecommenderSystem:
@@ -27,22 +31,22 @@ class RecommenderSystem:
         """
         pass
 
-    def recommend_key(self, input: str, path_to_recommender_file: Path) -> List[str]:
+    def recommend_key(self, input: str) -> List[str]:
         """
         Creates recommendations based on user input
 
         Args:
             input (str): The input from which to generate suggestions.
-            path_to_recommender_file (Path):
 
         Returns:
             List[str]: Returns a List of strings containing the recommendations depending on the input. If file was not found return None.
         """
+        path_to_recommender_file: Path = Path(os.path.join(PROJECT_DIR, MOST_USED_TAGS_TABLE_PATH))
         try:
             # open the file
             key_df = pd.read_csv(path_to_recommender_file)
         except Exception:
-            return None
+            return []
 
         # gets a series with true and false
         # an entry is true if the entry in the dataframe at that position contains the string
