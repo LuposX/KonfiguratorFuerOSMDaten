@@ -202,6 +202,7 @@ class Category:
             boolean (bool): The new value _strictly_use_default_values should be set to.
         """
         self._strictly_use_default_values = boolean
+        return True
 
     def get_calculation_method_of_area(self) -> CalculationMethodOfArea:
         """
