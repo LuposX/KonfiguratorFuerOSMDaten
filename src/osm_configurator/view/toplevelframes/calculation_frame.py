@@ -14,6 +14,8 @@ from src.osm_configurator.control.calculation_controller_interface import ICalcu
 from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
+import webbrowser
+
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
@@ -25,7 +27,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.calculation_controller_interface import ICalculationController
     from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-
+    from pathlib import Path
 
 class CalculationFrame(TopLevelFrame):
     """
@@ -404,8 +406,8 @@ class CalculationFrame(TopLevelFrame):
         Gets called if the "Visualize Results" Button is pressed. Calls the according function from the controller to
         initialise the visualization process
         """
-        self._data_visualization_controller.get_calculation_visualization()
-        # TODO: finish implementation
+        path: Path = self._data_visualization_controller.generate_calculation_visualization()
+        self._show_boxplot(path)
 
     def freeze(self):
         """
@@ -424,3 +426,20 @@ class CalculationFrame(TopLevelFrame):
             button.configure(state=tkinter.NORMAL)
 
         self._frozen = False
+
+    def _show_boxplot(self, path_to_boxplot: Path) -> bool:
+        """
+        This function is used to visualize am already created boxplot.
+
+         Args:
+            path_to_boxplot (Path): the path where the boxplot is saved we want to show.
+
+         Returns:
+            bool: True if creating the boxplot works, otherwise false.
+        """
+        try:
+            webbrowser.open_new(str(path_to_boxplot))
+        except Exception:
+            return False
+
+        return True
