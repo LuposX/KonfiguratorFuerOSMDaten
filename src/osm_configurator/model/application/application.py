@@ -8,6 +8,8 @@ from src.osm_configurator.model.application.application_interface import IApplic
 import src.osm_configurator.model.application.recommender_system as recommender_system_i
 import src.osm_configurator.model.application.application_settings as application_settings_i
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum_i
+import src.osm_configurator.model.project.active_project as active_project_i
+
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
@@ -38,11 +40,11 @@ class Application(IApplication):
         self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem()
 
     def create_project(self, name: str, description: str, destination: Path) -> bool:
-        self.active_project = ActiveProject(destination, True, self.application_settings, name, description)
+        self.active_project = active_project_i.ActiveProject(destination, True, self.application_settings, name, description)
         return True
 
     def load_project(self, destination: Path) -> bool:
-        self.active_project = ActiveProject(destination, False, self.application_settings)
+        self.active_project = active_project_i.ActiveProject(destination, False, self.application_settings)
         return True
 
     def get_passive_project_list(self) -> List[PassiveProject]:
