@@ -48,7 +48,7 @@ class DataVisualizationController(IDataVisualizationController):
                                                                              map_saving_path=map_saving_path,
                                                                              filename=MAP_FILENAME):
 
-            return Path(os.path.join(map_saving_path, MAP_FILENAME))
+            return pathlib.Path(os.path.join(map_saving_path, MAP_FILENAME))
 
         # If saving or creating failed
         else:
@@ -76,7 +76,7 @@ class DataVisualizationController(IDataVisualizationController):
                                                                                  boxplot_saving_path=boxplot_saving_path,
                                                                                  filename=BOXPLOT_FILENAME
                                                                                  ):
-            return Path(os.path.join(data_path, BOXPLOT_FILENAME))
+            return pathlib.Path(os.path.join(data_path, BOXPLOT_FILENAME))
 
         # If saving or creating failed
         else:

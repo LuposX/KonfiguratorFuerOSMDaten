@@ -6,6 +6,8 @@ from tkinter import filedialog
 from typing import TYPE_CHECKING, Iterable
 import customtkinter
 
+import webbrowser
+
 import src.osm_configurator.view.states.state_manager as state_manager
 import src.osm_configurator.control.data_visualization_controller_interface as data_visualization_controller_interface
 import src.osm_configurator.control.cut_out_controller_interface as cut_out_controller_interface
@@ -26,11 +28,11 @@ from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFra
 
 if TYPE_CHECKING:
     import src.osm_configurator.view.states.state_manager
-    import \
-        src.osm_configurator.control.data_visualization_controller_interface as data_visualization_controller_interface
-    import src.osm_configurator.control.cut_out_controller_interface as cut_out_controller_interface
-    import src.osm_configurator.control.category_controller_interface as category_controller_interface
-    import src.osm_configurator.control.osm_data_controller_interface as osm_data_controller_interface
+    from \
+        src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
+    from src.osm_configurator.control.cut_out_controller_interface import ICutOutController
+    from src.osm_configurator.control.category_controller_interface import ICategoryController
+    from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
     import src.osm_configurator.view.constants.button_constants as button_constants_i
     import src.osm_configurator.view.constants.check_box_constants as check_box_constants_i
     import src.osm_configurator.view.constants.label_constants as label_constants_i
@@ -48,9 +50,9 @@ class DataFrame(TopLevelFrame):
     """
 
     def __init__(self, state_manager: state_manager,
-                 data_visualization_controller: data_visualization_controller_interface,
-                 cut_out_controller: cut_out_controller_interface, category_controller: category_controller_interface,
-                 osm_data_controller: osm_data_controller_interface):
+                 data_visualization_controller: IDataVisualizationController,
+                 cut_out_controller: ICutOutController, category_controller: ICategoryController,
+                 osm_data_controller: IOSMDataController):
         """
         This method creates a DataFrame, that lets the User input data into the project.
 
@@ -70,10 +72,10 @@ class DataFrame(TopLevelFrame):
         )
 
         self._state_manager = state_manager
-        self._data_visualization_controller: data_visualization_controller_interface = data_visualization_controller
-        self._cut_out_controller: cut_out_controller_interface = cut_out_controller
-        self._category_controller: category_controller_interface = category_controller
-        self._osm_data_controller: osm_data_controller_interface = osm_data_controller
+        self._data_visualization_controller: IDataVisualizationController = data_visualization_controller
+        self._cut_out_controller: ICutOutController = cut_out_controller
+        self._category_controller: ICategoryController = category_controller
+        self._osm_data_controller: IOSMDataController = osm_data_controller
 
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
@@ -267,7 +269,9 @@ class DataFrame(TopLevelFrame):
         Lets the user view the cutout.
         Activated if the view_cutout button is activated
         """
-        path = self._data_visualization_controller.get_calculation_visualization()
+        path = self._data_visualization_controller.generate_cut_out_map()
+
+        self._show_map(path)
 
     def __copy_category_configurations(self):
         self._selected_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
@@ -382,3 +386,20 @@ class DataFrame(TopLevelFrame):
             checkbox.configure(state=tkinter.NORMAL)
 
         self._frozen = False
+
+    def _show_map(self, path_to_map: Path) -> bool:
+        """
+        This function is used to visualize am already created map.
+
+         Args:
+            path_to_map (Path): the path where the map is saved we want to show.
+
+         Returns:
+            bool: True if creating the boxplot works, otherwise false.
+        """
+        try:
+            webbrowser.open_new(path_to_map)
+        except Exception:
+            return False
+
+        return True
