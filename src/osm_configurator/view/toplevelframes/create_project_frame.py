@@ -198,8 +198,8 @@ class CreateProjectFrame(TopLevelFrame):
         Return:
             str: Name of the chosen path
         """
-        new_path = filedialog.askopenfilename(title="Select a project to load",
-                                              initialdir="/", )  # opens the file explorer in the current dir
+        new_path = filedialog.askdirectory(title="Select a project to load",
+                                           initialdir="/", )  # opens the file explorer in the current dir
         return new_path
 
     def freeze(self):

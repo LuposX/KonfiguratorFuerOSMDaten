@@ -77,8 +77,8 @@ class DataFrame(TopLevelFrame):
 
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
-        self._selected_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
-        self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
+        self._selected_cut_out_path: Path
+        self._selected_osm_data_path: Path
         self._buildings_on_the_edge_are_in: bool = False  # Buildings on the edge are not in by default
 
         self._buttons: list[customtkinter.CTkButton] = []  # Holds all buttons to make equal styling easier
@@ -167,14 +167,14 @@ class DataFrame(TopLevelFrame):
         self._osm_data_selected_path_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text=str(self._selected_osm_data_path)
+                text=""
             )
         self._labels.append(self._osm_data_selected_path_label)
 
         self._cut_out_selected_path_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text=str(self._selected_cut_out_path)
+                text=""
             )
         self._labels.append(self._cut_out_selected_path_label)
 
@@ -256,10 +256,10 @@ class DataFrame(TopLevelFrame):
         self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
 
         self._cut_out_selected_path_label.configure(
-            text=self._selected_cut_out_path
+            text=str(self._selected_cut_out_path)
         )
         self._osm_data_selected_path_label.configure(
-            text=self._selected_osm_data_path
+            text=str(self._selected_osm_data_path)
         )
 
     def __view_cut_out(self):

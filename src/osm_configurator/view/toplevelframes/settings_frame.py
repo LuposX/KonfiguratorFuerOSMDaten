@@ -75,6 +75,8 @@ class SettingsFrame(TopLevelFrame):
         Returns:
             bool: True, if activation was successful, else false
         """
+        # TODO: CHECK IF PROJECT IS LOADED OR NOT DU PIC
+
         self.settings_application_frame.activate()
         self.create_project_frame.activate()
 

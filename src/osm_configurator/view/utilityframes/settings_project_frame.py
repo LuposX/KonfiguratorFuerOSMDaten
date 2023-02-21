@@ -58,8 +58,8 @@ class SettingsProjectFrame(TopLevelFrame):
         self.grid_rowconfigure(2, weight=1)
         self.grid_rowconfigure(3, weight=1)
 
-        self._project_name: str = self._settings_controller.get_project_name()
-        self._project_description: str = self._settings_controller.get_project_description()
+        self._project_name: str = ""
+        self._project_description: str = ""
 
         self.header: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(master=self,
@@ -80,7 +80,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                      border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
                                      text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
                                      )
-        self.project_name_box.insert(1.0, str(self._project_name))
+        self.project_name_box.insert(1.0, self._project_name)
         self.project_name_box.grid(column=0, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
         self._textbox.append(self.project_name_box)
 
@@ -127,6 +127,7 @@ class SettingsProjectFrame(TopLevelFrame):
         """
         self._project_name = ISettingsController.get_project_name(self._settings_controller)
         self._project_description = ISettingsController.get_project_description(self._settings_controller)
+        # TODO: AKTUALLIESR DIE LABELS DU PIC
 
     def __change_project_name(self):
         """
