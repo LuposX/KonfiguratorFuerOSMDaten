@@ -8,6 +8,8 @@ from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 import src.osm_configurator.view.states.state_name_enum as sne
 
+import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
+
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
@@ -210,6 +212,9 @@ class MainMenuFrame(TopLevelFrame):
         # Correct path was chosen, loading process will be initialised
         self._project_controller.load_project(new_path)
 
+        # TODO: CHEKC FOR CORRET PHASE!
+        self._state_manager.change_state(state_name_enum_i.StateName.DATA)
+
     def __browse_files(self) -> str:
         """
         Opens the explorer starting from the current directory
@@ -217,8 +222,8 @@ class MainMenuFrame(TopLevelFrame):
             str: Name of the chosen path
         """
         new_path = \
-            filedialog.askopenfilename(title="Please select Your File",
-                                       initialdir="/")  # TODO: Set accepted filetypes
+            filedialog.askdirectory(title="Please select Your File",
+                                    initialdir="/")
         return new_path
 
     def freeze(self):
