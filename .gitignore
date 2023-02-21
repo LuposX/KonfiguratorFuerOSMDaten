@@ -1,243 +1,283 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+## Mac
+.DS_Store
+__pycache__
 
-# ignore vscode stuff
-.vscode
+## Core latex/pdflatex auxiliary files:
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.fot
+*.cb
+*.cb2
+.*.lb
 
-# ignore pycharm stuff
+# intelj
 .idea
 
-# C extensions
-*.so
+## Intermediate documents:
+*.dvi
+*.xdv
+*-converted-to.*
+# these rules might exclude image files for figures etc.
+# *.ps
+# *.eps
+# *.pdf
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+## Generated if empty string is given at "Please type another file name for output:"
+.pdf
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+## Build tool auxiliary files:
+*.fdb_latexmk
+*.synctex
+*.synctex(busy)
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+## Build tool directories for auxiliary files
+# latexrun
+latex.out/
 
-# Translations
-*.mo
-*.pot
+## Auxiliary and intermediate files from other packages:
+# algorithms
+*.alg
+*.loa
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+# achemso
+acs-*.bib
 
-# Flask stuff:
-instance/
-.webassets-cache
+# amsthm
+*.thm
 
-# Scrapy stuff:
-.scrapy
+# beamer
+*.nav
+*.pre
+*.snm
+*.vrb
 
-# Sphinx documentation
-../docs/_build/
-../docs/_build/apidocs
+# changes
+*.soc
 
-# PyBuilder
-.pybuilder/
-target/
+# comment
+*.cut
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# cprotect
+*.cpt
 
-# IPython
-profile_default/
-ipython_config.py
+# elsarticle (documentclass of Elsevier journals)
+*.spl
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+# endnotes
+*.ent
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+# fixme
+*.lox
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
+# feynmf/feynmp
+*.mf
+*.mp
+*.t[1-9]
+*.t[1-9][0-9]
+*.tfm
 
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/#use-with-ide
-.pdm.toml
+#(r)(e)ledmac/(r)(e)ledpar
+*.end
+*.?end
+*.[1-9]
+*.[1-9][0-9]
+*.[1-9][0-9][0-9]
+*.[1-9]R
+*.[1-9][0-9]R
+*.[1-9][0-9][0-9]R
+*.eledsec[1-9]
+*.eledsec[1-9]R
+*.eledsec[1-9][0-9]
+*.eledsec[1-9][0-9]R
+*.eledsec[1-9][0-9][0-9]
+*.eledsec[1-9][0-9][0-9]R
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
+# glossaries
+*.acn
+*.acr
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.lzo
+*.lzs
 
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
+# uncomment this for glossaries-extra (will ignore makeindex's style files!)
+# *.ist
 
-# SageMath parsed files
-*.sage.py
+# gnuplottex
+*-gnuplottex-*
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# gregoriotex
+*.gaux
+*.gtex
 
-# Spyder project settings
-.spyderproject
-.spyproject
+# htlatex
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.trc
+*.xref
 
-# Rope project settings
-.ropeproject
+# hyperref
+*.brf
 
-# mkdocs documentation
-/site
+# knitr
+*-concordance.tex
+# TODO Comment the next line if you want to keep your tikz graphics files
+*.tikz
+*-tikzDictionary
 
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
+# listings
+*.lol
 
-# Pyre type checker
-.pyre/
+# luatexja-ruby
+*.ltjruby
 
-# pytype static type analyzer
-.pytype/
+# makeidx
+*.idx
+*.ilg
+*.ind
 
-# Cython debug symbols
-cython_debug/
+# minitoc
+*.maf
+*.mlf
+*.mlt
+*.mtc[0-9]*
+*.slf[0-9]*
+*.slt[0-9]*
+*.stc[0-9]*
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
-# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+# minted
+_minted*
+*.pyg
 
-# User-specific stuff
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/**/usage.statistics.xml
-.idea/**/dictionaries
-.idea/**/shelf
+# morewrites
+*.mw
 
-# AWS User-specific
-.idea/**/aws.xml
+# nomencl
+*.nlg
+*.nlo
+*.nls
 
-# Generated files
-.idea/**/contentModel.xml
+# pax
+*.pax
 
-# Sensitive or high-churn files
-.idea/**/dataSources/
-.idea/**/dataSources.ids
-.idea/**/dataSources.local.xml
-.idea/**/sqlDataSources.xml
-.idea/**/dynamic.xml
-.idea/**/uiDesigner.xml
-.idea/**/dbnavigator.xml
+# pdfpcnotes
+*.pdfpc
 
-# Gradle
-.idea/**/gradle.xml
-.idea/**/libraries
+# sagetex
+*.sagetex.sage
+*.sagetex.py
+*.sagetex.scmd
 
-# Gradle and Maven with auto-import
-# When using Gradle or Maven with auto-import, you should exclude module files,
-# since they will be recreated, and may cause churn.  Uncomment if using
-# auto-import.
-# .idea/artifacts
-# .idea/compiler.xml
-# .idea/jarRepositories.xml
-# .idea/ConfiguratorOSMData.xml
-# .idea/*.iml
-# .idea/ConfiguratorOSMData
-# *.iml
-# *.ipr
+# scrwfile
+*.wrt
 
-# CMake
-cmake-build-*/
+# sympy
+*.sout
+*.sympy
+sympy-plots-for-*.tex/
 
-# Mongo Explorer plugin
-.idea/**/mongoSettings.xml
+# pdfcomment
+*.upa
+*.upb
 
-# File-based project format
-*.iws
+# pythontex
+*.pytxcode
+pythontex-files-*/
 
-# IntelliJ
-out/
+# tcolorbox
+*.listing
 
-# mpeltonen/sbt-idea plugin
-.idea_modules/
+# thmtools
+*.loe
 
-# JIRA plugin
-atlassian-ide-plugin.xml
+# TikZ & PGF
+*.dpth
+*.md5
+*.auxlock
 
-# Cursive Clojure plugin
-.idea/replstate.xml
+# todonotes
+*.tdo
 
-# SonarLint plugin
-.idea/sonarlint/
+# vhistory
+*.hst
+*.ver
 
-# Crashlytics plugin (for Android Studio and IntelliJ)
-com_crashlytics_export_strings.xml
-crashlytics.properties
-crashlytics-build.properties
-fabric.properties
+# easy-todo
+*.lod
 
-# Editor-based Rest Client
-.idea/httpRequests
+# xcolor
+*.xcp
 
-# Android studio 3.1+ serialized cache file
-.idea/caches/build_file_checksums.ser
+# xmpincl
+*.xmpi
+
+# xindy
+*.xdy
+
+# xypic precompiled matrices and outlines
+*.xyc
+*.xyd
+
+# endfloat
+*.ttt
+*.fff
+
+# Latexian
+TSWLatexianTemp*
+
+## Editors:
+# WinEdt
+*.bak
+*.sav
+
+# Texpad
+.texpadtmp
+
+# LyX
+*.lyx~
+
+# Kile
+*.backup
+
+# gummi
+.*.swp
+
+# KBibTeX
+*~[0-9]*
+
+# TeXnicCenter
+*.tps
+
+# auto folder when using emacs and auctex
+./auto/*
+*.el
+
+# expex forward references with \gathertags
+*-tags.tex
+
+# standalone packages
+*.sta
+
+# Makeindex log files
+*.lpz

@@ -19,7 +19,7 @@ class IDataVisualizationController(ABC):
     """
 
     @abstractmethod
-    def generate_cut_out_map(self, map_saving_path: Path, filename: str) -> pathlib.Path | None:
+    def generate_cut_out_map(self) -> pathlib.Path | None:
         """
         Generates a map of the data of the currently selected project.
         Using the cut-out file of the project, this function creates a map as a html-file of the project.

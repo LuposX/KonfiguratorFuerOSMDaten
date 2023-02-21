@@ -44,6 +44,7 @@ Tested on windows 10(64Bit), might take a while.
 13. `pip install mypy`, used for checking static typing.
 14. `pip install jupyterlab`  # only needed for libary tests.
 15. `conda install -c conda-forge osmium-tool`, used to split up data.
+16. `pip install screeninfo`, used to center the window
 
 If you get problems with Step *4*, try the following command and then do step *6* again:
 - `sudo apt-get install build-essential cmake libboost-dev libexpat1-dev zlib1g-dev libbz2-dev`

@@ -1,0 +1,25 @@
+from __future__ import annotations
+
+from enum import Enum
+
+from src.osm_configurator.view.constants.button_constants import ButtonConstants
+
+
+class OptionsMenuConstants(Enum):
+    """
+    Holds all constant-values to implement an Options-Menu according to the application's standards
+    """
+
+    OPTIONS_MENU_CONSTANTS_CORNER_RADIUS = 8
+    OPTIONS_MENU_CONSTANTS_FG_COLOR = ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value
+    OPTIONS_MENU_CONSTANTS_BUTTON_COLOR = ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value
+    OPTIONS_MENU_CONSTANTS_BUTTON_HOVER_COLOR = ButtonConstants.BUTTON_HOVER_COLOR.value
+    OPTIONS_MENU_CONSTANTS_DROPDOWN_FG_COLOR = ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value
+    OPTIONS_MENU_CONSTANTS_DROPDOWN_HOVER_COLOR = ButtonConstants.BUTTON_HOVER_COLOR.value
+    OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR = ButtonConstants.BUTTON_TEXT_COLOR.value
+    OPTIONS_MENU_CONSTANTS_TEXT_COLOR = ButtonConstants.BUTTON_TEXT_COLOR.value
+    OPTIONS_MENU_CONSTANTS_HOVER = True
+    OPTIONS_MENU_CONSTANTS_STATE = "normal"
+    OPTIONS_MENU_CONSTANTS_ANCHOR = "center"
+    OPTIONS_MENU_CONSTANTS_FG_COLOR_DISABLED = ButtonConstants.BUTTON_FG_COLOR_DISABLED.value
+    OPTIONS_MENU_CONSTANTS_TEXT_COLOR_DISABLED = ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value

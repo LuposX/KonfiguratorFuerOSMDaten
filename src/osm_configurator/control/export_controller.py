@@ -1,12 +1,14 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.export_controller_interface import IExportController
 
 import pathlib
-from src.osm_configurator.model.project.export import Export
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
+    from src.osm_configurator.model.project.export import Export
 
 
 class ExportController(IExportController):

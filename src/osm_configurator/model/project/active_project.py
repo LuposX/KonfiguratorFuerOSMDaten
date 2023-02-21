@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
-from src.osm_configurator.model.project.data_visualizer import DataVisualizer
-from src.osm_configurator.model.project.project_settings import ProjectSettings
-from src.osm_configurator.model.project.calculation.calculation_manager import CalculationManager
-from src.osm_configurator.model.project.export import Export
-from src.osm_configurator.model.project.project_saver import ProjectSaver
-from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
-from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager_i
+import src.osm_configurator.model.project.data_visualizer as data_visualizer_i
+import src.osm_configurator.model.project.project_settings as project_settings_i
+import src.osm_configurator.model.project.calculation.calculation_manager as calculation_manager_i
+import src.osm_configurator.model.project.export as export_i
+import src.osm_configurator.model.project.project_saver as project_saver_i
+import src.osm_configurator.model.project.project_io_handler as project_io_handler_i
+import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
 
 from typing import TYPE_CHECKING, Final
 
@@ -56,21 +56,21 @@ class ActiveProject:
             self.project_directory: Path = project_folder
             project_name = os.path.basename(project_folder)
 
-        self._project_io_handler: ProjectIOHandler = ProjectIOHandler(self)
-        self._configurator_manager: ConfigurationManager = ConfigurationManager(project_folder)
-        self._calculation_manager: CalculationManager = CalculationManager(self._configurator_manager, application_manager)
-        self._project_settings: ProjectSettings = ProjectSettings(self.project_directory, project_name,
+        self._project_io_handler: ProjectIOHandler = project_io_handler_i.ProjectIOHandler(self)
+        self._configurator_manager: ConfigurationManager = configuration_manager_i.ConfigurationManager(project_folder)
+        self._calculation_manager: CalculationManager = calculation_manager_i.CalculationManager(self._configurator_manager, application_manager)
+        self._project_settings: ProjectSettings = project_settings_i.ProjectSettings(self.project_directory, project_name,
                                                                   project_description, DEFAULT_CHECKPOINTS_FOLDER_NAME)
-        self._last_step: ConfigPhase = ConfigPhase.DATA_CONFIG_PHASE
+        self._last_step: ConfigPhase = config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE
 
         if is_newly_created:
             self._project_io_handler.build_project(self.project_directory)
         else:
             self._project_io_handler.load_project(self.project_directory)
 
-        self._project_saver: ProjectSaver = ProjectSaver(self)
-        self._data_visualizer: DataVisualizer = DataVisualizer()
-        self._export: Export = Export(self)
+        self._project_saver: ProjectSaver = project_saver_i.ProjectSaver(self)
+        self._data_visualizer: DataVisualizer = data_visualizer_i.DataVisualizer()
+        self._export: Export = export_i.Export(self)
 
     def get_last_step(self) -> ConfigPhase:
         """
@@ -93,7 +93,7 @@ class ActiveProject:
         Return:
             bool: True if changing the state works, otherwise false.
         """
-        if current_step in ConfigPhase:
+        if current_step in config_phase_enum_i.ConfigPhase:
             self._last_step = current_step
             return True
         return False

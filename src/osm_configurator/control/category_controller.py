@@ -1,14 +1,18 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.category_controller_interface import ICategoryController
 import pathlib
 
-from src.osm_configurator.model.parser.category_parser import CategoryParser
+import src.osm_configurator.model.parser.category_parser as category_parser_i
 from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
 from typing import TYPE_CHECKING, List
+import src.osm_configurator.model.project.configuration.category as category_i
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+    from src.osm_configurator.model.parser.category_parser import CategoryParser
 
 
 class CategoryController(ICategoryController):
@@ -25,7 +29,7 @@ class CategoryController(ICategoryController):
 
     def check_conflicts_in_category_configuration(self, path: pathlib.Path) -> bool:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
-        category_parser: CategoryParser = CategoryParser()
+        category_parser: CategoryParser = category_parser_i.CategoryParser()
         new_category: Category = category_parser.parse_category_file(path)
         if new_category is None:
             return False
@@ -43,7 +47,7 @@ class CategoryController(ICategoryController):
 
     def create_category(self, name: str) -> Category:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
-        new_category: Category = Category(name)
+        new_category: Category = category_i.Category(name)
         if category_manager.create_category(new_category):
             return new_category
         else:

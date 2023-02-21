@@ -1,14 +1,16 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.project_controller_interface import IProjectController
 
 import pathlib
 
-from src.osm_configurator.model.application.application import Application
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+    from src.osm_configurator.model.application.application import Application
 
 
 class ProjectController(IProjectController):
@@ -27,10 +29,10 @@ class ProjectController(IProjectController):
         return self._model.get_passive_project_list()
 
     def load_project(self, path: pathlib.Path) -> bool:
-        return self.load_project(path)
+        return self._model.load_project(path)
 
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
-        return self.create_project(name, description, destination)
+        return self._model.create_project(name, description, destination)
 
     def delete_passive_project(self, passive_project: PassiveProject) -> bool:
         return self._model.delete_passive_project(passive_project)

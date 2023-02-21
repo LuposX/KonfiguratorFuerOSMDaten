@@ -38,7 +38,7 @@ class ConfigurationManager:
         self._cut_out_configurator: CutOutConfiguration = cut_out_configuration.CutOutConfiguration()
         self._category_manager: CategoryManager = category_manager.CategoryManager()
 
-    def get_osm_data_configuration(self):
+    def get_osm_data_configuration(self) -> OSMDataConfiguration:
         """
         Getter for the osm data configuration.
 
@@ -47,7 +47,7 @@ class ConfigurationManager:
         """
         return self._osm_data_configurator
 
-    def get_aggregation_configuration(self):
+    def get_aggregation_configuration(self) -> AggregationConfiguration:
         """
         Getter for the aggregation configuration.
 

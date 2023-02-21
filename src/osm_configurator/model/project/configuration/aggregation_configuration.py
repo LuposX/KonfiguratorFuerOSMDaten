@@ -35,6 +35,7 @@ class AggregationConfiguration:
 
         for method in aggregation_method_enum_i.AggregationMethod:
             all_methods.append(method)
+
         return all_methods
 
     def is_aggregation_method_active(self, method: AggregationMethod) -> bool:

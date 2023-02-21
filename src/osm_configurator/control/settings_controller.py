@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.settings_controller_interface import ISettingsController
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_default_enum_i
 

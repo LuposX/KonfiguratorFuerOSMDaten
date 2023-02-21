@@ -39,17 +39,3 @@ class IOSMDataController(ABC):
             pathlib.Path: The path to the osm-data of the currently selected project.
         """
         pass
-
-    @abstractmethod
-    def download_osm_data(self, path: pathlib.Path) -> bool:
-        """
-        Downloads osm-data
-        The osm-data to be downloaded are defined by a geojson-file. The data is downloaded and the reference to the correct osm-files is stored.
-
-        Args:
-            path (pathlib.Path): The path to the geojson-file.
-
-        Returns:
-            bool: True on success, False otherwise
-        """
-        pass

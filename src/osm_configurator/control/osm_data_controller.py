@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.osm_data_controller_interface import IOSMDataController
 
 import pathlib

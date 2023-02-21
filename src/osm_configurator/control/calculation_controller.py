@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from src.osm_configurator.control.calculation_controller_interface import ICalculationController
 
 from typing import TYPE_CHECKING

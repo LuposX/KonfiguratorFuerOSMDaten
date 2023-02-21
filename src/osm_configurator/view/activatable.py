@@ -1,8 +1,8 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 
 class Activatable(ABC):
 
     @classmethod
-    def activate(cls):
+    def activate(self):
         pass
