@@ -115,7 +115,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
-        self.change_project_name_button.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
+        self.change_description_button.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self._buttons.append(self.change_description_button)
 
     def activate(self):
@@ -125,9 +125,10 @@ class SettingsProjectFrame(TopLevelFrame):
         Returns:
             bool: True, if activation was successful, otherwise false.
         """
-        self._project_name = ISettingsController.get_project_name(self._settings_controller)
-        self._project_description = ISettingsController.get_project_description(self._settings_controller)
-        # TODO: AKTUALLIESR DIE LABELS DU PIC
+        self._project_name = self._settings_controller.get_project_name()
+        self._project_description = self._settings_controller.get_project_description()
+        self.description_box.insert('insert', self._project_description)
+        self.project_name_box.insert('insert', self._project_name)
 
     def __change_project_name(self):
         """
@@ -142,7 +143,7 @@ class SettingsProjectFrame(TopLevelFrame):
             self.activate()  # reload page
             return
         self._project_name = textbox_input
-        ISettingsController.set_project_name(self._settings_controller, textbox_input)
+        self._settings_controller.set_project_name(textbox_input)
 
     def __change_project_description(self):
         """
@@ -152,7 +153,7 @@ class SettingsProjectFrame(TopLevelFrame):
         textbox_input = self.description_box.get("0.0", "end")
         #  no null-checks required since description is optional
         self._project_description = textbox_input
-        ISettingsController.set_project_description(self._settings_controller, textbox_input)
+        self._settings_controller.set_project_description(textbox_input)
 
     def freeze(self):
         """

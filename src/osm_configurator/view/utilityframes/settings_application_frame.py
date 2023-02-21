@@ -91,7 +91,8 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                    )
-        self.path_default_label.grid(row=1, column=1, padx=10, pady=10)  # Creates a read-only textbox showing the default-filepath
+        self.path_default_label.grid(row=1, column=1, padx=10,
+                                     pady=10)  # Creates a read-only textbox showing the default-filepath
         self._labels.append(self.path_default_label)
 
         self.change_default_path_button = \
@@ -105,14 +106,15 @@ class SettingsApplicationFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
-        self.change_default_path_button.grid(row=1, column=3, padx=10, pady=10)  # button to browse for a new default folder
+        self.change_default_path_button.grid(row=1, column=3, padx=10,
+                                             pady=10)  # button to browse for a new default folder
         self._buttons.append(self.change_default_path_button)
 
     def activate(self):
         """
         Tells the current frame to activate and collect all the data it needs.
         """
-        self._project_default_folder = ISettingsController.get_project_default_folder(self._settings_controller)
+        self._project_default_folder = self._settings_controller.get_project_default_folder()
 
         self.path_default_label.configure(
             text=self._project_default_folder
@@ -142,8 +144,8 @@ class SettingsApplicationFrame(TopLevelFrame):
             str: Name of the chosen path
         """
         new_path = \
-            filedialog.askopenfilename(initialdir=str(self._project_default_folder),
-                                       title="Select a File")
+            filedialog.askdirectory(initialdir=str(self._project_default_folder),
+                                    title="Select a File")
         return new_path
 
     def freeze(self):
