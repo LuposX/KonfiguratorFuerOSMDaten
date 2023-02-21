@@ -3,12 +3,12 @@ from __future__ import annotations
 import pathlib
 from src.osm_configurator.control.cut_out_controller_interface import ICutOutController
 
-from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+    from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
 
 
 class CutOutController(ICutOutController):
