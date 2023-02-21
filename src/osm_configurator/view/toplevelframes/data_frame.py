@@ -395,7 +395,7 @@ class DataFrame(TopLevelFrame):
             bool: True if creating the boxplot works, otherwise false.
         """
         try:
-            webbrowser.open_new(path_to_map)
+            webbrowser.open_new(str(path_to_map))
         except Exception:
             return False
 
