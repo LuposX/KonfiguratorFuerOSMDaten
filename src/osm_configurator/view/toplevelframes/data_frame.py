@@ -317,7 +317,7 @@ class DataFrame(TopLevelFrame):
             self.activate()
             return
 
-        self._osm_data_controller.set_osm_data_reference(path=chosen_path)  # Gives the reference to the controller
+        self._osm_data_controller.set_osm_data_reference(chosen_path)  # Gives the reference to the controller
         self._selected_osm_data_path = chosen_path  # Updates the path in its own class
         self._osm_data_selected_path_label.configure(
             text=str(chosen_path)
