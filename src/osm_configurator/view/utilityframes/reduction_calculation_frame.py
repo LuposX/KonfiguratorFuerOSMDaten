@@ -147,9 +147,9 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         self._calculate_floor_area_checkbox.grid(row=1, column=0, rowspan=1, columnspan=3)
 
         # The Checkbox for Strictly Use Default Values
-        self._strictly_use_default_values_checkbox = customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(master=self,
-                                                                                                           width=self._width - ELEMENT_BORDER_DISTANCE,
-                                                                                                           height=int(
+        self._strictly_use_default_values_checkbox: customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(master=self,
+                                                                                                          width=self._width - ELEMENT_BORDER_DISTANCE,
+                                                                                                          height=int(
                                                                                                                self._height / 4 - ELEMENT_BORDER_DISTANCE),
                                                                                                            corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
                                                                                                            border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
