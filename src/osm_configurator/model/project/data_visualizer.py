@@ -85,23 +85,6 @@ class DataVisualizer:
 
         return True
 
-    def show_map(self, path_to_map: Path) -> bool:
-        """
-        This function is used to visualize am already created map.
-
-         Args:
-            path_to_map (Path): the path where the map is saved we want to show.
-
-         Returns:
-            bool: True if creating the boxplot works, otherwise false.
-        """
-        try:
-            webbrowser.open_new(path_to_map)
-        except Exception:
-            return False
-
-        return True
-
     def show_boxplot(self, path_to_map: Path) -> bool:
         """
         This function is used to visualize am already created boxplot.

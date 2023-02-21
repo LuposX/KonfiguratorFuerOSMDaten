@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
     from src.osm_configurator.model.application.application import Application
+    from pathlib import Path
 
 
 class ProjectController(IProjectController):
@@ -24,6 +25,9 @@ class ProjectController(IProjectController):
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
         self._model: Application = model
+
+    def get_project_path(self) -> Path:
+        return self._model.get_active_project().get_project_path()
 
     def get_list_of_passive_projects(self) -> list[PassiveProject]:
         return self._model.get_passive_project_list()

@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-
+    from pathlib import Path
 
 class IProjectController(ABC):
     """
@@ -120,5 +120,15 @@ class IProjectController(ABC):
 
         Returns:
             bool: True, if a project is currently selected; False, otherwise.
+        """
+        pass
+
+    @abstractmethod
+    def get_project_path(self) -> Path:
+        """
+        Gets the path to the current project.
+
+        Returns:
+            Path: to the current project.
         """
         pass

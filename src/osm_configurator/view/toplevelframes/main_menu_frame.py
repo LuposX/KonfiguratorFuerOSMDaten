@@ -30,6 +30,7 @@ from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.control.project_controller_interface import IProjectController
+    from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.model.application.passive_project import PassiveProject
     import src.osm_configurator.view.constants.button_constants as button_constants_i
@@ -47,7 +48,7 @@ class MainMenuFrame(TopLevelFrame):
     will be shown in a list and can be selected / opened.
     """
 
-    def __init__(self, state_manager: StateManager, project_controller: IProjectController):
+    def __init__(self, state_manager: StateManager, project_controller: IProjectController, settings_controller: ISettingsController):
         """
         This method creates a MainMenuFrame showing the MainMenu of the application.
 
@@ -63,6 +64,7 @@ class MainMenuFrame(TopLevelFrame):
                          fg_color=frame_constants_i.FrameConstants.FULL_FRAME_FG_COLOR.value)
 
         self._project_controller = project_controller
+        self._settings_controller = settings_controller
         self._state_manager = state_manager
         self._passive_projects: list[PassiveProject] = self._project_controller.get_list_of_passive_projects()
 
@@ -223,7 +225,7 @@ class MainMenuFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askdirectory(title="Please select Your File",
-                                    initialdir="/")
+                                    initialdir=self._settings_controller.get_project_default_folder())
         return new_path
 
     def freeze(self):
