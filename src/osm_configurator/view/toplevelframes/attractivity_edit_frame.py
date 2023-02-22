@@ -426,6 +426,9 @@ class AttractivityEditFrame(TopLevelFrame):
                 # if went ok, the text will be normal colored again!
                 self._attractivity_name_entry.configure(
                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+                selected_attractivity = self._selected_attribute
+                self._load_category(self._selected_category)
+                self._load_attractivity(selected_attractivity)
 
     def _area_entry_edited(self, event: tkinter.Event):
         # Checking if the Valua can be casted into a float
@@ -624,7 +627,7 @@ class AttractivityEditFrame(TopLevelFrame):
 
             self._floor_area_entry.delete(0, tkinter.END)
             self._floor_area_entry.insert(0, str(attractivity.get_attribute_factor(
-                attribute_enum_i.Attribute.NUMBER_OF_FLOOR)))
+                attribute_enum_i.Attribute.FLOOR_AREA)))
 
             self._base_attractivity_entry.delete(0, tkinter.END)
             self._base_attractivity_entry.insert(0, str(attractivity.get_base_factor()))
