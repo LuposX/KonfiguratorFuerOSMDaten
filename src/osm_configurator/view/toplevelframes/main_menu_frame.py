@@ -212,7 +212,11 @@ class MainMenuFrame(TopLevelFrame):
             return
 
         # Correct path was chosen, loading process will be initialised
-        self._project_controller.load_project(new_path)
+        if not self._project_controller.load_project(new_path):
+            popup = AlertPopUp("You selected a not valid project.")
+            popup.mainloop()
+            self.activate()
+            return
 
         # TODO: CHEKC FOR CORRET PHASE!
         self._state_manager.change_state(state_name_enum_i.StateName.DATA)

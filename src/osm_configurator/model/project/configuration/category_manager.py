@@ -119,14 +119,22 @@ class CategoryManager:
 
         Args:
             new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
+
+        Return:
+            bool: True if overwriting works, otherwise false.
         """
         new_categories: List[Category] = []
         category_parser: CategoryParser = CategoryParser()
 
         for file in os.listdir(new_category_list_path):
             if file.endswith(CSV_ENDING):
-                new_categories.append(category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
+                new_category: Category = category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file))))
+                if new_category is None:
+                    return False
+                else:
+                    new_categories.append(new_category)
         self._categories = new_categories
+        return True
 
     def merge_categories(self, new_category_list_path: Path):
         """
@@ -134,15 +142,23 @@ class CategoryManager:
 
         Args:
             new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
+
+        Return:
+            bool: True if merging works, otherwise false.
         """
         new_categories: List[Category] = []
         category_parser: CategoryParser = CategoryParser()
 
         for file in os.listdir(new_category_list_path):
             if file.endswith(CSV_ENDING):
-                new_categories.append(
-                    category_parser.parse_category_file(Path(str(os.path.join(new_category_list_path, file)))))
+                new_category: Category = category_parser.parse_category_file(
+                    Path(str(os.path.join(new_category_list_path, file))))
+                if new_category is None:
+                    return False
+                else:
+                    new_categories.append(new_category)
         self.add_categories(new_categories)
+        return True
 
     def add_categories(self, category_input_list: List[Category]):
         """

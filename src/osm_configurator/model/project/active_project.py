@@ -66,7 +66,8 @@ class ActiveProject:
         if is_newly_created:
             self._project_io_handler.build_project(self.project_directory)
         else:
-            self._project_io_handler.load_project(self.project_directory)
+            if not self._project_io_handler.load_project(self.project_directory):
+                self.project_directory = None
 
         self._project_saver: ProjectSaver = project_saver_i.ProjectSaver(self)
         self._data_visualizer: DataVisualizer = data_visualizer_i.DataVisualizer()

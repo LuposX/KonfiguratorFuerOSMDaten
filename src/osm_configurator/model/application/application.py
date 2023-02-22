@@ -52,6 +52,8 @@ class Application(IApplication):
 
     def load_project(self, destination: Path) -> bool:
         self.active_project = active_project_i.ActiveProject(destination, False, self.application_settings)
+        if self.active_project.project_directory is None:
+            return False
         return True
 
     def get_passive_project_list(self) -> List[PassiveProject]:
