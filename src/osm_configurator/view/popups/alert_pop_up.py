@@ -24,6 +24,10 @@ class AlertPopUp(customtkinter.CTkToplevel):
 
         self.title("Alert")
 
+        self.lift()
+        self.attributes("-topmost", True)
+        self.focus_force()
+
         label = customtkinter.CTkLabel(self, text=message)
         label.pack(side="top", fill="both", expand="True", padx=10, pady=10)
 

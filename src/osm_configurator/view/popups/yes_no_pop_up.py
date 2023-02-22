@@ -41,6 +41,10 @@ class YesNoPopUp(customtkinter.CTkToplevel):
         # When the PopUp is closed rather than an option selected, this method will be called!
         self.wm_protocol("WM_DELETE_WINDOW", self._pop_up_closed)
 
+        self.lift()
+        self.attributes("-topmost", True)
+        self.focus_force()
+
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=5)
