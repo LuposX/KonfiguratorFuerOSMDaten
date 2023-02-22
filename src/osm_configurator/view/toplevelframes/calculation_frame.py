@@ -275,11 +275,11 @@ class CalculationFrame(TopLevelFrame):
         """
         self._state_manager.unfreeze_state()
         if cancel:
-            self._state_manager.unlock_state()
             self._calculation_controller.cancel_calculations()
             self.__reset_calculation()
 
     def __reset_calculation(self):
+        self._state_manager.unlock_state()
         self.__activate_buttons()
 
         # Destroying the progressbar and the cancel button
@@ -341,20 +341,17 @@ class CalculationFrame(TopLevelFrame):
         """
         calculation_state = self._calculation_controller.get_calculation_state()
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
-        calculation_process = self._calculation_controller.get_current_calculation_process()
+        calculation_progress = self._calculation_controller.get_current_calculation_process()
 
         if (calculation_state[0] == CalculationState.RUNNING or calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY) \
-                and calculation_process == 1:
+                and calculation_progress == 1:
             #  Phase change expected
             if calculation_phase == CalculationPhase.AGGREGATION_PHASE:
                 # Calculation is done
                 self.__end_calculation_successfully()
                 return
 
-        # State will be switched
-        calculation_phase = self.__get_next_phase(calculation_phase)
-
-        self.progressbar.set(0)  # Reset progressbar
+        self.progressbar.set(calculation_progress)
         self.progressbar_phase.configure(text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
         self.progressbar_state.configure(text="Calculation State:\n" + calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
 

@@ -108,8 +108,9 @@ class CalculationManager:
         self._process = multiprocessing.Process(target=self._do_calculations,
                                                 args=(starting_point, self._state_queue, self._phase_queue))
         self._process.start()
-
-        return calculation_state_enum.CalculationState.RUNNING, "The calculations are currently running"
+        self._calculation_state = calculation_state_enum.CalculationState.RUNNING, "The calculations are currently running"
+        self._current_phase = calculation_phase_enum.CalculationPhase.NONE
+        return self._calculation_state
 
     def get_current_calculation_phase(self) -> CalculationPhase:
         """
@@ -153,8 +154,6 @@ class CalculationManager:
             result = self._phases[current_index].calculate(self._config_manager, self._application_manager)
             state_queue.put(result)  # Put the return value of the phases in the queue to the main process
             current_index += 1
-
-        phase_queue.put(calculation_phase_enum.CalculationPhase.NONE)
 
         # If all calculation is done and the calculations aer still running: switch state to ENDED_SUCCESSFULLY
         if result[0] == calculation_state_enum.CalculationState.RUNNING:
