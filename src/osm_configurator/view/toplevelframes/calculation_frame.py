@@ -237,10 +237,17 @@ class CalculationFrame(TopLevelFrame):
                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                              )
 
-            if i == starting_index:
+        self.__color_buttons(self._starting_point)
+
+    def __color_buttons(self, phase: CalculationPhase):
+        phase_index: int = phase.get_order() - 1
+        for i, button in enumerate(self.buttons):
+            if i == phase_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_YELLOW.value)
-            elif i < starting_index:
+            elif i < phase_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_GREEN.value)
+            else:
+                button.configure(fg_color = button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
     def __activate_buttons(self):
         """
@@ -252,14 +259,16 @@ class CalculationFrame(TopLevelFrame):
                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                              )
 
-    def __stop_calculation_init(self):
+    def __cancel_calculation_init(self):
         """
         Initializes the cancel process to make the process communicate with the yes-no-popup
         """
         self._state_manager.freeze_state()
-        YesNoPopUp(func=self.__stop_calculation, message="Do You really want to cancel the Calculation?")
+        YesNoPopUp(func=self.__cancel_calculation, message="Do You really want to cancel the Calculation?")
 
-    def __stop_calculation(self, cancel: bool):
+
+
+    def __cancel_calculation(self, cancel: bool):
         """
         Stops the already running calculation process.
         If the process isn't started yet, nothing will happen.
@@ -273,16 +282,17 @@ class CalculationFrame(TopLevelFrame):
         """
         self._state_manager.unfreeze_state()
         if cancel:
-            self._state_manager.unlock_state()
             self._calculation_controller.cancel_calculations()
-            self.__activate_buttons()
-            AlertPopUp(message="Calculation has stopped successfully")
+            self.__reset_calculation()
 
-            # Destroying the progressbar and the cancel button
-            self.progressbar.destroy()
-            self.cancel_button.destroy()
-        else:
-            AlertPopUp(message="Calculation will continue")
+    def __reset_calculation(self):
+        self._state_manager.unlock_state()
+        self.__activate_buttons()
+
+        # Destroying the progressbar and the cancel button
+        self.progressbar.destroy()
+        self.cancel_button.destroy()
+        self.buttons.remove(self.cancel_button)
 
     def __show_calculation_utilities(self):
         """
@@ -301,6 +311,7 @@ class CalculationFrame(TopLevelFrame):
                                          border_width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_BORDER_WITH.value,
                                          corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value)
         self.progressbar.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
+        self.progressbar.set(0)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
@@ -311,7 +322,7 @@ class CalculationFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                    command=self.__stop_calculation_init)
+                                    command=self.__cancel_calculation_init)
         self.cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
 
         self.progressbar_phase = \
@@ -337,32 +348,35 @@ class CalculationFrame(TopLevelFrame):
         """
         calculation_state = self._calculation_controller.get_calculation_state()
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
-        calculation_process = self._calculation_controller.get_current_calculation_process()
+        calculation_progress = self._calculation_controller.get_current_calculation_process()
 
-        if calculation_state[0] == CalculationState.RUNNING and calculation_process < 1:
-            # Calculation is running and no phase change expected
-            self.progressbar.set(calculation_process)
-            self.after(1000, self.__update_progressbar)
+        if calculation_state[0] == CalculationState.CANCELED:
             return
 
         if (calculation_state[0] == CalculationState.RUNNING or calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY) \
-                and calculation_process == 1:
+                and calculation_progress == 1:
             #  Phase change expected
             if calculation_phase == CalculationPhase.AGGREGATION_PHASE:
                 # Calculation is done
-                self.__end_calculation()
+                self.__end_calculation_successfully()
                 return
 
-        # State will be switched
-        calculation_phase = self.__get_next_phase(calculation_phase)
+        self.progressbar.set(calculation_progress)
+        self.progressbar_phase.configure(text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
+        self.progressbar_state.configure(text="Calculation State:\n" + calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
 
-        self.progressbar.set(0)  # Reset progressbar
-        self.progressbar_phase.configure(text=calculation_phase.get_name())  # change label to the next phase
-        self.progressbar_state.configure(text=calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
+        if calculation_phase != CalculationPhase.NONE:
+            self.__color_buttons(calculation_phase)
 
-        self.after(1000, self.__update_progressbar)
+        if calculation_state[0] in [CalculationState.RUNNING, CalculationState.ENDED_SUCCESSFULLY,
+                                       CalculationState.NOT_STARTED_YET]:
+            self.after(1000, self.__update_progressbar)
+        else:
+            AlertPopUp("The calculation failed in the Phase " + calculation_phase.get_name() + "!\n"
+                       + calculation_state[0].get_name() + ":" + calculation_state[1])
+            self.__reset_calculation()
 
-    def __end_calculation(self):
+    def __end_calculation_successfully(self):
         """
         Function called if calculation finished successfully.
         Configures the shown widgets alerting that the calculation finished successfully
