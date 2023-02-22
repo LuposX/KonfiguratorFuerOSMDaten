@@ -555,6 +555,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 self.activate()
 
     def _load_category(self, category: category_i.Category):
+        self._selected_category = category
         if category is None:
             self._category_drop_down_menu.configure(values=[])
             self._category_drop_down_menu.set("")
@@ -574,12 +575,12 @@ class AttractivityEditFrame(TopLevelFrame):
 
             if len(category.get_attractivity_attributes()) == 0:
                 self._selected_attribute: attractivity_attribute_i.AttractivityAttribute = None
-                self._attractivities: [attractivity_attribute_i.AttractivityAttribute] = []
+                self._attractivities: List[attractivity_attribute_i.AttractivityAttribute] = []
 
                 self._attractivity_drop_down_menu.configure(values=[])
                 self._attractivity_drop_down_menu.set("")
             else:
-                self._attractivities: [
+                self._attractivities: List[
                     attractivity_attribute_i.AttractivityAttribute] = category.get_attractivity_attributes()
                 self._selected_attribute: attractivity_attribute_i.AttractivityAttribute = self._attractivities[0]
 
@@ -595,10 +596,15 @@ class AttractivityEditFrame(TopLevelFrame):
             self._load_attractivity(self._selected_attribute)
 
     def _load_attractivity(self, attractivity: attractivity_attribute_i.AttractivityAttribute):
+        self._selected_attribute = attractivity
+
         if attractivity is None:
             self._deactivate_attractivity_editing()
         else:
             self._activate_attractivity_editing()
+
+            # Insert name in drop down menu
+            self._attractivity_drop_down_menu.set(attractivity.get_attractivity_attribute_name())
 
             # Inserting the Name
             self._attractivity_name_entry.delete(0, tkinter.END)
