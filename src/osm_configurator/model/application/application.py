@@ -24,14 +24,21 @@ PROJECT_SETTING: str = "project_settings.csv"
 class Application(IApplication):
     __doc__ = IApplication.__doc__
 
-    def __init__(self):
+    def __init__(self, path_to_starting_file: Path = None):
         """
         Creates a new instance of the application_interface.Application.
 
+        Args:
+            path_to_starting_file (Path): If set that directory will be used to create the applciation settings file.
         """
         self.active_project: ActiveProject = None
 
-        self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings()
+        # If path_to_starting_file is set we create the application settings file at that position.
+        if path_to_starting_file is None:
+            self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings()
+
+        else:
+            self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings(path_to_starting_file)
 
         self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
             self.application_settings.get_setting(

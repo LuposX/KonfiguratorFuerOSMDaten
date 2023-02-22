@@ -47,13 +47,20 @@ class ApplicationController:
     application and boots everything up.
     """
 
-    def __init__(self):
+    def __init__(self, path_to_starting_file: Path = None):
         """
         Creates a new Application. It creates the view, the model and the control. It is responsible for starting
         everything up and to prepare the normal workflow of the application.
+
+        Args:
+            path_to_starting_file (Path): If set that directory will be used to create the applciation settings file.
         """
         # Create Model
-        self._application: Application = application.Application()
+        # If path_to_starting_file is set we create the application settings file at that position.
+        if path_to_starting_file is None:
+             self._application: Application = application.Application()
+        else:
+            self._application: Application = application.Application(path_to_starting_file)
 
         # Create Control
         self._aggregation_controller: AggregationController = aggregation_controller.AggregationController(
