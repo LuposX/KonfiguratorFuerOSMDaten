@@ -319,7 +319,7 @@ class AttractivityViewFrame(TopLevelFrame):
                 # In that specific order!
                 label_name_tuple = (attractivity.get_attractivity_attribute_name(),
                                     attractivity.get_attribute_factor(attribute_enum_i.Attribute.PROPERTY_AREA),
-                                    attractivity.get_attribute_factor(attribute_enum_i.Attribute.NUMER_OF_FLOOR),
+                                    attractivity.get_attribute_factor(attribute_enum_i.Attribute.NUMBER_OF_FLOOR),
                                     attractivity.get_attribute_factor(attribute_enum_i.Attribute.FLOOR_AREA),
                                     attractivity.get_base_factor())
                 self._add_attractivity_to_scrollable_frame(label_name_tuple, row_for_tuple)
