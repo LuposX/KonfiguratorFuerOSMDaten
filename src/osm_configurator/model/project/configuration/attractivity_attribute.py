@@ -40,14 +40,19 @@ class AttractivityAttribute:
         """
         return self._attractivity_attribute_name
 
-    def set_attractivity_attribute_name(self, new_name: str):
+    def set_attractivity_attribute_name(self, new_name: str) -> bool:
         """
         Setter for the attractivity attribute name.
         Args:
             new_name (str): name of the attractivity attribute.
+
+        Returns:
+            bool: True, on success
         """
         if new_name != "":
             self._attractivity_attribute_name = new_name
+            return True
+        return False
 
     def get_attribute_factor(self, attribute: Attribute) -> float:
         """

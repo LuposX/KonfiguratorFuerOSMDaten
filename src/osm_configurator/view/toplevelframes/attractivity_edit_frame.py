@@ -426,6 +426,9 @@ class AttractivityEditFrame(TopLevelFrame):
                 # if went ok, the text will be normal colored again!
                 self._attractivity_name_entry.configure(
                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+                selected_attractivity = self._selected_attribute
+                self._load_category(self._selected_category)
+                self._load_attractivity(selected_attractivity)
 
     def _area_entry_edited(self, event: tkinter.Event):
         # Checking if the Valua can be casted into a float
