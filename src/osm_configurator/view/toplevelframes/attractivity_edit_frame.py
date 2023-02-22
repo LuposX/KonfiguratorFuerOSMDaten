@@ -552,7 +552,9 @@ class AttractivityEditFrame(TopLevelFrame):
                 alert_pop_up_i.AlertPopUp("Could not delete Attractivity-Attribute!")
             else:
                 # If it worked, doing activate after, to refresh the Frame
+                current_category = self._selected_category
                 self.activate()
+                self._load_category(current_category)
 
     def _load_category(self, category: category_i.Category):
         self._selected_category = category
