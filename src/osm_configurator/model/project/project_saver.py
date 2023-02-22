@@ -117,8 +117,6 @@ class ProjectSaver:
         settings_data = [[NAME, self.active_project.get_project_settings().get_name()],
                          [DESCRIPTION, self.active_project.get_project_settings().get_description()],
                          [LOCATION, self.active_project.get_project_settings().get_location()],
-                         [DEFAULT_CHECKPOINTS_FOLDER_NAME, self.active_project.get_project_settings()
-                         .get_calculation_phase_checkpoints_folder()],
                          [LAST_EDIT_DATE, str(date.today())]]
         self._write_csv_file(settings_data, filename)
         return True

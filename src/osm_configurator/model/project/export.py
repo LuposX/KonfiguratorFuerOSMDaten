@@ -12,6 +12,7 @@ if TYPE_CHECKING:
 
 ZIP: str = "zip"
 CONFIGURATION: str = "configuration"
+RESULTS: str = "results"
 
 
 class Export:
@@ -80,7 +81,7 @@ class Export:
         if not os.path.exists(path):
             return False
         try:
-            shutil.make_archive(str(path), ZIP, self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder())
+            shutil.make_archive(str(path), ZIP, os.path.join(self._active_project.get_project_settings().get_location(), RESULTS))
             return True
         except OSError:
             return False
