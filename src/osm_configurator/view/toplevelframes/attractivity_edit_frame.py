@@ -624,7 +624,7 @@ class AttractivityEditFrame(TopLevelFrame):
 
             self._floor_area_entry.delete(0, tkinter.END)
             self._floor_area_entry.insert(0, str(attractivity.get_attribute_factor(
-                attribute_enum_i.Attribute.NUMBER_OF_FLOOR)))
+                attribute_enum_i.Attribute.FLOOR_AREA)))
 
             self._base_attractivity_entry.delete(0, tkinter.END)
             self._base_attractivity_entry.insert(0, str(attractivity.get_base_factor()))
