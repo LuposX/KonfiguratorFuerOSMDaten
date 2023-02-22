@@ -9,7 +9,7 @@ import src.osm_configurator.model.application.recommender_system as recommender_
 import src.osm_configurator.model.application.application_settings as application_settings_i
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum_i
 import src.osm_configurator.model.project.active_project as active_project_i
-
+import src.osm_configurator.model.application.passive_project as passive_project_i
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
@@ -75,7 +75,7 @@ class Application(IApplication):
                     project: Path = Path(os.path.join(destination, Path(str(directory))))
                     filepath: Path = Path(os.path.join(project, PROJECT_SETTING))
                     if os.path.exists(filepath):
-                        passive_project_list.append(PassiveProject(filepath))
+                        passive_project_list.append(passive_project_i.PassiveProject(filepath))
             return passive_project_list
         else:
             return []
