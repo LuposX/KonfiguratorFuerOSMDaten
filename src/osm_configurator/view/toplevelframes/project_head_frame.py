@@ -379,16 +379,16 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         # First checking what was selected
         # And then trying the export, if it fails an alertPopUp will be shown
         if choice == EXPORT_PROJECT_STRING:
-            if not self._export_controller.export_project(self._file_dialog("Select Directory to export Project to")):
+            if not self._export_controller.export_project(self._file_dialog("Select Path to export Project to")):
                 alert_pop_up_i.AlertPopUp("Export of Project Failed!")
         elif choice == EXPORT_CALCULATIONS_STRING:
-            if not self._export_controller.export_calculations(self._file_dialog("Select Directory to export Calculations to")):
+            if not self._export_controller.export_calculations(self._file_dialog("Select Path to export Calculations to")):
                 alert_pop_up_i.AlertPopUp("Export of Calculations Failed!")
         elif choice == EXPORT_CONFIGURATION_STRING:
-            if not self._export_controller.export_configurations(self._file_dialog("Select Directory to export Configurations to")):
+            if not self._export_controller.export_configurations(self._file_dialog("Select Path to export Configurations to")):
                 alert_pop_up_i.AlertPopUp("Export of Configurations Failed!")
         elif choice == EXPORT_CUT_OUT_MAP_STRING:
-            if not self._export_controller.export_cut_out_map(self._file_dialog("Select Directory to export Cut-Out-Map to")):
+            if not self._export_controller.export_cut_out_map(self._file_dialog("Select Path to export Cut-Out-Map to")):
                 alert_pop_up_i.AlertPopUp("Export of Cut-Out-Map Failed!")
 
         # No Else, since if none of those options where selected something that isn't an export option was selected
@@ -398,7 +398,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
     def _file_dialog(self, title: str) -> Path:
         # Opens a file dialog, that will ask for a directory to save stuff in
-        file_path: str = filedialog.asksaveasfilename(initialdir=self._project_controller.get_project_path(), title=title, initialfile='export')
+        file_path: str = filedialog.asksaveasfilename(initialdir=self._project_controller.get_project_path(), title=title, initialfile='export.zip')
         # A Path will be returned
         return Path(file_path)
 
