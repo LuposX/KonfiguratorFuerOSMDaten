@@ -276,13 +276,10 @@ class CalculationFrame(TopLevelFrame):
             self._state_manager.unlock_state()
             self._calculation_controller.cancel_calculations()
             self.__activate_buttons()
-            AlertPopUp(message="Calculation has stopped successfully")
 
             # Destroying the progressbar and the cancel button
             self.progressbar.destroy()
             self.cancel_button.destroy()
-        else:
-            AlertPopUp(message="Calculation will continue")
 
     def __show_calculation_utilities(self):
         """
@@ -350,7 +347,7 @@ class CalculationFrame(TopLevelFrame):
             #  Phase change expected
             if calculation_phase == CalculationPhase.AGGREGATION_PHASE:
                 # Calculation is done
-                self.__end_calculation()
+                self.__end_calculation_successfully()
                 return
 
         # State will be switched
@@ -360,9 +357,11 @@ class CalculationFrame(TopLevelFrame):
         self.progressbar_phase.configure(text=calculation_phase.get_name())  # change label to the next phase
         self.progressbar_state.configure(text=calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
 
-        self.after(1000, self.__update_progressbar)
+        if calculation_state[0] in [CalculationState.RUNNING, CalculationState.ENDED_SUCCESSFULLY,
+                                       CalculationState.NOT_STARTED_YET]:
+            self.after(1000, self.__update_progressbar)
 
-    def __end_calculation(self):
+    def __end_calculation_successfully(self):
         """
         Function called if calculation finished successfully.
         Configures the shown widgets alerting that the calculation finished successfully
