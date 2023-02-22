@@ -113,7 +113,7 @@ class CategoryManager:
                 return True
         return False
 
-    def override_categories(self, new_category_list_path: Path):
+    def override_categories(self, new_category_list_path: Path) -> bool:
         """
         Overwrites the list of categories with the given list.
 
