@@ -122,6 +122,16 @@ class ProjectIOHandler:
         self.config_directory = os.path.join(self.destination, CONFIGURATION)
         self.category_directory = os.path.join(self.config_directory, CATEGORIES)
 
+        # Check if the folder is a valid project folder
+        if not os.path.exists(self.destination):
+            return False
+        if not os.path.exists(self.config_directory):
+            return False
+        if not os.path.exists(self.category_directory):
+            return False
+        if not os.path.exists(os.path.join(self.destination, PROJECT_SETTINGS + CSV)):
+            return False
+
         # Loads the different parts of the project
         if not self._load_project_settings():
             return False
