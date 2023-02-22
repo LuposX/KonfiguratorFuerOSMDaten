@@ -357,13 +357,9 @@ class CalculationFrame(TopLevelFrame):
         if calculation_state[0] == CalculationState.CANCELED:
             return
 
-        if (calculation_state[0] == CalculationState.RUNNING or calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY) \
-                and calculation_progress == 1:
-            #  Phase change expected
-            if calculation_phase == CalculationPhase.AGGREGATION_PHASE:
-                # Calculation is done
-                self.__end_calculation_successfully()
-                return
+        if calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY:
+            self.__end_calculation_successfully()
+            return
 
         self.progressbar.set(calculation_progress)
         self.progressbar_phase.configure(text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
