@@ -299,6 +299,7 @@ class CalculationFrame(TopLevelFrame):
                                          border_width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_BORDER_WITH.value,
                                          corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value)
         self.progressbar.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
+        self.progressbar.set(0)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
