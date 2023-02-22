@@ -237,10 +237,17 @@ class CalculationFrame(TopLevelFrame):
                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                              )
 
-            if i == starting_index:
+        self.__color_buttons(self._starting_point)
+
+    def __color_buttons(self, phase: CalculationPhase):
+        phase_index: int = phase.get_order() - 1
+        for i, button in enumerate(self.buttons):
+            if i == phase_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_YELLOW.value)
-            elif i < starting_index:
+            elif i < phase_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_GREEN.value)
+            else:
+                button.configure(fg_color = button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
     def __activate_buttons(self):
         """
@@ -354,6 +361,9 @@ class CalculationFrame(TopLevelFrame):
         self.progressbar.set(calculation_progress)
         self.progressbar_phase.configure(text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
         self.progressbar_state.configure(text="Calculation State:\n" + calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
+
+        if calculation_phase != CalculationPhase.NONE:
+            self.__color_buttons(calculation_phase)
 
         if calculation_state[0] in [CalculationState.RUNNING, CalculationState.ENDED_SUCCESSFULLY,
                                        CalculationState.NOT_STARTED_YET]:
