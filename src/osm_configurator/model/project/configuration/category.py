@@ -8,15 +8,18 @@ import src.osm_configurator.model.project.configuration.attribute_enum as attrib
 
 import src.osm_configurator.model.model_constants as model_constants_i
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List
-    from typing import Dict
+    from typing import List, Dict, Final
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+
+NOT_ALLOWED_SYMBOLS: Final = ['ä', 'Ä', 'ö', 'Ö', 'ß', 'Ü', 'ü']  # symbols that are not allowed to be used in the name
 
 
 class Category:
@@ -33,6 +36,9 @@ class Category:
         Args:
             category_name (str): The name of the newly created category.
         """
+        if not category_name.isalnum() or any([x in category_name for x in NOT_ALLOWED_SYMBOLS]):
+            raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
+
         self._active: bool = True
         self._whitelist: List[str] = []
         self._blacklist: List[str] = []

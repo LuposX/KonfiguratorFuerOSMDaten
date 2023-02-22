@@ -85,11 +85,13 @@ class CategoryManager:
         Returns:
             bool: True, if the element was created correctly, else false.
         """
+
         if new_category.get_category_name() == "":
             return False
         # Check that the category is not already saved
-        if new_category.get_category_name() in self.get_all_categories_names():
+        elif new_category.get_category_name() in self.get_all_categories_names():
             return False
+
         else:
             self._categories.append(new_category)
             return True
