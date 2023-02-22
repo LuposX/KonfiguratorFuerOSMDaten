@@ -442,7 +442,7 @@ class AttractivityViewFrame(TopLevelFrame):
         pressed_button: customtkinter.CTkButton = self._category_button_list[button_id]
         pressed_button.configure(state="disabled",
                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
-                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
         # Reminding what was the last pressed button
         self._last_pressed_category_button: customtkinter.CTkButton = pressed_button
