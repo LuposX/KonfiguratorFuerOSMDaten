@@ -344,7 +344,8 @@ class CategoryFrame(TopLevelFrame):
         category: category_i.Category
         for category in self._categories:
             if category.get_category_name() == selected_element:
-                self._load_category(category)
+                self._selected_category: category_i.Category = category
+                self._load_category(self._selected_category)
                 success: bool = True
                 break
         # If there is no category corrospinding to the drop down Menu, then the drop down Menu is incorrect, therefore
@@ -373,6 +374,8 @@ class CategoryFrame(TopLevelFrame):
                 # If name was seuccesfully set, the text is normal again
                 self._category_name_entry.configure(
                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+                # Setting the category drop down menu new, so it refreshes the name as well
+                self._set_category_drop_down_menu(self._categories, self._selected_category)
             else:
                 # If name could not be set, there will be an error message, and the text will be shown as invalid again!
                 alert_pop_up_i.AlertPopUp("Category Name, could not ne set!")
@@ -475,8 +478,8 @@ class CategoryFrame(TopLevelFrame):
         # First deleting all recommendation Buttons
         recommend_button: customtkinter.CTkButton
         for recommend_button in self._recommender_frame_button_list:
-            self._recommender_frame_button_list.remove(recommend_button)
             recommend_button.destroy()
+        self._recommender_frame_button_list = []
 
         new_recommendations: List[str] = self._category_controller.get_list_of_key_recommendations(current_input)
 
@@ -528,8 +531,9 @@ class CategoryFrame(TopLevelFrame):
             # If there is no duplicate, we create, the new category
             new_category: category_i.Category = self._category_controller.create_category(new_category_name)
             self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
-            self._set_category_drop_down_menu(self._categories, new_category)
-            self._load_category(new_category)
+            self._selected_category: category_i.Category = new_category
+            self._set_category_drop_down_menu(self._categories, self._selected_category)
+            self._load_category(self._selected_category)
 
     def _delete_category_pressed(self):
         self._state_manager.freeze_state()
@@ -537,7 +541,9 @@ class CategoryFrame(TopLevelFrame):
 
     def _load_category(self, category: category_i.Category):
 
-        if category is None:
+        self._selected_category: category_i.Category = category
+
+        if self._selected_category is None:
             self._deactivate_editing()
         else:
             self._activate_editing()
@@ -545,10 +551,10 @@ class CategoryFrame(TopLevelFrame):
             # Fill in Name
             self._category_name_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
             self._category_name_entry.delete(0, tkinter.END)
-            self._category_name_entry.insert(0, category.get_category_name())
+            self._category_name_entry.insert(0, self._selected_category.get_category_name())
 
             # Edit Checkbox
-            if category.is_active():
+            if self._selected_category.is_active():
                 self._category_checkbox.select()
                 self._category_checkbox.configure(text=CHECKBOX_TEXT_ACTIVE)
             else:
@@ -556,10 +562,10 @@ class CategoryFrame(TopLevelFrame):
                 self._category_checkbox.configure(text=CHECKBOX_TEXT_DISABLED)
 
             # WhiteList
-            self._override_white_list(category.get_whitelist())
+            self._override_white_list(self._selected_category.get_whitelist())
             self._white_list_was_last_edited: bool = True
             # BlackList
-            self._override_black_list(category.get_blacklist())
+            self._override_black_list(self._selected_category.get_blacklist())
             self._black_list_was_last_edited: bool = False
 
             # Key Recommendations
@@ -603,6 +609,7 @@ class CategoryFrame(TopLevelFrame):
         button: customtkinter.CTkButton
         for button in self._recommender_frame_button_list:
             button.destroy()
+        self._recommender_frame_button_list = []
 
         self._delete_button.configure(state="disabled")
 
@@ -646,9 +653,9 @@ class CategoryFrame(TopLevelFrame):
     def _delete_category(self):
         if not self._category_controller.delete_category(self._selected_category):
             alert_pop_up_i.AlertPopUp("Could not delete Category!\nFrame has been refreshed!")
-
-        # Doing activate after category got deleted, to refresh frame and select automatiaclly another category
-        self.activate()
+        else:
+            # Doing activate after category got deleted, to refresh frame and select automatiaclly another category
+            self.activate()
 
     def freeze(self):
         """
