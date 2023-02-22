@@ -358,7 +358,7 @@ class AttractivityEditFrame(TopLevelFrame):
 
         self._load_category(self._selected_category)
 
-    def _category_drop_down_menu_edited(self):
+    def _category_drop_down_menu_edited(self, choice):
 
         category: category_i.Category
         for category in self._categories:
@@ -366,7 +366,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 self._load_category(category)
                 break
 
-    def _attractivity_drop_down_menu_edited(self):
+    def _attractivity_drop_down_menu_edited(self, choice):
 
         attractivity: attractivity_attribute_i.AttractivityAttribute
         for attractivity in self._attractivities:
