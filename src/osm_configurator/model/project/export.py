@@ -41,7 +41,7 @@ class Export:
         """
         self._active_project.get_project_saver().save_project()
         try:
-            shutil.make_archive(path, ZIP, self._active_project.get_project_settings().get_location())
+            shutil.make_archive(str(path), ZIP, self._active_project.get_project_settings().get_location())
             return True
         except OSError:
             return False
