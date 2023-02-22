@@ -227,12 +227,14 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _site_building_switch_edited(self):
         if self._site_building_switch.get() == 1:
+            self._strictly_use_default_values_checkbox.configure(state=tkinter.DISABLED)
             if not self._selected_category.set_calculation_method_of_area(
                     calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA):
                 alert_pop_up_i.AlertPopUp("Could not switch calculation Method!")
                 # reloading frame
                 self.load_category(self._selected_category)
         else:
+            self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
             if not self._selected_category.set_calculation_method_of_area(
                     calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA):
                 alert_pop_up_i.AlertPopUp("Could not switch calculation Method!")
@@ -241,11 +243,13 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _calculate_floor_area_checkbox_edited(self):
         if self._calculate_floor_area_checkbox.get() == 1:
+            self._strictly_use_default_values_checkbox.configure(state=tkinter.DISABLED)
             if not self._selected_category.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True):
                 alert_pop_up_i.AlertPopUp("Could not activate calculation of floor area!")
                 # reloading frame
                 self.load_category(self._selected_category)
         else:
+            self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
             if not self._selected_category.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, False):
                 alert_pop_up_i.AlertPopUp("Could not deactivate calculation of floor area!")
                 # reloading frame
