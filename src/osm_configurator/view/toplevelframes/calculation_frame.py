@@ -350,6 +350,9 @@ class CalculationFrame(TopLevelFrame):
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
         calculation_progress = self._calculation_controller.get_current_calculation_process()
 
+        if calculation_state[0] == CalculationState.CANCELED:
+            return
+
         if (calculation_state[0] == CalculationState.RUNNING or calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY) \
                 and calculation_progress == 1:
             #  Phase change expected
