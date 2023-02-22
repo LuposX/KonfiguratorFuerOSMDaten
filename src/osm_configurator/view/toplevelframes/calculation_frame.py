@@ -114,6 +114,8 @@ class CalculationFrame(TopLevelFrame):
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
 
+        self.cancel_button = None
+
     def activate(self):
         pass
 
@@ -242,12 +244,14 @@ class CalculationFrame(TopLevelFrame):
     def __color_buttons(self, phase: CalculationPhase):
         phase_index: int = phase.get_order() - 1
         for i, button in enumerate(self.buttons):
-            if i == phase_index:
+            if button == self.cancel_button:
+                pass
+            elif i == phase_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_YELLOW.value)
             elif i < phase_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_GREEN.value)
             else:
-                button.configure(fg_color = button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+                button.configure(fg_color= button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
     def __activate_buttons(self):
         """
