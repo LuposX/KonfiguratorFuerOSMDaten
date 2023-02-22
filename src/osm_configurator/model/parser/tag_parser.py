@@ -30,10 +30,11 @@ class TagParser(TagParserInterface):
         for tag in tags:
             split_string = tag.split("=")
 
-            if len(split_string) != 2:
-                raise TagsWronglyFormatted(str(tag))
+            if '' not in split_string:
+                if len(split_string) != 2:
+                    raise TagsWronglyFormatted(str(tag))
 
-            parsed_tags.update({split_string[0]: split_string[1]})
+                parsed_tags.update({split_string[0]: split_string[1]})
 
         return parsed_tags
 
