@@ -131,6 +131,8 @@ class ProjectIOHandler:
             return False
         if not os.path.exists(os.path.join(self.destination, PROJECT_SETTINGS + CSV)):
             return False
+        if not os.path.exists(os.path.join(self.destination, LAST_STEP + TXT)):
+            return False
 
         # Loads the different parts of the project
         if not self._load_project_settings():
@@ -149,6 +151,7 @@ class ProjectIOHandler:
             return False
 
         if not self._load_category_configuration():
+            print("6")
             return False
         return True
 
@@ -228,4 +231,4 @@ class ProjectIOHandler:
         return False
 
     def _load_category_configuration(self) -> bool:
-        self._active_project.get_config_manager().get_category_manager().override_categories(self.category_directory)
+        return self._active_project.get_config_manager().get_category_manager().override_categories(self.category_directory)

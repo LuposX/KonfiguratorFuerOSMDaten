@@ -145,4 +145,5 @@ class CategoryParser(CategoryParserInterface):
                     Attribute.convert_str_to_attribute
                     (attribute_str_split_up[NAME_OF_ATTRIBUTE]), float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
             loaded_category.add_default_value_entry(default_value_entry)
+        print(loaded_category)
         return loaded_category
