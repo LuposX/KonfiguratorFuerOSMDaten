@@ -25,9 +25,12 @@ class ApplicationSettings:
     to save projects can be changed.
     """
 
-    def __init__(self):
+    def __init__(self, path_to_starting_file: Path = None):
         """
         Creates a new instance of the application_settings_file.
+
+        Args:
+            path_to_starting_file (Path): If set that directory will be used to create the applciation settings file.
         """
         # Get the path of the application
         if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
@@ -36,7 +39,11 @@ class ApplicationSettings:
             # path into variable _MEIPASS'.
             application_path = sys._MEIPASS
         else:
-            application_path = os.path.dirname(os.path.abspath(__file__))
+            if path_to_starting_file is None:
+                application_path = os.path.dirname(os.path.abspath(__file__))
+
+            else:
+                application_path = path_to_starting_file
 
         # check for the application settings file.
         self._application_settings_file: Path = None
