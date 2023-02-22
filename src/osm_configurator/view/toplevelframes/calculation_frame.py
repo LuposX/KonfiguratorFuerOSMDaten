@@ -280,6 +280,7 @@ class CalculationFrame(TopLevelFrame):
             # Destroying the progressbar and the cancel button
             self.progressbar.destroy()
             self.cancel_button.destroy()
+            self.buttons.remove(self.cancel_button)
 
     def __show_calculation_utilities(self):
         """
