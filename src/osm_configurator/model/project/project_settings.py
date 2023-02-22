@@ -17,7 +17,7 @@ class ProjectSettings:
     This class saves all the different settings of a project and provides methods to view and change them.
     """
 
-    def __init__(self, location: Path, project_name: str, description: str, calculation_phase_checkpoints_folder: str):
+    def __init__(self, location: Path, project_name: str, description: str):
         """
         This method creates a new ProjectSettings class with the given settings.
 
@@ -25,12 +25,10 @@ class ProjectSettings:
             location (pathlib.Path): The location, the project is stored
             project_name (str): The name of the project
             description (str): A description of the project
-            calculation_phase_checkpoints_folder(str): The name of the folder for calculation checkpoints
         """
         self._path: Path = location
         self._name: str = project_name
         self._description: str = description
-        self._calculation_phase_checkpoints_folder: str = calculation_phase_checkpoints_folder
         self._last_edit_date: str = EMPTY_STRING
 
     def get_location(self) -> Path:
@@ -75,7 +73,6 @@ class ProjectSettings:
                 config_directory: Path = os.path.join(self._path, "configuration")
                 os.makedirs(config_directory)
                 os.makedirs(config_directory.joinpath("categories"))
-                os.makedirs(self._path.joinpath(self._calculation_phase_checkpoints_folder))
                 return True
             else:
                 self._path = save_path
@@ -145,50 +142,6 @@ class ProjectSettings:
         """
         if isinstance(new_description, str):
             self._description = new_description
-            return True
-        return False
-
-    def get_calculation_phase_checkpoints_folder(self) -> str:
-        """
-        This method is used to get the name of the folder in which the results will be saved.
-
-        Returns:
-            str: the name of the folder
-        """
-        return self._calculation_phase_checkpoints_folder
-
-    def set_calculation_phase_checkpoints_folder(self, new_folder_name: str) -> bool:
-        """
-        This method is used to set the name of the folder in which the results will be saved.
-
-        Args:
-            new_folder_name (str): The name of the folder.
-
-        Returns:
-            bool: true if change successful, false else
-        """
-        if isinstance(new_folder_name, str):
-            self._calculation_phase_checkpoints_folder = new_folder_name
-            return True
-        return False
-
-    def change_calculation_phase_checkpoints_folder(self, new_folder_name: str) -> bool:
-        """
-        This method is used to change the name of the folder in which the results will be saved.
-
-        Args:
-            new_folder_name (str): The name of the folder.
-
-        Returns:
-            bool: true if change successful, false else.
-        """
-        if isinstance(new_folder_name, str):
-            old_path: Path = os.path.join(self._path, self._calculation_phase_checkpoints_folder)
-            new_path: Path = os.path.join(self._path, new_folder_name)
-            if not os.path.exists(new_path):
-                os.rename(old_path, new_path)
-                self._calculation_phase_checkpoints_folder = new_folder_name
-                return True
             return True
         return False
 

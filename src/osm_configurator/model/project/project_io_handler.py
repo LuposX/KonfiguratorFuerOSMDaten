@@ -103,8 +103,6 @@ class ProjectIOHandler:
             os.makedirs(self.config_directory)
             self.category_directory = os.path.join(self.config_directory, CATEGORIES)
             os.makedirs(self.category_directory)
-            os.makedirs(os.path.join(
-                project_path, self._active_project.get_project_settings().get_calculation_phase_checkpoints_folder()))
             return True
         return False
 
@@ -151,7 +149,6 @@ class ProjectIOHandler:
             return False
 
         if not self._load_category_configuration():
-            print("6")
             return False
         return True
 
@@ -167,10 +164,8 @@ class ProjectIOHandler:
                 project_settings_data[SETTING_TABLE_SECOND_ROW][SETTINGS_TABLE_SECOND_COLUMN])
             self._active_project.get_project_settings().set_location(Path(
                 project_settings_data[SETTING_TABLE_THIRD_ROW][SETTINGS_TABLE_SECOND_COLUMN]))
-            self._active_project.get_project_settings().set_calculation_phase_checkpoints_folder(
-                project_settings_data[SETTING_TABLE_FOURTH_ROW][SETTINGS_TABLE_SECOND_COLUMN])
             self._active_project.get_project_settings().set_last_edit_date(
-                project_settings_data[SETTING_TABLE_FIFTH_ROW][SETTINGS_TABLE_SECOND_COLUMN])
+                project_settings_data[SETTING_TABLE_FOURTH_ROW][SETTINGS_TABLE_SECOND_COLUMN])
             return True
         return False
 
