@@ -7,8 +7,9 @@ from pathlib import Path
 import src.osm_configurator.model.project.active_project
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+from src.osm_configurator.model.project.configuration.category import Category
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING, Final, List
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
