@@ -356,12 +356,16 @@ class CalculationFrame(TopLevelFrame):
         calculation_phase = self.__get_next_phase(calculation_phase)
 
         self.progressbar.set(0)  # Reset progressbar
-        self.progressbar_phase.configure(text=calculation_phase.get_name())  # change label to the next phase
-        self.progressbar_state.configure(text=calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
+        self.progressbar_phase.configure(text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
+        self.progressbar_state.configure(text="Calculation State:\n" + calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
 
         if calculation_state[0] in [CalculationState.RUNNING, CalculationState.ENDED_SUCCESSFULLY,
                                        CalculationState.NOT_STARTED_YET]:
             self.after(1000, self.__update_progressbar)
+        else:
+            AlertPopUp("The calculation failed in the Phase" + calculation_phase.get_name() + "!\n"
+                       + calculation_state[0].get_name() + ":" + calculation_state[1])
+            self.__stop_calculation(True)
 
     def __end_calculation_successfully(self):
         """
