@@ -104,6 +104,7 @@ class AttractivityEditFrame(TopLevelFrame):
             anchor=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_ANCHOR.value,
             hover=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_HOVER.value,
             state=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_STATE.value,
+            text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
             values=[],
             command=self._category_drop_down_menu_edited)
         self._category_drop_down_menu.grid(row=0, column=1, rowspan=1, columnspan=2)
@@ -124,6 +125,7 @@ class AttractivityEditFrame(TopLevelFrame):
             anchor=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_ANCHOR.value,
             hover=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_HOVER.value,
             state=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_STATE.value,
+            text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
             values=[],
             command=self._attractivity_drop_down_menu_edited)
         self._attractivity_drop_down_menu.grid(row=1, column=1, rowspan=1, columnspan=2)
@@ -379,6 +381,7 @@ class AttractivityEditFrame(TopLevelFrame):
         else:
             self._selected_category: category_i.Category = self._categories[0]
 
+        self._category_drop_down_menu.set(self._selected_category.get_category_name())
         self._load_category(self._selected_category)
 
     def _category_drop_down_menu_edited(self, choice):
@@ -568,7 +571,6 @@ class AttractivityEditFrame(TopLevelFrame):
 
             # Automatically selecting the first category in Category Drop Down
             self._category_drop_down_menu.configure(values=categories_strings)
-            self._category_drop_down_menu.set(categories_strings[0])
 
             if len(category.get_attractivity_attributes()) == 0:
                 self._selected_attribute: attractivity_attribute_i.AttractivityAttribute = None
