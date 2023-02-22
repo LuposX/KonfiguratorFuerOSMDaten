@@ -180,9 +180,9 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
             # Setting all the checkboxes, and maybe deactivating settings if needed
             if self._selected_category.get_strictly_use_default_values():
+                self._deactivate_below_strictly_use_default_values()
                 self._strictly_use_default_values_checkbox.select()
             else:
-                self._deactivate_below_strictly_use_default_values()
                 self._strictly_use_default_values_checkbox.deselect()
 
             if self._selected_category.get_attribute(attribute_enum_i.Attribute.FLOOR_AREA):
@@ -253,12 +253,13 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _strictly_use_default_values_checkbox_edited(self):
         if self._strictly_use_default_values_checkbox.get() == 1:
-            self._activate_below_strictly_use_default_values()
+            self._deactivate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(True):
                 alert_pop_up_i.AlertPopUp("Could not activate strictly using default values!")
                 # refreshing frame
                 self.load_category(self._selected_category)
         else:
+            self._activate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(False):
                 alert_pop_up_i.AlertPopUp("Could not deactivate strictly using default values!")
                 # refreshing frame
