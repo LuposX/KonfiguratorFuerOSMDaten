@@ -11,6 +11,8 @@ import src.osm_configurator.model.project.project_saver as project_saver_i
 import src.osm_configurator.model.project.project_io_handler as project_io_handler_i
 import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
 from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
@@ -24,6 +26,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.project_settings import ProjectSettings
     from src.osm_configurator.model.project.export import Export
     from pathlib import Path
+
+NOT_ALLOWED_SYMBOLS: Final = ['ä', 'Ä', 'ö', 'Ö', 'ß', 'Ü', 'ü']  # symbols that are not allowed to be used in the name
 
 
 class ActiveProject:
@@ -47,6 +51,8 @@ class ActiveProject:
             project_name (str): How we want to name the project.
             project_description (str): The description of our project.
         """
+        if not project_name.isalnum() or any([x in project_name for x in NOT_ALLOWED_SYMBOLS]):
+            raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
 
         if project_name is not None:
             self.project_directory: Path = Path(os.path.join(project_folder, project_name))

@@ -193,12 +193,12 @@ class MainMenuFrame(TopLevelFrame):
             self.activate()
             return
 
-
     def __create_project(self):
         """
         Calls the create_project-window switching states
         """
         self._state_manager.change_state(sne.StateName.CREATE_PROJECT)
+
 
     def __call_settings(self):
         """
