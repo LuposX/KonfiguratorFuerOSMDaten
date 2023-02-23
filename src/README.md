@@ -22,6 +22,7 @@ How to set up the develoment enviroment:
 3. type `conda activate base` in your terminal, to activate the base enviroment
 4. Install the required Packaged as stated below.
 5. type `conda activate PSE` in your terminal, to activate the newly installed enviroment
+6. You can start the application from the file `src_test/full_application_test/execution_starting_point.py`
 
 ### Automatically installing the Packages
 Tested on windows 10(64Bit), might take a while.  
