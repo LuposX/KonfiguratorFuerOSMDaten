@@ -19,6 +19,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
+EMPTY_STRING: str = ""
+
 class Category:
     """
     Represents a category. A category is a collection of configurations for the calculation process. A category defines
@@ -252,7 +254,7 @@ class Category:
         Returns:
             bool: True, if the attribute was added successfully, else False.
         """
-        if new_attractivity_attribute.get_attractivity_attribute_name() == "":
+        if new_attractivity_attribute.get_attractivity_attribute_name() == EMPTY_STRING:
             return False
         if new_attractivity_attribute.get_attractivity_attribute_name() not in self.get_all_attractivity_attributes_names():
             self._attractivity_attributes.append(new_attractivity_attribute)
@@ -294,7 +296,7 @@ class Category:
         Returns:
             bool: True, if element was added successfully, else False
         """
-        if new_default_value_entry.get_default_value_entry_tag() == "":
+        if new_default_value_entry.get_default_value_entry_tag() == EMPTY_STRING:
             return False
         if new_default_value_entry.get_default_value_entry_tag() not in self.get_all_default_values_names():
             self._default_value_list.append(new_default_value_entry)
@@ -331,8 +333,8 @@ class Category:
         """
         if moved_default_value_entry not in self._default_value_list:
             return False
-        # To make sure that "default" is always at the bottom, you cant move the last item up
-        if self._default_value_list.index(moved_default_value_entry) <= 0:
+        # To make sure that "default" is always at the bottom, you cant move the second last item up
+        if self._default_value_list.index(moved_default_value_entry) <= 1:
             return False
         index = self._default_value_list.index(moved_default_value_entry)
         self._default_value_list[index - 1], self._default_value_list[index] \
@@ -352,8 +354,8 @@ class Category:
         """
         if moved_default_value_entry not in self._default_value_list:
             return False
-        # To make sure that "default" is always at the bottom, you cant move the second last item down
-        if self._default_value_list.index(moved_default_value_entry) <= 1:
+        # To make sure that "default" is always at the bottom, you cant move the last item down
+        if self._default_value_list.index(moved_default_value_entry) <= 0:
             return False
         index = self._default_value_list.index(moved_default_value_entry)
         self._default_value_list[index + 1], self._default_value_list[index] \
