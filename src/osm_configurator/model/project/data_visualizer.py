@@ -17,6 +17,8 @@ import pathlib
 
 from typing import TYPE_CHECKING
 
+import shutil
+
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
     from pathlib import Path
@@ -81,6 +83,9 @@ class DataVisualizer:
         Returns:
             bool: True if creating the boxplot works, otherwise false.
         """
+        # create old folder if it exist.
+        shutil.rmtree(boxplot_saving_path, ignore_errors=True)
+
         # create folder if doesn't exist
         boxplot_saving_path.mkdir(parents=True, exist_ok=True)
 
