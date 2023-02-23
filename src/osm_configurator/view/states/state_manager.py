@@ -100,10 +100,15 @@ REDUCTION_FRAME_COLUM: Final = 0
 REDUCTION_FRAME_ROW_SPAN: Final = 1
 REDUCTION_FRAME_COLUM_SPAN: Final = 1
 
-SETTINGS_FRAME_ROW: Final = 1
-SETTINGS_FRAME_COLUM: Final = 0
-SETTINGS_FRAME_ROW_SPAN: Final = 1
-SETTINGS_FRAME_COLUM_SPAN: Final = 1
+SETTINGS_PROJECT_FRAME_ROW: Final = 1
+SETTINGS_PROJECT_FRAME_COLUM: Final = 0
+SETTINGS_PROJECT_FRAME_ROW_SPAN: Final = 1
+SETTINGS_PROJECT_FRAME_COLUM_SPAN: Final = 1
+
+SETTINGS_NO_PROJECT_FRAME_ROW: Final = 0
+SETTINGS_NO_PROJECT_FRAME_COLUM: Final = 0
+SETTINGS_NO_PROJECT_FRAME_ROW_SPAN: Final = 3
+SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN: Final = 1
 
 
 class StateManager:
@@ -325,19 +330,32 @@ class StateManager:
             state_name_enum_i.StateName.ATTRACTIVITY_EDIT)
         all_states.append(state_reduction_frame)
 
-        # Settings Frame State
+        # Settings Frame State - Project
         from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
-        settings_frame: SettingsFrame = SettingsFrame(self, settings_controller)
-        positioned_settings_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame,
-                                                                                        SETTINGS_FRAME_COLUM,
-                                                                                        SETTINGS_FRAME_ROW,
-                                                                                        SETTINGS_FRAME_COLUM_SPAN,
-                                                                                        SETTINGS_FRAME_ROW_SPAN,
+        settings_frame_project: SettingsFrame = SettingsFrame(self, settings_controller, True)
+        positioned_settings_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_project,
+                                                                                        SETTINGS_PROJECT_FRAME_COLUM,
+                                                                                        SETTINGS_PROJECT_FRAME_ROW,
+                                                                                        SETTINGS_PROJECT_FRAME_COLUM_SPAN,
+                                                                                        SETTINGS_PROJECT_FRAME_ROW_SPAN,
                                                                                         FRAME_STICKY_WHOLE_CELL)
-        state_settings_frame: State = State(
-            [positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_frame],
-            state_name_enum_i.StateName.SETTINGS, None, None)
-        all_states.append(state_settings_frame)
+        state_settings_project_frame: State = State(
+            [positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_project_frame],
+            state_name_enum_i.StateName.SETTINGS_PROJECT, None, None)
+        all_states.append(state_settings_project_frame)
+
+        # Settings Frame State - No Project
+        settings_frame_no_project: SettingsFrame = SettingsFrame(self, settings_controller, False)
+        positioned_settings_no_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_no_project,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_COLUM,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_ROW,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_ROW_SPAN,
+                                                                                        FRAME_STICKY_WHOLE_CELL)
+        state_settings_no_project_frame: State = State(
+            [positioned_settings_no_project_frame],
+            state_name_enum_i.StateName.SETTINGS_NO_PROJECT, None, None)
+        all_states.append(state_settings_no_project_frame)
 
         return all_states
 
