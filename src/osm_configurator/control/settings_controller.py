@@ -55,6 +55,11 @@ class SettingsController(ISettingsController):
             .set_setting(application_settings_default_enum_i
                          .ApplicationSettingsDefault.NUMBER_OF_PROCESSES, number_of_processes)
 
+    def get_number_of_key_recommendations(self) -> int:
+        return self._model.get_application_settings() \
+            .get_setting(application_settings_default_enum_i
+                         .ApplicationSettingsDefault.NUMBER_OF_RECOMMENDATIONS)
+
     def set_number_of_key_recommendations(self, number_of_recommended_keys: int) -> bool:
         return self._model.get_application_settings() \
             .set_setting(application_settings_default_enum_i

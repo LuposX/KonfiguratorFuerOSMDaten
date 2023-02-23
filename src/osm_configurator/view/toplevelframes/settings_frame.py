@@ -53,7 +53,7 @@ class SettingsFrame(TopLevelFrame):
         # Defining the grid
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(0, weight=1)
+        self.grid_rowconfigure(1, weight=1)
 
         self._state_manager = state_manager
         self._settings_controller = settings_controller

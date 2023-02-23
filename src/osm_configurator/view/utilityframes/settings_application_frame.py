@@ -9,6 +9,7 @@ import src.osm_configurator.view.constants.button_constants as button_constants_
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.text_box_constants as text_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
+import src.osm_configurator.view.constants.entry_constants as entry_constants_i
 
 from pathlib import Path
 import customtkinter
@@ -51,6 +52,7 @@ class SettingsApplicationFrame(TopLevelFrame):
 
         self._labels: list[customtkinter.CTkLabel] = []  # holds all labels to allow uniform styling
         self._buttons: list[customtkinter.CTkButton] = []  # holds all buttons to allow uniform styling
+        self._entries: list[customtkinter.CTkEntry] = []  # holds all entries to allow uniform styling
 
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
@@ -71,6 +73,8 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    )
         self.header.grid(row=0, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.header)
+
+        # Setting: Default folder
 
         self.path_default_header = \
             customtkinter.CTkLabel(master=self,
@@ -110,6 +114,50 @@ class SettingsApplicationFrame(TopLevelFrame):
                                              pady=10)  # button to browse for a new default folder
         self._buttons.append(self.change_default_path_button)
 
+        # Setting: Number of Processes
+        self.path_process_header = \
+            customtkinter.CTkLabel(master=self,
+                                   text="Number of Processes [Multiprocessing]",
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   )
+        self.path_process_header.grid(row=2, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
+        self._labels.append(self.path_process_header)
+
+        self.processes_entry: customtkinter.CTkEntry = \
+            customtkinter.CTkEntry(master=self,
+                                   corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                   fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                   text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   )
+        self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
+        self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
+        self._entries.append(self.processes_entry)
+
+        # Setting: Number of Key Recommendations
+        self.path_key_recom_header = \
+            customtkinter.CTkLabel(master=self,
+                                   text="Number of Key Recommendations",
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   )
+        self.path_key_recom_header.grid(row=3, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
+        self._labels.append(self.path_key_recom_header)
+
+        self.key_recom_entry: customtkinter.CTkEntry = \
+            customtkinter.CTkEntry(master=self,
+                                   corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                   fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                   text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   )
+        self.key_recom_entry.grid(row=3, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
+        self.key_recom_entry.bind("<KeyRelease>", self.__key_recom_entry_edited)
+        self._entries.append(self.key_recom_entry)
+
     def activate(self):
         """
         Tells the current frame to activate and collect all the data it needs.
@@ -119,6 +167,15 @@ class SettingsApplicationFrame(TopLevelFrame):
         self.path_default_label.configure(
             text=self._project_default_folder
         )
+
+        self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+
+        self.processes_entry.delete(0, tkinter.END)
+        self.processes_entry.insert(0, self._settings_controller.get_number_of_processes())
+
+        self.key_recom_entry.delete(0, tkinter.END)
+        self.key_recom_entry.insert(0, self._settings_controller.get_number_of_key_recommendations())
 
     def __change_default_folder(self):
         """
@@ -136,6 +193,20 @@ class SettingsApplicationFrame(TopLevelFrame):
             return
         AlertPopUp("Please enter a valid path!")
         self.activate()  # reloads the page
+
+    def __processes_entry_edited(self, event: tkinter.Event):
+        if self.processes_entry.get().isdigit():
+            self._settings_controller.set_number_of_processes(self.processes_entry.get())
+            self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        else:
+            self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
+
+    def __key_recom_entry_edited(self, event: tkinter.Event):
+        if self.key_recom_entry.get().isdigit():
+            self._settings_controller.set_number_of_key_recommendations(self.key_recom_entry.get())
+            self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        else:
+            self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
     def __browse_files(self) -> str:
         """
@@ -160,6 +231,9 @@ class SettingsApplicationFrame(TopLevelFrame):
         for label in self._labels:
             label.configure(state=tkinter.DISABLED)
 
+        for entry in self._entries:
+            entry.configure(state=tkinter.DISABLED)
+
     def unfreeze(self):
         """
         If this method is called, the frame returns into its previous interactable state.
@@ -171,3 +245,6 @@ class SettingsApplicationFrame(TopLevelFrame):
 
         for label in self._labels:
             label.configure(state=tkinter.NORMAL)
+
+        for entry in self._entries:
+            entry.configure(state=tkinter.NORMAL)

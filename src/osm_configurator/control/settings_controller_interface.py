@@ -110,3 +110,26 @@ class ISettingsController(ABC):
             bool: True, if s set successfully; False if an error occurred.
         """
         pass
+
+    @abstractmethod
+    def get_number_of_key_recommendations(self) -> int:
+        """
+        Gets the number of key recommendations that can eb shown to the user.
+
+        Returns:
+            int: The number of key recommendations.
+        """
+        pass
+
+    @abstractmethod
+    def set_number_of_key_recommendations(self, number_of_processes: int) -> bool:
+        """
+        Sets the number of key recommendations that can eb shown to the user.
+
+        Args:
+            number_of_processes (int): The number of key recommendations
+
+        Returns:
+            bool: True, if set successfully; False if an error occurred.
+        """
+        pass
