@@ -313,8 +313,9 @@ class Category:
         Returns:
             bool: True, if the element was removed successfully, else False.
         """
-        if default_value_entry in self._default_value_list:
-            if default_value_entry == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+        if removed_default_value_entry in self._default_value_list:
+            if removed_default_value_entry == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+                print("wrong")
                 return False
             self._default_value_list.remove(removed_default_value_entry)
             return True
