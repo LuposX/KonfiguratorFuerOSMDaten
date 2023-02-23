@@ -204,8 +204,7 @@ class MainMenuFrame(TopLevelFrame):
         """
         Calls the settings-menu switching states
         """
-        self._state_manager.change_state(sne.StateName.SETTINGS)
-        self._state_manager.lock_state()
+        self._state_manager.change_state(sne.StateName.SETTINGS_NO_PROJECT)
 
     def __load_external_project(self):
         """

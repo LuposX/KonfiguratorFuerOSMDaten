@@ -372,7 +372,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         self._save_project()
 
         # Changing to Option/Setting State
-        if not self._state_manager.change_state(state_name_enum_i.StateName.SETTINGS):
+        if not self._state_manager.change_state(state_name_enum_i.StateName.SETTINGS_PROJECT):
             alert_pop_up_i.AlertPopUp("Opening Settings Failed!")
 
     def _export_drop_down_menu_edited(self, choice):
@@ -456,7 +456,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
                                                  fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
                                                  text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
-            case state_name_enum_i.StateName.SETTINGS:
+            case state_name_enum_i.StateName.SETTINGS_PROJECT:
                 self._options_button.configure(state="disabled",
                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
