@@ -62,7 +62,7 @@ class CreateProjectFrame(TopLevelFrame):
 
         self._project_description: str = ""
         self._project_name: str = ""
-        self._project_path: Path = Path()
+        self._project_path: Path = self._settings_controller.get_project_default_folder()
 
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
@@ -73,7 +73,9 @@ class CreateProjectFrame(TopLevelFrame):
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=2)
         self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=1)
+        self.grid_rowconfigure(1, weight=2)
+        self.grid_rowconfigure(2, weight=2)
+        self.grid_rowconfigure(3, weight=2)
 
         self._title_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(master=self,
@@ -84,20 +86,20 @@ class CreateProjectFrame(TopLevelFrame):
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                    text="Create a new Project")
-        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW",
+        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=5, sticky="NSEW",
                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         self.name_field = \
             customtkinter.CTkEntry(master=self,
                                    placeholder_text="Project Name")
-        self.name_field.grid(row=0, column=0, rowspan=1, columnspan=1)
+        self.name_field.grid(row=1, column=0, rowspan=1, columnspan=1)
         self._entries.append(self.name_field)
 
         self.description_field = \
             customtkinter.CTkEntry(master=self,
-                                   placeholder_text="Description: ")
-        self.description_field.grid(row=1, column=0, rowspan=1, columnspan=1)
+                                   placeholder_text="Description")
+        self.description_field.grid(row=2, column=0, rowspan=1, columnspan=1)
         self._entries.append(self.description_field)
 
         self.destination_button = \
@@ -110,7 +112,7 @@ class CreateProjectFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
-        self.destination_button.grid(row=2, column=0, rowspan=1, columnspan=1)
+        self.destination_button.grid(row=3, column=0, rowspan=1, columnspan=1)
         self._buttons.append(self.destination_button)
 
         self.create_button = \
@@ -123,7 +125,7 @@ class CreateProjectFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
-        self.create_button.grid(row=3, column=3, rowspan=1, columnspan=1)
+        self.create_button.grid(row=4, column=3, rowspan=1, columnspan=1)
         self._buttons.append(self.create_button)
 
         self.cancel_button = \
@@ -136,7 +138,7 @@ class CreateProjectFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
-        self.cancel_button.grid(row=3, column=4, rowspan=1, columnspan=1)
+        self.cancel_button.grid(row=4, column=4, rowspan=1, columnspan=1)
         self._buttons.append(self.cancel_button)
 
     def activate(self):
@@ -146,7 +148,12 @@ class CreateProjectFrame(TopLevelFrame):
         """
         Opens the explorer making the user choose the wanted destination
         """
-        new_path = Path(self.__browse_files())
+        path_str = self.__browse_files()
+
+        if path_str == "":
+            return  # Don't change the destination when file dialog was canceled
+
+        new_path = Path(path_str)
 
         if not new_path.exists():
             # No valid Path chosen
@@ -212,7 +219,8 @@ class CreateProjectFrame(TopLevelFrame):
         """
         # opens the file explorer in the project default folder
         new_path = filedialog.askdirectory(title="Select a project to load",
-                                           initialdir=self._settings_controller.get_project_default_folder())
+                                           initialdir=self._project_path)
+
         return new_path
 
     def freeze(self):
