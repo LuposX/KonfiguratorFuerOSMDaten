@@ -396,10 +396,12 @@ class CalculationFrame(TopLevelFrame):
                                     )
         visualize_button.grid(column=2, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self.buttons.append(visualize_button)
-        self.cancel_button.configure(text="Restart Calculations")
         self.progressbar.set(1)
         self.__color_buttons_with_int(5)
         self.__activate_buttons()
+        self.buttons.remove(self.cancel_button)
+        self.cancel_button.destroy()
+        self._state_manager.unlock_state()
 
     def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
         """
