@@ -19,9 +19,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
-NOT_ALLOWED_SYMBOLS: Final = ['ä', 'Ä', 'ö', 'Ö', 'ß', 'Ü', 'ü']  # symbols that are not allowed to be used in the name
-
-
 class Category:
     """
     Represents a category. A category is a collection of configurations for the calculation process. A category defines
@@ -36,7 +33,7 @@ class Category:
         Args:
             category_name (str): The name of the newly created category.
         """
-        if not category_name.isalnum() or any([x in category_name for x in NOT_ALLOWED_SYMBOLS]):
+        if not category_name.isascii():
             raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
 
         self._active: bool = True

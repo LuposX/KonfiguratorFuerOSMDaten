@@ -27,8 +27,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.export import Export
     from pathlib import Path
 
-NOT_ALLOWED_SYMBOLS: Final = ['ä', 'Ä', 'ö', 'Ö', 'ß', 'Ü', 'ü']  # symbols that are not allowed to be used in the name
-
 
 class ActiveProject:
     """
@@ -54,7 +52,7 @@ class ActiveProject:
         if project_name is not None:
             self.project_directory: Path = Path(os.path.join(project_folder, project_name))
 
-            if not project_name.isalnum() or any([x in project_name for x in NOT_ALLOWED_SYMBOLS]):
+            if not project_name.isascii():
                 raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
         else:
             self.project_directory: Path = project_folder
