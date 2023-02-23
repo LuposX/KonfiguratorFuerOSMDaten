@@ -127,7 +127,11 @@ class SettingsProjectFrame(TopLevelFrame):
         """
         self._project_name = self._settings_controller.get_project_name()
         self._project_description = self._settings_controller.get_project_description()
+
+        self.description_box.delete(1.0, tkinter.END)
         self.description_box.insert('insert', self._project_description)
+
+        self.project_name_box.delete(1.0, tkinter.END)
         self.project_name_box.insert('insert', self._project_name)
 
     def __change_project_name(self):
