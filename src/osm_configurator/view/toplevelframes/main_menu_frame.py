@@ -126,12 +126,20 @@ class MainMenuFrame(TopLevelFrame):
             customtkinter.CTkScrollableFrame(
                 master=self,
                 width=frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value * (9 / 10) - ELEMENT_BORDER_DISTANCE,
-                height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (4/5) - ELEMENT_BORDER_DISTANCE,
+                height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (4 / 5) - ELEMENT_BORDER_DISTANCE,
                 corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
                 fg_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value
             )
         self._entry_subframe.grid(row=1, column=1, rowspan=4, columnspan=1)
 
+    def activate(self):
+        """
+        Overwrites the activate function from the Activatable-Interface
+        Fetches all the data needed to update the window accordingly
+        """
+        self._passive_projects = self._project_controller.get_list_of_passive_projects()
+
+        self.entries: list[customtkinter.CTkButton] = []
         # showing all entries in custom boxes
         for i, passive_project in enumerate(self._passive_projects):
             name = passive_project.get_name()  # name of the shown project
@@ -150,13 +158,6 @@ class MainMenuFrame(TopLevelFrame):
                                             )
             entry.grid(column=0, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
             self.entries.append(entry)
-
-    def activate(self):
-        """
-        Overwrites the activate function from the Activatable-Interface
-        Fetches all the data needed to update the window accordingly
-        """
-        self._passive_projects = self._project_controller.get_list_of_passive_projects()
 
     def __load_project(self, index: int):
         """
