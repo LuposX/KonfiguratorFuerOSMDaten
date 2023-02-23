@@ -142,7 +142,12 @@ class CreateProjectFrame(TopLevelFrame):
         self._buttons.append(self.cancel_button)
 
     def activate(self):
-        pass
+        self._project_description: str = ""
+        self._project_name: str = ""
+        self._project_path: Path = self._settings_controller.get_project_default_folder()
+
+        self.name_field.delete(0, tkinter.END)
+        self.description_field.delete(0, tkinter.END)
 
     def _choose_destination(self):
         """
