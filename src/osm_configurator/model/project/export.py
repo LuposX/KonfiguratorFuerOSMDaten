@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
     from pathlib import Path
 
-ZIP: str = ""
+ZIP: str = "zip"
 CONFIGURATION: str = "configuration"
 RESULTS: str = "results"
 
@@ -59,8 +59,6 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        if not os.path.exists(path):
-            return False
         try:
             zip_file_name: str = self.path_with_zip_to_str(path)
             shutil.make_archive(zip_file_name, ZIP, os.path.join(self._active_project.get_project_settings().get_location(), CONFIGURATION))
@@ -80,8 +78,6 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        if not os.path.exists(path):
-            return False
         try:
             zip_file_name: str = self.path_with_zip_to_str(path)
             shutil.make_archive(zip_file_name, ZIP, os.path.join(self._active_project.get_project_settings().get_location(), RESULTS))
