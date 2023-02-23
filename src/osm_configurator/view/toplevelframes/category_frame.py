@@ -23,6 +23,8 @@ import tkinter
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
 from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
@@ -528,12 +530,20 @@ class CategoryFrame(TopLevelFrame):
                 break
 
         if no_duplicate:
-            # If there is no duplicate, we create, the new category
-            new_category: category_i.Category = self._category_controller.create_category(new_category_name)
-            self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
-            self._selected_category: category_i.Category = new_category
-            self._set_category_drop_down_menu(self._categories, self._selected_category)
-            self._load_category(self._selected_category)
+            try:
+                new_category: category_i.Category = self._category_controller.create_category(new_category_name)
+
+                # If there is no duplicate, we create, the new category
+                new_category: category_i.Category = self._category_controller.create_category(new_category_name)
+                self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
+                self._selected_category: category_i.Category = new_category
+                self._set_category_drop_down_menu(self._categories, self._selected_category)
+                self._load_category(self._selected_category)
+            except NotValidName as err:
+                popup = alert_pop_up_i.AlertPopUp(str(err.args))
+                popup.mainloop()
+                self.activate()
+                return
 
     def _delete_category_pressed(self):
         self._state_manager.freeze_state()

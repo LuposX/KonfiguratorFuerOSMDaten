@@ -15,6 +15,10 @@ import src.osm_configurator.view.states.state_name_enum as view_states_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
+import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
+
 # Other
 from typing import TYPE_CHECKING
 import customtkinter
@@ -175,11 +179,17 @@ class CreateProjectFrame(TopLevelFrame):
 
         self._project_description = self.description_field.get()
 
-        self._project_controller.create_project(
-            name=self._project_name,
-            destination=self._project_path,
-            description=self._project_description,
-        )
+        try:
+            self._project_controller.create_project(
+                name=self._project_name,
+                destination=self._project_path,
+                description=self._project_description,
+            )
+        except NotValidName as err:
+            popup = alert_pop_up_i.AlertPopUp(str(err.args))
+            popup.mainloop()
+            self.activate()
+            return
 
         self._state_manager.change_state(view_states_i.StateName.DATA)
 

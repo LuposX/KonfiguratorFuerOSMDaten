@@ -3,11 +3,14 @@ from __future__ import annotations
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
 from typing import TYPE_CHECKING, Final
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
 if TYPE_CHECKING:
     from typing import Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
 
 DEFAULT_VALUE: float = 0.0  # The default value of every attribute set at the beginning.
+NOT_ALLOWED_SYMBOLS: Final = ['ä', 'Ä', 'ö', 'Ö', 'ß', 'Ü', 'ü']  # symbols that are not allowed to be used in the name
 
 
 class AttractivityAttribute:
@@ -25,6 +28,9 @@ class AttractivityAttribute:
         Args:
             attractivity_attribute_name (str): The name of the Attractivity Attributes
         """
+        if not attractivity_attribute_name.isalnum() or any([x in attractivity_attribute_name for x in NOT_ALLOWED_SYMBOLS]):
+            raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
+
         self._attractivity_attribute_name: str = attractivity_attribute_name
         self._base_attractivity: float = DEFAULT_VALUE
         self._attribute_factors: Dict[Attribute, float] = {}

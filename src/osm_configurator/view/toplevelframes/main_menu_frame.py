@@ -21,6 +21,8 @@ import src.osm_configurator.model.project.config_phase_enum as config_phase_enum
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
 # Other
 import customtkinter
 from tkinter import filedialog
@@ -163,32 +165,40 @@ class MainMenuFrame(TopLevelFrame):
             passive_project (PassiveProject): Project that will be loaded
         """
         project_path = self._passive_projects[index].get_project_folder_path()
-        self._project_controller.load_project(project_path)
 
-        config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
+        try:
+            self._project_controller.load_project(project_path)
 
-        match config_phase:
-            case config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.DATA)
+            config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
 
-            case config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
+            match config_phase:
+                case config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.DATA)
 
-            case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.REDUCTION)
+                case config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
 
-            case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.AGGREGATION)
+                case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.REDUCTION)
 
-            case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.CALCULATION)
+                case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.AGGREGATION)
 
+                case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.CALCULATION)
+
+        except NotValidName as err:
+            popup = AlertPopUp(str(err.args))
+            popup.mainloop()
+            self.activate()
+            return
 
     def __create_project(self):
         """
         Calls the create_project-window switching states
         """
         self._state_manager.change_state(sne.StateName.CREATE_PROJECT)
+
 
     def __call_settings(self):
         """

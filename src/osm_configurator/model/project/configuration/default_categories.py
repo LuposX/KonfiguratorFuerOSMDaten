@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Final
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category
 
-BUILDING_CATEGORY_NAME: str = "Gebäude"
+BUILDING_CATEGORY_NAME: str = "Building"
 BUIlDING_CATEGORY_WHITELIST: str = "building=*"
 
 

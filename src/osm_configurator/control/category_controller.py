@@ -10,6 +10,8 @@ import src.osm_configurator.model.project.configuration.category as category_i
 
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_default_enum_i
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.configuration.category import Category
@@ -47,9 +49,11 @@ class CategoryController(ICategoryController):
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
         return category_manager.get_categories()
 
-    def create_category(self, name: str) -> Category:
+    def create_category(self, name: str) -> Category | str:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
+
         new_category: Category = category_i.Category(name)
+
         if category_manager.create_category(new_category):
             return new_category
         else:
