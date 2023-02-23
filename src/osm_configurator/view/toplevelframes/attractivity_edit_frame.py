@@ -22,6 +22,8 @@ import src.osm_configurator.view.popups.yes_no_pop_up as yes_no_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
+from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
+
 from typing import TYPE_CHECKING, List
 
 if TYPE_CHECKING:
@@ -530,18 +532,25 @@ class AttractivityEditFrame(TopLevelFrame):
         if name_ok:
             new_attractivity: attractivity_attribute_i.AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute(
                 name)
-            if not self._selected_category.add_attractivity_attribute(new_attractivity):
-                alert_pop_up_i.AlertPopUp("Creation of Attractivity-Attribute Failed!")
-            else:
-                self._attractivities: [
-                    attractivity_attribute_i.AttractivityAttribute] = self._selected_category.get_attractivity_attributes()
+            try:
+                if not self._selected_category.add_attractivity_attribute(new_attractivity):
+                    alert_pop_up_i.AlertPopUp("Creation of Attractivity-Attribute Failed!")
+                else:
+                    self._attractivities: [
+                        attractivity_attribute_i.AttractivityAttribute] = self._selected_category.get_attractivity_attributes()
 
-                # Loading the category anew, to refresh the attribute drop down menu and refreshing everything else
-                self._load_category(self._selected_category)
+                    # Loading the category anew, to refresh the attribute drop down menu and refreshing everything else
+                    self._load_category(self._selected_category)
 
-                # Now loading the new attribute
-                # technically the load category loaded automatically one, we just override it, nor problem
-                self._load_attractivity(new_attractivity)
+                    # Now loading the new attribute
+                    # technically the load category loaded automatically one, we just override it, nor problem
+                    self._load_attractivity(new_attractivity)
+
+            except NotValidName as err:
+                popup = alert_pop_up_i.AlertPopUp(str(err.args))
+                popup.mainloop()
+                self.activate()
+                return
 
     def _delete_attractivity_button_pressed(self):
         self._state_manager.freeze_state()

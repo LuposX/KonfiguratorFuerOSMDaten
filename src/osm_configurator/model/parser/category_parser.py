@@ -117,33 +117,37 @@ class CategoryParser(CategoryParserInterface):
         # Loads attractivity attributes
         attractivity_attribute_list: list[str] = category_data[TABLE_EIGHT_ROW][TABLE_SECOND_COLUMN].split(
             DELIMITER_SEMICOLON)
-        for input_attractivity_attribute in attractivity_attribute_list:
-            input_str: list[str] = input_attractivity_attribute.split(DELIMITER_COMMA)
-            attractivity_attribute: AttractivityAttribute = AttractivityAttribute(
-                input_str[NAME])
-            input_str.remove(input_str[NAME])
-            for attribute_str in input_str:
-                attribute_str_split_up: list[str] = attribute_str.split(DELIMITER_COLON)
-                if attribute_str_split_up[NAME_OF_ATTRIBUTE] == BASE:
-                    attractivity_attribute.set_base_factor(float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
-                else:
-                    attractivity_attribute.set_attribute_factor(
-                        Attribute.convert_str_to_attribute(attribute_str_split_up[NAME_OF_ATTRIBUTE]),
-                        float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
-            loaded_category.add_attractivity_attribute(attractivity_attribute)
 
-        # Loads default value entries
-        default_value_entry_list: list[str] = category_data[TABLE_NINE_ROW][TABLE_SECOND_COLUMN].split(
-            DELIMITER_SEMICOLON)
-        for input_default_value_entry in default_value_entry_list:
-            input_str: list[str] = input_default_value_entry.split(DELIMITER_COMMA)
-            default_value_entry: DefaultValueEntry = DefaultValueEntry(input_str[NAME])
-            input_str.remove(input_str[NAME])
-            for default_value_entry_str in input_str:
-                attribute_str_split_up: list[str] = default_value_entry_str.split(DELIMITER_COLON)
-                default_value_entry.set_attribute_default(
-                    Attribute.convert_str_to_attribute
-                    (attribute_str_split_up[NAME_OF_ATTRIBUTE]), float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
-            loaded_category.add_default_value_entry(default_value_entry)
-        print(loaded_category)
+        if len(attractivity_attribute_list) == 1 and '' in attractivity_attribute_list:
+            pass
+        else:
+            for input_attractivity_attribute in attractivity_attribute_list:
+                input_str: list[str] = input_attractivity_attribute.split(DELIMITER_COMMA)
+                attractivity_attribute: AttractivityAttribute = AttractivityAttribute(
+                    input_str[NAME])
+                input_str.remove(input_str[NAME])
+                for attribute_str in input_str:
+                    attribute_str_split_up: list[str] = attribute_str.split(DELIMITER_COLON)
+                    if attribute_str_split_up[NAME_OF_ATTRIBUTE] == BASE:
+                        attractivity_attribute.set_base_factor(float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
+                    else:
+                        attractivity_attribute.set_attribute_factor(
+                            Attribute.convert_str_to_attribute(attribute_str_split_up[NAME_OF_ATTRIBUTE]),
+                            float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
+                loaded_category.add_attractivity_attribute(attractivity_attribute)
+
+            # Loads default value entries
+            default_value_entry_list: list[str] = category_data[TABLE_NINE_ROW][TABLE_SECOND_COLUMN].split(
+                DELIMITER_SEMICOLON)
+            for input_default_value_entry in default_value_entry_list:
+                input_str: list[str] = input_default_value_entry.split(DELIMITER_COMMA)
+                default_value_entry: DefaultValueEntry = DefaultValueEntry(input_str[NAME])
+                input_str.remove(input_str[NAME])
+                for default_value_entry_str in input_str:
+                    attribute_str_split_up: list[str] = default_value_entry_str.split(DELIMITER_COLON)
+                    default_value_entry.set_attribute_default(
+                        Attribute.convert_str_to_attribute
+                        (attribute_str_split_up[NAME_OF_ATTRIBUTE]), float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
+                loaded_category.add_default_value_entry(default_value_entry)
+            print(loaded_category)
         return loaded_category
