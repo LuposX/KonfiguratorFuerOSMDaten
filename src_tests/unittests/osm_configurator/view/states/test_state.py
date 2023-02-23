@@ -53,8 +53,6 @@ def old_test_type_errors(positioned_frame):
                            state_name_enum_i.StateName.REDUCTION, state_name_enum_i.StateName.CALCULATION),
                           (state_name_enum_i.StateName.AGGREGATION,
                            None, None),
-                          (state_name_enum_i.StateName.SETTINGS,
-                           state_name_enum_i.StateName.SETTINGS, state_name_enum_i.StateName.SETTINGS),
                           (state_name_enum_i.StateName.CATEGORY,
                            state_name_enum_i.StateName.DATA, state_name_enum_i.StateName.REDUCTION)])
 def old_test_attributes(positioned_frame, own_state_name, default_left, default_right):
