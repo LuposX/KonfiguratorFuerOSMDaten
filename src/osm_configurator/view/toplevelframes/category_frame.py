@@ -364,7 +364,7 @@ class CategoryFrame(TopLevelFrame):
         successes: bool = True
         category: category_i.Category
         for category in self._categories:
-            if (category is not self._selected_category) and (category.get_category_name() == new_category_name):
+            if ((category is not self._selected_category) and (category.get_category_name() == new_category_name)) or (new_category_name == ""):
                 # If there is another Category that has that name already, the value will not be saved and be amrked red!
                 self._category_name_entry.configure(
                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
