@@ -243,6 +243,9 @@ class CalculationFrame(TopLevelFrame):
 
     def __color_buttons(self, phase: CalculationPhase):
         phase_index: int = phase.get_order() - 1
+        self.__color_buttons_with_int(phase_index)
+
+    def __color_buttons_with_int(self, phase_index: int):
         for i, button in enumerate(self.buttons):
             if button == self.cancel_button:
                 pass
@@ -251,7 +254,7 @@ class CalculationFrame(TopLevelFrame):
             elif i < phase_index:
                 button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_GREEN.value)
             else:
-                button.configure(fg_color= button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+                button.configure(fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
 
     def __activate_buttons(self):
         """
@@ -357,14 +360,6 @@ class CalculationFrame(TopLevelFrame):
         if calculation_state[0] == CalculationState.CANCELED:
             return
 
-        if (calculation_state[0] == CalculationState.RUNNING or calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY) \
-                and calculation_progress == 1:
-            #  Phase change expected
-            if calculation_phase == CalculationPhase.AGGREGATION_PHASE:
-                # Calculation is done
-                self.__end_calculation_successfully()
-                return
-
         self.progressbar.set(calculation_progress)
         self.progressbar_phase.configure(text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
         self.progressbar_state.configure(text="Calculation State:\n" + calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
@@ -372,13 +367,16 @@ class CalculationFrame(TopLevelFrame):
         if calculation_phase != CalculationPhase.NONE:
             self.__color_buttons(calculation_phase)
 
-        if calculation_state[0] in [CalculationState.RUNNING, CalculationState.ENDED_SUCCESSFULLY,
-                                       CalculationState.NOT_STARTED_YET]:
+        if calculation_state[0] in [CalculationState.RUNNING, CalculationState.NOT_STARTED_YET]:
             self.after(1000, self.__update_progressbar)
+        elif calculation_state[0] == CalculationState.ENDED_SUCCESSFULLY:
+            self.__end_calculation_successfully()
         else:
             AlertPopUp("The calculation failed in the Phase " + calculation_phase.get_name() + "!\n"
                        + calculation_state[0].get_name() + ":" + calculation_state[1])
             self.__reset_calculation()
+
+
 
     def __end_calculation_successfully(self):
         """
@@ -397,6 +395,9 @@ class CalculationFrame(TopLevelFrame):
                                     )
         visualize_button.grid(column=2, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self.buttons.append(visualize_button)
+        self.cancel_button.configure(text="Restart Calculations")
+        self.progressbar.set(1)
+        self.__color_buttons_with_int(5)
 
     def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
         """
