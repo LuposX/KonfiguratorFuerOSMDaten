@@ -325,19 +325,32 @@ class StateManager:
             state_name_enum_i.StateName.ATTRACTIVITY_EDIT)
         all_states.append(state_reduction_frame)
 
-        # Settings Frame State
+        # Settings Frame State - Project
         from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
-        settings_frame: SettingsFrame = SettingsFrame(self, settings_controller)
-        positioned_settings_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame,
+        settings_frame_project: SettingsFrame = SettingsFrame(self, settings_controller, True)
+        positioned_settings_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_project,
                                                                                         SETTINGS_FRAME_COLUM,
                                                                                         SETTINGS_FRAME_ROW,
                                                                                         SETTINGS_FRAME_COLUM_SPAN,
                                                                                         SETTINGS_FRAME_ROW_SPAN,
                                                                                         FRAME_STICKY_WHOLE_CELL)
-        state_settings_frame: State = State(
-            [positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_frame],
-            state_name_enum_i.StateName.SETTINGS, None, None)
-        all_states.append(state_settings_frame)
+        state_settings_project_frame: State = State(
+            [positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_project_frame],
+            state_name_enum_i.StateName.SETTINGS_PROJECT, None, None)
+        all_states.append(state_settings_project_frame)
+
+        # Settings Frame State - No Project
+        settings_frame_no_project: SettingsFrame = SettingsFrame(self, settings_controller, False)
+        positioned_settings_no_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_no_project,
+                                                                                        SETTINGS_FRAME_COLUM,
+                                                                                        SETTINGS_FRAME_ROW,
+                                                                                        SETTINGS_FRAME_COLUM_SPAN,
+                                                                                        SETTINGS_FRAME_ROW_SPAN,
+                                                                                        FRAME_STICKY_WHOLE_CELL)
+        state_settings_no_project_frame: State = State(
+            [positioned_settings_no_project_frame],
+            state_name_enum_i.StateName.SETTINGS_NO_PROJECT, None, None)
+        all_states.append(state_settings_no_project_frame)
 
         return all_states
 
