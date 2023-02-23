@@ -28,6 +28,7 @@ from tkinter import filedialog
 if TYPE_CHECKING:
     from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.control.project_controller_interface import IProjectController
+    from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 
@@ -38,7 +39,7 @@ class CreateProjectFrame(TopLevelFrame):
     The user can cancel the creation-process.
     """
 
-    def __init__(self, state_manager: StateManager, project_controller: IProjectController):
+    def __init__(self, state_manager: StateManager, project_controller: IProjectController, settings_controller: ISettingsController):
         """
         This method creates a CreateProjectFrame where a user can create a new project.
 
@@ -57,6 +58,7 @@ class CreateProjectFrame(TopLevelFrame):
 
         self._state_manager = state_manager
         self._project_controller = project_controller
+        self._settings_controller = settings_controller
 
         self._project_description: str = ""
         self._project_name: str = ""
@@ -208,8 +210,9 @@ class CreateProjectFrame(TopLevelFrame):
         Return:
             str: Name of the chosen path
         """
+        # opens the file explorer in the project default folder
         new_path = filedialog.askdirectory(title="Select a project to load",
-                                           initialdir="/", )  # opens the file explorer in the current dir
+                                           initialdir=self._settings_controller.get_project_default_folder())
         return new_path
 
     def freeze(self):

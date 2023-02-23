@@ -188,7 +188,7 @@ class StateManager:
 
         # Create Project State
         from src.osm_configurator.view.toplevelframes.create_project_frame import CreateProjectFrame
-        create_project_frame: CreateProjectFrame = CreateProjectFrame(self, project_controller)
+        create_project_frame: CreateProjectFrame = CreateProjectFrame(self, project_controller, settings_controller)
         positioned_create_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(create_project_frame,
                                                                                               CREATE_PROJECT_COLUM,
                                                                                               CREATE_PROJECT_ROW,
