@@ -378,17 +378,21 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
     def _export_drop_down_menu_edited(self, choice):
         # First checking what was selected
         # And then trying the export, if it fails an alertPopUp will be shown
-        if choice == EXPORT_PROJECT_STRING:
-            if not self._export_controller.export_project(self._file_dialog("Select Path to export Project to")):
+        path: str = self._file_dialog("Select Export-Path")
+
+        if path == "":
+            pass  # If the file dialog was canceled don't export anything
+        elif choice == EXPORT_PROJECT_STRING:
+            if not self._export_controller.export_project(Path(path)):
                 alert_pop_up_i.AlertPopUp("Export of Project Failed!")
         elif choice == EXPORT_CALCULATIONS_STRING:
-            if not self._export_controller.export_calculations(self._file_dialog("Select Path to export Calculations to")):
+            if not self._export_controller.export_calculations(Path(path)):
                 alert_pop_up_i.AlertPopUp("Export of Calculations Failed!")
         elif choice == EXPORT_CONFIGURATION_STRING:
-            if not self._export_controller.export_configurations(self._file_dialog("Select Path to export Configurations to")):
+            if not self._export_controller.export_configurations(Path(path)):
                 alert_pop_up_i.AlertPopUp("Export of Configurations Failed!")
         elif choice == EXPORT_CUT_OUT_MAP_STRING:
-            if not self._export_controller.export_cut_out_map(self._file_dialog("Select Path to export Cut-Out-Map to")):
+            if not self._export_controller.export_cut_out_map(Path(path)):
                 alert_pop_up_i.AlertPopUp("Export of Cut-Out-Map Failed!")
 
         # No Else, since if none of those options where selected something that isn't an export option was selected
@@ -396,11 +400,13 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
         # Also setting the Drop-Down Menu again to its display value
         self._export_drop_down_menu.set(EXPORT_DISPLAYED_VALUE)
 
-    def _file_dialog(self, title: str) -> Path:
+    def _file_dialog(self, title: str) -> str:
         # Opens a file dialog, that will ask for a directory to save stuff in
-        file_path: str = filedialog.asksaveasfilename(initialdir=self._project_controller.get_project_path(), title=title, initialfile='export.zip')
+        file_path: str = filedialog.asksaveasfilename(initialdir=self._project_controller.get_project_path(),
+                                                      title=title,
+                                                      initialfile='export.zip')
         # A Path will be returned
-        return Path(file_path)
+        return file_path
 
     def _save_project(self):
         # If the project can't be saved, an PopUp will pop up
