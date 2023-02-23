@@ -23,7 +23,7 @@ class WorkManager:
         Args:
             max_processes (int): The maximal number of processes that might be run at the same time
         """
-        self._max_workers = max_processes
+        self._max_workers = int(max_processes)
         self._work_to_do: List[Work] = []
 
     def append_work(self, work: Work):
