@@ -137,19 +137,19 @@ class CategoryParser(CategoryParserInterface):
                 loaded_category.add_attractivity_attribute(attractivity_attribute)
 
             # Delete default-tag
-            loaded_category.get_default_value_list().clear()
+        loaded_category.get_default_value_list().clear()
 
-            # Loads default value entries
-            default_value_entry_list: list[str] = category_data[TABLE_NINE_ROW][TABLE_SECOND_COLUMN].split(
-                DELIMITER_SEMICOLON)
-            for input_default_value_entry in default_value_entry_list:
-                input_str: list[str] = input_default_value_entry.split(DELIMITER_COMMA)
-                default_value_entry: DefaultValueEntry = DefaultValueEntry(input_str[NAME])
-                input_str.remove(input_str[NAME])
-                for default_value_entry_str in input_str:
-                    attribute_str_split_up: list[str] = default_value_entry_str.split(DELIMITER_COLON)
-                    default_value_entry.set_attribute_default(
-                        Attribute.convert_str_to_attribute
-                        (attribute_str_split_up[NAME_OF_ATTRIBUTE]), float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
-                loaded_category.add_default_value_entry(default_value_entry)
+        # Loads default value entries
+        default_value_entry_list: list[str] = category_data[TABLE_NINE_ROW][TABLE_SECOND_COLUMN].split(
+            DELIMITER_SEMICOLON)
+        for input_default_value_entry in default_value_entry_list:
+            input_str: list[str] = input_default_value_entry.split(DELIMITER_COMMA)
+            default_value_entry: DefaultValueEntry = DefaultValueEntry(input_str[NAME])
+            input_str.remove(input_str[NAME])
+            for default_value_entry_str in input_str:
+                attribute_str_split_up: list[str] = default_value_entry_str.split(DELIMITER_COLON)
+                default_value_entry.set_attribute_default(
+                    Attribute.convert_str_to_attribute
+                    (attribute_str_split_up[NAME_OF_ATTRIBUTE]), float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
+            loaded_category.add_default_value_entry(default_value_entry)
         return loaded_category
