@@ -107,15 +107,13 @@ class CategoryManager:
             bool: True, if the element was removed correctly, else false.
         """
         # Check if the element is in the list
-        if category_to_remove == self.building_category:
-            return False
         for category in self._categories:
             if category_to_remove.get_category_name() == category.get_category_name():
                 self._categories.remove(category_to_remove)
                 return True
         return False
 
-    def override_categories(self, new_category_list_path: Path):
+    def override_categories(self, new_category_list_path: Path) -> bool:
         """
         Overwrites the list of categories with the given list.
 

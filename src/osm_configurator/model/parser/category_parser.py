@@ -136,6 +136,9 @@ class CategoryParser(CategoryParserInterface):
                             float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
                 loaded_category.add_attractivity_attribute(attractivity_attribute)
 
+            # Delete default-tag
+            loaded_category.get_default_value_list().clear()
+
             # Loads default value entries
             default_value_entry_list: list[str] = category_data[TABLE_NINE_ROW][TABLE_SECOND_COLUMN].split(
                 DELIMITER_SEMICOLON)
@@ -149,5 +152,4 @@ class CategoryParser(CategoryParserInterface):
                         Attribute.convert_str_to_attribute
                         (attribute_str_split_up[NAME_OF_ATTRIBUTE]), float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
                 loaded_category.add_default_value_entry(default_value_entry)
-            print(loaded_category)
         return loaded_category
