@@ -268,7 +268,7 @@ class ReductionFrame(TopLevelFrame):
             if self._last_pressed_category_button is not None:
                 self._last_pressed_category_button.configure(state="disabled",
                                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
-                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             self._segmented_button.configure(state="normal")
 

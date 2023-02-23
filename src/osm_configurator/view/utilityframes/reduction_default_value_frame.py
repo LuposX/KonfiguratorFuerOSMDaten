@@ -85,162 +85,178 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self.grid_rowconfigure(6, weight=1)
 
         # The tag list label
-        self._tag_list_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                              width=int(
-                                                                                  self._width / 2) - ELEMENT_BORDER_DISTANCE,
-                                                                              height=int(self._height * (
-                                                                                      1 / 7)) - ELEMENT_BORDER_DISTANCE,
-                                                                              corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                              fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                              text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                              anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                              text="Tag-List:")
-        self._tag_list_label.grid(row=0, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+        self._tag_list_label: customtkinter.CTkLabel \
+            = customtkinter.CTkLabel(master=self,
+                                     width=int(
+                                         self._width / 2) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7)) - ELEMENT_BORDER_DISTANCE,
+                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     text="Tag-List:")
+        self._tag_list_label.grid(row=0, column=0, rowspan=1, columnspan=1,
+                                  pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                   padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Tag List
-        self._tag_list: tag_list_priority_frame_i.TagListPriorityFrame = tag_list_priority_frame_i.TagListPriorityFrame(
-            self,
-            int(self._width / 2 - ELEMENT_BORDER_DISTANCE),
-            int(self._height * (6 / 7) - ELEMENT_BORDER_DISTANCE))
+        self._tag_list: tag_list_priority_frame_i.TagListPriorityFrame = \
+            tag_list_priority_frame_i.TagListPriorityFrame(self,
+                                                           int(self._width / 2 - ELEMENT_BORDER_DISTANCE),
+                                                           int(self._height * (6 / 7) - ELEMENT_BORDER_DISTANCE))
         self._tag_list.grid(row=1, column=0, rowspan=6, columnspan=1)
 
         # Now the Labels for all the text fields
         # Tag Label
-        self._tag_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                         width=int(self._width * (
-                                                                                 1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                         height=int(self._height * (
-                                                                                 1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                         corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                         fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                         text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                         anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                         text="Tag")
-        self._tag_label.grid(row=1, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+        self._tag_label: customtkinter.CTkLabel \
+            = customtkinter.CTkLabel(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     text="Tag")
+        self._tag_label.grid(row=1, column=1, rowspan=1, columnspan=1,
+                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Area label
-        self._area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                          width=int(self._width * (
-                                                                                  1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                          height=int(self._height * (
-                                                                                  1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                          corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                          fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                          text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                          anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                          text="Area")
-        self._area_label.grid(row=2, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+        self._area_label: customtkinter.CTkLabel \
+            = customtkinter.CTkLabel(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     text="Area")
+        self._area_label.grid(row=2, column=1, rowspan=1, columnspan=1,
+                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Number of Floors Label
-        self._number_of_floors_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                      width=int(self._width * (
-                                                                                              1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                                      height=int(self._height * (
-                                                                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                      text="Number of floors")
-        self._number_of_floors_label.grid(row=3, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+        self._number_of_floors_label: customtkinter.CTkLabel \
+            = customtkinter.CTkLabel(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     text="Number of floors")
+        self._number_of_floors_label.grid(row=3, column=1, rowspan=1, columnspan=1,
+                                          pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Floor Area Label
-        self._floor_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                width=int(self._width * (
-                                                                                        1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                                height=int(self._height * (
-                                                                                        1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                text="Floor area")
-        self._floor_area_label.grid(row=4, column=1, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+        self._floor_area_label: customtkinter.CTkLabel \
+            = customtkinter.CTkLabel(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     text="Floor area")
+        self._floor_area_label.grid(row=4, column=1, rowspan=1, columnspan=1,
+                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                     padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The text field (Entries) for the Labels
         # Tag Entry
-        self._tag_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
-                                                                         width=int(self._width * (
-                                                                                 1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                         height=int(self._height * (
-                                                                                 1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                         corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                                                         fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                                                         text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._tag_entry: customtkinter.CTkEntry \
+            = customtkinter.CTkEntry(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._tag_entry.grid(row=1, column=2, rowspan=1, columnspan=1)
         self._tag_entry.bind("<KeyRelease>", self._tag_entry_edited)
 
         # Area Entry
-        self._area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
-                                                                          width=int(self._width * (
-                                                                                  1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                          height=int(self._height * (
-                                                                                  1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                          corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                                                          fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                                                          text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._area_entry: customtkinter.CTkEntry \
+            = customtkinter.CTkEntry(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._area_entry.grid(row=2, column=2, rowspan=1, columnspan=1)
         self._area_entry.bind("<KeyRelease>", self._area_entry_edited)
 
         # Number of floors entry
-        self._number_of_floors_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
-                                                                                      width=int(self._width * (
-                                                                                              1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                                      height=int(self._height * (
-                                                                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                                                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                                                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._number_of_floors_entry: customtkinter.CTkEntry \
+            = customtkinter.CTkEntry(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._number_of_floors_entry.grid(row=3, column=2, rowspan=1, columnspan=1)
         self._number_of_floors_entry.bind("<KeyRelease>", self._number_of_floors_entry_edited)
 
         # Floor Area entry
-        self._floor_area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self,
-                                                                                width=int(self._width * (
-                                                                                        1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                                height=int(self._height * (
-                                                                                        1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                                corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                                                                fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                                                                text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._floor_area_entry: customtkinter.CTkEntry \
+            = customtkinter.CTkEntry(master=self,
+                                     width=int(self._width * (
+                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                     height=int(self._height * (
+                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._floor_area_entry.grid(row=4, column=2, rowspan=1, columnspan=1)
         self._floor_area_entry.bind("<KeyRelease>", self._floor_area_entry_edited)
 
         # The Buttons to create and delete Tags
-        self._create_tag_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self,
-                                                                                   width=int(self._width * (
-                                                                                           1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                                   height=int(self._height * (
-                                                                                           1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                                   corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                                   border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                                                   hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                                                                   border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                                                                   text="Create new tag",
-                                                                                   command=self._create_tag_button_pressed)
+        self._create_tag_button: customtkinter.CTkButton \
+            = customtkinter.CTkButton(master=self,
+                                      width=int(self._width * (
+                                              1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                      height=int(self._height * (
+                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                      corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                      border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                      fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                      hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                      border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                      text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                      text="Create new tag",
+                                      command=self._create_tag_button_pressed)
         self._create_tag_button.grid(row=5, column=1, rowspan=1, columnspan=2)
 
         # The Button to delete tags
-        self._delete_tag_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self,
-                                                                                   width=int(self._width * (
-                                                                                           1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                                                                   height=int(self._height * (
-                                                                                           1 / 7) - ELEMENT_BORDER_DISTANCE),
-                                                                                   corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                                   border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                                   fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                                                   hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                                                                   border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                                   text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                                                                   text="Delete tag",
-                                                                                   command=self._delete_tag_button_pressed)
+        self._delete_tag_button: customtkinter.CTkButton \
+            = customtkinter.CTkButton(master=self,
+                                      width=int(self._width * (
+                                              1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                      height=int(self._height * (
+                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                      corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                                      border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                      fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                      hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                                      border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                                      text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                      text="Delete tag",
+                                      command=self._delete_tag_button_pressed)
         self._delete_tag_button.grid(row=6, column=1, rowspan=1, columnspan=2)
 
     def load_category(self, category: category_i.Category) -> bool:
