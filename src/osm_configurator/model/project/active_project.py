@@ -51,11 +51,11 @@ class ActiveProject:
             project_name (str): How we want to name the project.
             project_description (str): The description of our project.
         """
-        if not project_name.isalnum() or any([x in project_name for x in NOT_ALLOWED_SYMBOLS]):
-            raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
-
         if project_name is not None:
             self.project_directory: Path = Path(os.path.join(project_folder, project_name))
+
+            if not project_name.isalnum() or any([x in project_name for x in NOT_ALLOWED_SYMBOLS]):
+                raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
         else:
             self.project_directory: Path = project_folder
             project_name = os.path.basename(project_folder)
