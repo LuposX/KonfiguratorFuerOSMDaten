@@ -441,7 +441,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                 # If deletion was successfull, reload category
                 self.load_category(self._selected_category)
             else:
-                alert_pop_up_i.AlertPopUp("Could not delete default value entry!")
+                self.after(1, alert_pop_up_i.AlertPopUp, "Could not delete default value entry!")
 
     def _deactivate_editing(self):
 
