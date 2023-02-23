@@ -100,10 +100,15 @@ REDUCTION_FRAME_COLUM: Final = 0
 REDUCTION_FRAME_ROW_SPAN: Final = 1
 REDUCTION_FRAME_COLUM_SPAN: Final = 1
 
-SETTINGS_FRAME_ROW: Final = 1
-SETTINGS_FRAME_COLUM: Final = 0
-SETTINGS_FRAME_ROW_SPAN: Final = 1
-SETTINGS_FRAME_COLUM_SPAN: Final = 1
+SETTINGS_PROJECT_FRAME_ROW: Final = 1
+SETTINGS_PROJECT_FRAME_COLUM: Final = 0
+SETTINGS_PROJECT_FRAME_ROW_SPAN: Final = 1
+SETTINGS_PROJECT_FRAME_COLUM_SPAN: Final = 1
+
+SETTINGS_NO_PROJECT_FRAME_ROW: Final = 0
+SETTINGS_NO_PROJECT_FRAME_COLUM: Final = 0
+SETTINGS_NO_PROJECT_FRAME_ROW_SPAN: Final = 3
+SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN: Final = 1
 
 
 class StateManager:
@@ -329,10 +334,10 @@ class StateManager:
         from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
         settings_frame_project: SettingsFrame = SettingsFrame(self, settings_controller, True)
         positioned_settings_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_project,
-                                                                                        SETTINGS_FRAME_COLUM,
-                                                                                        SETTINGS_FRAME_ROW,
-                                                                                        SETTINGS_FRAME_COLUM_SPAN,
-                                                                                        SETTINGS_FRAME_ROW_SPAN,
+                                                                                        SETTINGS_PROJECT_FRAME_COLUM,
+                                                                                        SETTINGS_PROJECT_FRAME_ROW,
+                                                                                        SETTINGS_PROJECT_FRAME_COLUM_SPAN,
+                                                                                        SETTINGS_PROJECT_FRAME_ROW_SPAN,
                                                                                         FRAME_STICKY_WHOLE_CELL)
         state_settings_project_frame: State = State(
             [positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_project_frame],
@@ -342,10 +347,10 @@ class StateManager:
         # Settings Frame State - No Project
         settings_frame_no_project: SettingsFrame = SettingsFrame(self, settings_controller, False)
         positioned_settings_no_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_no_project,
-                                                                                        SETTINGS_FRAME_COLUM,
-                                                                                        SETTINGS_FRAME_ROW,
-                                                                                        SETTINGS_FRAME_COLUM_SPAN,
-                                                                                        SETTINGS_FRAME_ROW_SPAN,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_COLUM,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_ROW,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN,
+                                                                                        SETTINGS_NO_PROJECT_FRAME_ROW_SPAN,
                                                                                         FRAME_STICKY_WHOLE_CELL)
         state_settings_no_project_frame: State = State(
             [positioned_settings_no_project_frame],
