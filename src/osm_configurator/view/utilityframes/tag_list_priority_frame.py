@@ -195,6 +195,12 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
             self._entry_button_list[button_id - 1] = self._entry_button_list[button_id]
             self._entry_button_list[button_id] = entry_button
 
+            # setting the command new, so they still ask for the right entry and don't send the wrong button_id to
+            # the command, and make every button call wrong entries
+            self._entry_button_list[button_id].configure(command=partial(self._entry_button_pressed, button_id))
+            self._entry_button_list[button_id - 1].configure(command=partial(self._entry_button_pressed, button_id - 1))
+
+
             # Regridding all entry buttons
             self._regrid_entries()
 
@@ -212,6 +218,11 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
             # Swapping on list
             self._entry_button_list[button_id + 1] = self._entry_button_list[button_id]
             self._entry_button_list[button_id] = entry_button
+
+            # setting the command new, so they still ask for the right entry and don't send the wrong button_id to
+            # the command, and make every button call wrong entries
+            self._entry_button_list[button_id].configure(command=partial(self._entry_button_pressed, button_id))
+            self._entry_button_list[button_id + 1].configure(command=partial(self._entry_button_pressed, button_id + 1))
 
             # Regridding all entry buttons
             self._regrid_entries()
