@@ -82,6 +82,7 @@ class CalculationFrame(TopLevelFrame):
 
         #  Creating the entries on the left
 
+        self.resetable_elements = []  # Elements that are not displayed on the frame by default
         self.buttons = [
             customtkinter.CTkButton(master=self,
                                     text="Data Input and Geofilter",
@@ -120,9 +121,11 @@ class CalculationFrame(TopLevelFrame):
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
 
         self.cancel_button = None
+        self.progressbar = None
 
     def activate(self):
-        pass
+        self._starting_point = CalculationPhase.NONE
+        self.__cancel_calculation(True)
 
     def __tag_filter_pressed(self):
         """
@@ -300,9 +303,11 @@ class CalculationFrame(TopLevelFrame):
         self.__activate_buttons()
 
         # Destroying the progressbar and the cancel button
-        self.progressbar.destroy()
-        self.cancel_button.destroy()
-        self.buttons.remove(self.cancel_button)
+        for element in self.resetable_elements:
+            element.destroy()
+            if element in self.buttons:
+                self.buttons.remove(element)
+        self.resetable_elements = []
 
     def __show_calculation_utilities(self):
         """
@@ -322,6 +327,7 @@ class CalculationFrame(TopLevelFrame):
                                          corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value)
         self.progressbar.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self.progressbar.set(0)
+        self.resetable_elements.append(self.progressbar)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
@@ -334,16 +340,19 @@ class CalculationFrame(TopLevelFrame):
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                     command=self.__cancel_calculation_init)
         self.cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
+        self.resetable_elements.append(self.cancel_button)
 
         self.progressbar_phase = \
             customtkinter.CTkLabel(master=self,
                                    text="No calculation phase")
         self.progressbar_phase.grid(column=2, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
+        self.resetable_elements.append(self.progressbar_phase)
 
         self.progressbar_state = \
             customtkinter.CTkLabel(master=self,
                                    text="No calculation state")
         self.progressbar_state.grid(column=1, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
+        self.resetable_elements.append(self.progressbar_state)
 
         self.buttons.append(self.cancel_button)  # Add cancel button to buttons-list
 
@@ -384,7 +393,7 @@ class CalculationFrame(TopLevelFrame):
         Function called if calculation finished successfully.
         Configures the shown widgets alerting that the calculation finished successfully
         """
-        visualize_button = \
+        self.visualize_button = \
             customtkinter.CTkButton(master=self,
                                     text="Visualize Results",
                                     command=self.__visualize_results,
@@ -394,14 +403,18 @@ class CalculationFrame(TopLevelFrame):
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
-        visualize_button.grid(column=2, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
-        self.buttons.append(visualize_button)
+        self.visualize_button.grid(column=2, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
+        self.resetable_elements.append(self.visualize_button)
+        self.buttons.append(self.visualize_button)
+
         self.progressbar.set(1)
         self.__color_buttons_with_int(5)
         self.__activate_buttons()
         self.buttons.remove(self.cancel_button)
+        self.resetable_elements.remove(self.cancel_button)
         self.cancel_button.destroy()
         self._state_manager.unlock_state()
+
 
     def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
         """
