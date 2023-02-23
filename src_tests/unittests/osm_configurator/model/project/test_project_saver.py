@@ -13,6 +13,7 @@ from src.osm_configurator.model.project.configuration.cut_out_mode_enum import C
 from src_tests.definitions import TEST_DIR
 from src.osm_configurator.model.project.active_project import ActiveProject
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
+import src.osm_configurator.model.application.application_settings as application_settings_i
 
 from pathlib import Path
 import os
@@ -20,6 +21,7 @@ import shutil
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
+    from src.osm_configurator.model.application.application_settings import ApplicationSettings
 
 
 def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
@@ -39,15 +41,15 @@ def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
 
 class TestProjectSaver:
     def test_build(self):
+        settings: ApplicationSettings = application_settings_i.ApplicationSettings()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True,
-                                                           "TestProject1", "Das sollte funktionieren")
+                                                           settings, "TestProject1", "Das sollte funktionieren")
         self.active_project.get_project_saver().save_project()
 
     def test_save_settings(self):
         self.test_build()
         self.active_project.get_project_settings().change_name("ChangedName")
         self.active_project.get_project_settings().set_description("Hat bombe funktioniert")
-        self.active_project.get_project_settings().change_calculation_phase_checkpoints_folder("tniokcehc")
         self.active_project.get_project_saver().save_project()
 
     def test_save_config_phase(self):
