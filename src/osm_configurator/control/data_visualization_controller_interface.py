@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
-    from pathlib import Path
+    from pathlib import Path, List
 
 
 class IDataVisualizationController(ABC):
@@ -32,12 +32,12 @@ class IDataVisualizationController(ABC):
         pass
 
     @abstractmethod
-    def generate_calculation_visualization(self) -> pathlib.Path | None:
+    def generate_calculation_visualization(self) -> List[str] | None:
         """
         Generates a graphic that visualizes the results of the calculations of the currently selected project.
 
          Returns:
-            pathlib.Path: The Path pointing towards the image of the resulting visualization.
+            List[str]:  A list of paths each pointing towards one boxplot image.
             None: If the saving/generating of the image failed.
         """
         pass

@@ -4,19 +4,21 @@ import os.path
 
 from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum_i
-
+import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import pathlib
 import matplotlib
+import glob
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from pathlib import Path
-    from typing import Final
+    from typing import Final, List
+
 
 MAP_FILENAME: Final = "map_of_traffic_cells.html"
-BOXPLOT_FILENAME: Final = "boxplot_of_result.png"
+FILE_TYPE_TO_LOAD: Final = ".png"
 
 
 class DataVisualizationController(IDataVisualizationController):
@@ -54,29 +56,25 @@ class DataVisualizationController(IDataVisualizationController):
         else:
             return None
 
-    def generate_calculation_visualization(self) -> Path | None:
+    def generate_calculation_visualization(self) -> List[str] | None:
         """
         Generates a boxplot which visualizes the final data.
 
         Returns:
-            Path: The path point towards the image which visualizes the data.
+            List[str]: A list of paths each pointing towards one boxplot image.
             None: If sth. went wrong.
         """
-        boxplot_saving_path: Path = self._model.get_active_project().get_project_path()
-
         # Get where the data is saved for the results
-        data_path: str = os.path.join(self._model.get_active_project().get_project_path(),
-                                      calculation_phase_enum_i.CalculationPhase.get_folder_name_for_results())
-
-        data_path: Path = Path(os.path.join(data_path,
-                                            calculation_phase_enum_i.CalculationPhase.AGGREGATION_PHASE
-                                            .get_folder_name_for_results()))
+        project_path: Path = self._model.get_active_project().get_project_path()
+        result_folder_name: str = folder_path_calculator_i.CALCULATION_PHASE_CHECKPOINT_FOLDER_NAME
+        phase_folder_name: str = calculation_phase_enum_i.CalculationPhase.AGGREGATION_PHASE.get_folder_name_for_results()
+        data_path: Path = pathlib.Path(
+            os.path.join(os.path.join(project_path, result_folder_name), phase_folder_name))
 
         if self._model.get_active_project().get_data_visualizer().create_boxplot(data_path=data_path,
-                                                                                 boxplot_saving_path=boxplot_saving_path,
-                                                                                 filename=BOXPLOT_FILENAME
+                                                                                 boxplot_saving_path=project_path
                                                                                  ):
-            return pathlib.Path(os.path.join(data_path, BOXPLOT_FILENAME))
+            return glob.glob("*" + FILE_TYPE_TO_LOAD)
 
         # If saving or creating failed
         else:

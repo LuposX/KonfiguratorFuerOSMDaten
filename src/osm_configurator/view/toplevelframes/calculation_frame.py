@@ -28,6 +28,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
     from pathlib import Path
+    from typing import List
+
 
 class CalculationFrame(TopLevelFrame):
     """
@@ -273,8 +275,6 @@ class CalculationFrame(TopLevelFrame):
         self._state_manager.freeze_state()
         YesNoPopUp(func=self.__cancel_calculation, message="Do You really want to cancel the Calculation?")
 
-
-
     def __cancel_calculation(self, cancel: bool):
         """
         Stops the already running calculation process.
@@ -304,8 +304,8 @@ class CalculationFrame(TopLevelFrame):
     def __show_calculation_utilities(self):
         """
         Starts the calculation:
-            Adds the progressbar and the button to stop the calculation to the window
-            Calls the according controller
+        Adds the progressbar and the button to stop the calculation to the window
+        Calls the according controller
         """
         self._state_manager.lock_state()
         self.progressbar = \
@@ -376,8 +376,6 @@ class CalculationFrame(TopLevelFrame):
                        + calculation_state[0].get_name() + ":" + calculation_state[1])
             self.__reset_calculation()
 
-
-
     def __end_calculation_successfully(self):
         """
         Function called if calculation finished successfully.
@@ -398,6 +396,7 @@ class CalculationFrame(TopLevelFrame):
         self.cancel_button.configure(text="Restart Calculations")
         self.progressbar.set(1)
         self.__color_buttons_with_int(5)
+        self.__activate_buttons()
 
     def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
         """
@@ -431,8 +430,9 @@ class CalculationFrame(TopLevelFrame):
         Gets called if the "Visualize Results" Button is pressed. Calls the according function from the controller to
         initialise the visualization process
         """
-        path: Path = self._data_visualization_controller.generate_calculation_visualization()
-        self._show_boxplot(path)
+        paths: List[str] = self._data_visualization_controller.generate_calculation_visualization()
+
+        self._show_boxplot(paths[0]) # shows the first
 
     def freeze(self):
         """
