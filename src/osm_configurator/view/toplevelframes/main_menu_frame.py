@@ -227,7 +227,6 @@ class MainMenuFrame(TopLevelFrame):
             self.activate()
             return
 
-        # TODO: CHEKC FOR CORRET PHASE!
         self._state_manager.change_state(state_name_enum_i.StateName.DATA)
 
     def __browse_files(self) -> str:
