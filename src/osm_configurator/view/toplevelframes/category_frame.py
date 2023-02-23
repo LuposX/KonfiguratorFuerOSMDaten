@@ -43,7 +43,8 @@ PADX: Final = 4
 PADY: Final = 4
 
 # ID of the TabButton
-TAB_BUTTON_ID: Final = 805306377
+TAB_BUTTON_ID_MAC: Final = 805306377
+TAB_BUTTON_ID_WINDOWS: Final = 9
 
 
 class CategoryFrame(TopLevelFrame):
@@ -417,7 +418,7 @@ class CategoryFrame(TopLevelFrame):
 
     def _white_list_edited(self, event: tkinter.Event):
         # Checking if TabButton was pressed
-        if event.keycode == TAB_BUTTON_ID and self._white_list_was_last_edited:
+        if (event.keycode == TAB_BUTTON_ID_MAC or event.keycode == TAB_BUTTON_ID_WINDOWS) and self._white_list_was_last_edited:
             self._white_list.delete("end-1c linestart", "end-1c")
             self._white_list.insert("end-1c linestart", self._get_recommended_string(0))
 
@@ -432,7 +433,7 @@ class CategoryFrame(TopLevelFrame):
 
     def _black_list_edited(self, event: tkinter.Event):
         # Checking if the TabButton was pressed
-        if event.keycode == TAB_BUTTON_ID and self._black_list_was_last_edited:
+        if (event.keycode == TAB_BUTTON_ID_MAC or event.keycode == TAB_BUTTON_ID_WINDOWS) and self._black_list_was_last_edited:
             self._black_list.delete("end-1c linestart", "end-1c")
             self._black_list.insert("end-1c linestart", self._get_recommended_string(0))
 
@@ -531,8 +532,6 @@ class CategoryFrame(TopLevelFrame):
 
         if no_duplicate:
             try:
-                new_category: category_i.Category = self._category_controller.create_category(new_category_name)
-
                 # If there is no duplicate, we create, the new category
                 new_category: category_i.Category = self._category_controller.create_category(new_category_name)
                 self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()

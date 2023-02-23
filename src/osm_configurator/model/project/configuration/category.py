@@ -126,7 +126,7 @@ class Category:
         """
         return self._category_name
 
-    def set_category_name(self, new_category_name: str):
+    def set_category_name(self, new_category_name: str) -> bool:
         """
         Overwrites the old category_name.
 
@@ -135,6 +135,9 @@ class Category:
         """
         if new_category_name != "":
             self._category_name = new_category_name
+            return True
+        else:
+            return False
 
     def get_activated_attribute(self) -> List[Attribute]:
         """
