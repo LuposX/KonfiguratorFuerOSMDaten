@@ -81,6 +81,9 @@ class DataVisualizer:
         Returns:
             bool: True if creating the boxplot works, otherwise false.
         """
+        # create folder if doesn't exist
+        boxplot_saving_path.mkdir(parents=True, exist_ok=True)
+
         # try saving the figure
         for file in glob.glob(str(data_path) + "/*" + FILE_TYPE_TO_LOAD):
             try:
@@ -96,7 +99,7 @@ class DataVisualizer:
             ax.set(xlabel=X_LABEL_BOXPLOT, title=title)
 
             try:
-                ax.get_figure().savefig(file_name)
+                ax.get_figure().savefig(os.path.join(str(boxplot_saving_path), file_name))
             except OSError:
                 return False
 

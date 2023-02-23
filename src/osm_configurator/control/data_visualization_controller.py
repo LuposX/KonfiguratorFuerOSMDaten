@@ -19,6 +19,7 @@ if TYPE_CHECKING:
 
 MAP_FILENAME: Final = "map_of_traffic_cells.html"
 FILE_TYPE_TO_LOAD: Final = ".png"
+BOXPLOT_RESULT_FOLDER: Final = "result_boxplot"
 
 
 class DataVisualizationController(IDataVisualizationController):
@@ -56,12 +57,12 @@ class DataVisualizationController(IDataVisualizationController):
         else:
             return None
 
-    def generate_calculation_visualization(self) -> List[str] | None:
+    def generate_calculation_visualization(self) -> Path | None:
         """
         Generates a boxplot which visualizes the final data.
 
         Returns:
-            List[str]: A list of paths each pointing towards one boxplot image.
+            Path: A path pointing towards the folder with all boxplots.
             None: If sth. went wrong.
         """
         # Get where the data is saved for the results
@@ -71,10 +72,12 @@ class DataVisualizationController(IDataVisualizationController):
         data_path: Path = pathlib.Path(
             os.path.join(os.path.join(project_path, result_folder_name), phase_folder_name))
 
+        boxplot_saving_path: Path = pathlib.Path(os.path.join(os.path.join(str(project_path), result_folder_name), BOXPLOT_RESULT_FOLDER))
+
         if self._model.get_active_project().get_data_visualizer().create_boxplot(data_path=data_path,
-                                                                                 boxplot_saving_path=project_path
+                                                                                 boxplot_saving_path=boxplot_saving_path
                                                                                  ):
-            return glob.glob("*" + FILE_TYPE_TO_LOAD)
+            return boxplot_saving_path
 
         # If saving or creating failed
         else:

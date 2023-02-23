@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import tkinter
 
 import customtkinter
@@ -15,6 +16,8 @@ from src.osm_configurator.control.data_visualization_controller_interface import
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 import webbrowser
+
+import pathlib
 
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
@@ -430,9 +433,15 @@ class CalculationFrame(TopLevelFrame):
         Gets called if the "Visualize Results" Button is pressed. Calls the according function from the controller to
         initialise the visualization process
         """
-        paths: List[str] = self._data_visualization_controller.generate_calculation_visualization()
+        dir_path: Path = self._data_visualization_controller.generate_calculation_visualization()
 
-        self._show_boxplot(paths[0]) # shows the first
+        if dir_path is not None:
+            boxplot_file: Path
+            for boxplot_file in dir_path.iterdir():
+                self._show_boxplot(boxplot_file)  # shows the first
+        else:
+            AlertPopUp("Sth. went wrong while trying to create a boxplot or saving it.")
+
 
     def freeze(self):
         """
