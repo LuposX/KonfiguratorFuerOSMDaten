@@ -47,7 +47,6 @@ class TestProjectSaver:
         self.test_build()
         self.active_project.get_project_settings().change_name("ChangedName")
         self.active_project.get_project_settings().set_description("Hat bombe funktioniert")
-        self.active_project.get_project_settings().change_calculation_phase_checkpoints_folder("tniokcehc")
         self.active_project.get_project_saver().save_project()
 
     def test_save_config_phase(self):

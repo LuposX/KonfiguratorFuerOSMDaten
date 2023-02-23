@@ -86,7 +86,6 @@ class TestProjectIO:
         assert "TestProject1" == self.active_project.get_project_settings().get_name()
         assert "This project is to test!" == self.active_project.get_project_settings().get_description()
         assert Path(os.path.join(TEST_DIR, "build/Projects/TestProject1")) == self.active_project.get_project_settings().get_location()
-        assert "calculation_check_points" == self.active_project.get_project_settings().get_calculation_phase_checkpoints_folder()
 
     def test_load_config(self):
         application_settings_o = application_settings_i.ApplicationSettings()
