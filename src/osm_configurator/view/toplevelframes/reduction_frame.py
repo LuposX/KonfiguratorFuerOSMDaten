@@ -104,7 +104,7 @@ class ReductionFrame(TopLevelFrame):
         self._category_button_list: [customtkinter.CTkButton] = []
 
         # The segmented Button, for choosing between calculation or reduction settings
-        self._segmented_button_values: List[str] = ["Calculation", "Reduction"]
+        self._segmented_button_values: List[str] = ["Reduction", "Default Values"]
         self._segmented_button: customtkinter.CTkSegmentedButton = customtkinter.CTkSegmentedButton(master=self,
                                                                                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
                                                                                                                 3 / 4) - ELEMENT_BORDER_DISTANCE,
@@ -268,7 +268,7 @@ class ReductionFrame(TopLevelFrame):
             if self._last_pressed_category_button is not None:
                 self._last_pressed_category_button.configure(state="disabled",
                                                              fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
-                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
 
             self._segmented_button.configure(state="normal")
 
