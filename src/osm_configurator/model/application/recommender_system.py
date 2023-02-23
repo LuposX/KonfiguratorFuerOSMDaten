@@ -22,7 +22,6 @@ MOST_USED_TAGS_TABLE_PATH: Final = "data/most_used_keys.csv"
 
 
 class RecommenderSystem:
-
     """
     This class job is to provide recommendations to different classes.
     """
@@ -31,8 +30,7 @@ class RecommenderSystem:
         """
         Creates a new instance of the RecommenderSystem.
         """
-        self._number_of_keys_to_recommend: int = application_settings_manager\
-            .get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_RECOMMENDATIONS)
+        self._settings = application_settings_manager
 
     def recommend_key(self, input: str) -> List[str]:
         """
@@ -45,6 +43,9 @@ class RecommenderSystem:
         Returns:
             List[str]: Returns a List of strings containing the recommendations depending on the input. If file was not found return None.
         """
+        number_of_keys_to_recommend: int = int(self._settings .get_setting(
+            application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_RECOMMENDATIONS))
+
         path_to_recommender_file: Path = Path(os.path.join(PROJECT_DIR, MOST_USED_TAGS_TABLE_PATH))
         try:
             # open the file
@@ -58,5 +59,4 @@ class RecommenderSystem:
 
         # Replaces all NaN values with False.
         found_matches.replace(np.NaN, False, inplace=True)
-
-        return key_df.loc[found_matches][CL_KEY].tolist()[:self._number_of_keys_to_recommend]
+        return key_df.loc[found_matches][CL_KEY].tolist()[:number_of_keys_to_recommend]
