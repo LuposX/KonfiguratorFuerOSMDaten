@@ -165,31 +165,33 @@ class MainMenuFrame(TopLevelFrame):
             passive_project (PassiveProject): Project that will be loaded
         """
         project_path = self._passive_projects[index].get_project_folder_path()
+
         try:
             self._project_controller.load_project(project_path)
+
+            config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
+
+            match config_phase:
+                case config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.DATA)
+
+                case config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
+
+                case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.REDUCTION)
+
+                case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.AGGREGATION)
+
+                case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.CALCULATION)
+
         except NotValidName as err:
             popup = AlertPopUp(str(err.args))
             popup.mainloop()
             self.activate()
             return
-
-        config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
-
-        match config_phase:
-            case config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.DATA)
-
-            case config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
-
-            case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.REDUCTION)
-
-            case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.AGGREGATION)
-
-            case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
-                self._state_manager.change_state(state_name_enum_i.StateName.CALCULATION)
 
 
     def __create_project(self):

@@ -530,9 +530,10 @@ class AttractivityEditFrame(TopLevelFrame):
                 break
 
         if name_ok:
-            new_attractivity: attractivity_attribute_i.AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute(
-                name)
             try:
+                new_attractivity: attractivity_attribute_i.AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute(
+                    name)
+
                 if not self._selected_category.add_attractivity_attribute(new_attractivity):
                     alert_pop_up_i.AlertPopUp("Creation of Attractivity-Attribute Failed!")
                 else:
