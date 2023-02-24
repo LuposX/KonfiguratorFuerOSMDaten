@@ -95,9 +95,11 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        directory, filename = os.path.split(path)
+        zip_file_name: str = self.path_with_zip_to_str(path)
+        directory, filename = os.path.split(zip_file_name)
+        print(zip_file_name)
         return self._active_project.get_data_visualizer().create_map(self._active_project.get_config_manager()
-                                                                     .get_cut_out_configuration().get_cut_out_path(), directory, filename)
+                                                                     .get_cut_out_configuration().get_cut_out_path(), directory, filename + ".html")
 
     def path_with_zip_to_str(self, path: Path) -> str:
         """

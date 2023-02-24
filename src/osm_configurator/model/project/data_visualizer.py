@@ -52,7 +52,7 @@ class DataVisualizer:
         Args:
             cut_out_file (Path): The cut-out file path.
             map_saving_path (Path): the path where we want to save the file, doesn't include filename.
-            filename (str): the name under which the file should be saved, need t ohave the ".html" extension.
+            filename (str): the name under which the file should be saved, need to have the ".html" extension.
 
         Returns:
             bool: True if creating the map works, otherwise false.
