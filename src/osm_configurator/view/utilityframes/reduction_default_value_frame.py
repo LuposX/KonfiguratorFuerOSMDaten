@@ -528,6 +528,9 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
             self._create_tag_button.configure(state="disabled")
             self._delete_tag_button.configure(state="disabled")
 
+            self._tag_list.freeze()
+
+
             self._frozen: bool = True
 
     def unfreeze(self):
@@ -554,5 +557,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                 self._deactivate_frame()
             elif self._selected_entry is None:
                 self._deactivate_editing()
+
+            self._tag_list.unfreeze()
 
             self._frozen: bool = False

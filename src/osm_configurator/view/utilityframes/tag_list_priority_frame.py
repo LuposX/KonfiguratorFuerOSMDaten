@@ -260,6 +260,7 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
                                                      text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
                                                      fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
         self._selected_button_id: int = button_id
+        self._last_pressed_entry_button: customtkinter.CTkButton = self._entry_button_list[button_id]
 
         # telling parent what entry was pressed
         # since buttons and entries alling in theri id, we can just use the button_id to find it

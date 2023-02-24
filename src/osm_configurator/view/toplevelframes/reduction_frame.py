@@ -272,7 +272,7 @@ class ReductionFrame(TopLevelFrame):
 
             self._segmented_button.configure(state="normal")
 
-            self._reduction_calculation_frame.freeze()
-            self._reduction_default_value_frame.freeze()
+            self._reduction_calculation_frame.unfreeze()
+            self._reduction_default_value_frame.unfreeze()
 
             self._frozen: bool = False
