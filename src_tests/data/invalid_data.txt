@@ -1,0 +1,2 @@
+This is neither a valid OSM-file, nor a valid geojson file.
+This file is needed for tests, which must behave correctly when given files that are not formatted correctly.

@@ -1,3 +1,8 @@
+## Mac
+.DS_Store
+__pycache__
+src_tests/build
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -277,3 +282,4 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+/src/osm_configurator/model/application/application_setting.json
