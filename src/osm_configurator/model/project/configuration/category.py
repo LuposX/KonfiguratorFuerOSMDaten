@@ -67,17 +67,19 @@ class Category:
         """
         return self._active
 
-    def activate(self):
+    def activate(self) -> bool:
         """
         Sets the active-value to True.
         """
         self._active = True
+        return True
 
-    def deactivate(self):
+    def deactivate(self) -> bool:
         """
         Sets the active-value to False.
         """
         self._active = False
+        return True
 
     def get_whitelist(self) -> List[str]:
         """
@@ -212,6 +214,7 @@ class Category:
             boolean (bool): The new value _strictly_use_default_values should be set to.
         """
         self._strictly_use_default_values = boolean
+        return True
 
     def get_calculation_method_of_area(self) -> CalculationMethodOfArea:
         """
@@ -222,14 +225,18 @@ class Category:
         """
         return self._calculation_method_of_area
 
-    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea):
+    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea) -> bool:
         """
         Overwrites current calculate_area with the given value.
 
         Args:
             new_calculation_method_of_area (CalculationMethodOfArea): new value that will overwrite the existing value.
+
+        Returns:
+            bool: True if successfully set, False else
         """
         self._calculation_method_of_area = new_calculation_method_of_area
+        return True
 
     def get_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
