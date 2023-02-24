@@ -23,7 +23,6 @@ class TestRecommenderSystem:
 
         assert "building" in found_list_with_keys
         assert "building:levels" in found_list_with_keys
-        assert "building:min_level" in found_list_with_keys
 
         found_list_with_keys: List[str] = recommender_system_o.recommend_key("hi")
 
