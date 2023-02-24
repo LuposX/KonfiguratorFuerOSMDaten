@@ -21,6 +21,8 @@ import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.entry_constants as entry_constants_i
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 
+import src.osm_configurator.model.model_constants as model_constants_i
+
 from src.osm_configurator.view.freezable import Freezable
 
 from typing import TYPE_CHECKING, List
@@ -33,7 +35,6 @@ if TYPE_CHECKING:
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 12
-
 
 class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
     """
@@ -305,7 +306,14 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
 
             self._activate_editing()
 
+            # Activating entry, so value can be set
+            self._tag_entry.configure(state="normal")
             self._tag_entry.insert(0, self._selected_entry.get_default_value_entry_tag())
+            # deactivating entry again, if it is the default value, so it can't be edited
+            if self._selected_entry.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+                self._tag_entry.configure(state="disabled")
+            else:
+                self._tag_entry.configure(state="normal")
 
             self._area_entry.insert(0, self._selected_entry.get_attribute_default(
                 attribute_enum_i.Attribute.PROPERTY_AREA))
@@ -315,9 +323,12 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
 
             self._floor_area_entry.insert(0, self._selected_entry.get_attribute_default(
                 attribute_enum_i.Attribute.FLOOR_AREA))
+
         else:
             self._reset_text_entries()
             self._deactivate_editing()
+
+        return True
 
     def _tag_entry_edited(self, event: tkinter.Event):
 
@@ -460,7 +471,12 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                           text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                           fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value)
 
-        self._tag_entry.configure(state="normal")
+        # Only deactivating the tag entry if this is the Default Value, so it doesn't get edited
+        if self._selected_entry.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+            self._tag_entry.configure(state="disabled")
+        else:
+            self._tag_entry.configure(state="normal")
+
         self._area_entry.configure(state="normal")
         self._number_of_floors_entry.configure(state="normal")
         self._floor_area_entry.configure(state="normal")
@@ -516,7 +532,13 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         If this method is called, the frame returns into its previous interactable state.
         """
         if self._frozen:
-            self._tag_entry.configure(state="normal")
+
+            # Only deactivating the tag entry if this is the Default Value, so it doesn't get edited
+            if self._selected_entry.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+                self._tag_entry.configure(state="disabled")
+            else:
+                self._tag_entry.configure(state="normal")
+
             self._area_entry.configure(state="normal")
             self._number_of_floors_entry.configure(state="normal")
             self._floor_area_entry.configure(state="normal")

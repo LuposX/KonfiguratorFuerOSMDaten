@@ -21,6 +21,9 @@ class DefaultValueEntry:
         """
         Constructor of the class.
         Creates an empty DefaultValueEntry with 0 for all the factor values.
+
+        Args:
+            tag (str): The initial Tag for this entry
         """
         self._tag: str = tag
         self._all_attribute_default_values: Dict[Attribute, float] = {}
@@ -35,7 +38,7 @@ class DefaultValueEntry:
         """
         return self._tag
 
-    def set_tag(self, new_tag: str):
+    def set_tag(self, new_tag: str) -> bool:
         """
         Sets a new value for a given tag
 
@@ -44,6 +47,9 @@ class DefaultValueEntry:
         """
         if new_tag != "":
             self._tag = new_tag
+            return True
+        else:
+            return False
 
     def set_attribute_default(self, attribute: Attribute, value: float) -> bool:
         """
