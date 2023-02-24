@@ -48,7 +48,7 @@ class ApplicationSettings:
         # check for the application settings file.
         self._application_settings_file: Path = None
         file: str
-        for file in os.listdir(application_path):
+        for file in Path(application_path).iterdir():
             if os.path.basename(file) == APPLICATION_SETTINGS_FILE:
                 self._application_settings_file = Path(file)
                 break
