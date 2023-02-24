@@ -174,13 +174,15 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         self._selected_category: category_i.Category = category
 
         if self._selected_category is None:
+            self._true_activate()
+            self._unselect_checkboxes_and_switch()
             self._deactivate_editing()
         else:
-            self._activate_editing()
+            # Activating everything, so it can be selected or deselected
+            self._true_activate()
 
-            # Setting all the checkboxes, and maybe deactivating settings if needed
+            # Selecting or deselecting checkboxes, based on category
             if self._selected_category.get_strictly_use_default_values():
-                self._deactivate_below_strictly_use_default_values()
                 self._strictly_use_default_values_checkbox.select()
             else:
                 self._strictly_use_default_values_checkbox.deselect()
@@ -193,7 +195,6 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             if self._selected_category.get_attribute(attribute_enum_i.Attribute.PROPERTY_AREA):
                 self._calculate_area_checkbox.select()
             else:
-                self._deactivate_switch()
                 self._calculate_area_checkbox.deselect()
 
             method: calculation_method_of_area_enum_i.CalculationMethodOfArea = category.get_calculation_method_of_area()
@@ -204,6 +205,14 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                 self._site_building_switch.select()
             else:
                 raise ValueError("Category has to be either one of the calculation Methods!")
+
+
+            # Now deactivating editing parts if necesseary
+            if not self._selected_category.get_strictly_use_default_values():
+                self._deactivate_below_strictly_use_default_values()
+
+            if not self._selected_category.get_attribute(attribute_enum_i.Attribute.PROPERTY_AREA):
+                self._deactivate_switch()
 
             # Category loaded, so return True
             return True
@@ -227,14 +236,12 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _site_building_switch_edited(self):
         if self._site_building_switch.get() == 1:
-            self._strictly_use_default_values_checkbox.configure(state=tkinter.DISABLED)
             if not self._selected_category.set_calculation_method_of_area(
                     calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA):
                 alert_pop_up_i.AlertPopUp("Could not switch calculation Method!")
                 # reloading frame
                 self.load_category(self._selected_category)
         else:
-            self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
             if not self._selected_category.set_calculation_method_of_area(
                     calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA):
                 alert_pop_up_i.AlertPopUp("Could not switch calculation Method!")
@@ -243,13 +250,11 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _calculate_floor_area_checkbox_edited(self):
         if self._calculate_floor_area_checkbox.get() == 1:
-            self._strictly_use_default_values_checkbox.configure(state=tkinter.DISABLED)
             if not self._selected_category.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, True):
                 alert_pop_up_i.AlertPopUp("Could not activate calculation of floor area!")
                 # reloading frame
                 self.load_category(self._selected_category)
         else:
-            self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
             if not self._selected_category.set_attribute(attribute_enum_i.Attribute.FLOOR_AREA, False):
                 alert_pop_up_i.AlertPopUp("Could not deactivate calculation of floor area!")
                 # reloading frame
@@ -257,13 +262,13 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _strictly_use_default_values_checkbox_edited(self):
         if self._strictly_use_default_values_checkbox.get() == 1:
-            self._deactivate_below_strictly_use_default_values()
+            self._activate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(True):
                 alert_pop_up_i.AlertPopUp("Could not activate strictly using default values!")
                 # refreshing frame
                 self.load_category(self._selected_category)
         else:
-            self._activate_below_strictly_use_default_values()
+            self._deactivate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(False):
                 alert_pop_up_i.AlertPopUp("Could not deactivate strictly using default values!")
                 # refreshing frame
@@ -303,6 +308,19 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _activate_switch(self):
         self._site_building_switch.configure(state="normal")
+
+    def _true_activate(self):
+        self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
+        self._calculate_floor_area_checkbox.configure(state=tkinter.NORMAL)
+        self._calculate_area_checkbox.configure(state=tkinter.NORMAL)
+        self._site_building_switch.configure(state=tkinter.NORMAL)
+
+    def _unselect_checkboxes_and_switch(self):
+        self._strictly_use_default_values_checkbox.deselect()
+        self._calculate_floor_area_checkbox.deselect()
+        self._calculate_area_checkbox.deselect()
+        self._site_building_switch.deselect()
+
 
     def freeze(self):
         """

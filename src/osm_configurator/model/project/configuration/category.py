@@ -225,14 +225,18 @@ class Category:
         """
         return self._calculation_method_of_area
 
-    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea):
+    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea) -> bool:
         """
         Overwrites current calculate_area with the given value.
 
         Args:
-            new_calculation_method_of_area (bool): new value that will overwrite the existing value.
+            new_calculation_method_of_area (CalculationMethodOfArea): new value that will overwrite the existing value.
+
+        Returns:
+            bool: True if successfully set, False else
         """
         self._calculation_method_of_area = new_calculation_method_of_area
+        return True
 
     def get_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
