@@ -308,6 +308,9 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
 
             # Activating entry, so value can be set
             self._tag_entry.configure(state="normal")
+            # Deleting stuff inside first
+            self._tag_entry.delete(0, tkinter.END)
+            # now inserting new stuff
             self._tag_entry.insert(0, self._selected_entry.get_default_value_entry_tag())
             # deactivating entry again, if it is the default value, so it can't be edited
             if self._selected_entry.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
