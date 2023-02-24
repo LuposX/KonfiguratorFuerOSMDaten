@@ -53,7 +53,7 @@ class DefaultValueEntry:
 
     def set_attribute_default(self, attribute: Attribute, value: float) -> bool:
         """
-        Sets the default value of an attribute.
+        Sets the default value of an attribute
 
         Args:
             attribute (attribute_enum.Attribute): Attribute whose value will be overwritten

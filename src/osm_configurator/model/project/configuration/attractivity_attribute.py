@@ -77,6 +77,7 @@ class AttractivityAttribute:
             factor: The factor we want to set
         """
         self._attribute_factors[attribute] = factor
+        return True
 
     def get_base_factor(self) -> float:
         """
@@ -93,3 +94,4 @@ class AttractivityAttribute:
             new_base_factor (float): New value for the base factor
         """
         self._base_attractivity = new_base_factor
+        return True
