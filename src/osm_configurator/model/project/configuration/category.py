@@ -67,19 +67,17 @@ class Category:
         """
         return self._active
 
-    def activate(self) -> bool:
+    def activate(self):
         """
         Sets the active-value to True.
         """
         self._active = True
-        return True
 
-    def deactivate(self) -> bool:
+    def deactivate(self):
         """
         Sets the active-value to False.
         """
         self._active = False
-        return True
 
     def get_whitelist(self) -> List[str]:
         """
