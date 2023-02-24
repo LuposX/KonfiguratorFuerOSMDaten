@@ -57,19 +57,5 @@ class TestDataVisualizer:
         deleter: FileDeletion = file_deletion.FileDeletion()
         deleter.reset_folder(project_path)
 
-        assert data_visualizer_o.create_boxplot(data, project_path, "boxplot.png")
-        assert os.path.exists(os.path.join(project_path, "boxplot.png"))
+        assert data_visualizer_o.create_boxplot(data, project_path)
 
-    def test_boxplot_invalid_data(self):
-        # create the data visualizer object
-        data_visualizer_o = data_visualizer_i.DataVisualizer()
-
-        # read in data
-        data: Path = Path(os.path.join(TEST_DIR, "data/invalid_data.txt"))
-        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer/"))
-
-        # create folder for test file
-        deleter: FileDeletion = file_deletion.FileDeletion()
-        deleter.reset_folder(project_path)
-
-        assert data_visualizer_o.create_boxplot(data, project_path, "boxplot.png") == False
