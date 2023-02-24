@@ -380,10 +380,11 @@ class AttractivityEditFrame(TopLevelFrame):
 
         if len(self._categories) == 0:
             self._selected_category: category_i.Category = None
+            self._category_drop_down_menu.set("")
         else:
             self._selected_category: category_i.Category = self._categories[0]
-
-        self._category_drop_down_menu.set(self._selected_category.get_category_name())
+            self._category_drop_down_menu.set(self._selected_category.get_category_name())
+        
         self._load_category(self._selected_category)
 
     def _category_drop_down_menu_edited(self, choice):
