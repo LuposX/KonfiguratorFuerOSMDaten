@@ -230,6 +230,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
             height=BUTTON_HEIGHT,
             corner_radius=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
             fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
+            text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_TEXT_COLOR.value,
             button_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
             button_hover_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_HOVER_COLOR.value,
             dropdown_fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_FG_COLOR.value,
