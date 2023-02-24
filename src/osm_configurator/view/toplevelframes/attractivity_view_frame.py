@@ -228,7 +228,7 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                                        text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                                                                        anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                                                                        text="Base-Attractivity-Factor:")
-        self._base_attractivity_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+        self._base_attractivity_label.grid(row=0, column=7, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Button to go back to edit the attractivities
@@ -296,9 +296,15 @@ class AttractivityViewFrame(TopLevelFrame):
             self._category_button_list.append(new_button)
 
         # Loading a Category
-        self._load_category(self._selected_category)
+        if self._selected_category is None:
+            self._load_category(self._selected_category)
+        else:
+            # If there is a Category set, then there is a button for it, so we pretend first button was pressed
+            # which will load automatically the correct category and disable the correct button
+            self._category_button_pressed(0)
 
-    def _load_category(self, category: category_i.Category):
+
+    def _load_category(self, category: category_i.Category | None):
 
         # First deleting all labels on the attractivity scrollable frame, to make room for new ones
         self._delete_attractivity_scrollable_frame()
