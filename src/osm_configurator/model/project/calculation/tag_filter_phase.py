@@ -30,6 +30,8 @@ if TYPE_CHECKING:
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
     from src.osm_configurator.model.project.calculation.paralellization.work import Work
+    from src.osm_configurator.model.project.calculation.prepare_calculation_information import \
+        PrepareCalculationInformation
 
 
 class TagFilterPhase(ICalculationPhase):
@@ -60,20 +62,14 @@ class TagFilterPhase(ICalculationPhase):
             Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
         # Prepare various stuff for the calculation phase
-        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase\
+        prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase\
             .prepare_phase(configuration_manager_o=configuration_manager_o,
                            current_calculation_phase=calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE,
                            last_calculation_phase=calculation_phase_enum_i.CalculationPhase.GEO_DATA_PHASE)
 
         # Return if we got an error
-        if type(prepare_calc_tuple[0]) == calculation_state_enum_i.CalculationState:
-            return prepare_calc_tuple[0], prepare_calc_tuple[1]
-
-        else:
-            cut_out_dataframe = prepare_calc_tuple[0]
-            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
-            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
-            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
+        if prepare_calc_obj.get_calculation_state() is None:
+            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Get the CategoryManager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
@@ -86,14 +82,14 @@ class TagFilterPhase(ICalculationPhase):
             application_manager.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES))
 
         # parse the osm data  with the parser
-        for traffic_cell_file_path in list_of_traffic_cell_checkpoints:
+        for traffic_cell_file_path in prepare_calc_obj.get_list_of_traffic_cell_checkpoints():
             execute_traffic_cell: Work = work_i.Work(
                 target=self._parse_the_data_file,
                 args=(osm_data_parser_o,
                       traffic_cell_file_path,
                       category_manager_o,
                       configuration_manager_o,
-                      checkpoint_folder_path_current_phase
+                      prepare_calc_obj.get_checkpoint_folder_path_current_phase()
                       )
             )
             work_manager.append_work(execute_traffic_cell)

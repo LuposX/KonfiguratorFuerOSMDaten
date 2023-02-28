@@ -33,6 +33,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
     from src.osm_configurator.model.project.calculation.paralellization.work import Work
+    from src.osm_configurator.model.project.calculation.prepare_calculation_information import \
+        PrepareCalculationInformation
 
 
 class AttractivityPhase(ICalculationPhase):
@@ -59,20 +61,14 @@ class AttractivityPhase(ICalculationPhase):
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.
         """
-        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase \
+        prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase \
             .prepare_phase(configuration_manager_o=configuration_manager,
                            current_calculation_phase=calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE,
                            last_calculation_phase=calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
 
         # Return if we got an error
-        if type(prepare_calc_tuple[0]) == calculation_state_enum.CalculationState:
-            return prepare_calc_tuple[0], prepare_calc_tuple[1]
-
-        else:
-            cut_out_dataframe = prepare_calc_tuple[0]
-            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
-            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
-            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
+        if prepare_calc_obj.get_calculation_state() is None:
+            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Iterate over all traffic cells and generate the attractivities (using multiprocessing)
         work_manager: WorkManager = work_manager_i.WorkManager(
@@ -80,7 +76,7 @@ class AttractivityPhase(ICalculationPhase):
 
         index: int
         row: Series
-        for index, row in cut_out_dataframe.iterrows():
+        for index, row in prepare_calc_obj.get_cut_out_dataframe().iterrows():
             cell_name: str = row[model_constants.CL_TRAFFIC_CELL_NAME]
             execute_traffic_cell: Work = work_i.Work(
                 target=self._calculate_attractivity_in_traffic_cell,
