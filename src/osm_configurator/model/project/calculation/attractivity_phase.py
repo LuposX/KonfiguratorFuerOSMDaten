@@ -67,7 +67,7 @@ class AttractivityPhase(ICalculationPhase):
                            last_calculation_phase=calculation_phase_enum.CalculationPhase.REDUCTION_PHASE)
 
         # Return if we got an error
-        if prepare_calc_obj.get_calculation_state() is None:
+        if prepare_calc_obj.get_calculation_state() is not None:
             return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Iterate over all traffic cells and generate the attractivities (using multiprocessing)

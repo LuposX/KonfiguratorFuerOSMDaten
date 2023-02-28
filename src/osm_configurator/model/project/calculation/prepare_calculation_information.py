@@ -14,7 +14,7 @@ class PrepareCalculationInformation:
     This class purpose is to be a container of information that the various calculation classes needs, generated
     from the prepare_calculation_phase_method.
     """
-    def __int__(self,
+    def __init__(self,
                 cut_out_dataframe: GeoDataFrame = None,
                 checkpoint_folder_path_last_phase: Path = None,
                 checkpoint_folder_path_current_phase: Path = None,

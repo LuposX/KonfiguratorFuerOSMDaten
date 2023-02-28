@@ -68,7 +68,7 @@ class TagFilterPhase(ICalculationPhase):
                            last_calculation_phase=calculation_phase_enum_i.CalculationPhase.GEO_DATA_PHASE)
 
         # Return if we got an error
-        if prepare_calc_obj.get_calculation_state() is None:
+        if prepare_calc_obj.get_calculation_state() is not None:
             return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Get the CategoryManager

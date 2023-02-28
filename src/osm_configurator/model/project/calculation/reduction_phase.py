@@ -80,7 +80,7 @@ class ReductionPhase(ICalculationPhase):
                            last_calculation_phase=calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE)
 
         # Return if we got an error
-        if prepare_calc_obj.get_calculation_state() is None:
+        if prepare_calc_obj.get_calculation_state() is not None:
             return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # get the category manager
