@@ -9,7 +9,9 @@ import src.osm_configurator.model.project.calculation.folder_path_calculator as 
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum_i
 from src.osm_configurator.model.parser.custom_exceptions.illegal_cut_out_exception import IllegalCutOutException
 
-from typing import TYPE_CHECKING, List, Tuple
+from src.osm_configurator.model.project.calculation.prepare_calculation_information import PrepareCalculationInformation
+
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
@@ -33,7 +35,7 @@ class PrepareCalculationPhase:
     def prepare_phase(cls, configuration_manager_o: ConfigurationManager,
                       current_calculation_phase: CalculationPhase,
                       last_calculation_phase: CalculationPhase) \
-            -> Tuple[GeoDataFrame, Path, Path, List[Path] | Path] | Tuple[CalculationState, str, None, None]:
+            -> PrepareCalculationInformation:
         """
         This method does things every calculation phase needs to do, it does the following:
         1. checks that cut_out file exists.
@@ -49,32 +51,28 @@ class PrepareCalculationPhase:
             last_calculation_phase (CalculationPhase): The last phase which we want to calculate.
 
         Returns:
-            Tuple[CalculationState, str]: Gets returned if an error occurred.
-            Tuple[GeoDataFrame, Path, Path, List[Path]]: Returns in a tuple with the following items in
-                                                        the following order:
-                                                        Dataframe of the cut out file,
-                                                        the path towards the folder of the last phase,
-                                                        the path towards the folder of the current phase,
-                                                         a list of paths for all items in the last directory.
+            PrepareCalculationInformation: All important information the phases needed encapsulated in an object.
         """
         # Get data frame of geojson
         parser: CutOutParserInterface = cut_out_parser_i.CutOutParser()
         geojson_path: Path = configuration_manager_o.get_cut_out_configuration().get_cut_out_path()
 
         if geojson_path is None:
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, \
-                "geojson was not configured", None, None
+            return PrepareCalculationInformation(
+                calculation_state=calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA,
+                error_message="geojson was not configured")
 
         if not os.path.exists(geojson_path):
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, \
-                "referenced geojson file does not exist", None, None
+            return PrepareCalculationInformation(
+                calculation_state=calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA,
+                error_message="referenced geojson file does not exist")
 
         try:
             cut_out_dataframe: GeoDataFrame = parser.parse_cutout_file(geojson_path)
         except IllegalCutOutException as err:
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, \
-                "The geojson is corrupted", None, None
-
+            return PrepareCalculationInformation(
+                calculation_state=calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA,
+                error_message="The geojson is corrupted: " + str(err))
 
         # Get path to the results of the last Phase
         checkpoint_folder_path_last_phase: Path = folder_path_calculator_i.FolderPathCalculator\
@@ -90,30 +88,36 @@ class PrepareCalculationPhase:
 
         # check if the folder exist
         if not checkpoint_folder_path_current_phase.exists():
-            return calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, \
-                "The result folder for the current phase doesn't exist.", None, None
+            return PrepareCalculationInformation(
+                calculation_state=calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY,
+                error_message="The result folder for the current phase doesn't exist.")
 
         if checkpoint_folder_path_last_phase is None:
-            return calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, \
-                "The checkpoint folder of the last phase is not valid.", None, None
+            return PrepareCalculationInformation(
+                calculation_state=calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY,
+                error_message="The checkpoint folder of the last phase is not valid.")
 
         if current_calculation_phase == calculation_phase_enum_i.CalculationPhase.GEO_DATA_PHASE:
             if checkpoint_folder_path_last_phase.exists():
                 list_of_traffic_cell_checkpoints: Path = checkpoint_folder_path_last_phase
 
             else:
-                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, \
-                    "The osm data are not valid.", None, None
+                return PrepareCalculationInformation(
+                    calculation_state=calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA,
+                    error_message="The osm data are not valid.")
 
         else:
             if checkpoint_folder_path_last_phase.exists():
                 list_of_traffic_cell_checkpoints: List[Path] = list(checkpoint_folder_path_last_phase.iterdir())
 
             else:
-                return calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY, \
-                    "The result folder for the last phase doesn't exist.", None, None
+                return PrepareCalculationInformation(
+                    calculation_state=calculation_state_enum_i.CalculationState.ERROR_PROJECT_NOT_SET_UP_CORRECTLY,
+                    error_message="The result folder for the last phase doesn't exist.")
 
-        return cut_out_dataframe, \
-            checkpoint_folder_path_last_phase, \
-            checkpoint_folder_path_current_phase, \
-            list_of_traffic_cell_checkpoints
+        return PrepareCalculationInformation(
+            cut_out_dataframe=cut_out_dataframe,
+            checkpoint_folder_path_last_phase=checkpoint_folder_path_last_phase,
+            checkpoint_folder_path_current_phase=checkpoint_folder_path_current_phase,
+            list_of_traffic_cell_checkpoints=list_of_traffic_cell_checkpoints
+            )
