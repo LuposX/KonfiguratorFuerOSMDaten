@@ -37,7 +37,7 @@ class WorkManager:
 
     def do_all_work(self) -> List:
         """
-        Executes all work that has been append till now.
+        Executes all work that has been appended till now.
 
         Returns:
             List: A list of the return-values of all the work.

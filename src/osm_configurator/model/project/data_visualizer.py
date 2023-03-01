@@ -83,10 +83,10 @@ class DataVisualizer:
         Returns:
             bool: True if creating the boxplot works, otherwise false.
         """
-        # create old folder if it exist.
+        # create old folder if it exists.
         shutil.rmtree(boxplot_saving_path, ignore_errors=True)
 
-        # create folder if doesn't exist
+        # create folder if it doesn't exist
         boxplot_saving_path.mkdir(parents=True, exist_ok=True)
 
         # try saving the figure

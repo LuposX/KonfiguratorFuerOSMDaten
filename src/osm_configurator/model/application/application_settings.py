@@ -30,7 +30,7 @@ class ApplicationSettings:
         Creates a new instance of the application_settings_file.
 
         Args:
-            path_to_starting_file (Path): If set that directory will be used to create the applciation settings file.
+            path_to_starting_file (Path): If set that directory will be used to create the application settings file.
         """
         # Get the path of the application
         if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
@@ -53,7 +53,7 @@ class ApplicationSettings:
                 self._application_settings_file = Path(file)
                 break
 
-        # This mean the application_Settings file doesn't exist yet and we need to create it
+        # This mean the application_Settings file doesn't exist yet, and we need to create it
         if self._application_settings_file is None:
             self._application_settings_file = ApplicationSettings.create_application_settings_file(application_path,
                                                                 APPLICATION_SETTINGS_FILE)
@@ -132,7 +132,7 @@ class ApplicationSettings:
             application_settings_file_name (str) The name of the settings file, should have the extension '.json'.
 
         Returns:
-            Path | None: The path towards the created file, none if didnt work.
+            Path | None: The path towards the created file, none if didn't work.
         """
         settings_dict: Dict[str, Any] = {}
 

@@ -71,7 +71,7 @@ class AggregationMethod(Enum):
         Executes the aggregation method of the called enum type.
 
         Args:
-            data (Series): The data on which we want to execute the function on, should be a Series containing attractitivity attributes.
+            data (Series): The data on which we want to execute the function on, should be a Series containing attractivity attributes.
 
         Returns:
             float: The aggregated value of the attractivity values from all osm elements.

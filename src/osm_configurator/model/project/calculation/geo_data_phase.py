@@ -27,6 +27,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
     from typing import Tuple, Any
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
+    from src.osm_configurator.model.project.calculation.prepare_calculation_information import \
+        PrepareCalculationInformation
 
 
 class GeoDataPhase(ICalculationPhase):
@@ -54,25 +56,19 @@ class GeoDataPhase(ICalculationPhase):
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation after this phase finished its execution or failed trying so.
         """
-        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase \
+        prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase \
             .prepare_phase(configuration_manager_o=configuration_manager,
                            current_calculation_phase=calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE,
                            last_calculation_phase=calculation_phase_enum.CalculationPhase.NONE)
 
         # Return if we got an error
-        if type(prepare_calc_tuple[0]) == calculation_state_enum.CalculationState:
-            return prepare_calc_tuple[0], prepare_calc_tuple[1]
-
-        else:
-            cut_out_dataframe = prepare_calc_tuple[0]
-            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
-            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
-            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
-
+        if prepare_calc_obj.get_calculation_state() is not None:
+            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Split up files
-        splitter: SplitUpFile = split_up_files.SplitUpFile(checkpoint_folder_path_last_phase, checkpoint_folder_path_current_phase)
-        result: bool = splitter.split_up_files(cut_out_dataframe)
+        splitter: SplitUpFile = split_up_files.SplitUpFile(origin_path=prepare_calc_obj.get_checkpoint_folder_path_last_phase(),
+                                                           result_folder=prepare_calc_obj.get_checkpoint_folder_path_current_phase())
+        result: bool = splitter.split_up_files(prepare_calc_obj.get_cut_out_dataframe())
 
         if result:
             return calculation_state_enum.CalculationState.RUNNING, "The calculation is running"

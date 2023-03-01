@@ -18,7 +18,7 @@ class DefaultValueFinder:
         """
         This method figures out the first default value entry in the List which applies to the osm element.
         Where applies means that the osm element hast the same key-value pair then the default-value-entry.
-        The Default-value-list has a priority the lowest index is the most important, if that element doesnt apply
+        The Default-value-list has a priority the lowest index is the most important, if that element doesn't apply
         we iterate further along the list until we find a default-value-entry which applies.
 
         Args:
@@ -40,7 +40,7 @@ class DefaultValueFinder:
             if not default_tag:
                 continue
 
-            # If its the default default tag
+            # If it's the default default-tag
             if default_tag == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
                 return _default_value_entry
 
@@ -57,7 +57,7 @@ class DefaultValueFinder:
             # get the first value of every tuple entry, which is the key of the tag
             # if this true this means the key value of the default value is also in the osm tag list.
             if key_tag_default_value_entry in osm_element_tags.keys():
-                # The don't care symbol is "*" if thats set the value of the osm element for this tag
+                # The "don't care symbol" is "*" if it is set, then the value of the osm element for this tag
                 # doesn't interest us.
                 if value_tag_default_value_entry == model_constants_i.DONT_CARE_SYMBOL:
                     is_osm_element_in_default_value = True
@@ -68,7 +68,7 @@ class DefaultValueFinder:
             if is_osm_element_in_default_value:
                 return _default_value_entry
 
-        # TODO: THIS SHOULDNT BE HERE, BUT CONFIGURATION DIDNT IMPLEMENT THIS, SO I NEED TO DO THIS MYSELF
+        # TODO: THIS SHOULDN'T BE HERE, BUT CONFIGURATION DIDN'T IMPLEMENT THIS, SO I NEED TO DO THIS MYSELF
         default_default_value_entry: DefaultValueEntry = default_value_entry_i.DefaultValueEntry()
         if len(osm_element_tags) != 0:
             default_default_value_entry.set_tag(osm_element_tags.get(list(osm_element_tags.keys())[0]))

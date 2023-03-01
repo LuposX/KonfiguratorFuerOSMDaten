@@ -35,6 +35,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
     from src.osm_configurator.model.project.calculation.paralellization.work import Work
+    from src.osm_configurator.model.project.calculation.prepare_calculation_information import \
+        PrepareCalculationInformation
 
 
 class AggregationPhase(ICalculationPhase):
@@ -61,20 +63,14 @@ class AggregationPhase(ICalculationPhase):
         Returns:
             calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.
         """
-        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase \
+        prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase \
             .prepare_phase(configuration_manager_o=configuration_manager_o,
                            current_calculation_phase=calculation_phase_enum.CalculationPhase.AGGREGATION_PHASE,
                            last_calculation_phase=calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE)
 
         # Return if we got an error
-        if type(prepare_calc_tuple[0]) == calculation_state_enum.CalculationState:
-            return prepare_calc_tuple[0], prepare_calc_tuple[1]
-
-        else:
-            cut_out_dataframe = prepare_calc_tuple[0]
-            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
-            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
-            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
+        if prepare_calc_obj.get_calculation_state() is not None:
+            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Get the manager
         aggregation_configuration: AggregationConfiguration = configuration_manager_o.get_aggregation_configuration()
@@ -94,8 +90,8 @@ class AggregationPhase(ICalculationPhase):
                 target=self._parse_the_data,
                 args=(aggregation_method,
                       category_manager,
-                      checkpoint_folder_path_current_phase,
-                      list_of_traffic_cell_checkpoints,
+                      prepare_calc_obj.get_checkpoint_folder_path_current_phase(),
+                      prepare_calc_obj.get_list_of_traffic_cell_checkpoints()
                       )
             )
             work_manager.append_work(execute_traffic_cell)
@@ -125,7 +121,7 @@ class AggregationPhase(ICalculationPhase):
                         list_of_traffic_cell_checkpoints: List[Path]):
 
         # Create a dict where we save the dataframe
-        # it has as key the name of a attractivity attribute and as value the list of calculated data entries
+        # it has as key the name of an attractivity attribute and as value the list of calculated data entries
         # for each traffic cell.
         # Another key, value pair is the traffic cell name, per entry in a list.
         aggregation_phase_data: Dict[str, List] = {}
