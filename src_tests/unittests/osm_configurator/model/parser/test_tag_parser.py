@@ -14,7 +14,7 @@ class TestTagParser:
 
         tags_wrongly_formated = ["building=yes=popp"]
 
-        with pytest.raises(Exception):
+        with pytest.raises(Exception) as e:
             tag_parser.parse_tags(tags_wrongly_formated)
 
     def test_tag_parser_wrongly(self):
@@ -22,7 +22,7 @@ class TestTagParser:
 
         tags_wrongly_formated = ["building=yes=popp"]
 
-        with pytest.raises(Exception):
+        with pytest.raises(Exception) as e:
             tag_parser.parse_tags(tags_wrongly_formated)
 
     def teste_string_to_list(self):

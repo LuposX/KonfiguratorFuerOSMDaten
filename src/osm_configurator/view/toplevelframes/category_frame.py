@@ -357,7 +357,7 @@ class CategoryFrame(TopLevelFrame):
             self.activate()
             alert_pop_up_i.AlertPopUp("There was an Error with the Category selection! The Frame has been refreshed!")
 
-    def _category_name_edited(self):
+    def _category_name_edited(self, event: tkinter.Event):
         # Getting what is written in the name entry
         new_category_name: str = self._category_name_entry.get()
 

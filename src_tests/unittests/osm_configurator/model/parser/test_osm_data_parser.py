@@ -25,7 +25,7 @@ class TestOSMDataParser:
 
         test_data_path = Path(os.path.join(TEST_DIR, "data/monaco_split_up_files/0_super_traffic_cell.pbf"))
         test_cutout_path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-        Path(os.path.join(TEST_DIR, "build/osm_data_parser/output.csv"))
+        saving_location_path = Path(os.path.join(TEST_DIR, "build/osm_data_parser/output.csv"))
 
         parsed_data_df = osm_parser.parse_osm_data_file(test_data_path, CATEGORY_MANAGER,
                                                      cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED,
@@ -64,7 +64,7 @@ class TestOSMDataParser:
 
         test_data_path = Path(os.path.join(TEST_DIR, "data/monaco_split_up_files/0_super_traffic_cell.pbf"))
         test_cutout_path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-        Path(os.path.join(TEST_DIR, "build/osm_data_parser/output.csv"))
+        saving_location_path = Path(os.path.join(TEST_DIR, "build/osm_data_parser/output.csv"))
 
         parsed_data_df = osm_parser.parse_osm_data_file(test_data_path, CATEGORY_MANAGER,
                                                         cut_out_mode_enum_i.CutOutMode.BUILDINGS_ON_EDGE_ACCEPTED,
@@ -99,5 +99,5 @@ class TestOSMDataParser:
                                                      test_cutout_path)
 
         # save result for inspection
-        with pytest.raises(Exception):
+        with pytest.raises(Exception) as e:
             parsed_data_df.to_csv(saving_location_path, exist_ok=True)

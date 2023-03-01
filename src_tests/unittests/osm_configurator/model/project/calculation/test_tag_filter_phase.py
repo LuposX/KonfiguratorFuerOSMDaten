@@ -71,7 +71,7 @@ class TestTagFilterPhase:
 
     def test_invalid_geojson_path(self):
         # Set up paths
-        Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
+        osm_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-latest.osm.pbf"))
         geojson_path: Path = Path(os.path.join(TEST_DIR, "data/adhsiadh/auhdhidsa.geojson"))
         project_path: Path = Path(os.path.join(TEST_DIR, "build/geo_data_phase/projectABC"))
 

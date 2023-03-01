@@ -70,8 +70,8 @@ class TagFilterPhase(ICalculationPhase):
             return prepare_calc_tuple[0], prepare_calc_tuple[1]
 
         else:
-            prepare_calc_tuple[0]
-            prepare_calc_tuple[1]
+            cut_out_dataframe = prepare_calc_tuple[0]
+            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
             checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
             list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
 

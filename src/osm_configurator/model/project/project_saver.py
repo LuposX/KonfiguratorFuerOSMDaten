@@ -53,37 +53,6 @@ ATTRACTIVITY_ATTRIBUTES: str = "attractivity_attributes"
 DEFAULT_VALUE_LIST: str = "default_value_list"
 
 
-def _write_csv_file(data: list, filename: Path) -> bool:
-    """
-    This method is to write the given data in a csv-file.
-
-    Args:
-        data (list): The data which should be stored.
-        filename (pathlib.Path): The path where the csv-file with the data should be stored
-
-    Returns:
-        bool: True if saving works, otherwise false.
-    """
-    with open(filename, WRITE, newline=EMPTY_STRING) as f:
-        writer = csv.writer(f)
-        writer.writerows(data)
-    return True
-
-
-def _create_filename(name: str) -> Path:
-    """
-    Creates a name for the file to store data.
-
-    Args:
-        name (str): The name of the new file.
-
-    Returns:
-        pathlib.Path: The created File.
-    """
-    filename: str = name + CSV
-    return Path(filename)
-
-
 class ProjectSaver:
     """
     The ProjectSave is responsible for saving the internal representation of the
@@ -156,7 +125,7 @@ class ProjectSaver:
                          [DESCRIPTION, self.active_project.get_project_settings().get_description()],
                          [LOCATION, self.active_project.get_project_settings().get_location()],
                          [LAST_EDIT_DATE, str(date.today())]]
-        _write_csv_file(settings_data, filename)
+        self._write_csv_file(settings_data, filename)
         return True
 
     def _save_config_phase(self) -> bool:
@@ -195,12 +164,11 @@ class ProjectSaver:
         """
         filename = self._create_config_file(AGGREGATION_METHOD)
         aggregation_methods: list[list[str]] = []
-        aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager()\
-            .get_aggregation_configuration()
+        aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
         for method in AggregationMethod:
             aggregation_methods.append(
                 [method.get_name(), aggregation_configurator.is_aggregation_method_active(method)])
-        _write_csv_file(aggregation_methods, filename)
+        self._write_csv_file(aggregation_methods, filename)
         return True
 
     def _save_cut_out_configurator(self):
@@ -215,7 +183,7 @@ class ProjectSaver:
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
                         [CUT_OUT_MODE,
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_mode().get_name()]]
-        _write_csv_file(cut_out_data, filename)
+        self._write_csv_file(cut_out_data, filename)
         return True
 
     def _save_categories(self):
@@ -266,7 +234,7 @@ class ProjectSaver:
                              [ATTRACTIVITY_ATTRIBUTES, DELIMITER_SEMICOLON.join(all_attractivity_attributes_list)],
                              [DEFAULT_VALUE_LIST, DELIMITER_SEMICOLON.join(all_default_value_entries_list)]]
             filename = self._create_category_file(category.get_category_name())
-            _write_csv_file(category_data, filename)
+            self._write_csv_file(category_data, filename)
         return True
 
     def _create_file(self, name: str) -> Path:
@@ -279,7 +247,7 @@ class ProjectSaver:
         Returns:
             pathlib.Path: The created path.
         """
-        return Path(os.path.join(self.destination, _create_filename(name)))
+        return Path(os.path.join(self.destination, self._create_filename(name)))
 
     def _create_config_file(self, name: str) -> Path:
         """
@@ -292,7 +260,7 @@ class ProjectSaver:
             pathlib.Path: The created path.
         """
         config_directory: Path = Path(os.path.join(self.destination, CONFIGURATION))
-        return Path(os.path.join(config_directory, _create_filename(name)))
+        return Path(os.path.join(config_directory, self._create_filename(name)))
 
     def _create_category_file(self, name: str) -> Path:
         """
@@ -306,4 +274,33 @@ class ProjectSaver:
         """
         config_directory: Path = Path(os.path.join(self.destination, CONFIGURATION))
         category_directory: Path = Path(os.path.join(config_directory, CATEGORIES))
-        return Path(os.path.join(category_directory, _create_filename(name)))
+        return Path(os.path.join(category_directory, self._create_filename(name)))
+
+    def _write_csv_file(self, data: list, filename: Path) -> bool:
+        """
+        This method is to write the given data in a csv-file.
+
+        Args:
+            data (list): The data which should be stored.
+            filename (pathlib.Path): The path where the csv-file with the data should be stored
+
+        Returns:
+            bool: True if saving works, otherwise false.
+        """
+        with open(filename, WRITE, newline=EMPTY_STRING) as f:
+            writer = csv.writer(f)
+            writer.writerows(data)
+        return True
+
+    def _create_filename(self, name: str) -> Path:
+        """
+        Creates a name for the file to store data.
+
+        Args:
+            name (str): The name of the new file.
+
+        Returns:
+            pathlib.Path: The created File.
+        """
+        filename: str = name + CSV
+        return Path(filename)

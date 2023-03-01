@@ -10,6 +10,6 @@ class OSMDataControllerStub(IOSMDataController, ABC):
     def get_osm_data_reference(self) -> pathlib.Path:
         return pathlib.Path("")
 
-    def download_osm_data(self) -> bool:
+    def download_osm_data(self, path: pathlib.Path) -> bool:
         return True
 

@@ -194,14 +194,14 @@ class SettingsApplicationFrame(TopLevelFrame):
         AlertPopUp("Please enter a valid path!")
         self.activate()  # reloads the page
 
-    def __processes_entry_edited(self):
+    def __processes_entry_edited(self, event: tkinter.Event):
         if self.processes_entry.get().isdigit():
             self._settings_controller.set_number_of_processes(self.processes_entry.get())
             self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         else:
             self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def __key_recom_entry_edited(self):
+    def __key_recom_entry_edited(self, event: tkinter.Event):
         if self.key_recom_entry.get().isdigit():
             self._settings_controller.set_number_of_key_recommendations(self.key_recom_entry.get())
             self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)

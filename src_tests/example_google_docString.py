@@ -46,7 +46,7 @@ on the first line, separated by a colon.
 """
 
 
-def function_with_types_in_docstring():
+def function_with_types_in_docstring(param1, param2):
     """Example function with types documented in the docstring.
 
     `PEP 484`_ type annotations are supported. If attribute, parameter, and
@@ -66,7 +66,7 @@ def function_with_types_in_docstring():
     """
 
 
-def function_with_pep484_type_annotations() -> bool:
+def function_with_pep484_type_annotations(param1: int, param2: str) -> bool:
     """Example function with PEP 484 type annotations.
 
     Args:
@@ -79,7 +79,7 @@ def function_with_pep484_type_annotations() -> bool:
     """
 
 
-def module_level_function(param1, param2=None):
+def module_level_function(param1, param2=None, *args, **kwargs):
     """This is an example of a module level function.
 
     Function parameters should be documented in the ``Args`` section. The name
@@ -246,7 +246,7 @@ class ExampleClass(object):
     def readwrite_property(self, value):
         value
 
-    def example_method(self):
+    def example_method(self, param1, param2):
         """Class methods are similar to regular functions.
 
         Note:

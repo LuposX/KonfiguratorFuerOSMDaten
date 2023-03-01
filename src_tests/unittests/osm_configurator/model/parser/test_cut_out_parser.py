@@ -47,7 +47,7 @@ class TestCutOutParser:
         parser: CutOutParserInterface = cop.CutOutParser()
         try:
             parser.parse_cutout_file(geojson_path)
-        except IllegalCutOutException:
+        except IllegalCutOutException as err:
             return
 
         assert False
@@ -57,8 +57,8 @@ class TestCutOutParser:
         geojson_path: Path = Path(os.path.join(TEST_DIR))
         parser = cop.CutOutParser()
         try:
-            parser.parse_cutout_file(geojson_path)
-        except IllegalCutOutException:
+            df = parser.parse_cutout_file(geojson_path)
+        except IllegalCutOutException as err:
             return
 
         assert False

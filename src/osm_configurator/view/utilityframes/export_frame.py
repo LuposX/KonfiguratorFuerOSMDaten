@@ -14,7 +14,7 @@ class ExportFrame(Freezable):
     - Configurations Export
     """
 
-    def __init__(self):
+    def __init__(self, parent_frame, export_controller):
         """
         This method creates an ExportFrame that provides the user with different export options.
 
