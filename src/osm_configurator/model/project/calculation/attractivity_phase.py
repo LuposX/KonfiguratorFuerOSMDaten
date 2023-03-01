@@ -26,7 +26,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
-    from typing import Tuple, List, Dict, Any, NamedTuple
+    from typing import Tuple, List, Dict, Any
     from pandas import DataFrame, Series
     from pandas.core.series import Series
     from pandas import DataFrame
@@ -46,7 +46,7 @@ class AttractivityPhase(ICalculationPhase):
         return calculation_phase_enum.CalculationPhase.ATTRACTIVITY_PHASE
 
     def calculate(self, configuration_manager: ConfigurationManager,
-                  application_manager: ApplicationSettings) -> NamedTuple[CalculationState, str]:
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """Calculates the attractivity attributes of the osm-elements
         The calculation phase reads the data of the previous calculation phase. Now it calculates the attractivity
         attributes of every OSM-element. The attractivity attributes that are calculated for an osm-element are dependent
@@ -58,8 +58,8 @@ class AttractivityPhase(ICalculationPhase):
             configuration_manager (configuration_manager.ConfigurationManager): The object containing all the configuration needed for execution.
             application_manager (ApplicationSettings): The settings of the application
 
-         Returns:
-            NamedTuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
+        Returns:
+            calculation_state_enum.CalculationState: The state of the calculation, after this phase finished its execution or failed trying so.
         """
         prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase \
             .prepare_phase(configuration_manager_o=configuration_manager,
@@ -68,7 +68,7 @@ class AttractivityPhase(ICalculationPhase):
 
         # Return if we got an error
         if prepare_calc_obj.get_calculation_state() is not None:
-            return super()._RETURN_VALUE(prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message())
+            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Iterate over all traffic cells and generate the attractivities (using multiprocessing)
         work_manager: WorkManager = work_manager_i.WorkManager(
@@ -88,9 +88,9 @@ class AttractivityPhase(ICalculationPhase):
         # Find return value
         for result, msg in results:
             if result != calculation_state_enum.CalculationState.RUNNING:
-                return super()._RETURN_VALUE(result, msg)
+                return result, msg
 
-        return super()._RETURN_VALUE(calculation_state_enum.CalculationState.RUNNING, "running")
+        return calculation_state_enum.CalculationState.RUNNING, "running"
 
     def _calculate_attractivity_in_traffic_cell(self, cell_name: str, config_manager: ConfigurationManager) \
             -> Tuple[CalculationState, str]:

@@ -15,8 +15,6 @@ from src.osm_configurator.model.parser.custom_exceptions.tags_wrongly_formatted_
 from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import \
     OSMDataWronglyFormatted
 
-from collections import namedtuple
-
 import pandas as pd
 from fiona.errors import DriverError
 
@@ -31,7 +29,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
-    from typing import Tuple, Dict, List, Any, NamedTuple
+    from typing import Tuple, Dict, List, Any
     from pandas import DataFrame
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
@@ -50,7 +48,7 @@ class AggregationPhase(ICalculationPhase):
         return calculation_phase_enum.CalculationPhase.AGGREGATION_PHASE
 
     def calculate(self, configuration_manager_o: ConfigurationManager,
-                  application_manager: ApplicationSettings) -> NamedTuple[CalculationState, str]:
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         Aggregates the attractivity attributes in the given traffic cells.
         The calculation phase reads the data of the previous calculation phase. Now for every traffic cell all selected
@@ -72,7 +70,7 @@ class AggregationPhase(ICalculationPhase):
 
         # Return if we got an error
         if prepare_calc_obj.get_calculation_state() is not None:
-            return super()._RETURN_VALUE(prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message())
+            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Get the manager
         aggregation_configuration: AggregationConfiguration = configuration_manager_o.get_aggregation_configuration()
@@ -102,20 +100,20 @@ class AggregationPhase(ICalculationPhase):
                 work_manager.do_all_work()
 
             except TagsWronglyFormatted as err:
-                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err)))
+                return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
 
             except (OSMDataWronglyFormatted, DriverError, UnicodeDecodeError) as err:
-                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err)))
+                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
             # If there's an error while encoding the file.
             except ValueError as err:
-                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err)))
+                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
 
             # If the file cannot be opened.
             except OSError as err:
-                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err)))
+                return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
 
-        return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.RUNNING, "")
+        return calculation_state_enum_i.CalculationState.RUNNING, ""
 
     def _parse_the_data(self, aggregation_method: AggregationMethod,
                         category_manager: CategoryManager,

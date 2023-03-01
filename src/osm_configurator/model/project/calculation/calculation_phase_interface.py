@@ -4,7 +4,6 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from typing import TYPE_CHECKING
-from collections import namedtuple
 
 if TYPE_CHECKING:
     from typing import Tuple
@@ -12,7 +11,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.application.application_settings import ApplicationSettings
-    from collections import namedtuple
 
 
 class ICalculationPhase(ABC):
@@ -23,11 +21,10 @@ class ICalculationPhase(ABC):
     2. Execute the computations of this calculation phase.\n
     3. Store the results of this computation phase so the following execution phases can read it.
     """
-    _RETURN_VALUE = namedtuple("return_value", ["calculation_state", "error_message"])
 
     @abstractmethod
     def calculate(self, configuration_manager_o: ConfigurationManager,
-                  application_manager: ApplicationSettings) -> namedtuple[CalculationState, str]:
+                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
         """
         Performs the calculations of the calculation phase.
         This consists of the following steps:\n
@@ -40,7 +37,7 @@ class ICalculationPhase(ABC):
             application_manager (ApplicationSettings): The settings of the application
 
         Returns:
-            namedtuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
+            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
         """
         pass
 
