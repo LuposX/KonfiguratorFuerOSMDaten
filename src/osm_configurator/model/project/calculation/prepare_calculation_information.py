@@ -43,35 +43,53 @@ class PrepareCalculationInformation:
     def get_cut_out_dataframe(self) -> GeoDataFrame | None:
         """
         Getter for the cut_out_dataframe.
+
+        Returns:
+            (GeoDataFrame | None): The cut_out dataframe.
         """
         return self._cut_out_dataframe
 
     def get_checkpoint_folder_path_last_phase(self) -> Path | None:
         """
         Getter for the checkpoint_folder_path_last_phase.
+
+        Returns:
+            (Path | None): The checkpoint_folder_path_last_phase.
         """
         return self._checkpoint_folder_path_last_phase
 
     def get_checkpoint_folder_path_current_phase(self) -> Path | None:
         """
         Getter for the checkpoint_folder_path_current_phase.
+
+        Returns:
+            (Path | None): The checkpoint_folder_path_current_phase.
         """
         return self._checkpoint_folder_path_current_phase
 
     def get_list_of_traffic_cell_checkpoints(self) -> List[Path] | None:
         """
         Getter for the list_of_traffic_cell_checkpoints.
+
+        Returns:
+            (List[Path] | None): The list of traffic cells.
         """
         return self._list_of_traffic_cell_checkpoints
 
     def get_calculation_state(self) -> CalculationState | None:
         """
         Getter for the calculation_state.
+
+        Returns:
+            (GeoDataFrame | None): The calculation state.
         """
         return self._calculation_state
 
     def get_error_message(self) -> str | None:
         """
         Getter for the error_message.
+
+        Returns:
+            (str | None): The error_message if it has one.
         """
         return self._error_message
