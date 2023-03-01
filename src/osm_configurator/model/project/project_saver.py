@@ -101,6 +101,13 @@ class ProjectSaver:
         if not self._save_cut_out_configurator():
             return False
 
+        # Delete all existing category files.
+        config_directory: Path = Path(os.path.join(self.destination, CONFIGURATION))
+        category_directory: Path = Path(os.path.join(config_directory, CATEGORIES))
+        for file in os.listdir(category_directory):
+            if file.endswith(CSV):
+                os.remove(os.path.join(category_directory, file))
+
         # Save Categories (one file for every category)
         if not self._save_categories():
             return False
@@ -186,6 +193,7 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
+
         category_manager = self.active_project.get_config_manager().get_category_manager()
 
         # Iterates throw every category and makes a csv-file for it
