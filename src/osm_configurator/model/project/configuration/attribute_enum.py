@@ -66,7 +66,7 @@ def _calculate_property_area(category: Category,
         # we will use this to sum up the area of all buildings
         area_sum: int = 0
 
-        # if the osm element is a building we dont need to check if other building are in it "doesnt make sense"
+        # if the osm element is a building we don't need to check if other building are in it "doesn't make sense"
         osm_tags: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(osm_element[model_constants_i.CL_TAGS])
         osm_tags: Dict[str, str] = tag_parser_o.list_to_dict(osm_tags)
         if BUILDING_KEY in osm_tags.keys():

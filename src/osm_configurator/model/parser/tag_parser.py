@@ -41,7 +41,7 @@ class TagParser(TagParserInterface):
     def user_tag_parser(self, string: str) -> List[str]:
         """
         This method parses a string representation of a list to an actual list.
-        This methods gets used to parse the input the string fro mthe GUI.
+        These methods gets used to parse the input the string from the GUI.
         e.g. format '["building=yes", "pooop=funny_Cat"]'
         """
         tmp_str: str = re.sub(r'["\[\]\']', '', string)
@@ -66,6 +66,6 @@ class TagParser(TagParserInterface):
 
     def list_to_dict(self, string: List[Tuple[str, str]]) -> Dict[str, str]:
         """
-        This function is used to convert a list of tuples into a dicitonary.
+        This function is used to convert a list of tuples into a dictionary.
         """
         return dict(string)

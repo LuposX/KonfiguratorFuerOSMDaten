@@ -166,7 +166,7 @@ class DataOSMHandler(osm.SimpleHandler):
                             all_tags_from_blacklist_correct = False
                             break
 
-                    # if we have the don't-care symbol, it doesn't matter what the value of the osm element for
+                    # if we have the "don't-care symbol", it doesn't matter what the value of the osm element for
                     # this tag is, the osm element won't be added no matter what.
                     else:
                         all_tags_from_blacklist_correct = False

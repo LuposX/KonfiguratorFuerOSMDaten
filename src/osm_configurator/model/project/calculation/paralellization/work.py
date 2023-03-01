@@ -13,7 +13,7 @@ class Work:
         Creates a new work-object (a new task).
         Args:
             target (Callable): The actual task. Executing this target-function is the task of the work object
-            args (Tuple): The Argumnts that are passed to the target function
+            args (Tuple): The Arguments that are passed to the target function
         """
         self._target: Callable = target
         self._args: Tuple = args
@@ -26,6 +26,6 @@ class Work:
 
     def get_args(self) -> Tuple:
         """
-        Gets the arguments of the work object: The Argumnts that are passed to the target function
+        Gets the arguments of the work object: The Arguments that are passed to the target function
         """
         return self._args

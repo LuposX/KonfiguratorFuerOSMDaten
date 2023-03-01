@@ -123,7 +123,7 @@ class AggregationPhase(ICalculationPhase):
                         list_of_traffic_cell_checkpoints: List[Path]):
 
         # Create a dict where we save the dataframe
-        # it has as key the name of a attractivity attribute and as value the list of calculated data entries
+        # it has as key the name of an attractivity attribute and as value the list of calculated data entries
         # for each traffic cell.
         # Another key, value pair is the traffic cell name, per entry in a list.
         aggregation_phase_data: Dict[str, List] = {}

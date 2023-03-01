@@ -40,7 +40,7 @@ class ICalculationPhase(ABC):
             application_manager (ApplicationSettings): The settings of the application
 
         Returns:
-            namedtuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
+            namedtuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
         pass
 

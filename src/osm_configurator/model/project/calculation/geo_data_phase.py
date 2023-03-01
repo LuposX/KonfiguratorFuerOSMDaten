@@ -35,6 +35,7 @@ class GeoDataPhase(ICalculationPhase):
     """
     This Phase is responsible for splitting the file in smaller pieces, based on the traffic cells.
     """
+
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.GEO_DATA_PHASE
 
@@ -75,4 +76,4 @@ class GeoDataPhase(ICalculationPhase):
             return super()._RETURN_VALUE(calculation_state_enum.CalculationState.RUNNING, "The calculation is running")
         else:
             return super()._RETURN_VALUE(calculation_state_enum.CalculationState.ERROR_INVALID_OSM_DATA,
-                                     "An error accured while reading the OSM data")
+                                         "An error occurred while reading the OSM data")

@@ -42,6 +42,6 @@ class OSMDataParserInterface(ABC):
 
         Raises:
             TagsWronglyFormatted: If a tag wasn't correctly formatted.
-            OSMDataWronglyFormatted: If there is a file in there which doesnt have the right format e.g. not "invalid.txt"
+            OSMDataWronglyFormatted: If there is a file in there which doesn't have the right format e.g. not "invalid.txt"
         """
         pass

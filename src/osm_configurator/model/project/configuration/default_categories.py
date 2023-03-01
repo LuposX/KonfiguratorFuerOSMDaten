@@ -25,5 +25,5 @@ def create_building_category() -> Category:
 
 class DefaultCategories:
     """
-    This class is to creat some default categories.
+    This class is to create some default categories.
     """

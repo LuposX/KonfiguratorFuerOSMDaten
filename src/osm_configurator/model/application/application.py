@@ -29,7 +29,7 @@ class Application(IApplication):
         Creates a new instance of the application_interface.Application.
 
         Args:
-            path_to_starting_file (Path): If set that directory will be used to create the applciation settings file.
+            path_to_starting_file (Path): If set that directory will be used to create the application settings file.
         """
         self.active_project: ActiveProject = None
 

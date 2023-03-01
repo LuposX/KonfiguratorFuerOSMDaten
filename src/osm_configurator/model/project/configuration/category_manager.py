@@ -174,7 +174,7 @@ class CategoryManager:
     def get_all_defined_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
         Gets all defined attractivity attributes.
-        Doesn't have dupplicates.
+        Doesn't have duplicates.
 
         Returns:
             (List[AttractivityAttribute]): Attractivity Attributes
