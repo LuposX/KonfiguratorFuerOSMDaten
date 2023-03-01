@@ -333,7 +333,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
 
         return True
 
-    def _tag_entry_edited(self, event: tkinter.Event):
+    def _tag_entry_edited(self):
 
         # Checking for valid string
         tag: str = self._tag_entry.get()
@@ -360,7 +360,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                 if not self._tag_list.update_button(self._tag_entry.get()):
                     alert_pop_up_i.AlertPopUp("Updating the buttons on the tag ist has failed!")
 
-    def _area_entry_edited(self, event: tkinter.Event):
+    def _area_entry_edited(self):
 
         try:
             area: float = float(self._area_entry.get())
@@ -375,7 +375,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
             # If it did crash, mark value as bad, and dont save
             self._area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def _number_of_floors_entry_edited(self, event: tkinter.Event):
+    def _number_of_floors_entry_edited(self):
 
         try:
             number_of_floors: float = float(self._number_of_floors_entry.get())
@@ -394,7 +394,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
             self._number_of_floors_entry.configure(
                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def _floor_area_entry_edited(self, event: tkinter.Event):
+    def _floor_area_entry_edited(self):
 
         try:
             floor_area: float = float(self._floor_area_entry.get())

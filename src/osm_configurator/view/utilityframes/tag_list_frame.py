@@ -6,7 +6,7 @@ class TagListFrame:
     This frame shows a textbox with a List of editable strings.
     """
 
-    def __init__(self, entries):
+    def __init__(self):
         """
         This method creates a textbox with the given entries.
 

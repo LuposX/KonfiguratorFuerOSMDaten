@@ -37,7 +37,6 @@ Additional curr_default_value are the default values for the osm element and cat
 
 def _calculate_property_area(category: Category,
                              osm_element: Series,
-                             prev_calculated_attributes: Dict[str, float],
                              curr_default_value: DefaultValueEntry,
                              data: Any) -> float:
     df: GeoDataFrame = data
@@ -103,11 +102,8 @@ def _calculate_property_area(category: Category,
         return curr_default_value.get_attribute_default(Attribute.PROPERTY_AREA)
 
 
-def _calculate_number_of_floors(category: Category,
-                                osm_element: Series,
-                                prev_calculated_attributes: Dict[str, float],
-                                curr_default_value: DefaultValueEntry,
-                                data: Any) -> float:
+def _calculate_number_of_floors(osm_element: Series,
+                                curr_default_value: DefaultValueEntry) -> float:
     tag_parser_o = tag_parser_i.TagParser()
     tag_list: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(osm_element[model_constants_i.CL_TAGS])
     dict_tag_list: Dict[str, str] = tag_parser_o.list_to_dict(tag_list)
@@ -119,11 +115,7 @@ def _calculate_number_of_floors(category: Category,
     return curr_default_value.get_attribute_default(Attribute.NUMBER_OF_FLOOR)
 
 
-def _calculate_floor_area(category: Category,
-                          osm_element: Series,
-                          prev_calculated_attributes: Dict[str, float],
-                          curr_default_value: DefaultValueEntry,
-                          data: Any) -> float:
+def _calculate_floor_area(prev_calculated_attributes: Dict[str, float]) -> float:
 
     return prev_calculated_attributes.get(Attribute.PROPERTY_AREA.get_name()) * prev_calculated_attributes.get(Attribute.NUMBER_OF_FLOOR.get_name())
 

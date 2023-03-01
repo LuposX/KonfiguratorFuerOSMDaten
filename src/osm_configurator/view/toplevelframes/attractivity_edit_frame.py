@@ -387,7 +387,7 @@ class AttractivityEditFrame(TopLevelFrame):
         
         self._load_category(self._selected_category)
 
-    def _category_drop_down_menu_edited(self, choice):
+    def _category_drop_down_menu_edited(self):
 
         category: category_i.Category
         for category in self._categories:
@@ -395,7 +395,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 self._load_category(category)
                 break
 
-    def _attractivity_drop_down_menu_edited(self, choice):
+    def _attractivity_drop_down_menu_edited(self):
 
         attractivity: attractivity_attribute_i.AttractivityAttribute
         for attractivity in self._attractivities:
@@ -403,7 +403,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 self._load_attractivity(attractivity)
                 break
 
-    def _attractivity_name_entry_edited(self, event: tkinter.Event):
+    def _attractivity_name_entry_edited(self):
 
         # Checking if the name already exists
         name_exists: bool = False
@@ -433,7 +433,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 self._load_category(self._selected_category)
                 self._load_attractivity(selected_attractivity)
 
-    def _area_entry_edited(self, event: tkinter.Event):
+    def _area_entry_edited(self):
         # Checking if the Valua can be casted into a float
         try:
             # if possible set the new value
@@ -450,7 +450,7 @@ class AttractivityEditFrame(TopLevelFrame):
             # If not make text invalid colored and don't save value
             self._area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def _number_of_floors_entry_edited(self, event: tkinter.Event):
+    def _number_of_floors_entry_edited(self):
         # Checking if the value is castable to a float
         try:
             # if possible set the new value
@@ -468,7 +468,7 @@ class AttractivityEditFrame(TopLevelFrame):
             self._numbers_of_floors_entry.configure(
                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def _floor_area_entry_edited(self, event: tkinter.Event):
+    def _floor_area_entry_edited(self):
         # Checking if value is castable to a float
         try:
             # if possible save factor
@@ -486,7 +486,7 @@ class AttractivityEditFrame(TopLevelFrame):
             self._floor_area_entry.configure(
                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def _base_attractivity_entry_edited(self, event: tkinter.Event):
+    def _base_attractivity_entry_edited(self):
         # Checking if value is castable to a float
         try:
             # If possible, save value

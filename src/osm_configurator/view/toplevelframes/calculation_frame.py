@@ -239,7 +239,7 @@ class CalculationFrame(TopLevelFrame):
         Colors the clicked button yellow, the lower buttons are colored green.
         All other buttons keep their original color
         """
-        starting_index = self._starting_point.get_order() - 1
+        self._starting_point.get_order() - 1
 
         for i, button in enumerate(self.buttons):
             button.configure(state="disabled",

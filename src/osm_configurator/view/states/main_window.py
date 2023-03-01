@@ -125,7 +125,7 @@ class MainWindow(customtkinter.CTk):
             return False
 
         # First making the last State invisible
-        success: bool = False
+        False
         if last_state is not None:
             success: bool = self._make_invisible(last_state)
         else:

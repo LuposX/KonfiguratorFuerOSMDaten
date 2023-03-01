@@ -71,7 +71,7 @@ class PrepareCalculationPhase:
 
         try:
             cut_out_dataframe: GeoDataFrame = parser.parse_cutout_file(geojson_path)
-        except IllegalCutOutException as err:
+        except IllegalCutOutException:
             return calculation_state_enum_i.CalculationState.ERROR_INVALID_CUT_OUT_DATA, \
                 "The geojson is corrupted", None, None
 

@@ -40,7 +40,7 @@ class CutOutParser(CutOutParserInterface):
                                GEOM_POSSIBLE_NAMES=model_constants_i.CL_GEOMETRY,
                                KEEP_GEOM_COLUMNS="NO"
                                )
-        except fiona.errors.DriverError as err:
+        except fiona.errors.DriverError:
             raise IllegalCutOutException("Could not load cut out file at the given path")
 
         # Create names for the traffic cells which don't have one and add idx before name
