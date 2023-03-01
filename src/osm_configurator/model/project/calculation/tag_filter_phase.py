@@ -26,7 +26,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
-    from typing import Tuple, List, Any
+    from typing import Tuple, List, Any, NamedTuple
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
     from src.osm_configurator.model.project.calculation.paralellization.work import Work
@@ -43,7 +43,7 @@ class TagFilterPhase(ICalculationPhase):
         return calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE
 
     def calculate(self, configuration_manager_o: ConfigurationManager,
-                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
+                  application_manager: ApplicationSettings) -> NamedTuple[CalculationState, str]:
         """
         Sorts OSM-elements into their corresponding categories.
         Firstly this method reads in the OSM-files of the previously executed calculation phase. Every category has
@@ -59,7 +59,7 @@ class TagFilterPhase(ICalculationPhase):
             application_manager (ApplicationSettings): The settings of the application
 
         Returns:
-            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
+            NamedTuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
         # Prepare various stuff for the calculation phase
         prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase\
@@ -69,7 +69,7 @@ class TagFilterPhase(ICalculationPhase):
 
         # Return if we got an error
         if prepare_calc_obj.get_calculation_state() is not None:
-            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
+            return super()._RETURN_VALUE(prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message())
 
         # Get the CategoryManager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
@@ -99,16 +99,16 @@ class TagFilterPhase(ICalculationPhase):
             work_manager.do_all_work()
 
         except TagsWronglyFormatted as err:
-            return calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err))
+            return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_TAGS_WRONGLY_FORMATTED, ''.join(str(err)))
 
         except OSMDataWronglyFormatted as err:
-            return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
+            return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err)))
 
         # If there's an error while encoding the file.
         except (ValueError, DriverError, UnicodeDecodeError) as err:
-            return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
+            return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err)))
 
-        return calculation_state_enum_i.CalculationState.RUNNING, "running"
+        return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.RUNNING, "running")
 
     def _parse_the_data_file(self,
                              osm_data_parser_o: OSMDataParser,

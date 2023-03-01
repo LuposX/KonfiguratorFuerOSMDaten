@@ -26,7 +26,7 @@ from src.osm_configurator.model.project.calculation.calculation_phase_interface 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import Tuple, List, Dict, Any
+    from typing import Tuple, List, Dict, Any, NamedTuple
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
@@ -51,12 +51,11 @@ class ReductionPhase(ICalculationPhase):
     the values of the attributes for alle OSM-elements.
     For details see the method calculate().
     """
-
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.REDUCTION_PHASE
 
     def calculate(self, configuration_manager_o: ConfigurationManager,
-                  application_manager: ApplicationSettings) -> Tuple[CalculationState, str]:
+                  application_manager: ApplicationSettings) -> NamedTuple[CalculationState, str]:
         """
         Reduces OSM-elements on single points and calculates their attributes.
         The calculation phase reads the data of the previous calculation phase. OSM-elements that are not just a single
@@ -72,7 +71,7 @@ class ReductionPhase(ICalculationPhase):
             application_manager (ApplicationSettings): The settings of the application
 
         Returns:
-              Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
+              NamedTuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
         """
         prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase \
             .prepare_phase(configuration_manager_o=configuration_manager_o,
@@ -81,7 +80,7 @@ class ReductionPhase(ICalculationPhase):
 
         # Return if we got an error
         if prepare_calc_obj.get_calculation_state() is not None:
-            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
+            return super()._RETURN_VALUE(prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message())
 
         # get the category manager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
@@ -104,20 +103,20 @@ class ReductionPhase(ICalculationPhase):
                 work_manager.do_all_work()
 
             except (FileNotFoundError, DriverError) as err:
-                return calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args)
+                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_FILE_NOT_FOUND, str(err.args))
 
             # If there's an error while encoding the file.
             except (ValueError, DriverError, UnicodeDecodeError) as err:
-                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
+                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err)))
 
             # If the file cannot be opened.
             except OSError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
+                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err)))
 
             except Exception as err:
-                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
+                return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args))
 
-        return calculation_state_enum_i.CalculationState.RUNNING, ""
+        return super()._RETURN_VALUE(calculation_state_enum_i.CalculationState.RUNNING, "")
 
     def _parse_the_data_file(self,
                              traffic_cell_file_path: Path,
