@@ -7,6 +7,10 @@ from datetime import date
 from pathlib import Path
 import pathlib
 import src.osm_configurator.model.project.active_project as active_project_i
+from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
+from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
+from src.osm_configurator.model.project.configuration.category import Category
 from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.project import saver_io_handler_constants
