@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from enum import Enum, unique
 
-
 @unique
 class ConfigPhase(Enum):
     """
@@ -26,6 +25,7 @@ class ConfigPhase(Enum):
         """
         return self.value
 
+    @staticmethod
     def convert_str_to_config_phase(phase: str) -> ConfigPhase | None:
         """
         Converts a given string to the associated ConfigPhase.
