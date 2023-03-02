@@ -10,7 +10,6 @@ from pathlib import Path
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum_i
 
 if TYPE_CHECKING:
-    from pathlib import Path
     from src.osm_configurator.model.application.application_settings_default_enum import ApplicationSettingsDefault
     from typing import Dict, Any, Final
 
@@ -48,7 +47,7 @@ class ApplicationSettings:
                 application_path = path_to_starting_file
 
         # check for the application settings file.
-        self._application_settings_file: Path = None
+        self._application_settings_file: Path | None = None
         file: str
         for file in Path(application_path).iterdir():
             if os.path.basename(file) == APPLICATION_SETTINGS_FILE:
@@ -66,7 +65,8 @@ class ApplicationSettings:
         This method gets a specific setting from the setting file.
 
         Args:
-            settings_enum (ApplicationSettingsDefault): The setting we want to get. "None" if it failed to read it, this could be because user used an invalid value.
+            settings_enum (ApplicationSettingsDefault): The setting we want to get. "None" if it failed to read it,
+                this could be because user used an invalid value.
 
         Returns:
             Any: The value of the setting.

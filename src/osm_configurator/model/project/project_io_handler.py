@@ -15,7 +15,6 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
-    from pathlib import Path
 
 # The data loaded by this class is stored in csv or txt files
 # The data in those files are stored as described below

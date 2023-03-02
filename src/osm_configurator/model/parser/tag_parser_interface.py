@@ -17,7 +17,8 @@ class TagParserInterface(ABC):
     @abstractmethod
     def parse_tags(self, tags: List[str]) -> List[Tuple[str, str]]:
         """
-        This method parses a list of tags to a list of key, value pairs. The inputted list should be in the following format:
+        This method parses a list of tags to a list of key, value pairs. The inputted list should be in the
+        following format:
         ["key1=value1", "key2=value2", "key3=value3",...]
 
         Args:

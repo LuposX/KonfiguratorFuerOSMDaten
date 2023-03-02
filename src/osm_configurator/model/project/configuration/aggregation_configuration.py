@@ -24,7 +24,8 @@ class AggregationConfiguration:
         for method in aggregation_method_enum_i.AggregationMethod:
             self._aggregation_method_state.update({method: False})
 
-    def get_all_aggregation_methods(self) -> List[AggregationMethod]:
+    @staticmethod
+    def get_all_aggregation_methods() -> List[AggregationMethod]:
         """
         Gives back a List of all possible aggregation methods.
 

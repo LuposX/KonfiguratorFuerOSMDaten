@@ -16,7 +16,7 @@ This file is used, to name the columns in the Dataframe.
 CL_OSM_TYPE: Final = "osm_type"
 CL_TAGS: Final = "tags"
 CL_CATEGORY: Final = "category"
-CL_GEOMETRY: Final = "geometry" # THIS IS NOT ALLOWED TO BE SET TO A DIFFERENT VALUE, GEOPANDAS RELIES ON THIS NAME.
+CL_GEOMETRY: Final = "geometry"  # THIS IS NOT ALLOWED TO BE SET TO A DIFFERENT VALUE, GEOPANDAS RELIES ON THIS NAME.
 CL_TRAFFIC_CELL_NAME: Final = "traffic_cell_name"
 CL_OSM_ELEMENT_NAME: Final = "element_name"
 CL_AREA: Final = "area"

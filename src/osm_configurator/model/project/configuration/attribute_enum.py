@@ -3,9 +3,6 @@ from __future__ import annotations
 from enum import Enum, unique
 from typing import TYPE_CHECKING, Final
 
-import ast
-import json
-
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i

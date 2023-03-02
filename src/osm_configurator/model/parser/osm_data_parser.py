@@ -9,7 +9,8 @@ import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum_i
 
 from src.osm_configurator.model.parser.osm_data_parser_interface import OSMDataParserInterface
-from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception import OSMDataWronglyFormatted
+from src.osm_configurator.model.parser.custom_exceptions.osm_data_wrongly_formatted_Exception \
+    import OSMDataWronglyFormatted
 
 from typing import TYPE_CHECKING
 
@@ -61,12 +62,9 @@ class OSMDataParser(OSMDataParserInterface):
             osm_handler = osm_data_handler_i.DataOSMHandler(categories,
                                                             cut_out_data[model_constants_i.CL_GEOMETRY].loc[idx])
 
-        elif cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED:
-            osm_handler = osm_data_handler_i.DataOSMHandler(categories)
-
+        # cut_out_mode_p == cut_out_mode_enum.CutOutMode.BUILDINGS_ON_EDGE_NOT_ACCEPTED
         else:
-            pass
-            # TODO: throw error here?
+            osm_handler = osm_data_handler_i.DataOSMHandler(categories)
 
         # Process the data
         osm_handler.apply_file(data_file_path)

@@ -18,7 +18,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
     from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
-    from pathlib import Path
 
 NAME: str = "name"
 DESCRIPTION: str = "description"
