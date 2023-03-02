@@ -7,6 +7,7 @@ from pathlib import Path
 import src.osm_configurator.model.project.active_project
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
+import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum_i
 from src.osm_configurator.model.project.configuration.category import Category
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from typing import TYPE_CHECKING, Final, List
@@ -200,7 +201,7 @@ class ProjectIOHandler:
                 value: bool = convert_bool(row[VALUE_OF_AGGREGATION])
                 if value is not None:
                     self._active_project.get_config_manager().get_aggregation_configuration().set_aggregation_method_active(
-                        AggregationMethod.convert_str_to_aggregation_method(row[NAME_OF_AGGREGATION]), value)
+                        aggregation_method_enum_i.convert_str_to_aggregation_method(row[NAME_OF_AGGREGATION]), value)
                 else:
                     return False
             return True
