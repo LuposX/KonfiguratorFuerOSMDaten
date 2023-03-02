@@ -22,6 +22,7 @@ class CutOutMode(Enum):
         """
         return self.value
 
+    @staticmethod
     def convert_str_to_cut_out_mode(mode: str) -> CutOutMode | None:
         """
         Converts a given string to the associated CutOutMode.

@@ -67,17 +67,25 @@ class Category:
         """
         return self._active
 
-    def activate(self):
+    def activate(self) -> bool:
         """
         Sets the active-value to True.
+
+        Returns:
+            bool: True if the category was activated, false if not.
         """
         self._active = True
+        return True
 
-    def deactivate(self):
+    def deactivate(self) -> bool:
         """
         Sets the active-value to False.
+
+        Returns:
+            bool: True if the category was deactivated, false if not.
         """
         self._active = False
+        return True
 
     def get_whitelist(self) -> List[str]:
         """
@@ -94,6 +102,9 @@ class Category:
 
         Args:
             new_whitelist (List[str]): value for the new whitelist.
+
+        Return:
+            bool: True if the whitelist was changed, false if not.
         """
         self._whitelist = new_whitelist
         return True
@@ -113,6 +124,9 @@ class Category:
 
         Args:
             new_blacklist (List[str]): new value for the blacklist.
+
+        Returns:
+            bool: True if the blacklist was changed, false if not.
         """
         self._blacklist = new_blacklist
         return True
@@ -132,6 +146,9 @@ class Category:
 
         Args:
             new_category_name (str): new value for the category_name.
+
+        Returns:
+            bool: True if the category_name was changed, false if not.
         """
         if new_category_name != "":
             self._category_name = new_category_name
@@ -204,14 +221,18 @@ class Category:
         """
         return self._strictly_use_default_values
 
-    def set_strictly_use_default_values(self, boolean: bool):
+    def set_strictly_use_default_values(self, boolean: bool) -> bool:
         """
         Setter for _strictly_use_default_values.
 
         Args:
             boolean (bool): The new value _strictly_use_default_values should be set to.
+
+        Returns:
+            bool: True when it works, otherwise false.
         """
         self._strictly_use_default_values = boolean
+        return True
 
     def get_calculation_method_of_area(self) -> CalculationMethodOfArea:
         """
@@ -222,14 +243,18 @@ class Category:
         """
         return self._calculation_method_of_area
 
-    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea):
+    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea) -> bool:
         """
         Overwrites current calculate_area with the given value.
 
         Args:
             new_calculation_method_of_area (CalculationMethodOfArea): new value that will overwrite the existing value.
+
+        Returns:
+            bool: True if the calculation method was changed, false if not.
         """
         self._calculation_method_of_area = new_calculation_method_of_area
+        return True
 
     def get_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """

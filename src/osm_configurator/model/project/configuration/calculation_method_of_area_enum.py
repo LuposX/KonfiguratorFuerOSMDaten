@@ -22,6 +22,7 @@ class CalculationMethodOfArea(Enum):
         """
         return self.value
 
+    @staticmethod
     def convert_str_to_calculation_method_of_area(name: str) -> CalculationMethodOfArea | None:
         """
         Converts a given string to the associated CalculationMethodOfArea.

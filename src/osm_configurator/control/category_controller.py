@@ -49,7 +49,7 @@ class CategoryController(ICategoryController):
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
         return category_manager.get_categories()
 
-    def create_category(self, name: str) -> Category | str:
+    def create_category(self, name: str) -> Category | None:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
 
         new_category: Category = category_i.Category(name)

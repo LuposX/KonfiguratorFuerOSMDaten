@@ -63,8 +63,7 @@ class ApplicationSettings:
         This method gets a specific setting from the setting file.
 
         Args:
-            settings_enum (ApplicationSettingsDefault): The setting we want to get.
-            None: if it failed to read it, this could be because user used an invalid value.
+            settings_enum (ApplicationSettingsDefault): The setting we want to get. "None" if it failed to read it, this could be because user used an invalid value.
 
         Returns:
             Any: The value of the setting.
