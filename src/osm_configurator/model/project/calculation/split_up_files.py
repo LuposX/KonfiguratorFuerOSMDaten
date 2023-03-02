@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import subprocess
 import os
-import shapely
 from pathlib import Path
 import subprocess
 from geopandas.geodataframe import GeoDataFrame

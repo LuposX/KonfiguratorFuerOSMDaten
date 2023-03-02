@@ -143,7 +143,7 @@ class ReductionPhase(ICalculationPhase):
         # Initialize a dictionary in which we will save our calculated data
         reduction_phase_data = self._initialize_data_save()
 
-        default_value_finder_o = default_value_finder_i.DefaultValueFinder()
+        default_value_finder_o = default_value_finder_i
 
         # Calculate data
         # --------------

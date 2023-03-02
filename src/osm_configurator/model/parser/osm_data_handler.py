@@ -41,7 +41,6 @@ class DataOSMHandler(osm.SimpleHandler):
         osm.SimpleHandler.__init__(self)
 
         # This will be the list in which we save the output.
-        self._osm_type = None
         self._osm_data: List = []
 
         self._category_manager: CategoryManager = category_manager_p
@@ -63,20 +62,8 @@ class DataOSMHandler(osm.SimpleHandler):
             str] = []  # this is a temporary list that is used to save the tags for one osm element.
         self._categories_of_osm_element: List[str] = []
         self._wkbshape = None  # used to temporarily save location
-        self._osm_type: str  # saved the origin name for area(e.g. way or relation)
-        self._osm_name: str
-
-    def _attributes_to_tag_list(self) -> List[str]:
-        """
-        This method is used to extract all the tags that are needed for the calculation from the Attributes.
-
-        Returns:
-            List: Of tag names(keys) that the attributes needs.
-        """
-        _needed_tags: List[str] = []
-        for attribute in self._activated_attributes:
-            _needed_tags.extend(attribute.get_needed_tags())
-        return _needed_tags
+        self._osm_type: str = ""  # saved the origin name for area(e.g. way or relation)
+        self._osm_name: str = ""
 
     def _tag_inventory(self, elem: OSMObject) -> None:
         """

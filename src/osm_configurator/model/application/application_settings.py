@@ -37,6 +37,8 @@ class ApplicationSettings:
             # If the application is run as a bundle, the PyInstaller bootloader
             # extends the sys module by a flag frozen=True and sets the app
             # path into variable _MEIPASS'.
+            # noinspection PyProtectedMember
+            # pylint: disable=protected-access
             application_path = sys._MEIPASS
         else:
             if path_to_starting_file is None:

@@ -27,7 +27,7 @@ How to set up the develoment enviroment:
 ### Automatically installing the Packages
 Tested on windows 10(64Bit), might take a while.  
 1. Update conda: `conda update conda`.  
-2. Execute from parent directory: `conda env create --name PSE --file PSE.yml`  
+2. Execute from parent directory: `conda env create --name PSE --file enviroment.yml`  
 
 ### Manually installing the Packages
 1. Update conda: `conda update conda`.
