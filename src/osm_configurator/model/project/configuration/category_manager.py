@@ -5,6 +5,7 @@ import os
 import src.osm_configurator.model.project.configuration.category as category_i
 import src.osm_configurator.model.project.configuration.default_categories as default_categories_i
 import pathlib
+from pathlib import Path
 
 from typing import TYPE_CHECKING
 

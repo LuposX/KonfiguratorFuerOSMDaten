@@ -4,6 +4,7 @@ import os
 import csv
 
 import pathlib
+from pathlib import Path
 import src.osm_configurator.model.project.active_project as active_project_i
 from src.osm_configurator.model.project import saver_io_handler_constants
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
