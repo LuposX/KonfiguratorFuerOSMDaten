@@ -42,24 +42,6 @@ NAME_OF_ATTRIBUTE: int = 0  # The name of an attribute of an attractivity_attrib
 VALUE_OF_ATTRIBUTE: int = 1  # The value of an attribute of an attractivity_attribute or a default_value_entry is stored in the second place of the list representing it
 
 
-def convert_bool(string: str) -> bool | None:
-    """
-    Converts a string to the associated boolean.
-
-    Args:
-        string(str): The string.
-
-    Returns:
-        bool: The value of the string.
-    """
-    if string == TRUE:
-        return True
-    if string == FALSE:
-        return False
-    else:
-        return None
-
-
 class CategoryParser(CategoryParserInterface):
     __doc__ = CategoryParserInterface.__doc__
 
@@ -78,9 +60,9 @@ class CategoryParser(CategoryParserInterface):
             loaded_category: Category = Category(category_data[TABLE_FIRST_ROW][TABLE_SECOND_COLUMN])
         else:
             return None
-        if convert_bool(category_data[TABLE_SECOND_ROW][TABLE_SECOND_COLUMN]) is None:
+        if CategoryParser.convert_bool(category_data[TABLE_SECOND_ROW][TABLE_SECOND_COLUMN]) is None:
             return None
-        elif convert_bool(category_data[TABLE_SECOND_ROW][TABLE_SECOND_COLUMN]):
+        elif CategoryParser.convert_bool(category_data[TABLE_SECOND_ROW][TABLE_SECOND_COLUMN]):
             loaded_category.activate()
         else:
             loaded_category.deactivate()
@@ -108,7 +90,7 @@ class CategoryParser(CategoryParserInterface):
                     return None
 
         # Loads strictly use default values
-        strictly_use_default_value_bool: bool = convert_bool(category_data[TABLE_SEVENTH_ROW][TABLE_SECOND_COLUMN])
+        strictly_use_default_value_bool: bool = CategoryParser.convert_bool(category_data[TABLE_SEVENTH_ROW][TABLE_SECOND_COLUMN])
         if strictly_use_default_value_bool is not None:
             loaded_category.set_strictly_use_default_values(strictly_use_default_value_bool)
         else:
@@ -153,3 +135,21 @@ class CategoryParser(CategoryParserInterface):
                     (attribute_str_split_up[NAME_OF_ATTRIBUTE]), float(attribute_str_split_up[VALUE_OF_ATTRIBUTE]))
             loaded_category.add_default_value_entry(default_value_entry)
         return loaded_category
+
+    @staticmethod
+    def convert_bool(string: str) -> bool | None:
+        """
+        Converts a string to the associated boolean.
+
+        Args:
+            string(str): The string.
+
+        Returns:
+            bool: The value of the string.
+        """
+        if string == TRUE:
+            return True
+        if string == FALSE:
+            return False
+        else:
+            return None

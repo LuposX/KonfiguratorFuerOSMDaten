@@ -21,28 +21,6 @@ if TYPE_CHECKING:
 CSV_ENDING: str = ".csv"
 
 
-def _load_categories_from_path(path: Path) -> List[Category]:
-    """
-    Loads all categories from the given path.
-
-    Args:
-        path (pathlib.Path): Path to the folder that contains the categories.
-
-    Returns:
-        List[category_i.Category]: List of all categories.
-    """
-    category_parser: CategoryParser = CategoryParser()
-    categories: List[Category] = []
-    for file in os.listdir(path):
-        category: Category = category_parser.parse_category_file(
-            Path(str(os.path.join(path, file))))
-        if category is not None:
-            categories.append(category)
-        else:
-            return []
-    return categories
-
-
 class CategoryManager:
     """
     Category Manager holds a list of categories and changes them according to the given needs.
@@ -145,7 +123,7 @@ class CategoryManager:
         Return:
             bool: True if overwriting works, otherwise false.
         """
-        self._categories = _load_categories_from_path(new_category_list_path)
+        self._categories = CategoryManager._load_categories_from_path(new_category_list_path)
         return True
 
     def merge_categories(self, new_category_list_path: Path):
@@ -158,7 +136,7 @@ class CategoryManager:
         Return:
             bool: True if merging works, otherwise false.
         """
-        self.add_categories(_load_categories_from_path(new_category_list_path))
+        self.add_categories(CategoryManager._load_categories_from_path(new_category_list_path))
         return True
 
     def add_categories(self, category_input_list: List[Category]):
@@ -195,3 +173,25 @@ class CategoryManager:
         for category in self._categories:
             name_list.append(category.get_category_name())
         return name_list
+
+    @staticmethod
+    def _load_categories_from_path(path: Path) -> List[Category]:
+        """
+        Loads all categories from the given path.
+
+        Args:
+            path (pathlib.Path): Path to the folder that contains the categories.
+
+        Returns:
+            List[category_i.Category]: List of all categories.
+        """
+        category_parser: CategoryParser = CategoryParser()
+        categories: List[Category] = []
+        for file in os.listdir(path):
+            category: Category = category_parser.parse_category_file(
+                Path(str(os.path.join(path, file))))
+            if category is not None:
+                categories.append(category)
+            else:
+                return []
+        return categories

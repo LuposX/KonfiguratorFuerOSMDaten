@@ -35,50 +35,6 @@ CUT_OUT_TABLE_FIRST_ROW: int = 0  # In this row the cut-out-path is stored
 CUT_OUT_TABLE_SECOND_ROW: int = 1  # In this row the cut-out-mode is stored
 
 
-def _convert_bool(string: str) -> bool | None:
-    """
-    Converts a string to the associated boolean.
-
-    Args:
-        string(str): The string.
-
-    Returns:
-        bool: The value of the string.
-    """
-    if string == saver_io_handler_constants.TRUE:
-        return True
-    if string == saver_io_handler_constants.FALSE:
-        return False
-    else:
-        return None
-
-def _read_csv_file(path: Path) -> list[str]:
-    """
-    Reads out the given csv file and returns the content.
-
-    Args:
-        path (pathlib.Path): The path pointing towards the csv file.
-
-    Returns:
-        list[str]: The content of the csv file.
-    """
-    with open(path, saver_io_handler_constants.READ) as csv_file:
-        return list(csv.reader(csv_file))
-
-def _read_txt_file(path: Path) -> str:
-    """
-    Reads out the given txt file and returns the content.
-
-    Args:
-        path (pathlib.Path): The path pointing towards the txt file.
-
-    Returns:
-        str: The content of the txt file.
-    """
-    with open(path, saver_io_handler_constants.READ) as txt_file:
-        return txt_file.read()
-
-
 class ProjectIOHandler:
     """
     This class handles the I/O of a project.
@@ -170,7 +126,7 @@ class ProjectIOHandler:
     def _load_project_settings(self) -> bool:
         filepath: Path = Path(os.path.join(self.destination, saver_io_handler_constants.PROJECT_SETTINGS + saver_io_handler_constants.CSV))
         if os.path.exists(filepath):
-            project_settings_data: list[str] = _read_csv_file(filepath)
+            project_settings_data: list[str] = ProjectIOHandler._read_csv_file(filepath)
             self._active_project.get_project_settings().set_name(
                 project_settings_data[SETTING_TABLE_FIRST_ROW][SETTINGS_TABLE_SECOND_COLUMN])
             self._active_project.get_project_settings().set_description(
@@ -185,7 +141,7 @@ class ProjectIOHandler:
     def _load_config_phase(self) -> bool:
         filepath: Path = Path(os.path.join(self.destination, saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT))
         if os.path.exists(filepath):
-            last_step: str = _read_txt_file(filepath)
+            last_step: str = ProjectIOHandler._read_txt_file(filepath)
             last_step_config_phase: ConfigPhase = ConfigPhase.convert_str_to_config_phase(last_step)
             if last_step_config_phase is not None:
                 self._active_project.set_last_step(last_step_config_phase)
@@ -195,7 +151,7 @@ class ProjectIOHandler:
     def _load_osm_configurator(self) -> bool:
         filepath: Path = Path(os.path.join(self.config_directory, saver_io_handler_constants.OSM_PATH + saver_io_handler_constants.TXT))
         if os.path.exists(filepath):
-            osm_path: str = _read_txt_file(filepath)
+            osm_path: str = ProjectIOHandler._read_txt_file(filepath)
             self._active_project.get_config_manager().get_osm_data_configuration().set_osm_data(Path(osm_path))
             return True
         return False
@@ -203,9 +159,9 @@ class ProjectIOHandler:
     def _load_aggregation_configuration(self) -> bool:
         filepath: Path = Path(os.path.join(self.config_directory, saver_io_handler_constants.AGGREGATION_METHOD + saver_io_handler_constants.CSV))
         if os.path.exists(filepath):
-            aggregation: list[str] = _read_csv_file(filepath)
+            aggregation: list[str] = ProjectIOHandler._read_csv_file(filepath)
             for row in aggregation:
-                value: bool = _convert_bool(row[VALUE_OF_AGGREGATION])
+                value: bool = ProjectIOHandler._convert_bool(row[VALUE_OF_AGGREGATION])
                 if value is not None:
                     self._active_project.get_config_manager().get_aggregation_configuration().set_aggregation_method_active(
                         AggregationMethod.convert_str_to_aggregation_method(row[NAME_OF_AGGREGATION]), value)
@@ -217,7 +173,7 @@ class ProjectIOHandler:
     def _load_cut_out_configurator(self) -> bool:
         filepath: Path = Path(os.path.join(self.config_directory, saver_io_handler_constants.CUT_OUT_CONFIGURATION + saver_io_handler_constants.CSV))
         if os.path.exists(filepath):
-            cut_out: list[str] = _read_csv_file(filepath)
+            cut_out: list[str] = ProjectIOHandler._read_csv_file(filepath)
             cut_out_path: Path = Path(cut_out[CUT_OUT_TABLE_FIRST_ROW][CUT_OUT_TABLE_SECOND_COLUMN])
             cut_out_mode: CutOutMode = CutOutMode.convert_str_to_cut_out_mode(
                 cut_out[CUT_OUT_TABLE_SECOND_ROW][CUT_OUT_TABLE_SECOND_COLUMN])
@@ -234,3 +190,49 @@ class ProjectIOHandler:
 
     def _load_category_configuration(self) -> bool:
         return self._active_project.get_config_manager().get_category_manager().override_categories(self.category_directory)
+
+    @staticmethod
+    def _convert_bool(string: str) -> bool | None:
+        """
+        Converts a string to the associated boolean.
+
+        Args:
+            string(str): The string.
+
+        Returns:
+            bool: The value of the string.
+        """
+        if string == saver_io_handler_constants.TRUE:
+            return True
+        if string == saver_io_handler_constants.FALSE:
+            return False
+        else:
+            return None
+
+    @staticmethod
+    def _read_csv_file(path: Path) -> list[str]:
+        """
+        Reads out the given csv file and returns the content.
+
+        Args:
+            path (pathlib.Path): The path pointing towards the csv file.
+
+        Returns:
+            list[str]: The content of the csv file.
+        """
+        with open(path, saver_io_handler_constants.READ) as csv_file:
+            return list(csv.reader(csv_file))
+
+    @staticmethod
+    def _read_txt_file(path: Path) -> str:
+        """
+        Reads out the given txt file and returns the content.
+
+        Args:
+            path (pathlib.Path): The path pointing towards the txt file.
+
+        Returns:
+            str: The content of the txt file.
+        """
+        with open(path, saver_io_handler_constants.READ) as txt_file:
+            return txt_file.read()
