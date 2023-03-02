@@ -181,6 +181,7 @@ class Attribute(Enum):
         """
         return self.value[2](category, osm_element, prev_calculated_attributes, curr_default_value, data)
 
+    @staticmethod
     def convert_str_to_attribute(name: str) -> Attribute | None:
         """
         Converts a given string to the associated Attribute.
