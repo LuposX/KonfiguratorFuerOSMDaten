@@ -4,7 +4,7 @@ import csv
 
 from src.osm_configurator.model.parser.category_parser_interface import CategoryParserInterface
 
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
@@ -37,9 +37,15 @@ TABLE_SEVENTH_ROW: int = 6  # This row stores the status of strictly_use_default
 TABLE_EIGHT_ROW: int = 7  # This row stores the attractivity_attributes of the category
 TABLE_NINE_ROW: int = 8  # This row stores the default_value_list of the category
 
-NAME: int = 0  # The name of an attractivity_attribute and a default_value_entry is stored in the first place of the list representing it
-NAME_OF_ATTRIBUTE: int = 0  # The name of an attribute of an attractivity_attribute or a default_value_entry is stored in the second place of the list representing it
-VALUE_OF_ATTRIBUTE: int = 1  # The value of an attribute of an attractivity_attribute or a default_value_entry is stored in the second place of the list representing it
+# The name of an attractivity_attribute and a default_value_entry is stored in the
+# first place of the list representing it
+NAME: int = 0
+# The name of an attribute of an attractivity_attribute or a default_value_entry is stored in the second place
+# of the list representing it
+NAME_OF_ATTRIBUTE: int = 0
+# The value of an attribute of an attractivity_attribute or a default_value_entry is stored in the second place
+# of the list representing it
+VALUE_OF_ATTRIBUTE: int = 1
 
 
 class CategoryParser(CategoryParserInterface):
@@ -90,7 +96,8 @@ class CategoryParser(CategoryParserInterface):
                     return None
 
         # Loads strictly use default values
-        strictly_use_default_value_bool: bool = CategoryParser.convert_bool(category_data[TABLE_SEVENTH_ROW][TABLE_SECOND_COLUMN])
+        strictly_use_default_value_bool: bool = \
+            CategoryParser.convert_bool(category_data[TABLE_SEVENTH_ROW][TABLE_SECOND_COLUMN])
         if strictly_use_default_value_bool is not None:
             loaded_category.set_strictly_use_default_values(strictly_use_default_value_bool)
         else:

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Dict

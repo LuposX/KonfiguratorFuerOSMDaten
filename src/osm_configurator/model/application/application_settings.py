@@ -57,8 +57,9 @@ class ApplicationSettings:
 
         # This mean the application_Settings file doesn't exist yet, and we need to create it
         if self._application_settings_file is None:
-            self._application_settings_file = ApplicationSettings.create_application_settings_file(application_path,
-                                                                APPLICATION_SETTINGS_FILE)
+            self._application_settings_file = \
+                ApplicationSettings.create_application_settings_file(application_path,
+                                                                     APPLICATION_SETTINGS_FILE)
 
     def get_setting(self, settings_enum: ApplicationSettingsDefault) -> Any:
         """
@@ -82,7 +83,7 @@ class ApplicationSettings:
             else:
                 return settings[settings_enum.get_name()]
 
-        except:
+        except Exception:
             return None
 
     def set_setting(self, settings_enum: ApplicationSettingsDefault, setting_value: Any) -> bool:
@@ -110,7 +111,7 @@ class ApplicationSettings:
 
             return True
 
-        except:
+        except Exception:
             return False
 
     def _load_settings_file(self) -> Dict[Any]:

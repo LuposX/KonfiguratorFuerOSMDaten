@@ -118,7 +118,8 @@ class CategoryManager:
         Overwrites the list of categories with the given list.
 
         Args:
-            new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
+            new_category_list_path (pathlib.Path): Path to a list of categories,
+                that will overwrite the already existing list.
 
         Return:
             bool: True if overwriting works, otherwise false.
@@ -131,7 +132,8 @@ class CategoryManager:
         Overwrites the list of categories with the given list.
 
         Args:
-            new_category_list_path (pathlib.Path): Path to a list of categories, that will overwrite the already existing list.
+            new_category_list_path (pathlib.Path): Path to a list of categories,
+                that will overwrite the already existing list.
 
         Return:
             bool: True if merging works, otherwise false.
@@ -144,7 +146,8 @@ class CategoryManager:
         Merges the existing category list with the given list if both lists are not identical.
 
         Args:
-           category_input_list (List[category_i.Category]): New list of categories that will be merged into the existing list.
+           category_input_list (List[category_i.Category]): New list of categories that will be merged
+            into the existing list.
         """
         for category in category_input_list:
             if category.get_category_name() not in self.get_all_categories_names():

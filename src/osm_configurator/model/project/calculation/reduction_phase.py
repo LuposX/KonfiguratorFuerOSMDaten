@@ -40,7 +40,7 @@ if TYPE_CHECKING:
 
 
 def _remove_nodes_in_areas_with_same_category(df: GeoDataFrame):
-    # If we have nodes in a area(relations or way) and the nodes have the same category as the area in which
+    # If we have nodes in an area(relations or way) and the nodes have the same category as the area in which
     # it lies we delete the node.
     # So we iterate over all osm_elements which are area and check if there are nodes in it
     # if yes we check if they have the same category and if yes we delete them, otherwise they can stay.

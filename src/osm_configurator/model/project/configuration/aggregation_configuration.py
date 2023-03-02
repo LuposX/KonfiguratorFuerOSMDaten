@@ -53,7 +53,8 @@ class AggregationConfiguration:
     def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
         """
         Changes the aggregation method from active to inactive and vice versa. If an already active aggregation
-        method should be activated, it stays active. The same applies to inactive aggregation methods, which should be deactivated.
+        method should be activated, it stays active. The same applies to inactive aggregation methods,
+        which should be deactivated.
 
         Args:
             method (aggregation_method_enum.AggregationMethod): The method, which state should be changed.

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import os
 import pathlib
-from pathlib import Path
 
 from typing import TYPE_CHECKING
 

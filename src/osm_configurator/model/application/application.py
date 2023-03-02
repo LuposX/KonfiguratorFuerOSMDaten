@@ -38,7 +38,8 @@ class Application(IApplication):
             self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings()
 
         else:
-            self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings(path_to_starting_file)
+            self.application_settings: ApplicationSettings = \
+                application_settings_i.ApplicationSettings(path_to_starting_file)
 
         self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
             self.application_settings.get_setting(
@@ -47,7 +48,13 @@ class Application(IApplication):
         self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem(self.application_settings)
 
     def create_project(self, name: str, description: str, destination: Path) -> bool:
-        self.active_project = active_project_i.ActiveProject(destination, True, self.application_settings, name, description)
+        self.active_project = active_project_i.ActiveProject(
+            destination,
+            True,
+            self.application_settings,
+            name,
+            description
+        )
         return True
 
     def load_project(self, destination: Path) -> bool:
