@@ -5,7 +5,6 @@ from enum import Enum, unique
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import Tuple, Callable
     from pandas import Series
 
 

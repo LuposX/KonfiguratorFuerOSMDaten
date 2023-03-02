@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum_i
 
-from pathlib import Path
+import pathlib
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
@@ -41,7 +41,7 @@ class FolderPathCalculator:
         result_folder_name: str = CALCULATION_PHASE_CHECKPOINT_FOLDER_NAME
         phase_folder_name: str = phase.get_folder_name_for_results()
 
-        checkpoint_folder_path: Path = Path(
+        checkpoint_folder_path: Path = pathlib.Path(
             os.path.join(os.path.join(project_path, result_folder_name), phase_folder_name))
 
-        return Path(checkpoint_folder_path)
+        return pathlib.Path(checkpoint_folder_path)

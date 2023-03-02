@@ -3,7 +3,6 @@ from __future__ import annotations
 import os.path
 import subprocess
 import pathlib
-import src.osm_configurator.model.project.calculation.osm_file_format_enum
 
 
 class OSMFileConverter:
@@ -18,8 +17,10 @@ class OSMFileConverter:
         Creates a new instance of "OSMFileConverter".
 
         Args:
-            origin_path (pathlib.Path): The path pointing towards the file which format we want to transform into another format.
-            target_path (pathlib.Path): The path pointing towards the place, where we want the translated file o be
+            origin_path (pathlib.Path): The path pointing towards the file which format we want
+                to transform into another format.
+            target_path (pathlib.Path): The path pointing towards the place,
+                where we want the translated file o be
         """
         self.origin_path = origin_path
         self.target_path = target_path
@@ -30,7 +31,8 @@ class OSMFileConverter:
         Allowed format: ".pbf", ".osm.bz2", ".osm".
 
         Args:
-            data_format (osm_file_format_enum.OSMFileFormat): In which osm file format we want to transform our file into.
+            data_format (osm_file_format_enum.OSMFileFormat): In which osm file format we want to
+                transform our file into.
 
         Returns:
             bool: True if successful, otherwise false.

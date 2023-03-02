@@ -15,12 +15,10 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
-    from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.parser.cut_out_parser import CutOutParserInterface
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
     from typing import List
-    from typing import Tuple
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
 
