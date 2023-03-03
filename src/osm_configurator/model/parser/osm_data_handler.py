@@ -13,14 +13,13 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
     from src.osm_configurator.model.project.configuration.category import Category
     from src.osm_configurator.model.parser.tag_parser import TagParser
-    from typing import List, Tuple, Dict
+    from typing import List, Tuple
     from osmium import Node  # type: ignore
     from osmium import Way  # type: ignore
     from osmium import Area  # type: ignore
     from osmium import Relation  # type: ignore
     from osmium.osm import OSMObject
     from shapely import Polygon
-    from typing import Final
 
 KEY_NOT_FOUND: str = "key_not_found"
 
@@ -41,7 +40,6 @@ class DataOSMHandler(osm.SimpleHandler):
         osm.SimpleHandler.__init__(self)
 
         # This will be the list in which we save the output.
-        self._osm_type = None
         self._osm_data: List = []
 
         self._category_manager: CategoryManager = category_manager_p
@@ -63,20 +61,8 @@ class DataOSMHandler(osm.SimpleHandler):
             str] = []  # this is a temporary list that is used to save the tags for one osm element.
         self._categories_of_osm_element: List[str] = []
         self._wkbshape = None  # used to temporarily save location
-        self._osm_type: str  # saved the origin name for area(e.g. way or relation)
-        self._osm_name: str
-
-    def _attributes_to_tag_list(self) -> List[str]:
-        """
-        This method is used to extract all the tags that are needed for the calculation from the Attributes.
-
-        Returns:
-            List: Of tag names(keys) that the attributes needs.
-        """
-        _needed_tags: List[str] = []
-        for attribute in self._activated_attributes:
-            _needed_tags.extend(attribute.get_needed_tags())
-        return _needed_tags
+        self._osm_type: str = ""  # saved the origin name for area(e.g. way or relation)
+        self._osm_name: str = ""
 
     def _tag_inventory(self, elem: OSMObject) -> None:
         """
@@ -112,7 +98,7 @@ class DataOSMHandler(osm.SimpleHandler):
         Raises:
             TagsWronglyFormatted: If a tag wasn't correctly formatted.
         """
-        categories_of_osm_element: List[Category] = []
+        categories_of_osm_element: List[str] = []
 
         tag_parser: TagParser = tag_parser_i.TagParser()
 
@@ -120,8 +106,8 @@ class DataOSMHandler(osm.SimpleHandler):
         category: Category
         for category in self._category_manager.get_categories():
             category_name: str = category.get_category_name()
-            whitelist: Dict = category.get_whitelist()
-            blacklist: Dict = category.get_blacklist()
+            whitelist: List[str] = category.get_whitelist()
+            blacklist: List[str] = category.get_blacklist()
 
             # parse the tags from List[str] to List[Tuple[str, str]]
             whitelist_parsed = tag_parser.parse_tags(whitelist)

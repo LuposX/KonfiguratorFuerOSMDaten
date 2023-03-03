@@ -3,14 +3,11 @@ from __future__ import annotations
 from enum import Enum, unique
 from typing import TYPE_CHECKING, Final
 
-import ast
-import json
-
 import src.osm_configurator.model.model_constants as model_constants_i
 import src.osm_configurator.model.parser.tag_parser as tag_parser_i
 import src.osm_configurator.model.project.calculation.default_value_finder as default_value_finder_i
-import \
-    src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
+import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum \
+    as calculation_method_of_area_enum_i
 
 
 if TYPE_CHECKING:
@@ -19,7 +16,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from geopandas import GeoSeries, GeoDataFrame
     from pandas import Series
-    from src.osm_configurator.model.project.calculation.default_value_finder import DefaultValueFinder
 
 
 NUMBER_FLOOR_KEY: Final = "building:levels"
@@ -42,26 +38,25 @@ def _calculate_property_area(category: Category,
                              data: Any) -> float:
     df: GeoDataFrame = data
 
-    default_value_finder_o: DefaultValueFinder = default_value_finder_i.DefaultValueFinder()
-
     # if the osm element we look at is a node, we can't calculate the value of it
     if osm_element[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
         return curr_default_value.get_attribute_default(Attribute.PROPERTY_AREA)
 
     # The site area of an osm element is described by its geometry, so we can calculate the area from it.
-    if category.get_calculation_method_of_area() == calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_SITE_AREA:
+    if category.get_calculation_method_of_area() == calculation_method_of_area_enum_i.CalculationMethodOfArea\
+            .CALCULATE_SITE_AREA:
         return osm_element[model_constants_i.CL_GEOMETRY].area
 
     # If we want to calculate the building area, we need to check which osm_element which are building are in the border
     # of the osm element and then sum up the area of these osm elements.
-    elif category.get_calculation_method_of_area() == calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA:
+    elif category.get_calculation_method_of_area() == calculation_method_of_area_enum_i.CalculationMethodOfArea\
+            .CALCULATE_BUILDING_AREA:
         tag_parser_o = tag_parser_i.TagParser()
 
         # Find out all osm element which lie in the given osm element
         # this gives us trues and false for each entry true if it lies in the osm element otherwise false
         found_areas_bool: GeoSeries = df.within(
             osm_element[model_constants_i.CL_GEOMETRY])  # TODO: This could be wrong if yes use contains() instead
-
 
         # we will use this to sum up the area of all buildings
         area_sum: int = 0
@@ -77,7 +72,8 @@ def _calculate_property_area(category: Category,
         for i, found_series in df.loc[found_areas_bool].iterrows():
             # the found_series saves the tags as string representation of a list
             # we transform it into an actual list
-            transformed_list: List[Tuple[str, str]] = tag_parser_o.dataframe_tag_parser(found_series[model_constants_i.CL_TAGS])
+            transformed_list: List[Tuple[str, str]] = tag_parser_o\
+                .dataframe_tag_parser(found_series[model_constants_i.CL_TAGS])
             dict_transformed_list: Dict[str, str] = tag_parser_o.list_to_dict(transformed_list)
 
             if dict_transformed_list.get(BUILDING_KEY) is not None:
@@ -85,7 +81,7 @@ def _calculate_property_area(category: Category,
                 if found_series[model_constants_i.CL_OSM_TYPE] == model_constants_i.NODE_NAME:
                     curr_default_value_list: List[DefaultValueEntry] = category.get_default_value_list()
 
-                    default_value: DefaultValueEntry = default_value_finder_o\
+                    default_value: DefaultValueEntry = default_value_finder_i\
                         .find_default_value_entry_which_applies(curr_default_value_list,
                                                                 dict_transformed_list)
 
@@ -125,7 +121,8 @@ def _calculate_floor_area(category: Category,
                           curr_default_value: DefaultValueEntry,
                           data: Any) -> float:
 
-    return prev_calculated_attributes.get(Attribute.PROPERTY_AREA.get_name()) * prev_calculated_attributes.get(Attribute.NUMBER_OF_FLOOR.get_name())
+    return prev_calculated_attributes.get(Attribute.PROPERTY_AREA.get_name()) * \
+        prev_calculated_attributes.get(Attribute.NUMBER_OF_FLOOR.get_name())
 
 
 @unique
@@ -175,9 +172,11 @@ class Attribute(Enum):
         Args:
             category (Category): The Category of the osm element.
             osm_element (Series): The osm element from which we want to calculate the attribute value for.
-            prev_calculated_attributes (Dict[str, float]): All previously calculated attributes in a dictionary accessible by its name, used if you have attributes which depend on each other.
+            prev_calculated_attributes (Dict[str, float]): All previously calculated attributes in a dictionary
+                accessible by its name, used if you have attributes which depend on each other.
             curr_default_value (DefaultValueEntry): Default value for the osm element.
-            data (Any): Empty, can be used if your function needs additional data which isn't provided, needs to be changed manually.
+            data (Any): Empty, can be used if your function needs additional data which isn't provided,
+                needs to be changed manually.
 
         Returns:
             float: the calculated value

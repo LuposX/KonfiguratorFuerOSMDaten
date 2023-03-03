@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-import pathlib
 from pathlib import Path
 import src.osm_configurator.model.project.configuration.cut_out_mode_enum as cut_out_mode_enum
 
@@ -9,7 +8,6 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
-    from pathlib import Path
 
 
 class CutOutConfiguration:

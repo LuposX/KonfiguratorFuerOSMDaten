@@ -5,12 +5,8 @@ import os.path
 import pandas as pd
 
 import src.osm_configurator.model.model_constants as model_constants_i
-import matplotlib
 
 import geopandas as gpd
-import webbrowser
-
-import matplotlib.pyplot as plt
 import seaborn as sb
 import glob
 import pathlib
@@ -20,10 +16,8 @@ from typing import TYPE_CHECKING
 import shutil
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
     from pathlib import Path
     from geopandas import GeoDataFrame
-    from pandas import DataFrame
     from folium import Map
     from typing import Final
 
@@ -45,7 +39,8 @@ class DataVisualizer:
         """
         pass
 
-    def create_map(self, cut_out_file: Path, map_saving_path: Path, filename: str) -> bool:
+    @staticmethod
+    def create_map(cut_out_file: Path, map_saving_path: Path, filename: str) -> bool:
         """
         This method is used to create a map from to given cut-out config and save it.
 
@@ -63,8 +58,8 @@ class DataVisualizer:
             gdf[model_constants_i.CL_AREA] = gdf.area
 
             # save the map
-            map: Map = gdf.explore(model_constants_i.CL_AREA, legend=False)
-            map.save(os.path.join(map_saving_path, filename))
+            cut_out_map: Map = gdf.explore(model_constants_i.CL_AREA, legend=False)
+            cut_out_map.save(os.path.join(map_saving_path, filename))
 
         # I use "Exception" here because seaborn nor matplotlib say on their documentation page which error they throw
         except Exception:
@@ -72,7 +67,8 @@ class DataVisualizer:
 
         return True
 
-    def create_boxplot(self, data_path: Path, boxplot_saving_path: Path) -> bool:
+    @staticmethod
+    def create_boxplot(data_path: Path, boxplot_saving_path: Path) -> bool:
         """
         This method creates a boxplot which is saved and can later be viewed.
 

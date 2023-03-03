@@ -3,7 +3,8 @@ from __future__ import annotations
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 import src.osm_configurator.model.project.configuration.attractivity_attribute
 import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry
-import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
+import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum \
+    as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
 import src.osm_configurator.model.model_constants as model_constants_i
@@ -13,13 +14,14 @@ from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exceptio
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List, Dict, Final
+    from typing import List, Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 EMPTY_STRING: str = ""
+
 
 class Category:
     """
@@ -42,13 +44,16 @@ class Category:
         self._whitelist: List[str] = []
         self._blacklist: List[str] = []
         self._category_name: str = category_name
-        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA
+        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i\
+            .CalculationMethodOfArea.CALCULATE_BUILDING_AREA
         self._attractivity_attributes: List[AttractivityAttribute] = []
         self._default_value_list: List[DefaultValueEntry] = []
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
-        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
+        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(
+            model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG
+        )
         self._default_value_list.append(self._default_tag)
 
         self._strictly_use_default_values: bool = False
@@ -278,7 +283,8 @@ class Category:
         """
         if new_attractivity_attribute.get_attractivity_attribute_name() == EMPTY_STRING:
             return False
-        if new_attractivity_attribute.get_attractivity_attribute_name() not in self.get_all_attractivity_attributes_names():
+        if new_attractivity_attribute.get_attractivity_attribute_name() not in \
+                self.get_all_attractivity_attributes_names():
             self._attractivity_attributes.append(new_attractivity_attribute)
             return True
         return False
@@ -336,7 +342,8 @@ class Category:
             bool: True, if the element was removed successfully, else False.
         """
         if removed_default_value_entry in self._default_value_list:
-            if removed_default_value_entry.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+            if removed_default_value_entry.get_default_value_entry_tag() == model_constants_i\
+                    .DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
                 return False
             self._default_value_list.remove(removed_default_value_entry)
             return True

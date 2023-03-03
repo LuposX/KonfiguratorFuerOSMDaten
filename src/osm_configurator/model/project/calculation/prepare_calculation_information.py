@@ -14,13 +14,14 @@ class PrepareCalculationInformation:
     This class purpose is to be a container of information that the various calculation classes needs, generated
     from the prepare_calculation_phase_method.
     """
+
     def __init__(self,
-                cut_out_dataframe: GeoDataFrame = None,
-                checkpoint_folder_path_last_phase: Path = None,
-                checkpoint_folder_path_current_phase: Path = None,
-                list_of_traffic_cell_checkpoints: List[Path] = None,
-                calculation_state: CalculationState = None,
-                error_message: str = None):
+                 cut_out_dataframe: GeoDataFrame = None,
+                 checkpoint_folder_path_last_phase: Path = None,
+                 checkpoint_folder_path_current_phase: Path = None,
+                 list_of_traffic_cell_checkpoints: List[Path] = None,
+                 calculation_state: CalculationState = None,
+                 error_message: str = None):
         """
         CalculationState is only set if there is an error.
         If there is an error the other parameters are not set

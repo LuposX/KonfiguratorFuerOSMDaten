@@ -49,7 +49,8 @@ class WorkManager:
             pool.join()
             return result
 
-    def _worker_entry_point(self, work: Work):
+    @staticmethod
+    def _worker_entry_point(work: Work):
         """
         This function is the point, where the starting processes start working
         """
