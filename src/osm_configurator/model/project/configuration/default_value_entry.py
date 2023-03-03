@@ -16,7 +16,6 @@ class DefaultValueEntry:
     DefaultValueEntry stores a default value for every attribute.
     Default values can be set and read.
     """
-
     def __init__(self, tag: str):
         """
         Constructor of the class.
