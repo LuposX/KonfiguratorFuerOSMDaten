@@ -77,11 +77,10 @@ class ApplicationSettings:
             if settings_enum == application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER:
                 if settings[settings_enum.get_name()] is None:
                     return None
-                else:
-                    return Path(settings[settings_enum.get_name()])
 
-            else:
-                return settings[settings_enum.get_name()]
+                return Path(settings[settings_enum.get_name()])
+
+            return settings[settings_enum.get_name()]
 
         except Exception:
             return None
@@ -106,7 +105,7 @@ class ApplicationSettings:
             else:
                 settings[settings_enum.get_name()] = setting_value
 
-            with open(self._application_settings_file, WRITE_MODE) as settings_file:
+            with open(self._application_settings_file, WRITE_MODE, encoding="utf-8") as settings_file:
                 json.dump(settings, settings_file)
 
             return True
@@ -121,7 +120,7 @@ class ApplicationSettings:
         Returns:
             Dict[Any]: Returns a dictionary of settings.
         """
-        with open(self._application_settings_file, READ_MODE) as settings_file:
+        with open(self._application_settings_file, READ_MODE, encoding="utf-8") as settings_file:
             return json.load(settings_file)
 
     @classmethod
@@ -146,7 +145,7 @@ class ApplicationSettings:
         # save the dict to disk
         try:
             full_path: Path = Path(os.path.join(saving_path, application_settings_file_name))
-            with open(full_path, WRITE_MODE) as settings_file:
+            with open(full_path, WRITE_MODE, encoding="utf-8") as settings_file:
                 json.dump(settings_dict, settings_file)
 
             return full_path

@@ -309,8 +309,11 @@ class ProjectSaver:
         Returns:
             bool: True if saving works, otherwise false.
         """
-        with open(filename, saver_io_handler_constants.WRITE, newline=saver_io_handler_constants.EMPTY_STRING) as f:
-            writer = csv.writer(f)
+        with open(filename,
+                  saver_io_handler_constants.WRITE,
+                  newline=saver_io_handler_constants.EMPTY_STRING,
+                  encoding="utf-8") as file:
+            writer = csv.writer(file)
             writer.writerows(data)
         return True
 
@@ -326,6 +329,6 @@ class ProjectSaver:
         Returns:
             bool: True if saving works, otherwise false.
         """
-        with open(filename, saver_io_handler_constants.WRITE) as f:
-            f.write(data)
+        with open(filename, saver_io_handler_constants.WRITE, encoding="utf-8") as file:
+            file.write(data)
         return True

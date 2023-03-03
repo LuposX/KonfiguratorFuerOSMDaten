@@ -227,8 +227,8 @@ class ProjectIOHandler:
             return True
         if string == saver_io_handler_constants.FALSE:
             return False
-        else:
-            return None
+
+        return None
 
     @staticmethod
     def _read_csv_file(path: Path) -> list[str]:
@@ -241,7 +241,7 @@ class ProjectIOHandler:
         Returns:
             list[str]: The content of the csv file.
         """
-        with open(path, saver_io_handler_constants.READ) as csv_file:
+        with open(path, saver_io_handler_constants.READ, encoding="utf-8") as csv_file:
             return list(csv.reader(csv_file))
 
     @staticmethod
@@ -255,5 +255,5 @@ class ProjectIOHandler:
         Returns:
             str: The content of the txt file.
         """
-        with open(path, saver_io_handler_constants.READ) as txt_file:
+        with open(path, saver_io_handler_constants.READ, encoding="utf-8") as txt_file:
             return txt_file.read()
