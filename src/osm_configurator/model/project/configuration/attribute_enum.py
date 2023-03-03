@@ -180,7 +180,7 @@ class Attribute(Enum):
         Returns:
             float: the calculated value
         """
-        return self.value[2](category, osm_element, prev_calculated_attributes, curr_default_value, data)
+        return self.value[1](category, osm_element, prev_calculated_attributes, curr_default_value, data)
 
     @staticmethod
     def convert_str_to_attribute(name: str) -> Attribute | None:
