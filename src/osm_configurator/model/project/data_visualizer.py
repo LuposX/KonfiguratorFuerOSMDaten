@@ -89,7 +89,8 @@ class DataVisualizer:
         for file in glob.glob(str(data_path) + "/*" + FILE_TYPE_TO_LOAD):
             try:
                 data = pd.read_csv(file, index_col=[0])
-            except OSError:
+            # Index error happens when the .csv file is wrongly formatted
+            except (OSError, IndexError):
                 return False
 
             file_name = pathlib.Path(file).stem

@@ -44,9 +44,6 @@ class DataOSMHandler(osm.SimpleHandler):
 
         self._category_manager: CategoryManager = category_manager_p
 
-        # Get a list of tags that are needed, the rest we can throw away.
-        self._needed_tags: List[str] = attribute_enum_i.Attribute.get_all_tags()
-
         # when cut_out_data is set we need to remove building which are on the edge
         self._cut_out_data: Polygon
         if cut_out_data_p is None:
