@@ -137,11 +137,19 @@ class Attribute(Enum):
     # NOTICE: It is important in which order the Attributes are defined, because the defined order of the attributes
     # is the order in which they get calculated.
     NUMBER_OF_FLOOR: Tuple[str, List[str], Callable] = (
-        "Number of Floors", [], _calculate_number_of_floors)  # the number of floors the osm element has
+        "Number of Floors",
+        _calculate_number_of_floors
+    )  # the number of floors the osm element has
+
     PROPERTY_AREA: Tuple[str, List[str], Callable] = (
-        "Property Area", [], _calculate_property_area)  #: The area of the property of the osm-element
+        "Property Area",
+        _calculate_property_area
+    )  #: The area of the property of the osm-element
+
     FLOOR_AREA: Tuple[str, List[str], Callable] = (
-        "Floor Area", ["building:levels"], _calculate_floor_area)  # the area that all floors together have
+        "Floor Area",
+        _calculate_floor_area
+    )  # the area that all floors together have
 
     def get_name(self) -> str:
         """
@@ -151,15 +159,6 @@ class Attribute(Enum):
             str: Name of the Phase.
         """
         return self.value[0]
-
-    def get_needed_tags(self) -> List[str]:
-        """
-        Getter for the tags of the enum type.
-
-        Returns:
-            List[str]: A list of tag names(keys) that the attribute needs.
-        """
-        return self.value[1]
 
     def calculate_attribute_value(self, category: Category,
                                   osm_element: Series,
@@ -199,16 +198,3 @@ class Attribute(Enum):
                 return attribute
         return None
 
-    @classmethod
-    def get_all_tags(cls) -> List[str]:
-        """
-        Return all used Tags fromm all attributes:
-
-        Returns:
-            List[str]: A list of tags from the attributes.
-        """
-        all_tags: List[str] = []
-        member: Attribute
-        for member in cls:
-            all_tags.extend(member.value[1])
-        return all_tags
