@@ -24,7 +24,7 @@ class TestDataVisualizer:
 
         # read in the test geojson
         geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer/"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer_map/"))
 
         # create folder for test file
         deleter: FileDeletion = file_deletion.FileDeletion()
@@ -39,7 +39,7 @@ class TestDataVisualizer:
 
         # read in the test geojson
         geojson_path: Path = Path(os.path.join(TEST_DIR, "data/invalid_data.txt"))
-        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer/"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer_map/"))
 
         # create folder for test file
         deleter: FileDeletion = file_deletion.FileDeletion()
