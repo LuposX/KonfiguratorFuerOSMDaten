@@ -30,4 +30,3 @@ class TagParserInterface(ABC):
         Raises:
             TagsWronglyFormatted: If a tag wasn't correctly formatted.
         """
-        pass

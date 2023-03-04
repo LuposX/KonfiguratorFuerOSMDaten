@@ -29,7 +29,6 @@ class OSMDataParser(OSMDataParserInterface):
         """
         Creates a new instance of the CategoryParser.
         """
-        pass
 
     def parse_osm_data_file(self, data_file_path: Path, categories: CategoryManager,
                             cut_out_mode_p: CutOutMode, cut_out_path: Path) -> GeoDataFrame:
@@ -43,8 +42,8 @@ class OSMDataParser(OSMDataParserInterface):
             current_traffic_cell_name: str = data_file_path.stem
 
             if data_file_path.suffix not in [osm_file_format_enum_i.OSMFileFormat.OSM.get_file_extension(),
-                                             osm_file_format_enum_i.OSMFileFormat.OSM.BZ2.get_file_extension(),
-                                             osm_file_format_enum_i.OSMFileFormat.OSM.PBF.get_file_extension()]:
+                                             osm_file_format_enum_i.OSMFileFormat.BZ2.get_file_extension(),
+                                             osm_file_format_enum_i.OSMFileFormat.PBF.get_file_extension()]:
                 raise OSMDataWronglyFormatted
 
             # create a new cutout parser and parse the cutout file

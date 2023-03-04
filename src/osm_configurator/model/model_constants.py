@@ -2,8 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
-
 if TYPE_CHECKING:
     from typing import Final
 
@@ -54,4 +52,3 @@ DF_CL_REDUCTION_PHASE_WITHOUT_ATTRIBUTES: Final = [CL_OSM_TYPE,
                                                    CL_TAGS,
                                                    CL_CATEGORY,
                                                    ]
-

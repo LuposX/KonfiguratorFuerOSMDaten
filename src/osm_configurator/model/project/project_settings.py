@@ -63,14 +63,16 @@ class ProjectSettings:
         if os.path.exists(new_location):
             save_path = self._path
             self._path = os.path.join(new_location, self._name)
+
             if not os.path.exists(self._path):
                 os.makedirs(self._path)
                 config_directory: Path = Path(os.path.join(self._path, "configuration"))
                 os.makedirs(config_directory)
                 os.makedirs(config_directory.joinpath("categories"))
                 return True
-            else:
-                self._path = save_path
+
+            self._path = save_path
+
         return False
 
     def get_name(self) -> str:

@@ -1,19 +1,17 @@
 from __future__ import annotations
 
 import os.path
-
-import pandas as pd
+import shutil
+import glob
+import pathlib
 
 import src.osm_configurator.model.model_constants as model_constants_i
 
 import geopandas as gpd
 import seaborn as sb
-import glob
-import pathlib
+import pandas as pd
 
 from typing import TYPE_CHECKING
-
-import shutil
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -37,7 +35,6 @@ class DataVisualizer:
         """
         Creates a new instance of the DataVisualizer.
         """
-        pass
 
     @staticmethod
     def create_map(cut_out_file: Path, map_saving_path: Path, filename: str) -> bool:
@@ -97,11 +94,11 @@ class DataVisualizer:
             data = data.drop([NAME_COLUMN_TO_DROP], axis=1)
 
             title = str(TITLE_BOXPLOT + file_name)
-            ax = sb.boxplot(data=data)
-            ax.set(xlabel=X_LABEL_BOXPLOT, title=title)
+            matplotlib_ax = sb.boxplot(data=data)
+            matplotlib_ax.set(xlabel=X_LABEL_BOXPLOT, title=title)
 
             try:
-                ax.get_figure().savefig(os.path.join(str(boxplot_saving_path), file_name))
+                matplotlib_ax.get_figure().savefig(os.path.join(str(boxplot_saving_path), file_name))
             except OSError:
                 return False
 

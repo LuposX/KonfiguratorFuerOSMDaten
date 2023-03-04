@@ -14,7 +14,6 @@ from src.osm_configurator.model.project.configuration.category import Category
 
 if TYPE_CHECKING:
     from pathlib import Path
-    from src.osm_configurator.model.project.configuration.category import Category
 
 EMPTY_STRING: str = ""
 READ: str = "r"
@@ -55,11 +54,10 @@ class CategoryParser(CategoryParserInterface):
         """
         Creates a new instance of the CategoryParser.
         """
-        pass
 
     def parse_category_file(self, filepath: Path) -> Category | None:
-        with open(filepath, READ) as f:
-            reader = csv.reader(f)
+        with open(filepath, READ, encoding="utf-8") as file:
+            reader = csv.reader(file)
             category_data: list[str] = list(reader)
         category_name: str = category_data[TABLE_FIRST_ROW][TABLE_SECOND_COLUMN]
         if isinstance(category_name, str):

@@ -1,15 +1,15 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-from definitions import PROJECT_DIR
 import os
-from pathlib import Path
-
 import numpy as np
 import pandas as pd
+from pathlib import Path
 
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+
+from definitions import PROJECT_DIR
+
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List, Final

@@ -29,7 +29,6 @@ class CutOutParser(CutOutParserInterface):
         """
         Creates a new instance of the CutOutParser.
         """
-        pass
 
     def parse_cutout_file(self, path: Path) -> GeoDataFrame:
         if not os.path.exists(path):

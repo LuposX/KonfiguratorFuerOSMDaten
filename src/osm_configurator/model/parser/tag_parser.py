@@ -18,7 +18,6 @@ class TagParser(TagParserInterface):
         """
         Creates a new instance of the TagParser.
         """
-        pass
 
     def parse_tags(self, tags: List[str]) -> Dict[str, str]:
         if not tags:
@@ -52,8 +51,8 @@ class TagParser(TagParserInterface):
 
         if len(tmp_str_finish) != 0:
             return list(filter(None, tmp_str_finish))
-        else:
-            return []
+
+        return []
 
     @staticmethod
     def dataframe_tag_parser(string: str) -> List[Tuple[str, str]]:

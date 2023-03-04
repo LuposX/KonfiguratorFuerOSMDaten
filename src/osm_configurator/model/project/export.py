@@ -27,8 +27,8 @@ def _path_with_zip_to_str(path: Path) -> str:
     string_version_of_path: str = str(path)
     if string_version_of_path[-4:] == ".zip":
         return string_version_of_path[:-4]
-    else:
-        return string_version_of_path
+
+    return string_version_of_path
 
 
 class Export:
