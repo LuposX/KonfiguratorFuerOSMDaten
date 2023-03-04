@@ -90,7 +90,7 @@ class MainMenuFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_TITLE_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    text=main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
         self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW",
                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,

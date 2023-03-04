@@ -95,7 +95,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Tag-List:")
         self._tag_list_label.grid(row=0, column=0, rowspan=1, columnspan=1,
                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -119,7 +119,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Tag")
         self._tag_label.grid(row=1, column=1, rowspan=1, columnspan=1,
                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -135,7 +135,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Area")
         self._area_label.grid(row=2, column=1, rowspan=1, columnspan=1,
                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -151,7 +151,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Number of floors")
         self._number_of_floors_label.grid(row=3, column=1, rowspan=1, columnspan=1,
                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -167,7 +167,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Floor area")
         self._floor_area_label.grid(row=4, column=1, rowspan=1, columnspan=1,
                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,

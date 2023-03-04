@@ -95,7 +95,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                          corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                                          fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                          text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                         anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                                                                         anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                                                                          text="Calculate\nsite Area")
         self._calculate_site_area_label.grid(row=3, column=0, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
@@ -108,7 +108,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                                                              corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                                              fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                                              text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                             anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                                                                             anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                                                                              text="Calculate\nBuilding Area")
         self._calculate_building_area_label.grid(row=3, column=2, rowspan=1, columnspan=1, pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                                  padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)

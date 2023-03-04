@@ -141,7 +141,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Choose Categories:")
         self._choose_categories_label.grid(row=0, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -155,7 +155,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Choose Attractivity:")
         self._choose_attractivity_label.grid(row=1, column=0, rowspan=1, columnspan=1,
                                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -169,7 +169,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Attractivity Name:")
         self._attractivity_name_label.grid(row=2, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -196,7 +196,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Attribute:")
         self._attribute_label.grid(row=3, column=0, rowspan=1, columnspan=1,
                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -210,7 +210,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Factor:")
         self._factor_label.grid(row=3, column=1, rowspan=1, columnspan=1,
                                 pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -224,7 +224,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Area:")
         self._area_label.grid(row=4, column=0, rowspan=1, columnspan=1,
                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -238,7 +238,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Number of Floors:")
         self._number_of_floors_label.grid(row=5, column=0, rowspan=1, columnspan=1,
                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -252,7 +252,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Floor Area:")
         self._floor_area_label.grid(row=6, column=0, rowspan=1, columnspan=1,
                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -266,7 +266,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Base Attractivity:")
         self._base_attractivity_label.grid(row=7, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,

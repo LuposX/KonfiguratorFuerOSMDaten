@@ -183,7 +183,7 @@ class DataFrame(TopLevelFrame):
                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
             )
 
         # Implementing the checkbox
