@@ -21,3 +21,10 @@ class ButtonConstants(Enum):
     BUTTON_TEXT_COLOR_DELETE = "#000000"
     BUTTON_FG_COLOR_DELETE = "#EA5353"
     BUTTON_HOVER_COLOR_DELETE = "#8B0000"
+
+    # Width and height for a standard button
+    BUTTON_BASE_HEIGHT_BIG = 80
+    BUTTON_BASE_WIDTH_BIG = 240
+
+    BUTTON_BASE_HEIGHT_SMALL = 40
+    BUTTON_BASE_WIDTH_SMALL = 120
