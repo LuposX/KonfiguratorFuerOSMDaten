@@ -52,7 +52,10 @@ class CategoryController(ICategoryController):
     def create_category(self, name: str) -> Category | None:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
 
-        new_category: Category = category_i.Category(name)
+        try:
+            new_category: Category = category_i.Category(name)
+        except NotValidName:
+            return None
 
         if category_manager.create_category(new_category):
             return new_category
