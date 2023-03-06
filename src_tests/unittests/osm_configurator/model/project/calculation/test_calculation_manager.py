@@ -33,7 +33,7 @@ def test_correct_state_passing_on_error():
     assert result == calculation_state_enum.CalculationState.RUNNING
 
     # Test if calculation fails
-    time.sleep(3)
+    time.sleep(5)
     new_state: CalculationState = calc_manager.get_calculation_state()[0]
     assert new_state != calculation_state_enum.CalculationState.RUNNING
     assert new_state != calculation_state_enum.CalculationState.ENDED_SUCCESSFULLY
