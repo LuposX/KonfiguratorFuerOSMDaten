@@ -2,12 +2,7 @@ from __future__ import annotations
 
 import os
 
-from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
 from pathlib import Path
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from pathlib import Path
 
 EMPTY_STRING: str = ""
 
@@ -69,6 +64,7 @@ class ProjectSettings:
         if os.path.exists(new_location):
             save_path = self._path
             self._path = os.path.join(new_location, self._name)
+
             if not os.path.exists(self._path):
                 os.makedirs(self._path)
                 config_directory: Path = Path(os.path.join(self._path, "configuration"))
@@ -76,8 +72,9 @@ class ProjectSettings:
                 category_directory: Path = Path(os.path.join(config_directory, "categories"))
                 os.makedirs(category_directory)
                 return True
-            else:
-                self._path = save_path
+
+            self._path = save_path
+
         return False
 
     def get_name(self) -> str:

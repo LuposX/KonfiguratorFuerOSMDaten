@@ -6,21 +6,18 @@ import csv
 from datetime import date
 from pathlib import Path
 import pathlib
+
 import src.osm_configurator.model.project.active_project as active_project_i
-from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
-from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
-from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
-from src.osm_configurator.model.project.configuration.category import Category
-from typing import TYPE_CHECKING
+import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum_i
+import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
 from src.osm_configurator.model.project import saver_io_handler_constants
 
+from typing import TYPE_CHECKING
+
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
-    from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
     from src.osm_configurator.model.project.configuration.aggregation_configuration import AggregationConfiguration
-    from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
-    from pathlib import Path
 
 NAME: str = "name"
 DESCRIPTION: str = "description"
@@ -121,7 +118,10 @@ class ProjectSaver:
         Returns:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
-        filename: Path = Path(os.path.join(self.destination, Path(saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT)))
+        filename: Path = Path(os.path.join(
+            self.destination,
+            Path(saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT))
+        )
         config_phase_data = self.active_project.get_last_step().get_name()
         return ProjectSaver._write_txt_file(config_phase_data, filename)
 
@@ -133,7 +133,10 @@ class ProjectSaver:
             bool: True, if the project was stored successfully, False, if an error occurred.
         """
         config_directory: Path = Path(os.path.join(self.destination, saver_io_handler_constants.CONFIGURATION))
-        filename: Path = Path(os.path.join(config_directory, saver_io_handler_constants.OSM_PATH + saver_io_handler_constants.TXT))
+        filename: Path = Path(os.path.join(
+            config_directory,
+            saver_io_handler_constants.OSM_PATH + saver_io_handler_constants.TXT)
+        )
         osm_path_data = str(self.active_project.get_config_manager().get_osm_data_configuration().get_osm_data())
         return ProjectSaver._write_txt_file(osm_path_data, filename)
 
@@ -146,8 +149,9 @@ class ProjectSaver:
         """
         filename = self._create_config_file(saver_io_handler_constants.AGGREGATION_METHOD)
         aggregation_methods: list[list[str]] = []
-        aggregation_configurator: AggregationConfiguration = self.active_project.get_config_manager().get_aggregation_configuration()
-        for method in AggregationMethod:
+        aggregation_configurator: AggregationConfiguration = \
+            self.active_project.get_config_manager().get_aggregation_configuration()
+        for method in aggregation_method_enum_i.AggregationMethod:
             aggregation_methods.append(
                 [method.get_name(), aggregation_configurator.is_aggregation_method_active(method)])
         return ProjectSaver._write_csv_file(aggregation_methods, filename)
@@ -163,7 +167,8 @@ class ProjectSaver:
         cut_out_data = [[CUT_OUT_PATH,
                          self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path()],
                         [CUT_OUT_MODE,
-                         self.active_project.get_config_manager().get_cut_out_configuration().get_cut_out_mode().get_name()]]
+                         self.active_project.get_config_manager().get_cut_out_configuration()
+                         .get_cut_out_mode().get_name()]]
         return ProjectSaver._write_csv_file(cut_out_data, filename)
 
     def _save_categories(self):
@@ -187,31 +192,53 @@ class ProjectSaver:
             all_attractivity_attributes_list: list[str] = []
             for attractivity_attribute in category.get_attractivity_attributes():
                 attractivity_attribute_values: list[str] = [attractivity_attribute.get_attractivity_attribute_name()]
-                for attribute in Attribute:
-                    attractivity_attribute_values.append(attribute.get_name() + saver_io_handler_constants.DELIMITER_COLON + str(
-                        attractivity_attribute.get_attribute_factor(attribute)))
+                for attribute in attribute_enum_i.Attribute:
+                    attractivity_attribute_values.append(
+                        attribute.get_name() +
+                        saver_io_handler_constants.DELIMITER_COLON +
+                        str(attractivity_attribute.get_attribute_factor(attribute))
+                    )
                 attractivity_attribute_values.append(
-                    BASE + saver_io_handler_constants.DELIMITER_COLON + str(attractivity_attribute.get_base_factor()))
-                all_attractivity_attributes_list.append(saver_io_handler_constants.DELIMITER_COMMA.join(attractivity_attribute_values))
+                    BASE +
+                    saver_io_handler_constants.DELIMITER_COLON +
+                    str(attractivity_attribute.get_base_factor())
+                )
+
+                all_attractivity_attributes_list.append(
+                    saver_io_handler_constants.DELIMITER_COMMA.join(attractivity_attribute_values)
+                )
 
             # Saves all default value entry
             all_default_value_entries_list: list[str] = []
             for default_value_entry in category.get_default_value_list():
                 default_value_entry_values: list[str] = [default_value_entry.get_default_value_entry_tag()]
-                for attribute in Attribute:
-                    default_value_entry_values.append(attribute.get_name() + saver_io_handler_constants.DELIMITER_COLON + str(
-                        default_value_entry.get_attribute_default(attribute)))
-                all_default_value_entries_list.append(saver_io_handler_constants.DELIMITER_COMMA.join(default_value_entry_values))
+                for attribute in attribute_enum_i.Attribute:
+
+                    default_value_entry_values.append(
+                        attribute.get_name() +
+                        saver_io_handler_constants.DELIMITER_COLON +
+                        str(default_value_entry.get_attribute_default(attribute))
+                    )
+
+                all_default_value_entries_list.append(
+                    saver_io_handler_constants.DELIMITER_COMMA.join(default_value_entry_values)
+                )
+
             category_data = [[NAME, category.get_category_name()],
                              [STATUS, category.is_active()],
-                             [WHITE_LIST, saver_io_handler_constants.DELIMITER_SEMICOLON.join(category.get_whitelist())],
-                             [BLACK_LIST, saver_io_handler_constants.DELIMITER_SEMICOLON.join(category.get_blacklist())],
+                             [WHITE_LIST, saver_io_handler_constants.DELIMITER_SEMICOLON
+                             .join(category.get_whitelist())],
+                             [BLACK_LIST, saver_io_handler_constants.DELIMITER_SEMICOLON
+                             .join(category.get_blacklist())],
                              [CALCULATION_METHOD_OF_AREA,
                               category.get_calculation_method_of_area().get_calculation_method()],
-                             [ACTIVE_ATTRIBUTES, saver_io_handler_constants.DELIMITER_SEMICOLON.join(active_attributes)],
+                             [ACTIVE_ATTRIBUTES, saver_io_handler_constants.DELIMITER_SEMICOLON
+                             .join(active_attributes)],
                              [STRICTLY_USE_DEFAULT_VALUES, category.get_strictly_use_default_values()],
-                             [ATTRACTIVITY_ATTRIBUTES, saver_io_handler_constants.DELIMITER_SEMICOLON.join(all_attractivity_attributes_list)],
-                             [DEFAULT_VALUE_LIST, saver_io_handler_constants.DELIMITER_SEMICOLON.join(all_default_value_entries_list)]]
+                             [ATTRACTIVITY_ATTRIBUTES, saver_io_handler_constants.DELIMITER_SEMICOLON
+                             .join(all_attractivity_attributes_list)],
+                             [DEFAULT_VALUE_LIST, saver_io_handler_constants.DELIMITER_SEMICOLON
+                             .join(all_default_value_entries_list)]]
             filename = self._create_category_file(category.get_category_name())
             if not ProjectSaver._write_csv_file(category_data, filename):
                 return False
@@ -282,8 +309,11 @@ class ProjectSaver:
         Returns:
             bool: True if saving works, otherwise false.
         """
-        with open(filename, saver_io_handler_constants.WRITE, newline=saver_io_handler_constants.EMPTY_STRING) as f:
-            writer = csv.writer(f)
+        with open(filename,
+                  saver_io_handler_constants.WRITE,
+                  newline=saver_io_handler_constants.EMPTY_STRING,
+                  encoding="utf-8") as file:
+            writer = csv.writer(file)
             writer.writerows(data)
         return True
 
@@ -299,6 +329,6 @@ class ProjectSaver:
         Returns:
             bool: True if saving works, otherwise false.
         """
-        with open(filename, saver_io_handler_constants.WRITE) as f:
-            f.write(data)
+        with open(filename, saver_io_handler_constants.WRITE, encoding="utf-8") as file:
+            file.write(data)
         return True

@@ -33,11 +33,13 @@ class ICalculationPhase(ABC):
         3. Store the results of this computation phase so the following execution phases can read it.\n
 
         Args:
-            configuration_manager_o (ConfigurationManager): The ConfigurationManager where the information about the configuration of the configuration is stored.
+            configuration_manager_o (ConfigurationManager): The ConfigurationManager where the information about the
+                configuration of the configuration is stored.
             application_manager (ApplicationSettings): The settings of the application
 
         Returns:
-            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happend e.g. a error.
+            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or
+                failed trying so and a string which describes what happened e.g. an error.
         """
         pass
 

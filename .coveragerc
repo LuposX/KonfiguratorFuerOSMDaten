@@ -17,6 +17,9 @@ exclude_lines =
     pragma: no cover
     import .*
     from .* import .*
+     # abstractmethod are for us never implemented
+    @abstract
+    @abstractmethod
 
 [html]
 directory = coverage_html_report

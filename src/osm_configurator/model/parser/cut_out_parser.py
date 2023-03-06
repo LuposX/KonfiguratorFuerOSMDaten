@@ -29,7 +29,6 @@ class CutOutParser(CutOutParserInterface):
         """
         Creates a new instance of the CutOutParser.
         """
-        pass
 
     def parse_cutout_file(self, path: Path) -> GeoDataFrame:
         if not os.path.exists(path):
@@ -41,7 +40,7 @@ class CutOutParser(CutOutParserInterface):
                                KEEP_GEOM_COLUMNS="NO"
                                )
         except fiona.errors.DriverError as err:
-            raise IllegalCutOutException("Could not load cut out file at the given path")
+            raise IllegalCutOutException("Could not load cut out file at the given path" + str(err.args))
 
         # Create names for the traffic cells which don't have one and add idx before name
         # e.g. what function does "None" -> "0_traffic_cell" and "berlin_is_cool" -> "1_berlin_is_cool"

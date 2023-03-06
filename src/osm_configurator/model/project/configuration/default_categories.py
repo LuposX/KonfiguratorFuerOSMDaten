@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.category as category_i
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category

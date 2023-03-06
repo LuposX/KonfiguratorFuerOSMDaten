@@ -2,19 +2,19 @@ from __future__ import annotations
 
 import os
 import csv
-
-import pathlib
 from pathlib import Path
+
+import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum_i
 import src.osm_configurator.model.project.active_project as active_project_i
+
 from src.osm_configurator.model.project import saver_io_handler_constants
 from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
-    from pathlib import Path
 
 # The data loaded by this class is stored in csv or txt files
 # The data in those files are stored as described below
@@ -98,9 +98,13 @@ class ProjectIOHandler:
             return False
         if not os.path.exists(self.category_directory):
             return False
-        if not os.path.exists(os.path.join(self.destination, saver_io_handler_constants.PROJECT_SETTINGS + saver_io_handler_constants.CSV)):
+        if not os.path.exists(os.path.join(
+                self.destination,
+                saver_io_handler_constants.PROJECT_SETTINGS + saver_io_handler_constants.CSV)):
             return False
-        if not os.path.exists(os.path.join(self.destination, saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT)):
+        if not os.path.exists(os.path.join(
+                self.destination,
+                saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT)):
             return False
 
         # Loads the different parts of the project
@@ -124,7 +128,10 @@ class ProjectIOHandler:
         return True
 
     def _load_project_settings(self) -> bool:
-        filepath: Path = Path(os.path.join(self.destination, saver_io_handler_constants.PROJECT_SETTINGS + saver_io_handler_constants.CSV))
+        filepath: Path = Path(os.path.join(
+            self.destination,
+            saver_io_handler_constants.PROJECT_SETTINGS + saver_io_handler_constants.CSV)
+        )
         if os.path.exists(filepath):
             project_settings_data: list[str] = ProjectIOHandler._read_csv_file(filepath)
             self._active_project.get_project_settings().set_name(
@@ -139,7 +146,10 @@ class ProjectIOHandler:
         return False
 
     def _load_config_phase(self) -> bool:
-        filepath: Path = Path(os.path.join(self.destination, saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT))
+        filepath: Path = Path(os.path.join(
+            self.destination,
+            saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT)
+        )
         if os.path.exists(filepath):
             last_step: str = ProjectIOHandler._read_txt_file(filepath)
             last_step_config_phase: ConfigPhase = ConfigPhase.convert_str_to_config_phase(last_step)
@@ -149,7 +159,10 @@ class ProjectIOHandler:
         return False
 
     def _load_osm_configurator(self) -> bool:
-        filepath: Path = Path(os.path.join(self.config_directory, saver_io_handler_constants.OSM_PATH + saver_io_handler_constants.TXT))
+        filepath: Path = Path(os.path.join(
+            self.config_directory,
+            saver_io_handler_constants.OSM_PATH + saver_io_handler_constants.TXT)
+        )
         if os.path.exists(filepath):
             osm_path: str = ProjectIOHandler._read_txt_file(filepath)
             self._active_project.get_config_manager().get_osm_data_configuration().set_osm_data(Path(osm_path))
@@ -157,21 +170,28 @@ class ProjectIOHandler:
         return False
 
     def _load_aggregation_configuration(self) -> bool:
-        filepath: Path = Path(os.path.join(self.config_directory, saver_io_handler_constants.AGGREGATION_METHOD + saver_io_handler_constants.CSV))
+        filepath: Path = Path(os.path.join(
+            self.config_directory,
+            saver_io_handler_constants.AGGREGATION_METHOD + saver_io_handler_constants.CSV)
+        )
         if os.path.exists(filepath):
             aggregation: list[str] = ProjectIOHandler._read_csv_file(filepath)
             for row in aggregation:
                 value: bool = ProjectIOHandler._convert_bool(row[VALUE_OF_AGGREGATION])
                 if value is not None:
-                    self._active_project.get_config_manager().get_aggregation_configuration().set_aggregation_method_active(
-                        AggregationMethod.convert_str_to_aggregation_method(row[NAME_OF_AGGREGATION]), value)
+                    self._active_project.get_config_manager().get_aggregation_configuration()\
+                        .set_aggregation_method_active(
+                        aggregation_method_enum_i.convert_str_to_aggregation_method(row[NAME_OF_AGGREGATION]), value)
                 else:
                     return False
             return True
         return False
 
     def _load_cut_out_configurator(self) -> bool:
-        filepath: Path = Path(os.path.join(self.config_directory, saver_io_handler_constants.CUT_OUT_CONFIGURATION + saver_io_handler_constants.CSV))
+        filepath: Path = Path(os.path.join(
+            self.config_directory,
+            saver_io_handler_constants.CUT_OUT_CONFIGURATION + saver_io_handler_constants.CSV)
+        )
         if os.path.exists(filepath):
             cut_out: list[str] = ProjectIOHandler._read_csv_file(filepath)
             cut_out_path: Path = Path(cut_out[CUT_OUT_TABLE_FIRST_ROW][CUT_OUT_TABLE_SECOND_COLUMN])
@@ -189,7 +209,8 @@ class ProjectIOHandler:
         return False
 
     def _load_category_configuration(self) -> bool:
-        return self._active_project.get_config_manager().get_category_manager().override_categories(self.category_directory)
+        return self._active_project.get_config_manager().get_category_manager()\
+            .override_categories(self.category_directory)
 
     @staticmethod
     def _convert_bool(string: str) -> bool | None:
@@ -206,8 +227,8 @@ class ProjectIOHandler:
             return True
         if string == saver_io_handler_constants.FALSE:
             return False
-        else:
-            return None
+
+        return None
 
     @staticmethod
     def _read_csv_file(path: Path) -> list[str]:
@@ -220,7 +241,7 @@ class ProjectIOHandler:
         Returns:
             list[str]: The content of the csv file.
         """
-        with open(path, saver_io_handler_constants.READ) as csv_file:
+        with open(path, saver_io_handler_constants.READ, encoding="utf-8") as csv_file:
             return list(csv.reader(csv_file))
 
     @staticmethod
@@ -234,5 +255,5 @@ class ProjectIOHandler:
         Returns:
             str: The content of the txt file.
         """
-        with open(path, saver_io_handler_constants.READ) as txt_file:
+        with open(path, saver_io_handler_constants.READ, encoding="utf-8") as txt_file:
             return txt_file.read()

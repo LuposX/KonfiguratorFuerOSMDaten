@@ -11,6 +11,9 @@ if TYPE_CHECKING:
 
 @unique
 class ApplicationSettingsDefault(Enum):
+    """
+    This class specifies all settings of the application.
+    """
     # The first value of the tuple is the name of the setting.
     # The second value is the default value the setting will have if it didn't get changed.
     DEFAULT_PROJECT_FOLDER = ("default_project_folder", None)

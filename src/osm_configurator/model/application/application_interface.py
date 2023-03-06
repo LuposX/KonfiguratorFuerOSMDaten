@@ -2,11 +2,6 @@ from __future__ import annotations
 
 import pathlib
 
-import src.osm_configurator.model.application.recommender_system
-import src.osm_configurator.model.project.active_project
-import src.osm_configurator.model.application.application_settings
-import src.osm_configurator.model.application.passive_project
-
 from abc import ABC, abstractmethod
 from pathlib import Path
 
@@ -37,7 +32,6 @@ class IApplication(ABC):
         Returns:
             bool: True if create_project completed successfully, otherwise false.
         """
-        pass
 
     @abstractmethod
     def load_project(self, destination: Path) -> bool:
@@ -50,7 +44,6 @@ class IApplication(ABC):
         Returns:
             bool: True if loading the project is working, otherwise false.
         """
-        pass
 
     @abstractmethod
     def get_passive_project_list(self) -> List[PassiveProject]:
@@ -60,7 +53,6 @@ class IApplication(ABC):
         Returns:
             List[passive_project.PassiveProject]: The list of the passive projects.
         """
-        pass
 
     @abstractmethod
     def get_key_recommendation_system(self) -> RecommenderSystem:
@@ -70,7 +62,6 @@ class IApplication(ABC):
         Returns:
             recommender_system.RecommenderSystem: The key recommender system.
         """
-        pass
 
     @abstractmethod
     def get_active_project(self) -> ActiveProject:
@@ -80,7 +71,6 @@ class IApplication(ABC):
         Returns:
             active_project.ActiveProject: The active project.
         """
-        pass
 
     @abstractmethod
     def get_application_settings(self) -> ApplicationSettings:
@@ -90,7 +80,6 @@ class IApplication(ABC):
         Returns:
             application_settings.ApplicationSettings: The settings of the application.
         """
-        pass
 
     @abstractmethod
     def _create_passive_project_list(self, destination: Path) -> List[PassiveProject]:
@@ -103,11 +92,9 @@ class IApplication(ABC):
         Returns:
             list[passive_project.PassiveProject]: The list of passive projects.
         """
-        pass
 
     @abstractmethod
     def unload_project(self):
         """
         This method is to set the active_project to None, which is used when getting into the Main Menu.
         """
-        pass

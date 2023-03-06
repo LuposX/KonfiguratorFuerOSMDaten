@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Final
 import csv
 
 READ: str = "r"
@@ -30,8 +29,8 @@ class PassiveProject:
         Args:
             settings_file (Path): The settings file of to the project you want to make a PassiveProject on.
         """
-        with open(settings_file, READ) as f:
-            reader = csv.reader(f)
+        with open(settings_file, READ, encoding="utf-8") as file:
+            reader = csv.reader(file)
             self.data = list(reader)
 
     def get_name(self) -> str:

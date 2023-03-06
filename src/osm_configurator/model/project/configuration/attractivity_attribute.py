@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
