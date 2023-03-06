@@ -36,6 +36,7 @@ if TYPE_CHECKING:
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 12
 
+
 class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
     """
     This frame shows a list of tags in a priority order, that can be expanded by adding or removing tags.
@@ -521,7 +522,6 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
             self._delete_tag_button.configure(state="disabled")
 
             self._tag_list.freeze()
-
 
             self._frozen: bool = True
 
