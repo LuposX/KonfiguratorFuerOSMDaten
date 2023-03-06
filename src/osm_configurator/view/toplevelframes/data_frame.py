@@ -138,6 +138,8 @@ class DataFrame(TopLevelFrame):
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                 text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
+                width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value,
+                height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value
             )
 
         # Implementing the labels
