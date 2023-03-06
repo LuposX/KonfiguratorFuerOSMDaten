@@ -369,7 +369,7 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_LEFT.value,
                                                                     text=attractivity_tuple[0])
         name_label.grid(row=row, column=0, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._attractivity_name_labels.append(name_label)
@@ -384,7 +384,7 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_LEFT.value,
                                                                     text=attractivity_tuple[1])
         area_label.grid(row=row, column=1, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._area_factor_labels.append(area_label)
@@ -399,7 +399,7 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+                                                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_LEFT.value,
                                                                      text=attractivity_tuple[2])
         floor_label.grid(row=row, column=2, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._floors_factor_labels.append(floor_label)
@@ -414,7 +414,7 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                           anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+                                                                           anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_LEFT.value,
                                                                            text=attractivity_tuple[3])
         ground_area_label.grid(row=row, column=3, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._ground_area_factor_labels.append(ground_area_label)
@@ -429,7 +429,7 @@ class AttractivityViewFrame(TopLevelFrame):
                                                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_LEFT.value,
                                                                     text=attractivity_tuple[4])
         base_label.grid(row=row, column=4, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
         self._base_attractivity_labels.append(base_label)
