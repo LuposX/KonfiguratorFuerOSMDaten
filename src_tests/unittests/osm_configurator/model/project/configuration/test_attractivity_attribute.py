@@ -16,6 +16,11 @@ class TestAttractivityAttribute:
         self.attractivity_attribute.set_attractivity_attribute_name("NewName")
         assert self.attractivity_attribute.get_attractivity_attribute_name() == "NewName"
 
+    def test_set_attractivity_attribute_name_empty(self):
+        self.attractivity_attribute: AttractivityAttribute = AttractivityAttribute("TestAttribute")
+        assert not self.attractivity_attribute.set_attractivity_attribute_name("")
+        assert self.attractivity_attribute.get_attractivity_attribute_name() == "TestAttribute"
+
     def test_get_attribute_factor(self):
         self.attractivity_attribute: AttractivityAttribute = AttractivityAttribute("TestAttribute")
         assert self.attractivity_attribute.get_attribute_factor(Attribute.PROPERTY_AREA) == 0.0

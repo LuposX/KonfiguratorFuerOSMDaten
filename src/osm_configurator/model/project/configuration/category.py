@@ -360,36 +360,45 @@ class Category:
         Returns:
             bool: True, if the change was successful, else False.
         """
-        if moved_default_value_entry not in self._default_value_list:
-            return False
-        # To make sure that "default" is always at the bottom, you cant move the second last item up
-        if self._default_value_list.index(moved_default_value_entry) <= 1:
-            return False
-        index = self._default_value_list.index(moved_default_value_entry)
-        self._default_value_list[index - 1], self._default_value_list[index] \
-            = self._default_value_list[index], self._default_value_list[index - 1]
-        return True
+        for item in self._default_value_list:
+            # Checks if the given default value is part of the list and if it is not the first element.
+            if moved_default_value_entry.get_default_value_entry_tag() == item.get_default_value_entry_tag():
+                index = self._default_value_list.index(item)
+                if index <= 1:
+                    return False
+                # Swaps the elements.
+                self._default_value_list[index - 1], self._default_value_list[index] \
+                    = self._default_value_list[index], self._default_value_list[index - 1]
+                return True
+        return False
 
     def move_default_value_entry_down(self, moved_default_value_entry: DefaultValueEntry) -> bool:
         """
         Moves an already existing default value from list one element down.
 
         Args:
-            moved_default_value_entry (default_value_entry.DefaultValueEntry): element from the list, that will be
+            moved_default_value_entry (default_value_entry.DefaultValueEntry): Element from the list that will be
             decremented by one.
 
         Returns:
             bool: True, if the change was successful, else false.
         """
-        if moved_default_value_entry not in self._default_value_list:
-            return False
-        # To make sure that "default" is always at the bottom, you cant move the last item down
-        if self._default_value_list.index(moved_default_value_entry) <= 0:
-            return False
-        index = self._default_value_list.index(moved_default_value_entry)
-        self._default_value_list[index + 1], self._default_value_list[index] \
-            = self._default_value_list[index], self._default_value_list[index + 1]
-        return True
+        for item in self._default_value_list:
+            # Checks if the given default value is part of the list and if it is not the first element.
+            if moved_default_value_entry.get_default_value_entry_tag() == item.get_default_value_entry_tag():
+                if item.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+                    return False
+                else:
+                    # Chekcs if the element is the last element.
+                    index = self._default_value_list.index(item)
+                    if index == len(self._default_value_list) - 1:
+                        return False
+                    else:
+                        # Swaps the elements.
+                        self._default_value_list[index + 1], self._default_value_list[index] \
+                            = self._default_value_list[index], self._default_value_list[index + 1]
+                        return True
+        return False
 
     def get_all_attractivity_attributes_names(self) -> list[str]:
         """

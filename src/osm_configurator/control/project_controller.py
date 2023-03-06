@@ -38,9 +38,6 @@ class ProjectController(IProjectController):
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
         return self._model.create_project(name, description, destination)
 
-    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
-        return self._model.delete_passive_project(passive_project)
-
     def save_project(self) -> bool:
         return self._model.get_active_project().get_project_saver().save_project()
 

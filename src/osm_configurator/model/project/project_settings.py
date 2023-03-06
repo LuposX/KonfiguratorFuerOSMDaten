@@ -37,7 +37,8 @@ class ProjectSettings:
 
     def set_location(self, new_location: Path) -> bool:
         """
-        This method loads the location where the project will be stored.
+        This method loads the location where the project will be stored. It is needed when loading or creating the
+        project otherwise change_location should be used.
 
         Args:
             new_location (pathlib.Path): The location for the project.
@@ -68,7 +69,8 @@ class ProjectSettings:
                 os.makedirs(self._path)
                 config_directory: Path = Path(os.path.join(self._path, "configuration"))
                 os.makedirs(config_directory)
-                os.makedirs(config_directory.joinpath("categories"))
+                category_directory: Path = Path(os.path.join(config_directory, "categories"))
+                os.makedirs(category_directory)
                 return True
 
             self._path = save_path
@@ -86,7 +88,8 @@ class ProjectSettings:
 
     def set_name(self, new_name: str) -> bool:
         """
-        This method loads the name of the project.
+        This method loads the name of the project. It is needed when loading or creating the
+        project otherwise change_name should be used.
 
         Args:
             new_name (str): The new name of the project.
