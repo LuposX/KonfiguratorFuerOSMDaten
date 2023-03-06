@@ -117,7 +117,9 @@ class CalculationFrame(TopLevelFrame):
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value)
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
 
         self.cancel_button = None
@@ -338,7 +340,9 @@ class CalculationFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                    command=self.__cancel_calculation_init)
+                                    command=self.__cancel_calculation_init,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value)
         self.cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
         self.resetable_elements.append(self.cancel_button)
 
