@@ -138,6 +138,8 @@ class DataFrame(TopLevelFrame):
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                 text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
+                width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value,
+                height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value
             )
 
         # Implementing the labels
@@ -183,7 +185,7 @@ class DataFrame(TopLevelFrame):
                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
             )
 
         # Implementing the checkbox

@@ -90,11 +90,9 @@ class MainMenuFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_TITLE_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    text=main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
-        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW",
-                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW")
 
         # Implementing the buttons
 
@@ -117,7 +115,9 @@ class MainMenuFrame(TopLevelFrame):
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
             )
 
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
@@ -145,7 +145,7 @@ class MainMenuFrame(TopLevelFrame):
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
 
-            button_text: str = name + "\n" + description
+            button_text: str = name + "\n\n" + description
 
             entry = customtkinter.CTkButton(master=self._entry_subframe,
                                             text=button_text,
@@ -154,7 +154,9 @@ class MainMenuFrame(TopLevelFrame):
                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                             hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                             border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                            width=(frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value * (9 / 10) - ELEMENT_BORDER_DISTANCE) - ELEMENT_BORDER_DISTANCE,
+                                            height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
                                             )
             entry.grid(column=0, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
             self.entries.append(entry)
@@ -163,7 +165,7 @@ class MainMenuFrame(TopLevelFrame):
         """
         Loads the given project
         Args:
-            passive_project (PassiveProject): Project that will be loaded
+            index (int): Project that will be loaded
         """
         project_path = self._passive_projects[index].get_project_folder_path()
 
@@ -199,7 +201,6 @@ class MainMenuFrame(TopLevelFrame):
         Calls the create_project-window switching states
         """
         self._state_manager.change_state(sne.StateName.CREATE_PROJECT)
-
 
     def __call_settings(self):
         """
