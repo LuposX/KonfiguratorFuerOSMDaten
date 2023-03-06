@@ -106,19 +106,6 @@ class IApplication(ABC):
         pass
 
     @abstractmethod
-    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
-        """
-        Deletes a project which is not loaded at the time.
-
-        Args:
-            passive_project (passive_project.PassiveProject): The Project which should be deleted.
-
-        Returns:
-            bool: True if deleting the project works, otherwise false.
-        """
-        pass
-
-    @abstractmethod
     def unload_project(self):
         """
         This method is to set the active_project to None, which is used when getting into the Main Menu.

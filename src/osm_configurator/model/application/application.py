@@ -36,7 +36,6 @@ class Application(IApplication):
         # If path_to_starting_file is set we create the application settings file at that position.
         if path_to_starting_file is None:
             self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings()
-
         else:
             self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings(path_to_starting_file)
 
@@ -68,10 +67,13 @@ class Application(IApplication):
     def get_application_settings(self) -> ApplicationSettings:
         return self.application_settings
 
-    def _create_passive_project_list(self, destination: Path) -> List[PassiveProject] | None:
+    def _create_passive_project_list(self, destination: Path) -> List[PassiveProject]:
         passive_project_list: List[PassiveProject] = []
 
-        if destination:
+        if destination is None:
+            return []
+
+        if os.path.exists(destination):
             for directory in os.listdir(destination):
                 if not os.path.isfile(directory):
                     project: Path = Path(os.path.join(destination, Path(str(directory))))
@@ -81,11 +83,6 @@ class Application(IApplication):
             return passive_project_list
         else:
             return []
-
-    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
-        os.rmdir(passive_project.get_project_folder_path())
-        self.passive_project_list.remove(passive_project)
-        return True
 
     def unload_project(self):
         self.active_project = None
