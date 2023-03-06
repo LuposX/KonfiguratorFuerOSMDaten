@@ -4,8 +4,14 @@ from src.osm_configurator.control.settings_controller_interface import ISettings
 
 
 class SettingsControllerStub(ISettingsController):
+    def get_number_of_key_recommendations(self) -> int:
+        return 0
+
+    def set_number_of_key_recommendations(self, number_of_processes: int) -> bool:
+        return False
+
     def get_number_of_processes(self) -> int:
-        pass
+        return 0
 
     def set_number_of_processes(self, number_of_processes: int) -> bool:
         pass

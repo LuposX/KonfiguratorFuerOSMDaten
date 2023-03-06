@@ -9,6 +9,9 @@ from pathlib import Path
 
 
 class ProjectControllerStub(IProjectController):
+    def get_project_path(self) -> Path:
+        return Path("")
+
     def unload_project(self):
         pass
 
