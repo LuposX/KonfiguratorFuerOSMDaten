@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 import os
 from src_tests.definitions import TEST_DIR
@@ -28,7 +30,7 @@ class TestUseCase0304:
 
         # Load project
         assert not project_ctrl.is_project_loaded()
-        assert project_ctrl.load_project(Path(os.path.join(TEST_DIR, "data/use_cases/uc03_04/uc_03_project")))
+        assert project_ctrl.load_project(Path(os.path.join(TEST_DIR, "data/use_cases/example_project/use_case_project")))
         assert project_ctrl.is_project_loaded()
 
         # Test, if project was loaded correctly
