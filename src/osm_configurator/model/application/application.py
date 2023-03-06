@@ -39,9 +39,7 @@ class Application(IApplication):
         else:
             self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings(path_to_starting_file)
 
-        self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
-            self.application_settings.get_setting(
-                application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
+        self.passive_project_list: List[PassiveProject] = self.get_passive_project_list()
 
         self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem(self.application_settings)
 
@@ -56,7 +54,8 @@ class Application(IApplication):
         return True
 
     def get_passive_project_list(self) -> List[PassiveProject]:
-        return self.passive_project_list
+        return self._create_passive_project_list(self.application_settings.get_setting(
+                application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
 
     def get_key_recommendation_system(self) -> RecommenderSystem:
         return self.recommender_system
