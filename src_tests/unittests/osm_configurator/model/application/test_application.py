@@ -86,8 +86,7 @@ class TestApplication:
         application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
         application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
                                                            Path(os.path.join(TEST_DIR, "build/Projects")))
-        application._create_passive_project_list(Path(os.path.join(TEST_DIR, "build/Projects/WrongPath")))
-        assert application.get_passive_project_list() == []
+        assert application._create_passive_project_list(Path(os.path.join(TEST_DIR, "build/Projects/WrongPath"))) == []
 
     def test_unload_project(self):
         self.prepare()
