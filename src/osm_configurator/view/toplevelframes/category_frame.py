@@ -140,7 +140,7 @@ class CategoryFrame(TopLevelFrame):
         self._category_drop_down_menu: customtkinter.CTkOptionMenu = customtkinter.CTkOptionMenu(
             master=self._category_menu_frame,
             width=((frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) * 2 - ELEMENT_BORDER_DISTANCE),
-            height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE),
+            height=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BASE_HEIGHT.value,
             corner_radius=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
             fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
             button_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
@@ -152,15 +152,15 @@ class CategoryFrame(TopLevelFrame):
             hover=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_HOVER.value,
             state=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_STATE.value,
             values=[],
-            command=self._category_drop_down_menu_edited)
+            command=self._category_drop_down_menu_edited,
+            text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value)
         self._category_drop_down_menu.grid(row=0, column=1, rowspan=1, columnspan=1)
 
         # Making the TextField / Entry for the Category Name
         self._category_name_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self._category_menu_frame,
                                                                                    width=((
                                                                                                   frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) * 2 - ELEMENT_BORDER_DISTANCE),
-                                                                                   height=(
-                                                                                           frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE),
+                                                                                   height=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BASE_HEIGHT.value,
                                                                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                                                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                                                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -222,9 +222,9 @@ class CategoryFrame(TopLevelFrame):
         # The TextBox which contains the WhiteList
         self._white_list = customtkinter.CTkTextbox(master=self._white_list_frame,
                                                     width=((
-                                                                   frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - ELEMENT_BORDER_DISTANCE),
+                                                                   frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - 2*ELEMENT_BORDER_DISTANCE),
                                                     height=((
-                                                                    frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - ELEMENT_BORDER_DISTANCE),
+                                                                    frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - 2*ELEMENT_BORDER_DISTANCE),
                                                     corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
                                                     border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                                     fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
@@ -263,9 +263,9 @@ class CategoryFrame(TopLevelFrame):
         # Making the TextBox which contains the BlackList
         self._black_list: customtkinter.CTkTextbox = customtkinter.CTkTextbox(master=self._black_list_frame,
                                                                               width=((
-                                                                                             frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - ELEMENT_BORDER_DISTANCE),
+                                                                                             frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) - 2*ELEMENT_BORDER_DISTANCE),
                                                                               height=((
-                                                                                              frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - ELEMENT_BORDER_DISTANCE),
+                                                                                              frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 9) * 5 - 2*ELEMENT_BORDER_DISTANCE),
                                                                               corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
                                                                               border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                                                               fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
@@ -279,7 +279,7 @@ class CategoryFrame(TopLevelFrame):
         # This is a scrollable Frame
         self._recommender_frame = customtkinter.CTkScrollableFrame(master=self,
                                                                    width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3,
-                                                                   height=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3,
+                                                                   height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 3,
                                                                    corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
                                                                    fg_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value)
         self._recommender_frame.grid(row=1, column=2, rowspan=1, columnspan=1)
@@ -302,8 +302,8 @@ class CategoryFrame(TopLevelFrame):
 
         # The create Button
         self._create_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self._create_delete_frame,
-                                                                               width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                                                               height=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 6 - ELEMENT_BORDER_DISTANCE,
+                                                                               width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                                                                               height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
                                                                                corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                                                                border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
                                                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
@@ -312,12 +312,12 @@ class CategoryFrame(TopLevelFrame):
                                                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                                                                                text="Create new Category",
                                                                                command=self._create_new_category_pressed)
-        self._create_button.grid(row=0, column=0, rowspan=1, columnspan=1)
+        self._create_button.grid(row=0, column=0, rowspan=1, columnspan=1, pady=PADY)
 
         # The delete Button
         self._delete_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self._create_delete_frame,
-                                                                               width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                                                               height=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 6 - ELEMENT_BORDER_DISTANCE,
+                                                                               width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                                                                               height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
                                                                                corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                                                                border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
                                                                                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value,
@@ -326,7 +326,7 @@ class CategoryFrame(TopLevelFrame):
                                                                                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DELETE.value,
                                                                                text="Delete selected Category",
                                                                                command=self._delete_category_pressed)
-        self._delete_button.grid(row=1, column=0, rowspan=1, columnspan=1)
+        self._delete_button.grid(row=1, column=0, rowspan=1, columnspan=1, pady=PADY)
 
     def activate(self):
         # First getting the Categories
