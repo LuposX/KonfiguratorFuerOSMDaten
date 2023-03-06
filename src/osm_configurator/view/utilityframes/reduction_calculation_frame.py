@@ -49,7 +49,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         super().__init__(master=parent,
                          width=width,
                          height=height,
-                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+                         corner_radius=frame_constants_i.FrameConstants.UTILITY_FRAME_CORNER_RADIUS.value,
                          fg_color=frame_constants_i.FrameConstants.SUB_FRAME_FG_COLOR.value)
 
         self._parent: TopLevelFrame = parent
@@ -115,15 +115,13 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
         # The switch inbetween
         self._site_building_switch: customtkinter.CTkSwitch = customtkinter.CTkSwitch(master=self,
-                                                                                      width=int(
-                                                                                          self._width / 3 - ELEMENT_BORDER_DISTANCE),
-                                                                                      height=int(
-                                                                                          self._height / 4 - ELEMENT_BORDER_DISTANCE),
+                                                                                      width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_WIDTH.value,
+                                                                                      height=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_HEIGHT.value,
                                                                                       corner_radius=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_CORNER_RADIUS.value,
                                                                                       border_width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BORDER_WIDTH.value,
-                                                                                      fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR.value,
+                                                                                      fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_ACTIVE.value,
                                                                                       border_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BORDER_COLOR.value,
-                                                                                      progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR.value,
+                                                                                      progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_ACTIVE.value,
                                                                                       button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR.value,
                                                                                       button_hover_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_HOVER_COLOR.value,
                                                                                       text_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_TEXT_COLOR.value,
@@ -304,10 +302,16 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             self._activate_switch()
 
     def _deactivate_switch(self):
-        self._site_building_switch.configure(state="disabled")
+        self._site_building_switch.configure(state="disabled",
+                                             button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR_DISABLED.value,
+                                             progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_DISABLED.value,
+                                             fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_DISABLED.value)
 
     def _activate_switch(self):
-        self._site_building_switch.configure(state="normal")
+        self._site_building_switch.configure(state="normal",
+                                             button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR.value,
+                                             progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_ACTIVE.value,
+                                             fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_ACTIVE.value)
 
     def _true_activate(self):
         self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)

@@ -9,6 +9,7 @@ import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 import src.osm_configurator.view.constants.segmented_button_constants as segmented_button_constants_i
 import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
@@ -27,8 +28,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.category_controller_interface import ICategoryController
 
 # Finals
-CATEGORY_LIST_FG_COLOR: Final = "#FFFFFF"
-CATEGORY_LIST_LABEL_COLOR: Final = "#FFFFFF"
+CATEGORY_LIST_FG_COLOR: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value
+CATEGORY_LIST_LABEL_COLOR: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value
 ELEMENT_BORDER_DISTANCE: Final = 40
 
 CATEGORY_BUTTON_HEIGHT: Final = 42
@@ -92,11 +93,12 @@ class ReductionFrame(TopLevelFrame):
                                                                                                            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value - ELEMENT_BORDER_DISTANCE),
                                                                                                        corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
                                                                                                        fg_color=CATEGORY_LIST_FG_COLOR,
-                                                                                                       scrollbar_fg_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value,
+                                                                                                       scrollbar_fg_color=CATEGORY_LIST_FG_COLOR,
                                                                                                        scrollbar_button_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_COLOR.value,
                                                                                                        scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
                                                                                                        label_text="Categories:",
-                                                                                                       label_text_color=CATEGORY_LIST_LABEL_COLOR)
+                                                                                                       label_text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                                                                                       label_fg_color=CATEGORY_LIST_LABEL_COLOR)
         self._category_list_frame.grid(row=0, column=0, rowspan=2, columnspan=1)
 
         # The Categories displayed on the scrollable Frame

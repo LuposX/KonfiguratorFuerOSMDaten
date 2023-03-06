@@ -160,7 +160,7 @@ class CategoryFrame(TopLevelFrame):
         self._category_name_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(master=self._category_menu_frame,
                                                                                    width=((
                                                                                                   frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3) * 2 - ELEMENT_BORDER_DISTANCE),
-                                                                                   height=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BASE_HEIGHT.value,
+                                                                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_BIG.value,
                                                                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                                                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                                                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
