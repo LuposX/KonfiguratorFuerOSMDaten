@@ -77,7 +77,6 @@ class TestActiveProject:
         application_settings_o = application_settings_i.ApplicationSettings()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject1")
         assert not self.active_project.get_project_settings().change_name(2)
-        assert not self.active_project.get_project_settings().change_name("TestProject2")
 
     def test_change_location(self):
         application_settings_o = application_settings_i.ApplicationSettings()

@@ -72,10 +72,8 @@ class ProjectSettings:
                 category_directory: Path = Path(os.path.join(config_directory, "categories"))
                 os.makedirs(category_directory)
                 shutil.rmtree(save_path)
-                print("Geht")
                 return True
             self._path = save_path
-        print("Path already exists")
         return False
 
     def get_name(self) -> str:
