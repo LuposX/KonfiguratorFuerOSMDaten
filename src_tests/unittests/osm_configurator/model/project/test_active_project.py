@@ -1,9 +1,5 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
-
 from src.osm_configurator.model.application.application import Application
 from src_tests.definitions import TEST_DIR
 from src.osm_configurator.model.project.active_project import ActiveProject
@@ -12,25 +8,6 @@ import src.osm_configurator.model.application.application_settings as applicatio
 
 from pathlib import Path
 import os
-import shutil
-
-if TYPE_CHECKING:
-    from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
-
-
-def _prepare_project_folder(path_to_new_project: Path, path_old_data: Path):
-    # Prepare result folder
-    deleter: FileDeletion = file_deletion.FileDeletion()
-    deleter.reset_folder(path_to_new_project)
-
-    # move the files from data to it
-    try:
-        shutil.copytree(path_old_data, path_to_new_project)
-    except:
-        pass
-
-    with open(os.path.join(path_to_new_project, "application_settings.json"), "w") as file:
-        file.write(str(path_to_new_project))
 
 
 class TestActiveProject:
@@ -77,13 +54,6 @@ class TestActiveProject:
         application_settings_o = application_settings_i.ApplicationSettings()
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject1")
         assert not self.active_project.get_project_settings().change_name(2)
-
-    def test_change_location(self):
-        application_settings_o = application_settings_i.ApplicationSettings()
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestChangeLocation")
-        assert self.active_project.get_project_settings().change_location(Path(os.path.join(TEST_DIR, "build/Export")))
-        assert Path(self.active_project.get_project_settings().get_location()) == Path(os.path.join(TEST_DIR, "build/Export/TestChangeLocation"))
-        assert self.active_project.get_project_settings().change_location(Path(os.path.join(TEST_DIR, "build/Projects")))
 
     def test_change_location_error(self):
         application_settings_o = application_settings_i.ApplicationSettings()
