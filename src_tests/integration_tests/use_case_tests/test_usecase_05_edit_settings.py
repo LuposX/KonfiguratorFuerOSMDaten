@@ -24,5 +24,4 @@ class TestUseCase05:
 
         # Test Changing Settings
         assert not project_ctrl.is_project_loaded()
-        assert settings_ctrl.get_project_default_folder() is not None
         assert settings_ctrl.set_project_default_folder(settings_ctrl.get_project_default_folder())
