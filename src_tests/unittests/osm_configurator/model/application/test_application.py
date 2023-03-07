@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import csv
 import os
+import shutil
 from pathlib import Path
 
 from src.osm_configurator.model.application.application import Application
@@ -95,3 +97,90 @@ class TestApplication:
         application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
         application.unload_project()
         assert application.get_active_project() is None
+
+    def test_load_project_with_missing_configuration(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication/configuration"))
+        shutil.rmtree(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+        shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+
+    def test_load_project_with_missing_categories(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication/configuration/categories"))
+        shutil.rmtree(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+        shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+
+    def test_load_project_with_missing_project(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication"))
+        shutil.rmtree(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+
+    def test_load_project_with_missing_project_settings(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication/project_settings.csv"))
+        os.remove(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+        shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+
+    def test_load_project_with_missing_last_step(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication/last_step.txt"))
+        os.remove(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+        shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+
+    def test_load_project_with_missing_aggregation(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication/configuration/aggregation_methods.csv"))
+        os.remove(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+        shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+
+    def test_load_project_with_missing_cut_out(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication/configuration/cut_out_configuration.csv"))
+        os.remove(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+        shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+
+    def test_load_project_with_missing_osm(self):
+        self.prepare()
+        application: Application = Application(Path(os.path.join(TEST_DIR, "build/Projects")))
+        application.get_application_settings().set_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER,
+                                                           Path(os.path.join(TEST_DIR, "build/Projects")))
+        filename: Path = Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication/configuration/osm_path.txt"))
+        os.remove(filename)
+        assert not application.load_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))
+        assert application.get_active_project() is None
+        shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProjectApplication")))

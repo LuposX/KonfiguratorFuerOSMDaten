@@ -98,14 +98,6 @@ class ProjectIOHandler:
             return False
         if not os.path.exists(self.category_directory):
             return False
-        if not os.path.exists(os.path.join(
-                self.destination,
-                saver_io_handler_constants.PROJECT_SETTINGS + saver_io_handler_constants.CSV)):
-            return False
-        if not os.path.exists(os.path.join(
-                self.destination,
-                saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT)):
-            return False
 
         # Loads the different parts of the project
         if not self._load_project_settings():
