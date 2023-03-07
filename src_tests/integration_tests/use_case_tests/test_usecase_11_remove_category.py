@@ -18,8 +18,8 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.category import Category
 
 
-class TestUseCase10:
-    def test_successful_category_edit(self):
+class TestUseCase11:
+    def test_successful_category_removal(self):
         # Create Model and Controller
         model: IApplication = application.Application()
         project_ctrl: IProjectController = project_controller.ProjectController(model)
@@ -29,7 +29,7 @@ class TestUseCase10:
         assert not project_ctrl.is_project_loaded()
         assert project_ctrl.create_project("project",
                                            "Description",
-                                           Path(os.path.join(TEST_DIR, "build/use_cases/uc10/project")))
+                                           Path(os.path.join(TEST_DIR, "build/use_cases/uc11/project")))
         assert project_ctrl.is_project_loaded()
 
         # Prepare categories
@@ -39,37 +39,23 @@ class TestUseCase10:
 
         # Check for valid categories
         assert len(category_ctrl.get_list_of_categories()) == 3
-        assert cat_1.get_category_name() == "Category1"
-        assert cat_2.get_category_name() == "Category2"
+        assert cat_1 in category_ctrl.get_list_of_categories()
+        assert cat_2 in category_ctrl.get_list_of_categories()
 
-        # Edit categories
-        # Edit names
-        assert cat_1.set_category_name("Tom")
-        assert cat_1.get_category_name() == "Tom"
-        assert cat_2.get_category_name() == "Category2"
+        # Test removal
+        assert category_ctrl.delete_category(cat_1)
+        assert len(category_ctrl.get_list_of_categories()) == 2
+        assert cat_1 not in category_ctrl.get_list_of_categories()
+        assert cat_2 in category_ctrl.get_list_of_categories()
 
-        # Edit black and whitelist
-        cat_1.set_blacklist(["building=*", "time=5"])
-        cat_1.set_whitelist(["building=hospital", "hello=True"])
-        cat_2.set_whitelist(["building=hospital"])
+        # Test removal of non existing category
+        assert not category_ctrl.delete_category(cat_1)
+        assert len(category_ctrl.get_list_of_categories()) == 2
+        assert cat_1 not in category_ctrl.get_list_of_categories()
+        assert cat_2 in category_ctrl.get_list_of_categories()
 
-        assert cat_1.get_blacklist() == ["building=*", "time=5"]
-        assert cat_1.get_whitelist() == ["building=hospital", "hello=True"]
-        assert cat_2.get_blacklist() == []
-        assert cat_2.get_whitelist() == ["building=hospital"]
-
-        # Extension 1a: Key Recommendations
-        assert "building" in category_ctrl.get_list_of_key_recommendations("buildi")
-
-        # Extension 2a: Activation/Deactivation of categories
-        assert cat_1.is_active()
-        assert cat_2.is_active()
-
-        assert cat_1.activate()
-        assert cat_2.activate()
-        assert cat_1.is_active()
-        assert cat_2.is_active()
-
-        assert cat_1.deactivate()
-        assert not cat_1.is_active()
-        assert cat_2.is_active()
+        # Test second removal
+        assert category_ctrl.delete_category(cat_2)
+        assert len(category_ctrl.get_list_of_categories()) == 1
+        assert cat_1 not in category_ctrl.get_list_of_categories()
+        assert cat_2 not in category_ctrl.get_list_of_categories()
