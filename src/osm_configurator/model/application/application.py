@@ -77,7 +77,7 @@ class Application(IApplication):
     def _create_passive_project_list(self, destination: Path) -> List[PassiveProject] | None:
         passive_project_list: List[PassiveProject] = []
 
-        if destination:
+        if os.path.exists(destination):
             for directory in os.listdir(destination):
                 if not os.path.isfile(directory):
                     project: Path = Path(os.path.join(destination, Path(str(directory))))
