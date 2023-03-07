@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import shutil
 
+from src.osm_configurator.model.project.active_project import ActiveProject
 from src.osm_configurator.model.project.calculation import file_deletion
 from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
 from src.osm_configurator.model.project.project_settings import ProjectSettings
@@ -51,5 +52,3 @@ class TestProjectSettings:
                                                             "TestName", "TestDescription")
         assert not project_settings.set_location(Path(os.path.join(TEST_DIR, "build/Projects/Other")))
         assert project_settings.get_location() == Path(os.path.join(TEST_DIR, "build/Projects/TestName"))
-
-

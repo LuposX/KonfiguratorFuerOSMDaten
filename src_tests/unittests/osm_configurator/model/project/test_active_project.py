@@ -66,9 +66,27 @@ class TestActiveProject:
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject4", "Das sollte sda")
         assert Path(self.active_project.get_project_path()) == Path(os.path.join(TEST_DIR, "build/Projects/TestProject4"))
 
-    def test_name_edit(self):
+    def test_change_name(self):
         application_settings_o = application_settings_i.ApplicationSettings()
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject1")
+        assert self.active_project.get_project_settings().change_name("TestProjectNewName")
+        assert self.active_project.get_project_settings().get_name() == "TestProjectNewName"
+        assert self.active_project.get_project_settings().change_name("TestProject1")
 
-        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), False, application_settings_o, "TestProject1")
-        self.active_project.get_project_settings().change_name("TestProjectNewName")
-        self.active_project.get_project_saver().save_project()
+    def test_change_name_error(self):
+        application_settings_o = application_settings_i.ApplicationSettings()
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject1")
+        assert not self.active_project.get_project_settings().change_name(2)
+        assert not self.active_project.get_project_settings().change_name("TestProject2")
+
+    def test_change_location(self):
+        application_settings_o = application_settings_i.ApplicationSettings()
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestChangeLocation")
+        assert self.active_project.get_project_settings().change_location(Path(os.path.join(TEST_DIR, "build/Export")))
+        assert Path(self.active_project.get_project_settings().get_location()) == Path(os.path.join(TEST_DIR, "build/Export/TestChangeLocation"))
+        assert self.active_project.get_project_settings().change_location(Path(os.path.join(TEST_DIR, "build/Projects")))
+
+    def test_change_location_error(self):
+        application_settings_o = application_settings_i.ApplicationSettings()
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestChangeLocationError")
+        assert not self.active_project.get_project_settings().change_location(Path(os.path.join(TEST_DIR, "build/NotExistingFolder")))
