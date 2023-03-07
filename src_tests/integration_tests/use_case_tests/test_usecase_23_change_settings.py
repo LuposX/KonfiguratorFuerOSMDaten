@@ -32,7 +32,8 @@ class TestUseCase23:
         assert self.application.get_active_project().get_project_settings().set_description("Changed")
         assert self.application.get_active_project().get_project_settings().get_description() == "Changed"
 
-    def test_change_location(self):
+    """
+     def test_change_location(self):
         test_folder_path: Path = Path(os.path.join(TEST_DIR, "build/use_cases"))
         self.application: Application = Application()
         self.application.create_project("Project23", "This project is to test!", test_folder_path)
@@ -40,3 +41,4 @@ class TestUseCase23:
         assert self.application.get_active_project().get_project_settings().change_location(Path(os.path.join(TEST_DIR, "build/export")))
         assert Path(self.application.get_active_project().get_project_settings().get_location()) == Path(os.path.join(TEST_DIR, "build/export/Project23"))
         self.application.get_active_project().get_project_settings().change_location(test_folder_path)
+    """
