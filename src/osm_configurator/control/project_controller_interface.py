@@ -60,19 +60,6 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
-        """
-        Deletes a project out of the default project folder.
-
-        Args:
-            passive_project (passive_project.PassiveProject): The project that is going to be deleted.
-
-        Returns:
-            bool: True, if the (passive) project has been deleted successfully; False otherwise: The project does not exist or the application has not the right permissions to delete the project.
-        """
-        pass
-
-    @abstractmethod
     def save_project(self) -> bool:
         """
         Saves the project.

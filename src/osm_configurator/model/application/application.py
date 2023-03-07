@@ -35,14 +35,11 @@ class Application(IApplication):
         # If path_to_starting_file is set we create the application settings file at that position.
         if path_to_starting_file is None:
             self.application_settings: ApplicationSettings = application_settings_i.ApplicationSettings()
-
         else:
             self.application_settings: ApplicationSettings = \
                 application_settings_i.ApplicationSettings(path_to_starting_file)
 
-        self.passive_project_list: List[PassiveProject] = self._create_passive_project_list(
-            self.application_settings.get_setting(
-                application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
+        self.passive_project_list: List[PassiveProject] = self.get_passive_project_list()
 
         self.recommender_system: RecommenderSystem = recommender_system_i.RecommenderSystem(self.application_settings)
 
@@ -63,7 +60,8 @@ class Application(IApplication):
         return True
 
     def get_passive_project_list(self) -> List[PassiveProject]:
-        return self.passive_project_list
+        return self._create_passive_project_list(self.application_settings.get_setting(
+                application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER))
 
     def get_key_recommendation_system(self) -> RecommenderSystem:
         return self.recommender_system
@@ -74,8 +72,11 @@ class Application(IApplication):
     def get_application_settings(self) -> ApplicationSettings:
         return self.application_settings
 
-    def _create_passive_project_list(self, destination: Path) -> List[PassiveProject] | None:
+    def _create_passive_project_list(self, destination: Path) -> List[PassiveProject]:
         passive_project_list: List[PassiveProject] = []
+
+        if destination is None:
+            return []
 
         if os.path.exists(destination):
             for directory in os.listdir(destination):
@@ -87,11 +88,6 @@ class Application(IApplication):
             return passive_project_list
 
         return []
-
-    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
-        os.rmdir(passive_project.get_project_folder_path())
-        self.passive_project_list.remove(passive_project)
-        return True
 
     def unload_project(self):
         self.active_project = None

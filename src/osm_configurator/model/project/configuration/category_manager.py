@@ -30,8 +30,8 @@ class CategoryManager:
         Constructor of the class.
         """
         self._categories: List[Category] = []
-        building_category: Category = default_categories_i.create_building_category()
 
+        building_category: Category = default_categories_i.create_building_category()
         self._categories.append(building_category)
 
     def get_activated_attribute(self) -> List[Attribute]:
@@ -90,7 +90,6 @@ class CategoryManager:
         # Check that the category is not already saved
         elif new_category.get_category_name() in self.get_all_categories_names():
             return False
-
         else:
             self._categories.append(new_category)
             return True
