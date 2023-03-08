@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import tkinter
 
-from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 # Constants
@@ -18,7 +17,6 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
-    from src.osm_configurator.view.activatable import Activatable
 
 
 class SettingsProjectFrame(TopLevelFrame):
@@ -176,7 +174,7 @@ class SettingsProjectFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous interactable state.
+        If this method is called, the frame returns into its previous intractable state.
         """
         self._frozen = False
 

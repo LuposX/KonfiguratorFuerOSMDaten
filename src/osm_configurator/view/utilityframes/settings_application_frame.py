@@ -2,12 +2,9 @@ from __future__ import annotations
 
 import tkinter
 
-import src.osm_configurator.control.settings_controller_interface as settings_controller_i
-
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
-import src.osm_configurator.view.constants.text_box_constants as text_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.entry_constants as entry_constants_i
 
