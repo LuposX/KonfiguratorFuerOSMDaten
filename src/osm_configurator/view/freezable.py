@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class Freezable(ABC):
-
     @abstractmethod
     def freeze(self):
         """
@@ -13,6 +12,6 @@ class Freezable(ABC):
     @abstractmethod
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous interactable state.
+        If this method is called, the frame returns into its previous intractable state.
         """
         pass
