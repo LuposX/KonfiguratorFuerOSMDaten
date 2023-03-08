@@ -152,10 +152,6 @@ class AggregationPhase(ICalculationPhase):
             except (OSMDataWronglyFormatted, DriverError, UnicodeDecodeError) as err:
                 return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, ''.join(str(err))
 
-            # If there's an error while encoding the file.
-            except ValueError as err:
-                return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
-
             # If the file cannot be opened.
             except OSError as err:
                 return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
