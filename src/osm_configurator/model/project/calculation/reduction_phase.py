@@ -11,8 +11,8 @@ import src.osm_configurator.model.project.calculation.prepare_calculation_phase 
 import src.osm_configurator.model.project.calculation.paralellization.work_manager as work_manager_i
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
 import src.osm_configurator.model.project.calculation.paralellization.work as work_i
-
 import geopandas as gpd
+
 from fiona.errors import DriverError
 
 from pathlib import Path
@@ -82,15 +82,15 @@ def _set_data_entry_from_default_value(curr_default_value: DefaultValueEntry,
         # Do point reduction
         if DF_CL_NAME == model_constants_i.CL_GEOMETRY:
             # Returns a representation of the object’s geometric centroid (point).
-            reduction_phase_data[DF_CL_NAME] += osm_element[model_constants_i.CL_GEOMETRY].centroid
+            data_entry[DF_CL_NAME].append(osm_element[model_constants_i.CL_GEOMETRY].centroid)
 
         else:
-            data_entry[DF_CL_NAME] += osm_element[DF_CL_NAME]
+            data_entry[DF_CL_NAME].append(osm_element[DF_CL_NAME])
 
     # Get the default values for the attributes
     attribute: Attribute
     for attribute in attribute_enum_i.Attribute:
-        data_entry[Attribute.get_name()] += curr_default_value.get_attribute_default(attribute)
+        data_entry[attribute.get_name()].append(curr_default_value.get_attribute_default(attribute))
 
 
 def _initialize_data_save():
@@ -348,8 +348,5 @@ class ReductionPhase(ICalculationPhase):
             # If the file cannot be opened.
             except OSError as err:
                 return calculation_state_enum_i.CalculationState.ERROR_COULDNT_OPEN_FILE, ''.join(str(err))
-
-            except Exception as err:
-                return calculation_state_enum_i.CalculationState.ERROR_INVALID_OSM_DATA, str(err.args)
 
         return calculation_state_enum_i.CalculationState.RUNNING, ""
