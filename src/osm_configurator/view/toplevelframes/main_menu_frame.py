@@ -3,17 +3,11 @@ from __future__ import annotations
 import tkinter
 from functools import partial
 
-from src.osm_configurator.model.application.passive_project import PassiveProject
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 import src.osm_configurator.view.states.state_name_enum as sne
 
-import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
-
 # Constants
-import src.osm_configurator.view.constants.button_constants as button_constants_i
-import src.osm_configurator.view.constants.frame_constants as frame_constants_i
-import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 
@@ -50,7 +44,8 @@ class MainMenuFrame(TopLevelFrame):
     will be shown in a list and can be selected / opened.
     """
 
-    def __init__(self, state_manager: StateManager, project_controller: IProjectController, settings_controller: ISettingsController):
+    def __init__(self, state_manager: StateManager, project_controller: IProjectController,
+                 settings_controller: ISettingsController):
         """
         This method creates a MainMenuFrame showing the MainMenu of the application.
 
@@ -72,7 +67,8 @@ class MainMenuFrame(TopLevelFrame):
 
         self.main_buttons_left: list[
             customtkinter.CTkButton] = []  # holds all buttons on the left to allow uniform styling
-        self.entries: list[customtkinter.CTkButton] = []  # holds all entries formatted as buttons to allow uniform styling
+        # holds all entries formatted as buttons to allow uniform styling
+        self.entries: list[customtkinter.CTkButton] = []
 
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)
@@ -162,8 +158,9 @@ class MainMenuFrame(TopLevelFrame):
     def __load_project(self, index: int):
         """
         Loads the given project
+
         Args:
-            passive_project (PassiveProject): Project that will be loaded
+            index (int): Project that will be loaded
         """
         project_path = self._passive_projects[index].get_project_folder_path()
 
@@ -199,7 +196,6 @@ class MainMenuFrame(TopLevelFrame):
         Calls the create_project-window switching states
         """
         self._state_manager.change_state(sne.StateName.CREATE_PROJECT)
-
 
     def __call_settings(self):
         """
@@ -253,7 +249,7 @@ class MainMenuFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous interactable state.
+        If this method is called, the frame returns into its previous intractable state.
         """
         for button in self.main_buttons_left:
             button.configure(state=tkinter.NORMAL)

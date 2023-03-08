@@ -2,10 +2,7 @@ from __future__ import annotations
 
 import tkinter
 
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.project_controller_interface
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
-from src.osm_configurator.view.toplevelframes import main_menu_frame
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 # Constants
@@ -13,7 +10,6 @@ import src.osm_configurator.view.constants.button_constants as button_constants_
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.states.state_name_enum as view_states_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
-import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
@@ -39,12 +35,14 @@ class CreateProjectFrame(TopLevelFrame):
     The user can cancel the creation-process.
     """
 
-    def __init__(self, state_manager: StateManager, project_controller: IProjectController, settings_controller: ISettingsController):
+    def __init__(self, state_manager: StateManager, project_controller: IProjectController,
+                 settings_controller: ISettingsController):
         """
         This method creates a CreateProjectFrame where a user can create a new project.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to change to another State.
+            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to
+                change to another State.
             project_controller (project_controller.ProjectController): Respective controller
         """
 
@@ -242,7 +240,7 @@ class CreateProjectFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous interactable state.
+        If this method is called, the frame returns into its previous intractable state.
         """
         for button in self._buttons:
             button.configure(state=tkinter.NORMAL)
