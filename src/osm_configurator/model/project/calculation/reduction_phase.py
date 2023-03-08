@@ -260,8 +260,8 @@ def _parse_the_data_file(traffic_cell_file_path: Path,
             _calculate_activated_attributes(activated_attributes_dict, already_calculated_attributes,
                                             curr_category, curr_default_value, data_entry, df, row)
 
-            # Add the calculated data for a single osm element to the main saving point
-            _add_calculated_data_to_data_saver(data_entry, reduction_phase_data)
+        # Add the calculated data for a single osm element to the main saving point
+        _add_calculated_data_to_data_saver(data_entry, reduction_phase_data)
 
     # We now need to construct our dataframe from the data
     column_name = []
