@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from src.osm_configurator.view.activatable import Activatable
-from src.osm_configurator.view.freezable import Freezable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
@@ -17,9 +15,7 @@ from typing import TYPE_CHECKING
 import customtkinter
 
 if TYPE_CHECKING:
-    from src.osm_configurator.view.activatable import Activatable
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
-    from src.osm_configurator.view.utilityframes.settings_project_frame import SettingsProjectFrame
 
 
 class SettingsFrame(TopLevelFrame):
@@ -36,9 +32,11 @@ class SettingsFrame(TopLevelFrame):
         This method creates a SettingsFrame, that lets the user set the application and  project settings.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
+            state_manager (state_manager.StateManager): The StateManager the frame will call,
+                if it wants to switch states.
             settings_controller (settings_controller.SettingsController): Respective controller
-            is_project_loaded (bool): True, if there is a project loaded. In that case the project settings will be displayed
+            is_project_loaded (bool): True, if there is a project loaded. In that case the project settings
+                will be displayed
         """
         super().__init__(
             master=None,
@@ -117,7 +115,7 @@ class SettingsFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous interactable state.
+        If this method is called, the frame returns into its previous intractable state.
         """
         for frame in self._frames:
             frame.freeze()
