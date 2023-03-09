@@ -100,8 +100,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             text="Calculate\nsite Area"
         )
         self._calculate_site_area_label.grid(row=3, column=0, rowspan=1, columnspan=1,
-                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         self._calculate_building_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
@@ -116,8 +116,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             text="Calculate\nBuilding Area"
         )
         self._calculate_building_area_label.grid(row=3, column=2, rowspan=1, columnspan=1,
-                                                 pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                                 pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # The switch inbetween
         self._site_building_switch: customtkinter.CTkSwitch = customtkinter.CTkSwitch(

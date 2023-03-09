@@ -96,8 +96,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                      text="Tag-List:")
         self._tag_list_label.grid(row=0, column=0, rowspan=1, columnspan=1,
-                                  pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                  padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                  pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                  padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # The Tag List
         self._tag_list: tag_list_priority_frame_i.TagListPriorityFrame = \
@@ -120,8 +120,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                      text="Tag")
         self._tag_label.grid(row=1, column=1, rowspan=1, columnspan=1,
-                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Area label
         self._area_label: customtkinter.CTkLabel \
@@ -136,8 +136,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                      text="Area")
         self._area_label.grid(row=2, column=1, rowspan=1, columnspan=1,
-                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Number of Floors Label
         self._number_of_floors_label: customtkinter.CTkLabel \
@@ -152,8 +152,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                      text="Number of floors")
         self._number_of_floors_label.grid(row=3, column=1, rowspan=1, columnspan=1,
-                                          pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                          padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                          pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                          padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Floor Area Label
         self._floor_area_label: customtkinter.CTkLabel \
@@ -168,8 +168,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                      text="Floor area")
         self._floor_area_label.grid(row=4, column=1, rowspan=1, columnspan=1,
-                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # The text field (Entries) for the Labels
         # Tag Entry

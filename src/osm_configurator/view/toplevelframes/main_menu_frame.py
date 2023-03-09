@@ -89,8 +89,8 @@ class MainMenuFrame(TopLevelFrame):
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                    text=main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
         self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW",
-                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Implementing the buttons
 

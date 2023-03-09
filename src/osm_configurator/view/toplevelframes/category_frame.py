@@ -127,8 +127,8 @@ class CategoryFrame(TopLevelFrame):
             text="Choose Categories"
         )
         self._choose_categories_label.grid(row=0, column=0, rowspan=1, columnspan=1,
-                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # CategoryNameLabel
         self._category_name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -142,8 +142,8 @@ class CategoryFrame(TopLevelFrame):
             text="Category Name"
         )
         self._category_name_label.grid(row=1, column=0, rowspan=1, columnspan=1,
-                                       pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                       pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                       padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Making the dropdown Menu
         self._category_drop_down_menu: customtkinter.CTkOptionMenu = customtkinter.CTkOptionMenu(
@@ -197,8 +197,8 @@ class CategoryFrame(TopLevelFrame):
             text="Activate or Deactivate Category:"
         )
         self._category_checkbox_label.grid(row=0, column=2, rowspan=1, columnspan=1,
-                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Making the Checkbox, to activate and disable Categories
         self._category_checkbox: customtkinter.CTkCheckBox = customtkinter.CTkCheckBox(
@@ -243,8 +243,8 @@ class CategoryFrame(TopLevelFrame):
             text="White List:"
         )
         self._white_list_label.grid(row=0, column=0, rowspan=1, columnspan=1,
-                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # The TextBox which contains the WhiteList
         self._white_list = customtkinter.CTkTextbox(
@@ -289,8 +289,8 @@ class CategoryFrame(TopLevelFrame):
             text="Black List:"
         )
         self._black_list_label.grid(row=0, column=0, rowspan=1, columnspan=1,
-                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Making the TextBox which contains the BlackList
         self._black_list: customtkinter.CTkTextbox = customtkinter.CTkTextbox(

@@ -165,8 +165,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Choose Categories:"
         )
         self._choose_categories_label.grid(row=0, column=0, rowspan=1, columnspan=1,
-                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Label for Attractivity Attribute
         self._choose_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -181,8 +181,8 @@ class AttractivityEditFrame(TopLevelFrame):
         )
 
         self._choose_attractivity_label.grid(row=1, column=0, rowspan=1, columnspan=1,
-                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                             pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                             padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Now the Label for the Attractivity Name
         self._attractivity_name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -196,8 +196,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Attractivity Name:"
         )
         self._attractivity_name_label.grid(row=2, column=0, rowspan=1, columnspan=1,
-                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # The Entry to edit the Attractivity Name
         self._attractivity_name_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
@@ -224,8 +224,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Attribute:"
         )
         self._attribute_label.grid(row=3, column=0, rowspan=1, columnspan=1,
-                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                   padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                   padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # The Label that says Factor
         self._factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -239,8 +239,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Factor:"
         )
         self._factor_label.grid(row=3, column=1, rowspan=1, columnspan=1,
-                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Area Label
         self._area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -254,8 +254,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Area:"
         )
         self._area_label.grid(row=4, column=0, rowspan=1, columnspan=1,
-                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Numbers of Floors Label
         self._number_of_floors_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -269,8 +269,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Number of Floors:"
         )
         self._number_of_floors_label.grid(row=5, column=0, rowspan=1, columnspan=1,
-                                          pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                          padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                          pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                          padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Floor Area Label
         self._floor_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -284,8 +284,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Floor Area:"
         )
         self._floor_area_label.grid(row=6, column=0, rowspan=1, columnspan=1,
-                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Base Attractivity Label
         self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -299,8 +299,8 @@ class AttractivityEditFrame(TopLevelFrame):
             text="Base Attractivity:"
         )
         self._base_attractivity_label.grid(row=7, column=0, rowspan=1, columnspan=1,
-                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Now the Entry Boxes to fill in a Value
         # The all also have a previous value, since only Numbers will be allowed, specific only floats

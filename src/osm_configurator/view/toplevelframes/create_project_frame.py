@@ -85,8 +85,8 @@ class CreateProjectFrame(TopLevelFrame):
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
                                    text="Create a new Project")
         self._title_label.grid(row=0, column=0, rowspan=1, columnspan=5, sticky="NSEW",
-                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         self.name_field = \
             customtkinter.CTkEntry(master=self,

@@ -148,8 +148,8 @@ class AttractivityViewFrame(TopLevelFrame):
         )
         self._categories_label.grid(
             row=0, column=1, rowspan=1, columnspan=1, sticky="W",
-            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value
         )
 
         # The Attractivity Attribute Label
@@ -167,8 +167,8 @@ class AttractivityViewFrame(TopLevelFrame):
         )
         self._attractivity_attribute_label.grid(
             row=0, column=3, rowspan=1, columnspan=1, sticky="W",
-            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value
         )
 
         # The Area Factor Label
@@ -185,8 +185,8 @@ class AttractivityViewFrame(TopLevelFrame):
             text="Area-Factor:"
         )
         self._area_factor_label.grid(row=0, column=4, rowspan=1, columnspan=1, sticky="W",
-                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                     padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                                     padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         # Numbers of Floors Factor
         self._number_of_floors_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
@@ -203,8 +203,8 @@ class AttractivityViewFrame(TopLevelFrame):
         )
         self._number_of_floors_factor_label.grid(
             row=0, column=5, rowspan=1, columnspan=1, sticky="W",
-            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value
         )
 
         # Floor Area Label
@@ -222,8 +222,8 @@ class AttractivityViewFrame(TopLevelFrame):
         )
         self._floor_area_factor_label.grid(
             row=0, column=6, rowspan=1, columnspan=1, sticky="W",
-            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value
         )
 
         # Base Attractivity Label
@@ -241,8 +241,8 @@ class AttractivityViewFrame(TopLevelFrame):
         )
         self._base_attractivity_label.grid(
             row=0, column=7, rowspan=1, columnspan=1, sticky="W",
-            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value
         )
 
         # The Button to go back to edit the attractivities
