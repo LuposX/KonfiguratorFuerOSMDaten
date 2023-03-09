@@ -4,9 +4,6 @@ from functools import partial
 
 import customtkinter
 
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.category_controller_interface
-
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
@@ -21,7 +18,7 @@ import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Final
@@ -34,8 +31,8 @@ SCROLLABLE_FRAME_FG_COLOR: Final = scrollbar_constants_i.ScrollbarConstants.SCRO
 ELEMENT_BORDER_DISTANCE: Final = 20
 CATEGORY_BUTTON_HEIGHT: Final = 42
 
-PADY: Final = 2
-PADX: Final = 2
+PAD_Y: Final = 2
+PAD_X: Final = 2
 
 
 class AttractivityViewFrame(TopLevelFrame):
@@ -50,7 +47,8 @@ class AttractivityViewFrame(TopLevelFrame):
         their according attractivity attributes and how they are calculated.
 
          Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, when it wants to change to another state.
+            state_manager (state_manager.StateManager): The StateManager the frame will call,
+                when it wants to change to another state.
             category_controller (category_controller.CategoryController): Respective controller
         """
         # Starting with no master
@@ -68,10 +66,10 @@ class AttractivityViewFrame(TopLevelFrame):
         # Starts unfrozen
         self._frozen: bool = False
 
-        self._last_pressed_category_button: customtkinter.CTkButton = None
+        self._last_pressed_category_button: customtkinter.CTkButton | None = None
 
         self._categories: [category_i.Category] = []
-        self._selected_category: category_i.Category = None
+        self._selected_category: category_i.Category | None = None
 
         self._category_button_list: [customtkinter.CTkButton] = []
 
@@ -83,7 +81,7 @@ class AttractivityViewFrame(TopLevelFrame):
 
         # Making the grid
         # it is a 9x3 grid
-        # it has 9 columns, because we need to display, categories, attratcivity-attribute and 4 factors +
+        # it has 9 columns, because we need to display, categories, attractivity-attribute and 4 factors +
         # we want to have space on the left and right  and between
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=3)
@@ -100,7 +98,7 @@ class AttractivityViewFrame(TopLevelFrame):
         self.grid_rowconfigure(1, weight=6)
         self.grid_rowconfigure(2, weight=1)
 
-        # Making the scrollabel Frame that holds the Category Buttons
+        # Making the scrollable Frame that holds the Category Buttons
         self._category_scrollable_frame: customtkinter.CTkScrollableFrame = customtkinter.CTkScrollableFrame(
             master=self,
             width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (3 / 16)),
@@ -130,106 +128,122 @@ class AttractivityViewFrame(TopLevelFrame):
         self._attractivity_scrollable_frame.grid_columnconfigure(3, weight=1)
         self._attractivity_scrollable_frame.grid_columnconfigure(4, weight=1)
 
-        # Making all the Labels that will be above tha ScrollabelFrames
-        # Labels are choosen, because making a label in the scrollable frame would be just a simple title
-        # and here we want especially for the attractiviyt scrollable frame, to have it segmented in different parts,
+        # Making all the Labels that will be above tha scrollable
+        # Labels are chosen, because making a label in the scrollable frame would be just a simple title
+        # and here we want especially for the attractivity scrollable frame, to have it segmented in different parts,
         # that scale up with the window, so deference the labels shown in the frame and categories them
 
         # The Categories Label
-        self._categories_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                width=int(
-                                                                                    frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                                3 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                height=int(
-                                                                                    frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                                1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                text="Categories:")
-        self._categories_label.grid(row=0, column=1, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+        self._categories_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        3 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Categories:"
+        )
+        self._categories_label.grid(
+            row=0, column=1, rowspan=1, columnspan=1, sticky="W",
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+        )
 
         # The Attractivity Attribute Label
-        self._attractivity_attribute_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                            width=int(
-                                                                                                frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                                            2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                            height=int(
-                                                                                                frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                                            1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                            text="Attractivity-Attribute:")
-        self._attractivity_attribute_label.grid(row=0, column=3, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+        self._attractivity_attribute_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Attractivity-Attribute:"
+        )
+        self._attractivity_attribute_label.grid(
+            row=0, column=3, rowspan=1, columnspan=1, sticky="W",
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+        )
 
         # The Area Factor Label
-        self._area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                 width=int(
-                                                                                     frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                                 2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                 height=int(
-                                                                                     frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                                 1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                 anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                 text="Area-Factor:")
-        self._area_factor_label.grid(row=0, column=4, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+        self._area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Area-Factor:"
+        )
+        self._area_factor_label.grid(row=0, column=4, rowspan=1, columnspan=1, sticky="W",
+                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                      padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Numbers of Floors Factor
-        self._number_of_floors_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                             width=int(
-                                                                                       frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                                   2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                             height=int(
-                                                                                       frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                                   1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                             anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                             text="Numbers-of-Floors-Factor:")
-        self._number_of_floors_factor_label.grid(row=0, column=5, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+        self._number_of_floors_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Numbers-of-Floors-Factor:"
+        )
+        self._number_of_floors_factor_label.grid(
+            row=0, column=5, rowspan=1, columnspan=1, sticky="W",
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+        )
 
         # Floor Area Label
-        self._floor_area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                       width=int(
-                                                                                            frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                       height=int(
-                                                                                            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                       corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                       fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                       text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                       anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                       text="Floor-Area-Factor:")
-        self._floor_area_factor_label.grid(row=0, column=6, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+        self._floor_area_factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Floor-Area-Factor:"
+        )
+        self._floor_area_factor_label.grid(
+            row=0, column=6, rowspan=1, columnspan=1, sticky="W",
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+        )
 
         # Base Attractivity Label
-        self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self,
-                                                                                       width=int(
-                                                                                           frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                                       2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                                       height=int(
-                                                                                           frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                                       1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                                       corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                                       fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                                       text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                                       anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                                       text="Base-Attractivity-Factor:")
-        self._base_attractivity_label.grid(row=0, column=7, rowspan=1, columnspan=1, sticky="W", pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+        self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Base-Attractivity-Factor:"
+        )
+        self._base_attractivity_label.grid(
+            row=0, column=7, rowspan=1, columnspan=1, sticky="W",
+            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
+            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value
+        )
 
         # The Button to go back to edit the attractivities
         self._edit_attractivity_button: customtkinter.CTkButton = customtkinter.CTkButton(
@@ -249,7 +263,7 @@ class AttractivityViewFrame(TopLevelFrame):
     def activate(self):
 
         # There has no button been pressed yet
-        self._last_pressed_category_button: customtkinter.CTkButton = None
+        self._last_pressed_category_button: customtkinter.CTkButton | None = None
 
         # First getting all the active categories
         all_categories: [category_i.Category] = self._category_controller.get_list_of_categories()
@@ -269,7 +283,7 @@ class AttractivityViewFrame(TopLevelFrame):
 
         # Selecting a category
         if len(self._categories) == 0:
-            self._selected_category: category_i.Category = None
+            self._selected_category: category_i.Category | None = None
         else:
             self._selected_category: category_i.Category = self._categories[0]
 
@@ -277,21 +291,23 @@ class AttractivityViewFrame(TopLevelFrame):
         button_id: int = 0
         active_category: category_i.Category
         for active_category in self._categories:
-            new_button: customtkinter.CTkButton = customtkinter.CTkButton(master=self._category_scrollable_frame,
-                                                                          width=int(
-                                                                              frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                          3 / 16) - ELEMENT_BORDER_DISTANCE),
-                                                                          height=CATEGORY_BUTTON_HEIGHT,
-                                                                          corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                          border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                          fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                                          hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                                                          border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                          text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                                                          text=active_category.get_category_name(),
-                                                                          command=partial(self._category_button_pressed,
-                                                                                          button_id))
-            new_button.grid(row=button_id, column=0, rowspan=1, columnspan=1, pady=PADY)
+            new_button: customtkinter.CTkButton = customtkinter.CTkButton(
+                master=self._category_scrollable_frame,
+                width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                            3 / 16) - ELEMENT_BORDER_DISTANCE),
+                height=CATEGORY_BUTTON_HEIGHT,
+                corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                text=active_category.get_category_name(),
+                command=partial(self._category_button_pressed,
+                                button_id)
+            )
+
+            new_button.grid(row=button_id, column=0, rowspan=1, columnspan=1, pady=PAD_Y)
             button_id += 1
             self._category_button_list.append(new_button)
 
@@ -302,7 +318,6 @@ class AttractivityViewFrame(TopLevelFrame):
             # If there is a Category set, then there is a button for it, so we pretend first button was pressed
             # which will load automatically the correct category and disable the correct button
             self._category_button_pressed(0)
-
 
     def _load_category(self, category: category_i.Category | None):
 
@@ -359,79 +374,84 @@ class AttractivityViewFrame(TopLevelFrame):
         self._base_attractivity_labels: [customtkinter.CTkLabel] = []
 
     def _add_attractivity_to_scrollable_frame(self, attractivity_tuple, row: int):
-        name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
-                                                                    width=int(
-                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                    2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                    height=int(
-                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                    1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                    text=attractivity_tuple[0])
-        name_label.grid(row=row, column=0, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
+        name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self._attractivity_scrollable_frame,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text=attractivity_tuple[0]
+        )
+        name_label.grid(row=row, column=0, rowspan=1, columnspan=1, pady=PAD_Y, padx=PAD_X)
         self._attractivity_name_labels.append(name_label)
 
-        area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
-                                                                    width=int(
-                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                    2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                    height=int(
-                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                    1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                    text=attractivity_tuple[1])
-        area_label.grid(row=row, column=1, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
+        area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self._attractivity_scrollable_frame,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text=attractivity_tuple[1]
+        )
+        area_label.grid(row=row, column=1, rowspan=1, columnspan=1, pady=PAD_Y, padx=PAD_X)
         self._area_factor_labels.append(area_label)
 
-        floor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
-                                                                     width=int(
-                                                                         frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                     2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                     height=int(
-                                                                         frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                     1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                     text=attractivity_tuple[2])
-        floor_label.grid(row=row, column=2, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
+        floor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self._attractivity_scrollable_frame,
+            width=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text=attractivity_tuple[2]
+        )
+
+        floor_label.grid(row=row, column=2, rowspan=1, columnspan=1, pady=PAD_Y, padx=PAD_X)
         self._floors_factor_labels.append(floor_label)
 
-        ground_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
-                                                                           width=int(
-                                                                               frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                           2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                           height=int(
-                                                                               frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                           1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                           corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                           fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                           text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                           anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                           text=attractivity_tuple[3])
-        ground_area_label.grid(row=row, column=3, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
+        ground_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self._attractivity_scrollable_frame,
+            width=int(
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text=attractivity_tuple[3]
+        )
+        ground_area_label.grid(row=row, column=3, rowspan=1, columnspan=1, pady=PAD_Y, padx=PAD_X)
         self._ground_area_factor_labels.append(ground_area_label)
 
-        base_label: customtkinter.CTkLabel = customtkinter.CTkLabel(master=self._attractivity_scrollable_frame,
-                                                                    width=int(
-                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                    2 / 16)) - ELEMENT_BORDER_DISTANCE,
-                                                                    height=int(
-                                                                        frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                    1 / 8)) - ELEMENT_BORDER_DISTANCE,
-                                                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                                                    text=attractivity_tuple[4])
-        base_label.grid(row=row, column=4, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
+        base_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self._attractivity_scrollable_frame,
+            width=int(
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                        2 / 16)) - ELEMENT_BORDER_DISTANCE,
+            height=int(
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                        1 / 8)) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text=attractivity_tuple[4]
+        )
+        base_label.grid(row=row, column=4, rowspan=1, columnspan=1, pady=PAD_Y, padx=PAD_X)
         self._base_attractivity_labels.append(base_label)
 
     def _category_button_pressed(self, button_id):
@@ -439,16 +459,20 @@ class AttractivityViewFrame(TopLevelFrame):
         # First activating all buttons, to make sure that not all end up disabled
         button: customtkinter.CTkButton
         for button in self._category_button_list:
-            button.configure(state="normal",
-                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+            button.configure(
+                state="normal",
+                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+            )
 
         # Disabling pressed button, to show what is selected and so it can't be pressed twice
         # (pressing twice wouldn't really be an issue but would serve no purpose)
         pressed_button: customtkinter.CTkButton = self._category_button_list[button_id]
-        pressed_button.configure(state="disabled",
-                                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
-                                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
+        pressed_button.configure(
+            state="disabled",
+            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value
+        )
 
         # Reminding what was the last pressed button
         self._last_pressed_category_button: customtkinter.CTkButton = pressed_button
@@ -474,7 +498,7 @@ class AttractivityViewFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous interactable state.
+        If this method is called, the frame returns into its previous intractable state.
         """
         if self._frozen:
             self._edit_attractivity_button.configure(state="normal")
@@ -485,8 +509,10 @@ class AttractivityViewFrame(TopLevelFrame):
 
             # Disabling the last pressed button again!
             if self._last_pressed_category_button is not None:
-                self._last_pressed_category_button.configure(state="disabled",
-                                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
-                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED)
+                self._last_pressed_category_button.configure(
+                    state="disabled",
+                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED
+                )
 
             self._frozen: bool = False
