@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import tkinter
 from functools import partial
 
@@ -167,10 +168,11 @@ class MainMenuFrame(TopLevelFrame):
         Args:
             index (int): Project that will be loaded
         """
-        project_path = self._passive_projects[index].get_project_folder_path()
+        project_name = self._passive_projects[index].get_name()
 
         try:
-            self._project_controller.load_project(project_path)
+            default_path: Path = Path(os.path.join(self._project_controller.get_default_project_folder(), project_name))
+            self._project_controller.load_project(default_path)
 
             config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
 

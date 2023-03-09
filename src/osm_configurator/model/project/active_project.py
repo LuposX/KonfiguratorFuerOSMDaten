@@ -43,7 +43,7 @@ class ActiveProject:
         calls the ProjectLoader, otherwise it creates a new project.
 
         Args:
-            project_folder (pathlib.Path): This is path pointing towards the folder, where the project is saved.
+            project_folder (pathlib.Path): This is the path pointing towards the folder, where the project is saved.
             is_newly_created (bool): This argument is true if the project is newly created, otherwise false.
             application_manager (ApplicationSettings): Needed for some settings on how we calculate.
             project_name (str): How we want to name the project.
