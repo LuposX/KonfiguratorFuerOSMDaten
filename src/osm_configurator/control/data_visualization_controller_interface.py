@@ -3,13 +3,11 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 import pathlib
-import matplotlib
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
-    from pathlib import Path, List
+    from typing import List
 
 
 class IDataVisualizationController(ABC):

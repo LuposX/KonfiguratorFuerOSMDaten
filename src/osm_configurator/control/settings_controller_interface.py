@@ -4,11 +4,6 @@ import pathlib
 
 from abc import ABC, abstractmethod
 
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
-
 
 class ISettingsController(ABC):
     """
@@ -35,7 +30,8 @@ class ISettingsController(ABC):
             name (str): The new name of the project, may not contain line breaks.
 
         Returns:
-            bool: True, if the name was changed successfully; False, if an error occurred: The name is not valid or no project was selected.
+            bool: True, if the name was changed successfully; False, if an error occurred:
+                The name is not valid or no project was selected.
         """
         pass
 
@@ -84,7 +80,8 @@ class ISettingsController(ABC):
             default_folder (pathlib.Path): The path to the new project default folder.
 
         Returns:
-            bool: True, if the default folder was set successfully; False if an error occurred: The path is not valid or occupied.
+            bool: True, if the default folder was set successfully; False if an error occurred:
+                The path is not valid or occupied.
         """
         pass
 

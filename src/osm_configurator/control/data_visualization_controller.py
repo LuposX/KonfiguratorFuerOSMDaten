@@ -6,15 +6,13 @@ from src.osm_configurator.control.data_visualization_controller_interface import
 import src.osm_configurator.model.project.calculation.calculation_phase_enum as calculation_phase_enum_i
 import src.osm_configurator.model.project.calculation.folder_path_calculator as folder_path_calculator_i
 import pathlib
-import matplotlib
-import glob
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from pathlib import Path
-    from typing import Final, List
+    from typing import Final
 
 
 MAP_FILENAME: Final = "map_of_traffic_cells.html"
@@ -36,10 +34,10 @@ class DataVisualizationController(IDataVisualizationController):
 
     def generate_cut_out_map(self) -> Path | None:
         """
-        Generates a cut out map, which visualizes the cut out data.
+        Generates a cut-out map, which visualizes the cut-out data.
 
         Returns:
-            Path: The Path towards the cut out data.
+            Path: The Path towards the cut-out data.
             None: If there was an error during saving creation of the map.
         """
         cut_out_file: Path = self._model.get_active_project().get_config_manager().get_cut_out_configuration() \
@@ -62,17 +60,21 @@ class DataVisualizationController(IDataVisualizationController):
         Generates a boxplot which visualizes the final data.
 
         Returns:
-            Path: A path pointing towards the folder with all boxplots.
+            Path: A path pointing towards the folder with all boxplot.
             None: If sth. went wrong.
         """
         # Get where the data is saved for the results
         project_path: Path = self._model.get_active_project().get_project_path()
         result_folder_name: str = folder_path_calculator_i.CALCULATION_PHASE_CHECKPOINT_FOLDER_NAME
-        phase_folder_name: str = calculation_phase_enum_i.CalculationPhase.AGGREGATION_PHASE.get_folder_name_for_results()
+        phase_folder_name: str = calculation_phase_enum_i.CalculationPhase.AGGREGATION_PHASE.\
+            get_folder_name_for_results()
         data_path: Path = pathlib.Path(
             os.path.join(os.path.join(project_path, result_folder_name), phase_folder_name))
 
-        boxplot_saving_path: Path = pathlib.Path(os.path.join(os.path.join(str(project_path), result_folder_name), BOXPLOT_RESULT_FOLDER))
+        boxplot_saving_path: Path = pathlib.Path(os.path.join(os.path.join(
+            str(project_path), result_folder_name),
+            BOXPLOT_RESULT_FOLDER)
+        )
 
         if self._model.get_active_project().get_data_visualizer().create_boxplot(data_path=data_path,
                                                                                  boxplot_saving_path=boxplot_saving_path

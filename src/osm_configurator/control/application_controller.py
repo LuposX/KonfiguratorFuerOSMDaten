@@ -37,7 +37,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.states.main_window import MainWindow
     from typing import Final
 
-
 APPLICATION_SETTINGS_FOLDER: Final = Path(os.path.join(PROJECT_DIR, "build/application_setting.json"))
 
 
@@ -53,12 +52,12 @@ class ApplicationController:
         everything up and to prepare the normal workflow of the application.
 
         Args:
-            path_to_starting_file (Path): If set that directory will be used to create the applciation settings file.
+            path_to_starting_file (Path): If set that directory will be used to create the application settings file.
         """
         # Create Model
         # If path_to_starting_file is set we create the application settings file at that position.
         if path_to_starting_file is None:
-             self._application: Application = application.Application()
+            self._application: Application = application.Application()
         else:
             self._application: Application = application.Application(path_to_starting_file)
 
@@ -69,7 +68,7 @@ class ApplicationController:
             self._application)
         self._category_controller: CategoryController = category_controller.CategoryController(self._application)
         self._cut_out_controller: CutOutController = cut_out_controller.CutOutController(self._application)
-        self._data_visualization_controller: DataVisualizationController = data_visualization_controller\
+        self._data_visualization_controller: DataVisualizationController = data_visualization_controller \
             .DataVisualizationController(self._application)
         self._export_controller: ExportController = export_controller.ExportController(self._application)
         self._osm_data_controller: OSMDataController = osm_data_controller.OSMDataController(self._application)

@@ -7,7 +7,6 @@ import pathlib
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
     from src.osm_configurator.model.application.application import Application
@@ -17,7 +16,7 @@ if TYPE_CHECKING:
 class ProjectController(IProjectController):
     __doc__ = IProjectController.__doc__
 
-    def __init__(self, model: IApplication):
+    def __init__(self, model: Application):
         """
         Creates a new instance of the ProjectController, with an association to the model.
 
