@@ -1,14 +1,14 @@
 # KonfiguratorFuerOSMDaten
 
-This subfolder contains the code for the project, for more information about the
+This sub-folder contains the code for the project, for more information about the
 code check the "Documentation" or the "Entwurfsheft", for more information about
 the project check the README.md in the parent folder.
 
 
-## Installation of the Development Enviroment
+## Installation of the Development Environment
 
-For the develop enviroment you need to have the following tools installed:
-- conda (python package managment sytem, alternatively use venv)
+For to develop environment you need to have the following tools installed:
+- conda (python package management system, alternatively use venv)
 - git  
 
 To install conda, check [this out](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).  
@@ -16,23 +16,23 @@ For what is conda, check [this out](https://conda.io/projects/conda/en/latest/us
 
 ### Installation
 
-How to set up the develoment enviroment:
+How to set up the development environment:
 1. `git clone https://github.com/LuposX/KonfiguratorFuerOSMDaten.git`
 2. `git checkout main`
-3. type `conda activate base` in your terminal, to activate the base enviroment
-4. Install the required Packaged as stated below.
-5. type `conda activate PSE` in your terminal, to activate the newly installed enviroment
+3. type `conda activate base` in your terminal, to activate the base environment
+4. Install the required packages as stated below.
+5. type `conda activate PSE` in your terminal, to activate the newly installed environment
 6. You can start the application from the file `src_test/full_application_test/execution_starting_point.py`
 
 ### Automatically installing the Packages
-Tested on windows 10(64Bit), might take a while.  
+Tested on Windows 10(64Bit), might take a while.  
 1. Update conda: `conda update conda`.  
 2. Execute from parent directory: `conda env create --name PSE --file enviroment.yml`  
 
 ### Manually installing the Packages
 1. Update conda: `conda update conda`.
-2. create the enviroment `conda create --name PSE python=3.10`.
-3. activate the enviroment `conda activate PSE`.
+2. create the environment `conda create --name PSE python=3.10`.
+3. activate the environment `conda activate PSE`.
 4. `pip install osmium`, used for parsing osm data.
 5. `conda install -c conda-forge osmnx`, used for downloading osm data.
 6. `pip install customtkinter`, used as Graphical Interface.
@@ -40,10 +40,10 @@ Tested on windows 10(64Bit), might take a while.
 8. `pip install pytest`, used for testing pythoncode.
 9. `conda install sphinx`, used for documentation.
 10. `pip install sphinx-book-theme `, a theme for the documentation.
-11. `pip install psutil`, used to monitor system ressources.
+11. `pip install psutil`, used to monitor system resources.
 12. `pip install tox`, used to automatize testing.
 13. `pip install mypy`, used for checking static typing.
-14. `pip install jupyterlab`  # only needed for libary tests.
+14. `pip install jupyterlab`  # only needed for library tests.
 15. `conda install -c conda-forge osmium-tool`, used to split up data.
 16. `pip install screeninfo`, used to center the window
 

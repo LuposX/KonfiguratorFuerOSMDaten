@@ -417,7 +417,8 @@ class CalculationFrame(TopLevelFrame):
         self.cancel_button.destroy()
         self._state_manager.unlock_state()
 
-    def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
+    @staticmethod
+    def __get_next_phase(current_phase: CalculationPhase) -> CalculationPhase:
         """
         Iterates the CalculationPhase-Enum and returns the next element to the given
         Args:
@@ -433,6 +434,7 @@ class CalculationFrame(TopLevelFrame):
                 take_next = True
         return CalculationPhase.NONE
 
+    @staticmethod
     def __calculation_start_interrupted(self, error_state: CalculationState, error_message: str):
         """
         Shown if an error occurs while starting the calculation.
@@ -476,6 +478,7 @@ class CalculationFrame(TopLevelFrame):
 
         self._frozen = False
 
+    @staticmethod
     def _show_boxplot(self, path_to_boxplot: Path) -> bool:
         """
         This function is used to visualize am already created boxplot.
