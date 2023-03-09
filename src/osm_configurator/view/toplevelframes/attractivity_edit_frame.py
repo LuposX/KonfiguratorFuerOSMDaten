@@ -4,9 +4,6 @@ import tkinter
 
 import customtkinter
 
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.category_controller_interface
-
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.options_menu_constants as options_menu_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
@@ -50,7 +47,8 @@ class AttractivityEditFrame(TopLevelFrame):
         created or be deleted.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, when it wants to change to another state.
+            state_manager (state_manager.StateManager): The StateManager the frame will call,
+                when it wants to change to another state.
             category_controller (category_controller.CategoryController): Respective controller
         """
         # Starting with no master
@@ -71,11 +69,11 @@ class AttractivityEditFrame(TopLevelFrame):
         self._categories: [category_i.Category] = []
         self._attractivities: [attractivity_attribute_i.AttractivityAttribute] = []
 
-        self._selected_category: category_i.Category = None
-        self._selected_attribute: attractivity_attribute_i.AttractivityAttribute = None
+        self._selected_category: category_i.Category | None = None
+        self._selected_attribute: attractivity_attribute_i.AttractivityAttribute | None = None
 
         # Making the grid
-        # It is a 8x3 grid, but the bottom has some lower weights, because the labels and textfields will be smaller
+        # It is a 8x3 grid, but the bottom has some lower weights, because the labels and text-fields will be smaller
         # and the other buttons will be taking 2 rows
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
@@ -96,17 +94,28 @@ class AttractivityEditFrame(TopLevelFrame):
             master=self,
             width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (2 / 3) - ELEMENT_BORDER_DISTANCE,
             height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-            corner_radius=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
-            fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
-            button_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
-            button_hover_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_HOVER_COLOR.value,
-            dropdown_fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_FG_COLOR.value,
-            dropdown_hover_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_HOVER_COLOR.value,
-            dropdown_text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
-            anchor=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_ANCHOR.value,
-            hover=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_HOVER.value,
-            state=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_STATE.value,
-            text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
+            corner_radius=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
+            button_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
+            button_hover_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_BUTTON_HOVER_COLOR.value,
+            dropdown_fg_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_FG_COLOR.value,
+            dropdown_hover_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_HOVER_COLOR.value,
+            dropdown_text_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
+            anchor=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_ANCHOR.value,
+            hover=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_HOVER.value,
+            state=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_STATE.value,
+            text_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
             values=[],
             command=self._category_drop_down_menu_edited)
         self._category_drop_down_menu.grid(row=0, column=1, rowspan=1, columnspan=2)
@@ -117,157 +126,178 @@ class AttractivityEditFrame(TopLevelFrame):
             master=self,
             width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (2 / 3) - ELEMENT_BORDER_DISTANCE,
             height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-            corner_radius=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
-            fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
-            button_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
-            button_hover_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_HOVER_COLOR.value,
-            dropdown_fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_FG_COLOR.value,
-            dropdown_hover_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_HOVER_COLOR.value,
-            dropdown_text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
-            anchor=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_ANCHOR.value,
-            hover=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_HOVER.value,
-            state=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_STATE.value,
-            text_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
+            corner_radius=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
+            button_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
+            button_hover_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_BUTTON_HOVER_COLOR.value,
+            dropdown_fg_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_FG_COLOR.value,
+            dropdown_hover_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_HOVER_COLOR.value,
+            dropdown_text_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
+            anchor=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_ANCHOR.value,
+            hover=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_HOVER.value,
+            state=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_STATE.value,
+            text_color=options_menu_constants_i.OptionsMenuConstants.
+            OPTIONS_MENU_CONSTANTS_DROPDOWN_TEXT_COLOR.value,
             values=[],
             command=self._attractivity_drop_down_menu_edited)
         self._attractivity_drop_down_menu.grid(row=1, column=1, rowspan=1, columnspan=2)
 
-        # The Labels for the Drop Down Menus
+        # The Labels for the Drop-Down Menus
         # Choose Categories Label
-        self._choose_categories_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Choose Categories:")
+        self._choose_categories_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Choose Categories:"
+        )
         self._choose_categories_label.grid(row=0, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Label for Attractivity Attribute
-        self._choose_attractivity_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Choose Attractivity:")
+        self._choose_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Choose Attractivity:"
+        )
+
         self._choose_attractivity_label.grid(row=1, column=0, rowspan=1, columnspan=1,
                                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                              padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Now the Label for the Attractivity Name
-        self._attractivity_name_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Attractivity Name:")
+        self._attractivity_name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Attractivity Name:"
+        )
         self._attractivity_name_label.grid(row=2, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Entry to edit the Attractivity Name
-        self._attractivity_name_entry: customtkinter.CTkEntry \
-            = customtkinter.CTkEntry(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                             2 / 3) - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._attractivity_name_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (2 / 3) - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
+        )
         self._attractivity_name_entry.bind("<KeyRelease>", self._attractivity_name_entry_edited)
         self._attractivity_name_entry.grid(row=2, column=1, rowspan=1, columnspan=2)
 
         # Now Making all the Labels for editing the Attribute-Factors
         # The Label that says Attribute
-        self._attribute_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Attribute:")
+        self._attribute_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Attribute:"
+        )
         self._attribute_label.grid(row=3, column=0, rowspan=1, columnspan=1,
                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                    padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # The Label that says Factor
-        self._factor_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Factor:")
+        self._factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Factor:"
+        )
         self._factor_label.grid(row=3, column=1, rowspan=1, columnspan=1,
                                 pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                 padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Area Label
-        self._area_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Area:")
+        self._area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Area:"
+        )
         self._area_label.grid(row=4, column=0, rowspan=1, columnspan=1,
                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Numbers of Floors Label
-        self._number_of_floors_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Number of Floors:")
+        self._number_of_floors_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Number of Floors:"
+        )
         self._number_of_floors_label.grid(row=5, column=0, rowspan=1, columnspan=1,
                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                           padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Floor Area Label
-        self._floor_area_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Floor Area:")
+        self._floor_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Floor Area:"
+        )
         self._floor_area_label.grid(row=6, column=0, rowspan=1, columnspan=1,
                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                     padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
 
         # Base Attractivity Label
-        self._base_attractivity_label: customtkinter.CTkLabel \
-            = customtkinter.CTkLabel(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                     fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                     text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                     text="Base Attractivity:")
+        self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            text="Base Attractivity:"
+        )
         self._base_attractivity_label.grid(row=7, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
                                            padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
@@ -275,46 +305,50 @@ class AttractivityEditFrame(TopLevelFrame):
         # Now the Entry Boxes to fill in a Value
         # The all also have a previous value, since only Numbers will be allowed, specific only floats
         # The Area Entry
-        self._area_entry: customtkinter.CTkEntry \
-            = customtkinter.CTkEntry(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
+        )
         self._area_entry.bind("<KeyRelease>", self._area_entry_edited)
         self._area_entry.grid(row=4, column=1, rowspan=1, columnspan=1)
 
         # The Number of Floors Entry
-        self._numbers_of_floors_entry: customtkinter.CTkEntry \
-            = customtkinter.CTkEntry(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._numbers_of_floors_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
+        )
         self._numbers_of_floors_entry.bind("<KeyRelease>", self._number_of_floors_entry_edited)
         self._numbers_of_floors_entry.grid(row=5, column=1, rowspan=1, columnspan=1)
 
         # The Floor Area Entry
-        self._floor_area_entry: customtkinter.CTkEntry \
-            = customtkinter.CTkEntry(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._floor_area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
+        )
         self._floor_area_entry.bind("<KeyRelease>", self._floor_area_entry_edited)
         self._floor_area_entry.grid(row=6, column=1, rowspan=1, columnspan=1)
 
         # The Base Attractivity Entry
-        self._base_attractivity_entry: customtkinter.CTkEntry \
-            = customtkinter.CTkEntry(master=self,
-                                     width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
-                                     corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                     fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        self._base_attractivity_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
+        )
         self._base_attractivity_entry.bind("<KeyRelease>", self._base_attractivity_entry_edited)
         self._base_attractivity_entry.grid(row=7, column=1, rowspan=1, columnspan=1)
 
@@ -379,12 +413,12 @@ class AttractivityEditFrame(TopLevelFrame):
                 self._categories.append(category)
 
         if len(self._categories) == 0:
-            self._selected_category: category_i.Category = None
+            self._selected_category: category_i.Category | None = None
             self._category_drop_down_menu.set("")
         else:
             self._selected_category: category_i.Category = self._categories[0]
             self._category_drop_down_menu.set(self._selected_category.get_category_name())
-        
+
         self._load_category(self._selected_category)
 
     def _category_drop_down_menu_edited(self, choice):
@@ -411,7 +445,7 @@ class AttractivityEditFrame(TopLevelFrame):
         for attractivity in self._attractivities:
             if (attractivity.get_attractivity_attribute_name() == self._attractivity_name_entry.get()) and (
                     attractivity is not self._selected_attribute):
-                # If the Name already exsist, the Name will be shown red, and not be saved,
+                # If the Name already exists, the Name will be shown red, and not be saved,
                 # so the old name remains!
                 self._attractivity_name_entry.configure(
                     text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
@@ -434,7 +468,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 self._load_attractivity(selected_attractivity)
 
     def _area_entry_edited(self, event: tkinter.Event):
-        # Checking if the Valua can be casted into a float
+        # Checking if the Value can be cast into a float
         try:
             # if possible set the new value
             factor: float = float(self._area_entry.get())
@@ -451,7 +485,7 @@ class AttractivityEditFrame(TopLevelFrame):
             self._area_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
     def _number_of_floors_entry_edited(self, event: tkinter.Event):
-        # Checking if the value is castable to a float
+        # Checking if the value is cast-able to a float
         try:
             # if possible set the new value
             factor: float = float(self._numbers_of_floors_entry.get())
@@ -469,7 +503,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
     def _floor_area_entry_edited(self, event: tkinter.Event):
-        # Checking if value is castable to a float
+        # Checking if value is cast-able to a float
         try:
             # if possible save factor
             factor: float = float(self._floor_area_entry.get())
@@ -487,7 +521,7 @@ class AttractivityEditFrame(TopLevelFrame):
                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
     def _base_attractivity_entry_edited(self, event: tkinter.Event):
-        # Checking if value is castable to a float
+        # Checking if value is cast-able to a float
         try:
             # If possible, save value
             factor: float = float(self._base_attractivity_entry.get())
@@ -509,19 +543,21 @@ class AttractivityEditFrame(TopLevelFrame):
             alert_pop_up_i.AlertPopUp("Changing to View Attractivity List Failed!")
 
     def _create_new_attractivity_button_pressed(self):
-        dialog = customtkinter.CTkInputDialog(title="Creating new Attractivity-Attribute",
-                                              text="Type in the name, for the Attractivity-Attribute:",
-                                              fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
-                                              button_fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                              button_hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                              button_text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                              entry_fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                              entry_text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
-                                              text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+        dialog = customtkinter.CTkInputDialog(
+            title="Creating new Attractivity-Attribute",
+            text="Type in the name, for the Attractivity-Attribute:",
+            fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
+            button_fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+            button_hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+            button_text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+            entry_fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+            entry_text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+        )
 
         name: str = dialog.get_input()
 
-        # Cheking if name is not a duplicate
+        # Checking if name is not a duplicate
         name_ok: bool = True
         attribute: attractivity_attribute_i.AttractivityAttribute
         for attribute in self._attractivities:
@@ -532,14 +568,15 @@ class AttractivityEditFrame(TopLevelFrame):
 
         if name_ok:
             try:
-                new_attractivity: attractivity_attribute_i.AttractivityAttribute = attractivity_attribute_i.AttractivityAttribute(
-                    name)
+                new_attractivity: attractivity_attribute_i.AttractivityAttribute = \
+                    attractivity_attribute_i.AttractivityAttribute(name)
 
                 if not self._selected_category.add_attractivity_attribute(new_attractivity):
                     alert_pop_up_i.AlertPopUp("Creation of Attractivity-Attribute Failed!")
                 else:
                     self._attractivities: [
-                        attractivity_attribute_i.AttractivityAttribute] = self._selected_category.get_attractivity_attributes()
+                        attractivity_attribute_i.AttractivityAttribute] = \
+                        self._selected_category.get_attractivity_attributes()
 
                     # Loading the category anew, to refresh the attribute drop down menu and refreshing everything else
                     self._load_category(self._selected_category)
@@ -590,7 +627,7 @@ class AttractivityEditFrame(TopLevelFrame):
             self._category_drop_down_menu.configure(values=categories_strings)
 
             if len(category.get_attractivity_attributes()) == 0:
-                self._selected_attribute: attractivity_attribute_i.AttractivityAttribute = None
+                self._selected_attribute: attractivity_attribute_i.AttractivityAttribute | None = None
                 self._attractivities: List[attractivity_attribute_i.AttractivityAttribute] = []
 
                 self._attractivity_drop_down_menu.configure(values=[])
@@ -697,7 +734,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._attractivity_name_entry.configure(state="normal",
                                                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-        # ACtivating all Factor Entries
+        # Activating all Factor Entries
         self._area_entry.configure(state="normal", text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self._numbers_of_floors_entry.configure(state="normal",
                                                 text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -728,7 +765,7 @@ class AttractivityEditFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous interactable state.
+        If this method is called, the frame returns into its previous intractable state.
         """
         if self._frozen:
             self._category_drop_down_menu.configure(state="normal")
