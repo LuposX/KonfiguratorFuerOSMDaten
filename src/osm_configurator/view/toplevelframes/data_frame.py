@@ -274,7 +274,7 @@ class DataFrame(TopLevelFrame):
         self._show_map(path)
 
     def __copy_category_configurations(self):
-        self._selected_path: Path = self.__open_explorer()
+        self._selected_path: Path = self.__get_directory_path()
 
         if self._category_controller.check_conflicts_in_category_configuration(self._selected_path):
             if not self._category_controller.import_category_configuration(self._selected_path):
@@ -295,7 +295,7 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the cut-out
         """
-        chosen_path: Path = self.__open_explorer()
+        chosen_path: Path = self.__get_directory_path()
 
         if not chosen_path.exists():
             # Chosen path is invalid
@@ -313,7 +313,7 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the osm-data
         """
-        chosen_path: Path = self.__open_explorer()
+        chosen_path: Path = self.__get_directory_path()
 
         if not chosen_path.exists():
             # chosen path is invalid
@@ -346,21 +346,17 @@ class DataFrame(TopLevelFrame):
             AlertPopUp(message="Sorry, this did not work!")
             self.activate()
 
-    def __open_explorer(self) -> Path:
+    def __get_directory_path(self) -> Path:
         """
-        Opens explorer and lets the user choose a path
+        Opens explorer and lets the user choose a path to a directory
         Returns:
             Path: The chosen path
         """
         new_path = \
-            filedialog.askopenfilename(title="Please select Your File",
-                                       initialdir=self._project_controller.get_project_path(),
-                                       filetypes=[('GeoJSON files', '*.geojson')])
-        if new_path.endswith('.geojson'):
-            return Path(new_path)
-        else:
-            AlertPopUp(message="Please enter a valid path and select the correct file!")
-            return Path()
+            filedialog.askdirectory(title="Please select Your Directory",
+                                    initialdir=self._project_controller.get_project_path(),
+                                    )
+        return Path(new_path)
 
     def freeze(self):
         """
