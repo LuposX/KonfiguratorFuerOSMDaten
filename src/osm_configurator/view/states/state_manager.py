@@ -120,7 +120,7 @@ def get_last_edit_step(state: StateName) -> ConfigPhase:
         state (StateName): The current state.
 
     Returns:
-         The configphase.
+         ConfigPhase: The configphase.
     """
     match state:
         case state_name_enum_i.StateName.DATA:
