@@ -67,6 +67,7 @@ class DataFrame(TopLevelFrame):
             fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
         )
 
+        self._selected_cut_out_path = None
         self._state_manager = state_manager
         self._data_visualization_controller: IDataVisualizationController = data_visualization_controller
         self._cut_out_controller: ICutOutController = cut_out_controller
@@ -273,7 +274,7 @@ class DataFrame(TopLevelFrame):
         self._show_map(path)
 
     def __copy_category_configurations(self):
-        self._selected_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
+        self._selected_path: Path = self.__open_explorer()
 
         if self._category_controller.check_conflicts_in_category_configuration(self._selected_path):
             if not self._category_controller.import_category_configuration(self._selected_path):
@@ -294,7 +295,7 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the cut-out
         """
-        chosen_path: Path = self.__open_explorer(list["png"])  # TODO: insert accepted filetypes
+        chosen_path: Path = self.__open_explorer()
 
         if not chosen_path.exists():
             # Chosen path is invalid
@@ -312,11 +313,11 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the osm-data
         """
-        chosen_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
+        chosen_path: Path = self.__open_explorer()
 
         if not chosen_path.exists():
             # chosen path is invalid
-            popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
+            AlertPopUp("Path is incorrect, please choose a valid Path!")
             self.activate()
             return
 
@@ -342,10 +343,10 @@ class DataFrame(TopLevelFrame):
         worked = self._cut_out_controller.set_cut_out_mode(cut_out_mode)  # updates the cut-out-mode
 
         if not worked:
-            popup = AlertPopUp(message="Sorry, this did not work!")
+            AlertPopUp(message="Sorry, this did not work!")
             self.activate()
 
-    def __open_explorer(self, filetypes: Iterable[tuple[str, str | list[str] | tuple[str, ...]]] | None) -> Path:
+    def __open_explorer(self) -> Path:
         """
         Opens explorer and lets the user choose a path
         Returns:
@@ -353,8 +354,13 @@ class DataFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askopenfilename(title="Please select Your File",
-                                       initialdir=self._project_controller.get_project_path())
-        return Path(new_path)
+                                       initialdir=self._project_controller.get_project_path(),
+                                       filetypes=[('GeoJSON files', '*.geojson')])
+        if new_path.endswith('.geojson'):
+            return Path(new_path)
+        else:
+            AlertPopUp(message="Please enter a valid path and select the correct file!")
+            return Path()
 
     def freeze(self):
         """
