@@ -6,6 +6,8 @@ import pathlib
 
 from typing import TYPE_CHECKING
 
+from src.osm_configurator.model.application.application_settings_default_enum import ApplicationSettingsDefault
+
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.application.passive_project import PassiveProject
@@ -52,3 +54,6 @@ class ProjectController(IProjectController):
 
     def is_project_loaded(self) -> bool:
         return self._model.get_active_project() is not None
+
+    def get_default_project_folder(self) -> Path:
+        return self._model.get_application_settings().get_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER)
