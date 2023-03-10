@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
+from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 from src.osm_configurator.view.states.state import State
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
@@ -147,6 +148,7 @@ class StateManager:
         self._frozen: bool = False
 
         # Setting other attributes
+        self._project_controller: IProjectController = project_controller
         self._main_window: MainWindow = main_window
         self._states: List[State] = self.__create_states(export_controller, category_controller, project_controller,
                                                          settings_controller, aggregation_controller,
@@ -420,6 +422,11 @@ class StateManager:
                     # If state change worked, set the new state as the current one
                     self._current_state = next_state
 
+                    # Store last edit step
+                    corresponding_state: StateName = self._current_state.get_state_name()
+                    if 2 < corresponding_state.value < 9:
+                        self._project_controller.set_current_config_phase(self.get_last_edit_step(corresponding_state.value))
+
                     # Now activating all the frames of the current state
                     positioned_frame: positioned_frame_i.PositionedFrame
                     for positioned_frame in self._current_state.get_active_frames():
@@ -501,3 +508,30 @@ class StateManager:
         for positioned_frame in self._current_state.get_active_frames():
             frame: TopLevelFrame = positioned_frame.get_frame()
             frame.unfreeze()
+
+    def get_last_edit_step(self, state: int) -> ConfigPhase:
+        """
+        This method converts the current state into a configphase.
+
+        Args:
+            state (int): The current state.
+
+        Returns:
+             The configphase.
+        """
+        if state == 3:
+            return ConfigPhase.DATA_CONFIG_PHASE
+        elif state == 4:
+            return ConfigPhase.CATEGORY_CONFIG_PHASE
+        elif state == 5:
+            return ConfigPhase.REDUCTION_CONFIG_PHASE
+        elif state == 6:
+            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+        elif state == 7:
+            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+        elif state == 8:
+            return ConfigPhase.AGGREGATION_CONFIG_PHASE
+        elif state == 9:
+            return ConfigPhase.CALCULATION_CONFIG_PHASE
+        else:
+            return ConfigPhase.DATA_CONFIG_PHASE
