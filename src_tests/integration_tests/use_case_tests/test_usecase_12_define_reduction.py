@@ -19,14 +19,14 @@ class TestUsecase12:
         test_category: Category = Category("CategoryOne")
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
 
-        # Description part 1
+        # Description part 1 - Set strictly use default values
         assert self.active_project.get_config_manager().get_category_manager().get_category("CategoryOne").set_strictly_use_default_values(True)
 
-        # Description part 2
+        # Description part 2 - Decide if the area should be calculated
         assert self.active_project.get_config_manager().get_category_manager().get_category("CategoryOne").set_attribute(Attribute.PROPERTY_AREA, True)
 
-        # Description part 3
+        # Description part 3 - Chose the calculation method of the area
         assert self.active_project.get_config_manager().get_category_manager().get_category("CategoryOne").set_calculation_method_of_area(CalculationMethodOfArea.CALCULATE_SITE_AREA)
 
-        # Description part 4
+        # Description part 4 - Decide if the floor area should be calculated
         assert self.active_project.get_config_manager().get_category_manager().get_category("CategoryOne").set_attribute(Attribute.FLOOR_AREA, True)

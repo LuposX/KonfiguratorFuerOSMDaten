@@ -18,7 +18,7 @@ class TestUsecase14:
         test_category: Category = Category("CategoryOne")
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
 
-        # Description part 1
+        # Description part 1 - create new attractivity attribute
         new_attribute: AttractivityAttribute = AttractivityAttribute("TestAttribute")
         assert self.active_project.get_config_manager().get_category_manager().get_category("CategoryOne").add_attractivity_attribute(new_attribute)
 

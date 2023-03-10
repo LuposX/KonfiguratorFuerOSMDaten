@@ -19,7 +19,7 @@ class TestUsecase13:
         test_category: Category = Category("CategoryOne")
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
 
-        # Description part 3
+        # Description part 3 - create default value entry
         new_default_value_entry_one: DefaultValueEntry = DefaultValueEntry("TestTag1")
         assert self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").add_default_value_entry(new_default_value_entry_one)
@@ -27,7 +27,7 @@ class TestUsecase13:
         assert self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").add_default_value_entry(new_default_value_entry_two)
 
-        # Desciption part 4
+        # Desciption part 4 - display values of the new default value entry
         assert self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").get_default_value_list()[1].get_default_value_entry_tag() == "TestTag1"
         assert self.active_project.get_config_manager().get_category_manager().get_category(
@@ -37,17 +37,17 @@ class TestUsecase13:
         assert self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").get_default_value_list()[1].get_attribute_default(Attribute.PROPERTY_AREA) == 0.0
 
-        # Desciption part 5
+        # Desciption part 5 - change the name
         assert self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").get_default_value_list()[1].set_tag("NewNameForTag1")
 
-        # Desciption part 6
+        # Desciption part 6 - change the order of the default value entries
         assert not self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").move_default_value_entry_up(new_default_value_entry_one)
         assert self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").move_default_value_entry_up(new_default_value_entry_two)
 
-        # Desciption part 7
+        # Desciption part 7 - change the value of the attributes
         assert self.active_project.get_config_manager().get_category_manager().get_category(
             "CategoryOne").get_default_value_list()[1].set_attribute_default(Attribute.FLOOR_AREA, 5.0)
         assert self.active_project.get_config_manager().get_category_manager().get_category(
