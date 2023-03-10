@@ -112,33 +112,31 @@ SETTINGS_NO_PROJECT_FRAME_ROW_SPAN: Final = 3
 SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN: Final = 1
 
 
-def get_last_edit_step(state: int) -> ConfigPhase:
+def get_last_edit_step(state: StateName) -> ConfigPhase:
     """
     This method converts the current state into a configphase.
 
     Args:
-        state (int): The current state.
+        state (StateName): The current state.
 
     Returns:
          The configphase.
     """
-    if state == 3:
-        return ConfigPhase.DATA_CONFIG_PHASE
-    elif state == 4:
-        return ConfigPhase.CATEGORY_CONFIG_PHASE
-    elif state == 5:
-        return ConfigPhase.REDUCTION_CONFIG_PHASE
-    elif state == 6:
-        return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
-    elif state == 7:
-        return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
-    elif state == 8:
-        return ConfigPhase.AGGREGATION_CONFIG_PHASE
-    elif state == 9:
-        return ConfigPhase.CALCULATION_CONFIG_PHASE
-    else:
-        return ConfigPhase.DATA_CONFIG_PHASE
-
+    match state:
+        case state_name_enum_i.StateName.DATA:
+            return ConfigPhase.DATA_CONFIG_PHASE
+        case state_name_enum_i.StateName.CATEGORY:
+            return ConfigPhase.CATEGORY_CONFIG_PHASE
+        case state_name_enum_i.StateName.REDUCTION:
+            return ConfigPhase.REDUCTION_CONFIG_PHASE
+        case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
+            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+        case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
+            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+        case state_name_enum_i.StateName.AGGREGATION:
+            return ConfigPhase.AGGREGATION_CONFIG_PHASE
+        case state_name_enum_i.StateName.CALCULATION:
+            return ConfigPhase.CALCULATION_CONFIG_PHASE
 
 class StateManager:
     """
@@ -453,8 +451,8 @@ class StateManager:
                     # Store last edit step
                     corresponding_state: StateName = self._current_state.get_state_name()
                     # This is needed to handle with the case that no project is loaded yet, so no last edit step can be set
-                    if 2 < corresponding_state.value < 9:
-                        self._project_controller.set_current_config_phase(get_last_edit_step(corresponding_state.value))
+                    if 2 < corresponding_state.value < 10:
+                        self._project_controller.set_current_config_phase(get_last_edit_step(corresponding_state))
 
                     # Now activating all the frames of the current state
                     positioned_frame: positioned_frame_i.PositionedFrame
