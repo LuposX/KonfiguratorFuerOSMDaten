@@ -186,6 +186,9 @@ class MainMenuFrame(TopLevelFrame):
                 case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
                     self._state_manager.change_state(state_name_enum_i.StateName.REDUCTION)
 
+                case config_phase_enum_i.ConfigPhase.ATTRACTIVITY_CONFIG_PHASE:
+                    self._state_manager.change_state(state_name_enum_i.StateName.ATTRACTIVITY_EDIT)
+
                 case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
                     self._state_manager.change_state(state_name_enum_i.StateName.AGGREGATION)
 

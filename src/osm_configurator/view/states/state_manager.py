@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
+from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
 from src.osm_configurator.view.states.state import State
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
@@ -111,6 +112,32 @@ SETTINGS_NO_PROJECT_FRAME_ROW_SPAN: Final = 3
 SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN: Final = 1
 
 
+def get_last_edit_step(state: StateName) -> ConfigPhase:
+    """
+    This method converts the current state into a configphase.
+
+    Args:
+        state (StateName): The current state.
+
+    Returns:
+         ConfigPhase: The configphase.
+    """
+    match state:
+        case state_name_enum_i.StateName.DATA:
+            return ConfigPhase.DATA_CONFIG_PHASE
+        case state_name_enum_i.StateName.CATEGORY:
+            return ConfigPhase.CATEGORY_CONFIG_PHASE
+        case state_name_enum_i.StateName.REDUCTION:
+            return ConfigPhase.REDUCTION_CONFIG_PHASE
+        case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
+            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+        case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
+            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+        case state_name_enum_i.StateName.AGGREGATION:
+            return ConfigPhase.AGGREGATION_CONFIG_PHASE
+        case state_name_enum_i.StateName.CALCULATION:
+            return ConfigPhase.CALCULATION_CONFIG_PHASE
+
 class StateManager:
     """
     This class manages the different states, that can be shown on a window.
@@ -147,6 +174,7 @@ class StateManager:
         self._frozen: bool = False
 
         # Setting other attributes
+        self._project_controller: IProjectController = project_controller
         self._main_window: MainWindow = main_window
         self._states: List[State] = self.__create_states(export_controller, category_controller, project_controller,
                                                          settings_controller, aggregation_controller,
@@ -419,6 +447,12 @@ class StateManager:
                 if success:
                     # If state change worked, set the new state as the current one
                     self._current_state = next_state
+
+                    # Store last edit step
+                    corresponding_state: StateName = self._current_state.get_state_name()
+                    # This is needed to handle with the case that no project is loaded yet, so no last edit step can be set
+                    if 2 < corresponding_state.value < 10:
+                        self._project_controller.set_current_config_phase(get_last_edit_step(corresponding_state))
 
                     # Now activating all the frames of the current state
                     positioned_frame: positioned_frame_i.PositionedFrame
