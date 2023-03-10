@@ -13,5 +13,6 @@ class TestUseCase21:
         self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True,
                                                            application_settings_o, "Project_UC21",
                                                            "Test export project")
-        self.active_project.get_export_manager().export_project(
+        assert self.active_project.get_export_manager().export_project(
             Path(os.path.join(TEST_DIR, "build/Export/UC21")))
+        assert os.path.exists(Path(os.path.join(TEST_DIR, "build/Export/UC21.zip")))
