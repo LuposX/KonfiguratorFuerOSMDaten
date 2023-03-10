@@ -52,7 +52,7 @@ class ICalculationController(ABC):
         pass
 
     @abstractmethod
-    def get_current_calculation_process(self) -> float:
+    def get_current_calculation_progress(self) -> float:
         """
         Returns an approximation of the progress of the calculations in the currently selected project.
         The progress is given as a number between 0 and 1, where 0 indicates that the calculation has not started yet and 1 indicates, that the calculations are done.
