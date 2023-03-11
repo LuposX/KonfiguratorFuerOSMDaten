@@ -4,13 +4,13 @@ from typing import TYPE_CHECKING, List
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
-
 import src.osm_configurator.view.toplevelframes.lockable as lockable_i
+
+from src.osm_configurator.view.states.state import State
 
 if TYPE_CHECKING:
     from typing import Final
     from src.osm_configurator.view.states.state_name_enum import StateName
-    from src.osm_configurator.view.states.state import State
     from src.osm_configurator.view.states.positioned_frame import PositionedFrame
     from src.osm_configurator.view.states.main_window import MainWindow
     from src.osm_configurator.control.aggregation_controller_interface import IAggregationController

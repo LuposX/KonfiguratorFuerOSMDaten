@@ -10,10 +10,11 @@ import src.osm_configurator.view.states.state_name_enum as sne
 # Constants
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
-
 import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
-
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
@@ -29,9 +30,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.model.application.passive_project import PassiveProject
-    import src.osm_configurator.view.constants.button_constants as button_constants_i
-    import src.osm_configurator.view.constants.frame_constants as frame_constants_i
-    import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 124

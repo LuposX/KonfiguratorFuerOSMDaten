@@ -156,8 +156,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # Choose Categories Label
         self._choose_categories_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -171,8 +171,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # Label for Attractivity Attribute
         self._choose_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -187,8 +187,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # Now the Label for the Attractivity Name
         self._attractivity_name_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -203,7 +203,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._attractivity_name_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
             master=self,
             width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (2 / 3) - ELEMENT_BORDER_DISTANCE,
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
             corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
             fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
             text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
@@ -215,8 +215,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Label that says Attribute
         self._attribute_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -230,8 +230,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Label that says Factor
         self._factor_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (6 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -245,8 +245,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # Area Label
         self._area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -260,8 +260,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # Numbers of Floors Label
         self._number_of_floors_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -275,8 +275,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # Floor Area Label
         self._floor_area_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -290,8 +290,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # Base Attractivity Label
         self._base_attractivity_label: customtkinter.CTkLabel = customtkinter.CTkLabel(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -307,8 +307,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Area Entry
         self._area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
             fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
             text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
@@ -319,8 +319,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Number of Floors Entry
         self._numbers_of_floors_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
             fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
             text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
@@ -331,8 +331,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Floor Area Entry
         self._floor_area_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
             fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
             text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
@@ -343,8 +343,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Base Attractivity Entry
         self._base_attractivity_entry: customtkinter.CTkEntry = customtkinter.CTkEntry(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / (3 - ELEMENT_BORDER_DISTANCE),
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / (8 - ELEMENT_BORDER_DISTANCE),
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
             corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
             fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
             text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value
