@@ -164,7 +164,8 @@ class StateManager:
             aggregation_controller (aggregation_controller.AggregationController): Respective controller
             calculation_controller (calculation_controller.CalculationController): Respective controller
             cut_out_controller (cut_out_controller.CutOutController): Respective controller
-            data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
+            data_visualization_controller (data_visualization_controller.DataVisualizationController):
+                Respective controller
             osm_data_controller (osm_data_controller.OSMDataController): Respective controller
         """
         # The StateManager starts unlocked
@@ -182,7 +183,7 @@ class StateManager:
                                                          cut_out_controller, data_visualization_controller,
                                                          osm_data_controller)
 
-        self._current_state: State = None
+        self._current_state: State | None = None
         main_menu_state_name: StateName = state_name_enum_i.StateName.MAIN_MENU
         state: State
         for state in self._states:
@@ -232,32 +233,39 @@ class StateManager:
         from src.osm_configurator.view.toplevelframes.project_head_frame import ProjectHeadFrame
         project_head_frame: ProjectHeadFrame = ProjectHeadFrame(self, export_controller,
                                                                 project_controller)
-        positioned_project_head_frame: PositionedFrame = positioned_frame_i.PositionedFrame(project_head_frame,
-                                                                                            PROJECT_HEAD_FRAME_COLUM,
-                                                                                            PROJECT_HEAD_FRAME_ROW,
-                                                                                            PROJECT_HEAD_FRAME_COLUM_SPAN,
-                                                                                            PROJECT_HEAD_FRAME_ROW_SPAN,
-                                                                                            FRAME_STICKY_WHOLE_CELL)
+        positioned_project_head_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
+            project_head_frame,
+            PROJECT_HEAD_FRAME_COLUM,
+            PROJECT_HEAD_FRAME_ROW,
+            PROJECT_HEAD_FRAME_COLUM_SPAN,
+            PROJECT_HEAD_FRAME_ROW_SPAN,
+            FRAME_STICKY_WHOLE_CELL
+        )
 
         # Project Foot Frame
         from src.osm_configurator.view.toplevelframes.project_foot_frame import ProjectFootFrame
         project_foot_frame: ProjectFootFrame = ProjectFootFrame(self, project_controller)
-        positioned_project_foot_frame: PositionedFrame = positioned_frame_i.PositionedFrame(project_foot_frame,
-                                                                                            PROJECT_FOOT_FRAME_COLUM,
-                                                                                            PROJECT_FOOT_FRAME_ROW,
-                                                                                            PROJECT_FOOT_FRAME_COLUM_SPAN,
-                                                                                            PROJECT_FOOT_FRAME_ROW_SPAN,
-                                                                                            FRAME_STICKY_WHOLE_CELL)
+        positioned_project_foot_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
+            project_foot_frame,
+            PROJECT_FOOT_FRAME_COLUM,
+            PROJECT_FOOT_FRAME_ROW,
+            PROJECT_FOOT_FRAME_COLUM_SPAN,
+            PROJECT_FOOT_FRAME_ROW_SPAN,
+            FRAME_STICKY_WHOLE_CELL
+        )
 
         # Aggregation Frame State
         from src.osm_configurator.view.toplevelframes.aggregation_frame import AggregationFrame
         aggregation_frame: AggregationFrame = AggregationFrame(self, aggregation_controller)
-        positioned_aggregation_frame: PositionedFrame = positioned_frame_i.PositionedFrame(aggregation_frame,
-                                                                                           AGGREGATION_COLUM,
-                                                                                           AGGREGATION_ROW,
-                                                                                           AGGREGATION_COLUM_SPAN,
-                                                                                           AGGREGATION_ROW_SPAN,
-                                                                                           FRAME_STICKY_WHOLE_CELL)
+        positioned_aggregation_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
+            aggregation_frame,
+            AGGREGATION_COLUM,
+            AGGREGATION_ROW,
+            AGGREGATION_COLUM_SPAN,
+            AGGREGATION_ROW_SPAN,
+            FRAME_STICKY_WHOLE_CELL
+        )
+
         state_aggregation_frame: State = State(
             [positioned_project_head_frame, positioned_project_foot_frame, positioned_aggregation_frame],
             state_name_enum_i.StateName.AGGREGATION, state_name_enum_i.StateName.ATTRACTIVITY_EDIT,
@@ -300,14 +308,14 @@ class StateManager:
         from src.osm_configurator.view.toplevelframes.calculation_frame import CalculationFrame
         calculation_frame: CalculationFrame = CalculationFrame(self, calculation_controller,
                                                                data_visualization_controller)
-        positioned_calcualtion_frame: PositionedFrame = positioned_frame_i.PositionedFrame(calculation_frame,
+        positioned_calculation_frame: PositionedFrame = positioned_frame_i.PositionedFrame(calculation_frame,
                                                                                            CALCULATION_FRAME_COLUM,
                                                                                            CALCULATION_FRAME_ROW,
                                                                                            CALCULATION_FRAME_COLUM_SPAN,
                                                                                            CALCULATION_FRAME_ROW_SPAN,
                                                                                            FRAME_STICKY_WHOLE_CELL)
         state_calculation_frame: State = State(
-            [positioned_project_head_frame, positioned_project_foot_frame, positioned_calcualtion_frame],
+            [positioned_project_head_frame, positioned_project_foot_frame, positioned_calculation_frame],
             state_name_enum_i.StateName.CALCULATION, state_name_enum_i.StateName.AGGREGATION, None)
         all_states.append(state_calculation_frame)
 
@@ -361,12 +369,15 @@ class StateManager:
         # Settings Frame State - Project
         from src.osm_configurator.view.toplevelframes.settings_frame import SettingsFrame
         settings_frame_project: SettingsFrame = SettingsFrame(self, settings_controller, True)
-        positioned_settings_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_project,
-                                                                                        SETTINGS_PROJECT_FRAME_COLUM,
-                                                                                        SETTINGS_PROJECT_FRAME_ROW,
-                                                                                        SETTINGS_PROJECT_FRAME_COLUM_SPAN,
-                                                                                        SETTINGS_PROJECT_FRAME_ROW_SPAN,
-                                                                                        FRAME_STICKY_WHOLE_CELL)
+        positioned_settings_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
+            settings_frame_project,
+            SETTINGS_PROJECT_FRAME_COLUM,
+            SETTINGS_PROJECT_FRAME_ROW,
+            SETTINGS_PROJECT_FRAME_COLUM_SPAN,
+            SETTINGS_PROJECT_FRAME_ROW_SPAN,
+            FRAME_STICKY_WHOLE_CELL
+        )
+
         state_settings_project_frame: State = State(
             [positioned_project_head_frame, positioned_project_foot_frame, positioned_settings_project_frame],
             state_name_enum_i.StateName.SETTINGS_PROJECT, None, None)
@@ -374,12 +385,13 @@ class StateManager:
 
         # Settings Frame State - No Project
         settings_frame_no_project: SettingsFrame = SettingsFrame(self, settings_controller, False)
-        positioned_settings_no_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(settings_frame_no_project,
-                                                                                        SETTINGS_NO_PROJECT_FRAME_COLUM,
-                                                                                        SETTINGS_NO_PROJECT_FRAME_ROW,
-                                                                                        SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN,
-                                                                                        SETTINGS_NO_PROJECT_FRAME_ROW_SPAN,
-                                                                                        FRAME_STICKY_WHOLE_CELL)
+        positioned_settings_no_project_frame: PositionedFrame = positioned_frame_i.PositionedFrame(
+            settings_frame_no_project,
+            SETTINGS_NO_PROJECT_FRAME_COLUM,
+            SETTINGS_NO_PROJECT_FRAME_ROW,
+            SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN,
+            SETTINGS_NO_PROJECT_FRAME_ROW_SPAN,
+            FRAME_STICKY_WHOLE_CELL)
         state_settings_no_project_frame: State = State(
             [positioned_settings_no_project_frame],
             state_name_enum_i.StateName.SETTINGS_NO_PROJECT, None, None)
@@ -430,7 +442,7 @@ class StateManager:
         else:
             # First getting the actual next State, if there is no State with the given Name,
             # change_state failed and returns False
-            next_state: State = None
+            next_state: State | None = None
             state: State
             for state in self._states:
                 if state.get_state_name() == new_state:
@@ -476,7 +488,7 @@ class StateManager:
         This method locks the Application in the current State
         """
 
-        # Can only lock if not frozen, because frozen is a higher hyrachie!
+        # Can only lock if not frozen, because frozen is a higher hierarchy!
         if not self._frozen:
             # Locking himself up
             self._locked: bool = True
@@ -493,7 +505,7 @@ class StateManager:
         This Method unlocks the Application to be able to change States again
         """
 
-        # Can only unlock state if not frozen, since frozen is a higher hyrachie!
+        # Can only unlock state if not frozen, since frozen is a higher hierarchy!
         if not self._frozen:
             # Unlocking himself
             self._locked: bool = False
@@ -507,7 +519,7 @@ class StateManager:
 
     def freeze_state(self):
         """
-        This method freezes all frames that are currently active, and making then not interactable anymore.
+        This method freezes all frames that are currently active, and making then not intractable anymore.
         The state will also be locked and can't be changed, until unfrozen!
         """
         # Freezing all frames in the current state
@@ -523,14 +535,14 @@ class StateManager:
 
     def unfreeze_state(self):
         """
-        Unfreezes the state, by making all active frames interactable again and unlocking the state, allowing
+        Unfreezes the state, by making all active frames intractable again and unlocking the state, allowing
         state changes again!
         """
         # Unfreezing himself
         self._frozen: bool = False
 
         # Unfreezing all frames in the current state
-        # All Frames have to be unfreezable!
+        # All Frames have to be freezable!
         positioned_frame: PositionedFrame
         for positioned_frame in self._current_state.get_active_frames():
             frame: TopLevelFrame = positioned_frame.get_frame()
