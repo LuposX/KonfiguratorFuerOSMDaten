@@ -69,7 +69,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.header.grid(row=0, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.header)
@@ -82,7 +82,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_default_header.grid(row=1, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_default_header)
@@ -93,7 +93,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_default_label.grid(row=1, column=1, padx=10,
                                      pady=10)  # Creates a read-only textbox showing the default-filepath
@@ -108,7 +108,9 @@ class SettingsApplicationFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value
                                     )
         self.change_default_path_button.grid(row=1, column=3, padx=10,
                                              pady=10)  # button to browse for a new default folder
@@ -121,7 +123,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_process_header.grid(row=2, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_process_header)
@@ -131,6 +133,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
                                    )
         self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
         self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
@@ -143,7 +146,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_key_recom_header.grid(row=3, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_key_recom_header)
@@ -153,6 +156,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
                                    )
         self.key_recom_entry.grid(row=3, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
         self.key_recom_entry.bind("<KeyRelease>", self.__key_recom_entry_edited)

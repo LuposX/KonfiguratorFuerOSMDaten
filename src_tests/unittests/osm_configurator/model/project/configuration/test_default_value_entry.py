@@ -7,12 +7,12 @@ class TestDefaultValueEntry:
         self.default_value_entry: DefaultValueEntry = DefaultValueEntry("TestName")
         assert self.default_value_entry.get_default_value_entry_tag() == "TestName"
 
-    def set_tag(self):
+    def test_set_tag(self):
         self.default_value_entry: DefaultValueEntry = DefaultValueEntry("TestName")
         self.default_value_entry.set_tag("NewName")
         assert self.default_value_entry.get_default_value_entry_tag() == "NewName"
 
-    def set_tag_error(self):
+    def test_set_tag_error(self):
         self.default_value_entry: DefaultValueEntry = DefaultValueEntry("TestName")
         assert not self.default_value_entry.set_tag("")
 

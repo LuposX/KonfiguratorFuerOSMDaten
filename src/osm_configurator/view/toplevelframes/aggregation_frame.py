@@ -83,7 +83,8 @@ class AggregationFrame(TopLevelFrame):
             scrollbar_button_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_COLOR.value,
             scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
             label_text="Aggregation Methods:",
-            label_text_color=LABEL_TEXT_COLOR)
+            label_text_color=LABEL_TEXT_COLOR,
+            label_fg_color=SCROLLABLE_FRAME_FG_COLOR)
         self._aggregation_scrollable_frame.grid(row=1, column=1, rowspan=1, columnspan=1, sticky="NSEW")
 
         # Making all the checkboxes for all Aggregation Methods
@@ -118,7 +119,7 @@ class AggregationFrame(TopLevelFrame):
                                                               text=method.get_name(),
                                                               command=partial(self._checkbox_edited, checkbox_index))
             self._aggregation_checkboxes.append(checkbox)
-            checkbox.grid(row=checkbox_index, column=0, rowspan=1, columnspan=1)
+            checkbox.grid(row=checkbox_index, column=0, rowspan=1, columnspan=1, sticky="W")
             checkbox_index += 1
 
         method: aggregation_method_enum_i.AggregationMethod

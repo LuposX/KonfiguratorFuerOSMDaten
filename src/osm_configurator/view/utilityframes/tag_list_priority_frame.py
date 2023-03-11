@@ -28,12 +28,13 @@ if TYPE_CHECKING:
 # Finals
 UP_ARROW_SIZE: Final = 10
 DOWN_ARROW_SIZE: Final = 10
+
 PAD_X: Final = 2
 PAD_Y: Final = 2
 ELEMENT_BORDER_DISTANCE: Final = 4
 
-ENTRY_BUTTON_HEIGHT: Final = 44
-ARROW_BUTTON_HEIGHT: Final = 20
+ENTRY_BUTTON_HEIGHT: Final = button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value
+ARROW_BUTTON_HEIGHT: Final = button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value/2 - ELEMENT_BORDER_DISTANCE
 
 
 class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):

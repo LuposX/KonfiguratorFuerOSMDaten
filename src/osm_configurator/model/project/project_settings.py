@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import shutil
 
 from pathlib import Path
 
@@ -37,7 +38,8 @@ class ProjectSettings:
 
     def set_location(self, new_location: Path) -> bool:
         """
-        This method loads the location where the project will be stored.
+        This method loads the location where the project will be stored. It is needed when loading or creating the
+        project otherwise change_location should be used.
 
         Args:
             new_location (pathlib.Path): The location for the project.
@@ -61,18 +63,17 @@ class ProjectSettings:
             bool: true, if location change was successful, false else.
         """
         if os.path.exists(new_location):
-            save_path = self._path
-            self._path = os.path.join(new_location, self._name)
-
+            save_path: Path = self._path
+            self._path = Path(os.path.join(new_location, self._name))
             if not os.path.exists(self._path):
                 os.makedirs(self._path)
                 config_directory: Path = Path(os.path.join(self._path, "configuration"))
                 os.makedirs(config_directory)
-                os.makedirs(config_directory.joinpath("categories"))
+                category_directory: Path = Path(os.path.join(config_directory, "categories"))
+                os.makedirs(category_directory)
+                shutil.rmtree(save_path)
                 return True
-
             self._path = save_path
-
         return False
 
     def get_name(self) -> str:
@@ -86,7 +87,8 @@ class ProjectSettings:
 
     def set_name(self, new_name: str) -> bool:
         """
-        This method loads the name of the project.
+        This method loads the name of the project. It is needed when loading or creating the
+        project otherwise change_name should be used.
 
         Args:
             new_name (str): The new name of the project.

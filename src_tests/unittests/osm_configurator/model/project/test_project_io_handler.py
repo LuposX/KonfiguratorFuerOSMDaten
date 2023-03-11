@@ -19,6 +19,7 @@ from src.osm_configurator.model.project.configuration.cut_out_configuration impo
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
 from src.osm_configurator.model.project.configuration.category import Category
+from src.osm_configurator.model.project.project_io_handler import ProjectIOHandler
 from src_tests.definitions import TEST_DIR
 import src.osm_configurator.model.application.application_settings as application_settings_i
 
@@ -78,6 +79,18 @@ class TestProjectIO:
         self.active_project.get_config_manager().get_category_manager().create_category(test_category)
         self.active_project.get_config_manager().get_category_manager().create_category(test_category_two)
         self.active_project.get_project_saver().save_project()
+
+    def test_build_project(self):
+
+        application_settings_o = application_settings_i.ApplicationSettings()
+        self.active_project: ActiveProject = ActiveProject(Path(os.path.join(TEST_DIR, "build/Projects")), True, application_settings_o, "TestProject5", "This project is to test the build!")
+        self.project_io_handler: ProjectIOHandler = ProjectIOHandler(self.active_project)
+        assert not self.project_io_handler.build_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProject5")))
+        if os.path.exists(Path(os.path.join(TEST_DIR, "build/Projects/TestProject6"))):
+            shutil.rmtree(Path(os.path.join(TEST_DIR, "build/Projects/TestProject6")))
+            assert self.project_io_handler.build_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProject6")))
+        else:
+            assert self.project_io_handler.build_project(Path(os.path.join(TEST_DIR, "build/Projects/TestProject6")))
 
     def test_load_settings(self):
         application_settings_o = application_settings_i.ApplicationSettings()

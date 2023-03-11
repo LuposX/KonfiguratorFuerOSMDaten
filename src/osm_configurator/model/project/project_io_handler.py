@@ -22,9 +22,7 @@ SETTINGS_TABLE_FIRST_COLUMN: int = 0  # Describes the type of data stored in the
 SETTINGS_TABLE_SECOND_COLUMN: int = 1  # In this column specific data is stored
 SETTING_TABLE_FIRST_ROW: int = 0  # This row stores the name of the project
 SETTING_TABLE_SECOND_ROW: int = 1  # This row stores the description of the project
-SETTING_TABLE_THIRD_ROW: int = 2  # This row stores the location of the project
-SETTING_TABLE_FOURTH_ROW: int = 3  # This row stores the calculation_check_points of the project
-SETTING_TABLE_FIFTH_ROW: int = 4  # This row stores the last_edit_date of the project
+SETTING_TABLE_THIRD_ROW: int = 2  # This row stores the last_edit_date of the project
 
 NAME_OF_AGGREGATION: int = 0  # The name of the aggregation is stored in the first column of a csv
 VALUE_OF_AGGREGATION: int = 1  # The value of the aggregation is stored in the first column of a csv
@@ -98,14 +96,6 @@ class ProjectIOHandler:
             return False
         if not os.path.exists(self.category_directory):
             return False
-        if not os.path.exists(os.path.join(
-                self.destination,
-                saver_io_handler_constants.PROJECT_SETTINGS + saver_io_handler_constants.CSV)):
-            return False
-        if not os.path.exists(os.path.join(
-                self.destination,
-                saver_io_handler_constants.LAST_STEP + saver_io_handler_constants.TXT)):
-            return False
 
         # Loads the different parts of the project
         if not self._load_project_settings():
@@ -138,10 +128,8 @@ class ProjectIOHandler:
                 project_settings_data[SETTING_TABLE_FIRST_ROW][SETTINGS_TABLE_SECOND_COLUMN])
             self._active_project.get_project_settings().set_description(
                 project_settings_data[SETTING_TABLE_SECOND_ROW][SETTINGS_TABLE_SECOND_COLUMN])
-            self._active_project.get_project_settings().set_location(Path(
-                project_settings_data[SETTING_TABLE_THIRD_ROW][SETTINGS_TABLE_SECOND_COLUMN]))
             self._active_project.get_project_settings().set_last_edit_date(
-                project_settings_data[SETTING_TABLE_FOURTH_ROW][SETTINGS_TABLE_SECOND_COLUMN])
+                project_settings_data[SETTING_TABLE_THIRD_ROW][SETTINGS_TABLE_SECOND_COLUMN])
             return True
         return False
 

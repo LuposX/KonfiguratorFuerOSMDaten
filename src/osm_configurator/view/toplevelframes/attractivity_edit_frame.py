@@ -95,7 +95,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._category_drop_down_menu: customtkinter.CTkOptionMenu = customtkinter.CTkOptionMenu(
             master=self,
             width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (2 / 3) - ELEMENT_BORDER_DISTANCE,
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
+            height=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BASE_HEIGHT.value,
             corner_radius=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
             fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
             button_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
@@ -116,7 +116,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._attractivity_drop_down_menu: customtkinter.CTkOptionMenu = customtkinter.CTkOptionMenu(
             master=self,
             width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (2 / 3) - ELEMENT_BORDER_DISTANCE,
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
+            height=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BASE_HEIGHT.value,
             corner_radius=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
             fg_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_FG_COLOR.value,
             button_color=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BUTTON_COLOR.value,
@@ -141,7 +141,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Choose Categories:")
         self._choose_categories_label.grid(row=0, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -155,7 +155,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Choose Attractivity:")
         self._choose_attractivity_label.grid(row=1, column=0, rowspan=1, columnspan=1,
                                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -169,7 +169,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Attractivity Name:")
         self._attractivity_name_label.grid(row=2, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -180,7 +180,7 @@ class AttractivityEditFrame(TopLevelFrame):
             = customtkinter.CTkEntry(master=self,
                                      width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
                                              2 / 3) - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 6 - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_BIG.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -196,7 +196,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Attribute:")
         self._attribute_label.grid(row=3, column=0, rowspan=1, columnspan=1,
                                    pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -210,7 +210,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Factor:")
         self._factor_label.grid(row=3, column=1, rowspan=1, columnspan=1,
                                 pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -224,7 +224,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Area:")
         self._area_label.grid(row=4, column=0, rowspan=1, columnspan=1,
                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -238,7 +238,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Number of Floors:")
         self._number_of_floors_label.grid(row=5, column=0, rowspan=1, columnspan=1,
                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -252,7 +252,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Floor Area:")
         self._floor_area_label.grid(row=6, column=0, rowspan=1, columnspan=1,
                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -266,7 +266,7 @@ class AttractivityEditFrame(TopLevelFrame):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Base Attractivity:")
         self._base_attractivity_label.grid(row=7, column=0, rowspan=1, columnspan=1,
                                            pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
@@ -278,7 +278,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._area_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -289,7 +289,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._numbers_of_floors_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -300,7 +300,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._floor_area_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -311,7 +311,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._base_attractivity_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-                                     height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 8 - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -324,8 +324,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The View Button
         self._view_attractivity_list_button: customtkinter.CTkButton = customtkinter.CTkButton(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 6 - ELEMENT_BORDER_DISTANCE,
+            width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+            height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
             corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
             border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
@@ -339,8 +339,8 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Create Button
         self._create_new_attractivity_button: customtkinter.CTkButton = customtkinter.CTkButton(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 6 - ELEMENT_BORDER_DISTANCE,
+            width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+            height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
             corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
             border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
@@ -354,11 +354,11 @@ class AttractivityEditFrame(TopLevelFrame):
         # The Delete Button
         self._delete_attractivity_button: customtkinter.CTkButton = customtkinter.CTkButton(
             master=self,
-            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
-            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 6 - ELEMENT_BORDER_DISTANCE,
+            width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+            height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
             corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
             border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value,
             hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
             border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
