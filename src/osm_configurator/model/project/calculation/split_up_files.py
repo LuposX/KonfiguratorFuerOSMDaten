@@ -13,6 +13,7 @@ import src.osm_configurator.model.project.calculation.osm_file_format_enum as os
 OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_CONDA: list = ["osmium", "extract", "-b"]
 OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_BINARY: list = ["../../data/osmium/osmium.exe", "extract", "-b"]
 OSMIUM_STARTING_ARGS_FROZEN: list = ["data/osmium/osmium.exe", "extract", "-b"]
+
 OSMIUM_COORDINATE_PATTERN: str = "{},{},{},{}"
 OSMIUM_O_OPTION: str = "-o"
 
@@ -68,8 +69,8 @@ class SplitUpFile:
 
         # Split up the files
         for i in range(len(cells[model_constants.CL_GEOMETRY])):
-            result = subprocess.run(self.get_osmium_command_args(is_frozen, cells, i),
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            result = subprocess.Popen(self.get_osmium_command_args(cells, i),
+                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
             if result.returncode != 0:
                 return False
