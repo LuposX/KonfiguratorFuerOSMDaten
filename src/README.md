@@ -5,7 +5,7 @@ code check the "Documentation" or the "Entwurfsheft", for more information about
 the project check the README.md in the parent folder.
 
 
-## Installation of the Development Enviroment
+## Installation of the Development Environment
 
 For the develop environment you need to have the following tools installed:
 - Conda/Venv
@@ -58,6 +58,17 @@ For testing , you addtionaly need the following packages:
 - `pip install jupyterlab`, only needed for libary tests.
 
 For how to write correct documentation, check [this out](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
+
+## Building the Executable
+
+In order to build the executable you need [cx_freeze](https://cx-freeze.readthedocs.io/en/latest/installation.html).
+You can install it with: `pip install --upgrade cx_Freeze`.
+After that you need to change the `site_packages` variable in the `setup.py` file, it needs to be set to the 
+absolute path of your venv.
+After that you can build the project, with the following command:  
+```sh
+python setup.py build
+```
 
 ## Documentation
 
