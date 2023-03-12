@@ -186,11 +186,14 @@ class MainMenuFrame(TopLevelFrame):
 
         try:
             default_path: Path = Path(os.path.join(self._project_controller.get_default_project_folder(), project_name))
-            self._project_controller.load_project(default_path)
-
-            config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
+            if not self._project_controller.load_project(default_path):
+                popup = AlertPopUp("This is not a valid project.")
+                popup.mainloop()
+                self.activate()
+                return
 
             # Loads the last edit step in the configuration
+            config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
             self._state_manager.change_state(find_matching_state(config_phase))
 
         except NotValidName as err:
@@ -232,9 +235,8 @@ class MainMenuFrame(TopLevelFrame):
             self.activate()
             return
 
-        config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
-
         # Loads the last edit step in the configuration
+        config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
         self._state_manager.change_state(find_matching_state(config_phase))
 
     def __browse_files(self) -> str:

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import tkinter
 
 import src.osm_configurator.view.states.state_manager
@@ -211,7 +212,7 @@ class CreateProjectFrame(TopLevelFrame):
             self.__reload()  # Reloads the page
             return
 
-        if not self._project_path.exists():
+        if not os.path.exists(self._project_path):
             # No valid path chosen
             popup = AlertPopUp("No valid Path entered. Please choose a valid Path.")
             popup.mainloop()

@@ -185,10 +185,7 @@ class ProjectIOHandler:
             cut_out_path: Path = Path(cut_out[CUT_OUT_TABLE_FIRST_ROW][CUT_OUT_TABLE_SECOND_COLUMN])
             cut_out_mode: CutOutMode = CutOutMode.convert_str_to_cut_out_mode(
                 cut_out[CUT_OUT_TABLE_SECOND_ROW][CUT_OUT_TABLE_SECOND_COLUMN])
-            if os.path.exists(cut_out_path):
-                self._active_project.get_config_manager().get_cut_out_configuration().set_cut_out_path(cut_out_path)
-            else:
-                return False
+            self._active_project.get_config_manager().get_cut_out_configuration().set_cut_out_path(cut_out_path)
             if cut_out_mode is not None:
                 self._active_project.get_config_manager().get_cut_out_configuration().set_cut_out_mode(cut_out_mode)
             else:
