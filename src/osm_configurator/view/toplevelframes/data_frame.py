@@ -5,6 +5,8 @@ from pathlib import Path
 from tkinter import filedialog
 from typing import TYPE_CHECKING, Iterable
 import customtkinter
+import os
+import sys
 
 import webbrowser
 
@@ -351,9 +353,16 @@ class DataFrame(TopLevelFrame):
         Returns:
             Path: The chosen path
         """
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            init_dir = os.path.dirname(sys.executable)
+        else:
+            # The application is not frozen
+            init_dir = self._project_controller.get_project_path()
+
         new_path = \
             filedialog.askopenfilename(title="Please select Your File",
-                                       initialdir=self._project_controller.get_project_path())
+                                       initialdir=init_dir)
         return Path(new_path)
 
     def freeze(self):

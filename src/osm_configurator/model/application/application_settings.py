@@ -32,13 +32,9 @@ class ApplicationSettings:
             path_to_starting_file (Path): If set that directory will be used to create the application settings file.
         """
         # Get the path of the application
-        if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-            # If the application is run as a bundle, the PyInstaller bootloader
-            # extends the sys module by a flag frozen=True and sets the app
-            # path into variable _MEIPASS'.
-            # noinspection PyProtectedMember
-            # pylint: disable=protected-access
-            application_path = sys._MEIPASS
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            application_path = os.path.dirname(sys.executable)
         else:
             if path_to_starting_file is None:
                 application_path = os.path.dirname(os.path.abspath(__file__))
