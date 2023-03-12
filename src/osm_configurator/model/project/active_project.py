@@ -59,7 +59,7 @@ class ActiveProject:
             project_name = os.path.basename(project_folder)
 
         self._project_io_handler: ProjectIOHandler = project_io_handler_i.ProjectIOHandler(self)
-        self._configurator_manager: ConfigurationManager = configuration_manager_i.ConfigurationManager(project_folder)
+        self._configurator_manager: ConfigurationManager = configuration_manager_i.ConfigurationManager(self.project_directory)
         self._calculation_manager: CalculationManager = \
             calculation_manager_i.CalculationManager(self._configurator_manager, application_manager)
         self._project_settings: ProjectSettings = project_settings_i.ProjectSettings(self.project_directory,
@@ -110,6 +110,7 @@ class ActiveProject:
         Returns:
             pathlib.Path: The path pointing towards the project folder.
         """
+        print(self._project_settings.get_location())
         return pathlib.Path(self._project_settings.get_location())
 
     def get_config_manager(self) -> ConfigurationManager:

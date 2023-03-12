@@ -371,7 +371,7 @@ class CalculationFrame(TopLevelFrame):
         """
         calculation_state = self._calculation_controller.get_calculation_state()
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
-        calculation_progress = self._calculation_controller.get_current_calculation_process()
+        calculation_progress = self._calculation_controller.get_current_calculation_progress()
 
         if calculation_state[0] == CalculationState.CANCELED:
             return
