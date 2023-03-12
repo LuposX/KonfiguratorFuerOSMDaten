@@ -59,6 +59,7 @@ class Export:
             bool: true, if export was successful, otherwise false.
         """
         zip_file_name: str = _path_with_zip_to_str(path)
+        self._active_project.get_project_settings().set_name(zip_file_name)
         self._active_project.get_project_saver().save_project()
         try:
             shutil.make_archive(zip_file_name, ZIP, self._active_project.get_project_settings().get_location())
