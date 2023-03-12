@@ -58,7 +58,6 @@ def find_matching_state(config_step: config_phase_enum_i.ConfigPhase) -> state_n
         case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
             return state_name_enum_i.StateName.CALCULATION
 
-
 class MainMenuFrame(TopLevelFrame):
     """
     This frame shows the application's main menu.
@@ -193,6 +192,7 @@ class MainMenuFrame(TopLevelFrame):
                 self.activate()
                 return
 
+            # Loads the last edit step in the configuration
             config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
             self._state_manager.change_state(find_matching_state(config_phase))
 
@@ -235,6 +235,7 @@ class MainMenuFrame(TopLevelFrame):
             self.activate()
             return
 
+        # Loads the last edit step in the configuration
         config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
         self._state_manager.change_state(find_matching_state(config_phase))
 

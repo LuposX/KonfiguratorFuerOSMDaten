@@ -57,7 +57,7 @@ class ApplicationSettings:
         # This mean the application_Settings file doesn't exist yet, and we need to create it
         if self._application_settings_file is None:
             self._application_settings_file = \
-                ApplicationSettings.create_application_settings_file(application_path,
+                ApplicationSettings.create_application_settings_file(str(application_path),
                                                                      APPLICATION_SETTINGS_FILE)
 
     def get_setting(self, settings_enum: ApplicationSettingsDefault) -> Any:
@@ -140,7 +140,10 @@ class ApplicationSettings:
         # create the dict which we wil save later to disk
         setting: ApplicationSettingsDefault
         for setting in application_settings_enum_i.ApplicationSettingsDefault:
-            settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
+            if setting == application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER:
+                settings_dict.update({setting.get_name(): saving_path})
+            else:
+                settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
 
         # save the dict to disk
         try:
