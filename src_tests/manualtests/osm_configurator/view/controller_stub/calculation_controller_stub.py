@@ -19,7 +19,7 @@ class CalculationControllerStub(ICalculationController):
     def get_current_calculation_phase(self) -> CalculationPhase:
         return CalculationPhase.AGGREGATION_PHASE
 
-    def get_current_calculation_process(self) -> float:
+    def get_current_calculation_progress(self) -> float:
         """
         Returns:
             float: Random float between 0 and 1 representing the current calculation process

@@ -33,7 +33,7 @@ class CalculationController(ICalculationController):
     def get_current_calculation_phase(self) -> CalculationPhase:
         return self._model.get_active_project().get_calculation_manager().get_current_calculation_phase()
 
-    def get_current_calculation_process(self) -> float:
+    def get_current_calculation_progress(self) -> float:
         return self._model.get_active_project().get_calculation_manager().get_calculation_progress()
 
     def cancel_calculations(self) -> bool:

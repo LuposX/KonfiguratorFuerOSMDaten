@@ -21,7 +21,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.application.application_interface import IApplication
 
 
-class TestUseCase0304:
+class TestUseCase06:
     def test_successful_project_loading(self):
         # Create Model and Controller
         model: IApplication = application.Application()
