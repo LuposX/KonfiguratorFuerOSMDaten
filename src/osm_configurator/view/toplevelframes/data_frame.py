@@ -295,7 +295,7 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the cut-out
         """
-        chosen_path: Path = self.__get_directory_path()
+        chosen_path: Path = self.__get_file_path()
 
         if not chosen_path.exists():
             # Chosen path is invalid
@@ -313,7 +313,7 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the osm-data
         """
-        chosen_path: Path = self.__get_directory_path()
+        chosen_path: Path = self.__get_file_path()
 
         if not chosen_path.exists():
             # chosen path is invalid
@@ -356,6 +356,17 @@ class DataFrame(TopLevelFrame):
             filedialog.askdirectory(title="Please select Your Directory",
                                     initialdir=self._project_controller.get_project_path(),
                                     )
+        return Path(new_path)
+
+    def __get_file_path(self) -> Path:
+        """
+        Opens explorer and lets the user choose a path to a file
+        Returns:
+            Path: The chosen path
+        """
+        new_path = filedialog.askopenfilename(title="Please select Your File",
+                                              initialdir=self._project_controller.get_project_path(),
+                                              )
         return Path(new_path)
 
     def freeze(self):
