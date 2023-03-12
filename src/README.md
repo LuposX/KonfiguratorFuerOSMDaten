@@ -34,18 +34,16 @@ Tested on windows 10(64Bit), might take a while.
 2. create the enviroment `conda create --name PSE python=3.10`.
 3. activate the enviroment `conda activate PSE`.
 4. `pip install osmium`, used for parsing osm data.
-5. `conda install -c conda-forge osmnx`, used for downloading osm data.
-6. `pip install customtkinter`, used as Graphical Interface.
-7. `pip install seaborn`, used to visualize data.
-8. `pip install pytest`, used for testing pythoncode.
-9. `conda install sphinx`, used for documentation.
-10. `pip install sphinx-book-theme `, a theme for the documentation.
-11. `pip install psutil`, used to monitor system ressources.
-12. `pip install tox`, used to automatize testing.
-13. `pip install mypy`, used for checking static typing.
-14. `pip install jupyterlab`  # only needed for libary tests.
-15. `conda install -c conda-forge osmium-tool`, used to split up data.
-16. `pip install screeninfo`, used to center the window
+5. `pip install customtkinter`, used as Graphical Interface.
+6. `pip install seaborn`, used to visualize data.
+7. `pip install pytest`, used for testing pythoncode.
+8. `conda install sphinx`, used for documentation.
+9. `pip install sphinx-book-theme `, a theme for the documentation.
+10. `pip install tox`, used to automatize testing.
+11. `pip install mypy`, used for checking static typing.
+12. `pip install jupyterlab`  # only needed for libary tests.
+13. `conda install -c conda-forge osmium-tool`, used to split up data.
+14. `pip install screeninfo`, used to center the window
 
 If you get problems with Step *4*, try the following command and then do step *6* again:
 - `sudo apt-get install build-essential cmake libboost-dev libexpat1-dev zlib1g-dev libbz2-dev`
