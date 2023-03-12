@@ -57,7 +57,7 @@ class ApplicationSettings:
         # This mean the application_Settings file doesn't exist yet, and we need to create it
         if self._application_settings_file is None:
             self._application_settings_file = \
-                ApplicationSettings.create_application_settings_file(application_path,
+                ApplicationSettings.create_application_settings_file(str(application_path),
                                                                      APPLICATION_SETTINGS_FILE)
 
     def get_setting(self, settings_enum: ApplicationSettingsDefault) -> Any:
