@@ -305,7 +305,7 @@ class DataFrame(TopLevelFrame):
         self._cut_out_controller.set_cut_out_reference(path=chosen_path)  # Gives the reference to the controller
         self._selected_cut_out_path = chosen_path  # Updates path in its own class
         self._cut_out_selected_path_label.configure(
-            text=str(chosen_path)
+            text=str(chosen_path.stem)
         )  # Updates the label showing the chosen path
 
     def __select_osm_data(self):
@@ -323,7 +323,7 @@ class DataFrame(TopLevelFrame):
         self._osm_data_controller.set_osm_data_reference(chosen_path)  # Gives the reference to the controller
         self._selected_osm_data_path = chosen_path  # Updates the path in its own class
         self._osm_data_selected_path_label.configure(
-            text=str(chosen_path)
+            text=str(chosen_path.stem)
         )  # Updates the label showing the chosen path
 
     def __edge_buildings_clicked(self):
