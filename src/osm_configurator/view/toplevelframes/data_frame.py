@@ -275,6 +275,8 @@ class DataFrame(TopLevelFrame):
 
     def __copy_category_configurations(self):
         self._selected_path: Path = self.__get_directory_path()
+        if self._selected_path == Path("."):
+            return
 
         if self._category_controller.check_conflicts_in_category_configuration(self._selected_path):
             if not self._category_controller.import_category_configuration(self._selected_path):
