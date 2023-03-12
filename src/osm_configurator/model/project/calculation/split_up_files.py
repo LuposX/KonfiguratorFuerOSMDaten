@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import sys
+import shutil
 from pathlib import Path
 import subprocess
 from geopandas.geodataframe import GeoDataFrame
@@ -9,7 +10,8 @@ import src.osm_configurator.model.model_constants as model_constants
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum
 
 
-OSMIUM_STARTING_ARGS_NOT_FROZEN: list = ["osmium", "extract", "-b"]
+OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_CONDA: list = ["osmium", "extract", "-b"]
+OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_BINARY: list = ["../../data/osmium/osmium.exe", "extract", "-b"]
 OSMIUM_STARTING_ARGS_FROZEN: list = ["data/osmium/osmium.exe", "extract", "-b"]
 OSMIUM_COORDINATE_PATTERN: str = "{},{},{},{}"
 OSMIUM_O_OPTION: str = "-o"
@@ -75,10 +77,19 @@ class SplitUpFile:
 
     def get_osmium_command_args(self, is_frozen: bool, cells: GeoDataFrame, i: int) -> list:
         if is_frozen:
-            args = list(OSMIUM_STARTING_ARGS_NOT_FROZEN)
+            args = list(OSMIUM_STARTING_ARGS_FROZEN)
 
         else:
-            args = list(OSMIUM_STARTING_ARGS_FROZEN)
+            # Check if we have the program installed e.g. via conda.
+            if shutil.which("osmium") is not None:
+                args = list(OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_CONDA)
+
+            # Try to use the bundled binaries.
+            else:
+                if not hasattr(sys, 'getwindowsversion'):
+                    raise OSError("We don't support the Operating System you use!")
+
+                args = list(OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_BINARY)
 
         # Calculates the arguments for the osmium tool, that split the OSM-file up correctly
         args.append(OSMIUM_COORDINATE_PATTERN.format(*cells[model_constants.CL_GEOMETRY][i].bounds))
