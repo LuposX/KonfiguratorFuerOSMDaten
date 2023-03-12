@@ -140,7 +140,10 @@ class ApplicationSettings:
         # create the dict which we wil save later to disk
         setting: ApplicationSettingsDefault
         for setting in application_settings_enum_i.ApplicationSettingsDefault:
-            settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
+            if setting == application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER:
+                settings_dict.update({setting.get_name(): saving_path})
+            else:
+                settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
 
         # save the dict to disk
         try:
