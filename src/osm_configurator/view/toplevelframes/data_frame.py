@@ -296,8 +296,8 @@ class DataFrame(TopLevelFrame):
         Opens the explorer letting the user choose a file selecting the cut-out
         """
         chosen_path: Path = self.__get_file_path()
-
-        if not chosen_path.exists():
+        print(chosen_path)
+        if not chosen_path.exists() or chosen_path == Path("."):
             # Chosen path is invalid
             popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
             self.activate()
@@ -315,7 +315,7 @@ class DataFrame(TopLevelFrame):
         """
         chosen_path: Path = self.__get_file_path()
 
-        if not chosen_path.exists():
+        if not chosen_path.exists() or chosen_path == Path("."):
             # chosen path is invalid
             AlertPopUp("Path is incorrect, please choose a valid Path!")
             self.activate()
