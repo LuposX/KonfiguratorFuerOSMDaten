@@ -7,6 +7,7 @@ from geopandas.geodataframe import GeoDataFrame
 import src.osm_configurator.model.model_constants as model_constants
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum
 
+
 OSMIUM_STARTING_ARGS: list = ["osmium", "extract", "-b"]
 OSMIUM_COORDINATE_PATTERN: str = "{},{},{},{}"
 OSMIUM_O_OPTION: str = "-o"
@@ -54,7 +55,6 @@ class SplitUpFile:
                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             streamdata = child.communicate()[0]
             if child.returncode != 0:
-                print(child.returncode)
                 return False
         return True
 
