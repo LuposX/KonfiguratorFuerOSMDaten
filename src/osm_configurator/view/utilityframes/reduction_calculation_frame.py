@@ -206,7 +206,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
 
             # Now deactivating editing parts if necesseary
-            if self._selected_category.get_strictly_use_default_values():
+            if not self._selected_category.get_strictly_use_default_values():
                 self._deactivate_below_strictly_use_default_values()
 
             if not self._selected_category.get_attribute(attribute_enum_i.Attribute.PROPERTY_AREA):
@@ -260,13 +260,13 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _strictly_use_default_values_checkbox_edited(self):
         if self._strictly_use_default_values_checkbox.get() == 1:
-            self._deactivate_below_strictly_use_default_values()
+            self._activate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(True):
                 alert_pop_up_i.AlertPopUp("Could not activate strictly using default values!")
                 # refreshing frame
                 self.load_category(self._selected_category)
         else:
-            self._activate_below_strictly_use_default_values()
+            self._deactivate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(False):
                 alert_pop_up_i.AlertPopUp("Could not deactivate strictly using default values!")
                 # refreshing frame
@@ -351,7 +351,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             # Deactivating checkboxes again, depending on what is checked and loaded
             if self._selected_category is None:
                 self._deactivate_editing()
-            elif self._strictly_use_default_values_checkbox.get() == 1:
+            elif self._strictly_use_default_values_checkbox.get() == 0:
                 self._deactivate_below_strictly_use_default_values()
             elif self._calculate_area_checkbox.get() == 0:
                 self._deactivate_switch()
