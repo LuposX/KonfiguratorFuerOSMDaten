@@ -94,7 +94,10 @@ class DataVisualizer:
             data = data.drop([NAME_COLUMN_TO_DROP], axis=1)
 
             title = str(TITLE_BOXPLOT + file_name)
-            matplotlib_ax = sb.boxplot(data=data)
+            try:
+                matplotlib_ax = sb.boxplot(data=data)
+            except ValueError:
+                return False
             matplotlib_ax.set(xlabel=X_LABEL_BOXPLOT, title=title)
 
             try:
