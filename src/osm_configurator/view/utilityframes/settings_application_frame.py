@@ -188,9 +188,15 @@ class SettingsApplicationFrame(TopLevelFrame):
         Checks if the path is valid and confirms changes if so.
         If the path is not valid a popup will be shown reloading the page
         """
-        new_path = Path(self.__browse_files())
+        new_path = Path(self.__choose_path())
+
+        empty_path = Path(".")
 
         if new_path.exists():
+            # Checking if the Path is empty, if it is empty, the path won't be set
+            if new_path.__eq__(empty_path):
+                return
+
             self._project_default_folder = new_path
             self._settings_controller.set_project_default_folder(new_path)  # Updates the path
             self.path_default_label.configure(text=new_path.name)  # Updates the textbox
@@ -212,7 +218,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         else:
             self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def __browse_files(self) -> str:
+    def __choose_path(self) -> str:
         """
         Opens the explorer starting from the default-folder making the user browse for the searched path
         Returns:
@@ -220,7 +226,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askdirectory(initialdir=str(self._project_default_folder),
-                                    title="Select a File")
+                                    title="Choose destination")
         return new_path
 
     def freeze(self):
