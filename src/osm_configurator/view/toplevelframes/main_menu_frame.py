@@ -20,8 +20,6 @@ import src.osm_configurator.view.constants.main_window_constants as main_window_
 
 import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
 
-import src.osm_configurator.view.utility_methods as utility_methods_i
-
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
@@ -44,11 +42,6 @@ if TYPE_CHECKING:
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 124
-
-BUTTON_DESCRIPTION_LINE_LENGTH: Final = 42
-BUTTON_DESCRIPTION_ROWS: Final = 3
-BUTTON_DESCRIPTION_DOTS: Final = True
-
 
 def find_matching_state(config_step: config_phase_enum_i.ConfigPhase) -> state_name_enum_i.StateName:
     match config_step:
@@ -166,7 +159,6 @@ class MainMenuFrame(TopLevelFrame):
         for i, passive_project in enumerate(self._passive_projects):
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
-            #reformatted_description = utility_methods_i.reformat_string(description)
 
             button_text: str = name + "\n\n" + description
 

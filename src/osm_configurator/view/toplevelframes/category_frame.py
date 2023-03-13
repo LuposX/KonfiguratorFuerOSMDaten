@@ -534,12 +534,10 @@ class CategoryFrame(TopLevelFrame):
             try:
                 # If there is no duplicate, we create, the new category
                 new_category: category_i.Category = self._category_controller.create_category(new_category_name)
-
-                if new_category is not None:
-                    self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
-                    self._selected_category: category_i.Category = new_category
-                    self._set_category_drop_down_menu(self._categories, self._selected_category)
-                    self._load_category(self._selected_category)
+                self._categories: List[category_i.Category] = self._category_controller.get_list_of_categories()
+                self._selected_category: category_i.Category = new_category
+                self._set_category_drop_down_menu(self._categories, self._selected_category)
+                self._load_category(self._selected_category)
             except NotValidName as err:
                 popup = alert_pop_up_i.AlertPopUp(str(err.args))
                 popup.mainloop()

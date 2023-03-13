@@ -68,10 +68,6 @@ class CalculationFrame(TopLevelFrame):
 
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
-        # The PopUp that shows, when you want to cancel the calculation, can be None
-        # if there is no PopUp currently
-        self._cancel_calculation_pop_up: YesNoPopUp | None = None
-
         # Configuring the rows and columns
 
         self.grid_rowconfigure(0, weight=1)
@@ -285,8 +281,7 @@ class CalculationFrame(TopLevelFrame):
         Initializes the cancel process to make the process communicate with the yes-no-popup
         """
         self._state_manager.freeze_state()
-        self._cancel_calculation_pop_up: YesNoPopUp = YesNoPopUp(func=self.__cancel_calculation,
-                                                                 message="Do You really want to cancel the Calculation?")
+        YesNoPopUp(func=self.__cancel_calculation, message="Do You really want to cancel the Calculation?")
 
     def __cancel_calculation(self, cancel: bool):
         """
@@ -300,20 +295,12 @@ class CalculationFrame(TopLevelFrame):
         Args:
             cancel (bool): True, if the calculation will be canceled, false else (value from the popup)
         """
-        if self._cancel_calculation_pop_up is not None:
-            self._cancel_calculation_pop_up.destroy()
-            self._cancel_calculation_pop_up = None
-
         self._state_manager.unfreeze_state()
         if cancel:
             self._calculation_controller.cancel_calculations()
             self.__reset_calculation()
 
     def __reset_calculation(self):
-
-        if self._cancel_calculation_pop_up is not None:
-            self.__cancel_calculation(False)
-
         self._state_manager.unlock_state()
         self.__activate_buttons()
 
