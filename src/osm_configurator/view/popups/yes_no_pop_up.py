@@ -36,6 +36,8 @@ class YesNoPopUp(customtkinter.CTkToplevel):
             fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
         )
 
+        self.title("Please select")
+
         # When the PopUp is closed rather than an option selected, this method will be called!
         self.wm_protocol("WM_DELETE_WINDOW", self._pop_up_closed)
 
