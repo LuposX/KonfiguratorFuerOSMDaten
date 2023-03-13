@@ -11,7 +11,8 @@ build_exe_options = {
     "packages": [
         "fiona",
         "matplotlib",
-        "seaborn"
+        "seaborn",
+        "multiprocessing"
     ],
     "include_files": [
         (pyproj_path, "Lib/pyproj.libs"),
