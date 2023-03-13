@@ -506,7 +506,7 @@ class StateManager:
         self._frozen: bool = False
 
         # Unfreezing all frames in the current state
-        # All Frames have to be freezable!
+        # All Frame have to implement freezable
         positioned_frame: PositionedFrame
         for positioned_frame in self._current_state.get_active_frames():
             frame: TopLevelFrame = positioned_frame.get_frame()
