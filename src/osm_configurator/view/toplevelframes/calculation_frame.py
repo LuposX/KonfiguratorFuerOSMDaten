@@ -435,7 +435,7 @@ class CalculationFrame(TopLevelFrame):
         return CalculationPhase.NONE
 
     @staticmethod
-    def __calculation_start_interrupted(self, error_state: CalculationState, error_message: str):
+    def __calculation_start_interrupted(error_state: CalculationState, error_message: str):
         """
         Shown if an error occurs while starting the calculation.
         Creates a popup and reloads the calculation-window
@@ -471,7 +471,7 @@ class CalculationFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous intractable state.
+        If this method is called, the frame returns into its previous interactable state.
         """
         for button in self.buttons:
             button.configure(state=tkinter.NORMAL)
@@ -479,7 +479,7 @@ class CalculationFrame(TopLevelFrame):
         self._frozen = False
 
     @staticmethod
-    def _show_boxplot(self, path_to_boxplot: Path) -> bool:
+    def _show_boxplot(path_to_boxplot: Path) -> bool:
         """
         This function is used to visualize am already created boxplot.
 

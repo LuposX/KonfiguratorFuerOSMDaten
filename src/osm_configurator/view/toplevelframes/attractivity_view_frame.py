@@ -498,7 +498,7 @@ class AttractivityViewFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous intractable state.
+        If this method is called, the frame returns into its previous interactable state.
         """
         if self._frozen:
             self._edit_attractivity_button.configure(state="normal")

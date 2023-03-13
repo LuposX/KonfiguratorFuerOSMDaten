@@ -371,7 +371,7 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous intractable state.
+        If this method is called, the frame returns into its previous interactable state.
         """
         if self._frozen:
             # First activating everything

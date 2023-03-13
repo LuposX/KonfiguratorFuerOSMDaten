@@ -588,7 +588,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous intractable state.
+        If this method is called, the frame returns into its previous interactable state.
         """
 
         # Only completely unfreeze if not locked!

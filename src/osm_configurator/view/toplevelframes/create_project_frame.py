@@ -240,7 +240,7 @@ class CreateProjectFrame(TopLevelFrame):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous intractable state.
+        If this method is called, the frame returns into its previous interactable state.
         """
         for button in self._buttons:
             button.configure(state=tkinter.NORMAL)

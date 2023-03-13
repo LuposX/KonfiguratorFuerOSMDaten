@@ -347,7 +347,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous intractable state.
+        If this method is called, the frame returns into its previous interactable state.
         """
         if self._frozen:
             self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)

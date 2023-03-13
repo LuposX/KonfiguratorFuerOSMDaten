@@ -483,7 +483,7 @@ class StateManager:
 
     def freeze_state(self):
         """
-        This method freezes all frames that are currently active, and making then not intractable anymore.
+        This method freezes all frames that are currently active, and making then not interactable anymore.
         The state will also be locked and can't be changed, until unfrozen!
         """
         # Freezing all frames in the current state
@@ -499,7 +499,7 @@ class StateManager:
 
     def unfreeze_state(self):
         """
-        Unfreezes the state, by making all active frames intractable again and unlocking the state, allowing
+        Unfreezes the state, by making all active frames interactable again and unlocking the state, allowing
         state changes again!
         """
         # Unfreezing himself
