@@ -29,7 +29,6 @@ def _path_with_zip_to_str(path: Path) -> str:
     string_version_of_path: str = str(path)
     if string_version_of_path[-4:] == ".zip":
         return string_version_of_path[:-4]
-
     return string_version_of_path
 
 
@@ -59,6 +58,10 @@ class Export:
             bool: true, if export was successful, otherwise false.
         """
         zip_file_name: str = _path_with_zip_to_str(path)
+        project_name: str = self._active_project.get_project_settings().get_name()
+        self._active_project.get_project_settings().set_name(os.path.basename(zip_file_name))
+        self._active_project.get_project_saver().save_project()
+        self._active_project.get_project_settings().set_name(project_name)
         self._active_project.get_project_saver().save_project()
         try:
             shutil.make_archive(zip_file_name, ZIP, self._active_project.get_project_settings().get_location())

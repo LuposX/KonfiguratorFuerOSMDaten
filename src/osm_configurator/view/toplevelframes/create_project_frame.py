@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import tkinter
 
 import src.osm_configurator.view.states.state_manager
@@ -117,7 +118,8 @@ class CreateProjectFrame(TopLevelFrame):
                                                           border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                                           fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
                                                           border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
-                                                          text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value)
+                                                          text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                                                          wrap='word')
 
         self.description_field.grid(row=2, column=0, rowspan=1, columnspan=1)
 
@@ -211,7 +213,7 @@ class CreateProjectFrame(TopLevelFrame):
             self.__reload()  # Reloads the page
             return
 
-        if not self._project_path.exists():
+        if not os.path.exists(self._project_path):
             # No valid path chosen
             popup = AlertPopUp("No valid Path entered. Please choose a valid Path.")
             popup.mainloop()

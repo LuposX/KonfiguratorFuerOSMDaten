@@ -10,6 +10,7 @@ import src.osm_configurator.model.model_constants as model_constants
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum
 
 
+
 OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_CONDA: list = ["osmium", "extract", "-b"]
 OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_BINARY: list = ["../../data/osmium/osmium.exe", "extract", "-b"]
 OSMIUM_STARTING_ARGS_FROZEN: list = ["data/osmium/osmium.exe", "extract", "-b"]
@@ -69,10 +70,10 @@ class SplitUpFile:
 
         # Split up the files
         for i in range(len(cells[model_constants.CL_GEOMETRY])):
-            result = subprocess.Popen(self.get_osmium_command_args(cells, i),
+            child = subprocess.Popen(self.get_osmium_command_args(cells, i),
                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-            if result.returncode != 0:
+            streamdata = child.communicate()[0]
+            if child.returncode != 0:
                 return False
         return True
 
