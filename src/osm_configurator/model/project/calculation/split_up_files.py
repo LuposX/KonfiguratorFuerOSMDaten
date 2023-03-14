@@ -70,7 +70,7 @@ class SplitUpFile:
 
         # Split up the files
         for i in range(len(cells[model_constants.CL_GEOMETRY])):
-            child = subprocess.Popen(self.get_osmium_command_args(cells, i),
+            child = subprocess.Popen(self.get_osmium_command_args(is_frozen, cells, i),
                                       stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             streamdata = child.communicate()[0]
             if child.returncode != 0:

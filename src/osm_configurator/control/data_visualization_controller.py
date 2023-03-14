@@ -36,10 +36,10 @@ class DataVisualizationController(IDataVisualizationController):
 
     def generate_cut_out_map(self) -> Path | None:
         """
-        Generates a cut out map, which visualizes the cut out data.
+        Generates a cut-out map, which visualizes the cut-out data.
 
         Returns:
-            Path: The Path towards the cut out data.
+            Path: The Path towards the cut-out data.
             None: If there was an error during saving creation of the map.
         """
         cut_out_file: Path = self._model.get_active_project().get_config_manager().get_cut_out_configuration() \
