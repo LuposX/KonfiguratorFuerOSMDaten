@@ -51,9 +51,10 @@ class SplitUpFile:
             return False
 
         for i in range(len(cells[model_constants.CL_GEOMETRY])):
-            result = subprocess.run(self.get_osmium_command_args(cells, i),
-                                    stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-            if result.returncode != 0:
+            child = subprocess.Popen(self.get_osmium_command_args(cells, i),
+                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            streamdata = child.communicate()[0]
+            if child.returncode != 0:
                 return False
         return True
 
