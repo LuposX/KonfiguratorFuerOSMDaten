@@ -138,6 +138,18 @@ class SettingsApplicationFrame(TopLevelFrame):
         self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
         self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
         self._entries.append(self.processes_entry)
+        # Info-Text
+        self.process_info = \
+            customtkinter.CTkLabel(master=self,
+                                   text="Warning: A high number of processes might lead to a high usage of the CPU.\n"
+                                        "Only increase, when you know what you are doing",
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+                                   )
+        self.process_info.grid(row=2, column=3, columnspan=1, rowspan=1, padx=10, pady=10)
+        self._labels.append(self.process_info)
 
         # Setting: Number of Key Recommendations
         self.path_key_recom_header = \
