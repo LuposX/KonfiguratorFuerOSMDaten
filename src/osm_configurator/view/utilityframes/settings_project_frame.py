@@ -107,8 +107,8 @@ class SettingsProjectFrame(TopLevelFrame):
                                      fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
                                      border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
                                      text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
-                                     height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2) * (3/5) - ELEMENT_BORDER_DISTANCE
-                                     )
+                                     height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2) * (3/5) - ELEMENT_BORDER_DISTANCE,
+                                     wrap='word')
         self.description_box.insert(1.0, str(self._project_description))
         self.description_box.grid(column=0, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self._textbox.append(self.description_box)

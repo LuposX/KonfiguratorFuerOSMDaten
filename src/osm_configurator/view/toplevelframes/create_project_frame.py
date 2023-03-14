@@ -118,7 +118,8 @@ class CreateProjectFrame(TopLevelFrame):
                                                           border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
                                                           fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
                                                           border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
-                                                          text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value)
+                                                          text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                                                          wrap='word')
 
         self.description_field.grid(row=2, column=0, rowspan=1, columnspan=1)
 
