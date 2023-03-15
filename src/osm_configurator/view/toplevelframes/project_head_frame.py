@@ -45,7 +45,7 @@ BUTTON_WIDTH: Final = frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value / 
 EXPORT_DISPLAYED_VALUE: Final = "Export"
 
 EXPORT_PROJECT_STRING: Final = "Export Project"
-EXPORT_CALCULATIONS_STRING: Final = "Export Calculation"
+EXPORT_CALCULATIONS_STRING: Final = "Export Results"
 EXPORT_CONFIGURATION_STRING: Final = "Export Configurations"
 EXPORT_CUT_OUT_MAP_STRING: Final = "Export Cut-Out-Map"
 
@@ -395,7 +395,7 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
                 alert_pop_up_i.AlertPopUp("Export of Project Failed!")
         elif choice == EXPORT_CALCULATIONS_STRING:
             if not self._export_controller.export_calculations(Path(path)):
-                alert_pop_up_i.AlertPopUp("Export of Calculations Failed!")
+                alert_pop_up_i.AlertPopUp("Export of Results Failed!")
         elif choice == EXPORT_CONFIGURATION_STRING:
             if not self._export_controller.export_configurations(Path(path)):
                 alert_pop_up_i.AlertPopUp("Export of Configurations Failed!")
