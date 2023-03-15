@@ -4,8 +4,6 @@ import src.osm_configurator.view.states.view_constants as vc
 
 import customtkinter
 
-POPUP_SIZE = vc.ViewConstants.POPUP_SIZE.value  # Holds the size of the Popup
-
 
 class AlertPopUp(customtkinter.CTkToplevel):
     """
@@ -20,7 +18,7 @@ class AlertPopUp(customtkinter.CTkToplevel):
             message (str): String containing the message that will be shown
         """
         super().__init__()
-        self.geometry(POPUP_SIZE)
+        self.geometry(vc.ViewConstants.POPUP_SIZE.value)
 
         self.title("Alert")
 
