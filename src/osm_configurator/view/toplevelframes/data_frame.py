@@ -259,12 +259,14 @@ class DataFrame(TopLevelFrame):
         self._selected_cut_out_path: Path = self._cut_out_controller.get_cut_out_reference()
         self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
 
-        self._cut_out_selected_path_label.configure(
-            text=str(self._selected_cut_out_path.stem)
-        )
-        self._osm_data_selected_path_label.configure(
-            text=str(self._selected_osm_data_path.stem)
-        )
+        if self._selected_osm_data_path is not None:
+            self._osm_data_selected_path_label.configure(
+                text=str(self._selected_osm_data_path.stem)
+            )
+        if self._selected_cut_out_path is not None:
+            self._cut_out_selected_path_label.configure(
+                text=str(self._selected_cut_out_path.stem)
+            )
 
     def __view_cut_out(self):
         """
