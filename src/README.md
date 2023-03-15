@@ -1,4 +1,3 @@
-````
 # KonfiguratorFuerOSMDaten
 
 This sub-folder contains the code for the project, for more information about the
@@ -91,5 +90,3 @@ make latexpdf
 ```
 
 The results will then be in the folder `docs/build`.
-
-````
