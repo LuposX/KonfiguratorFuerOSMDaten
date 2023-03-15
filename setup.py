@@ -4,19 +4,32 @@ from cx_Freeze import setup, Executable
 site_packages = "C:/Users/schup/OneDrive/Documents/KonfiguratorFuerOSMDaten/venv/Lib/site-packages"
 pyproj_path = f"{site_packages}/pyproj.libs"
 fiona_path = f"{site_packages}/Fiona.libs"
+matplotlib_path = f"{site_packages}/matplotlib.libs"
+scipy_path = f"{site_packages}/scipy.libs"
+skelarn_path = f"{site_packages}/sklearn/.libs"
 
 # Dependencies are automatically detected, but it might need fine tuning.
 # Setup base packages
 build_exe_options = {
+    "include_msvcr": True,
+    "optimize": 1,
     "packages": [
         "fiona",
+        "folium",
         "matplotlib",
         "seaborn",
+        "mapclassify",
+        "shapely",
+        "scipy",
+        "sklearn",
         "multiprocessing"
     ],
     "include_files": [
         (pyproj_path, "Lib/pyproj.libs"),
         (fiona_path, "Lib/Fiona.libs"),
+        (matplotlib_path, "Lib/matplotlib.libs"),
+        (scipy_path, "Lib/scipy.libs"),
+        (skelarn_path, "Lib/sklearn.libs"),
         ("data", "data")
     ],
 }

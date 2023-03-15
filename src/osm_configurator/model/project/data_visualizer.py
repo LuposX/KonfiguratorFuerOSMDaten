@@ -11,6 +11,8 @@ import geopandas as gpd
 import seaborn as sb
 import pandas as pd
 
+from fiona.errors import FionaError
+
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -49,6 +51,12 @@ class DataVisualizer:
         Returns:
             bool: True if creating the map works, otherwise false.
         """
+        # create old folder if it exists.
+        shutil.rmtree(map_saving_path, ignore_errors=True)
+
+        # create folder if it doesn't exist
+        map_saving_path.mkdir(parents=True, exist_ok=True)
+
         try:
             gdf: GeoDataFrame = gpd.read_file(cut_out_file)
             # get the area to visualize it
@@ -59,7 +67,7 @@ class DataVisualizer:
             cut_out_map.save(os.path.join(map_saving_path, filename))
 
         # I use "Exception" here because seaborn nor matplotlib say on their documentation page which error they throw
-        except Exception:
+        except (OSError, ValueError, IndexError, FionaError):
             return False
 
         return True

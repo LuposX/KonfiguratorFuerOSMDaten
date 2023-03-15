@@ -20,6 +20,7 @@ if TYPE_CHECKING:
 MAP_FILENAME: Final = "map_of_traffic_cells.html"
 FILE_TYPE_TO_LOAD: Final = ".png"
 BOXPLOT_RESULT_FOLDER: Final = "result_boxplot"
+MAP_RESULT_FOLDER: Final = "result_map"
 
 
 class DataVisualizationController(IDataVisualizationController):
@@ -45,7 +46,11 @@ class DataVisualizationController(IDataVisualizationController):
         cut_out_file: Path = self._model.get_active_project().get_config_manager().get_cut_out_configuration() \
             .get_cut_out_path()
 
-        map_saving_path: Path = self._model.get_active_project().get_project_path()
+        project_path: Path = self._model.get_active_project().get_project_path()
+        result_folder_name: str = folder_path_calculator_i.CALCULATION_PHASE_CHECKPOINT_FOLDER_NAME
+
+        map_saving_path: Path = pathlib.Path(
+            os.path.join(os.path.join(str(project_path), result_folder_name), MAP_RESULT_FOLDER))
 
         if self._model.get_active_project().get_data_visualizer().create_map(cut_out_file=cut_out_file,
                                                                              map_saving_path=map_saving_path,
