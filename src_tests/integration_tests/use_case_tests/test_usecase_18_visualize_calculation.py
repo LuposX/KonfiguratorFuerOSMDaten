@@ -36,12 +36,5 @@ class TestUseCase18:
         assert project_ctrl.is_project_loaded()
 
         # Test if visualization is successful
-        try:
-            data_viz_controller.generate_calculation_visualization()
-        except Exception as ex:
-            assert False, "raised an exception" + str(ex.args)
-
-        try:
-            data_viz_controller.generate_cut_out_map()
-        except Exception as ex:
-            assert False, "raised an exception" + str(ex.args)
+        assert data_viz_controller.generate_calculation_visualization() is not None
+        assert data_viz_controller.generate_cut_out_map() is not None
