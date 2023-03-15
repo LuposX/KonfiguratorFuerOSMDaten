@@ -51,6 +51,7 @@ class Category:
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
+        # https://www.youtube.com/watch?v=iik25wqIuFo&t=2s
         self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(
             model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG
         )
