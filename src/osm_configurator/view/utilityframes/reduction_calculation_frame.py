@@ -62,7 +62,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         # It is a 4x3 grid, with equal weight
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
-        self.grid_columnconfigure(2, weight=1)
+        self.grid_columnconfigure(2, weight=8)
+        self.grid_columnconfigure(3, weight=1)
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=1)
@@ -119,7 +120,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
                                                  pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
                                                  padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
-        # The switch inbetween
+        # The switch in between
         self._site_building_switch: customtkinter.CTkSwitch = customtkinter.CTkSwitch(
             master=self,
             width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_WIDTH.value,
@@ -134,7 +135,9 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             text_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_TEXT_COLOR.value,
             state="normal",
             text="",
-            command=self._site_building_switch_edited
+            command=self._site_building_switch_edited,
+            switch_height=int(self._height / 20),
+            switch_width=int(self._width / 1.5),
         )
         self._site_building_switch.grid(row=3, column=1, rowspan=1, columnspan=1)
 
