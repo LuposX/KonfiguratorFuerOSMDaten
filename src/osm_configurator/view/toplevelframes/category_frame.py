@@ -544,10 +544,10 @@ class CategoryFrame(TopLevelFrame):
         for recommended_string in new_recommendations:
             new_recommend_button: customtkinter.CTkButton = customtkinter.CTkButton(
                 master=self._recommender_frame,
-                width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - ELEMENT_BORDER_DISTANCE,
+                width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 3 - 2*ELEMENT_BORDER_DISTANCE,
                 height=RECOMMEND_BUTTON_HEIGHT,
                 corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                border_width=button_constants_i.ButtonConstants.BUTTON_LIST_BORDER_WIDTH.value,
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
