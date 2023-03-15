@@ -23,7 +23,8 @@ def reformat_string(string: str, line_length: int, rows: int, dots: bool, rows_u
         string (str): The string that shall be reformatted
         line_length (int): How many characters are allowed in one line, has to be positive
         rows (int): How many rows/line breaks are allowed max, can ent up being shorter, has to be positive
-        dots (bool): States if dots '...' shall be added at the end of the string, if parts where cut, and line_length is at least 3
+        dots (bool): States if dots '...' shall be added at the end of the string, if parts where cut, and line_length
+        is at least 3
         rows_unlimited (bool): If True, then the row limit will be ignored
         word_break (bool): If True, words can be cut via '-', if False whole words get put in new rows if line_length
                            is met
@@ -58,7 +59,7 @@ def reformat_string(string: str, line_length: int, rows: int, dots: bool, rows_u
 
             if (string[index] == EMPTY_CHARACTER) and new_row:
                 index += 1
-                #characters_left -= 1
+                # characters_left -= 1
                 continue
 
             new_string = new_string + string[index]

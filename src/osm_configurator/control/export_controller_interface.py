@@ -3,11 +3,6 @@ from __future__ import annotations
 import pathlib
 from abc import ABC, abstractmethod
 
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
-
 
 class IExportController(ABC):
     """
@@ -26,7 +21,8 @@ class IExportController(ABC):
             path (pathlib.Path): The place in storage where the project should be exported to.
 
         Returns:
-            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied,
+                there was not enough space in storage or there was no project selected.
         """
         pass
 
@@ -40,7 +36,9 @@ class IExportController(ABC):
             path (pathlib.Path): The place in storage where the results should be exported to.
 
         Returns:
-            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage, the calculations have not produced results yet or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied,
+                there was not enough space in storage, the calculations have not produced results
+                yet or there was no project selected.
         """
         pass
 
@@ -54,7 +52,8 @@ class IExportController(ABC):
             path (pathlib.Path): The place in storage where the categories should be stored at.
 
         Returns:
-            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied,
+                there was not enough space in storage or there was no project selected.
         """
         pass
 
@@ -67,6 +66,8 @@ class IExportController(ABC):
             path (pathlib.Path): The place in storage where the cut-out-map should be stored at.
 
         Returns:
-            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied, there was not enought space in storage, the application wasn't able to create the map or there was no project selected.
+            bool: True, if the export was successful; False, if an error occurred: The path was not valid or occupied,
+                there was not enough space in storage, the application wasn't able to create the map or
+                there was no project selected.
         """
         pass

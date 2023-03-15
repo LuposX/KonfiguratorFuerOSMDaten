@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import os
 import tkinter
 
 import customtkinter
@@ -10,14 +9,9 @@ from src.osm_configurator.model.project.calculation.calculation_phase_enum impor
 from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.popups.yes_no_pop_up import YesNoPopUp
-from src.osm_configurator.view.states.state_manager import StateManager
-from src.osm_configurator.control.calculation_controller_interface import ICalculationController
-from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 import webbrowser
-
-import pathlib
 
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
@@ -31,7 +25,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
     from pathlib import Path
-    from typing import List
 
 
 class CalculationFrame(TopLevelFrame):
@@ -50,9 +43,11 @@ class CalculationFrame(TopLevelFrame):
         and shows the calculation progress.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch to another state.
+            state_manager (state_manager.StateManager): The StateManager the frame will call,
+                if it wants to switch to another state.
              calculation_controller (calculation_controller.CalculationController): Respective controller.
-             data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller.
+             data_visualization_controller (data_visualization_controller.DataVisualizationController):
+                Respective controller.
         """
         super().__init__(master=None,
                          width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value,
@@ -86,10 +81,10 @@ class CalculationFrame(TopLevelFrame):
 
         #  Creating the entries on the left
 
-        self.resetable_elements = []  # Elements that are not displayed on the frame by default
+        self.resettable_elements = []  # Elements that are not displayed on the frame by default
         self.buttons = [
             customtkinter.CTkButton(master=self,
-                                    text="Data Input and Geofilter",
+                                    text="Data Input and Geo-filter",
                                     command=self.__data_and_geofilter_pressed),
             customtkinter.CTkButton(master=self,
                                     text="Tag-Filter",
@@ -166,7 +161,7 @@ class CalculationFrame(TopLevelFrame):
                 - Start calculation
         """
         checker = self._calculation_controller.start_calculations(CalculationPhase.GEO_DATA_PHASE)
-        if checker[0] != CalculationState.RUNNING: # Check, if changing states is possible
+        if checker[0] != CalculationState.RUNNING:  # Check, if changing states is possible
             self.__calculation_start_interrupted(checker[0], checker[1])
             self.activate()
             return
@@ -286,7 +281,8 @@ class CalculationFrame(TopLevelFrame):
         """
         self._state_manager.freeze_state()
         self._cancel_calculation_pop_up: YesNoPopUp = YesNoPopUp(func=self.__cancel_calculation,
-                                                                 message="Do You really want to cancel the Calculation?")
+                                                                 message="Do You really want to "
+                                                                         "cancel the Calculation?")
 
     def __cancel_calculation(self, cancel: bool):
         """
@@ -318,11 +314,11 @@ class CalculationFrame(TopLevelFrame):
         self.__activate_buttons()
 
         # Destroying the progressbar and the cancel button
-        for element in self.resetable_elements:
+        for element in self.resettable_elements:
             element.destroy()
             if element in self.buttons:
                 self.buttons.remove(element)
-        self.resetable_elements = []
+        self.resettable_elements = []
 
     def __show_calculation_utilities(self):
         """
@@ -332,17 +328,21 @@ class CalculationFrame(TopLevelFrame):
         """
         self._state_manager.lock_state()
         self.progressbar = \
-            customtkinter.CTkProgressBar(master=self,
-                                         progress_color=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_PROGRESS_COLOR.value,
-                                         width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_WIDTH.value,
-                                         orientation=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_ORIENTATION.value,
-                                         mode=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_MODE.value,
-                                         indeterminate_speed=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_INDETERMINATE_SPEED.value,
-                                         border_width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_BORDER_WITH.value,
-                                         corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value)
+            customtkinter.CTkProgressBar(
+                master=self,
+                progress_color=progress_bar_constants_i.ProgressBarConstants.
+                PROGRESS_BAR_CONSTANTS_PROGRESS_COLOR.value,
+                width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_WIDTH.value,
+                orientation=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_ORIENTATION.value,
+                mode=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_MODE.value,
+                indeterminate_speed=progress_bar_constants_i.ProgressBarConstants.
+                PROGRESS_BAR_CONSTANTS_INDETERMINATE_SPEED.value,
+                border_width=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_BORDER_WITH.value,
+                corner_radius=progress_bar_constants_i.ProgressBarConstants.PROGRESS_BAR_CONSTANTS_CORNER_RADIUS.value
+            )
         self.progressbar.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self.progressbar.set(0)
-        self.resetable_elements.append(self.progressbar)
+        self.resettable_elements.append(self.progressbar)
 
         self.cancel_button = \
             customtkinter.CTkButton(master=self,
@@ -357,19 +357,19 @@ class CalculationFrame(TopLevelFrame):
                                     height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
                                     width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value)
         self.cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
-        self.resetable_elements.append(self.cancel_button)
+        self.resettable_elements.append(self.cancel_button)
 
         self.progressbar_phase = \
             customtkinter.CTkLabel(master=self,
                                    text="No calculation phase")
         self.progressbar_phase.grid(column=2, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
-        self.resetable_elements.append(self.progressbar_phase)
+        self.resettable_elements.append(self.progressbar_phase)
 
         self.progressbar_state = \
             customtkinter.CTkLabel(master=self,
                                    text="No calculation state")
         self.progressbar_state.grid(column=1, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
-        self.resetable_elements.append(self.progressbar_state)
+        self.resettable_elements.append(self.progressbar_state)
 
         self.buttons.append(self.cancel_button)  # Add cancel button to buttons-list
 
@@ -390,8 +390,11 @@ class CalculationFrame(TopLevelFrame):
             return
 
         self.progressbar.set(calculation_progress)
-        self.progressbar_phase.configure(text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
-        self.progressbar_state.configure(text="Calculation State:\n" + calculation_state[0].get_name() + ":" + calculation_state[1])  # change label to the next state
+        self.progressbar_phase.configure(
+            text="Calculation Phase:\n" + calculation_phase.get_name())  # change label to the next phase
+        self.progressbar_state.configure(
+            text="Calculation State:\n" + calculation_state[0].get_name() + ":" + calculation_state[
+                1])  # change label to the next state
 
         if calculation_phase != CalculationPhase.NONE:
             self.__color_buttons(calculation_phase)
@@ -421,19 +424,19 @@ class CalculationFrame(TopLevelFrame):
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
                                     )
         self.visualize_button.grid(column=2, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
-        self.resetable_elements.append(self.visualize_button)
+        self.resettable_elements.append(self.visualize_button)
         self.buttons.append(self.visualize_button)
 
         self.progressbar.set(1)
         self.__color_buttons_with_int(5)
         self.__activate_buttons()
         self.buttons.remove(self.cancel_button)
-        self.resetable_elements.remove(self.cancel_button)
+        self.resettable_elements.remove(self.cancel_button)
         self.cancel_button.destroy()
         self._state_manager.unlock_state()
 
-
-    def __get_next_phase(self, current_phase: CalculationPhase) -> CalculationPhase:
+    @staticmethod
+    def __get_next_phase(current_phase: CalculationPhase) -> CalculationPhase:
         """
         Iterates the CalculationPhase-Enum and returns the next element to the given
         Args:
@@ -449,13 +452,14 @@ class CalculationFrame(TopLevelFrame):
                 take_next = True
         return CalculationPhase.NONE
 
-    def __calculation_start_interrupted(self, error_state: CalculationState, error_message: str):
+    @staticmethod
+    def __calculation_start_interrupted(error_state: CalculationState, error_message: str):
         """
         Shown if an error occurs while starting the calculation.
         Creates a popup and reloads the calculation-window
 
         Args:
-            error_state(CalculationState): The error state that describes the type of error that happend
+            error_state(CalculationState): The error state that describes the type of error that happened
             error_message(str): A more in depth explanation of the error
         """
         AlertPopUp("Calculation couldn't be started!\n" + error_state.get_name() + ":" + error_message)
@@ -465,7 +469,7 @@ class CalculationFrame(TopLevelFrame):
         Gets called if the "Visualize Results" Button is pressed. Calls the according function from the controller to
         initialise the visualization process
         """
-        dir_path: Path = self._data_visualization_controller.generate_calculation_visualization()
+        dir_path: Path | None = self._data_visualization_controller.generate_calculation_visualization()
 
         if dir_path is not None:
             boxplot_file: Path
@@ -473,7 +477,6 @@ class CalculationFrame(TopLevelFrame):
                 self._show_boxplot(boxplot_file)  # shows the first
         else:
             AlertPopUp("Sth. went wrong while trying to create a boxplot or saving it.")
-
 
     def freeze(self):
         """
@@ -493,7 +496,8 @@ class CalculationFrame(TopLevelFrame):
 
         self._frozen = False
 
-    def _show_boxplot(self, path_to_boxplot: Path) -> bool:
+    @staticmethod
+    def _show_boxplot(path_to_boxplot: Path) -> bool:
         """
         This function is used to visualize am already created boxplot.
 
@@ -505,7 +509,7 @@ class CalculationFrame(TopLevelFrame):
         """
         try:
             webbrowser.open_new(str(path_to_boxplot))
-        except Exception:
+        except OSError:
             return False
 
         return True

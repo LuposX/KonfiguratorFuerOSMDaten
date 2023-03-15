@@ -4,25 +4,21 @@ import os
 import tkinter
 from functools import partial
 
-from src.osm_configurator.model.application.passive_project import PassiveProject
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 import src.osm_configurator.view.states.state_name_enum as sne
 
-import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
-
 # Constants
-import src.osm_configurator.view.constants.button_constants as button_constants_i
-import src.osm_configurator.view.constants.frame_constants as frame_constants_i
-import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
-
 import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
 
 import src.osm_configurator.view.utility_methods as utility_methods_i
 
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
+import src.osm_configurator.view.constants.frame_constants as frame_constants_i
+import src.osm_configurator.view.constants.button_constants as button_constants_i
+import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
@@ -38,9 +34,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.states.state_manager import StateManager
     from src.osm_configurator.model.application.passive_project import PassiveProject
-    import src.osm_configurator.view.constants.button_constants as button_constants_i
-    import src.osm_configurator.view.constants.frame_constants as frame_constants_i
-    import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 124
@@ -65,6 +58,7 @@ def find_matching_state(config_step: config_phase_enum_i.ConfigPhase) -> state_n
         case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
             return state_name_enum_i.StateName.CALCULATION
 
+
 class MainMenuFrame(TopLevelFrame):
     """
     This frame shows the application's main menu.
@@ -72,7 +66,8 @@ class MainMenuFrame(TopLevelFrame):
     will be shown in a list and can be selected / opened.
     """
 
-    def __init__(self, state_manager: StateManager, project_controller: IProjectController, settings_controller: ISettingsController):
+    def __init__(self, state_manager: StateManager, project_controller: IProjectController,
+                 settings_controller: ISettingsController):
         """
         This method creates a MainMenuFrame showing the MainMenu of the application.
 
@@ -94,7 +89,8 @@ class MainMenuFrame(TopLevelFrame):
 
         self.main_buttons_left: list[
             customtkinter.CTkButton] = []  # holds all buttons on the left to allow uniform styling
-        self.entries: list[customtkinter.CTkButton] = []  # holds all entries formatted as buttons to allow uniform styling
+        # holds all entries formatted as buttons to allow uniform styling
+        self.entries: list[customtkinter.CTkButton] = []
 
         # Configuring the grid
         self.grid_columnconfigure(0, weight=1)
@@ -166,7 +162,7 @@ class MainMenuFrame(TopLevelFrame):
         for i, passive_project in enumerate(self._passive_projects):
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
-            #reformatted_description = utility_methods_i.reformat_string(description)
+            # reformatted_description = utility_methods_i.reformat_string(description)
 
             button_text: str = name + "\n\n" + description
 
@@ -178,7 +174,8 @@ class MainMenuFrame(TopLevelFrame):
                                             hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                             border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                            width=(frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value * (9 / 10) - ELEMENT_BORDER_DISTANCE) - ELEMENT_BORDER_DISTANCE,
+                                            width=(frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value * (9 / 10)
+                                                   - ELEMENT_BORDER_DISTANCE) - ELEMENT_BORDER_DISTANCE,
                                             height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
                                             )
             entry.grid(column=0, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
@@ -187,6 +184,7 @@ class MainMenuFrame(TopLevelFrame):
     def __load_project(self, index: int):
         """
         Loads the given project
+
         Args:
             index (int): Project that will be loaded
         """

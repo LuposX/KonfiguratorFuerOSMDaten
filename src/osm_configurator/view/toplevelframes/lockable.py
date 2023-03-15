@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class Lockable(ABC):
     """
-    Interface used for frames, that shall be abale to be locked or unlocked, to enable and disable the interaction
+    Interface used for frames, that shall be able to be locked or unlocked, to enable and disable the interaction
     with them.
     """
 

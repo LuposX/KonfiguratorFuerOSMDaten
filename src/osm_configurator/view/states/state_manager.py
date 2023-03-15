@@ -2,18 +2,17 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
-from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-from src.osm_configurator.view.states.state import State
-
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
-
 import src.osm_configurator.view.toplevelframes.lockable as lockable_i
+import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
+
+from src.osm_configurator.view.states.state import State
 
 if TYPE_CHECKING:
     from typing import Final
+    from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
     from src.osm_configurator.view.states.state_name_enum import StateName
-    from src.osm_configurator.view.states.state import State
     from src.osm_configurator.view.states.positioned_frame import PositionedFrame
     from src.osm_configurator.view.states.main_window import MainWindow
     from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
@@ -114,29 +113,30 @@ SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN: Final = 1
 
 def get_last_edit_step(state: StateName) -> ConfigPhase:
     """
-    This method converts the current state into a configphase.
+    This method converts the current state into a config phase.
 
     Args:
         state (StateName): The current state.
 
     Returns:
-         ConfigPhase: The configphase.
+         ConfigPhase: The config phase.
     """
     match state:
         case state_name_enum_i.StateName.DATA:
-            return ConfigPhase.DATA_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE
         case state_name_enum_i.StateName.CATEGORY:
-            return ConfigPhase.CATEGORY_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE
         case state_name_enum_i.StateName.REDUCTION:
-            return ConfigPhase.REDUCTION_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE
         case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
-            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
         case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
-            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
         case state_name_enum_i.StateName.AGGREGATION:
-            return ConfigPhase.AGGREGATION_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE
         case state_name_enum_i.StateName.CALCULATION:
-            return ConfigPhase.CALCULATION_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE
+
 
 class StateManager:
     """
@@ -462,7 +462,8 @@ class StateManager:
 
                     # Store last edit step
                     corresponding_state: StateName = self._current_state.get_state_name()
-                    # This is needed to handle with the case that no project is loaded yet, so no last edit step can be set
+                    # This is needed to handle with the case that no project is loaded yet,
+                    # so no last edit step can be set
                     if 2 < corresponding_state.value < 10:
                         self._project_controller.set_current_config_phase(get_last_edit_step(corresponding_state))
 
@@ -519,7 +520,7 @@ class StateManager:
 
     def freeze_state(self):
         """
-        This method freezes all frames that are currently active, and making then not intractable anymore.
+        This method freezes all frames that are currently active, and making then not interactable anymore.
         The state will also be locked and can't be changed, until unfrozen!
         """
         # Freezing all frames in the current state
@@ -535,14 +536,14 @@ class StateManager:
 
     def unfreeze_state(self):
         """
-        Unfreezes the state, by making all active frames intractable again and unlocking the state, allowing
+        Unfreezes the state, by making all active frames interactable again and unlocking the state, allowing
         state changes again!
         """
         # Unfreezing himself
         self._frozen: bool = False
 
         # Unfreezing all frames in the current state
-        # All Frames have to be freezable!
+        # All Frame have to implement freezable
         positioned_frame: PositionedFrame
         for positioned_frame in self._current_state.get_active_frames():
             frame: TopLevelFrame = positioned_frame.get_frame()
