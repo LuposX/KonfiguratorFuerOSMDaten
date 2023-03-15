@@ -61,7 +61,7 @@ class SplitUpFile:
         # noinspection PyProtectedMember
         # pylint: disable=protected-access
         is_frozen: bool = False
-        if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+        if getattr(sys, 'frozen', False):
             # check that we are on windows
             if not hasattr(sys, 'getwindowsversion'):
                 raise OSError("We don't support the Operating System you use!")
@@ -70,8 +70,15 @@ class SplitUpFile:
 
         # Split up the files
         for i in range(len(cells[model_constants.CL_GEOMETRY])):
-            child = subprocess.Popen(self.get_osmium_command_args(is_frozen, cells, i),
-                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            if is_frozen:
+                child = subprocess.Popen(self.get_osmium_command_args(is_frozen, cells, i),
+                                          stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                          creationflags=subprocess.CREATE_NO_WINDOW)
+            else:
+                child = subprocess.Popen(self.get_osmium_command_args(is_frozen, cells, i),
+                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                         )
+
             streamdata = child.communicate()[0]
             if child.returncode != 0:
                 return False
