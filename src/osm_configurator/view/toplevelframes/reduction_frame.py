@@ -94,7 +94,7 @@ class ReductionFrame(TopLevelFrame):
                 frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value - ELEMENT_BORDER_DISTANCE),
             corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
             fg_color=CATEGORY_LIST_FG_COLOR,
-            scrollbar_fg_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value,
+            scrollbar_fg_color=CATEGORY_LIST_FG_COLOR,
             scrollbar_button_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_COLOR.value,
             scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
             label_text="Categories:",

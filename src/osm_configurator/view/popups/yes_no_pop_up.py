@@ -1,12 +1,27 @@
 from __future__ import annotations
 
+from typing import Final
+
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
-import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
+import src.osm_configurator.view.constants.pop_up_constants as pop_up_constants_i
+
+import src.osm_configurator.view.utility_methods as utility_methods_i
 
 # Other
 import customtkinter
+
+# Finals
+POPUP_SIZE: Final = pop_up_constants_i.PopUpConstants.POPUP_SIZE.value  # The Size of the PopUp
+
+POPUP_TITLE: Final = "Accept or Cancel"
+
+MESSAGE_LENGTH: Final = 60
+MESSAGE_ROWS: Final = 4
+MESSAGE_DOTS: Final = False
+MESSAGE_ROWS_UNLIMITED: Final = True
+MESSAGE_WORD_BREAK: Final = True
 
 
 class YesNoPopUp(customtkinter.CTkToplevel):
@@ -32,9 +47,10 @@ class YesNoPopUp(customtkinter.CTkToplevel):
 
         self._func = func
 
-        super().__init__(
-            fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
-        )
+        super().__init__()
+        self.geometry(POPUP_SIZE)
+
+        self.title(POPUP_TITLE)
 
         self.title("Please select")
 
@@ -53,14 +69,18 @@ class YesNoPopUp(customtkinter.CTkToplevel):
         self.grid_rowconfigure(1, weight=4)  # Shows the error message
         self.grid_rowconfigure(2, weight=2)  # Displays the buttons
 
+        reformatted_message = utility_methods_i.reformat_string(
+            message, MESSAGE_LENGTH, MESSAGE_ROWS, MESSAGE_DOTS,
+            MESSAGE_ROWS_UNLIMITED, MESSAGE_WORD_BREAK)
+
         self.message = \
             customtkinter.CTkLabel(master=self,
-                                   text=message,
+                                   text=reformatted_message,
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR_POP_UP.value,
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value, )
-        self.message.grid(row=1, column=1, rowspan=1, columnspan=1, padx=20, pady=20)
+        self.message.grid(row=1, column=0, rowspan=1, columnspan=3, padx=20, pady=20)
 
         self.accept_button = \
             customtkinter.CTkButton(master=self,
@@ -72,6 +92,8 @@ class YesNoPopUp(customtkinter.CTkToplevel):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value
                                     )
         self.accept_button.grid(row=2, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
 
@@ -85,6 +107,8 @@ class YesNoPopUp(customtkinter.CTkToplevel):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value
                                     )
         self.cancel_button.grid(row=2, column=2, rowspan=1, columnspan=1, padx=10, pady=10)
 

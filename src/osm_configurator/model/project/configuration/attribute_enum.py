@@ -56,7 +56,7 @@ def _calculate_property_area(category: Category,
         # Find out all osm element which lie in the given osm element
         # this gives us trues and false for each entry true if it lies in the osm element otherwise false
         found_areas_bool: GeoSeries = df.within(
-            osm_element[model_constants_i.CL_GEOMETRY])  # TODO: This could be wrong if yes use contains() instead
+            osm_element[model_constants_i.CL_GEOMETRY])
 
         # we will use this to sum up the area of all buildings
         area_sum: int = 0
