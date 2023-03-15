@@ -30,7 +30,7 @@ class AlertPopUp(customtkinter.CTkToplevel):
             message (str): String containing the message that will be shown
         """
         super().__init__()
-        self.geometry(vc.ViewConstants.POPUP_SIZE.value)
+        self.geometry(POPUP_SIZE)
 
         self.title("Alert")
 

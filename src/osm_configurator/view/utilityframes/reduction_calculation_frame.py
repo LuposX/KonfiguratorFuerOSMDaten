@@ -136,8 +136,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             state="normal",
             text="",
             command=self._site_building_switch_edited,
-            switch_height=int(self._height / 20),
-            switch_width=int(self._width / 1.5),
+            switch_height=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_HEIGHT.value,
+            switch_width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_WIDTH.value,
         )
         self._site_building_switch.grid(row=3, column=1, rowspan=1, columnspan=1)
 
