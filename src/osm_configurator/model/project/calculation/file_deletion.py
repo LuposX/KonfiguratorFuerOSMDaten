@@ -20,13 +20,18 @@ class FileDeletion:
         """
         # Create folder
         if not os.path.exists(path):
-            os.makedirs(path)
-
+            try:
+                os.makedirs(path)
+            except PermissionError:
+                return False
         # Delete old files in folder
         delete_path = str(path) + '//'
         for file_name in os.listdir(delete_path):
             # construct full file path
             file = delete_path + file_name
             if os.path.isfile(file):
-                os.remove(file)
+                try:
+                    os.remove(file)
+                except PermissionError:
+                    return False
         return True
