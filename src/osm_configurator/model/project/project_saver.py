@@ -106,7 +106,6 @@ class ProjectSaver:
         filename: Path = self._create_file(saver_io_handler_constants.PROJECT_SETTINGS)
         settings_data = [[NAME, self.active_project.get_project_settings().get_name()],
                          [DESCRIPTION, self.active_project.get_project_settings().get_description()],
-                         [LOCATION, self.active_project.get_project_settings().get_location()],
                          [LAST_EDIT_DATE, str(date.today())]]
         ProjectSaver._write_csv_file(settings_data, filename)
         return True

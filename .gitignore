@@ -3,6 +3,9 @@
 __pycache__
 src_tests/build
 
+# the project
+venv
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

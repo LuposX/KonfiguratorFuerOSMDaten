@@ -1,0 +1,9 @@
+sum,False
+mean,False
+maximum,True
+minimum,True
+variance,False
+Standard deviation,False
+Median,False
+25_Quantile,False
+75_Quantile,False

@@ -6,6 +6,8 @@ import pathlib
 
 from typing import TYPE_CHECKING
 
+from src.osm_configurator.model.application.application_settings_default_enum import ApplicationSettingsDefault
+
 if TYPE_CHECKING:
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
@@ -37,9 +39,6 @@ class ProjectController(IProjectController):
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
         return self._model.create_project(name, description, destination)
 
-    def delete_passive_project(self, passive_project: PassiveProject) -> bool:
-        return self._model.delete_passive_project(passive_project)
-
     def save_project(self) -> bool:
         return self._model.get_active_project().get_project_saver().save_project()
 
@@ -54,3 +53,6 @@ class ProjectController(IProjectController):
 
     def is_project_loaded(self) -> bool:
         return self._model.get_active_project() is not None
+
+    def get_default_project_folder(self) -> Path:
+        return self._model.get_application_settings().get_setting(ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER)

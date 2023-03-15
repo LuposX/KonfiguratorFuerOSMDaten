@@ -15,7 +15,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
     from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
 
-DEFAULT_CHECKPOINTS_FOLDER_NAME: str = "Results"
+DEFAULT_CHECKPOINTS_FOLDER_NAME: str = "results"
 
 
 class ConfigurationManager:

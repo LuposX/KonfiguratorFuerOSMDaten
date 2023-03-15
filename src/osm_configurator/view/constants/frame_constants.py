@@ -22,3 +22,5 @@ class FrameConstants(Enum):
     SUB_FRAME_FG_COLOR = "#E8EAFD"
 
     TAG_PRIORITY_LIST_FG_COLOR = "#D9D9D9"
+
+    UTILITY_FRAME_CORNER_RADIUS = 8

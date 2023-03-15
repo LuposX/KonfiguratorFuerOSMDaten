@@ -54,8 +54,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         super().__init__(master=parent,
                          width=width,
                          height=height,
-                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-                         fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value)
+                         corner_radius=frame_constants_i.FrameConstants.UTILITY_FRAME_CORNER_RADIUS.value,
+                         fg_color=frame_constants_i.FrameConstants.SUB_FRAME_FG_COLOR.value)
 
         # Setting private Attributes
         self._parent: TopLevelFrame = parent
@@ -93,7 +93,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Tag-List:")
         self._tag_list_label.grid(row=0, column=0, rowspan=1, columnspan=1,
                                   pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
@@ -111,13 +111,13 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._tag_label: customtkinter.CTkLabel \
             = customtkinter.CTkLabel(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
                                      height=int(self._height * (
                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Tag")
         self._tag_label.grid(row=1, column=1, rowspan=1, columnspan=1,
                              pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
@@ -127,13 +127,13 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._area_label: customtkinter.CTkLabel \
             = customtkinter.CTkLabel(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
                                      height=int(self._height * (
                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Area")
         self._area_label.grid(row=2, column=1, rowspan=1, columnspan=1,
                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
@@ -143,13 +143,13 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._number_of_floors_label: customtkinter.CTkLabel \
             = customtkinter.CTkLabel(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
                                      height=int(self._height * (
                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Number of floors")
         self._number_of_floors_label.grid(row=3, column=1, rowspan=1, columnspan=1,
                                           pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
@@ -159,13 +159,13 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._floor_area_label: customtkinter.CTkLabel \
             = customtkinter.CTkLabel(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
                                      height=int(self._height * (
                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
                                      corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                      fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                      text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                     anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                      text="Floor area")
         self._floor_area_label.grid(row=4, column=1, rowspan=1, columnspan=1,
                                     pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
@@ -176,9 +176,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._tag_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                     height=int(self._height * (
-                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_BIG.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -189,9 +188,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._area_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                     height=int(self._height * (
-                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_BIG.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -202,9 +200,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._number_of_floors_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                     height=int(self._height * (
-                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_BIG.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -215,9 +212,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         self._floor_area_entry: customtkinter.CTkEntry \
             = customtkinter.CTkEntry(master=self,
                                      width=int(self._width * (
-                                             1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                     height=int(self._height * (
-                                             1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                             1 / 4)) - ELEMENT_BORDER_DISTANCE,
+                                     height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_BIG.value,
                                      corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                      fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                      text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
@@ -227,10 +223,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         # The Buttons to create and delete Tags
         self._create_tag_button: customtkinter.CTkButton \
             = customtkinter.CTkButton(master=self,
-                                      width=int(self._width * (
-                                              1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                      height=int(self._height * (
-                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                      width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                                      height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
                                       corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                       border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
                                       fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
@@ -244,13 +238,11 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
         # The Button to delete tags
         self._delete_tag_button: customtkinter.CTkButton \
             = customtkinter.CTkButton(master=self,
-                                      width=int(self._width * (
-                                              1 / 3)) - ELEMENT_BORDER_DISTANCE,
-                                      height=int(self._height * (
-                                              1 / 7) - ELEMENT_BORDER_DISTANCE),
+                                      width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                                      height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
                                       corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
                                       border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                      fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                                      fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value,
                                       hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                       border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                       text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
@@ -458,11 +450,10 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
                 self.after(1, alert_pop_up_i.AlertPopUp, "Could not delete default value entry!")
 
     def _deactivate_editing(self):
-
         self._delete_tag_button.configure(
             state="disabled",
             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
-            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value
+            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value
         )
 
         self._tag_entry.configure(state="disabled")
@@ -474,7 +465,7 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
 
         self._delete_tag_button.configure(state="normal",
                                           text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                          fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value)
+                                          fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DELETE.value)
 
         # Only deactivating the tag entry if this is the Default Value, so it doesn't get edited
         if self._selected_entry.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:

@@ -10,6 +10,7 @@ import src.osm_configurator.model.model_constants as model_constants_i
 
 
 class TestCategory:
+
     def test_is_active(self):
         self.category: Category = Category("TestName")
         assert self.category.is_active()
@@ -111,6 +112,17 @@ class TestCategory:
         self.category.add_attractivity_attribute(attribute)
         assert self.category.get_attractivity_attributes() == [attribute]
 
+    def test_add_empty_attractivity_attributes(self):
+        self.category: Category = Category("TestName")
+        attribute: AttractivityAttribute = AttractivityAttribute("")
+        assert not self.category.add_attractivity_attribute(attribute)
+
+    def test_add_existing_attractivity_attributes(self):
+        self.category: Category = Category("TestName")
+        attribute: AttractivityAttribute = AttractivityAttribute("TestNameAttribute")
+        assert self.category.add_attractivity_attribute(attribute)
+        assert not self.category.add_attractivity_attribute(attribute)
+
     def test_remove_attractivity_attribute(self):
         self.category: Category = Category("TestName")
         attribute: AttractivityAttribute = AttractivityAttribute("TestNameAttribute")
@@ -118,6 +130,11 @@ class TestCategory:
         assert self.category.get_attractivity_attributes() == [attribute]
         self.category.remove_attractivity_attribute(attribute)
         assert self.category.get_attractivity_attributes() == []
+
+    def test_remove_not_existing_attractivity_attribute(self):
+        self.category: Category = Category("TestName")
+        attribute: AttractivityAttribute = AttractivityAttribute("TestNameAttribute")
+        assert not self.category.remove_attractivity_attribute(attribute)
 
     def test_get_default_value_list(self):
         self.category: Category = Category("TestName")
@@ -135,6 +152,17 @@ class TestCategory:
         for number in range(len(self.category.get_default_value_list())):
             assert self.category.get_default_value_list()[number].get_default_value_entry_tag() == test_list[number].get_default_value_entry_tag()
 
+    def test_add_empty_default_value_entry(self):
+        self.category: Category = Category("TestName")
+        default_value_entry: DefaultValueEntry = DefaultValueEntry("")
+        assert not self.category.add_default_value_entry(default_value_entry)
+
+    def test_add_existing_default_value_entry(self):
+        self.category: Category = Category("TestName")
+        default_value_entry: DefaultValueEntry = DefaultValueEntry("TestNameAttribute")
+        assert self.category.add_default_value_entry(default_value_entry)
+        assert not self.category.add_default_value_entry(default_value_entry)
+
     def test_remove_default_value_entry(self):
         self.category: Category = Category("TestName")
         default: DefaultValueEntry = DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
@@ -149,3 +177,64 @@ class TestCategory:
             assert self.category.get_default_value_list()[number].get_default_value_entry_tag() == test_list[
                 number].get_default_value_entry_tag()
 
+    def test_remove_not_existing_default_value_entry(self):
+        self.category: Category = Category("TestName")
+        default_value_entry: DefaultValueEntry = DefaultValueEntry("TestNameAttribute")
+        assert not self.category.remove_default_value_entry(default_value_entry)
+
+    def test_move_default_value_entry_up(self):
+        self.category: Category = Category("TestName")
+        default: DefaultValueEntry = DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
+        default_value_entry_one: DefaultValueEntry = DefaultValueEntry("TestNameAttribute1")
+        default_value_entry_two: DefaultValueEntry = DefaultValueEntry("TestNameAttribute2")
+
+        self.category.add_default_value_entry(default_value_entry_one)
+        self.category.add_default_value_entry(default_value_entry_two)
+        assert self.category.move_default_value_entry_up(default_value_entry_two)
+
+        test_list: List[DefaultValueEntry] = [default, default_value_entry_two, default_value_entry_one]
+        for number in range(len(self.category.get_default_value_list())):
+            assert self.category.get_default_value_list()[number].get_default_value_entry_tag() == test_list[number].get_default_value_entry_tag()
+
+    def test_move_default_value_entry_down(self):
+        self.category: Category = Category("TestName")
+        default: DefaultValueEntry = DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
+        default_value_entry_one: DefaultValueEntry = DefaultValueEntry("TestNameAttribute1")
+        default_value_entry_two: DefaultValueEntry = DefaultValueEntry("TestNameAttribute2")
+
+        self.category.add_default_value_entry(default_value_entry_one)
+        self.category.add_default_value_entry(default_value_entry_two)
+        assert self.category.move_default_value_entry_down(default_value_entry_one)
+
+        test_list: List[DefaultValueEntry] = [default, default_value_entry_two, default_value_entry_one]
+        for number in range(len(self.category.get_default_value_list())):
+            assert self.category.get_default_value_list()[number].get_default_value_entry_tag() == test_list[
+                number].get_default_value_entry_tag()
+
+    def test_move_default_value_entry_up_first(self):
+        self.category: Category = Category("TestName")
+        default_value_entry_one: DefaultValueEntry = DefaultValueEntry("TestNameAttribute1")
+        self.category.add_default_value_entry(default_value_entry_one)
+        assert not self.category.move_default_value_entry_up(default_value_entry_one)
+
+    def test_move_default_value_entry_down_first(self):
+        self.category: Category = Category("TestName")
+        default_value_entry_one: DefaultValueEntry = DefaultValueEntry("TestNameAttribute1")
+        self.category.add_default_value_entry(default_value_entry_one)
+        assert not self.category.move_default_value_entry_up(default_value_entry_one)
+
+    def test_move_default_value_entry_down_last(self):
+        self.category: Category = Category("TestName")
+        default_value_entry_one: DefaultValueEntry = DefaultValueEntry("TestNameAttribute1")
+        self.category.add_default_value_entry(default_value_entry_one)
+        assert not self.category.move_default_value_entry_down(default_value_entry_one)
+
+    def test_move_default_value_entry_up_not_existing(self):
+        self.category: Category = Category("TestName")
+        default_value_entry: DefaultValueEntry = DefaultValueEntry("TestNameAttribute1")
+        assert not self.category.move_default_value_entry_up(default_value_entry)
+
+    def test_move_default_value_entry_down_not_existing(self):
+        self.category: Category = Category("TestName")
+        default_value_entry: DefaultValueEntry = DefaultValueEntry("TestNameAttribute1")
+        assert not self.category.move_default_value_entry_down(default_value_entry)

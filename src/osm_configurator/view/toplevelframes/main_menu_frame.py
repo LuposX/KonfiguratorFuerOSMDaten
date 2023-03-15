@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import tkinter
 from functools import partial
 
@@ -11,6 +12,9 @@ import src.osm_configurator.view.states.state_name_enum as sne
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
+
+import src.osm_configurator.view.utility_methods as utility_methods_i
+
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.button_constants as button_constants_i
@@ -34,6 +38,25 @@ if TYPE_CHECKING:
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 124
 
+BUTTON_DESCRIPTION_LINE_LENGTH: Final = 42
+BUTTON_DESCRIPTION_ROWS: Final = 3
+BUTTON_DESCRIPTION_DOTS: Final = True
+
+
+def find_matching_state(config_step: config_phase_enum_i.ConfigPhase) -> state_name_enum_i.StateName:
+    match config_step:
+        case config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE:
+            return state_name_enum_i.StateName.DATA
+        case config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE:
+            return state_name_enum_i.StateName.CATEGORY
+        case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
+            return state_name_enum_i.StateName.REDUCTION
+        case config_phase_enum_i.ConfigPhase.ATTRACTIVITY_CONFIG_PHASE:
+            return state_name_enum_i.StateName.ATTRACTIVITY_EDIT
+        case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
+            return state_name_enum_i.StateName.AGGREGATION
+        case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
+            return state_name_enum_i.StateName.CALCULATION
 
 class MainMenuFrame(TopLevelFrame):
     """
@@ -84,11 +107,9 @@ class MainMenuFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_TITLE_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    text=main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
-        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW",
-                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
-                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
+        self._title_label.grid(row=0, column=0, rowspan=1, columnspan=2, sticky="NSEW")
 
         # Implementing the buttons
 
@@ -111,7 +132,9 @@ class MainMenuFrame(TopLevelFrame):
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
             )
 
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
@@ -138,8 +161,9 @@ class MainMenuFrame(TopLevelFrame):
         for i, passive_project in enumerate(self._passive_projects):
             name = passive_project.get_name()  # name of the shown project
             description = passive_project.get_description()  # description of the shown project
+            #reformatted_description = utility_methods_i.reformat_string(description)
 
-            button_text: str = name + "\n" + description
+            button_text: str = name + "\n\n" + description
 
             entry = customtkinter.CTkButton(master=self._entry_subframe,
                                             text=button_text,
@@ -148,7 +172,9 @@ class MainMenuFrame(TopLevelFrame):
                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                             hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                             border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                            width=(frame_constants_i.FrameConstants.FULL_FRAME_WIDTH.value * (9 / 10) - ELEMENT_BORDER_DISTANCE) - ELEMENT_BORDER_DISTANCE,
+                                            height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
                                             )
             entry.grid(column=0, row=i, rowspan=1, columnspan=1, padx=10, pady=10)  # creates and places the button
             self.entries.append(entry)
@@ -160,28 +186,19 @@ class MainMenuFrame(TopLevelFrame):
         Args:
             index (int): Project that will be loaded
         """
-        project_path = self._passive_projects[index].get_project_folder_path()
+        project_name = self._passive_projects[index].get_name()
 
         try:
-            self._project_controller.load_project(project_path)
+            default_path: Path = Path(os.path.join(self._project_controller.get_default_project_folder(), project_name))
+            if not self._project_controller.load_project(default_path):
+                popup = AlertPopUp("This is not a valid project.")
+                popup.mainloop()
+                self.activate()
+                return
 
+            # Loads the last edit step in the configuration
             config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
-
-            match config_phase:
-                case config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE:
-                    self._state_manager.change_state(state_name_enum_i.StateName.DATA)
-
-                case config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE:
-                    self._state_manager.change_state(state_name_enum_i.StateName.CATEGORY)
-
-                case config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE:
-                    self._state_manager.change_state(state_name_enum_i.StateName.REDUCTION)
-
-                case config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE:
-                    self._state_manager.change_state(state_name_enum_i.StateName.AGGREGATION)
-
-                case config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE:
-                    self._state_manager.change_state(state_name_enum_i.StateName.CALCULATION)
+            self._state_manager.change_state(find_matching_state(config_phase))
 
         except NotValidName as err:
             popup = AlertPopUp(str(err.args))
@@ -222,7 +239,9 @@ class MainMenuFrame(TopLevelFrame):
             self.activate()
             return
 
-        self._state_manager.change_state(state_name_enum_i.StateName.DATA)
+        # Loads the last edit step in the configuration
+        config_phase: config_phase_enum_i.ConfigPhase = self._project_controller.get_current_config_phase()
+        self._state_manager.change_state(find_matching_state(config_phase))
 
     def __browse_files(self) -> str:
         """

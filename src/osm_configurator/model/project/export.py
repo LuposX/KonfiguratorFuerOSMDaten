@@ -2,7 +2,9 @@ from __future__ import annotations
 
 import os.path
 import pathlib
+from pathlib import Path
 import shutil
+import src.osm_configurator.model.project.active_project
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -27,7 +29,6 @@ def _path_with_zip_to_str(path: Path) -> str:
     string_version_of_path: str = str(path)
     if string_version_of_path[-4:] == ".zip":
         return string_version_of_path[:-4]
-
     return string_version_of_path
 
 
@@ -57,6 +58,10 @@ class Export:
             bool: true, if export was successful, otherwise false.
         """
         zip_file_name: str = _path_with_zip_to_str(path)
+        project_name: str = self._active_project.get_project_settings().get_name()
+        self._active_project.get_project_settings().set_name(os.path.basename(zip_file_name))
+        self._active_project.get_project_saver().save_project()
+        self._active_project.get_project_settings().set_name(project_name)
         self._active_project.get_project_saver().save_project()
         try:
             shutil.make_archive(zip_file_name, ZIP, self._active_project.get_project_settings().get_location())
@@ -119,9 +124,7 @@ class Export:
         """
         zip_file_name: str = _path_with_zip_to_str(path)
         directory, filename = os.path.split(zip_file_name)
-        print(zip_file_name)
-        return self._active_project.get_data_visualizer().create_map(cut_out_file=self._active_project
-                                                                     .get_config_manager()
-                                                                     .get_cut_out_configuration().get_cut_out_path(),
-                                                                     map_saving_path=pathlib.Path(directory),
-                                                                     filename=filename + ".html")
+        return self._active_project.get_data_visualizer().create_map(self._active_project.get_config_manager()
+                                                                     .get_cut_out_configuration().get_cut_out_path(), Path(directory), filename + ".html")
+
+ 

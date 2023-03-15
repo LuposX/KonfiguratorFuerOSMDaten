@@ -46,7 +46,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         super().__init__(master=parent,
                          width=width,
                          height=height,
-                         corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
+                         corner_radius=frame_constants_i.FrameConstants.UTILITY_FRAME_CORNER_RADIUS.value,
                          fg_color=frame_constants_i.FrameConstants.SUB_FRAME_FG_COLOR.value)
 
         self._parent: TopLevelFrame = parent
@@ -96,7 +96,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
             text="Calculate\nsite Area"
         )
         self._calculate_site_area_label.grid(row=3, column=0, rowspan=1, columnspan=1,
@@ -112,7 +112,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
             fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
             text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
             text="Calculate\nBuilding Area"
         )
         self._calculate_building_area_label.grid(row=3, column=2, rowspan=1, columnspan=1,
@@ -122,10 +122,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
         # The switch inbetween
         self._site_building_switch: customtkinter.CTkSwitch = customtkinter.CTkSwitch(
             master=self,
-            width=int(
-                self._width / 3 - ELEMENT_BORDER_DISTANCE),
-            height=int(
-                self._height / 4 - ELEMENT_BORDER_DISTANCE),
+            width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_WIDTH.value,
+            height=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_HEIGHT.value,
             corner_radius=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_CORNER_RADIUS.value,
             border_width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BORDER_WIDTH.value,
             fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR.value,
@@ -219,8 +217,8 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             else:
                 raise ValueError("Category has to be either one of the calculation Methods!")
 
-            # Now deactivating editing parts if necessary
-            if not self._selected_category.get_strictly_use_default_values():
+            # Now deactivating editing parts if necesseary
+            if self._selected_category.get_strictly_use_default_values():
                 self._deactivate_below_strictly_use_default_values()
 
             if not self._selected_category.get_attribute(attribute_enum_i.Attribute.PROPERTY_AREA):
@@ -274,13 +272,13 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _strictly_use_default_values_checkbox_edited(self):
         if self._strictly_use_default_values_checkbox.get() == 1:
-            self._activate_below_strictly_use_default_values()
+            self._deactivate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(True):
                 alert_pop_up_i.AlertPopUp("Could not activate strictly using default values!")
                 # refreshing frame
                 self.load_category(self._selected_category)
         else:
-            self._deactivate_below_strictly_use_default_values()
+            self._activate_below_strictly_use_default_values()
             if not self._selected_category.set_strictly_use_default_values(False):
                 alert_pop_up_i.AlertPopUp("Could not deactivate strictly using default values!")
                 # refreshing frame
@@ -316,10 +314,16 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             self._activate_switch()
 
     def _deactivate_switch(self):
-        self._site_building_switch.configure(state="disabled")
+        self._site_building_switch.configure(state="disabled",
+                                             button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR_DISABLED.value,
+                                             progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_DISABLED.value,
+                                             fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_DISABLED.value)
 
     def _activate_switch(self):
-        self._site_building_switch.configure(state="normal")
+        self._site_building_switch.configure(state="normal",
+                                             button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR.value,
+                                             progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_ACTIVE.value,
+                                             fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_ACTIVE.value)
 
     def _true_activate(self):
         self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)
@@ -358,7 +362,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             # Deactivating checkboxes again, depending on what is checked and loaded
             if self._selected_category is None:
                 self._deactivate_editing()
-            elif self._strictly_use_default_values_checkbox.get() == 0:
+            elif self._strictly_use_default_values_checkbox.get() == 1:
                 self._deactivate_below_strictly_use_default_values()
             elif self._calculate_area_checkbox.get() == 0:
                 self._deactivate_switch()

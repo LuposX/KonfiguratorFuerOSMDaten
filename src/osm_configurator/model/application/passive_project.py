@@ -12,8 +12,7 @@ SETTINGS_TABLE_SECOND_COLUMN: int = 1  # In this column specific data is stored
 SETTING_TABLE_FIRST_ROW: int = 0  # This row stores the name of the project
 SETTING_TABLE_SECOND_ROW: int = 1  # This row stores the description of the project
 SETTING_TABLE_THIRD_ROW: int = 2  # This row stores the location of the project
-SETTING_TABLE_FOURTH_ROW: int = 3  # This row stores the calculation_check_points of the project
-SETTING_TABLE_FIFTH_ROW: int = 4  # This row stores the last_edit_date of the project
+SETTING_TABLE_Forth_ROW: int = 3  # This row stores the last_edit_date of the project
 
 
 class PassiveProject:
@@ -67,4 +66,4 @@ class PassiveProject:
         Returns:
             str: The last edit date of the passive project.
         """
-        return self.data[SETTING_TABLE_FIFTH_ROW][SETTINGS_TABLE_SECOND_COLUMN]
+        return self.data[SETTING_TABLE_Forth_ROW][SETTINGS_TABLE_SECOND_COLUMN]

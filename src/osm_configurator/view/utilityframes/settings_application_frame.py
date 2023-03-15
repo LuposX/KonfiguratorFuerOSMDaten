@@ -66,7 +66,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.header.grid(row=0, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.header)
@@ -79,7 +79,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_default_header.grid(row=1, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_default_header)
@@ -90,7 +90,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_default_label.grid(row=1, column=1, padx=10,
                                      pady=10)  # Creates a read-only textbox showing the default-filepath
@@ -105,7 +105,9 @@ class SettingsApplicationFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value
                                     )
         self.change_default_path_button.grid(row=1, column=3, padx=10,
                                              pady=10)  # button to browse for a new default folder
@@ -118,7 +120,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_process_header.grid(row=2, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_process_header)
@@ -128,10 +130,23 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
                                    )
         self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
         self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
         self._entries.append(self.processes_entry)
+        # Info-Text
+        self.process_info = \
+            customtkinter.CTkLabel(master=self,
+                                   text="Warning: A high number of processes might lead to a high usage of the CPU.\n"
+                                        "Only increase, when you know what you are doing",
+                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+                                   )
+        self.process_info.grid(row=2, column=3, columnspan=1, rowspan=1, padx=10, pady=10)
+        self._labels.append(self.process_info)
 
         # Setting: Number of Key Recommendations
         self.path_key_recom_header = \
@@ -140,7 +155,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_key_recom_header.grid(row=3, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_key_recom_header)
@@ -150,6 +165,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
                                    )
         self.key_recom_entry.grid(row=3, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
         self.key_recom_entry.bind("<KeyRelease>", self.__key_recom_entry_edited)
@@ -181,9 +197,15 @@ class SettingsApplicationFrame(TopLevelFrame):
         Checks if the path is valid and confirms changes if so.
         If the path is not valid a popup will be shown reloading the page
         """
-        new_path = Path(self.__browse_files())
+        new_path = Path(self.__choose_path())
+
+        empty_path = Path(".")
 
         if new_path.exists():
+            # Checking if the Path is empty, if it is empty, the path won't be set
+            if new_path.__eq__(empty_path):
+                return
+
             self._project_default_folder = new_path
             self._settings_controller.set_project_default_folder(new_path)  # Updates the path
             self.path_default_label.configure(text=new_path.name)  # Updates the textbox
@@ -205,7 +227,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         else:
             self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def __browse_files(self) -> str:
+    def __choose_path(self) -> str:
         """
         Opens the explorer starting from the default-folder making the user browse for the searched path
         Returns:
@@ -213,7 +235,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askdirectory(initialdir=str(self._project_default_folder),
-                                    title="Select a File")
+                                    title="Choose destination")
         return new_path
 
     def freeze(self):
