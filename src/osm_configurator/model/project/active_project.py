@@ -59,7 +59,8 @@ class ActiveProject:
             project_name = os.path.basename(project_folder)
 
         self._project_io_handler: ProjectIOHandler = project_io_handler_i.ProjectIOHandler(self)
-        self._configurator_manager: ConfigurationManager = configuration_manager_i.ConfigurationManager(self.project_directory)
+        self._configurator_manager: ConfigurationManager = \
+            configuration_manager_i.ConfigurationManager(self.project_directory)
         self._calculation_manager: CalculationManager = \
             calculation_manager_i.CalculationManager(self._configurator_manager, application_manager)
         self._project_settings: ProjectSettings = project_settings_i.ProjectSettings(self.project_directory,
