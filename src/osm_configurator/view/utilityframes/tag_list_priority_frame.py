@@ -6,6 +6,7 @@ import customtkinter
 
 from PIL import Image
 
+import sys
 import os
 
 from definitions import PROJECT_DIR
@@ -78,15 +79,22 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
 
         self._entries: [default_value_entry_i.DefaultValueEntry] = []
 
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            datadir = os.path.dirname(sys.executable)
+        else:
+            # The application is not frozen
+            datadir = PROJECT_DIR
+
         # The images used for moving entries up and down
         self._up_arrow_image: customtkinter.CTkImage = customtkinter.CTkImage(
-            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_up.png")),
-            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_up.png")),
+            light_image=Image.open(os.path.join(datadir, "data/view_icons/arrow_up.png")),
+            dark_image=Image.open(os.path.join(datadir, "data/view_icons/arrow_up.png")),
             size=(UP_ARROW_SIZE, UP_ARROW_SIZE))
 
         self._down_arrow_image: customtkinter.CTkImage = customtkinter.CTkImage(
-            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_down.png")),
-            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/arrow_down.png")),
+            light_image=Image.open(os.path.join(datadir, "data/view_icons/arrow_down.png")),
+            dark_image=Image.open(os.path.join(datadir, "data/view_icons/arrow_down.png")),
             size=(DOWN_ARROW_SIZE, DOWN_ARROW_SIZE))
 
         # The different List for all the Buttons
