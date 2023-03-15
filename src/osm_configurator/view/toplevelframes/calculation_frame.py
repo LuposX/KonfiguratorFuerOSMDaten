@@ -361,13 +361,15 @@ class CalculationFrame(TopLevelFrame):
 
         self.progressbar_phase = \
             customtkinter.CTkLabel(master=self,
-                                   text="No calculation phase")
+                                   text="No calculation phase",
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value)
         self.progressbar_phase.grid(column=2, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
         self.resettable_elements.append(self.progressbar_phase)
 
         self.progressbar_state = \
             customtkinter.CTkLabel(master=self,
-                                   text="No calculation state")
+                                   text="No calculation state",
+                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value)
         self.progressbar_state.grid(column=1, row=1, rowspan=1, columnspan=1, padx=30, pady=10)
         self.resettable_elements.append(self.progressbar_state)
 
