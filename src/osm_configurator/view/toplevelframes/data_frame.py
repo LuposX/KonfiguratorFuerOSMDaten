@@ -148,14 +148,14 @@ class DataFrame(TopLevelFrame):
         self._osm_data_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text="Select OSM Data"
+                text="Select OSM Data [.osm, .pbf]"
             )
         self._labels.append(self._osm_data_select_label)
 
         self._cut_out_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text="Select Cut-Out"
+                text="Select Cut-Out [.geojson]"
             )
         self._labels.append(self._cut_out_select_label)
 
@@ -271,9 +271,13 @@ class DataFrame(TopLevelFrame):
         Lets the user view the cutout.
         Activated if the view_cutout button is activated
         """
-        path = self._data_visualization_controller.generate_cut_out_map()
+        path: Path | None = self._data_visualization_controller.generate_cut_out_map()
 
-        self._show_map(path)
+        if path is not None and path.exists():
+            self._show_map(path)
+
+        else:
+            AlertPopUp("Sth. went wrong while trying to create a map or displaying it.")
 
     def __copy_category_configurations(self):
         self._selected_path: Path = self.__get_directory_path()

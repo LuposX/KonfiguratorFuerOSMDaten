@@ -9,8 +9,6 @@ from geopandas.geodataframe import GeoDataFrame
 import src.osm_configurator.model.model_constants as model_constants
 import src.osm_configurator.model.project.calculation.osm_file_format_enum as osm_file_format_enum
 
-
-
 OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_CONDA: list = ["osmium", "extract", "-b"]
 OSMIUM_STARTING_ARGS_NOT_FROZEN_VIA_BINARY: list = ["../../data/osmium/osmium.exe", "extract", "-b"]
 OSMIUM_STARTING_ARGS_FROZEN: list = ["data/osmium/osmium.exe", "extract", "-b"]
@@ -57,11 +55,10 @@ class SplitUpFile:
 
         # If the application is run as a bundle, the PyInstaller bootloader
         # extends the sys module by a flag frozen=True and sets the app
-        # path into variable _MEIPASS'.
         # noinspection PyProtectedMember
         # pylint: disable=protected-access
         is_frozen: bool = False
-        if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+        if getattr(sys, 'frozen', False):
             # check that we are on windows
             if not hasattr(sys, 'getwindowsversion'):
                 raise OSError("We don't support the Operating System you use!")
@@ -70,8 +67,15 @@ class SplitUpFile:
 
         # Split up the files
         for i in range(len(cells[model_constants.CL_GEOMETRY])):
-            child = subprocess.Popen(self.get_osmium_command_args(is_frozen, cells, i),
-                                      stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            if is_frozen:
+                child = subprocess.Popen(self.get_osmium_command_args(is_frozen, cells, i),
+                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                         creationflags=subprocess.CREATE_NO_WINDOW)
+            else:
+                child = subprocess.Popen(self.get_osmium_command_args(is_frozen, cells, i),
+                                         stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+                                         )
+
             streamdata = child.communicate()[0]
             if child.returncode != 0:
                 return False

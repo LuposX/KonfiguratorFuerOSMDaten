@@ -124,7 +124,10 @@ class Export:
         """
         zip_file_name: str = _path_with_zip_to_str(path)
         directory, filename = os.path.split(zip_file_name)
-        return self._active_project.get_data_visualizer().create_map(self._active_project.get_config_manager()
-                                                                     .get_cut_out_configuration().get_cut_out_path(), Path(directory), filename + ".html")
+        return self._active_project.get_data_visualizer().create_map(
+            self._active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path(),
+            Path(directory),
+            filename + ".html"
+        )
 
  

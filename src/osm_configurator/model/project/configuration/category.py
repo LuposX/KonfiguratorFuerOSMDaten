@@ -389,7 +389,7 @@ class Category:
                 if item.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
                     return False
                 else:
-                    # Chekcs if the element is the last element.
+                    # Checks if the element is the last element.
                     index = self._default_value_list.index(item)
                     if index == len(self._default_value_list) - 1:
                         return False

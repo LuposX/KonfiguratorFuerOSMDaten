@@ -1,0 +1,542 @@
+,osm_type,element_name,geometry,tags,category,Number of Floors,Property Area,Floor Area
+0,node,Restaurant La Cabana Espiolets,POINT (1.6652161 42.5641393),"[('amenity', 'restaurant'), ('building', 'yes'), ('name', 'Restaurant La Cabana Espiolets')]",Building,1.0,1.0,1.0
+1,area-way,Olympia Centre,POINT (1.7330729621497054 42.541599974530115),"[('addr:housenumber', '11'), ('addr:street', 'Carrer de Catalunya'), ('building', 'yes'), ('building:levels', '6'), ('name', 'Olympia Centre'), ('name:ca', 'Olympia Centre'), ('shop', 'mall')]",Building,1.0,1.0,1.0
+2,area-way,Centre Esportiu i Sociocultural,POINT (1.733245030025993 42.54470897814627),"[('addr:city', 'Pas de la Casa'), ('addr:postcode', 'AD200'), ('building', 'public'), ('name', 'Centre Esportiu i Sociocultural')]",Building,1.0,1.0,1.0
+3,area-way,PyrÃ©nÃ©es Hyper-Centre,POINT (1.7318896008710258 42.54363337594801),"[('addr:city', 'Pas de la Casa'), ('addr:postcode', 'AD200'), ('building', 'yes'), ('name', 'PyrÃ©nÃ©es Hyper-Centre'), ('shop', 'mall'), ('website', 'https://www.pyrenees.ad/'), ('wikidata', 'Q5596036'), ('wikipedia', 'ca:PyrÃ©nÃ©es Andorra')]",Building,1.0,1.0,1.0
+4,area-way,Refugi de Juclar,POINT (1.7156304341183906 42.60737756572154),"[('building', 'yes'), ('capacity', '43'), ('charge', '19â‚¬ per night'), ('description:fr', ""2019-12 : PÃ©riode de gardiennage : - DÃ©but Juin Ã  Fin septembre Services : - Restauration - Boisson - 1 espace cuisine libre accÃ¨s - 3 toilettes sÃ¨ches Ã  lâ€™extÃ©rieur du refuge (dont l'une reste ouverte quand le refuge est fermÃ©) - Douche""), ('ele', '2310'), ('email', 'refugidejuclar@gmail.com'), ('fee', 'yes'), ('mattress', 'yes'), ('name', 'Refugi de Juclar'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('payment:cash', 'only'), ('phone', '+376 678145'), ('ref', '8'), ('shelter', 'yes'), ('tourism', 'alpine_hut'), ('website', 'https://refugidejuclar.com'), ('wikidata', 'Q3931662'), ('wikipedia', 'ca:Refugi de Juclar'), ('winter_room', '6')]",Building,1.0,1.0,1.0
+5,area-way,missing,POINT (1.714098718160601 42.52570855226548),"[('building', 'yes')]",Building,1.0,1.0,1.0
+6,area-way,missing,POINT (1.6160643685338374 42.53772588254808),"[('building', 'yes')]",Building,1.0,1.0,1.0
+7,area-way,missing,POINT (1.6168057450399556 42.539249091118535),"[('building', 'yes')]",Building,1.0,1.0,1.0
+8,area-way,missing,POINT (1.6158516336683983 42.537842207789666),"[('building', 'yes')]",Building,1.0,1.0,1.0
+9,area-way,missing,POINT (1.61705410937106 42.5380145109688),"[('building', 'yes')]",Building,1.0,1.0,1.0
+10,area-way,missing,POINT (1.6167311678519918 42.53930970003635),"[('building', 'yes')]",Building,1.0,1.0,1.0
+11,area-way,missing,POINT (1.6150067717952272 42.53475360704873),"[('building', 'yes')]",Building,1.0,1.0,1.0
+12,area-way,missing,POINT (1.61562347309069 42.53788371298443),"[('building', 'yes')]",Building,1.0,1.0,1.0
+13,area-way,missing,POINT (1.6159051079036828 42.537977406018314),"[('building', 'yes')]",Building,1.0,1.0,1.0
+14,area-way,missing,POINT (1.6160307996059051 42.538324052905814),"[('building', 'yes')]",Building,1.0,1.0,1.0
+15,area-way,missing,POINT (1.6164342677292893 42.53802167905601),"[('building', 'yes')]",Building,1.0,1.0,1.0
+16,area-way,missing,POINT (1.6168182121891093 42.5380117050781),"[('building', 'yes')]",Building,1.0,1.0,1.0
+17,area-way,missing,POINT (1.6160883932573746 42.537917528563725),"[('building', 'yes')]",Building,1.0,1.0,1.0
+18,area-way,missing,POINT (1.6156281144701266 42.538050244388955),"[('building', 'yes')]",Building,1.0,1.0,1.0
+19,area-way,missing,POINT (1.6162243549742992 42.53806294448973),"[('building', 'yes')]",Building,1.0,1.0,1.0
+20,area-way,missing,POINT (1.6160590993196062 42.53805893961298),"[('building', 'yes')]",Building,1.0,1.0,1.0
+21,area-way,missing,POINT (1.625421580092178 42.53529375983581),"[('building', 'yes')]",Building,1.0,1.0,1.0
+22,area-way,missing,POINT (1.6219538891323722 42.53530918645784),"[('building', 'yes')]",Building,1.0,1.0,1.0
+23,area-way,missing,POINT (1.6219181026452245 42.53511865372407),"[('building', 'yes')]",Building,1.0,1.0,1.0
+24,area-way,missing,POINT (1.6226596283376882 42.53514408818256),"[('building', 'yes')]",Building,1.0,1.0,1.0
+25,area-way,missing,POINT (1.632865513042294 42.55302036365758),"[('building', 'yes')]",Building,1.0,1.0,1.0
+26,area-way,GrandValira Funicamp,POINT (1.6308925014359814 42.53980368328418),"[('building', 'yes'), ('name', 'GrandValira Funicamp')]",Building,1.0,1.0,1.0
+27,area-way,Refugi de l'Illa,POINT (1.6563987355729926 42.495015914743966),"[('building', 'yes'), ('capacity', '50'), ('drinking_water', 'yes'), ('ele', '2480'), ('electricity', 'solar'), ('email', 'refugidelilla@refugidelilla.ad'), ('fee', 'yes'), ('name', ""Refugi de l'Illa""), ('name:ca', ""Refugi de l'Illa""), ('name:fr', ""Refuge de l'Illa""), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('phone', '+376 775 776'), ('ref', '5'), ('tourism', 'alpine_hut'), ('website', 'www.refugidelilla.ad'), ('wikidata', 'Q3931666'), ('wikipedia', ""ca:Refugi de l'Illa"")]",Building,1.0,1.0,1.0
+28,area-way,missing,POINT (1.6362444277604815 42.48201075484681),"[('building', 'yes')]",Building,1.0,1.0,1.0
+29,area-way,missing,POINT (1.6163087913230132 42.55481337631733),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+30,area-way,missing,POINT (1.6164320602027054 42.55456547468754),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+31,area-way,missing,POINT (1.6165659491101712 42.55555448933643),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+32,area-way,missing,POINT (1.6161301528287033 42.556182929528994),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+33,area-way,missing,POINT (1.61612609493662 42.55594938363371),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+34,area-way,missing,POINT (1.61648191352304 42.55580889526666),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+35,area-way,missing,POINT (1.6281304088411532 42.55280640577804),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+36,area-way,missing,POINT (1.6280386682786585 42.55273288822427),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+37,area-way,missing,POINT (1.6376070787445107 42.5528372686662),"[('building', 'yes'), ('source', 'Bing')]",Building,1.0,1.0,1.0
+38,area-way,Ermita de Sant Jaume,POINT (1.6390205802115378 42.58091335230674),"[('amenity', 'place_of_worship'), ('building', 'yes'), ('denomination', 'catholic'), ('name', 'Ermita de Sant Jaume'), ('name:ca', 'Ermita de Sant Jaume'), ('religion', 'christian')]",Building,1.0,1.0,1.0
+39,area-way,Sant Pere del Tarter,POINT (1.653175925203175 42.5787012888372),"[('addr:city', 'El Tarter'), ('addr:postcode', 'AD100'), ('amenity', 'place_of_worship'), ('building', 'yes'), ('denomination', 'catholic'), ('name', 'Sant Pere del Tarter'), ('name:ca', 'Sant Pere del Tarter'), ('religion', 'christian'), ('wikidata', 'Q5397740'), ('wikipedia', 'ca:Sant Pere del Tarter')]",Building,1.0,1.0,1.0
+40,area-way,Sant Bartomeu de Soldeu,POINT (1.6675862444865333 42.57684725293389),"[('addr:city', 'Soldeu'), ('addr:postcode', 'AD100'), ('addr:street', 'Carretera General 2'), ('amenity', 'place_of_worship'), ('building', 'church'), ('denomination', 'catholic'), ('name', 'Sant Bartomeu de Soldeu'), ('name:ca', 'Sant Bartomeu de Soldeu'), ('religion', 'christian'), ('wikidata', 'Q5397722'), ('wikipedia', 'ca:Sant Bartomeu de Soldeu')]",Building,1.0,1.0,1.0
+41,area-way,missing,POINT (1.6840593926407943 42.60221517045868),"[('building', 'yes')]",Building,1.0,1.0,1.0
+42,area-way,missing,POINT (1.6878966499999999 42.6014838),"[('building', 'yes')]",Building,1.0,1.0,1.0
+43,area-way,missing,POINT (1.6802991956926598 42.60215883438998),"[('building', 'yes')]",Building,1.0,1.0,1.0
+44,area-way,missing,POINT (1.6805857340453352 42.60216382747645),"[('building', 'yes')]",Building,1.0,1.0,1.0
+45,area-way,missing,POINT (1.682813110344736 42.602563321580924),"[('building', 'yes')]",Building,1.0,1.0,1.0
+46,area-way,missing,POINT (1.7333309148919376 42.53270230883463),"[('building', 'yes')]",Building,1.0,1.0,1.0
+47,area-way,missing,POINT (1.7328168308845593 42.52962418660367),"[('building', 'yes')]",Building,1.0,1.0,1.0
+48,area-way,missing,POINT (1.6707740999999998 42.57417254999999),"[('building', 'yes')]",Building,1.0,1.0,1.0
+49,area-way,missing,POINT (1.653197230582566 42.582957729390586),"[('building', 'yes')]",Building,1.0,1.0,1.0
+50,area-way,missing,POINT (1.6520888607994086 42.58375676664741),"[('building', 'yes')]",Building,1.0,1.0,1.0
+51,area-way,missing,POINT (1.6759435666406126 42.5760414158169),"[('building', 'yes')]",Building,1.0,1.0,1.0
+52,area-way,missing,POINT (1.67657285 42.595138399999996),"[('building', 'yes')]",Building,1.0,1.0,1.0
+53,area-way,missing,POINT (1.718527784278515 42.553551036678535),"[('building', 'yes')]",Building,1.0,1.0,1.0
+54,area-way,missing,POINT (1.667360694178895 42.57759878561104),"[('building', 'yes')]",Building,1.0,1.0,1.0
+55,area-way,missing,POINT (1.6733346055984935 42.5755997274677),"[('building', 'yes')]",Building,1.0,1.0,1.0
+56,area-way,missing,POINT (1.62477715 42.537966499999996),"[('building', 'yes')]",Building,1.0,1.0,1.0
+57,area-way,missing,POINT (1.7169868 42.53498754999999),"[('building', 'yes'), ('wikidata', 'Q3588222'), ('wikipedia', 'fr:Ã‰metteur de Sud Radio au Pic Blanc')]",Building,1.0,1.0,1.0
+58,area-way,missing,POINT (1.7195294101751333 42.5399485683898),"[('building', 'yes'), ('building:levels', '1')]",Building,1.0,1.0,1.0
+59,area-way,missing,POINT (1.719954044904617 42.539812151679804),"[('building', 'yes'), ('building:levels', '1'), ('layer', '1')]",Building,1.0,1.0,1.0
+60,area-way,missing,POINT (1.7203841297928457 42.54035742615713),"[('building', 'yes')]",Building,1.0,1.0,1.0
+61,area-way,missing,POINT (1.7207347250504061 42.53948152893336),"[('building', 'roof'), ('building:levels', '1')]",Building,1.0,1.0,1.0
+62,area-way,missing,POINT (1.7202519579954512 42.540079779395484),"[('building', 'yes')]",Building,1.0,1.0,1.0
+63,area-way,missing,POINT (1.7198878715756676 42.54017994458364),"[('building', 'yes')]",Building,1.0,1.0,1.0
+64,area-way,missing,POINT (1.7271891897840133 42.53714112527842),"[('building', 'yes')]",Building,1.0,1.0,1.0
+65,area-way,missing,POINT (1.7267677663806833 42.5371383417833),"[('building', 'yes')]",Building,1.0,1.0,1.0
+66,area-way,missing,POINT (1.7330018203933606 42.54190601512054),"[('addr:street', 'Carrer de Catalunya'), ('building', 'yes'), ('building:levels', '5')]",Building,1.0,1.0,1.0
+67,area-way,missing,POINT (1.7320813847976197 42.543303455319204),"[('building', 'yes')]",Building,1.0,1.0,1.0
+68,area-way,missing,POINT (1.7319350937384217 42.54076128075325),"[('building', 'yes')]",Building,1.0,1.0,1.0
+69,area-way,missing,POINT (1.7306189769753755 42.54661311209727),"[('building', 'yes')]",Building,1.0,1.0,1.0
+70,area-way,missing,POINT (1.7323728286949378 42.54273694556947),"[('building', 'yes')]",Building,1.0,1.0,1.0
+71,area-way,missing,POINT (1.7334792133939896 42.541592892195084),"[('addr:street', 'Carrer de Catalunya'), ('building', 'yes'), ('building:levels', '6')]",Building,1.0,1.0,1.0
+72,area-way,missing,POINT (1.7331655685843959 42.5421171761651),"[('addr:street', 'Carrer de Catalunya'), ('building', 'yes'), ('building:levels', '5')]",Building,1.0,1.0,1.0
+73,area-way,missing,POINT (1.713795097428598 42.52589352457771),"[('building', 'yes')]",Building,1.0,1.0,1.0
+74,area-way,missing,POINT (1.6332258728578686 42.58194129894408),"[('building', 'yes')]",Building,1.0,1.0,1.0
+75,area-way,missing,POINT (1.6336513 42.58238485),"[('building', 'yes')]",Building,1.0,1.0,1.0
+76,area-way,missing,POINT (1.6332732000000003 42.5809252),"[('building', 'yes')]",Building,1.0,1.0,1.0
+77,area-way,missing,POINT (1.7133867 42.52592765),"[('building', 'yes')]",Building,1.0,1.0,1.0
+78,area-way,missing,POINT (1.7125975 42.52609030000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+79,area-way,missing,POINT (1.6332266000000004 42.581088400000006),"[('building', 'yes')]",Building,1.0,1.0,1.0
+80,area-way,missing,POINT (1.6328945175941052 42.58193122810651),"[('building', 'yes')]",Building,1.0,1.0,1.0
+81,area-way,missing,POINT (1.6332944922516897 42.582372874656784),"[('building', 'yes')]",Building,1.0,1.0,1.0
+82,area-way,missing,POINT (1.6340246243502292 42.582388308165434),"[('building', 'yes')]",Building,1.0,1.0,1.0
+83,area-way,EsglÃ©sia Sant Pere del Pas de la Casa,POINT (1.7341572842576451 42.54337050379361),"[('amenity', 'place_of_worship'), ('building', 'yes'), ('denomination', 'catholic'), ('name', 'EsglÃ©sia Sant Pere del Pas de la Casa'), ('name:ca', 'EsglÃ©sia Sant Pere del Pas de la Casa'), ('religion', 'christian')]",Building,1.0,1.0,1.0
+84,area-way,missing,POINT (1.7121699000000001 42.52719080000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+85,area-way,missing,POINT (1.6975976500000003 42.54757605),"[('building', 'yes')]",Building,1.0,1.0,1.0
+86,area-way,missing,POINT (1.6967075500000002 42.5479652),"[('building', 'yes')]",Building,1.0,1.0,1.0
+87,area-way,missing,POINT (1.6965164692939958 42.54792198345241),"[('building', 'yes')]",Building,1.0,1.0,1.0
+88,area-way,Tunel d'Envalira,POINT (1.6971508817351941 42.54902495110228),"[('access', 'yes'), ('addr:city', 'Encamp'), ('addr:postcode', 'AD200'), ('addr:street', 'Carretera General 2'), ('area', 'yes'), ('barrier', 'toll_booth'), ('building', 'yes'), ('currency:EUR', 'yes'), ('layer', '1'), ('name', ""Tunel d'Envalira""), ('payment:cards', 'yes'), ('payment:cash', 'yes')]",Building,1.0,1.0,1.0
+89,area-way,Globavia,POINT (1.6967303564562901 42.548905351420984),"[('building', 'yes'), ('name', 'Globavia'), ('office', 'yes')]",Building,1.0,1.0,1.0
+90,area-way,missing,POINT (1.7357283663545438 42.54377051608358),"[('building', 'yes')]",Building,1.0,1.0,1.0
+91,area-way,Hiper Pas II,POINT (1.7311771230964037 42.543935189861074),"[('addr:city', 'Pas de la Casa'), ('addr:housenumber', '45'), ('addr:postcode', 'AD200'), ('addr:street', 'Carrer de Sant Jordi'), ('building', 'retail'), ('name', 'Hiper Pas II'), ('phone', '+376 855740'), ('website', 'https://www.hiperpas.com/'), ('wheelchair', 'yes')]",Building,1.0,1.0,1.0
+92,area-way,Hiper Pas I,POINT (1.7323787053329915 42.54360370986039),"[('addr:city', 'Pas de la Casa'), ('addr:housenumber', '27'), ('addr:postcode', 'AD200'), ('addr:street', 'Avinguda del Consell General'), ('building', 'retail'), ('name', 'Hiper Pas I'), ('phone', '+376 855267'), ('website', 'https://www.hiperpas.com/'), ('wheelchair', 'yes')]",Building,1.0,1.0,1.0
+93,area-way,missing,POINT (1.732637429590791 42.543489882077),"[('building', 'yes')]",Building,1.0,1.0,1.0
+94,area-way,Royal Cigar,POINT (1.7324921002805087 42.543568193078144),"[('addr:housenumber', '26'), ('addr:street', 'Avinguda del Consell General'), ('building', 'retail'), ('name', 'Royal Cigar'), ('phone', '+376 856716'), ('website', 'https://www.hiperpas.com/'), ('wheelchair', 'yes')]",Building,1.0,1.0,1.0
+95,area-way,RocÃ²drom de Canillo,POINT (1.615407566666667 42.572234900000005),"[('building', 'yes'), ('name', 'RocÃ²drom de Canillo'), ('name:ca', 'RocÃ²drom de Canillo'), ('sport', 'climbing'), ('website', 'https://visitandorra.com/ca/winter/que-fer/rocodrom-de-canillo/')]",Building,1.0,1.0,1.0
+96,area-way,missing,POINT (1.6170326000000017 42.5729985),"[('building', 'yes')]",Building,1.0,1.0,1.0
+97,area-way,missing,POINT (1.6173480342989235 42.573097650718324),"[('building', 'yes')]",Building,1.0,1.0,1.0
+98,area-way,missing,POINT (1.61671399253792 42.572915618627235),"[('building', 'yes')]",Building,1.0,1.0,1.0
+99,area-way,missing,POINT (1.6613121787104534 42.54228101517911),"[('building', 'yes')]",Building,1.0,1.0,1.0
+100,area-way,missing,POINT (1.6631606113503794 42.56408826567468),"[('building', 'yes')]",Building,1.0,1.0,1.0
+101,area-way,missing,POINT (1.6822015152292182 42.56041182677008),"[('building', 'yes')]",Building,1.0,1.0,1.0
+102,area-way,missing,POINT (1.6630112499999987 42.5646741),"[('building', 'yes')]",Building,1.0,1.0,1.0
+103,area-way,missing,POINT (1.6639827499999997 42.5645674),"[('building', 'yes')]",Building,1.0,1.0,1.0
+104,area-way,missing,POINT (1.6645324999999993 42.56429864999999),"[('building', 'yes')]",Building,1.0,1.0,1.0
+105,area-way,missing,POINT (1.6652039934164293 42.56405152992666),"[('building', 'yes')]",Building,1.0,1.0,1.0
+106,area-way,Grau Roig Andorra Boutique Hotel & Spa,POINT (1.7012932946179584 42.53258354181036),"[('building', 'hotel'), ('name', 'Grau Roig Andorra Boutique Hotel & Spa'), ('stars', '4'), ('tourism', 'hotel'), ('website', 'http://www.hotelgrauroig.com'), ('wikidata', 'Q111412183')]",Building,1.0,1.0,1.0
+107,area-way,missing,POINT (1.6606085122136427 42.54260942781052),"[('building', 'yes')]",Building,1.0,1.0,1.0
+108,area-way,missing,POINT (1.7004122983699432 42.53238614848319),"[('building', 'yes')]",Building,1.0,1.0,1.0
+109,area-way,missing,POINT (1.6604037919075267 42.542236217749334),"[('building', 'yes')]",Building,1.0,1.0,1.0
+110,area-way,missing,POINT (1.6999826343160283 42.532466650322334),"[('building', 'yes')]",Building,1.0,1.0,1.0
+111,area-way,missing,POINT (1.7207524 42.5379762),"[('building', 'yes')]",Building,1.0,1.0,1.0
+112,area-way,missing,POINT (1.7207855545819555 42.537844470217436),"[('building', 'yes')]",Building,1.0,1.0,1.0
+113,area-way,missing,POINT (1.6668150010633231 42.56192500173429),"[('building', 'yes')]",Building,1.0,1.0,1.0
+114,area-way,missing,POINT (1.6849721500000001 42.5594119),"[('building', 'yes')]",Building,1.0,1.0,1.0
+115,area-way,missing,POINT (1.685312700000001 42.56011114999999),"[('building', 'yes')]",Building,1.0,1.0,1.0
+116,area-way,missing,POINT (1.6854783500000001 42.559516200000004),"[('building', 'yes')]",Building,1.0,1.0,1.0
+117,area-way,missing,POINT (1.6847862500000004 42.559623949999995),"[('building', 'yes')]",Building,1.0,1.0,1.0
+118,area-way,missing,POINT (1.684600662133865 42.55982997626478),"[('building', 'yes')]",Building,1.0,1.0,1.0
+119,area-way,missing,POINT (1.687726767256044 42.558016818831966),"[('building', 'yes')]",Building,1.0,1.0,1.0
+120,area-way,missing,POINT (1.6855841833319085 42.55991695000785),"[('building', 'yes')]",Building,1.0,1.0,1.0
+121,area-way,missing,POINT (1.6842971999999994 42.56030285000001),"[('building', 'apartments')]",Building,1.0,1.0,1.0
+122,area-way,missing,POINT (1.6863901192889252 42.55935441644902),"[('building', 'yes')]",Building,1.0,1.0,1.0
+123,area-way,missing,POINT (1.6864947315948366 42.558814769432956),"[('building', 'yes')]",Building,1.0,1.0,1.0
+124,area-way,missing,POINT (1.6852046061857053 42.55819804337415),"[('building', 'yes')]",Building,1.0,1.0,1.0
+125,area-way,missing,POINT (1.629396541217445 42.48227002306963),"[('building', 'yes')]",Building,1.0,1.0,1.0
+126,area-way,missing,POINT (1.7304445000000002 42.52719515),"[('building', 'yes')]",Building,1.0,1.0,1.0
+127,area-way,Refugi Riu dels Orris,POINT (1.6398092276563292 42.485006452753176),"[('building', 'yes'), ('capacity', '6'), ('description:fr', ""2019-12 : Solide bÃ¢tisse en pierre. Ouvert toute l'annÃ©e. Ã‰quipement intÃ©rieur : - 6 sommiers mÃ©talliques superposÃ©s - 1 table - 1 banc - Pharmacie - 1 balai/pelle""), ('fireplace', 'yes'), ('name', 'Refugi Riu dels Orris'), ('name:ca', 'Refugi Riu dels Orris'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '4'), ('stove', 'no'), ('tourism', 'wilderness_hut'), ('url', 'https://www.refuges.info/point/5444/cabane-non-gardee/Refuge-Riu-dels-Orris/'), ('website', 'https://visitandorra.com/dormir/refugio-riu-dels-orris/'), ('wikidata', 'Q18006186'), ('wikipedia', 'ca:Refugi del Riu dels Orris')]",Building,1.0,1.0,1.0
+128,area-way,missing,POINT (1.6421203459613813 42.48618643169398),"[('amenity', 'shelter'), ('building', 'yes'), ('description:fr', '2016-02 : Ã‰quipement : - 1 grande table - 2 bancs'), ('ele', '2265'), ('fireplace', 'no'), ('name:fr', 'Cabane Plat Riu del Orris'), ('shelter_type', 'weather_shelter'), ('stove', 'no'), ('website', 'https://www.refuges.info/point/5461/cabane-non-gardee/Andorre/Cabane-Plat-Riu-del-Orris/')]",Building,1.0,1.0,1.0
+129,area-way,missing,POINT (1.6877851586255335 42.52605277274009),"[('building', 'yes')]",Building,1.0,1.0,1.0
+130,area-way,El Piolet,POINT (1.6982753109789042 42.52586738047065),"[('amenity', 'restaurant'), ('building', 'yes'), ('name', 'El Piolet')]",Building,1.0,1.0,1.0
+131,area-way,Refugi d'Ensagents,POINT (1.6420704684343674 42.516999298057044),"[('amenity', 'shelter'), ('building', 'yes'), ('capacity', '8'), ('drinking_water', 'yes'), ('ele', '2420'), ('fee', 'no'), ('internet_access', 'no'), ('name', ""Refugi d'Ensagents""), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '22'), ('reservation', 'no'), ('shower', 'no'), ('start_date', '1981'), ('toilets', 'no'), ('tourism', 'wilderness_hut'), ('website', 'https://visitandorra.com/dormir/ensagents-hut/'), ('wikidata', 'Q3931670'), ('wikipedia', ""ca:Refugi dels Estanys d'Ensagents"")]",Building,1.0,1.0,1.0
+132,area-way,Refugi del SiscarÃ³,POINT (1.7059981732415346 42.59486296113449),"[('building', 'yes'), ('capacity', '10'), ('description:fr', ""2019-12 : Solide bÃ¢tisse en pierre. Ouvert toute l'annÃ©e. Se divise en 2 parties : - La partie de gauche avec 10 sommiers mÃ©talliques superposÃ©s et un poÃªle - La partie de droite, rÃ©servÃ©e au berger plus : - 1 table - 1 banc - 1 cheminÃ©e - Pharmacie""), ('ele', '2180'), ('fireplace', 'yes'), ('name', 'Refugi del SiscarÃ³'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '7'), ('stove', 'no'), ('tourism', 'wilderness_hut'), ('url', 'https://www.refuges.info/point/5419/cabane-non-gardee/Cabana-de-Siscaro/'), ('website', 'https://visitandorra.com/dormir/refugio-cabana-de-siscaro/'), ('wikidata', 'Q11945090'), ('wikipedia', 'fr:Refugi de SiscarÃ³')]",Building,1.0,1.0,1.0
+133,area-way,Segle XX,POINT (1.6378571224194751 42.58124338595529),"[('addr:city', 'Ransol'), ('addr:postcode', 'AD100'), ('building', 'yes'), ('name', 'Segle XX'), ('name:ca', 'Segle XX'), ('tourism', 'hotel')]",Building,1.0,1.0,1.0
+134,area-way,missing,POINT (1.6399239344133292 42.58065552965687),"[('building', 'residential')]",Building,1.0,1.0,1.0
+135,area-way,missing,POINT (1.6396186 42.580714650000004),"[('building', 'residential')]",Building,1.0,1.0,1.0
+136,area-way,missing,POINT (1.6393431999999988 42.580804),"[('building', 'residential')]",Building,1.0,1.0,1.0
+137,area-way,missing,POINT (1.639817729627125 42.58047450269698),"[('building', 'residential')]",Building,1.0,1.0,1.0
+138,area-way,missing,POINT (1.637708308796549 42.58146093186509),"[('addr:city', 'Ransol'), ('addr:postcode', 'AD100'), ('building', 'residential')]",Building,1.0,1.0,1.0
+139,area-way,El Saler,POINT (1.6390095569380194 42.58150192113868),"[('amenity', 'restaurant'), ('building', 'yes'), ('name', 'El Saler')]",Building,1.0,1.0,1.0
+140,area-way,Borda De L'HortÃ³,POINT (1.6376192768870177 42.579209372568386),"[('amenity', 'restaurant'), ('building', 'yes'), ('name', ""Borda De L'HortÃ³"")]",Building,1.0,1.0,1.0
+141,area-way,Hotel HimÃ laia Soldeu,POINT (1.667125591018293 42.57699623135968),"[('addr:city', 'Soldeu'), ('addr:postcode', 'AD100'), ('bar', 'yes'), ('breakfast', 'buffet'), ('building', 'hotel'), ('email', 'recepcio@hotelhimalaiasoldeu.com'), ('internet_access', 'wlan'), ('internet_access:fee', 'customers'), ('name', 'Hotel HimÃ laia Soldeu'), ('phone', '+376 878515'), ('sauna', 'yes'), ('stars', '4'), ('tourism', 'hotel'), ('website', 'https://www.hotelhimalaiasoldeu.com')]",Building,1.0,1.0,1.0
+142,area-way,Hotel Piolets Soldeu Centre,POINT (1.6671685851022104 42.57661343178806),"[('addr:city', 'Soldeu'), ('addr:postcode', 'AD100'), ('building', 'hotel'), ('building:levels', '4'), ('name', 'Hotel Piolets Soldeu Centre'), ('stars', '4'), ('tourism', 'hotel'), ('website', 'http://www.hotelpioletssoldeu.com')]",Building,1.0,1.0,1.0
+143,area-way,missing,POINT (1.6210416 42.57442155),"[('amenity', 'fuel'), ('building', 'yes')]",Building,1.0,1.0,1.0
+144,area-way,Caves Manacor,POINT (1.6419974933528334 42.57922023039863),"[('building', 'yes'), ('name', 'Caves Manacor'), ('shop', 'supermarket')]",Building,1.0,1.0,1.0
+145,area-way,RM,POINT (1.6424643685905067 42.57933874413754),"[('amenity', 'restaurant'), ('building', 'yes'), ('cuisine', 'bar&grill'), ('name', 'RM')]",Building,1.0,1.0,1.0
+146,area-way,Perfumeria Andorra,POINT (1.6411291500000003 42.5789379),"[('building', 'yes'), ('name', 'Perfumeria Andorra'), ('name:ca', 'Perfumeria Andorra'), ('shop', 'candles')]",Building,1.0,1.0,1.0
+147,area-way,missing,POINT (1.6414488652456618 42.57894571775765),"[('building', 'yes'), ('shop', 'yes')]",Building,1.0,1.0,1.0
+148,area-way,missing,POINT (1.6425029999999998 42.57970355),"[('building', 'yes'), ('shop', 'yes')]",Building,1.0,1.0,1.0
+149,area-way,Ascensor,POINT (1.6390128023152906 42.58122815193453),"[('building', 'yes'), ('name', 'Ascensor')]",Building,1.0,1.0,1.0
+150,area-way,missing,POINT (1.6146547095132882 42.58809657373988),"[('building', 'yes')]",Building,1.0,1.0,1.0
+151,area-way,Refugi de Cabana Sorda,POINT (1.6723292500000002 42.61150215),"[('building', 'yes'), ('capacity', '20'), ('ele', '2295'), ('fireplace', 'yes'), ('name', 'Refugi de Cabana Sorda'), ('name:ca', 'Refugi de Cabana Sorda'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '9'), ('stove', 'no'), ('tourism', 'wilderness_hut'), ('url', 'http://www.refuges.info/point/5412/cabane-non-gardee/Andorre/Cabana-Sorda/'), ('website', 'https://visitandorra.com/dormir/cabana-sorda-hut/'), ('wikidata', 'Q3931658'), ('wikipedia', 'ca:Refugi de Cabana Sorda')]",Building,1.0,1.0,1.0
+152,area-way,missing,POINT (1.659122449999999 42.54667909999999),"[('amenity', 'toilets'), ('building', 'yes')]",Building,1.0,1.0,1.0
+153,area-way,missing,POINT (1.6288216524006762 42.539067956884),"[('building', 'yes')]",Building,1.0,1.0,1.0
+154,area-way,missing,POINT (1.6958954499999996 42.532115299999994),"[('building', 'yes')]",Building,1.0,1.0,1.0
+155,area-way,missing,POINT (1.6335854763559878 42.5845744818111),"[('building', 'yes')]",Building,1.0,1.0,1.0
+156,area-way,missing,POINT (1.6593489957949141 42.579438596024104),"[('building', 'yes')]",Building,1.0,1.0,1.0
+157,area-way,Principat Parc - Bloc Espanya,POINT (1.6602889716492817 42.58011397934805),"[('building', 'yes'), ('name', 'Principat Parc - Bloc Espanya')]",Building,1.0,1.0,1.0
+158,area-way,missing,POINT (1.6580018736544 42.578419733588724),"[('building', 'hotel')]",Building,1.0,1.0,1.0
+159,area-way,missing,POINT (1.6576459500000003 42.57804995),"[('building', 'yes')]",Building,1.0,1.0,1.0
+160,area-way,missing,POINT (1.6625523999999998 42.5829865),"[('building', 'yes')]",Building,1.0,1.0,1.0
+161,area-way,missing,POINT (1.662648767992128 42.58323021090074),"[('building', 'yes')]",Building,1.0,1.0,1.0
+162,area-way,missing,POINT (1.6620333331128196 42.581825852557664),"[('building', 'yes')]",Building,1.0,1.0,1.0
+163,area-way,missing,POINT (1.6613571168223034 42.5823284976513),"[('building', 'yes')]",Building,1.0,1.0,1.0
+164,area-way,missing,POINT (1.6536213845187109 42.57681393004286),"[('building', 'yes')]",Building,1.0,1.0,1.0
+165,area-way,missing,POINT (1.6622184326763754 42.581952051645345),"[('building', 'yes')]",Building,1.0,1.0,1.0
+166,area-way,missing,POINT (1.658315063922104 42.57749952924898),"[('building', 'yes')]",Building,1.0,1.0,1.0
+167,area-way,missing,POINT (1.6617165500000002 42.5826524),"[('building', 'yes')]",Building,1.0,1.0,1.0
+168,area-way,missing,POINT (1.65789835 42.577981349999995),"[('building', 'yes')]",Building,1.0,1.0,1.0
+169,area-way,missing,POINT (1.662931203265632 42.58347186760727),"[('building', 'yes')]",Building,1.0,1.0,1.0
+170,area-way,missing,POINT (1.6600893661163871 42.579871852220954),"[('building', 'yes')]",Building,1.0,1.0,1.0
+171,area-way,missing,POINT (1.662351544905317 42.582771129161685),"[('building', 'yes')]",Building,1.0,1.0,1.0
+172,area-way,missing,POINT (1.6597590710394372 42.57974087324652),"[('building', 'yes')]",Building,1.0,1.0,1.0
+173,area-way,missing,POINT (1.6291535753790674 42.579002066169465),"[('building', 'yes')]",Building,1.0,1.0,1.0
+174,area-way,missing,POINT (1.6275123 42.57760025),"[('building', 'apartments')]",Building,1.0,1.0,1.0
+175,area-way,missing,POINT (1.6274771814942612 42.57789950086571),"[('building', 'yes')]",Building,1.0,1.0,1.0
+176,area-way,missing,POINT (1.6284906000000001 42.578208350000004),"[('building', 'yes')]",Building,1.0,1.0,1.0
+177,area-way,missing,POINT (1.628610872720399 42.57903800185045),"[('building', 'yes')]",Building,1.0,1.0,1.0
+178,area-way,missing,POINT (1.628837422262715 42.57828157910562),"[('building', 'yes')]",Building,1.0,1.0,1.0
+179,area-way,missing,POINT (1.6290071707461342 42.57875765366301),"[('building', 'yes')]",Building,1.0,1.0,1.0
+180,area-way,missing,POINT (1.6281616112704813 42.57901862539202),"[('building', 'yes')]",Building,1.0,1.0,1.0
+181,area-way,missing,POINT (1.6287562098517032 42.57872472571937),"[('building', 'yes')]",Building,1.0,1.0,1.0
+182,area-way,missing,POINT (1.6281256182706518 42.57878564044327),"[('building', 'yes')]",Building,1.0,1.0,1.0
+183,area-way,missing,POINT (1.6279745110241746 42.57751210182928),"[('building', 'yes')]",Building,1.0,1.0,1.0
+184,area-way,missing,POINT (1.6294550251942135 42.5789784556871),"[('building', 'yes')]",Building,1.0,1.0,1.0
+185,area-way,missing,POINT (1.6285610152203576 42.57795395290317),"[('building', 'yes')]",Building,1.0,1.0,1.0
+186,area-way,missing,POINT (1.6302049459206769 42.57901587612869),"[('building', 'yes')]",Building,1.0,1.0,1.0
+187,area-way,missing,POINT (1.6296331631569032 42.57882433580425),"[('building', 'yes')]",Building,1.0,1.0,1.0
+188,area-way,missing,POINT (1.6715545130776783 42.59236567106138),"[('building', 'yes')]",Building,1.0,1.0,1.0
+189,area-way,missing,POINT (1.6707743315160233 42.59556617292764),"[('building', 'yes')]",Building,1.0,1.0,1.0
+190,area-way,missing,POINT (1.6390580082153965 42.60089753695056),"[('building', 'yes')]",Building,1.0,1.0,1.0
+191,area-way,missing,POINT (1.6394324098952555 42.599575769430245),"[('building', 'yes')]",Building,1.0,1.0,1.0
+192,area-way,missing,POINT (1.6376439122022568 42.59514445389322),"[('building', 'yes')]",Building,1.0,1.0,1.0
+193,area-way,Refugi de la Portella,POINT (1.7204794499999991 42.5720579),"[('building', 'yes'), ('capacity', '6'), ('description:fr', ""2019-12 : Solide batisse en pierre. Ouvert toute l'annÃ©e. Equipement : - 6 sommiers mÃ©talliques superposÃ©s - 1 table - Banc - Pharmacie""), ('ele', '2240'), ('fireplace', 'yes'), ('name', 'Refugi de la Portella'), ('name:ca', 'Refugi de la Portella'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '17'), ('stove', 'no'), ('tourism', 'wilderness_hut'), ('website', 'https://visitandorra.com/dormir/refuge-de-cabana-de-la-portella/'), ('wikidata', 'Q3931667'), ('wikipedia', 'ca:Refugi de la Portella')]",Building,1.0,1.0,1.0
+194,area-way,missing,POINT (1.7206258344376293 42.57206717840147),"[('building', 'yes')]",Building,1.0,1.0,1.0
+195,area-way,missing,POINT (1.648122201555563 42.57965519945439),"[('building', 'yes')]",Building,1.0,1.0,1.0
+196,area-way,missing,POINT (1.6773009968120747 42.56798687049685),"[('building', 'yes')]",Building,1.0,1.0,1.0
+197,area-way,missing,POINT (1.6773382499999994 42.56787009999999),"[('building', 'yes')]",Building,1.0,1.0,1.0
+198,area-way,missing,POINT (1.6796456924435228 42.5984944373093),"[('building', 'yes')]",Building,1.0,1.0,1.0
+199,area-way,missing,POINT (1.6784726435611224 42.5987106331068),"[('amenity', 'place_of_worship'), ('building', 'yes'), ('denomination', 'catholic'), ('fixme', 'name'), ('religion', 'christian')]",Building,1.0,1.0,1.0
+200,area-way,missing,POINT (1.6690674 42.59132065),"[('amenity', 'reception_desk'), ('building', 'yes')]",Building,1.0,1.0,1.0
+201,area-way,missing,POINT (1.678974833648461 42.60043834893428),"[('building', 'yes')]",Building,1.0,1.0,1.0
+202,area-way,missing,POINT (1.664239897961147 42.584308666896135),"[('building', 'yes')]",Building,1.0,1.0,1.0
+203,area-way,missing,POINT (1.6763534499999997 42.59899825),"[('building', 'yes')]",Building,1.0,1.0,1.0
+204,area-way,missing,POINT (1.674317483259121 42.59652129626547),"[('building', 'yes')]",Building,1.0,1.0,1.0
+205,area-way,missing,POINT (1.6794902390708504 42.59835917680859),"[('building', 'yes')]",Building,1.0,1.0,1.0
+206,area-way,missing,POINT (1.6780902 42.598343449999994),"[('building', 'yes')]",Building,1.0,1.0,1.0
+207,area-way,missing,POINT (1.6637124999999997 42.58472404999999),"[('building', 'yes')]",Building,1.0,1.0,1.0
+208,area-way,missing,POINT (1.6759475546825733 42.59890178172949),"[('building', 'yes')]",Building,1.0,1.0,1.0
+209,area-way,missing,POINT (1.688752299999998 42.60218475),"[('building', 'yes')]",Building,1.0,1.0,1.0
+210,area-way,missing,POINT (1.6763342445459217 42.59769823152617),"[('building', 'yes')]",Building,1.0,1.0,1.0
+211,area-way,missing,POINT (1.6752169500000003 42.5989676),"[('building', 'yes')]",Building,1.0,1.0,1.0
+212,area-way,missing,POINT (1.6798150241577616 42.59992365661043),"[('building', 'yes')]",Building,1.0,1.0,1.0
+213,area-way,missing,POINT (1.6810979167773723 42.599087855104756),"[('building', 'yes')]",Building,1.0,1.0,1.0
+214,area-way,missing,POINT (1.6640704748153072 42.58522568439722),"[('building', 'yes')]",Building,1.0,1.0,1.0
+215,area-way,missing,POINT (1.6848405636114123 42.60146692455789),"[('building', 'yes')]",Building,1.0,1.0,1.0
+216,area-way,missing,POINT (1.6891298159587087 42.6025750728967),"[('building', 'yes')]",Building,1.0,1.0,1.0
+217,area-way,Restaurant Font de Ferrosins,POINT (1.6689720622439652 42.59123428386283),"[('amenity', 'restaurant'), ('building', 'yes'), ('name', 'Restaurant Font de Ferrosins')]",Building,1.0,1.0,1.0
+218,area-way,missing,POINT (1.6644308500000002 42.58402885),"[('building', 'yes')]",Building,1.0,1.0,1.0
+219,area-way,missing,POINT (1.6784132023381588 42.599840628404905),"[('building', 'yes')]",Building,1.0,1.0,1.0
+220,area-way,missing,POINT (1.6768883991729693 42.59874688082891),"[('building', 'yes')]",Building,1.0,1.0,1.0
+221,area-way,missing,POINT (1.68208159812898 42.600231638416666),"[('building', 'yes')]",Building,1.0,1.0,1.0
+222,area-way,missing,POINT (1.6701051798031348 42.5920396733131),"[('building', 'yes')]",Building,1.0,1.0,1.0
+223,area-way,missing,POINT (1.6834204019440977 42.60030422683696),"[('building', 'yes')]",Building,1.0,1.0,1.0
+224,area-way,missing,POINT (1.6793111686244473 42.59871245348343),"[('building', 'yes')]",Building,1.0,1.0,1.0
+225,area-way,missing,POINT (1.6658174687172436 42.590547796787206),"[('building', 'yes')]",Building,1.0,1.0,1.0
+226,area-way,missing,POINT (1.6657649083400674 42.588769763514094),"[('building', 'yes')]",Building,1.0,1.0,1.0
+227,area-way,missing,POINT (1.6664911999999998 42.588398299999994),"[('building', 'yes')]",Building,1.0,1.0,1.0
+228,area-way,missing,POINT (1.6655289500000001 42.587529200000006),"[('building', 'yes')]",Building,1.0,1.0,1.0
+229,area-way,missing,POINT (1.6655874 42.5877012),"[('building', 'yes')]",Building,1.0,1.0,1.0
+230,area-way,missing,POINT (1.6654251428458926 42.59076988047249),"[('building', 'yes')]",Building,1.0,1.0,1.0
+231,area-way,Refugi de Llosada,POINT (1.6471724334019249 42.548862750265236),"[('amenity', 'fast_food'), ('building', 'yes'), ('name', 'Refugi de Llosada'), ('name:ca', 'Refugi de Llosada')]",Building,1.0,1.0,1.0
+232,area-way,missing,POINT (1.6433798836711706 42.568505859835916),"[('building', 'yes')]",Building,1.0,1.0,1.0
+233,area-way,missing,POINT (1.641356533606271 42.56796735133328),"[('building', 'yes')]",Building,1.0,1.0,1.0
+234,area-way,missing,POINT (1.641813863157101 42.56813197886314),"[('building', 'yes')]",Building,1.0,1.0,1.0
+235,area-way,Refugi de Ribaescorjada,POINT (1.6407682166591944 42.565889307980555),"[('alt_name', 'Refugi de Riba Escorjada'), ('amenity', 'shelter'), ('building', 'yes'), ('capacity', '6'), ('ele', '2075'), ('fireplace', 'yes'), ('name', 'Refugi de Ribaescorjada'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '19'), ('tourism', 'wilderness_hut'), ('website', 'https://visitandorra.com/dormir/ribaescorjada-hut/'), ('wikidata', 'Q11945091'), ('wikipedia', 'ca:Refugi de Riba Escorjada')]",Building,1.0,1.0,1.0
+236,area-way,missing,POINT (1.647519300000001 42.5489247),"[('building', 'yes')]",Building,1.0,1.0,1.0
+237,area-way,missing,POINT (1.642269 42.5671467),"[('building', 'yes')]",Building,1.0,1.0,1.0
+238,area-way,missing,POINT (1.641026257412165 42.56723741661149),"[('building', 'yes')]",Building,1.0,1.0,1.0
+239,area-way,missing,POINT (1.6412992907010233 42.56709870333285),"[('building', 'yes')]",Building,1.0,1.0,1.0
+240,area-way,missing,POINT (1.641196644806104 42.56768161561019),"[('building', 'yes')]",Building,1.0,1.0,1.0
+241,area-way,missing,POINT (1.648518033234534 42.57807574221032),"[('building', 'yes')]",Building,1.0,1.0,1.0
+242,area-way,missing,POINT (1.6492883391646955 42.57785042845284),"[('building', 'yes')]",Building,1.0,1.0,1.0
+243,area-way,missing,POINT (1.650060384218186 42.57776672875036),"[('building', 'yes')]",Building,1.0,1.0,1.0
+244,area-way,missing,POINT (1.6505872066210074 42.577680931296705),"[('building', 'yes')]",Building,1.0,1.0,1.0
+245,area-way,missing,POINT (1.6494324225232408 42.57878029975613),"[('building', 'yes')]",Building,1.0,1.0,1.0
+246,area-way,missing,POINT (1.6489918301445292 42.57780798437267),"[('building', 'yes')]",Building,1.0,1.0,1.0
+247,area-way,missing,POINT (1.649817219005747 42.57861155584484),"[('building', 'yes')]",Building,1.0,1.0,1.0
+248,area-way,missing,POINT (1.6496195734430517 42.57777642168064),"[('building', 'yes')]",Building,1.0,1.0,1.0
+249,area-way,missing,POINT (1.6714564653450792 42.59298633598488),"[('building', 'yes')]",Building,1.0,1.0,1.0
+250,area-way,missing,POINT (1.6717065226453327 42.59488221979571),"[('building', 'yes')]",Building,1.0,1.0,1.0
+251,area-way,missing,POINT (1.7152845153294092 42.60730844540548),"[('access', 'yes'), ('amenity', 'toilets'), ('building', 'yes'), ('source', 'survey'), ('toilets:disposal', 'dry_toilet'), ('toilets:handwashing', 'no'), ('toilets:position', 'seated'), ('unisex', 'yes'), ('wheelchair', 'no')]",Building,1.0,1.0,1.0
+252,area-way,missing,POINT (1.7152913139022357 42.60693453069126),"[('building', 'yes')]",Building,1.0,1.0,1.0
+253,area-way,missing,POINT (1.695861499999999 42.52993295),"[('building', 'yes')]",Building,1.0,1.0,1.0
+254,area-way,Vodka Bar,POINT (1.6979854 42.5252082),"[('amenity', 'restaurant'), ('building', 'yes'), ('name', 'Vodka Bar')]",Building,1.0,1.0,1.0
+255,area-way,missing,POINT (1.6978832121977172 42.53167902354062),"[('building', 'yes')]",Building,1.0,1.0,1.0
+256,area-way,missing,POINT (1.6984465397750397 42.532439660927494),"[('building', 'yes')]",Building,1.0,1.0,1.0
+257,area-way,missing,POINT (1.698184163379615 42.532141186852265),"[('building', 'yes')]",Building,1.0,1.0,1.0
+258,area-way,missing,POINT (1.7007448048230298 42.53584212547681),"[('building', 'yes')]",Building,1.0,1.0,1.0
+259,area-way,missing,POINT (1.6490699419314674 42.579430171331474),"[('building', 'yes')]",Building,1.0,1.0,1.0
+260,area-way,Principat Parc - Bloc Central,POINT (1.6605470007307641 42.5803493909156),"[('building', 'yes'), ('name', 'Principat Parc - Bloc Central')]",Building,1.0,1.0,1.0
+261,area-way,Principat Parc - Bloc FranÃ§a,POINT (1.6608241875960454 42.58050062600535),"[('building', 'yes'), ('name', 'Principat Parc - Bloc FranÃ§a')]",Building,1.0,1.0,1.0
+262,area-way,missing,POINT (1.6980936066145504 42.549245616722125),"[('building', 'yes')]",Building,1.0,1.0,1.0
+263,area-way,missing,POINT (1.6977958 42.54953545000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+264,area-way,missing,POINT (1.6881187000000002 42.55810795000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+265,area-way,Cabana de Setut,POINT (1.6422689000000001 42.48256225),"[('building', 'yes'), ('capacity', '5'), ('description:fr', '2016-02 : Solide cabane ouverte. Pas de fenÃªtre. Sert aussi de lieu de stockage (sel pour les animaux !). Equipement : - Plancher - 5 Matelas empilÃ©s au fond de la cabane'), ('ele', '2310'), ('fireplace', 'yes'), ('name', 'Cabana de Setut'), ('name:fr', 'Cabane de Setut'), ('note', '593'), ('source', 'Association ""Refuges et cabanes des PyrÃ©nÃ©es""'), ('stove', 'no'), ('tourism', 'wilderness_hut'), ('website', 'https://www.refuges.info/point/5445/cabane-non-gardee/Andorre/Cabane-de-Setut/')]",Building,1.0,1.0,1.0
+266,area-way,missing,POINT (1.6409044500000003 42.48165049999999),"[('building', 'yes')]",Building,1.0,1.0,1.0
+267,area-way,Mountain Hostel Tarter,POINT (1.6532935014413075 42.57915163222111),"[('building', 'yes'), ('name', 'Mountain Hostel Tarter')]",Building,1.0,1.0,1.0
+268,area-way,Sport Hotel Hermitage & Spa 5*,POINT (1.670721972152222 42.575501019653906),"[('brand', 'Leading Hotels of the World'), ('building', 'hotel'), ('name', 'Sport Hotel Hermitage & Spa 5*'), ('stars', '5'), ('tourism', 'hotel'), ('website', 'https://www.hotelhermitage.sporthotels.ad')]",Building,1.0,1.0,1.0
+269,area-way,Sport Hotel,POINT (1.6702750534040787 42.57606734229554),"[('building', 'hotel'), ('name', 'Sport Hotel')]",Building,1.0,1.0,1.0
+270,area-way,Sport Hotel 4*,POINT (1.669744627669791 42.57626972432699),"[('addr:city', 'Soldeu'), ('addr:postcode', 'AD100'), ('building', 'hotel'), ('name', 'Sport Hotel 4*'), ('rooms', '148'), ('stars', '4'), ('start_date', '1987'), ('tourism', 'hotel'), ('website', 'https://www.hotelsport.sporthotels.ad'), ('wikidata', 'Q15278929'), ('wikipedia', 'en:Sport Hotel')]",Building,1.0,1.0,1.0
+271,area-way,Sporthotel Village,POINT (1.668745874547615 42.576098447629036),"[('addr:city', 'Soldeu'), ('addr:postcode', 'AD100'), ('building', 'hotel'), ('name', 'Sporthotel Village'), ('stars', '4'), ('tourism', 'hotel'), ('website', 'https://www.hotelvillage.sporthotels.ad'), ('wikidata', 'Q111412180')]",Building,1.0,1.0,1.0
+272,area-way,Hermitage Mountain Residences,POINT (1.669346086827395 42.575945717325055),"[('building', 'hotel'), ('name', 'Hermitage Mountain Residences'), ('tourism', 'hotel'), ('website', 'https://www.hmrandorra.com')]",Building,1.0,1.0,1.0
+273,area-way,Hermitage Mountain Residences,POINT (1.6696523535682315 42.57585018328207),"[('building', 'hotel'), ('name', 'Hermitage Mountain Residences')]",Building,1.0,1.0,1.0
+274,area-way,missing,POINT (1.6664490571110522 42.577056248389205),"[('building', 'yes')]",Building,1.0,1.0,1.0
+275,area-way,missing,POINT (1.6667781325376936 42.577061078841204),"[('addr:city', 'Soldeu'), ('addr:postcode', 'AD100'), ('building', 'yes')]",Building,1.0,1.0,1.0
+276,area-way,Barraca de l'Orri de Rusca,POINT (1.6971190280358919 42.558667956075794),"[('building', 'yes'), ('name', ""Barraca de l'Orri de Rusca"")]",Building,1.0,1.0,1.0
+277,area-way,missing,POINT (1.6398899395672177 42.606375285877824),"[('building', 'yes')]",Building,1.0,1.0,1.0
+278,area-way,missing,POINT (1.6383838155276305 42.60819443401578),"[('building', 'yes')]",Building,1.0,1.0,1.0
+279,area-way,missing,POINT (1.6397112 42.6074317),"[('building', 'yes')]",Building,1.0,1.0,1.0
+280,area-way,missing,POINT (1.6394529608256294 42.60600127522506),"[('building', 'yes')]",Building,1.0,1.0,1.0
+281,area-way,missing,POINT (1.6373351154393467 42.599375471328486),"[('building', 'yes')]",Building,1.0,1.0,1.0
+282,area-way,missing,POINT (1.638778062404705 42.609318966631044),"[('building', 'yes')]",Building,1.0,1.0,1.0
+283,area-way,missing,POINT (1.639547279635121 42.60792516349356),"[('building', 'yes')]",Building,1.0,1.0,1.0
+284,area-way,missing,POINT (1.6437053928835321 42.58313318183778),"[('building', 'yes')]",Building,1.0,1.0,1.0
+285,area-way,missing,POINT (1.6412368745455737 42.58230285458874),"[('building', 'yes')]",Building,1.0,1.0,1.0
+286,area-way,missing,POINT (1.6391769999999992 42.5785384),"[('building', 'industrial')]",Building,1.0,1.0,1.0
+287,area-way,missing,POINT (1.6391798499999999 42.57874625),"[('building', 'industrial')]",Building,1.0,1.0,1.0
+288,area-way,missing,POINT (1.6399769594379692 42.579546275412085),"[('building', 'yes')]",Building,1.0,1.0,1.0
+289,area-way,missing,POINT (1.6420409500000002 42.57970765),"[('building', 'yes')]",Building,1.0,1.0,1.0
+290,area-way,missing,POINT (1.643597699999999 42.5784881),"[('building', 'yes')]",Building,1.0,1.0,1.0
+291,area-way,missing,POINT (1.6415404393527677 42.57965450148003),"[('building', 'yes')]",Building,1.0,1.0,1.0
+292,area-way,L'Escala electronic store,POINT (1.7329188484149785 42.54338506236705),"[('addr:housenumber', '19'), ('addr:street', 'Avinguda del Consell General'), ('building', 'commercial'), ('name', ""L'Escala electronic store""), ('smoking', 'outside')]",Building,1.0,1.0,1.0
+293,area-way,missing,POINT (1.734110170481926 42.54212801983585),"[('building', 'yes')]",Building,1.0,1.0,1.0
+294,area-way,Hotel Cims,POINT (1.7342727405101794 42.54222328579566),"[('building', 'yes'), ('internet_access', 'wlan'), ('internet_access:fee', 'no'), ('name', 'Hotel Cims'), ('name:fr', 'HÃ´tel Cims'), ('stars', '3'), ('tourism', 'hotel')]",Building,1.0,1.0,1.0
+295,area-way,missing,POINT (1.7344258225373834 42.5422727291235),"[('building', 'yes')]",Building,1.0,1.0,1.0
+296,area-way,missing,POINT (1.734563546702054 42.54233921457947),"[('building', 'yes')]",Building,1.0,1.0,1.0
+297,area-way,Refugi de MontmalÃºs,POINT (1.6806889167884027 42.49919804928006),"[('building', 'yes'), ('capacity', '12'), ('drinking_water', 'yes'), ('ele', '2438'), ('fireplace', 'yes'), ('name', 'Refugi de MontmalÃºs'), ('name:ca', 'Refugi de MontmalÃºs'), ('name:fr', 'Refuge de Montmalus'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '20'), ('stove', 'no'), ('tourism', 'wilderness_hut'), ('website', 'https://visitandorra.com/dormir/refuge-de-montmalus/'), ('wikidata', 'Q3935695'), ('wikipedia', 'ca:Refugi de MontmalÃºs')]",Building,1.0,1.0,1.0
+298,area-way,missing,POINT (1.7330151407925711 42.54247396371603),"[('building', 'yes')]",Building,1.0,1.0,1.0
+299,area-way,Oficina de Turisme d'Encamp - Pas de la Casa,POINT (1.7341348712180478 42.54397193140845),"[('addr:city', 'Pas de la Casa'), ('addr:postcode', 'AD200'), ('addr:street', 'Avinguda del Consell General'), ('building', 'yes'), ('information', 'office'), ('name', ""Oficina de Turisme d'Encamp - Pas de la Casa""), ('tourism', 'information')]",Building,1.0,1.0,1.0
+300,area-way,missing,POINT (1.7341034142276772 42.54261147882593),"[('building', 'yes')]",Building,1.0,1.0,1.0
+301,area-way,missing,POINT (1.7335760301348921 42.542898733537946),"[('building', 'yes')]",Building,1.0,1.0,1.0
+302,area-way,missing,POINT (1.7347180610497943 42.542477907782704),"[('building', 'yes')]",Building,1.0,1.0,1.0
+303,area-way,missing,POINT (1.7348663065101606 42.54259518074702),"[('building', 'yes')]",Building,1.0,1.0,1.0
+304,area-way,missing,POINT (1.73474862715393 42.542934237360484),"[('building', 'yes')]",Building,1.0,1.0,1.0
+305,area-way,missing,POINT (1.7350524255375366 42.54276990343835),"[('building', 'yes')]",Building,1.0,1.0,1.0
+306,area-way,missing,POINT (1.735347897534181 42.542968989497744),"[('building', 'yes')]",Building,1.0,1.0,1.0
+307,area-way,missing,POINT (1.7350914832280153 42.54335762100604),"[('building', 'yes')]",Building,1.0,1.0,1.0
+308,area-way,Feda Ecoterm,POINT (1.6606104599528455 42.58133065286934),"[('addr:city', 'Soldeu'), ('addr:postcode', 'AD100'), ('building', 'industrial'), ('description', 'Electricity production site, and water warming for the village of Soldeu'), ('name', 'Feda Ecoterm')]",Building,1.0,1.0,1.0
+309,area-way,missing,POINT (1.703918959093006 42.54252674118184),"[('addr:city', 'Encamp'), ('addr:postcode', 'AD200'), ('addr:street', 'Carretera General 2'), ('building', 'service'), ('description', 'Parking for snowplowing equipment')]",Building,1.0,1.0,1.0
+310,area-way,missing,POINT (1.7308929688207306 42.544526263795),"[('building', 'yes')]",Building,1.0,1.0,1.0
+311,area-way,Bombers d'Andorra,POINT (1.730848292806764 42.54524791285962),"[('amenity', 'fire_station'), ('building', 'yes'), ('name', ""Bombers d'Andorra""), ('name:ca', ""Bombers d'Andorra"")]",Building,1.0,1.0,1.0
+312,area-way,Central de neu de Petavit,POINT (1.6972601045483027 42.531521487977344),"[('building', 'yes'), ('building:levels', '2'), ('height', '6'), ('name', 'Central de neu de Petavit')]",Building,1.0,1.0,1.0
+313,area-way,missing,POINT (1.7302501641489025 42.540959619858825),"[('building', 'yes')]",Building,1.0,1.0,1.0
+314,area-way,missing,POINT (1.7301853700824956 42.54080939617414),"[('building', 'yes')]",Building,1.0,1.0,1.0
+315,area-way,missing,POINT (1.7301171874515031 42.54065127997346),"[('building', 'yes')]",Building,1.0,1.0,1.0
+316,area-way,missing,POINT (1.730049529928351 42.540494303754556),"[('building', 'yes')]",Building,1.0,1.0,1.0
+317,area-way,missing,POINT (1.7303590234489508 42.54129370106966),"[('building', 'yes')]",Building,1.0,1.0,1.0
+318,area-way,missing,POINT (1.7305465593449534 42.541742387787714),"[('building', 'yes')]",Building,1.0,1.0,1.0
+319,area-way,missing,POINT (1.7306091820108516 42.54191831097333),"[('building', 'yes')]",Building,1.0,1.0,1.0
+320,area-way,missing,POINT (1.7306511999999998 42.54207039999999),"[('building', 'yes')]",Building,1.0,1.0,1.0
+321,area-way,missing,POINT (1.7306840500000011 42.54219620000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+322,area-way,missing,POINT (1.7307202718315156 42.54233494275984),"[('building', 'yes')]",Building,1.0,1.0,1.0
+323,area-way,missing,POINT (1.7307556283448557 42.5424704559048),"[('building', 'yes')]",Building,1.0,1.0,1.0
+324,area-way,missing,POINT (1.7309918870418461 42.54278353721049),"[('building', 'yes')]",Building,1.0,1.0,1.0
+325,area-way,missing,POINT (1.7310873 42.54238385000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+326,area-way,missing,POINT (1.7310216 42.54213335),"[('building', 'yes')]",Building,1.0,1.0,1.0
+327,area-way,missing,POINT (1.7306847353876593 42.54133324857412),"[('building', 'yes')]",Building,1.0,1.0,1.0
+328,area-way,missing,POINT (1.7307094063301693 42.54098962695945),"[('building', 'yes')]",Building,1.0,1.0,1.0
+329,area-way,missing,POINT (1.7308317811333318 42.540585383988486),"[('building', 'yes')]",Building,1.0,1.0,1.0
+330,area-way,missing,POINT (1.7309079075730645 42.54043159416688),"[('building', 'yes')]",Building,1.0,1.0,1.0
+331,area-way,missing,POINT (1.7314591895152946 42.540374185299605),"[('building', 'yes')]",Building,1.0,1.0,1.0
+332,area-way,missing,POINT (1.7311378344484658 42.54082632665175),"[('building', 'yes')]",Building,1.0,1.0,1.0
+333,area-way,missing,POINT (1.731117437456829 42.541056564930514),"[('building', 'yes')]",Building,1.0,1.0,1.0
+334,area-way,missing,POINT (1.731228011357558 42.54135301889438),"[('building', 'yes')]",Building,1.0,1.0,1.0
+335,area-way,missing,POINT (1.731243529882212 42.54161900402639),"[('building', 'yes')]",Building,1.0,1.0,1.0
+336,area-way,missing,POINT (1.7312502649998154 42.54180656628919),"[('building', 'yes')]",Building,1.0,1.0,1.0
+337,area-way,missing,POINT (1.7312897999999999 42.54208345),"[('building', 'yes')]",Building,1.0,1.0,1.0
+338,area-way,missing,POINT (1.7313417572760734 42.54234302919428),"[('building', 'yes')]",Building,1.0,1.0,1.0
+339,area-way,missing,POINT (1.7313073847854052 42.54274256892417),"[('building', 'yes')]",Building,1.0,1.0,1.0
+340,area-way,missing,POINT (1.7300613564622007 42.540263880100305),"[('building', 'yes')]",Building,1.0,1.0,1.0
+341,area-way,missing,POINT (1.7298679990318864 42.54008345529576),"[('building', 'yes')]",Building,1.0,1.0,1.0
+342,area-way,missing,POINT (1.7319407144233039 42.54243186367974),"[('building', 'yes')]",Building,1.0,1.0,1.0
+343,area-way,missing,POINT (1.7316986682098026 42.54235947168648),"[('building', 'yes')]",Building,1.0,1.0,1.0
+344,area-way,missing,POINT (1.731819439963261 42.5425384844224),"[('building', 'yes')]",Building,1.0,1.0,1.0
+345,area-way,missing,POINT (1.731821959776967 42.54272067299878),"[('building', 'yes')]",Building,1.0,1.0,1.0
+346,area-way,missing,POINT (1.7317057338465247 42.5428737454323),"[('building', 'yes')]",Building,1.0,1.0,1.0
+347,area-way,missing,POINT (1.731601964252603 42.54297562469571),"[('building', 'yes')]",Building,1.0,1.0,1.0
+348,area-way,missing,POINT (1.7315336174505942 42.54304264422907),"[('building', 'yes')]",Building,1.0,1.0,1.0
+349,area-way,missing,POINT (1.731454571888498 42.5431069295147),"[('building', 'yes')]",Building,1.0,1.0,1.0
+350,area-way,missing,POINT (1.731214171100477 42.54348139084031),"[('building', 'yes')]",Building,1.0,1.0,1.0
+351,area-way,missing,POINT (1.7311852434954527 42.54364961180471),"[('building', 'yes')]",Building,1.0,1.0,1.0
+352,area-way,missing,POINT (1.7298340499999998 42.5398619),"[('building', 'yes')]",Building,1.0,1.0,1.0
+353,area-way,missing,POINT (1.729774756277202 42.53966405490014),"[('building', 'yes')]",Building,1.0,1.0,1.0
+354,area-way,missing,POINT (1.7297634972997689 42.539419225689926),"[('building', 'yes')]",Building,1.0,1.0,1.0
+355,area-way,missing,POINT (1.6788926499999999 42.553568600000006),"[('building', 'yes')]",Building,1.0,1.0,1.0
+356,area-way,Refugi Pla de les Pedres,POINT (1.6788570964880631 42.553690621120836),"[('building', 'yes'), ('capacity', '6'), ('description:en', '2 metal beds, extra space to sleep on the floor'), ('description:fr', ""2016-03 : Couchettes en mÃ©tal et murs en pierre trÃ¨s protecteurs, une table et un poÃªle. Le refuge n'est pas accessible durant la pÃ©riode de ski car il sert Ã  remiser du matÃ©riel, et aussi de lieu de vie pour les pistards de la station.""), ('ele', '2150'), ('fireplace', 'yes'), ('name', 'Refugi Pla de les Pedres'), ('name:ca', 'Refugi Pla de les Pedres'), ('operator', ""Ministeri de Medi Ambient, Agricultura i Sostenibilitat d'Andorra""), ('operator:wikidata', 'Q65211284'), ('ref', '6'), ('stove', 'no'), ('tourism', 'wilderness_hut'), ('url', 'https://www.refuges.info/point/5473/cabane-non-gardee/Refugi-Pla-de-les-Pedres/#C22639'), ('website', 'https://visitandorra.com/dormir/pla-de-les-pedres-hut/'), ('wikidata', 'Q3935693'), ('wikipedia', 'ca:Refugi del Pla de les Pedres')]",Building,1.0,1.0,1.0
+357,area-way,missing,POINT (1.6808061884040686 42.55176413402515),"[('amenity', 'toilets'), ('building', 'yes')]",Building,1.0,1.0,1.0
+358,area-way,missing,POINT (1.6560650275517264 42.543447820907446),"[('building', 'yes')]",Building,1.0,1.0,1.0
+359,area-way,missing,POINT (1.7315701418868716 42.54156308589229),"[('building', 'yes')]",Building,1.0,1.0,1.0
+360,area-way,missing,POINT (1.7317207390458043 42.54174120787325),"[('building', 'yes')]",Building,1.0,1.0,1.0
+361,area-way,missing,POINT (1.7317862061092375 42.54218248999966),"[('building', 'yes')]",Building,1.0,1.0,1.0
+362,area-way,missing,POINT (1.73189305 42.54204060000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+363,area-way,missing,POINT (1.7320236991022762 42.5418671337822),"[('building', 'yes')]",Building,1.0,1.0,1.0
+364,area-way,missing,POINT (1.7321822 42.54165665),"[('building', 'yes')]",Building,1.0,1.0,1.0
+365,area-way,missing,POINT (1.7322781714359197 42.54152916638253),"[('building', 'yes')]",Building,1.0,1.0,1.0
+366,area-way,missing,POINT (1.732393162052315 42.54141282168227),"[('building', 'yes')]",Building,1.0,1.0,1.0
+367,area-way,missing,POINT (1.7325830825789506 42.54139573741416),"[('building', 'yes')]",Building,1.0,1.0,1.0
+368,area-way,missing,POINT (1.7327003910147663 42.54140853217431),"[('building', 'yes')]",Building,1.0,1.0,1.0
+369,area-way,missing,POINT (1.7320759998920408 42.54228363915457),"[('building', 'yes')]",Building,1.0,1.0,1.0
+370,area-way,missing,POINT (1.7321517500000012 42.54217425000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+371,area-way,missing,POINT (1.7322086999999988 42.54209844999998),"[('building', 'yes')]",Building,1.0,1.0,1.0
+372,area-way,missing,POINT (1.7322642000000008 42.5420246),"[('building', 'yes')]",Building,1.0,1.0,1.0
+373,area-way,missing,POINT (1.7323519999999994 42.541907849999994),"[('building', 'yes')]",Building,1.0,1.0,1.0
+374,area-way,missing,POINT (1.7324927182635732 42.54173966417683),"[('building', 'yes')]",Building,1.0,1.0,1.0
+375,area-way,missing,POINT (1.7326098852198792 42.54160077657653),"[('building', 'yes')]",Building,1.0,1.0,1.0
+376,area-way,missing,POINT (1.7361372557423518 42.54410396976926),"[('building', 'yes')]",Building,1.0,1.0,1.0
+377,area-way,missing,POINT (1.7361760999085987 42.54416894878654),"[('building', 'yes')]",Building,1.0,1.0,1.0
+378,area-way,missing,POINT (1.7362152457158724 42.544293942584176),"[('building', 'yes')]",Building,1.0,1.0,1.0
+379,area-way,missing,POINT (1.7363723 42.54463265),"[('building', 'yes')]",Building,1.0,1.0,1.0
+380,area-way,missing,POINT (1.7225735271699745 42.539616420965665),"[('building', 'yes')]",Building,1.0,1.0,1.0
+381,area-way,missing,POINT (1.7227244483909838 42.539573818130684),"[('building', 'yes')]",Building,1.0,1.0,1.0
+382,area-way,missing,POINT (1.697243153172627 42.548385981566426),"[('building', 'yes')]",Building,1.0,1.0,1.0
+383,area-way,missing,POINT (1.697379453130337 42.54824830774693),"[('building', 'yes')]",Building,1.0,1.0,1.0
+384,area-way,missing,POINT (1.734901187832868 42.54408276971256),"[('building', 'yes')]",Building,1.0,1.0,1.0
+385,area-way,missing,POINT (1.7345079602261257 42.54424923299317),"[('building', 'yes')]",Building,1.0,1.0,1.0
+386,area-way,missing,POINT (1.7338927852084025 42.54458043518605),"[('building', 'yes')]",Building,1.0,1.0,1.0
+387,area-way,missing,POINT (1.7341999858126007 42.544646545112606),"[('building', 'yes')]",Building,1.0,1.0,1.0
+388,area-way,missing,POINT (1.7342307500000005 42.54481795),"[('building', 'yes')]",Building,1.0,1.0,1.0
+389,area-way,missing,POINT (1.7339612480968598 42.544814516322184),"[('building', 'yes')]",Building,1.0,1.0,1.0
+390,area-way,missing,POINT (1.7331830000000001 42.54651270000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+391,area-way,missing,POINT (1.7348981064242657 42.5459136618581),"[('building', 'yes')]",Building,1.0,1.0,1.0
+392,area-way,missing,POINT (1.7347171897353364 42.54597414778546),"[('building', 'yes')]",Building,1.0,1.0,1.0
+393,area-way,missing,POINT (1.7351098583180329 42.54576086186343),"[('building', 'yes')]",Building,1.0,1.0,1.0
+394,area-way,missing,POINT (1.7348581090350763 42.54607951715834),"[('building', 'yes')]",Building,1.0,1.0,1.0
+395,area-way,missing,POINT (1.7354422578507942 42.54641554854274),"[('building', 'yes')]",Building,1.0,1.0,1.0
+396,area-way,missing,POINT (1.7352210408650464 42.54661036960742),"[('building', 'yes')]",Building,1.0,1.0,1.0
+397,area-way,missing,POINT (1.6679013817238193 42.576993203545875),"[('building', 'yes')]",Building,1.0,1.0,1.0
+398,area-way,missing,POINT (1.6676669626661198 42.577058338581125),"[('building', 'yes')]",Building,1.0,1.0,1.0
+399,area-way,missing,POINT (1.6684466000000002 42.57708135),"[('building', 'yes')]",Building,1.0,1.0,1.0
+400,area-way,missing,POINT (1.668185324014772 42.576874812995186),"[('building', 'yes')]",Building,1.0,1.0,1.0
+401,area-way,missing,POINT (1.6668956824045598 42.577348235038876),"[('building', 'yes')]",Building,1.0,1.0,1.0
+402,area-way,missing,POINT (1.6527699067881825 42.578330904905854),"[('building', 'yes'), ('highway', 'footway'), ('layer', '-1')]",Building,1.0,1.0,1.0
+403,area-way,El Tarter,POINT (1.6529712527765552 42.578343534919476),"[('building', 'yes'), ('name', 'El Tarter')]",Building,1.0,1.0,1.0
+404,area-way,missing,POINT (1.6628708713295504 42.563432188289376),"[('building', 'yes')]",Building,1.0,1.0,1.0
+405,area-way,missing,POINT (1.6644425633707134 42.562044436791744),"[('building', 'yes')]",Building,1.0,1.0,1.0
+406,area-way,Restaurant Sol i Neu Club Hermitage,POINT (1.6678380673136441 42.57607657811094),"[('amenity', 'restaurant'), ('building', 'yes'), ('name', 'Restaurant Sol i Neu Club Hermitage'), ('website', 'https://www.sporthotelsandorra.co.uk/andorra-gastronomy/restaurants/sol-i-neu-club-hermitage-restaurant.html')]",Building,1.0,1.0,1.0
+407,area-way,missing,POINT (1.6665202959607714 42.57683574350676),"[('building', 'yes'), ('tourism', 'hotel')]",Building,1.0,1.0,1.0
+408,area-way,Supermercat de la posta,POINT (1.6663141925157139 42.576920749614935),"[('building', 'yes'), ('name', 'Supermercat de la posta'), ('name:ca', 'Supermercat de la posta'), ('shop', 'convenience')]",Building,1.0,1.0,1.0
+409,area-way,Hotel Soldeu Maistre,POINT (1.6660269235708967 42.577398808427176),"[('bar', 'yes'), ('building', 'yes'), ('name', 'Hotel Soldeu Maistre'), ('outdoor_seating', 'yes'), ('phone', '+376 801963'), ('tourism', 'hotel')]",Building,1.0,1.0,1.0
+410,area-way,missing,POINT (1.6659506239049933 42.57724793052455),"[('building', 'yes')]",Building,1.0,1.0,1.0
+411,area-way,missing,POINT (1.6658957209647318 42.57752891970004),"[('building', 'yes')]",Building,1.0,1.0,1.0
+412,area-way,missing,POINT (1.6664539814686103 42.57738895339561),"[('building', 'house')]",Building,1.0,1.0,1.0
+413,area-way,missing,POINT (1.666627786176435 42.577487005123345),"[('amenity', 'restaurant'), ('building', 'yes')]",Building,1.0,1.0,1.0
+414,area-way,missing,POINT (1.6673074445819702 42.577241520514356),"[('amenity', 'restaurant'), ('building', 'yes')]",Building,1.0,1.0,1.0
+415,area-way,missing,POINT (1.6674871416656927 42.57706590439997),"[('building', 'yes')]",Building,1.0,1.0,1.0
+416,area-way,missing,POINT (1.666707402776323 42.577670088119234),"[('building', 'yes')]",Building,1.0,1.0,1.0
+417,area-way,missing,POINT (1.6662189973278083 42.57773346676281),"[('building', 'yes')]",Building,1.0,1.0,1.0
+418,area-way,missing,POINT (1.6652913191645886 42.57713064819303),"[('building', 'apartments')]",Building,1.0,1.0,1.0
+419,area-way,missing,POINT (1.6633773768896445 42.56478837522404),"[('building', 'yes')]",Building,1.0,1.0,1.0
+420,area-way,missing,POINT (1.6645048750956521 42.56460951472365),"[('building', 'yes')]",Building,1.0,1.0,1.0
+421,area-way,Park Piolets Mountain Hotel & Spa,POINT (1.663895134441947 42.57810628588046),"[('addr:city', 'Soldeu'), ('addr:housenumber', '2'), ('addr:postcode', 'AD100'), ('addr:street', 'Carretera General'), ('bar', 'yes'), ('building', 'hotel'), ('email', 'parkpiolets@parkpiolets.ad'), ('internet_access', 'wlan'), ('name', 'Park Piolets Mountain Hotel & Spa'), ('phone', '+376 871 787'), ('stars', '4'), ('tourism', 'hotel'), ('website', 'https://www.parkpiolets.com')]",Building,1.0,1.0,1.0
+422,area-way,missing,POINT (1.6633143985935848 42.577811821967295),"[('building', 'yes')]",Building,1.0,1.0,1.0
+423,area-way,missing,POINT (1.663173896795774 42.57810134035419),"[('building', 'yes')]",Building,1.0,1.0,1.0
+424,area-way,missing,POINT (1.663252415086916 42.57834074835529),"[('building', 'yes')]",Building,1.0,1.0,1.0
+425,area-way,missing,POINT (1.663509446057184 42.57862971159469),"[('building', 'yes')]",Building,1.0,1.0,1.0
+426,area-way,missing,POINT (1.6627743931042536 42.578019457199254),"[('building', 'yes')]",Building,1.0,1.0,1.0
+427,area-way,missing,POINT (1.6653993500000004 42.577334900000004),"[('building', 'yes')]",Building,1.0,1.0,1.0
+428,area-way,missing,POINT (1.6654766054344183 42.57757448806412),"[('building', 'yes')]",Building,1.0,1.0,1.0
+429,area-way,missing,POINT (1.6678157593048648 42.57664553145582),"[('building', 'yes')]",Building,1.0,1.0,1.0
+430,area-way,missing,POINT (1.668710522757138 42.576640387451555),"[('building', 'yes')]",Building,1.0,1.0,1.0
+431,area-way,missing,POINT (1.6681768 42.57706525),"[('building', 'yes')]",Building,1.0,1.0,1.0
+432,area-way,missing,POINT (1.664965364627427 42.577555038317996),"[('building', 'yes')]",Building,1.0,1.0,1.0
+433,area-way,missing,POINT (1.6644985742385279 42.578744899951054),"[('building', 'yes')]",Building,1.0,1.0,1.0
+434,area-way,missing,POINT (1.6648114073536158 42.5781507505889),"[('building', 'yes')]",Building,1.0,1.0,1.0
+435,area-way,missing,POINT (1.6644962850302927 42.57832854758858),"[('building', 'yes')]",Building,1.0,1.0,1.0
+436,area-way,missing,POINT (1.6655605572329926 42.5781995546825),"[('building', 'yes')]",Building,1.0,1.0,1.0
+437,area-way,"Gannaushians Mountain Villa, Soldeu, Grandvalira",POINT (1.6661924944741884 42.578082341505464),"[('addr:city', 'Soldeu'), ('addr:housenumber', '12'), ('addr:postcode', 'AD100'), ('addr:street', 'CamÃ­ del Port Dret'), ('building', 'house'), ('building:levels', '3'), ('name', 'Gannaushians Mountain Villa, Soldeu, Grandvalira')]",Building,1.0,1.0,1.0
+438,area-way,missing,POINT (1.6626727885324766 42.577695564333055),"[('building', 'yes')]",Building,1.0,1.0,1.0
+439,area-way,missing,POINT (1.6658835496419333 42.577785562466396),"[('building', 'yes')]",Building,1.0,1.0,1.0
+440,area-way,missing,POINT (1.6655897115901752 42.5779088383199),"[('building', 'yes')]",Building,1.0,1.0,1.0
+441,area-way,missing,POINT (1.666185799214416 42.576681782240584),"[('building', 'yes')]",Building,1.0,1.0,1.0
+442,area-way,Hotel NaudÃ­,POINT (1.6660802811992221 42.57689604094056),"[('addr:city', 'Soldeu'), ('addr:housenumber', '36'), ('addr:postcode', 'AD100'), ('addr:street', 'Carretera General'), ('building', 'hotel'), ('name', 'Hotel NaudÃ­'), ('stars', '3'), ('tourism', 'hotel'), ('website', 'http://www.hotelnaudi.com')]",Building,1.0,1.0,1.0
+443,area-way,missing,POINT (1.6292863 42.5782148),"[('building', 'yes')]",Building,1.0,1.0,1.0
+444,area-way,missing,POINT (1.6317301417801968 42.57915486291568),"[('building', 'yes')]",Building,1.0,1.0,1.0
+445,area-way,missing,POINT (1.6320158029956506 42.57897772290401),"[('building', 'yes')]",Building,1.0,1.0,1.0
+446,area-way,missing,POINT (1.6202480083896025 42.574547773044785),"[('building', 'yes')]",Building,1.0,1.0,1.0
+447,area-way,missing,POINT (1.6205836 42.57430845),"[('building', 'yes')]",Building,1.0,1.0,1.0
+448,area-way,missing,POINT (1.6293837016995882 42.57833078197356),"[('building', 'yes')]",Building,1.0,1.0,1.0
+449,area-way,missing,POINT (1.6363672499999995 42.58174865),"[('building', 'yes')]",Building,1.0,1.0,1.0
+450,area-way,missing,POINT (1.6268384499999988 42.5765582),"[('building', 'yes')]",Building,1.0,1.0,1.0
+451,area-way,missing,POINT (1.6368158242894761 42.58203524120535),"[('building', 'yes')]",Building,1.0,1.0,1.0
+452,area-way,missing,POINT (1.6335019563776119 42.57985392921172),"[('building', 'yes')]",Building,1.0,1.0,1.0
+453,area-way,missing,POINT (1.6375390793644362 42.582383789940955),"[('building', 'yes')]",Building,1.0,1.0,1.0
+454,area-way,missing,POINT (1.6367887533764365 42.582250231118294),"[('building', 'yes')]",Building,1.0,1.0,1.0
+455,area-way,missing,POINT (1.636345087100965 42.581007952838874),"[('building', 'yes')]",Building,1.0,1.0,1.0
+456,area-way,missing,POINT (1.63791165 42.58241085),"[('building', 'yes')]",Building,1.0,1.0,1.0
+457,area-way,missing,POINT (1.6351959000000005 42.58127725000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+458,area-way,missing,POINT (1.6248160172883286 42.576803203199),"[('building', 'yes')]",Building,1.0,1.0,1.0
+459,area-way,missing,POINT (1.635989871781018 42.58100495472295),"[('building', 'yes')]",Building,1.0,1.0,1.0
+460,area-way,Hotel Ransol,POINT (1.6353490420977164 42.580380338231706),"[('building', 'yes'), ('name', 'Hotel Ransol'), ('tourism', 'hotel')]",Building,1.0,1.0,1.0
+461,area-way,missing,POINT (1.7210491875109917 42.52793070735848),"[('amenity', 'cafe'), ('building', 'yes'), ('internet_access', 'wlan'), ('outdoor_seating', 'yes')]",Building,1.0,1.0,1.0
+462,area-way,missing,POINT (1.7208391287702502 42.53940946856729),"[('building', 'yes')]",Building,1.0,1.0,1.0
+463,area-way,missing,POINT (1.7340323460417717 42.54188727736776),"[('building', 'yes')]",Building,1.0,1.0,1.0
+464,area-way,missing,POINT (1.7339795187527773 42.54172326963096),"[('building', 'yes')]",Building,1.0,1.0,1.0
+465,area-way,missing,POINT (1.7339376226554901 42.54152753692),"[('building', 'yes')]",Building,1.0,1.0,1.0
+466,area-way,missing,POINT (1.7339173729571884 42.541317638074446),"[('building', 'yes')]",Building,1.0,1.0,1.0
+467,area-way,missing,POINT (1.7340130495008994 42.54069197188469),"[('building', 'yes')]",Building,1.0,1.0,1.0
+468,area-way,missing,POINT (1.7338456631585961 42.54003662778862),"[('building', 'yes')]",Building,1.0,1.0,1.0
+469,area-way,missing,POINT (1.7339591808962365 42.539464844503726),"[('building', 'yes')]",Building,1.0,1.0,1.0
+470,area-way,missing,POINT (1.7336406269215339 42.539435719340645),"[('building', 'yes')]",Building,1.0,1.0,1.0
+471,area-way,Oficina del ComÃº d'Encamp,POINT (1.733461995959862 42.542532418661416),"[('amenity', 'townhall'), ('building', 'yes'), ('name', ""Oficina del ComÃº d'Encamp""), ('name:ca', ""Oficina del ComÃº d'Encamp"")]",Building,1.0,1.0,1.0
+472,area-way,missing,POINT (1.7333768518113848 42.54330376320715),"[('building', 'yes')]",Building,1.0,1.0,1.0
+473,area-way,Hotel Kandahar,POINT (1.7320268363032665 42.54114957543364),"[('building', 'hotel'), ('name', 'Hotel Kandahar'), ('name:de', 'Hotel Kandahar'), ('name:fr', 'HÃ´tel Kandahar'), ('stars', '4'), ('tourism', 'hotel'), ('website', 'https://www.hotelkandahar.com'), ('wikidata', 'Q5911633')]",Building,1.0,1.0,1.0
+474,area-way,missing,POINT (1.73238585 42.54108480000001),"[('building', 'yes')]",Building,1.0,1.0,1.0
+475,area-way,missing,POINT (1.731525688147506 42.540927731102094),"[('building', 'yes')]",Building,1.0,1.0,1.0
+476,area-way,missing,POINT (1.7315314354074347 42.541343818962595),"[('building', 'yes')]",Building,1.0,1.0,1.0
+477,area-way,missing,POINT (1.73155575994842 42.5405518523232),"[('building', 'yes')]",Building,1.0,1.0,1.0
+478,area-way,missing,POINT (1.7579115813533408 42.56653264694879),"[('building', 'yes')]",Building,1.0,1.0,1.0
+479,area-way,missing,POINT (1.7578121684357857 42.566490353572455),"[('building', 'yes')]",Building,1.0,1.0,1.0
+480,area-way,missing,POINT (1.616480843026728 42.53547561819585),"[('building', 'yes')]",Building,1.0,1.0,1.0
+481,area-way,missing,POINT (1.6309034083202134 42.53899657764222),"[('building', 'yes')]",Building,1.0,1.0,1.0
+482,area-way,missing,POINT (1.631641932322948 42.539046501341595),"[('building', 'yes')]",Building,1.0,1.0,1.0
+483,area-way,missing,POINT (1.6328836819867927 42.53943831639702),"[('building', 'yes')]",Building,1.0,1.0,1.0
+484,area-way,missing,POINT (1.699250244835633 42.54639558221852),"[('building', 'yes')]",Building,1.0,1.0,1.0
+485,area-way,missing,POINT (1.6864144715360199 42.55682721085422),"[('building', 'yes')]",Building,1.0,1.0,1.0
+486,area-way,missing,POINT (1.6873796157375445 42.55790861536894),"[('building', 'yes')]",Building,1.0,1.0,1.0
+487,area-way,missing,POINT (1.6871673000000007 42.55790645),"[('building', 'yes')]",Building,1.0,1.0,1.0
+488,area-way,missing,POINT (1.687796360406072 42.557814107611094),"[('building', 'yes')]",Building,1.0,1.0,1.0
+489,area-way,missing,POINT (1.681774239797311 42.559034665974664),"[('building', 'yes')]",Building,1.0,1.0,1.0
+490,area-way,missing,POINT (1.6818447904797869 42.55890013166122),"[('building', 'yes')]",Building,1.0,1.0,1.0
+491,area-way,missing,POINT (1.6828854154632904 42.559481532875246),"[('building', 'yes')]",Building,1.0,1.0,1.0
+492,area-way,missing,POINT (1.6822961519653001 42.56026136726412),"[('building', 'yes')]",Building,1.0,1.0,1.0
+493,area-way,missing,POINT (1.6814921118513178 42.561588089935746),"[('building', 'yes')]",Building,1.0,1.0,1.0
+494,area-way,missing,POINT (1.6687115499999998 42.577006499999996),"[('building', 'yes')]",Building,1.0,1.0,1.0
+495,area-way,missing,POINT (1.6753903126145715 42.57604723863518),"[('building', 'yes')]",Building,1.0,1.0,1.0
+496,area-way,missing,POINT (1.675592026563705 42.57599348208927),"[('building', 'yes')]",Building,1.0,1.0,1.0
+497,area-way,missing,POINT (1.6877852 42.60165695),"[('building', 'yes')]",Building,1.0,1.0,1.0
+498,area-way,Font del Ferro,POINT (1.6371468404694856 42.5844571836218),"[('addr:city', 'El Tarter'), ('addr:housenumber', '5'), ('addr:postcode', 'AD100'), ('addr:street', 'Ctra. de Ransol'), ('brand', 'Apartaments Les Terrasses Del Tarter'), ('building', 'yes'), ('internet_access', 'wlan'), ('internet_access:fee', 'yes'), ('name', 'Font del Ferro'), ('name:ca', 'Font del Ferro'), ('rooms', '5'), ('tourism', 'hotel'), ('website', 'http://www.apartamentslesterrassesdeltarter.com/')]",Building,1.0,1.0,1.0
+499,area-way,missing,POINT (1.6154919 42.555928699999996),"[('building', 'yes')]",Building,1.0,1.0,1.0
+500,area-way,missing,POINT (1.615405290253701 42.55594207088232),"[('building', 'yes')]",Building,1.0,1.0,1.0
+501,area-way,Hotel Roc de Sant Miquel,POINT (1.6638017594532464 42.58087273638152),"[('building', 'yes'), ('contact:whatsapp', '+376 346791'), ('email', 'hotelroc@hotmail.com'), ('internet_access', 'wlan'), ('internet_access:fee', 'customers'), ('name', 'Hotel Roc de Sant Miquel'), ('payment:cash', 'yes'), ('payment:mastercard', 'yes'), ('payment:paypal', 'yes'), ('payment:visa', 'yes'), ('phone', '+376 346791'), ('tourism', 'hotel'), ('website', 'https://www.hotelroc.com/')]",Building,1.0,1.0,1.0
+502,area-way,missing,POINT (1.7355216924130794 42.54318320392431),"[('building', 'yes')]",Building,1.0,1.0,1.0
+503,area-way,missing,POINT (1.668139224088094 42.57606710588789),"[('building', 'yes')]",Building,1.0,1.0,1.0
+504,area-way,missing,POINT (1.6963578295090456 42.532453375942566),"[('building', 'yes')]",Building,1.0,1.0,1.0
+505,area-way,missing,POINT (1.7035825970991643 42.54251537574418),"[('building', 'yes')]",Building,1.0,1.0,1.0
+506,area-way,missing,POINT (1.6324005029962456 42.536955526464844),"[('building', 'farm_auxiliary')]",Building,1.0,1.0,1.0
+507,area-way,missing,POINT (1.6318865359627428 42.5365902270077),"[('building', 'yes'), ('content', 'water'), ('man_made', 'storage_tank')]",Building,1.0,1.0,1.0
+508,area-way,missing,POINT (1.631038 42.5371654),"[('building', 'yes')]",Building,1.0,1.0,1.0
+509,area-way,missing,POINT (1.6480559807919888 42.578587467589685),"[('building', 'yes')]",Building,1.0,1.0,1.0
+510,area-way,missing,POINT (1.645072737361127 42.57815122564667),"[('building', 'yes')]",Building,1.0,1.0,1.0
+511,area-way,missing,POINT (1.6536636016559039 42.57517859049397),"[('building', 'yes')]",Building,1.0,1.0,1.0
+512,area-way,missing,POINT (1.6397851834321948 42.60725471623333),"[('building', 'yes')]",Building,1.0,1.0,1.0
+513,area-way,missing,POINT (1.6397012254206824 42.60799260485605),"[('building', 'yes')]",Building,1.0,1.0,1.0
+514,area-way,missing,POINT (1.6393678862470564 42.60811248107598),"[('building', 'yes')]",Building,1.0,1.0,1.0
+515,area-way,missing,POINT (1.638688433954279 42.61025306525663),"[('building', 'yes')]",Building,1.0,1.0,1.0
+516,area-way,missing,POINT (1.6375948818223727 42.612459034752405),"[('building', 'yes')]",Building,1.0,1.0,1.0
+517,area-way,missing,POINT (1.67161555 42.592043450000006),"[('building', 'roof'), ('layer', '1')]",Building,1.0,1.0,1.0
+518,area-way,missing,POINT (1.66912855 42.591208599999995),"[('building', 'yes')]",Building,1.0,1.0,1.0
+519,area-way,missing,POINT (1.6672175358684338 42.58723975452562),"[('building', 'yes')]",Building,1.0,1.0,1.0
+520,area-way,missing,POINT (1.6669480331689746 42.58735416697261),"[('building', 'yes')]",Building,1.0,1.0,1.0
+521,area-way,missing,POINT (1.6861019214428623 42.60219944020544),"[('building', 'yes'), ('seats', '2'), ('toilets', 'yes'), ('tourism', 'information')]",Building,1.0,1.0,1.0
+522,area-way,missing,POINT (1.7155615362005532 42.53949697668508),"[('building', 'yes')]",Building,1.0,1.0,1.0
+523,area-way,missing,POINT (1.6144644952443277 42.5726447689881),"[('building', 'yes')]",Building,1.0,1.0,1.0
+524,area-way,missing,POINT (1.6146736947304001 42.572705285770525),"[('building', 'yes')]",Building,1.0,1.0,1.0
+525,area-way,missing,POINT (1.6148854549627887 42.572767831051934),"[('building', 'yes')]",Building,1.0,1.0,1.0
+526,area-way,missing,POINT (1.6150827835714596 42.57282572110307),"[('building', 'yes')]",Building,1.0,1.0,1.0
+527,area-way,Cabana Estany de la Bova,POINT (1.648817850978891 42.49079798309502),"[('amenity', 'shelter'), ('bench', 'no'), ('bin', 'no'), ('building', 'yes'), ('ele', '2425'), ('lit', 'no'), ('name', 'Cabana Estany de la Bova'), ('note', '1132'), ('shelter_type', 'weather_shelter'), ('source', 'Association ""Refuges et cabanes des PyrÃ©nÃ©es""'), ('website', 'https://www.refuges.info/point/5462/cabane-non-gardee/Andorre/Cabane-Estany-de-la-Bova/')]",Building,1.0,1.0,1.0
+528,area-way,missing,POINT (1.733896519593408 42.53683269585787),"[('building', 'yes')]",Building,1.0,1.0,1.0
+529,area-way,missing,POINT (1.7331127278894118 42.5386682436244),"[('building', 'yes')]",Building,1.0,1.0,1.0
+530,area-way,missing,POINT (1.7331107000000003 42.538858250000004),"[('building', 'yes')]",Building,1.0,1.0,1.0
+531,area-way,missing,POINT (1.7312023023696275 42.54034091732977),"[('building', 'yes')]",Building,1.0,1.0,1.0
+532,area-way,missing,POINT (1.731215366791463 42.540212750330326),"[('building', 'yes')]",Building,1.0,1.0,1.0
+533,area-way,missing,POINT (1.732363810736599 42.54356768817584),"[('building', 'yes')]",Building,1.0,1.0,1.0
+534,area-way,missing,POINT (1.7348319108684467 42.54467700123508),"[('building', 'yes')]",Building,1.0,1.0,1.0
+535,area-way,missing,POINT (1.7342427794930304 42.544519438881196),"[('building', 'yes')]",Building,1.0,1.0,1.0
+536,area-way,missing,POINT (1.732785966323413 42.54427360529949),"[('building', 'yes')]",Building,1.0,1.0,1.0
+537,area-way,missing,POINT (1.733141135087513 42.544080632312465),"[('building', 'yes')]",Building,1.0,1.0,1.0
+538,area-way,missing,POINT (1.7333277351494383 42.54405871426629),"[('building', 'yes')]",Building,1.0,1.0,1.0
+539,area-way,missing,POINT (1.7348220931595244 42.544210215122106),"[('building', 'yes')]",Building,1.0,1.0,1.0
+540,area-way,missing,POINT (1.6699861569186942 42.592209399392836),"[('building', 'yes')]",Building,1.0,1.0,1.0
