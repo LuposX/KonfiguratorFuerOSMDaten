@@ -12,11 +12,14 @@ import src.osm_configurator.view.constants.text_box_constants as text_box_consta
 
 # Other
 import customtkinter
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 if TYPE_CHECKING:
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
+
+# Finals
+ELEMENT_BORDER_DISTANCE: Final = 12
 
 
 class SettingsProjectFrame(TopLevelFrame):
@@ -53,8 +56,7 @@ class SettingsProjectFrame(TopLevelFrame):
 
         self.grid_rowconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
-        self.grid_rowconfigure(2, weight=1)
-        self.grid_rowconfigure(3, weight=1)
+        self.grid_rowconfigure(2, weight=3)
 
         self._project_name: str = ""
         self._project_description: str = ""
@@ -65,7 +67,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.header.grid(column=0, row=0, rowspan=1, columnspan=1, padx=10, pady=10)
         self._labels.append(self.header)
@@ -77,6 +79,7 @@ class SettingsProjectFrame(TopLevelFrame):
                                      fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
                                      border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
                                      text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                                     height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2)/5 - ELEMENT_BORDER_DISTANCE
                                      )
         self.project_name_box.insert(1.0, self._project_name)
         self.project_name_box.grid(column=0, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
@@ -89,7 +92,9 @@ class SettingsProjectFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value)
         self.change_project_name_button.grid(column=1, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
         self._buttons.append(self.change_project_name_button)
 
@@ -100,7 +105,8 @@ class SettingsProjectFrame(TopLevelFrame):
                                      fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
                                      border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
                                      text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
-                                     )
+                                     height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2) * (3/5) - ELEMENT_BORDER_DISTANCE,
+                                     wrap='word')
         self.description_box.insert(1.0, str(self._project_description))
         self.description_box.grid(column=0, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self._textbox.append(self.description_box)
@@ -112,7 +118,9 @@ class SettingsProjectFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value)
         self.change_description_button.grid(column=1, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self._buttons.append(self.change_description_button)
 

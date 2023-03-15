@@ -82,7 +82,9 @@ class SettingsFrame(TopLevelFrame):
                                         fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                         hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                         border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                        height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value,
+                                        width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value)
             self.change_save_button.grid(row=1, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
 
     def activate(self):

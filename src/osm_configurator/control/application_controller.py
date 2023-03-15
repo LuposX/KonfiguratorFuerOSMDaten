@@ -15,6 +15,7 @@ import src.osm_configurator.model.application.application as application
 import src.osm_configurator.view.states.main_window as main_window
 
 from definitions import PROJECT_DIR
+from multiprocessing import freeze_support
 
 from pathlib import Path
 import os
@@ -104,4 +105,5 @@ def main():
 
 
 if __name__ == '__main__':
+    freeze_support()
     main()

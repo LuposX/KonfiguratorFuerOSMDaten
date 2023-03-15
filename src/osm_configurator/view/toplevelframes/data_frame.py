@@ -5,6 +5,8 @@ from pathlib import Path
 from tkinter import filedialog
 from typing import TYPE_CHECKING, Iterable
 import customtkinter
+import os
+import sys
 
 import webbrowser
 
@@ -65,6 +67,7 @@ class DataFrame(TopLevelFrame):
             fg_color=frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value,
         )
 
+        self._selected_cut_out_path = None
         self._state_manager = state_manager
         self._data_visualization_controller: IDataVisualizationController = data_visualization_controller
         self._cut_out_controller: ICutOutController = cut_out_controller
@@ -136,6 +139,8 @@ class DataFrame(TopLevelFrame):
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                 text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
                 text_color_disabled=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
+                width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value,
+                height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value
             )
 
         # Implementing the labels
@@ -181,7 +186,7 @@ class DataFrame(TopLevelFrame):
                 corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                 fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                 text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
             )
 
         # Implementing the checkbox
@@ -253,10 +258,10 @@ class DataFrame(TopLevelFrame):
         self._selected_osm_data_path: Path = self._osm_data_controller.get_osm_data_reference()
 
         self._cut_out_selected_path_label.configure(
-            text=str(self._selected_cut_out_path)
+            text=str(self._selected_cut_out_path.stem)
         )
         self._osm_data_selected_path_label.configure(
-            text=str(self._selected_osm_data_path)
+            text=str(self._selected_osm_data_path.stem)
         )
 
     def __view_cut_out(self):
@@ -269,7 +274,9 @@ class DataFrame(TopLevelFrame):
         self._show_map(path)
 
     def __copy_category_configurations(self):
-        self._selected_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
+        self._selected_path: Path = self.__get_directory_path()
+        if self._selected_path == Path("."):
+            return
 
         if self._category_controller.check_conflicts_in_category_configuration(self._selected_path):
             if not self._category_controller.import_category_configuration(self._selected_path):
@@ -290,9 +297,9 @@ class DataFrame(TopLevelFrame):
         """
         Opens the explorer letting the user choose a file selecting the cut-out
         """
-        chosen_path: Path = self.__open_explorer(list["png"])  # TODO: insert accepted filetypes
-
-        if not chosen_path.exists():
+        chosen_path: Path = self.__get_file_path()
+        print(chosen_path)
+        if not chosen_path.exists() or chosen_path == Path("."):
             # Chosen path is invalid
             popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
             self.activate()
@@ -301,25 +308,25 @@ class DataFrame(TopLevelFrame):
         self._cut_out_controller.set_cut_out_reference(path=chosen_path)  # Gives the reference to the controller
         self._selected_cut_out_path = chosen_path  # Updates path in its own class
         self._cut_out_selected_path_label.configure(
-            text=str(chosen_path)
+            text=str(chosen_path.stem)
         )  # Updates the label showing the chosen path
 
     def __select_osm_data(self):
         """
         Opens the explorer letting the user choose a file selecting the osm-data
         """
-        chosen_path: Path = self.__open_explorer(None)  # TODO: insert accepted filetypes
+        chosen_path: Path = self.__get_file_path()
 
-        if not chosen_path.exists():
+        if not chosen_path.exists() or chosen_path == Path("."):
             # chosen path is invalid
-            popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
+            AlertPopUp("Path is incorrect, please choose a valid Path!")
             self.activate()
             return
 
         self._osm_data_controller.set_osm_data_reference(chosen_path)  # Gives the reference to the controller
         self._selected_osm_data_path = chosen_path  # Updates the path in its own class
         self._osm_data_selected_path_label.configure(
-            text=str(chosen_path)
+            text=str(chosen_path.stem)
         )  # Updates the label showing the chosen path
 
     def __edge_buildings_clicked(self):
@@ -338,18 +345,44 @@ class DataFrame(TopLevelFrame):
         worked = self._cut_out_controller.set_cut_out_mode(cut_out_mode)  # updates the cut-out-mode
 
         if not worked:
-            popup = AlertPopUp(message="Sorry, this did not work!")
+            AlertPopUp(message="Sorry, this did not work!")
             self.activate()
 
-    def __open_explorer(self, filetypes: Iterable[tuple[str, str | list[str] | tuple[str, ...]]] | None) -> Path:
+    def __get_directory_path(self) -> Path:
         """
-        Opens explorer and lets the user choose a path
+        Opens explorer and lets the user choose a path to a directory
         Returns:
             Path: The chosen path
         """
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            init_dir = os.path.dirname(sys.executable)
+        else:
+            # The application is not frozen
+            init_dir = self._project_controller.get_project_path()
+
         new_path = \
-            filedialog.askopenfilename(title="Please select Your File",
-                                       initialdir=self._project_controller.get_project_path())
+            filedialog.askdirectory(title="Please select Your Directory",
+                                    initialdir=init_dir,
+                                    )
+        return Path(new_path)
+
+    def __get_file_path(self) -> Path:
+        """
+        Opens explorer and lets the user choose a path to a file
+        Returns:
+            Path: The chosen path
+        """
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            init_dir = os.path.dirname(sys.executable)
+        else:
+            # The application is not frozen
+            init_dir = self._project_controller.get_project_path()
+            
+        new_path = filedialog.askopenfilename(title="Please select Your File",
+                                              initialdir=init_dir,
+                                              )
         return Path(new_path)
 
     def freeze(self):

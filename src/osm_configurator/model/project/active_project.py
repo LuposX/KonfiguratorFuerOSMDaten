@@ -43,7 +43,7 @@ class ActiveProject:
         calls the ProjectLoader, otherwise it creates a new project.
 
         Args:
-            project_folder (pathlib.Path): This is path pointing towards the folder, where the project is saved.
+            project_folder (pathlib.Path): This is the path pointing towards the folder, where the project is saved.
             is_newly_created (bool): This argument is true if the project is newly created, otherwise false.
             application_manager (ApplicationSettings): Needed for some settings on how we calculate.
             project_name (str): How we want to name the project.
@@ -59,7 +59,7 @@ class ActiveProject:
             project_name = os.path.basename(project_folder)
 
         self._project_io_handler: ProjectIOHandler = project_io_handler_i.ProjectIOHandler(self)
-        self._configurator_manager: ConfigurationManager = configuration_manager_i.ConfigurationManager(project_folder)
+        self._configurator_manager: ConfigurationManager = configuration_manager_i.ConfigurationManager(self.project_directory)
         self._calculation_manager: CalculationManager = \
             calculation_manager_i.CalculationManager(self._configurator_manager, application_manager)
         self._project_settings: ProjectSettings = project_settings_i.ProjectSettings(self.project_directory,
@@ -110,6 +110,7 @@ class ActiveProject:
         Returns:
             pathlib.Path: The path pointing towards the project folder.
         """
+        print(self._project_settings.get_location())
         return pathlib.Path(self._project_settings.get_location())
 
     def get_config_manager(self) -> ConfigurationManager:

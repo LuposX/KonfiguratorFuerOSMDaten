@@ -6,6 +6,7 @@ from tkinter import filedialog
 
 from pathlib import Path
 
+import sys
 import os
 
 from definitions import PROJECT_DIR
@@ -272,12 +273,17 @@ class ProjectHeadFrame(TopLevelFrame, Lockable):
 
         # Options Button
 
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            datadir = os.path.dirname(sys.executable)
+        else:
+            # The application is not frozen
+            datadir = PROJECT_DIR
         # Options Icon Used: https://www.flaticon.com/free-icon/cogwheel_44427
         options_icon: customtkinter.CTkImage = customtkinter.CTkImage(
-            light_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/options.png")),
-            dark_image=Image.open(os.path.join(PROJECT_DIR, "data/view_icons/options.png")),
-            size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH)
-        )
+            light_image=Image.open(os.path.join(datadir, "data/view_icons/options.png")),
+            dark_image=Image.open(os.path.join(datadir, "data/view_icons/options.png")),
+            size=(ICON_HEIGHT_AND_WIDTH, ICON_HEIGHT_AND_WIDTH))
 
         self._options_button: customtkinter.CTkButton = customtkinter.CTkButton(
             master=self, height=BUTTON_HEIGHT,

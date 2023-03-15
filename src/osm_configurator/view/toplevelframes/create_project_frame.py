@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import tkinter
 
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
@@ -10,13 +11,15 @@ import src.osm_configurator.view.constants.button_constants as button_constants_
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.states.state_name_enum as view_states_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
+import src.osm_configurator.view.constants.entry_constants as entry_constants_i
+import src.osm_configurator.view.constants.text_box_constants as text_box_constants_i
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 # Other
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 import customtkinter
 from pathlib import Path
 from tkinter import filedialog
@@ -26,6 +29,14 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.project_controller_interface import IProjectController
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
+
+# Finals
+ELEMENT_BORDER_DISTANCE: Final = 42
+PROJECT_NAME_ENTRY_WIDTH: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 2 - ELEMENT_BORDER_DISTANCE
+PROJECT_DESCRIPTION_WIDTH: Final = PROJECT_NAME_ENTRY_WIDTH
+
+PADY: Final = 4
+PADX: Final = 4
 
 
 class CreateProjectFrame(TopLevelFrame):
@@ -51,7 +62,7 @@ class CreateProjectFrame(TopLevelFrame):
                          width=frame_constants_i.FrameConstants.HEAD_FRAME_WIDTH.value,
                          height=frame_constants_i.FrameConstants.HEAD_FRAME_HEIGHT.value,
                          corner_radius=frame_constants_i.FrameConstants.FRAME_CORNER_RADIUS.value,
-                         fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value
+                         fg_color=frame_constants_i.FrameConstants.FULL_FRAME_FG_COLOR.value
                          )
 
         self._state_manager = state_manager
@@ -82,7 +93,7 @@ class CreateProjectFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_TITLE_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    text="Create a new Project")
         self._title_label.grid(row=0, column=0, rowspan=1, columnspan=5, sticky="NSEW",
                                pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
@@ -90,15 +101,26 @@ class CreateProjectFrame(TopLevelFrame):
 
         self.name_field = \
             customtkinter.CTkEntry(master=self,
-                                   placeholder_text="Project Name")
+                                   placeholder_text="Project Name",
+                                   corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+                                   fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+                                   text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_BIG.value,
+                                   width=int(PROJECT_NAME_ENTRY_WIDTH))
         self.name_field.grid(row=1, column=0, rowspan=1, columnspan=1)
         self._entries.append(self.name_field)
 
-        self.description_field = \
-            customtkinter.CTkEntry(master=self,
-                                   placeholder_text="Description")
+        self.description_field = customtkinter.CTkTextbox(master=self,
+                                                          width=int(PROJECT_DESCRIPTION_WIDTH),
+                                                          height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (2/7) - ELEMENT_BORDER_DISTANCE,
+                                                          corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+                                                          border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
+                                                          fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+                                                          border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+                                                          text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                                                          wrap='word')
+
         self.description_field.grid(row=2, column=0, rowspan=1, columnspan=1)
-        self._entries.append(self.description_field)
 
         self.destination_button = \
             customtkinter.CTkButton(master=self,
@@ -108,7 +130,9 @@ class CreateProjectFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
                                     )
         self.destination_button.grid(row=3, column=0, rowspan=1, columnspan=1)
         self._buttons.append(self.destination_button)
@@ -122,8 +146,11 @@ class CreateProjectFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
-        self.create_button.grid(row=4, column=3, rowspan=1, columnspan=1)
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
+                                    )
+        self.create_button.grid(row=3, column=3, rowspan=1, columnspan=1, padx=PADX)
         self._buttons.append(self.create_button)
 
         self.cancel_button = \
@@ -135,8 +162,11 @@ class CreateProjectFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_RED.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
-        self.cancel_button.grid(row=4, column=4, rowspan=1, columnspan=1)
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_BIG.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_BIG.value
+                                    )
+        self.cancel_button.grid(row=3, column=4, rowspan=1, columnspan=1, padx=PADX)
         self._buttons.append(self.cancel_button)
 
     def activate(self):
@@ -145,7 +175,7 @@ class CreateProjectFrame(TopLevelFrame):
         self._project_path: Path = self._settings_controller.get_project_default_folder()
 
         self.name_field.delete(0, tkinter.END)
-        self.description_field.delete(0, tkinter.END)
+        self.description_field.delete(1.0, "end-1c")
 
     def _choose_destination(self):
         """
@@ -182,14 +212,14 @@ class CreateProjectFrame(TopLevelFrame):
             self.__reload()  # Reloads the page
             return
 
-        if not self._project_path.exists():
+        if not os.path.exists(self._project_path):
             # No valid path chosen
             popup = AlertPopUp("No valid Path entered. Please choose a valid Path.")
             popup.mainloop()
             self.__reload()
             return
 
-        self._project_description = self.description_field.get()
+        self._project_description = self.description_field.get(1.0, "end-1c")
 
         try:
             self._project_controller.create_project(

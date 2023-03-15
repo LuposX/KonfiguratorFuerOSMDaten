@@ -3,6 +3,7 @@ from __future__ import annotations
 import pandas as pd
 import os
 from pathlib import Path
+import numpy as np
 
 from src.osm_configurator.model.project.calculation.calculation_phase_interface import ICalculationPhase
 from src.osm_configurator.model.parser.custom_exceptions.category_exception import CategoryException
@@ -91,6 +92,15 @@ def _calculate_attractivity_in_traffic_cell(cell_name: str, config_manager: Conf
                                                 config_manager.get_category_manager().get_categories())
         except CategoryException as err:
             return calculation_state_enum.CalculationState.ERROR_INVALID_CATEGORIES, err.args[0]
+
+    # Add an empty line at the end, that contains all the attractivity Attributes
+    last_entry: Dict[str, float] = {}
+    category: Category
+    for category in config_manager.get_category_manager().get_categories():
+        attractivity: AttractivityAttribute
+        for attractivity in category.get_attractivity_attributes():
+            last_entry[attractivity.get_attractivity_attribute_name()] = np.NAN
+    output_data.append(last_entry)
 
     # Save results as csv
     output_df: DataFrame = pd.DataFrame(output_data)

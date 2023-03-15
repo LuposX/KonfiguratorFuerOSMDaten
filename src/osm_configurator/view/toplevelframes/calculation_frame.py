@@ -63,6 +63,10 @@ class CalculationFrame(TopLevelFrame):
 
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
+        # The PopUp that shows, when you want to cancel the calculation, can be None
+        # if there is no PopUp currently
+        self._cancel_calculation_pop_up: YesNoPopUp | None = None
+
         # Configuring the rows and columns
 
         self.grid_rowconfigure(0, weight=1)
@@ -101,7 +105,7 @@ class CalculationFrame(TopLevelFrame):
                                    text="Choose Starting-Point",
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    )
         self.choose_starting_point_label.grid(row=0, column=0, rowspan=1, columnspan=1, padx=10, pady=10)
@@ -112,7 +116,9 @@ class CalculationFrame(TopLevelFrame):
                 fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                 hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                 border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value)
             button.grid(row=i + 1, column=0, rowspan=1, columnspan=1, padx=10, pady=30)
 
         self.cancel_button = None
@@ -274,7 +280,8 @@ class CalculationFrame(TopLevelFrame):
         Initializes the cancel process to make the process communicate with the yes-no-popup
         """
         self._state_manager.freeze_state()
-        YesNoPopUp(func=self.__cancel_calculation, message="Do You really want to cancel the Calculation?")
+        self._cancel_calculation_pop_up: YesNoPopUp = YesNoPopUp(func=self.__cancel_calculation,
+                                                                 message="Do You really want to cancel the Calculation?")
 
     def __cancel_calculation(self, cancel: bool):
         """
@@ -288,12 +295,20 @@ class CalculationFrame(TopLevelFrame):
         Args:
             cancel (bool): True, if the calculation will be canceled, false else (value from the popup)
         """
+        if self._cancel_calculation_pop_up is not None:
+            self._cancel_calculation_pop_up.destroy()
+            self._cancel_calculation_pop_up = None
+
         self._state_manager.unfreeze_state()
         if cancel:
             self._calculation_controller.cancel_calculations()
             self.__reset_calculation()
 
     def __reset_calculation(self):
+
+        if self._cancel_calculation_pop_up is not None:
+            self.__cancel_calculation(False)
+
         self._state_manager.unlock_state()
         self.__activate_buttons()
 
@@ -337,7 +352,9 @@ class CalculationFrame(TopLevelFrame):
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
                                     text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                    command=self.__cancel_calculation_init)
+                                    command=self.__cancel_calculation_init,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value)
         self.cancel_button.grid(column=1, row=3, rowspan=1, columnspan=1, padx=10, pady=10)
         self.resettable_elements.append(self.cancel_button)
 
@@ -366,7 +383,7 @@ class CalculationFrame(TopLevelFrame):
         """
         calculation_state = self._calculation_controller.get_calculation_state()
         calculation_phase = self._calculation_controller.get_current_calculation_phase()
-        calculation_progress = self._calculation_controller.get_current_calculation_process()
+        calculation_progress = self._calculation_controller.get_current_calculation_progress()
 
         if calculation_state[0] == CalculationState.CANCELED:
             return
