@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import tkinter
 
+import src.osm_configurator.view.utility_methods as utility_methods_i
+
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
@@ -116,7 +118,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         # Setting: Number of Processes
         self.path_process_header = \
             customtkinter.CTkLabel(master=self,
-                                   text="Number of Processes [Multiprocessing]",
+                                   text="Number of Processes\n[Multiprocessing]",
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
@@ -138,7 +140,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         # Info-Text
         self.process_info = \
             customtkinter.CTkLabel(master=self,
-                                   text="Warning: A high number of processes might lead to a high usage of the CPU.\n"
+                                   text="Warning: A high number of processes might\nlead to a high usage of the CPU.\n"
                                         "Only increase, when you know what you are doing",
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
@@ -177,8 +179,11 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         self._project_default_folder = self._settings_controller.get_project_default_folder()
 
+        project_default_folder_string = utility_methods_i.reformat_string(str(self._project_default_folder), 22, 3,
+                                                                          True, False, False)
+
         self.path_default_label.configure(
-            text=self._project_default_folder
+            text=project_default_folder_string
         )
 
         self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
