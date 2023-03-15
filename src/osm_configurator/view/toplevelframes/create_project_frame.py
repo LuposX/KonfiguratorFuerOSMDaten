@@ -1,11 +1,9 @@
 from __future__ import annotations
 
+import os
 import tkinter
 
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.project_controller_interface
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
-from src.osm_configurator.view.toplevelframes import main_menu_frame
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 # Constants
@@ -34,7 +32,8 @@ if TYPE_CHECKING:
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 42
-PROJECT_NAME_ENTRY_WIDTH: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 2 - ELEMENT_BORDER_DISTANCE
+PROJECT_NAME_ENTRY_WIDTH: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 2 \
+                                  - ELEMENT_BORDER_DISTANCE
 PROJECT_DESCRIPTION_WIDTH: Final = PROJECT_NAME_ENTRY_WIDTH
 
 PADY: Final = 4
@@ -48,12 +47,14 @@ class CreateProjectFrame(TopLevelFrame):
     The user can cancel the creation-process.
     """
 
-    def __init__(self, state_manager: StateManager, project_controller: IProjectController, settings_controller: ISettingsController):
+    def __init__(self, state_manager: StateManager, project_controller: IProjectController,
+                 settings_controller: ISettingsController):
         """
         This method creates a CreateProjectFrame where a user can create a new project.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to change to another State.
+            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to
+                change to another State.
             project_controller (project_controller.ProjectController): Respective controller
         """
 
@@ -96,8 +97,8 @@ class CreateProjectFrame(TopLevelFrame):
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    text="Create a new Project")
         self._title_label.grid(row=0, column=0, rowspan=1, columnspan=5, sticky="NSEW",
-                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         self.name_field = \
             customtkinter.CTkEntry(master=self,
@@ -110,14 +111,16 @@ class CreateProjectFrame(TopLevelFrame):
         self.name_field.grid(row=1, column=0, rowspan=1, columnspan=1)
         self._entries.append(self.name_field)
 
-        self.description_field = customtkinter.CTkTextbox(master=self,
-                                                          width=int(PROJECT_DESCRIPTION_WIDTH),
-                                                          height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (2/7) - ELEMENT_BORDER_DISTANCE,
-                                                          corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
-                                                          border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
-                                                          fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
-                                                          border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
-                                                          text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value)
+        self.description_field = customtkinter.CTkTextbox(
+            master=self,
+            width=int(PROJECT_DESCRIPTION_WIDTH),
+            height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (2/7) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+            border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
+            fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+            border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+            text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+            wrap='word')
 
         self.description_field.grid(row=2, column=0, rowspan=1, columnspan=1)
 
@@ -211,7 +214,7 @@ class CreateProjectFrame(TopLevelFrame):
             self.__reload()  # Reloads the page
             return
 
-        if not self._project_path.exists():
+        if not os.path.exists(self._project_path):
             # No valid path chosen
             popup = AlertPopUp("No valid Path entered. Please choose a valid Path.")
             popup.mainloop()

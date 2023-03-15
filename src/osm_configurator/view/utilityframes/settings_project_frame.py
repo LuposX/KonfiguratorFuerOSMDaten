@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import tkinter
 
-from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 # Constants
@@ -18,7 +17,6 @@ from typing import TYPE_CHECKING, Final
 if TYPE_CHECKING:
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
-    from src.osm_configurator.view.activatable import Activatable
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 12
@@ -75,13 +73,14 @@ class SettingsProjectFrame(TopLevelFrame):
         self._labels.append(self.header)
 
         self.project_name_box: customtkinter.CTkTextbox = \
-            customtkinter.CTkTextbox(master=self,
-                                     corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
-                                     border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
-                                     fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
-                                     border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
-                                     text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
-                                     height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2)/5 - ELEMENT_BORDER_DISTANCE
+            customtkinter.CTkTextbox(
+                master=self,
+                corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+                border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
+                fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+                border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+                text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2)/5 - ELEMENT_BORDER_DISTANCE
                                      )
         self.project_name_box.insert(1.0, self._project_name)
         self.project_name_box.grid(column=0, row=1, rowspan=1, columnspan=1, padx=10, pady=10)
@@ -101,14 +100,16 @@ class SettingsProjectFrame(TopLevelFrame):
         self._buttons.append(self.change_project_name_button)
 
         self.description_box: customtkinter.CTkTextbox = \
-            customtkinter.CTkTextbox(master=self,
-                                     corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
-                                     border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
-                                     fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
-                                     border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
-                                     text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
-                                     height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2) * (3/5) - ELEMENT_BORDER_DISTANCE
-                                     )
+            customtkinter.CTkTextbox(
+                master=self,
+                corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+                border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
+                fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+                border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+                text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+                height=(frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value / 2) *
+                       (3/5) - ELEMENT_BORDER_DISTANCE,
+                wrap='word')
         self.description_box.insert(1.0, str(self._project_description))
         self.description_box.grid(column=0, row=2, rowspan=1, columnspan=1, padx=10, pady=10)
         self._textbox.append(self.description_box)

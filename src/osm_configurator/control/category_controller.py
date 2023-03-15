@@ -1,14 +1,15 @@
 from __future__ import annotations
 
+import os
+
 from src.osm_configurator.control.category_controller_interface import ICategoryController
 import pathlib
+from pathlib import Path
 
 import src.osm_configurator.model.parser.category_parser as category_parser_i
 from src.osm_configurator.model.project.configuration.category_manager import CategoryManager
 from typing import TYPE_CHECKING, List
 import src.osm_configurator.model.project.configuration.category as category_i
-
-import src.osm_configurator.model.application.application_settings_default_enum as application_settings_default_enum_i
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
@@ -34,11 +35,12 @@ class CategoryController(ICategoryController):
     def check_conflicts_in_category_configuration(self, path: pathlib.Path) -> bool:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
         category_parser: CategoryParser = category_parser_i.CategoryParser()
-        new_category: Category = category_parser.parse_category_file(path)
-        if new_category is None:
-            return False
-        elif new_category.get_category_name() in category_manager.get_all_categories_names():
-            return False
+        for file in os.listdir(path):
+            new_category: Category = category_parser.parse_category_file(Path(str(os.path.join(path, file))))
+            if new_category is None:
+                return False
+            elif new_category.get_category_name() in category_manager.get_all_categories_names():
+                return False
         return True
 
     def import_category_configuration(self, path: pathlib.Path) -> bool:
@@ -52,7 +54,10 @@ class CategoryController(ICategoryController):
     def create_category(self, name: str) -> Category | None:
         category_manager: CategoryManager = self._model.get_active_project().get_config_manager().get_category_manager()
 
-        new_category: Category = category_i.Category(name)
+        try:
+            new_category: Category = category_i.Category(name)
+        except NotValidName:
+            return None
 
         if category_manager.create_category(new_category):
             return new_category

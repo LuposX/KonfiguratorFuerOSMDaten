@@ -7,10 +7,10 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
     from pathlib import Path
+
 
 class IProjectController(ABC):
     """
@@ -33,13 +33,16 @@ class IProjectController(ABC):
     def load_project(self, path: pathlib.Path) -> bool:
         """
         Loads a project
-        All relevant data of a project are verified and loaded in memory. All coming project-referring calls will be directed to the given project.
+        All relevant data of a project are verified and loaded in memory. All coming project-referring calls will be
+            directed to the given project.
 
         Args:
             path (pathlib.Path): The path to the project folder of the project, to be loaded.
 
         Returns:
-            bool: True, if the project was loaded successfully; False if an error occurred, while trying to load the project. An error happens, if the path is not pointing to a valid project folder or if the project has corrupted files.
+            bool: True, if the project was loaded successfully; False if an error occurred,
+                while trying to load the project. An error happens,
+                if the path is not pointing to a valid project folder or if the project has corrupted files.
         """
         pass
 
@@ -47,15 +50,19 @@ class IProjectController(ABC):
     def create_project(self, name: str, description: str, destination: pathlib.Path) -> bool:
         """
         Creates a new project with the given attributes and loads it.
-        The model creates a new project folder at the given destination, all relevant files are generated and the project is loaded into memory.
+        The model creates a new project folder at the given destination, all relevant files are generated
+        and the project is loaded into memory.
 
         Args:
             name (str): The name of the to-be-created project, may not contain any line-breaks.
             description (str): The description of the to-be-created project. May contain line-breaks.
-            destination (pathlib.Path): The path to the location, where the project-folder of the project should be created.
+            destination (pathlib.Path): The path to the location, where the project-folder of the project
+                should be created.
 
         Returns:
-            bool: True, if the project was created successfully; False if an error occurred. An error occurs, if the name of the project is not valid, if the destination-path is not valid or if the destination-location is already occupied.
+            bool: True, if the project was created successfully; False if an error occurred. An error occurs,
+                if the name of the project is not valid, if the destination-path is not valid or
+                if the destination-location is already occupied.
         """
         pass
 
@@ -66,7 +73,8 @@ class IProjectController(ABC):
         The currently selected project is stored on the disk. All progress made since the last saving are saved.
 
         Returns:
-            bool: True, if the project was saved successfully; False if an error occurred, while attempting to save the project or when there is no project selected.
+            bool: True, if the project was saved successfully; False if an error occurred, while attempting to
+                save the project or when there is no project selected.
         """
         pass
 
@@ -121,11 +129,11 @@ class IProjectController(ABC):
         pass
 
     @abstractmethod
-    def get_default_project_folder(self) -> Path:
+    def get_default_project_folder(self) -> pathlib.Path:
         """
         Returns the default project folder defined by the application settings.
-
         Returns:
             The Folder.
         """
         pass
+

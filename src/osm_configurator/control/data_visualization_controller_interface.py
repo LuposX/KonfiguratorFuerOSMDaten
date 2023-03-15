@@ -3,13 +3,11 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 import pathlib
-import matplotlib
 
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
-    from pathlib import Path, List
+    from typing import List
 
 
 class IDataVisualizationController(ABC):
@@ -32,12 +30,12 @@ class IDataVisualizationController(ABC):
         pass
 
     @abstractmethod
-    def generate_calculation_visualization(self) -> List[str] | None:
+    def generate_calculation_visualization(self) -> pathlib.Path | None:
         """
         Generates a graphic that visualizes the results of the calculations of the currently selected project.
 
          Returns:
-            List[str]:  A list of paths each pointing towards one boxplot image.
+            pathlib.Path: A path pointing toward the folder with the results in it.
             None: If the saving/generating of the image failed.
         """
         pass

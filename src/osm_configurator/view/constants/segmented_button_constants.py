@@ -8,7 +8,7 @@ import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 
 class SegmentedButtonConstants(Enum):
     SEGMENTED_BUTTON_CORNER_RADIUS = 8
-    SEGMENTED_BUTTON_FG_COLOR = frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value #old #CED2FC
+    SEGMENTED_BUTTON_FG_COLOR = frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value
     SEGMENTED_BUTTON_SELECTED_COLOR = ButtonConstants.BUTTON_FG_COLOR_DISABLED.value
     SEGMENTED_BUTTON_SELECTED_HOVER_COLOR = ButtonConstants.BUTTON_HOVER_COLOR.value
     SEGMENTED_BUTTON_UNSELECTED_COLOR = ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value

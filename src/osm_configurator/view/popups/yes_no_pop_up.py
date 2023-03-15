@@ -2,12 +2,10 @@ from __future__ import annotations
 
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
-import src.osm_configurator.view.constants.pop_up_constants as pop_up_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 # Other
-from typing import TYPE_CHECKING
 import customtkinter
 
 
@@ -38,6 +36,8 @@ class YesNoPopUp(customtkinter.CTkToplevel):
             fg_color=frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value,
         )
 
+        self.title("Please select")
+
         # When the PopUp is closed rather than an option selected, this method will be called!
         self.wm_protocol("WM_DELETE_WINDOW", self._pop_up_closed)
 
@@ -49,7 +49,7 @@ class YesNoPopUp(customtkinter.CTkToplevel):
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=5)
         self.grid_columnconfigure(2, weight=1)
-        self.grid_rowconfigure(0, weight=1)  # Topbar: showing nothing
+        self.grid_rowconfigure(0, weight=1)  # Top-bar: showing nothing
         self.grid_rowconfigure(1, weight=4)  # Shows the error message
         self.grid_rowconfigure(2, weight=2)  # Displays the buttons
 

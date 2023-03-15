@@ -1,8 +1,5 @@
 from __future__ import annotations
 
-import src.osm_configurator.view.toplevelframes.project_head_frame
-import src.osm_configurator.control.export_controller_interface
-
 from src.osm_configurator.view.freezable import Freezable
 
 
@@ -19,7 +16,8 @@ class ExportFrame(Freezable):
         This method creates an ExportFrame that provides the user with different export options.
 
         Args:
-            parent_frame (project_head_frame.ProjectHeadFrame): The parent of the ExportFrame is the HeadFrame where the export feature is located.
+            parent_frame (project_head_frame.ProjectHeadFrame): The parent of the ExportFrame is the HeadFrame
+                where the export feature is located.
             export_controller (export_controller.ExportController): Respective controller.
         """
         pass

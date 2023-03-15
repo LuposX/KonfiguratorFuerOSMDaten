@@ -9,4 +9,4 @@ class ViewConstants(Enum):
     keep the view running
     """
 
-    POPUPSIZE = "400x200"
+    POPUP_SIZE = "400x200"

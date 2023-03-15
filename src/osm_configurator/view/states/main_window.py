@@ -4,11 +4,9 @@ import customtkinter
 
 import screeninfo
 
-import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
-
 import src.osm_configurator.view.constants.main_window_constants as main_window_constants_i
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import Final
@@ -17,7 +15,6 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.project_controller_interface import IProjectController
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
-    from src.osm_configurator.control.application_controller import ApplicationController
     from src.osm_configurator.control.calculation_controller_interface import ICalculationController
     from src.osm_configurator.control.cut_out_controller_interface import ICutOutController
     from src.osm_configurator.control.data_visualization_controller_interface import IDataVisualizationController
@@ -28,7 +25,7 @@ if TYPE_CHECKING:
     from src.osm_configurator.view.states.positioned_frame import PositionedFrame
     from screeninfo import Monitor
 
-# Final Variablen
+# Final Variables
 TOP_ROW_WEIGHT: Final = 1
 BOTTOM_ROW_WEIGHT: Final = 1
 MIDDLE_ROW_WEIGHT: Final = 10
@@ -58,7 +55,8 @@ class MainWindow(customtkinter.CTk):
             aggregation_controller (aggregation_controller.AggregationController): Respective controller.
             calculation_controller (calculation_controller.CalculationController): Respective controller.
             cut_out_controller (cut_out_controller.CutOutController): Respective controller.
-            data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller.
+            data_visualization_controller (data_visualization_controller.DataVisualizationController):
+                Respective controller.
             osm_data_controller (osm_data_controller.OSMDataController): Respective controller.
         """
         # Creating the mainWindow and setting its position, and making it resizable
@@ -66,7 +64,7 @@ class MainWindow(customtkinter.CTk):
         self.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
 
         # Selecting the primary Monitor to get accurate location for centering the window
-        primary_monitor: Monitor = None
+        primary_monitor: Monitor | None = None
         monitor: Monitor
         for monitor in screeninfo.get_monitors():
             if monitor.is_primary:
@@ -86,7 +84,7 @@ class MainWindow(customtkinter.CTk):
                      main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT_MINIMUM.value)
         self.resizable(True, True)
 
-        # Configurating the grid for the Application
+        # Configuration of the grid for the Application
         self.grid_columnconfigure(0, weight=COLUM_WEIGHT)
         self.grid_rowconfigure(0, weight=TOP_ROW_WEIGHT)
         self.grid_rowconfigure(1, weight=MIDDLE_ROW_WEIGHT)
@@ -169,7 +167,8 @@ class MainWindow(customtkinter.CTk):
 
         return True
 
-    def _make_invisible(self, state: State | None) -> bool:
+    @staticmethod
+    def _make_invisible(state: State | None) -> bool:
         """
         This method removes a given State from the MainWindow, so it cant be seen or interacted with anymore.
 
@@ -191,6 +190,4 @@ class MainWindow(customtkinter.CTk):
         return True
 
     def _window_closed(self):
-
-
         self.destroy()

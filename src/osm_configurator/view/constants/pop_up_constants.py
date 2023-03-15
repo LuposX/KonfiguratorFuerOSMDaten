@@ -7,5 +7,4 @@ class PopUpConstants(Enum):
     """
     Constants fpr PopUps
     """
-
-    POPUPSIZE = "400x200"
+    POPUP_SIZE = "400x200"

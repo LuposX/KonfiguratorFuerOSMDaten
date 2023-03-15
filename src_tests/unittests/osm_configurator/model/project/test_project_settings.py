@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import shutil
 
+from src.osm_configurator.model.application.application import Application
 from src.osm_configurator.model.project.active_project import ActiveProject
 from src.osm_configurator.model.project.calculation import file_deletion
 from src.osm_configurator.model.project.calculation.file_deletion import FileDeletion
@@ -52,3 +53,13 @@ class TestProjectSettings:
                                                             "TestName", "TestDescription")
         assert not project_settings.set_location(Path(os.path.join(TEST_DIR, "build/Projects/Other")))
         assert project_settings.get_location() == Path(os.path.join(TEST_DIR, "build/Projects/TestName"))
+
+    def test_change_location(self):
+        test_folder_path: Path = Path(os.path.join(TEST_DIR, "build/use_cases"))
+        self.application: Application = Application()
+        self.application.create_project("Project23", "This project is to test!", test_folder_path)
+        assert Path(self.application.get_active_project().get_project_settings().get_location()) == Path(os.path.join(TEST_DIR, "build/use_cases/Project23"))
+        assert self.application.get_active_project().get_project_settings().change_location(Path(os.path.join(TEST_DIR, "build/export")))
+        assert Path(self.application.get_active_project().get_project_settings().get_location()) == Path(os.path.join(TEST_DIR, "build/export/Project23"))
+        self.application.get_active_project().get_project_settings().change_location(test_folder_path)
+
