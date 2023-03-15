@@ -23,13 +23,17 @@ class AggregationController(IAggregationController):
         self._model: IApplication = model
 
     def get_aggregation_methods(self) -> list[AggregationMethod]:
-        _aggregation_configurator: AggregationConfiguration = self._model.get_active_project().get_config_manager().get_aggregation_configuration()
-        return _aggregation_configurator.get_all_aggregation_methods()
+        self._aggregation_configurator: AggregationConfiguration = self._model.get_active_project().\
+            get_config_manager().get_aggregation_configuration()
+        return self._aggregation_configurator.get_all_aggregation_methods()
 
     def is_aggregation_method_active(self, method: AggregationMethod) -> bool:
-        _aggregation_configurator: AggregationConfiguration = self._model.get_active_project().get_config_manager().get_aggregation_configuration()
-        return _aggregation_configurator.is_aggregation_method_active(method)
+        _aggregation_configurator: AggregationConfiguration = self._model.get_active_project().\
+            get_config_manager().get_aggregation_configuration()
+        return self._aggregation_configurator.is_aggregation_method_active(method)
 
     def set_aggregation_method_active(self, method: AggregationMethod, active: bool) -> bool:
-        _aggregation_configurator: AggregationConfiguration = self._model.get_active_project().get_config_manager().get_aggregation_configuration()
+        _aggregation_configurator: AggregationConfiguration = self._model.get_active_project().\
+            get_config_manager().get_aggregation_configuration()
         return _aggregation_configurator.set_aggregation_method_active(method, active)
+        

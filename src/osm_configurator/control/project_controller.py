@@ -9,10 +9,9 @@ from typing import TYPE_CHECKING
 from src.osm_configurator.model.application.application_settings_default_enum import ApplicationSettingsDefault
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.application.passive_project import PassiveProject
     from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-    from src.osm_configurator.model.application.application import Application
+    from src.osm_configurator.model.application.application_interface import IApplication
     from pathlib import Path
 
 
@@ -26,7 +25,7 @@ class ProjectController(IProjectController):
         Args:
             model (application_interface.IApplication): The interface which is used to communicate with the model.
         """
-        self._model: Application = model
+        self._model: IApplication = model
 
     def get_project_path(self) -> Path:
         return self._model.get_active_project().get_project_path()

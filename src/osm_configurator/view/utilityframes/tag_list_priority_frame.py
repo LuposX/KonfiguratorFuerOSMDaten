@@ -279,7 +279,7 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
         self._last_pressed_entry_button: customtkinter.CTkButton = self._entry_button_list[button_id]
 
         # telling parent what entry was pressed
-        # since buttons and entries in the id, we can just use the button_id to find it
+        # since buttons and entries align in their id, we can just use the button_id to find it
         self._parent.load_entry(self._entries[button_id])
 
     def _add_entry_to_list(self, entry: default_value_entry_i.DefaultValueEntry):
@@ -380,7 +380,7 @@ class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
 
     def unfreeze(self):
         """
-        If this method is called, the frame returns into its previous intractable state.
+        If this method is called, the frame returns into its previous interactable state.
         """
         if self._frozen:
             # First activating everything

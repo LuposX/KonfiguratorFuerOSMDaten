@@ -7,12 +7,9 @@ import os
 import sys
 from definitions import PROJECT_DIR
 
-import src.osm_configurator.view.states.state_manager as state_manager_i
-import src.osm_configurator.control.project_controller_interface
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.states.state as state_i
-import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
@@ -45,7 +42,8 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         This method creates a ProjectFootFrame that lets the user navigate the pipeline by going left or right.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to switch states.
+            state_manager (state_manager.StateManager): The StateManager the frame will call,
+                if it wants to switch states.
             project_controller (project_controller.ProjectController): Respective controller
         """
         # Starting with no master
@@ -82,7 +80,8 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
 
         # Making all the Buttons.
         # Left Arrow.
-        # Arrow Used: https://www.flaticon.com/free-icon/right-arrow_626053?term=arrow+right&page=1&position=85&origin=search&related_id=626053
+        # Arrow Used:
+        # https://www.flaticon.com/free-icon/right-arrow_626053?term=arrow+right&page=1&position=85&origin=search&related_id=626053
         left_arrow_icon: customtkinter.CTkImage = customtkinter.CTkImage(
             light_image=Image.open(os.path.join(datadir, "data/view_icons/arrow_left.png")),
             dark_image=Image.open(os.path.join(datadir, "data/view_icons/arrow_left.png")),
@@ -153,11 +152,14 @@ class ProjectFootFrame(TopLevelFrame, Lockable):
         # Getting what is the current state
         current_state: state_i.State = self._state_manager.get_state()
 
-        # Activating all buttons, so they don't all end up beeing disabled
+        # Activating all buttons, so they don't all end up being disabled
         button: customtkinter.CTkButton
         for button in self._button_list:
-            button.configure(state=tkinter.NORMAL, fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value)
+            button.configure(
+                state=tkinter.NORMAL,
+                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+            )
 
         # If there is no default left, the left arrow is disabled
         if current_state.get_default_left() is None:

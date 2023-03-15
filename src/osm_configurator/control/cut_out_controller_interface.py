@@ -7,7 +7,6 @@ import pathlib
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
 
 
@@ -36,7 +35,8 @@ class ICutOutController(ABC):
             mode (cut_out_mode_enum.CutOutMode): The mode to be set.
 
         Returns:
-            bool: True, if the CutOutMode was set successfully; False, if an error occurred or no project is currently selected.
+            bool: True, if the CutOutMode was set successfully;
+                False, if an error occurred or no project is currently selected.
         """
         pass
 
@@ -50,13 +50,14 @@ class ICutOutController(ABC):
             path (pathlib.Path): The path to the file containing the cut-out-geometries.
 
         Returns:
-            bool: True, if the reference was set successfully; False, if an error occurred. An error occurs, if no project is currently selected or if the given path is not valid or occupied.
+            bool: True, if the reference was set successfully; False, if an error occurred. An error occurs,
+                if no project is currently selected or if the given path is not valid or occupied.
         """
         pass
 
     @abstractmethod
     def get_cut_out_reference(self) -> pathlib.Path:
-        """"
+        """
         Gets the reference to the cut-out file of the currently selected project.
 
         Returns:

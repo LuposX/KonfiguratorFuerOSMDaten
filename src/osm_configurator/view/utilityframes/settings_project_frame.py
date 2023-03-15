@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import tkinter
 
-from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 # Constants
@@ -18,7 +17,6 @@ from typing import TYPE_CHECKING, Final
 if TYPE_CHECKING:
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
-    from src.osm_configurator.view.activatable import Activatable
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 12

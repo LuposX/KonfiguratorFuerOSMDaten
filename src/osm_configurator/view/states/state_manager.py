@@ -2,18 +2,15 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
-from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
-from src.osm_configurator.view.states.state import State
-
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
-
 import src.osm_configurator.view.toplevelframes.lockable as lockable_i
+
+from src.osm_configurator.view.states.state import State
 
 if TYPE_CHECKING:
     from typing import Final
     from src.osm_configurator.view.states.state_name_enum import StateName
-    from src.osm_configurator.view.states.state import State
     from src.osm_configurator.view.states.positioned_frame import PositionedFrame
     from src.osm_configurator.view.states.main_window import MainWindow
     from src.osm_configurator.control.aggregation_controller_interface import IAggregationController
@@ -519,7 +516,7 @@ class StateManager:
 
     def freeze_state(self):
         """
-        This method freezes all frames that are currently active, and making then not intractable anymore.
+        This method freezes all frames that are currently active, and making then not interactable anymore.
         The state will also be locked and can't be changed, until unfrozen!
         """
         # Freezing all frames in the current state
@@ -535,14 +532,14 @@ class StateManager:
 
     def unfreeze_state(self):
         """
-        Unfreezes the state, by making all active frames intractable again and unlocking the state, allowing
+        Unfreezes the state, by making all active frames interactable again and unlocking the state, allowing
         state changes again!
         """
         # Unfreezing himself
         self._frozen: bool = False
 
         # Unfreezing all frames in the current state
-        # All Frames have to be freezable!
+        # All Frame have to implement freezable
         positioned_frame: PositionedFrame
         for positioned_frame in self._current_state.get_active_frames():
             frame: TopLevelFrame = positioned_frame.get_frame()

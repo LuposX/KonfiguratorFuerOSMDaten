@@ -11,12 +11,8 @@ import sys
 import webbrowser
 
 import src.osm_configurator.view.states.state_manager as state_manager
-import src.osm_configurator.control.data_visualization_controller_interface as data_visualization_controller_interface
-import src.osm_configurator.control.cut_out_controller_interface as cut_out_controller_interface
-import src.osm_configurator.control.category_controller_interface as category_controller_interface
 import src.osm_configurator.control.osm_data_controller_interface as osm_data_controller_interface
 from src.osm_configurator.model.project.configuration.cut_out_mode_enum import CutOutMode
-from src.osm_configurator.view.activatable import Activatable
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
 import src.osm_configurator.view.popups.yes_no_pop_up as yes_no_pop_up_i
 
@@ -55,8 +51,10 @@ class DataFrame(TopLevelFrame):
         This method creates a DataFrame, that lets the User input data into the project.
 
         Args:
-            state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
-            data_visualization_controller (data_visualization_controller.DataVisualizationController): Respective controller
+            state_manager (state_manager.StateManager): The frame will call the StateManager,
+                if it wants to switch states.
+            data_visualization_controller (data_visualization_controller.DataVisualizationController):
+                Respective controller
             cut_out_controller (cut_out_controller.CutOutController): Respective controller
             category_controller (category_controller.CategoryController): Respective controller
             osm_data_controller (osm_data_controller_interface.IOSMDataController): Respective controller
@@ -334,7 +332,7 @@ class DataFrame(TopLevelFrame):
     def __edge_buildings_clicked(self):
         """
         Activated if the checkbox is clicked.
-        Updates the cut_out_mode and shows a popup if an error occured
+        Updates the cut_out_mode and shows a popup if an error occurred
         """
         check_box_value: bool = self._edge_building_are_in_checkbox.getvar(name="value")  # Gets the bool-value
         cut_out_mode: CutOutMode
@@ -417,7 +415,8 @@ class DataFrame(TopLevelFrame):
 
         self._frozen = False
 
-    def _show_map(self, path_to_map: Path) -> bool:
+    @staticmethod
+    def _show_map(path_to_map: Path) -> bool:
         """
         This function is used to visualize am already created map.
 
@@ -429,7 +428,7 @@ class DataFrame(TopLevelFrame):
         """
         try:
             webbrowser.open_new(str(path_to_map))
-        except Exception:
+        except OSError:
             return False
 
         return True

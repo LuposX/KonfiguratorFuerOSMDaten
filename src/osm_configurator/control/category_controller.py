@@ -8,8 +8,6 @@ from src.osm_configurator.model.project.configuration.category_manager import Ca
 from typing import TYPE_CHECKING, List
 import src.osm_configurator.model.project.configuration.category as category_i
 
-import src.osm_configurator.model.application.application_settings_default_enum as application_settings_default_enum_i
-
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
 if TYPE_CHECKING:

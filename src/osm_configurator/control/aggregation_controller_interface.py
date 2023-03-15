@@ -4,20 +4,21 @@ from abc import ABC, abstractmethod
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
     from src.osm_configurator.model.project.calculation.aggregation_method_enum import AggregationMethod
 
 
 class IAggregationController(ABC):
     """
-    The AggregationController is responsible for consistently forwarding requests to the model, regarding the aggregation-calculations and the aggregation methods of the currently selected project.
+    The AggregationController is responsible for consistently forwarding requests to the model,
+    regarding the aggregation-calculations and the aggregation methods of the currently selected project.
     """
 
     @abstractmethod
     def get_aggregation_methods(self) -> list[AggregationMethod]:
         """
         Returns a list of all aggregation methods that are available.
-        This function returns all available aggregation methods, not just the ones that are active in the current project.
+        This function returns all available aggregation methods, not just the ones that are active in
+        the current project.
 
         Returns:
             list[aggregation_method_enum.AggregationMethod]: The list of the available aggregation methods.
@@ -33,7 +34,8 @@ class IAggregationController(ABC):
             method (aggregation_method_enum.AggregationMethod): The aggregation method that is checked for.
 
         Returns:
-            bool: True, if there is currently a project selected and the given aggregation method is active in it; False otherwise.
+            bool: True, if there is currently a project selected and the given aggregation method is active in it;
+                False otherwise.
         """
         pass
 
@@ -48,6 +50,7 @@ class IAggregationController(ABC):
             active (bool): True, if we want to activate the given method; False, if we want to deactivate it.
 
         Returns:
-            bool: True, if a project is currently selected and the aggregation method was (de-)activated successfully; False, otherwise.
+            bool: True, if a project is currently selected and the aggregation method was (de-)activated successfully;
+                False, otherwise.
         """
         pass

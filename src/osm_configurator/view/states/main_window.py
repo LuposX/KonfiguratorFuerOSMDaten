@@ -84,7 +84,7 @@ class MainWindow(customtkinter.CTk):
                      main_window_constants_i.MainWindowConstants.MAIN_WINDOW_HEIGHT_MINIMUM.value)
         self.resizable(True, True)
 
-        # Configuration the grid for the Application
+        # Configuration of the grid for the Application
         self.grid_columnconfigure(0, weight=COLUM_WEIGHT)
         self.grid_rowconfigure(0, weight=TOP_ROW_WEIGHT)
         self.grid_rowconfigure(1, weight=MIDDLE_ROW_WEIGHT)

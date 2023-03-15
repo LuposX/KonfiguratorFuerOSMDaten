@@ -3,10 +3,7 @@ from __future__ import annotations
 import os
 import tkinter
 
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.project_controller_interface
 from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
-from src.osm_configurator.view.toplevelframes import main_menu_frame
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 # Constants
@@ -49,12 +46,14 @@ class CreateProjectFrame(TopLevelFrame):
     The user can cancel the creation-process.
     """
 
-    def __init__(self, state_manager: StateManager, project_controller: IProjectController, settings_controller: ISettingsController):
+    def __init__(self, state_manager: StateManager, project_controller: IProjectController,
+                 settings_controller: ISettingsController):
         """
         This method creates a CreateProjectFrame where a user can create a new project.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to change to another State.
+            state_manager (state_manager.StateManager): The StateManager the frame will call, if it wants to
+                change to another State.
             project_controller (project_controller.ProjectController): Respective controller
         """
 
@@ -97,8 +96,8 @@ class CreateProjectFrame(TopLevelFrame):
                                    anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    text="Create a new Project")
         self._title_label.grid(row=0, column=0, rowspan=1, columnspan=5, sticky="NSEW",
-                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADY.value,
-                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PADX.value)
+                               pady=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_Y.value,
+                               padx=label_constants_i.LabelConstants.LABEL_CONSTANTS_PAD_X.value)
 
         self.name_field = \
             customtkinter.CTkEntry(master=self,

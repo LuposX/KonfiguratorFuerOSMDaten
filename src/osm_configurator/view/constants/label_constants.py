@@ -15,5 +15,6 @@ class LabelConstants(Enum):
     LABEL_CONSTANTS_ANCHOR_CENTER = "center"  # places text in the center
     LABEL_CONSTANTS_ANCHOR_LEFT = "w" # places text on the left
     LABEL_TITLE_FG_COLOR = frame_constants_i.FrameConstants.HEAD_FRAME_FG_COLOR.value # old #E8EAFD
-    LABEL_CONSTANTS_PADY = 4
-    LABEL_CONSTANTS_PADX = 4
+    LABEL_CONSTANTS_PAD_Y = 4
+    LABEL_CONSTANTS_PAD_X = 4
+    
