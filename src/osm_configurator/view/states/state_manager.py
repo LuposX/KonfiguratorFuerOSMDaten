@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, List
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
 import src.osm_configurator.view.toplevelframes.lockable as lockable_i
+import src.osm_configurator.model.project.config_phase_enum as config_phase_enum_i
 
 from src.osm_configurator.view.states.state import State
 
@@ -122,19 +123,19 @@ def get_last_edit_step(state: StateName) -> ConfigPhase:
     """
     match state:
         case state_name_enum_i.StateName.DATA:
-            return ConfigPhase.DATA_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE
         case state_name_enum_i.StateName.CATEGORY:
-            return ConfigPhase.CATEGORY_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.CATEGORY_CONFIG_PHASE
         case state_name_enum_i.StateName.REDUCTION:
-            return ConfigPhase.REDUCTION_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.REDUCTION_CONFIG_PHASE
         case state_name_enum_i.StateName.ATTRACTIVITY_EDIT:
-            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
         case state_name_enum_i.StateName.ATTRACTIVITY_VIEW:
-            return ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.ATTRACTIVITY_CONFIG_PHASE
         case state_name_enum_i.StateName.AGGREGATION:
-            return ConfigPhase.AGGREGATION_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.AGGREGATION_CONFIG_PHASE
         case state_name_enum_i.StateName.CALCULATION:
-            return ConfigPhase.CALCULATION_CONFIG_PHASE
+            return config_phase_enum_i.ConfigPhase.CALCULATION_CONFIG_PHASE
 
 
 class StateManager:
