@@ -14,13 +14,20 @@ from pathlib import Path
 import customtkinter
 from tkinter import filedialog
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 if TYPE_CHECKING:
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
+
+# Finals
+PROJECT_DEFAULT_FOLDER_LINE_LENGTH: Final = 22
+PROJECT_DEFAULT_FOLDER_ROWS: Final = 3
+PROJECT_DEFAULT_FOLDER_DOTS: Final = True
+PROJECT_DEFAULT_FOLDER_ROWS_UNLIMITED: Final = False
+PROJECT_DEFAULT_FOLDER_WORD_BREAK: Final = False
 
 
 class SettingsApplicationFrame(TopLevelFrame):
@@ -179,8 +186,11 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         self._project_default_folder = self._settings_controller.get_project_default_folder()
 
-        project_default_folder_string = utility_methods_i.reformat_string(str(self._project_default_folder), 22, 3,
-                                                                          True, False, False)
+        project_default_folder_string = utility_methods_i.reformat_string(
+            str(self._project_default_folder),
+            PROJECT_DEFAULT_FOLDER_LINE_LENGTH, PROJECT_DEFAULT_FOLDER_ROWS,
+            PROJECT_DEFAULT_FOLDER_DOTS, PROJECT_DEFAULT_FOLDER_ROWS_UNLIMITED,
+            PROJECT_DEFAULT_FOLDER_WORD_BREAK)
 
         self.path_default_label.configure(
             text=project_default_folder_string
