@@ -32,7 +32,8 @@ if TYPE_CHECKING:
 
 # Finals
 ELEMENT_BORDER_DISTANCE: Final = 42
-PROJECT_NAME_ENTRY_WIDTH: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 2 - ELEMENT_BORDER_DISTANCE
+PROJECT_NAME_ENTRY_WIDTH: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 2 \
+                                  - ELEMENT_BORDER_DISTANCE
 PROJECT_DESCRIPTION_WIDTH: Final = PROJECT_NAME_ENTRY_WIDTH
 
 PADY: Final = 4
@@ -110,15 +111,16 @@ class CreateProjectFrame(TopLevelFrame):
         self.name_field.grid(row=1, column=0, rowspan=1, columnspan=1)
         self._entries.append(self.name_field)
 
-        self.description_field = customtkinter.CTkTextbox(master=self,
-                                                          width=int(PROJECT_DESCRIPTION_WIDTH),
-                                                          height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (2/7) - ELEMENT_BORDER_DISTANCE,
-                                                          corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
-                                                          border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
-                                                          fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
-                                                          border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
-                                                          text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
-                                                          wrap='word')
+        self.description_field = customtkinter.CTkTextbox(
+            master=self,
+            width=int(PROJECT_DESCRIPTION_WIDTH),
+            height=frame_constants_i.FrameConstants.FULL_FRAME_HEIGHT.value * (2/7) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=text_box_constants_i.TextBoxConstants.TEXT_BOX_CORNER_RADIUS.value,
+            border_width=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_WITH.value,
+            fg_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_FG_COLOR.value,
+            border_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_BORDER_COLOR.value,
+            text_color=text_box_constants_i.TextBoxConstants.TEXT_BOX_TEXT_COLOR.value,
+            wrap='word')
 
         self.description_field.grid(row=2, column=0, rowspan=1, columnspan=1)
 

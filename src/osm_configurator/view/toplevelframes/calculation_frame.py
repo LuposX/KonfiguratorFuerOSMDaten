@@ -281,7 +281,8 @@ class CalculationFrame(TopLevelFrame):
         """
         self._state_manager.freeze_state()
         self._cancel_calculation_pop_up: YesNoPopUp = YesNoPopUp(func=self.__cancel_calculation,
-                                                                 message="Do You really want to cancel the Calculation?")
+                                                                 message="Do You really want to "
+                                                                         "cancel the Calculation?")
 
     def __cancel_calculation(self, cancel: bool):
         """

@@ -351,7 +351,7 @@ class CategoryFrame(TopLevelFrame):
             text="Create new Category",
             command=self._create_new_category_pressed
         )
-        self._create_button.grid(row=0, column=0, rowspan=1, columnspan=1, pady=PADY)
+        self._create_button.grid(row=0, column=0, rowspan=1, columnspan=1, pady=PAD_Y)
 
         # The delete Button
         self._delete_button: customtkinter.CTkButton = customtkinter.CTkButton(
@@ -367,7 +367,7 @@ class CategoryFrame(TopLevelFrame):
             text="Delete selected Category",
             command=self._delete_category_pressed
         )
-        self._delete_button.grid(row=1, column=0, rowspan=1, columnspan=1, pady=PADY)
+        self._delete_button.grid(row=1, column=0, rowspan=1, columnspan=1, pady=PAD_Y)
 
     def activate(self):
         # First getting the Categories

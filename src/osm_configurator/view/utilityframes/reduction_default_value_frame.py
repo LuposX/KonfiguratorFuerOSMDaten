@@ -277,6 +277,8 @@ class ReductionDefaultValueFrame(customtkinter.CTkFrame, Freezable):
 
             self._activate_frame()
 
+        return True
+
     def load_entry(self, entry: default_value_entry_i.DefaultValueEntry) -> bool:
         """
         Loads the given default value entry into the frame, so it can be edited.

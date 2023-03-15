@@ -8,7 +8,6 @@ import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 import src.osm_configurator.view.constants.segmented_button_constants as segmented_button_constants_i
 import src.osm_configurator.view.constants.button_constants as button_constants_i
-import src.osm_configurator.view.constants.label_constants as label_constants_i
 
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
 

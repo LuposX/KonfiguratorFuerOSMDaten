@@ -3,7 +3,7 @@ from __future__ import annotations
 import tkinter
 from pathlib import Path
 from tkinter import filedialog
-from typing import TYPE_CHECKING, Iterable
+from typing import TYPE_CHECKING
 import customtkinter
 import os
 import sys
@@ -78,7 +78,7 @@ class DataFrame(TopLevelFrame):
         self._frozen: bool = False  # indicates whether the window is frozen or not
 
         self._selected_cut_out_path: Path
-        self._selected_osm_data_path: Path
+        self._selected_osm_data_path: Path | None = None
         self._buildings_on_the_edge_are_in: bool = False  # Buildings on the edge are not in by default
 
         self._buttons: list[customtkinter.CTkButton] = []  # Holds all buttons to make equal styling easier
@@ -301,7 +301,7 @@ class DataFrame(TopLevelFrame):
         print(chosen_path)
         if not chosen_path.exists() or chosen_path == Path("."):
             # Chosen path is invalid
-            popup = AlertPopUp("Path is incorrect, please choose a valid Path!")
+            AlertPopUp("Path is incorrect, please choose a valid Path!")
             self.activate()
             return
 

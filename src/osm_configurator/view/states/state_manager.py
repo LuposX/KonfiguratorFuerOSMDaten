@@ -10,6 +10,7 @@ from src.osm_configurator.view.states.state import State
 
 if TYPE_CHECKING:
     from typing import Final
+    from src.osm_configurator.model.project.config_phase_enum import ConfigPhase
     from src.osm_configurator.view.states.state_name_enum import StateName
     from src.osm_configurator.view.states.positioned_frame import PositionedFrame
     from src.osm_configurator.view.states.main_window import MainWindow
@@ -111,13 +112,13 @@ SETTINGS_NO_PROJECT_FRAME_COLUM_SPAN: Final = 1
 
 def get_last_edit_step(state: StateName) -> ConfigPhase:
     """
-    This method converts the current state into a configphase.
+    This method converts the current state into a config phase.
 
     Args:
         state (StateName): The current state.
 
     Returns:
-         ConfigPhase: The configphase.
+         ConfigPhase: The config phase.
     """
     match state:
         case state_name_enum_i.StateName.DATA:
@@ -134,6 +135,7 @@ def get_last_edit_step(state: StateName) -> ConfigPhase:
             return ConfigPhase.AGGREGATION_CONFIG_PHASE
         case state_name_enum_i.StateName.CALCULATION:
             return ConfigPhase.CALCULATION_CONFIG_PHASE
+
 
 class StateManager:
     """
@@ -459,7 +461,8 @@ class StateManager:
 
                     # Store last edit step
                     corresponding_state: StateName = self._current_state.get_state_name()
-                    # This is needed to handle with the case that no project is loaded yet, so no last edit step can be set
+                    # This is needed to handle with the case that no project is loaded yet,
+                    # so no last edit step can be set
                     if 2 < corresponding_state.value < 10:
                         self._project_controller.set_current_config_phase(get_last_edit_step(corresponding_state))
 

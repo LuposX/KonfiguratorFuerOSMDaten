@@ -93,7 +93,7 @@ class AttractivityEditFrame(TopLevelFrame):
         self._category_drop_down_menu: customtkinter.CTkOptionMenu = customtkinter.CTkOptionMenu(
             master=self,
             width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (2 / 3) - ELEMENT_BORDER_DISTANCE,
-            height=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BASE_HEIGHT.value,,
+            height=options_menu_constants_i.OptionsMenuConstants.OPTIONS_MENU_CONSTANTS_BASE_HEIGHT.value,
             corner_radius=options_menu_constants_i.OptionsMenuConstants.
             OPTIONS_MENU_CONSTANTS_CORNER_RADIUS.value,
             fg_color=options_menu_constants_i.OptionsMenuConstants.

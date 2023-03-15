@@ -126,9 +126,9 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             height=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BASE_HEIGHT.value,
             corner_radius=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_CORNER_RADIUS.value,
             border_width=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BORDER_WIDTH.value,
-            fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR.value,
+            fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_ACTIVE.value,
             border_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BORDER_COLOR.value,
-            progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR.value,
+            progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_ACTIVE.value,
             button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR.value,
             button_hover_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_HOVER_COLOR.value,
             text_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_TEXT_COLOR.value,
@@ -217,7 +217,7 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
             else:
                 raise ValueError("Category has to be either one of the calculation Methods!")
 
-            # Now deactivating editing parts if necesseary
+            # Now deactivating editing parts if needed
             if self._selected_category.get_strictly_use_default_values():
                 self._deactivate_below_strictly_use_default_values()
 
@@ -315,15 +315,21 @@ class ReductionCalculationFrame(customtkinter.CTkFrame, Freezable):
 
     def _deactivate_switch(self):
         self._site_building_switch.configure(state="disabled",
-                                             button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR_DISABLED.value,
-                                             progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_DISABLED.value,
-                                             fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_DISABLED.value)
+                                             button_color=switch_constants_i.SwitchConstants.
+                                             SWITCH_CONSTANTS_BUTTON_COLOR_DISABLED.value,
+                                             progress_color=switch_constants_i.SwitchConstants.
+                                             SWITCH_CONSTANTS_PROGRESS_COLOR_DISABLED.value,
+                                             fg_color=switch_constants_i.SwitchConstants.
+                                             SWITCH_CONSTANTS_FG_COLOR_DISABLED.value)
 
     def _activate_switch(self):
         self._site_building_switch.configure(state="normal",
-                                             button_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_BUTTON_COLOR.value,
-                                             progress_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_PROGRESS_COLOR_ACTIVE.value,
-                                             fg_color=switch_constants_i.SwitchConstants.SWITCH_CONSTANTS_FG_COLOR_ACTIVE.value)
+                                             button_color=switch_constants_i.SwitchConstants.
+                                             SWITCH_CONSTANTS_BUTTON_COLOR.value,
+                                             progress_color=switch_constants_i.SwitchConstants.
+                                             SWITCH_CONSTANTS_PROGRESS_COLOR_ACTIVE.value,
+                                             fg_color=switch_constants_i.SwitchConstants.
+                                             SWITCH_CONSTANTS_FG_COLOR_ACTIVE.value)
 
     def _true_activate(self):
         self._strictly_use_default_values_checkbox.configure(state=tkinter.NORMAL)

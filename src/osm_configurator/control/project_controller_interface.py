@@ -127,3 +127,13 @@ class IProjectController(ABC):
             Path: to the current project.
         """
         pass
+
+    @abstractmethod
+    def get_default_project_folder(self) -> pathlib.Path:
+        """
+        Returns the default project folder defined by the application settings.
+        Returns:
+            The Folder.
+        """
+        pass
+

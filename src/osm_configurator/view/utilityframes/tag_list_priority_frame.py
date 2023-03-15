@@ -35,7 +35,8 @@ PAD_Y: Final = 2
 ELEMENT_BORDER_DISTANCE: Final = 4
 
 ENTRY_BUTTON_HEIGHT: Final = button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value
-ARROW_BUTTON_HEIGHT: Final = button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value/2 - ELEMENT_BORDER_DISTANCE
+ARROW_BUTTON_HEIGHT: Final = button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value/2 - \
+                             ELEMENT_BORDER_DISTANCE
 
 
 class TagListPriorityFrame(customtkinter.CTkScrollableFrame, Freezable):
