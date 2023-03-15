@@ -41,6 +41,14 @@ ELEMENT_BORDER_DISTANCE: Final = 124
 BUTTON_DESCRIPTION_LINE_LENGTH: Final = 42
 BUTTON_DESCRIPTION_ROWS: Final = 3
 BUTTON_DESCRIPTION_DOTS: Final = True
+BUTTON_DESCRIPTION_ROWS_UNLIMITED: Final = False
+BUTTON_DESCRIPTION_WORD_BREAK: Final = True
+
+BUTTON_NAME_LINE_LENGTH: Final = 42
+BUTTON_NAME_ROWS: Final = 1
+BUTTON_NAME_DOTS: Final = True
+BUTTON_NAME_ROWS_UNLIMITED: Final = False
+BUTTON_NAME_WORD_BREAK: Final = False
 
 
 def find_matching_state(config_step: config_phase_enum_i.ConfigPhase) -> state_name_enum_i.StateName:
@@ -161,15 +169,23 @@ class MainMenuFrame(TopLevelFrame):
         # showing all entries in custom boxes
         for i, passive_project in enumerate(self._passive_projects):
             name = passive_project.get_name()  # name of the shown project
-            description = passive_project.get_description()  # description of the shown project
-            # reformatted_description = utility_methods_i.reformat_string(description)
+            reformatted_name = utility_methods_i.reformat_string(
+                name, BUTTON_NAME_LINE_LENGTH, BUTTON_NAME_ROWS, BUTTON_NAME_DOTS,
+                BUTTON_NAME_ROWS_UNLIMITED, BUTTON_NAME_WORD_BREAK)
 
-            button_text: str = name + "\n\n" + description
+            description = passive_project.get_description()  # description of the shown project
+            reformatted_description = utility_methods_i.reformat_string(
+                description, BUTTON_DESCRIPTION_LINE_LENGTH, BUTTON_DESCRIPTION_ROWS,
+                BUTTON_DESCRIPTION_DOTS, BUTTON_DESCRIPTION_ROWS_UNLIMITED,
+                BUTTON_DESCRIPTION_WORD_BREAK)
+
+            button_text: str = reformatted_name + "\n\n" + reformatted_description
 
             entry = customtkinter.CTkButton(master=self._entry_subframe,
                                             text=button_text,
                                             command=partial(self.__load_project, i),
-                                            border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                                            border_width=button_constants_i.ButtonConstants.
+                                            BUTTON_LIST_BORDER_WIDTH.value,
                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                             hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                             border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
