@@ -30,12 +30,12 @@ class IDataVisualizationController(ABC):
         pass
 
     @abstractmethod
-    def generate_calculation_visualization(self) -> List[str] | None:
+    def generate_calculation_visualization(self) -> pathlib.Path | None:
         """
         Generates a graphic that visualizes the results of the calculations of the currently selected project.
 
          Returns:
-            List[str]:  A list of paths each pointing towards one boxplot image.
+            pathlib.Path: A path pointing toward the folder with the results in it.
             None: If the saving/generating of the image failed.
         """
         pass

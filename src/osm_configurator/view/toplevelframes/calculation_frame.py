@@ -451,7 +451,7 @@ class CalculationFrame(TopLevelFrame):
         Gets called if the "Visualize Results" Button is pressed. Calls the according function from the controller to
         initialise the visualization process
         """
-        dir_path: Path = self._data_visualization_controller.generate_calculation_visualization()
+        dir_path: Path | None = self._data_visualization_controller.generate_calculation_visualization()
 
         if dir_path is not None:
             boxplot_file: Path
