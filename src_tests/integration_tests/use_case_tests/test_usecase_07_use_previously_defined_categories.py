@@ -32,7 +32,7 @@ class TestUseCase07:
 
         file_deletion.FileDeletion().reset_folder(test_folder_path)
 
-        cat_ctrl, model = prepare_controller(project_path)
+        cat_ctrl = prepare_controller(project_path)
 
         # Test if project creation is successful
         assert cat_ctrl.import_category_configuration(data_path)
