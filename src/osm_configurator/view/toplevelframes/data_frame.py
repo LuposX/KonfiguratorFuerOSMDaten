@@ -148,14 +148,14 @@ class DataFrame(TopLevelFrame):
         self._osm_data_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text="Select OSM Data"
+                text="Select OSM Data [.osm, .pbf]"
             )
         self._labels.append(self._osm_data_select_label)
 
         self._cut_out_select_label: customtkinter.CTkLabel = \
             customtkinter.CTkLabel(
                 master=self,
-                text="Select Cut-Out"
+                text="Select Cut-Out [.geojson]"
             )
         self._labels.append(self._cut_out_select_label)
 
