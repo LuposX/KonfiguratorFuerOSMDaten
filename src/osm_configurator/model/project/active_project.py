@@ -111,7 +111,6 @@ class ActiveProject:
         Returns:
             pathlib.Path: The path pointing towards the project folder.
         """
-        print(self._project_settings.get_location())
         return pathlib.Path(self._project_settings.get_location())
 
     def get_config_manager(self) -> ConfigurationManager:
