@@ -196,11 +196,11 @@ class SettingsApplicationFrame(TopLevelFrame):
             text=project_default_folder_string
         )
 
-        self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        # self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-        self.processes_entry.delete(0, tkinter.END)
-        self.processes_entry.insert(0, self._settings_controller.get_number_of_processes())
+        # self.processes_entry.delete(0, tkinter.END)
+        # self.processes_entry.insert(0, self._settings_controller.get_number_of_processes())
 
         self.key_recom_entry.delete(0, tkinter.END)
         self.key_recom_entry.insert(0, self._settings_controller.get_number_of_key_recommendations())
