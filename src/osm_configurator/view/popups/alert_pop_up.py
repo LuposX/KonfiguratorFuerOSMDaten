@@ -10,7 +10,7 @@ import src.osm_configurator.view.utility_methods as utility_methods_i
 import customtkinter
 
 POPUP_SIZE: Final = pop_up_constants_i.PopUpConstants.POPUP_SIZE.value  # The Size of the PopUp
-MESSAGE_LENGTH: Final = 60
+MESSAGE_LENGTH: Final = 64
 MESSAGE_ROWS: Final = 4
 MESSAGE_DOTS: Final = False
 MESSAGE_ROWS_UNLIMITED: Final = True
