@@ -17,7 +17,7 @@ POPUP_SIZE: Final = pop_up_constants_i.PopUpConstants.POPUP_SIZE.value  # The Si
 
 POPUP_TITLE: Final = "Accept or Cancel"
 
-MESSAGE_LENGTH: Final = 60
+MESSAGE_LENGTH: Final = 64
 MESSAGE_ROWS: Final = 4
 MESSAGE_DOTS: Final = False
 MESSAGE_ROWS_UNLIMITED: Final = True
@@ -46,8 +46,7 @@ class YesNoPopUp(customtkinter.CTkToplevel):
         """
 
         self._func = func
-
-        super().__init__()
+        super().__init__(fg_color=pop_up_constants_i.PopUpConstants.POPUP_FG_COLOR.value)
         self.geometry(POPUP_SIZE)
 
         self.title(POPUP_TITLE)

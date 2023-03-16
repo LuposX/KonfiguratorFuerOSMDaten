@@ -44,7 +44,6 @@ def reformat_string(string: str, line_length: int, rows: int, dots: bool, rows_u
     string_length = len(string)
 
     index = 0
-    last_empty_index = 0
 
     while rows_left > 0:
         characters_left = line_length
@@ -59,12 +58,9 @@ def reformat_string(string: str, line_length: int, rows: int, dots: bool, rows_u
 
             if (string[index] == EMPTY_CHARACTER) and new_row:
                 index += 1
-                # characters_left -= 1
                 continue
 
             new_string = new_string + string[index]
-            if string[index] == EMPTY_CHARACTER:
-                last_empty_index = index
 
             # If there is already a line break whe use it
             if string[index] == LINE_BREAK:
