@@ -32,7 +32,7 @@ import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
                           ])
 def test_value_error(top_level_frame, colum, row, colum_span, row_span, sticky):
     with pytest.raises(ValueError):
-        positioned_frame = positioned_frame_i.PositionedFrame(
+        positioned_frame: positioned_frame_i.PositionedFrame = positioned_frame_i.PositionedFrame(
             frame=top_level_frame, colum=colum, row=row, colum_span=colum_span, row_span=row_span, sticky=sticky)
 
 
@@ -70,7 +70,7 @@ def test_value_error(top_level_frame, colum, row, colum_span, row_span, sticky):
                           ])
 def test_type_error(top_level_frame, colum, row, colum_span, row_span, sticky):
     with pytest.raises(TypeError):
-        positioned_frame = positioned_frame_i.PositionedFrame(
+        positioned_frame: positioned_frame_i.PositionedFrame = positioned_frame_i.PositionedFrame(
             frame=top_level_frame, colum=colum, row=row, colum_span=colum_span, row_span=row_span, sticky=sticky)
 
 
@@ -95,7 +95,7 @@ def test_type_error(top_level_frame, colum, row, colum_span, row_span, sticky):
                            "NSEW")
                           ])
 def test_getter(top_level_frame, colum, row, colum_span, row_span, sticky):
-    positioned_frame = positioned_frame_i.PositionedFrame(
+    positioned_frame: positioned_frame_i.PositionedFrame = positioned_frame_i.PositionedFrame(
         frame=top_level_frame, colum=colum, row=row, colum_span=colum_span, row_span=row_span, sticky=sticky)
 
     assert positioned_frame.get_frame() == top_level_frame

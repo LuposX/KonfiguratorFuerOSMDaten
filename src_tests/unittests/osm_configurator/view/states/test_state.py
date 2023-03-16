@@ -23,7 +23,7 @@ def test_correct_innit(positioned_frame):
 
     state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
     # If it doesn't crash, then the innit is fine
-    assert True
+    # No assert, since there is no logic value to test for, we just look if the innit works
 
 
 # Testing if only correct types are accepted by the innit
@@ -57,14 +57,15 @@ def test_type_errors(positioned_frame):
                           (state_name_enum_i.StateName.CATEGORY,
                            state_name_enum_i.StateName.DATA, state_name_enum_i.StateName.REDUCTION)])
 def test_attributes(positioned_frame, own_state_name, default_left, default_right):
-    state = state_i.State([positioned_frame], own_state_name, default_left, default_right)
+    state: state_i.State = state_i.State([positioned_frame], own_state_name, default_left, default_right)
 
     assert state.get_active_frames() == [positioned_frame]
     assert state.get_state_name() == own_state_name
     assert state.get_default_left() == default_left
     assert state.get_default_right() == default_right
 
-    state2 = state_i.State([positioned_frame, positioned_frame], own_state_name, default_left, default_right)
+    state2: state_i.State = state_i.State([positioned_frame, positioned_frame], own_state_name, default_left,
+                                          default_right)
 
     assert state2.get_active_frames() == [positioned_frame, positioned_frame]
     assert state2.get_state_name() == own_state_name
@@ -75,18 +76,18 @@ def test_attributes(positioned_frame, own_state_name, default_left, default_righ
 # Testing if the __eq__ method works as intended
 def test_equals(positioned_frame):
     # Making two truly equal states
-    state1 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
-    state2 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
+    state1: state_i.State = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
+    state2: state_i.State = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
 
     assert state1.__eq__(state2)
 
     # Testing if only own_state Name is enough for equal
-    state3 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION,
+    state3: state_i.State = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION,
                            state_name_enum_i.StateName.CALCULATION, state_name_enum_i.StateName.SETTINGS_PROJECT)
 
     assert state1.__eq__(state3)
 
     # Testing for inequality
-    state4 = state_i.State([positioned_frame], state_name_enum_i.StateName.CALCULATION, None, None)
+    state4: state_i.State = state_i.State([positioned_frame], state_name_enum_i.StateName.CALCULATION, None, None)
 
     assert not state1.__eq__(state4)
