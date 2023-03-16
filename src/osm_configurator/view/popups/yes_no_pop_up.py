@@ -46,8 +46,7 @@ class YesNoPopUp(customtkinter.CTkToplevel):
         """
 
         self._func = func
-
-        super().__init__()
+        super().__init__(fg_color=pop_up_constants_i.PopUpConstants.POPUP_FG_COLOR.value)
         self.geometry(POPUP_SIZE)
 
         self.title(POPUP_TITLE)
