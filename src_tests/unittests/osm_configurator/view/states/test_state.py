@@ -80,15 +80,11 @@ def test_equals(positioned_frame):
 
     assert state1.__eq__(state2)
 
-
-
     # Testing if only own_state Name is enough for equal
     state3 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION,
                            state_name_enum_i.StateName.CALCULATION, state_name_enum_i.StateName.SETTINGS_PROJECT)
 
     assert state1.__eq__(state3)
-
-
 
     # Testing for inequality
     state4 = state_i.State([positioned_frame], state_name_enum_i.StateName.CALCULATION, None, None)
