@@ -46,6 +46,7 @@ class WorkManager:
         with multiprocessing.Pool(processes=self._max_workers) as pool:
             result = pool.map(self._worker_entry_point, self._work_to_do)
             pool.close()
+            pool.terminate()
             pool.join()
             return result
 
