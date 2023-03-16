@@ -2,31 +2,32 @@ import pytest
 
 import src.osm_configurator.view.states.state as state_i
 import src.osm_configurator.view.states.positioned_frame as positioned_frame_i
-import src.osm_configurator.view.toplevelframes.top_level_frame as top_level_frame_i
 import src.osm_configurator.view.states.state_manager as state_manager_i
 import src.osm_configurator.view.states.state_name_enum as state_name_enum_i
 
+import src_tests.unittests.osm_configurator.view.states.top_level_frame_stub as top_level_frame_stub_i
 
-# There to get a Positioned Frame, to minnimize code duplication
+
+# There to get a Positioned Frame, to minimize code duplication
 @pytest.fixture
 def positioned_frame():
     """Returns a legit positioned_frame"""
-    return positioned_frame_i.PositionedFrame(top_level_frame_i.TopLevelFrame(None), 0, 0, 0, 0,
+    return positioned_frame_i.PositionedFrame(top_level_frame_stub_i.TopLevelFrameStub(None), 0, 0, 0, 0,
                                               state_manager_i.FRAME_STICKY_WHOLE_CELL)
 
 
 # Testing if te innit works properly, basicly if it doesn't crash it is fine
-def old_test_correct_innit(positioned_frame):
+def test_correct_innit(positioned_frame):
     state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, state_name_enum_i.StateName.REDUCTION,
                   state_name_enum_i.StateName.CALCULATION)
 
     state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
-    # If it doesn't crash, then the innits where fine
+    # If it doesn't crash, then the innit is fine
     assert True
 
 
 # Testing if only correct types are accepted by the innit
-def old_test_type_errors(positioned_frame):
+def test_type_errors(positioned_frame):
     with pytest.raises(TypeError):
         state_i.State(positioned_frame, state_name_enum_i.StateName.AGGREGATION, state_name_enum_i.StateName.REDUCTION,
                       state_name_enum_i.StateName.CALCULATION)
@@ -55,7 +56,7 @@ def old_test_type_errors(positioned_frame):
                            None, None),
                           (state_name_enum_i.StateName.CATEGORY,
                            state_name_enum_i.StateName.DATA, state_name_enum_i.StateName.REDUCTION)])
-def old_test_attributes(positioned_frame, own_state_name, default_left, default_right):
+def test_attributes(positioned_frame, own_state_name, default_left, default_right):
     state = state_i.State([positioned_frame], own_state_name, default_left, default_right)
 
     assert state.get_active_frames() == [positioned_frame]
@@ -72,22 +73,18 @@ def old_test_attributes(positioned_frame, own_state_name, default_left, default_
 
 
 # Testing if the __eq__ method works as intended
-def old_test_equals(positioned_frame):
+def test_equals(positioned_frame):
     # Making two truly equal states
     state1 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
     state2 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION, None, None)
 
     assert state1.__eq__(state2)
 
-
-
     # Testing if only own_state Name is enough for equal
     state3 = state_i.State([positioned_frame], state_name_enum_i.StateName.AGGREGATION,
-                           state_name_enum_i.StateName.CALCULATION, state_name_enum_i.StateName.SETTINGS)
+                           state_name_enum_i.StateName.CALCULATION, state_name_enum_i.StateName.SETTINGS_PROJECT)
 
     assert state1.__eq__(state3)
-
-
 
     # Testing for inequality
     state4 = state_i.State([positioned_frame], state_name_enum_i.StateName.CALCULATION, None, None)
