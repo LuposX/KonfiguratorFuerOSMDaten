@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
 from src_tests.definitions import TEST_DIR
 from src_tests.definitions import APPLICATION_MANAGER_2
 import src.osm_configurator.model.project.calculation.geo_data_phase as geo_data_phase
@@ -13,6 +12,8 @@ import src.osm_configurator.model.application.application_settings as applicatio
 
 from pathlib import Path
 import os
+
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.geo_data_phase import GeoDataPhase

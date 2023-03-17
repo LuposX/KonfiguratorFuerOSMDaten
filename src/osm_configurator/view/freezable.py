@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 
 
 class Freezable(ABC):
-
     @abstractmethod
     def freeze(self):
         """

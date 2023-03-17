@@ -6,8 +6,6 @@ import customtkinter
 
 import tkinter
 
-import src.osm_configurator.view.states.state_manager
-import src.osm_configurator.control.aggregation_controller_interface
 import src.osm_configurator.model.project.calculation.aggregation_method_enum as aggregation_method_enum_i
 
 import src.osm_configurator.view.popups.alert_pop_up as alert_pop_up_i
@@ -37,7 +35,8 @@ CHECKBOX_WIDTH_AND_HEIGHT: Final = 69
 class AggregationFrame(TopLevelFrame):
     """
     This frame shows the aggregation page the user will interact on.
-    This window provides the checkboxes to choose calculation methods and methods on how the aggregation will be calculated.
+    This window provides the checkboxes to choose calculation methods and
+    methods on how the aggregation will be calculated.
     """
 
     def __init__(self, state_manager: StateManager, aggregation_controller: IAggregationController):
@@ -45,7 +44,8 @@ class AggregationFrame(TopLevelFrame):
         This method creates an AggregationFrame that will be used to edit the aggregation method.
 
         Args:
-            state_manager (state_manager.StateManager): The StateManager, the frame will call, when it wants to change to another state.
+            state_manager (state_manager.StateManager): The StateManager, the frame will call, when it wants to change
+                to another state.
            aggregation_controller (aggregation_controller.AggregationController): Respective controller
         """
         # Starting with no master
@@ -63,7 +63,8 @@ class AggregationFrame(TopLevelFrame):
         self._frozen: bool = False
 
         # Making the Grid
-        # The grid is a 3x3 grid, with the middle cell beeing the biggest
+        # ---------------
+        # The grid is a 3x3 grid, with the middle cell being the biggest
         # This is done, so the frame, placed in the middle will grow in size, if the window gets resized
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=6)
@@ -83,7 +84,8 @@ class AggregationFrame(TopLevelFrame):
             scrollbar_button_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_COLOR.value,
             scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
             label_text="Aggregation Methods:",
-            label_text_color=LABEL_TEXT_COLOR)
+            label_text_color=LABEL_TEXT_COLOR,
+            label_fg_color=SCROLLABLE_FRAME_FG_COLOR)
         self._aggregation_scrollable_frame.grid(row=1, column=1, rowspan=1, columnspan=1, sticky="NSEW")
 
         # Making all the checkboxes for all Aggregation Methods
@@ -107,18 +109,20 @@ class AggregationFrame(TopLevelFrame):
         method: aggregation_method_enum_i.AggregationMethod
         checkbox_index: int = 0
         for method in self._aggregation_methods:
-            checkbox: CTkCheckBox = customtkinter.CTkCheckBox(master=self._aggregation_scrollable_frame,
-                                                              width=CHECKBOX_WIDTH_AND_HEIGHT,
-                                                              height=CHECKBOX_WIDTH_AND_HEIGHT,
-                                                              corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
-                                                              border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
-                                                              fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
-                                                              hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
-                                                              text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
-                                                              text=method.get_name(),
-                                                              command=partial(self._checkbox_edited, checkbox_index))
+            checkbox: CTkCheckBox = customtkinter.CTkCheckBox(
+                master=self._aggregation_scrollable_frame,
+                width=CHECKBOX_WIDTH_AND_HEIGHT,
+                height=CHECKBOX_WIDTH_AND_HEIGHT,
+                corner_radius=check_box_constants_i.CheckBoxConstants.CHECK_BOX_CORNER_RADIUS.value,
+                border_width=check_box_constants_i.CheckBoxConstants.CHECK_BOX_BORDER_WIDTH.value,
+                fg_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_FG_COLOR.value,
+                hover_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_HOVER_COLOR.value,
+                text_color=check_box_constants_i.CheckBoxConstants.CHECK_BOX_TEXT_COLOR.value,
+                text=method.get_name(),
+                command=partial(self._checkbox_edited, checkbox_index)
+            )
             self._aggregation_checkboxes.append(checkbox)
-            checkbox.grid(row=checkbox_index, column=0, rowspan=1, columnspan=1)
+            checkbox.grid(row=checkbox_index, column=0, rowspan=1, columnspan=1, sticky="W")
             checkbox_index += 1
 
         method: aggregation_method_enum_i.AggregationMethod
@@ -143,9 +147,9 @@ class AggregationFrame(TopLevelFrame):
             alert_pop_up_i.AlertPopUp("Activating/Deactivating Aggregation Failed!")
 
         # Changing the Text Color and selecting or deselecting
-        # Selecting and deseletcing might sound weird, since the suer does that
-        # This is done bacause, if the setting or disbling failed, wen want to return to the previous value
-        # If the setting was successfull, nothing will change
+        # Selecting and deselecting might sound weird, since the suer does that
+        # This is done because, if the setting or disabling failed, when want to return to the previous value
+        # If the setting was successfully, nothing will change
         # this ist just a fail save
         if active:
             self._aggregation_checkboxes[checkbox_id].select()
@@ -179,4 +183,3 @@ class AggregationFrame(TopLevelFrame):
                 checkbox.configure(state=tkinter.NORMAL)
 
             self._frozen: bool = False
-

@@ -31,22 +31,14 @@ For each of the phases of the watferfall model you can find the documentation in
 
 
 For a more specific description of the code, check the ``README.md`` in
-the subfolder `pythoncode`.
+the subfolder ``src``.
 
 Installation
 ------------
 
-.. note
-   Not implemented yet.
-
-We recommend installing KonfiguratorFuerOSMDaten 
-using one of the available built distributions, 
-for example using ``pip`` or ``conda``:
-
-.. code-block:: console
-
-    Here will stand sth. in the future
-
+You can download the binary(which is for windows only) from the release tab.
+If you want to built the program from source check out the `README.md <https://github.com/LuposX/KonfiguratorFuerOSMDaten/blob/main/src/README.md>`__ in
+the subfolder ``src``.
 
 Usage
 -----
@@ -61,13 +53,14 @@ License
 KonfiguratorFuerOSMDaten is licensed under the GPLv3 `License 
 <https://github.com/LuposX/KonfiguratorFuerOSMDaten/blob/main/LICENSE>`__.
 
-Contribution
-------------
 
-To contribute to the project:
+Contributions
+-------------
 
-1. Fork it (https://github.com/LuposX/KonfiguratorFuerOSMDaten/fork)
-2. Create your feature branch (``git checkout -b feature/fooBar``)
-3. Commit your changes (``git commit -am 'Add some fooBar'``)
-4. Push to the branch (``git push origin feature/fooBar``)
-5. Create a new Pull Request
+This project was made in collaberation with these amazing people:
+
+- `Felix Weik <https://github.com/FelixWeik>`__  
+- `Jan-Philipp Hansen <https://github.com/ujrlh>`__  
+- `Karl Bernhard <https://github.com/GloeStoe>`__  
+- `Pascal Dawideit <https://github.com/calliminator>`__  
+- `Simon Schupp <https://github.com/LuposX>`__  

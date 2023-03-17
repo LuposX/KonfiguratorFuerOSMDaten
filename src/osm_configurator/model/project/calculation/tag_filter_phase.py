@@ -26,10 +26,36 @@ if TYPE_CHECKING:
     from src.osm_configurator.model.project.calculation.calculation_state_enum import CalculationState
     from src.osm_configurator.model.project.calculation.calculation_phase_enum import CalculationPhase
     from pathlib import Path
-    from typing import Tuple, List, Any
+    from typing import Tuple
     from geopandas import GeoDataFrame
     from src.osm_configurator.model.project.calculation.paralellization.work_manager import WorkManager
     from src.osm_configurator.model.project.calculation.paralellization.work import Work
+    from src.osm_configurator.model.project.calculation.prepare_calculation_information import \
+        PrepareCalculationInformation
+
+
+def _parse_the_data_file(osm_data_parser_o: OSMDataParser,
+                         traffic_cell_file_path: Path,
+                         category_manager_o: CategoryManager,
+                         configuration_manager_o: ConfigurationManager,
+                         checkpoint_folder_path_current_phase: Path):
+    traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o \
+        .parse_osm_data_file(traffic_cell_file_path,
+                             category_manager_o,
+                             configuration_manager_o
+                             .get_cut_out_configuration()
+                             .get_cut_out_mode(),
+                             configuration_manager_o
+                             .get_cut_out_configuration()
+                             .get_cut_out_path())
+
+    # name of the file
+    file_name = traffic_cell_file_path.stem
+
+    # save the parsed osm data
+    traffic_cell_data_frame. \
+        to_csv(checkpoint_folder_path_current_phase.
+               joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))
 
 
 class TagFilterPhase(ICalculationPhase):
@@ -37,6 +63,7 @@ class TagFilterPhase(ICalculationPhase):
     This calculation phase is responsible for sorting OSM-elements into their corresponding categories.
     For details see the method calculate().
     """
+
     def get_calculation_phase_enum(self) -> CalculationPhase:
         return calculation_phase_enum.CalculationPhase.TAG_FILTER_PHASE
 
@@ -53,27 +80,23 @@ class TagFilterPhase(ICalculationPhase):
         After execution the results shall be stored again on the hard-drive.
 
         Args:
-            configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the configuration needed for an execution.
+            configuration_manager_o (configuration_manager.ConfigurationManager): The object containing all the
+                configuration needed for an execution.
             application_manager (ApplicationSettings): The settings of the application
 
         Returns:
-            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or failed trying so and a string which describes what happened e.g. an error.
+            Tuple[CalculationState, str]: The state of the calculation after this phase finished its execution or
+                failed trying so and a string which describes what happened e.g. an error.
         """
         # Prepare various stuff for the calculation phase
-        prepare_calc_tuple: Tuple[Any, Any, Any, Any] = prepare_calculation_phase_i.PrepareCalculationPhase\
+        prepare_calc_obj: PrepareCalculationInformation = prepare_calculation_phase_i.PrepareCalculationPhase \
             .prepare_phase(configuration_manager_o=configuration_manager_o,
                            current_calculation_phase=calculation_phase_enum_i.CalculationPhase.TAG_FILTER_PHASE,
                            last_calculation_phase=calculation_phase_enum_i.CalculationPhase.GEO_DATA_PHASE)
 
         # Return if we got an error
-        if type(prepare_calc_tuple[0]) == calculation_state_enum_i.CalculationState:
-            return prepare_calc_tuple[0], prepare_calc_tuple[1]
-
-        else:
-            cut_out_dataframe = prepare_calc_tuple[0]
-            checkpoint_folder_path_last_phase = prepare_calc_tuple[1]
-            checkpoint_folder_path_current_phase = prepare_calc_tuple[2]
-            list_of_traffic_cell_checkpoints = prepare_calc_tuple[3]
+        if prepare_calc_obj.get_calculation_state() is not None:
+            return prepare_calc_obj.get_calculation_state(), prepare_calc_obj.get_error_message()
 
         # Get the CategoryManager
         category_manager_o: CategoryManager = configuration_manager_o.get_category_manager()
@@ -86,14 +109,14 @@ class TagFilterPhase(ICalculationPhase):
             application_manager.get_setting(application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_PROCESSES))
 
         # parse the osm data  with the parser
-        for traffic_cell_file_path in list_of_traffic_cell_checkpoints:
+        for traffic_cell_file_path in prepare_calc_obj.get_list_of_traffic_cell_checkpoints():
             execute_traffic_cell: Work = work_i.Work(
-                target=self._parse_the_data_file,
+                target=_parse_the_data_file,
                 args=(osm_data_parser_o,
                       traffic_cell_file_path,
                       category_manager_o,
                       configuration_manager_o,
-                      checkpoint_folder_path_current_phase
+                      prepare_calc_obj.get_checkpoint_folder_path_current_phase()
                       )
             )
             work_manager.append_work(execute_traffic_cell)
@@ -113,28 +136,3 @@ class TagFilterPhase(ICalculationPhase):
             return calculation_state_enum_i.CalculationState.ERROR_ENCODING_THE_FILE, ''.join(str(err))
 
         return calculation_state_enum_i.CalculationState.RUNNING, "running"
-
-    def _parse_the_data_file(self,
-                             osm_data_parser_o: OSMDataParser,
-                             traffic_cell_file_path: Path,
-                             category_manager_o: CategoryManager,
-                             configuration_manager_o: ConfigurationManager,
-                             checkpoint_folder_path_current_phase: Path):
-
-            traffic_cell_data_frame: GeoDataFrame = osm_data_parser_o \
-                .parse_osm_data_file(traffic_cell_file_path,
-                                     category_manager_o,
-                                     configuration_manager_o
-                                     .get_cut_out_configuration()
-                                     .get_cut_out_mode(),
-                                     configuration_manager_o
-                                     .get_cut_out_configuration()
-                                     .get_cut_out_path())
-
-            # name of the file
-            file_name = traffic_cell_file_path.stem
-
-            # save the parsed osm data
-            traffic_cell_data_frame. \
-                to_csv(checkpoint_folder_path_current_phase.
-                       joinpath(file_name + osm_file_format_enum_i.OSMFileFormat.CSV.get_file_extension()))

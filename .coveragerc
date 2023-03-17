@@ -1,0 +1,25 @@
+[paths]
+source =
+   src/osm_configurator
+
+[run]
+branch = true
+parallel = true
+source =
+    src_tests
+
+[report]
+show_missing = true
+precision = 2
+# Regexes for lines to exclude from consideration
+exclude_lines =
+    # Have to re-enable the standard pragma
+    pragma: no cover
+    import .*
+    from .* import .*
+     # abstractmethod are for us never implemented
+    @abstract
+    @abstractmethod
+
+[html]
+directory = coverage_html_report

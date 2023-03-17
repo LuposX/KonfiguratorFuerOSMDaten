@@ -4,11 +4,6 @@ import pathlib
 
 from abc import ABC, abstractmethod
 
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from src.osm_configurator.model.application.application_interface import IApplication
-
 
 class IOSMDataController(ABC):
     """
@@ -20,13 +15,15 @@ class IOSMDataController(ABC):
     def set_osm_data_reference(self, path: pathlib.Path) -> bool:
         """
         Sets the reference to the osm-data for the selected project.
-        The reference contains the osm-data used in the calculations of the project. This method does not check if the given data is valid.
+        The reference contains the osm-data used in the calculations of the project. This method does not check if the
+        given data is valid.
 
         Args:
             path (pathlib.Path): The reference to the osm-data.
 
         Returns:
-            bool: True, if the new reference was set successfully; False, if an error occurred while setting the reference.
+            bool: True, if the new reference was set successfully; False, if an error occurred
+                while setting the reference.
         """
         pass
 

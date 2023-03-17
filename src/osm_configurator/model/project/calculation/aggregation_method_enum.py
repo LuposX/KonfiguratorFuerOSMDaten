@@ -5,8 +5,23 @@ from enum import Enum, unique
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import Tuple, Callable
     from pandas import Series
+
+
+def convert_str_to_aggregation_method(mode: str) -> AggregationMethod | None:
+    """
+    Converts a given string to the associated AggregationMethod.
+
+    Args:
+        mode (str): The string.
+
+    Returns:
+        AggregationMethod: Associated AggregationMethod.
+    """
+    for method in AggregationMethod:
+        if method.get_name() == mode:
+            return method
+    return None
 
 
 def _sum(df: Series):
@@ -54,24 +69,41 @@ class AggregationMethod(Enum):
     The first argument points towards the function, while the second argument is the name of the method.
     """
     # Attributes are from the type (Tuple[Callable, str])
-    SUM = (_sum, "sum")  #: Calculates the sum of the attractivity attribute over all osm elements from the data.
-    MEAN = (_mean, "mean")  #: Calculates the mean of the attractivity attribute over all osm elements from the data.
+    SUM = (
+        _sum,
+        "sum")  #: Calculates the sum of the attractivity attribute over all osm elements from the data.
+    MEAN = (
+        _mean,
+        "mean")  #: Calculates the mean of the attractivity attribute over all osm elements from the data.
     MAXIMUM = (
-    _maximum, "maximum")  #: Calculates the maximum of the attractivity attribute over all osm elements from the data.
+        _maximum,
+        "maximum")  #: Calculates the maximum of the attractivity attribute over all osm elements from the data.
     MINIMUM = (
-    _minimum, "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
-    VARIANCE = (_variance, "variance")
-    STANDARD_DERIVATIVE = (_standard_deviation, "Standard deviation")
-    MEDIAN = (_median, "Median")
-    QUANTILE_25 = (_25_quantile, "25_Quantile")
-    QUANTILE_75 = (_75_quantile, "75_Quantile")
+        _minimum,
+        "minimum")  #: Calculates the minimum of the attractivity attribute over all osm elements from the data.
+    VARIANCE = (
+        _variance,
+        "variance")
+    STANDARD_DERIVATIVE = (
+        _standard_deviation,
+        "Standard deviation")
+    MEDIAN = (
+        _median,
+        "Median")
+    QUANTILE_25 = (
+        _25_quantile,
+        "25_Quantile")
+    QUANTILE_75 = (
+        _75_quantile,
+        "75_Quantile")
 
     def calculate_aggregation(self, data: Series) -> float:
         """
         Executes the aggregation method of the called enum type.
 
         Args:
-            data (Series): The data on which we want to execute the function on, should be a Series containing attractitivity attributes.
+            data (Series): The data on which we want to execute the function on,
+                should be a Series containing attractivity attributes.
 
         Returns:
             float: The aggregated value of the attractivity values from all osm elements.
@@ -86,18 +118,3 @@ class AggregationMethod(Enum):
             str: Name of the enum type
         """
         return self.value[1]
-
-    def convert_str_to_aggregation_method(mode: str) -> AggregationMethod | None:
-        """
-        Converts a given string to the associated AggregationMethod.
-
-        Args:
-            mode (str): The string.
-
-        Returns:
-            AggregationMethod: Associated AggregationMethod.
-        """
-        for method in AggregationMethod:
-            if method.get_name() == mode:
-                return method
-        return None

@@ -24,17 +24,21 @@ class CutOutController(ICutOutController):
         self._model: IApplication = model
 
     def get_cut_out_mode(self) -> CutOutMode:
-        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().get_cut_out_configuration()
+        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().\
+            get_cut_out_configuration()
         return _cut_out_manager.get_cut_out_mode()
 
     def set_cut_out_mode(self, mode: CutOutMode) -> bool:
-        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().get_cut_out_configuration()
+        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().\
+            get_cut_out_configuration()
         return _cut_out_manager.set_cut_out_mode(mode)
 
     def get_cut_out_reference(self) -> pathlib.Path:
-        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().get_cut_out_configuration()
+        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().\
+            get_cut_out_configuration()
         return _cut_out_manager.get_cut_out_path()
 
     def set_cut_out_reference(self, path: pathlib.Path) -> bool:
-        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().get_cut_out_configuration()
+        _cut_out_manager: CutOutConfiguration = self._model.get_active_project().get_config_manager().\
+            get_cut_out_configuration()
         return _cut_out_manager.set_cut_out_path(path)

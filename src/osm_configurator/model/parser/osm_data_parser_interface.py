@@ -18,7 +18,6 @@ class OSMDataParserInterface(ABC):
     The OSMDataParser job is to parse the OSMData into a human-readable format.
     This human-readable format is a GeoDataFrame from GeoPandas.
     """
-    
     @abstractmethod
     def parse_osm_data_file(self, path, category_manager_o: CategoryManager,
 
@@ -33,15 +32,17 @@ class OSMDataParserInterface(ABC):
 
         Args:
             path (pathlib.Path):  The path pointing towards the OSM data we want to parse in the ".pbf" format.
-            category_manager_o (CategoryManager): The CategoryManager, used to figure out which categories apply to an osm element.
+            category_manager_o (CategoryManager): The CategoryManager, used to figure out which categories
+                apply to an osm element.
             cut_out_mode (CutOutMode): This sets if we want to remove building on the edge or not.
-            cut_out_path (Path) The path which points toward the cut_out_file, sued when removing building which are on the edge.
-        
+            cut_out_path (Path) The path which points toward the cut_out_file, sued when removing building
+                which are on the edge.
+
         Returns:
             geopandas.GeoDataFrame: The parsed OSM data as a GeoDataFrame.
 
         Raises:
             TagsWronglyFormatted: If a tag wasn't correctly formatted.
-            OSMDataWronglyFormatted: If there is a file in there which doesnt have the right format e.g. not "invalid.txt"
+            OSMDataWronglyFormatted: If there is a file in there which doesn't have the right format
+                e.g. not "invalid.txt"
         """
-        pass

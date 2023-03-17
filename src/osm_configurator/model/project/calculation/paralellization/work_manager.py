@@ -37,19 +37,24 @@ class WorkManager:
 
     def do_all_work(self) -> List:
         """
-        Executes all work that has been append till now.
+        Executes all work that has been appended till now.
 
         Returns:
             List: A list of the return-values of all the work.
         """
-        pool: Pool
-        with multiprocessing.Pool(processes=self._max_workers) as pool:
-            result = pool.map(self._worker_entry_point, self._work_to_do)
-            pool.terminate()
-            pool.join()
-            return result
+        # Multiprocessing is currently not working. That's why this code is commented out:
+        # pool: Pool
+        # with multiprocessing.Pool(processes=self._max_workers) as pool:
+        #     result = pool.map(self._worker_entry_point, self._work_to_do)
+        #     pool.close()
+        #     pool.terminate()
+        #     pool.join()
+        #     return result
 
-    def _worker_entry_point(self, work: Work):
+        return list(map(self._worker_entry_point, self._work_to_do))
+
+    @staticmethod
+    def _worker_entry_point(work: Work):
         """
         This function is the point, where the starting processes start working
         """

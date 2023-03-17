@@ -1,29 +1,23 @@
 from __future__ import annotations
 
 import os.path
-
-import pandas as pd
-
-import src.osm_configurator.model.model_constants as model_constants_i
-import matplotlib
-
-import geopandas as gpd
-import webbrowser
-
-import matplotlib.pyplot as plt
-import seaborn as sb
+import shutil
 import glob
 import pathlib
 
+import src.osm_configurator.model.model_constants as model_constants_i
+
+import geopandas as gpd
+import seaborn as sb
+import pandas as pd
+
+from fiona.errors import FionaError
+
 from typing import TYPE_CHECKING
 
-import shutil
-
 if TYPE_CHECKING:
-    from src.osm_configurator.model.project.configuration.cut_out_configuration import CutOutConfiguration
     from pathlib import Path
     from geopandas import GeoDataFrame
-    from pandas import DataFrame
     from folium import Map
     from typing import Final
 
@@ -43,9 +37,9 @@ class DataVisualizer:
         """
         Creates a new instance of the DataVisualizer.
         """
-        pass
 
-    def create_map(self, cut_out_file: Path, map_saving_path: Path, filename: str) -> bool:
+    @staticmethod
+    def create_map(cut_out_file: Path, map_saving_path: Path, filename: str) -> bool:
         """
         This method is used to create a map from to given cut-out config and save it.
 
@@ -57,22 +51,29 @@ class DataVisualizer:
         Returns:
             bool: True if creating the map works, otherwise false.
         """
+        # create old folder if it exists.
+        shutil.rmtree(map_saving_path, ignore_errors=True)
+
+        # create folder if it doesn't exist
+        map_saving_path.mkdir(parents=True, exist_ok=True)
+
         try:
             gdf: GeoDataFrame = gpd.read_file(cut_out_file)
             # get the area to visualize it
             gdf[model_constants_i.CL_AREA] = gdf.area
 
             # save the map
-            map: Map = gdf.explore(model_constants_i.CL_AREA, legend=False)
-            map.save(os.path.join(map_saving_path, filename))
+            cut_out_map: Map = gdf.explore(model_constants_i.CL_AREA, legend=False)
+            cut_out_map.save(os.path.join(map_saving_path, filename))
 
         # I use "Exception" here because seaborn nor matplotlib say on their documentation page which error they throw
-        except Exception:
+        except (OSError, ValueError, IndexError, FionaError):
             return False
 
         return True
 
-    def create_boxplot(self, data_path: Path, boxplot_saving_path: Path) -> bool:
+    @staticmethod
+    def create_boxplot(data_path: Path, boxplot_saving_path: Path) -> bool:
         """
         This method creates a boxplot which is saved and can later be viewed.
 
@@ -83,28 +84,32 @@ class DataVisualizer:
         Returns:
             bool: True if creating the boxplot works, otherwise false.
         """
-        # create old folder if it exist.
+        # create old folder if it exists.
         shutil.rmtree(boxplot_saving_path, ignore_errors=True)
 
-        # create folder if doesn't exist
+        # create folder if it doesn't exist
         boxplot_saving_path.mkdir(parents=True, exist_ok=True)
 
         # try saving the figure
         for file in glob.glob(str(data_path) + "/*" + FILE_TYPE_TO_LOAD):
             try:
                 data = pd.read_csv(file, index_col=[0])
-            except OSError:
+            # Index error happens when the .csv file is wrongly formatted
+            except (OSError, IndexError):
                 return False
 
             file_name = pathlib.Path(file).stem
             data = data.drop([NAME_COLUMN_TO_DROP], axis=1)
 
             title = str(TITLE_BOXPLOT + file_name)
-            ax = sb.boxplot(data=data)
-            ax.set(xlabel=X_LABEL_BOXPLOT, title=title)
+            try:
+                matplotlib_ax = sb.boxplot(data=data)
+            except ValueError:
+                return False
+            matplotlib_ax.set(xlabel=X_LABEL_BOXPLOT, title=title)
 
             try:
-                ax.get_figure().savefig(os.path.join(str(boxplot_saving_path), file_name))
+                matplotlib_ax.get_figure().savefig(os.path.join(str(boxplot_saving_path), file_name))
             except OSError:
                 return False
 

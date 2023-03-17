@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
@@ -52,7 +52,7 @@ class AttractivityAttribute:
             new_name (str): name of the attractivity attribute.
 
         Returns:
-            bool: True, on success
+            bool: True, on success.
         """
         if new_name != "":
             self._attractivity_attribute_name = new_name
@@ -71,12 +71,15 @@ class AttractivityAttribute:
 
     def set_attribute_factor(self, attribute: Attribute, factor: float):
         """
-         Setter for the list of attributes and factors.
+        Setter for the list of attributes and factors.
         Args:
             attribute: The attribute we for which we want to set the factor.
-            factor: The factor we want to set
+            factor: The factor we want to set.
+        Returns:
+            bool: True, on success.
         """
         self._attribute_factors[attribute] = factor
+        return True
 
     def get_base_factor(self) -> float:
         """
@@ -90,6 +93,9 @@ class AttractivityAttribute:
         """
         Setter for the base factor.
         Args:
-            new_base_factor (float): New value for the base factor
+            new_base_factor (float): New value for the base factor.
+        Returns:
+            bool: True, on success.
         """
         self._base_attractivity = new_base_factor
+        return True

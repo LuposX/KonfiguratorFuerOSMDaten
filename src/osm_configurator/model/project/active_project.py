@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-from pathlib import Path
+import pathlib
 import src.osm_configurator.model.project.configuration.configuration_manager as configuration_manager_i
 import src.osm_configurator.model.project.data_visualizer as data_visualizer_i
 import src.osm_configurator.model.project.project_settings as project_settings_i
@@ -13,7 +13,7 @@ import src.osm_configurator.model.project.config_phase_enum as config_phase_enum
 
 from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exception import NotValidName
 
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.configuration.configuration_manager import ConfigurationManager
@@ -43,14 +43,14 @@ class ActiveProject:
         calls the ProjectLoader, otherwise it creates a new project.
 
         Args:
-            project_folder (pathlib.Path): This is path pointing towards the folder, where the project is saved.
+            project_folder (pathlib.Path): This is the path pointing towards the folder, where the project is saved.
             is_newly_created (bool): This argument is true if the project is newly created, otherwise false.
             application_manager (ApplicationSettings): Needed for some settings on how we calculate.
             project_name (str): How we want to name the project.
             project_description (str): The description of our project.
         """
         if project_name is not None:
-            self.project_directory: Path = Path(os.path.join(project_folder, project_name))
+            self.project_directory: Path = pathlib.Path(os.path.join(project_folder, project_name))
 
             if not project_name.isascii():
                 raise NotValidName("A Name is not allowed to have a umlaut or special characters.")
@@ -59,10 +59,13 @@ class ActiveProject:
             project_name = os.path.basename(project_folder)
 
         self._project_io_handler: ProjectIOHandler = project_io_handler_i.ProjectIOHandler(self)
-        self._configurator_manager: ConfigurationManager = configuration_manager_i.ConfigurationManager(project_folder)
-        self._calculation_manager: CalculationManager = calculation_manager_i.CalculationManager(self._configurator_manager, application_manager)
-        self._project_settings: ProjectSettings = project_settings_i.ProjectSettings(self.project_directory, project_name,
-                                                                  project_description)
+        self._configurator_manager: ConfigurationManager = \
+            configuration_manager_i.ConfigurationManager(self.project_directory)
+        self._calculation_manager: CalculationManager = \
+            calculation_manager_i.CalculationManager(self._configurator_manager, application_manager)
+        self._project_settings: ProjectSettings = project_settings_i.ProjectSettings(self.project_directory,
+                                                                                     project_name,
+                                                                                     project_description)
         self._last_step: ConfigPhase = config_phase_enum_i.ConfigPhase.DATA_CONFIG_PHASE
 
         if is_newly_created:
@@ -108,7 +111,7 @@ class ActiveProject:
         Returns:
             pathlib.Path: The path pointing towards the project folder.
         """
-        return Path(self._project_settings.get_location())
+        return pathlib.Path(self._project_settings.get_location())
 
     def get_config_manager(self) -> ConfigurationManager:
         """
@@ -163,4 +166,3 @@ class ActiveProject:
             project_saver.ProjectSaver: The project saver.
         """
         return self._project_saver
-

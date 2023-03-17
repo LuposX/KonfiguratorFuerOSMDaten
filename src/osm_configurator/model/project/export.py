@@ -2,9 +2,10 @@ from __future__ import annotations
 
 import os.path
 import pathlib
+from pathlib import Path
 import shutil
 import src.osm_configurator.model.project.active_project
-from typing import TYPE_CHECKING, Final
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from src.osm_configurator.model.project.active_project import ActiveProject
@@ -13,6 +14,22 @@ if TYPE_CHECKING:
 ZIP: str = "zip"
 CONFIGURATION: str = "configuration"
 RESULTS: str = "results"
+
+
+def _path_with_zip_to_str(path: Path) -> str:
+    """
+    This method converts a path to a str and removes the ".zip" ending.
+
+    Args:
+        path: (Path): The path which should be edited.
+
+    Returns:
+        str: The name of the zip.
+    """
+    string_version_of_path: str = str(path)
+    if string_version_of_path[-4:] == ".zip":
+        return string_version_of_path[:-4]
+    return string_version_of_path
 
 
 class Export:
@@ -40,7 +57,11 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        zip_file_name: str = self.path_with_zip_to_str(path)
+        zip_file_name: str = _path_with_zip_to_str(path)
+        project_name: str = self._active_project.get_project_settings().get_name()
+        self._active_project.get_project_settings().set_name(os.path.basename(zip_file_name))
+        self._active_project.get_project_saver().save_project()
+        self._active_project.get_project_settings().set_name(project_name)
         self._active_project.get_project_saver().save_project()
         try:
             shutil.make_archive(zip_file_name, ZIP, self._active_project.get_project_settings().get_location())
@@ -60,8 +81,9 @@ class Export:
             bool: true, if export was successful, otherwise false.
         """
         try:
-            zip_file_name: str = self.path_with_zip_to_str(path)
-            shutil.make_archive(zip_file_name, ZIP, os.path.join(self._active_project.get_project_settings().get_location(), CONFIGURATION))
+            zip_file_name: str = _path_with_zip_to_str(path)
+            shutil.make_archive(zip_file_name, ZIP,
+                                os.path.join(self._active_project.get_project_settings().get_location(), CONFIGURATION))
             return True
         except OSError:
             return False
@@ -73,14 +95,19 @@ class Export:
         calculation step in it.
 
         Args:
-            path (Path): The path where the results of the calculation shall be exported to with the name of the zip included.
+            path (Path): The path where the results of the calculation shall be exported to with the name
+                of the zip included.
 
         Returns:
             bool: true, if export was successful, otherwise false.
         """
         try:
-            zip_file_name: str = self.path_with_zip_to_str(path)
-            shutil.make_archive(zip_file_name, ZIP, os.path.join(self._active_project.get_project_settings().get_location(), RESULTS))
+            zip_file_name: str = _path_with_zip_to_str(path)
+            shutil.make_archive(
+                zip_file_name,
+                ZIP,
+                os.path.join(self._active_project.get_project_settings().get_location(), RESULTS)
+            )
             return True
         except OSError:
             return False
@@ -95,24 +122,12 @@ class Export:
         Returns:
             bool: true, if export was successful, otherwise false.
         """
-        zip_file_name: str = self.path_with_zip_to_str(path)
+        zip_file_name: str = _path_with_zip_to_str(path)
         directory, filename = os.path.split(zip_file_name)
-        print(zip_file_name)
-        return self._active_project.get_data_visualizer().create_map(self._active_project.get_config_manager()
-                                                                     .get_cut_out_configuration().get_cut_out_path(), directory, filename + ".html")
+        return self._active_project.get_data_visualizer().create_map(
+            self._active_project.get_config_manager().get_cut_out_configuration().get_cut_out_path(),
+            Path(directory),
+            filename + ".html"
+        )
 
-    def path_with_zip_to_str(self, path: Path) -> str:
-        """
-        This method converts a path to a str and removes the ".zip" ending.
-
-        Args:
-            path: (Path): The path which should be edited.
-
-        Returns:
-            str: The name of the zip.
-        """
-        string_version_of_path: str = str(path)
-        if string_version_of_path[-4:] == ".zip":
-            return string_version_of_path[:-4]
-        else:
-            return string_version_of_path
+ 

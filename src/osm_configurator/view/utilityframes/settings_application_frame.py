@@ -2,12 +2,11 @@ from __future__ import annotations
 
 import tkinter
 
-import src.osm_configurator.control.settings_controller_interface as settings_controller_i
+import src.osm_configurator.view.utility_methods as utility_methods_i
 
 # Constants
 import src.osm_configurator.view.constants.button_constants as button_constants_i
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
-import src.osm_configurator.view.constants.text_box_constants as text_constants_i
 import src.osm_configurator.view.constants.label_constants as label_constants_i
 import src.osm_configurator.view.constants.entry_constants as entry_constants_i
 
@@ -15,13 +14,20 @@ from pathlib import Path
 import customtkinter
 from tkinter import filedialog
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Final
 
 from src.osm_configurator.view.toplevelframes.top_level_frame import TopLevelFrame
 
 if TYPE_CHECKING:
     from src.osm_configurator.control.settings_controller_interface import ISettingsController
     from src.osm_configurator.view.popups.alert_pop_up import AlertPopUp
+
+# Finals
+PROJECT_DEFAULT_FOLDER_LINE_LENGTH: Final = 22
+PROJECT_DEFAULT_FOLDER_ROWS: Final = 3
+PROJECT_DEFAULT_FOLDER_DOTS: Final = True
+PROJECT_DEFAULT_FOLDER_ROWS_UNLIMITED: Final = False
+PROJECT_DEFAULT_FOLDER_WORD_BREAK: Final = False
 
 
 class SettingsApplicationFrame(TopLevelFrame):
@@ -69,7 +75,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.header.grid(row=0, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.header)
@@ -82,7 +88,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_default_header.grid(row=1, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_default_header)
@@ -93,7 +99,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_default_label.grid(row=1, column=1, padx=10,
                                      pady=10)  # Creates a read-only textbox showing the default-filepath
@@ -108,33 +114,48 @@ class SettingsApplicationFrame(TopLevelFrame):
                                     fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
                                     hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
                                     border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value
+                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                                    height=button_constants_i.ButtonConstants.BUTTON_BASE_HEIGHT_SMALL.value,
+                                    width=button_constants_i.ButtonConstants.BUTTON_BASE_WIDTH_SMALL.value
                                     )
         self.change_default_path_button.grid(row=1, column=3, padx=10,
                                              pady=10)  # button to browse for a new default folder
         self._buttons.append(self.change_default_path_button)
 
         # Setting: Number of Processes
-        self.path_process_header = \
-            customtkinter.CTkLabel(master=self,
-                                   text="Number of Processes [Multiprocessing]",
-                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
-                                   )
-        self.path_process_header.grid(row=2, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
-        self._labels.append(self.path_process_header)
+        # self.path_process_header = \
+        #     customtkinter.CTkLabel(master=self,
+        #                            text="Number of Processes\n[Multiprocessing]",
+        #                            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+        #                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+        #                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+        #                            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+        #                            )
+        # self.path_process_header.grid(row=2, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
+        # self._labels.append(self.path_process_header)
 
-        self.processes_entry: customtkinter.CTkEntry = \
-            customtkinter.CTkEntry(master=self,
-                                   corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                   fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                   text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
-                                   )
-        self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
-        self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
-        self._entries.append(self.processes_entry)
+        # self.processes_entry: customtkinter.CTkEntry = \
+        #     customtkinter.CTkEntry(master=self,
+        #                            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+        #                            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+        #                            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+        #                            height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
+        #                            )
+        # self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
+        # self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
+        # self._entries.append(self.processes_entry)
+        # # Info-Text
+        # self.process_info = \
+        #     customtkinter.CTkLabel(master=self,
+        #                            text="Warning: A high number of processes might\nlead to a high usage of the CPU.\n"
+        #                                 "Only increase, when you know what you are doing",
+        #                            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+        #                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+        #                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+        #                            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+        #                            )
+        # self.process_info.grid(row=2, column=3, columnspan=1, rowspan=1, padx=10, pady=10)
+        # self._labels.append(self.process_info)
 
         # Setting: Number of Key Recommendations
         self.path_key_recom_header = \
@@ -143,7 +164,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
                                    fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
                                    text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR.value,
+                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
                                    )
         self.path_key_recom_header.grid(row=3, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
         self._labels.append(self.path_key_recom_header)
@@ -153,6 +174,7 @@ class SettingsApplicationFrame(TopLevelFrame):
                                    corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
                                    fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
                                    text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
                                    )
         self.key_recom_entry.grid(row=3, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
         self.key_recom_entry.bind("<KeyRelease>", self.__key_recom_entry_edited)
@@ -164,15 +186,21 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         self._project_default_folder = self._settings_controller.get_project_default_folder()
 
+        project_default_folder_string = utility_methods_i.reformat_string(
+            str(self._project_default_folder),
+            PROJECT_DEFAULT_FOLDER_LINE_LENGTH, PROJECT_DEFAULT_FOLDER_ROWS,
+            PROJECT_DEFAULT_FOLDER_DOTS, PROJECT_DEFAULT_FOLDER_ROWS_UNLIMITED,
+            PROJECT_DEFAULT_FOLDER_WORD_BREAK)
+
         self.path_default_label.configure(
-            text=self._project_default_folder
+            text=project_default_folder_string
         )
 
-        self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        # self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-        self.processes_entry.delete(0, tkinter.END)
-        self.processes_entry.insert(0, self._settings_controller.get_number_of_processes())
+        # self.processes_entry.delete(0, tkinter.END)
+        # self.processes_entry.insert(0, self._settings_controller.get_number_of_processes())
 
         self.key_recom_entry.delete(0, tkinter.END)
         self.key_recom_entry.insert(0, self._settings_controller.get_number_of_key_recommendations())
@@ -184,9 +212,15 @@ class SettingsApplicationFrame(TopLevelFrame):
         Checks if the path is valid and confirms changes if so.
         If the path is not valid a popup will be shown reloading the page
         """
-        new_path = Path(self.__browse_files())
+        new_path = Path(self.__choose_path())
+
+        empty_path = Path(".")
 
         if new_path.exists():
+            # Checking if the Path is empty, if it is empty, the path won't be set
+            if new_path.__eq__(empty_path):
+                return
+
             self._project_default_folder = new_path
             self._settings_controller.set_project_default_folder(new_path)  # Updates the path
             self.path_default_label.configure(text=new_path.name)  # Updates the textbox
@@ -208,7 +242,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         else:
             self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR_INVALID.value)
 
-    def __browse_files(self) -> str:
+    def __choose_path(self) -> str:
         """
         Opens the explorer starting from the default-folder making the user browse for the searched path
         Returns:
@@ -216,7 +250,7 @@ class SettingsApplicationFrame(TopLevelFrame):
         """
         new_path = \
             filedialog.askdirectory(initialdir=str(self._project_default_folder),
-                                    title="Select a File")
+                                    title="Choose destination")
         return new_path
 
     def freeze(self):

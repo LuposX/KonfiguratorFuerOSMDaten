@@ -1,15 +1,17 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING
-
-from definitions import PROJECT_DIR
 import os
-from pathlib import Path
-
 import numpy as np
 import pandas as pd
+from pathlib import Path
+
+import sys
 
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
+
+from definitions import PROJECT_DIR
+
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from typing import List, Final
@@ -32,21 +34,29 @@ class RecommenderSystem:
         """
         self._settings = application_settings_manager
 
-    def recommend_key(self, input: str) -> List[str]:
+    def recommend_key(self, input_key_str: str) -> List[str]:
         """
         Creates recommendations based on user input
 
         Args:
-            input (str): The input from which to generate suggestions.
+            input_key_str (str): The input from which to generate suggestions.
 
 
         Returns:
-            List[str]: Returns a List of strings containing the recommendations depending on the input. If file was not found return None.
+            List[str]: Returns a List of strings containing the recommendations depending on the input.
+                If file was not found return None.
         """
         number_of_keys_to_recommend: int = int(self._settings .get_setting(
             application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_RECOMMENDATIONS))
 
-        path_to_recommender_file: Path = Path(os.path.join(PROJECT_DIR, MOST_USED_TAGS_TABLE_PATH))
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            path_to_data_file = os.path.join(os.path.dirname(sys.executable), MOST_USED_TAGS_TABLE_PATH)
+        else:
+            # The application is not frozen
+            path_to_data_file = MOST_USED_TAGS_TABLE_PATH
+
+        path_to_recommender_file: Path = Path(os.path.join(PROJECT_DIR, path_to_data_file))
         try:
             # open the file
             key_df = pd.read_csv(path_to_recommender_file)
@@ -55,7 +65,7 @@ class RecommenderSystem:
 
         # gets a series with true and false
         # an entry is true if the entry in the dataframe at that position contains the string
-        found_matches: Series = key_df[CL_KEY].str.contains(input)
+        found_matches: Series = key_df[CL_KEY].str.contains(input_key_str)
 
         # Replaces all NaN values with False.
         found_matches.replace(np.NaN, False, inplace=True)

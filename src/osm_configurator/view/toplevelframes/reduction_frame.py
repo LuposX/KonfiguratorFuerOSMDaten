@@ -4,7 +4,6 @@ from functools import partial
 
 import customtkinter
 
-import src.osm_configurator.view.states.state_manager
 import src.osm_configurator.view.constants.frame_constants as frame_constants_i
 import src.osm_configurator.view.constants.scrollbar_constants as scrollbar_constants_i
 import src.osm_configurator.view.constants.segmented_button_constants as segmented_button_constants_i
@@ -27,14 +26,14 @@ if TYPE_CHECKING:
     from src.osm_configurator.control.category_controller_interface import ICategoryController
 
 # Finals
-CATEGORY_LIST_FG_COLOR: Final = "#FFFFFF"
-CATEGORY_LIST_LABEL_COLOR: Final = "#FFFFFF"
+CATEGORY_LIST_FG_COLOR: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value
+CATEGORY_LIST_LABEL_COLOR: Final = frame_constants_i.FrameConstants.MIDDLE_FRAME_FG_COLOR.value
 ELEMENT_BORDER_DISTANCE: Final = 40
 
 CATEGORY_BUTTON_HEIGHT: Final = 42
 
-PADX: Final = 4
-PADY: Final = 4
+PAD_X: Final = 4
+PAD_Y: Final = 4
 
 
 class ReductionFrame(TopLevelFrame):
@@ -51,8 +50,10 @@ class ReductionFrame(TopLevelFrame):
         This method creates a ReductionFrame that lets the user edit the reduction of all the categories.
 
         Args:
-            state_manager (state_manager.StateManager): The frame will call the StateManager, if it wants to switch states.
-            category_controller (category_controller_interface.ICategoryController): The control the frame will call to get access to the Categories
+            state_manager (state_manager.StateManager): The frame will call the StateManager,
+                if it wants to switch states.
+            category_controller (category_controller_interface.ICategoryController): The control the frame will call
+                to get access to the Categories
         """
         # Starting with no master
         # Also setting other settings
@@ -67,13 +68,13 @@ class ReductionFrame(TopLevelFrame):
         self._category_controller: ICategoryController = category_controller
 
         self._categories: [category_i.Category] = []
-        self._selected_category: category_i.Category = None
+        self._selected_category: category_i.Category | None = None
 
         # starts unfrozen
         self._frozen: bool = False
 
         # Remembering what category was pressed last
-        self._last_pressed_category_button: customtkinter.CTkButton = None
+        self._last_pressed_category_button: customtkinter.CTkButton | None = None
 
         self._calculation_shown: bool = False
         self._default_values_shown: bool = False
@@ -85,18 +86,20 @@ class ReductionFrame(TopLevelFrame):
         self.grid_rowconfigure(1, weight=5)
 
         # Making a scrollable Frame for the Categories to be placed on
-        self._category_list_frame: customtkinter.CTkScrollableFrame = customtkinter.CTkScrollableFrame(master=self,
-                                                                                                       width=int(
-                                                                                                           frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 4 - ELEMENT_BORDER_DISTANCE),
-                                                                                                       height=int(
-                                                                                                           frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value - ELEMENT_BORDER_DISTANCE),
-                                                                                                       corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
-                                                                                                       fg_color=CATEGORY_LIST_FG_COLOR,
-                                                                                                       scrollbar_fg_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_FG_COLOR.value,
-                                                                                                       scrollbar_button_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_COLOR.value,
-                                                                                                       scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
-                                                                                                       label_text="Categories:",
-                                                                                                       label_text_color=CATEGORY_LIST_LABEL_COLOR)
+        self._category_list_frame: customtkinter.CTkScrollableFrame = customtkinter.CTkScrollableFrame(
+            master=self,
+            width=int(
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 4 - ELEMENT_BORDER_DISTANCE),
+            height=int(
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value - ELEMENT_BORDER_DISTANCE),
+            corner_radius=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_CORNER_RADIUS.value,
+            fg_color=CATEGORY_LIST_FG_COLOR,
+            scrollbar_fg_color=CATEGORY_LIST_FG_COLOR,
+            scrollbar_button_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_COLOR.value,
+            scrollbar_button_hover_color=scrollbar_constants_i.ScrollbarConstants.SCROLLBAR_BUTTON_HOVER_COLOR.value,
+            label_text="Categories:",
+            label_text_color=CATEGORY_LIST_LABEL_COLOR,
+            label_fg_color=CATEGORY_LIST_LABEL_COLOR)
         self._category_list_frame.grid(row=0, column=0, rowspan=2, columnspan=1)
 
         # The Categories displayed on the scrollable Frame
@@ -105,38 +108,52 @@ class ReductionFrame(TopLevelFrame):
 
         # The segmented Button, for choosing between calculation or reduction settings
         self._segmented_button_values: List[str] = ["Reduction", "Default Values"]
-        self._segmented_button: customtkinter.CTkSegmentedButton = customtkinter.CTkSegmentedButton(master=self,
-                                                                                                    width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
-                                                                                                                3 / 4) - ELEMENT_BORDER_DISTANCE,
-                                                                                                    height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
-                                                                                                                1 / 6) - ELEMENT_BORDER_DISTANCE,
-                                                                                                    corner_radius=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_CORNER_RADIUS.value,
-                                                                                                    fg_color=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_FG_COLOR.value,
-                                                                                                    selected_color=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_SELECTED_COLOR.value,
-                                                                                                    selected_hover_color=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_SELECTED_HOVER_COLOR.value,
-                                                                                                    unselected_color=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_UNSELECTED_COLOR.value,
-                                                                                                    unselected_hover_color=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_UNSELECTED_HOVER_COLOR.value,
-                                                                                                    text_color=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_TEXT_COLOR.value,
-                                                                                                    text_color_disabled=segmented_button_constants_i.SegmentedButtonConstants.SEGMENTED_BUTTON_TEXT_COLOR_DISABLED.value,
-                                                                                                    values=self._segmented_button_values,
-                                                                                                    dynamic_resizing=True,
-                                                                                                    command=self._segmented_button_pressed)
+        self._segmented_button: customtkinter.CTkSegmentedButton = customtkinter.CTkSegmentedButton(
+            master=self,
+            width=frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (
+                    3 / 4) - ELEMENT_BORDER_DISTANCE,
+            height=frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (
+                    1 / 6) - ELEMENT_BORDER_DISTANCE,
+            corner_radius=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_CORNER_RADIUS.value,
+            fg_color=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_FG_COLOR.value,
+            selected_color=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_SELECTED_COLOR.value,
+            selected_hover_color=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_SELECTED_HOVER_COLOR.value,
+            unselected_color=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_UNSELECTED_COLOR.value,
+            unselected_hover_color=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_UNSELECTED_HOVER_COLOR.value,
+            text_color=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_TEXT_COLOR.value,
+            text_color_disabled=segmented_button_constants_i.SegmentedButtonConstants.
+            SEGMENTED_BUTTON_TEXT_COLOR_DISABLED.value,
+            values=self._segmented_button_values,
+            dynamic_resizing=True,
+            command=self._segmented_button_pressed
+        )
         self._segmented_button.grid(row=0, column=1, rowspan=1, columnspan=1, sticky="NSEW")
 
         # Making the supFrames used under the segmented Button to edit calculation and reduction
         # They don't get set into the grid directly
-        self._reduction_calculation_frame: reduction_calculation_frame_i.ReductionCalculationFrame = reduction_calculation_frame_i.ReductionCalculationFrame(
-            self, frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (3 / 4),
-            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (5 / 6))
+        self._reduction_calculation_frame: reduction_calculation_frame_i.ReductionCalculationFrame = \
+            reduction_calculation_frame_i.ReductionCalculationFrame(
+                self,
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (3 / 4),
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (5 / 6))
 
-        self._reduction_default_value_frame: reduction_default_value_frame_i.ReductionDefaultValueFrame = reduction_default_value_frame_i.ReductionDefaultValueFrame(
-            self, frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (3 / 4),
-            frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (5 / 6),
-            self._state_manager)
+        self._reduction_default_value_frame: reduction_default_value_frame_i.ReductionDefaultValueFrame = \
+            reduction_default_value_frame_i.ReductionDefaultValueFrame(
+                self,
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value * (3 / 4),
+                frame_constants_i.FrameConstants.MIDDLE_FRAME_HEIGHT.value * (5 / 6),
+                self._state_manager)
 
     def activate(self):
         # There has no button been pressed yet
-        self._last_pressed_category_button: customtkinter.CTkButton = None
+        self._last_pressed_category_button: customtkinter.CTkButton | None = None
 
         # Getting all categories
         all_categories: [category_i.Category] = self._category_controller.get_list_of_categories()
@@ -159,31 +176,36 @@ class ReductionFrame(TopLevelFrame):
         button_id: int = 0
         active_category: category_i.Category
         for active_category in self._categories:
-            button: customtkinter.CTkButton = customtkinter.CTkButton(master=self._category_list_frame,
-                                                                      width=int(
-                                                                          frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value / 4 - ELEMENT_BORDER_DISTANCE) - ELEMENT_BORDER_DISTANCE,
-                                                                      height=CATEGORY_BUTTON_HEIGHT,
-                                                                      corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
-                                                                      border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
-                                                                      fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
-                                                                      hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
-                                                                      border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
-                                                                      text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                                                                      text=active_category.get_category_name(),
-                                                                      command=partial(self._category_button_pressed,
-                                                                                      button_id))
-            button.grid(row=button_id, column=0, rowspan=1, columnspan=1, pady=PADY, padx=PADX)
+            button: customtkinter.CTkButton = customtkinter.CTkButton(
+                master=self._category_list_frame,
+                width=int(
+                    frame_constants_i.FrameConstants.MIDDLE_FRAME_WIDTH.value
+                    / 4 - ELEMENT_BORDER_DISTANCE) - ELEMENT_BORDER_DISTANCE,
+                height=CATEGORY_BUTTON_HEIGHT,
+                corner_radius=button_constants_i.ButtonConstants.BUTTON_CORNER_RADIUS.value,
+                border_width=button_constants_i.ButtonConstants.BUTTON_BORDER_WIDTH.value,
+                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value,
+                hover_color=button_constants_i.ButtonConstants.BUTTON_HOVER_COLOR.value,
+                border_color=button_constants_i.ButtonConstants.BUTTON_BORDER_COLOR.value,
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
+                text=active_category.get_category_name(),
+                command=partial(self._category_button_pressed,
+                                button_id)
+            )
+            button.grid(row=button_id, column=0, rowspan=1, columnspan=1, pady=PAD_Y, padx=PAD_X)
             self._category_button_list.append(button)
             button_id += 1
 
         if len(self._categories) == 0:
-            self._selected_category: category_i.Category = None
+            self._selected_category: category_i.Category | None = None
         else:
             self._selected_category: category_i.Category = self._categories[0]
-            # If category 0 is selected, we also automatically select this one and disable the corrosponding button
-            self._category_button_list[0].configure(state="disabled",
-                                                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
-                                                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+            # If category 0 is selected, we also automatically select this one and disable the corresponding button
+            self._category_button_list[0].configure(
+                state="disabled",
+                text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
+                fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value
+            )
 
         # First showing the calculation frame
         self._reduction_default_value_frame.grid_remove()
@@ -217,12 +239,15 @@ class ReductionFrame(TopLevelFrame):
         button: customtkinter.CTkButton
         for button in self._category_button_list:
             button.configure(state="normal", text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR.value,
-                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value)
+                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_ACTIVE.value
+                             )
 
         # Now disabling selected button
-        self._category_button_list[button_id].configure(state="disabled",
-                                                        text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
-                                                        fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value)
+        self._category_button_list[button_id].configure(
+            state="disabled",
+            text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value,
+            fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value
+        )
 
         # Remembering that button
         self._last_pressed_category_button: customtkinter.CTkButton = self._category_button_list[button_id]
@@ -266,9 +291,11 @@ class ReductionFrame(TopLevelFrame):
 
             # Disabling the last pressed category button again!
             if self._last_pressed_category_button is not None:
-                self._last_pressed_category_button.configure(state="disabled",
-                                                             fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
-                                                             text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value)
+                self._last_pressed_category_button.configure(
+                    state="disabled",
+                    fg_color=button_constants_i.ButtonConstants.BUTTON_FG_COLOR_DISABLED.value,
+                    text_color=button_constants_i.ButtonConstants.BUTTON_TEXT_COLOR_DISABLED.value
+                )
 
             self._segmented_button.configure(state="normal")
 

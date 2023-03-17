@@ -8,6 +8,8 @@ from src_tests.definitions import TEST_DIR
 import src.osm_configurator.model.project.data_visualizer as data_visualizer_i
 import src.osm_configurator.model.project.calculation.file_deletion as file_deletion
 
+import pytest
+
 from pathlib import Path
 import os
 
@@ -22,7 +24,7 @@ class TestDataVisualizer:
 
         # read in the test geojson
         geojson_path: Path = Path(os.path.join(TEST_DIR, "data/monaco-regions.geojson"))
-        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer/"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer_map/"))
 
         # create folder for test file
         deleter: FileDeletion = file_deletion.FileDeletion()
@@ -37,7 +39,7 @@ class TestDataVisualizer:
 
         # read in the test geojson
         geojson_path: Path = Path(os.path.join(TEST_DIR, "data/invalid_data.txt"))
-        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer/"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer_map/"))
 
         # create folder for test file
         deleter: FileDeletion = file_deletion.FileDeletion()
@@ -50,7 +52,7 @@ class TestDataVisualizer:
         data_visualizer_o = data_visualizer_i.DataVisualizer()
 
         # read in data
-        data: Path = Path(os.path.join(TEST_DIR, "data/boxplot_test_data.csv"))
+        data: Path = Path(os.path.join(TEST_DIR, "data/data_visualizer/"))
         project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer/"))
 
         # create folder for test file
@@ -59,3 +61,16 @@ class TestDataVisualizer:
 
         assert data_visualizer_o.create_boxplot(data, project_path)
 
+    def test_boxplot_wrongly(self):
+        # create the data visualizer object
+        data_visualizer_o = data_visualizer_i.DataVisualizer()
+
+        # read in data
+        data: Path = Path(os.path.join(TEST_DIR, "data/data_visualizer_invalid/"))
+        project_path: Path = Path(os.path.join(TEST_DIR, "build/data_visualizer/"))
+
+        # create folder for test file
+        deleter: FileDeletion = file_deletion.FileDeletion()
+        deleter.reset_folder(project_path)
+
+        assert data_visualizer_o.create_boxplot(data, project_path) == False

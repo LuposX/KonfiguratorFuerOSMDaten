@@ -3,7 +3,8 @@ from __future__ import annotations
 import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum
 import src.osm_configurator.model.project.configuration.attractivity_attribute
 import src.osm_configurator.model.project.configuration.default_value_entry as default_value_entry
-import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum as calculation_method_of_area_enum_i
+import src.osm_configurator.model.project.configuration.calculation_method_of_area_enum \
+    as calculation_method_of_area_enum_i
 import src.osm_configurator.model.project.configuration.attribute_enum as attribute_enum_i
 
 import src.osm_configurator.model.model_constants as model_constants_i
@@ -13,13 +14,14 @@ from src.osm_configurator.model.parser.custom_exceptions.not_valid_name_Exceptio
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from typing import List, Dict, Final
+    from typing import List, Dict
     from src.osm_configurator.model.project.configuration.attribute_enum import Attribute
     from src.osm_configurator.model.project.configuration.calculation_method_of_area_enum import CalculationMethodOfArea
     from src.osm_configurator.model.project.configuration.default_value_entry import DefaultValueEntry
     from src.osm_configurator.model.project.configuration.attractivity_attribute import AttractivityAttribute
 
 EMPTY_STRING: str = ""
+
 
 class Category:
     """
@@ -42,13 +44,16 @@ class Category:
         self._whitelist: List[str] = []
         self._blacklist: List[str] = []
         self._category_name: str = category_name
-        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i.CalculationMethodOfArea.CALCULATE_BUILDING_AREA
+        self._calculation_method_of_area: CalculationMethodOfArea = calculation_method_of_area_enum_i\
+            .CalculationMethodOfArea.CALCULATE_BUILDING_AREA
         self._attractivity_attributes: List[AttractivityAttribute] = []
         self._default_value_list: List[DefaultValueEntry] = []
         self._strictly_use_default_values: bool = False
 
         # Adds DEFAULT-Tag to the tag-list
-        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG)
+        self._default_tag: DefaultValueEntry = default_value_entry.DefaultValueEntry(
+            model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG
+        )
         self._default_value_list.append(self._default_tag)
 
         self._strictly_use_default_values: bool = False
@@ -67,17 +72,25 @@ class Category:
         """
         return self._active
 
-    def activate(self):
+    def activate(self) -> bool:
         """
         Sets the active-value to True.
+
+        Returns:
+            bool: True if the category was activated, false if not.
         """
         self._active = True
+        return True
 
-    def deactivate(self):
+    def deactivate(self) -> bool:
         """
         Sets the active-value to False.
+
+        Returns:
+            bool: True if the category was deactivated, false if not.
         """
         self._active = False
+        return True
 
     def get_whitelist(self) -> List[str]:
         """
@@ -94,6 +107,9 @@ class Category:
 
         Args:
             new_whitelist (List[str]): value for the new whitelist.
+
+        Return:
+            bool: True if the whitelist was changed, false if not.
         """
         self._whitelist = new_whitelist
         return True
@@ -113,6 +129,9 @@ class Category:
 
         Args:
             new_blacklist (List[str]): new value for the blacklist.
+
+        Returns:
+            bool: True if the blacklist was changed, false if not.
         """
         self._blacklist = new_blacklist
         return True
@@ -132,6 +151,9 @@ class Category:
 
         Args:
             new_category_name (str): new value for the category_name.
+
+        Returns:
+            bool: True if the category_name was changed, false if not.
         """
         if new_category_name != "":
             self._category_name = new_category_name
@@ -204,14 +226,18 @@ class Category:
         """
         return self._strictly_use_default_values
 
-    def set_strictly_use_default_values(self, boolean: bool):
+    def set_strictly_use_default_values(self, boolean: bool) -> bool:
         """
         Setter for _strictly_use_default_values.
 
         Args:
             boolean (bool): The new value _strictly_use_default_values should be set to.
+
+        Returns:
+            bool: True when it works, otherwise false.
         """
         self._strictly_use_default_values = boolean
+        return True
 
     def get_calculation_method_of_area(self) -> CalculationMethodOfArea:
         """
@@ -222,14 +248,18 @@ class Category:
         """
         return self._calculation_method_of_area
 
-    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea):
+    def set_calculation_method_of_area(self, new_calculation_method_of_area: CalculationMethodOfArea) -> bool:
         """
         Overwrites current calculate_area with the given value.
 
         Args:
             new_calculation_method_of_area (CalculationMethodOfArea): new value that will overwrite the existing value.
+
+        Returns:
+            bool: True if the calculation method was changed, false if not.
         """
         self._calculation_method_of_area = new_calculation_method_of_area
+        return True
 
     def get_attractivity_attributes(self) -> List[AttractivityAttribute]:
         """
@@ -253,7 +283,8 @@ class Category:
         """
         if new_attractivity_attribute.get_attractivity_attribute_name() == EMPTY_STRING:
             return False
-        if new_attractivity_attribute.get_attractivity_attribute_name() not in self.get_all_attractivity_attributes_names():
+        if new_attractivity_attribute.get_attractivity_attribute_name() not in \
+                self.get_all_attractivity_attributes_names():
             self._attractivity_attributes.append(new_attractivity_attribute)
             return True
         return False
@@ -311,7 +342,8 @@ class Category:
             bool: True, if the element was removed successfully, else False.
         """
         if removed_default_value_entry in self._default_value_list:
-            if removed_default_value_entry.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+            if removed_default_value_entry.get_default_value_entry_tag() == model_constants_i\
+                    .DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
                 return False
             self._default_value_list.remove(removed_default_value_entry)
             return True
@@ -328,36 +360,45 @@ class Category:
         Returns:
             bool: True, if the change was successful, else False.
         """
-        if moved_default_value_entry not in self._default_value_list:
-            return False
-        # To make sure that "default" is always at the bottom, you cant move the second last item up
-        if self._default_value_list.index(moved_default_value_entry) <= 1:
-            return False
-        index = self._default_value_list.index(moved_default_value_entry)
-        self._default_value_list[index - 1], self._default_value_list[index] \
-            = self._default_value_list[index], self._default_value_list[index - 1]
-        return True
+        for item in self._default_value_list:
+            # Checks if the given default value is part of the list and if it is not the first element.
+            if moved_default_value_entry.get_default_value_entry_tag() == item.get_default_value_entry_tag():
+                index = self._default_value_list.index(item)
+                if index <= 1:
+                    return False
+                # Swaps the elements.
+                self._default_value_list[index - 1], self._default_value_list[index] \
+                    = self._default_value_list[index], self._default_value_list[index - 1]
+                return True
+        return False
 
     def move_default_value_entry_down(self, moved_default_value_entry: DefaultValueEntry) -> bool:
         """
         Moves an already existing default value from list one element down.
 
         Args:
-            moved_default_value_entry (default_value_entry.DefaultValueEntry): element from the list, that will be
+            moved_default_value_entry (default_value_entry.DefaultValueEntry): Element from the list that will be
             decremented by one.
 
         Returns:
             bool: True, if the change was successful, else false.
         """
-        if moved_default_value_entry not in self._default_value_list:
-            return False
-        # To make sure that "default" is always at the bottom, you cant move the last item down
-        if self._default_value_list.index(moved_default_value_entry) <= 0:
-            return False
-        index = self._default_value_list.index(moved_default_value_entry)
-        self._default_value_list[index + 1], self._default_value_list[index] \
-            = self._default_value_list[index], self._default_value_list[index + 1]
-        return True
+        for item in self._default_value_list:
+            # Checks if the given default value is part of the list and if it is not the first element.
+            if moved_default_value_entry.get_default_value_entry_tag() == item.get_default_value_entry_tag():
+                if item.get_default_value_entry_tag() == model_constants_i.DEFAULT_DEFAULT_VALUE_ENTRY_TAG:
+                    return False
+                else:
+                    # Checks if the element is the last element.
+                    index = self._default_value_list.index(item)
+                    if index == len(self._default_value_list) - 1:
+                        return False
+                    else:
+                        # Swaps the elements.
+                        self._default_value_list[index + 1], self._default_value_list[index] \
+                            = self._default_value_list[index], self._default_value_list[index + 1]
+                        return True
+        return False
 
     def get_all_attractivity_attributes_names(self) -> list[str]:
         """

@@ -10,7 +10,6 @@ from pathlib import Path
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum_i
 
 if TYPE_CHECKING:
-    from pathlib import Path
     from src.osm_configurator.model.application.application_settings_default_enum import ApplicationSettingsDefault
     from typing import Dict, Any, Final
 
@@ -30,14 +29,12 @@ class ApplicationSettings:
         Creates a new instance of the application_settings_file.
 
         Args:
-            path_to_starting_file (Path): If set that directory will be used to create the applciation settings file.
+            path_to_starting_file (Path): If set that directory will be used to create the application settings file.
         """
         # Get the path of the application
-        if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
-            # If the application is run as a bundle, the PyInstaller bootloader
-            # extends the sys module by a flag frozen=True and sets the app
-            # path into variable _MEIPASS'.
-            application_path = sys._MEIPASS
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            application_path = os.path.dirname(sys.executable)
         else:
             if path_to_starting_file is None:
                 application_path = os.path.dirname(os.path.abspath(__file__))
@@ -46,25 +43,26 @@ class ApplicationSettings:
                 application_path = path_to_starting_file
 
         # check for the application settings file.
-        self._application_settings_file: Path = None
+        self._application_settings_file: Path | None = None
         file: str
         for file in Path(application_path).iterdir():
             if os.path.basename(file) == APPLICATION_SETTINGS_FILE:
                 self._application_settings_file = Path(file)
                 break
 
-        # This mean the application_Settings file doesn't exist yet and we need to create it
+        # This mean the application_Settings file doesn't exist yet, and we need to create it
         if self._application_settings_file is None:
-            self._application_settings_file = ApplicationSettings.create_application_settings_file(application_path,
-                                                                APPLICATION_SETTINGS_FILE)
+            self._application_settings_file = \
+                ApplicationSettings.create_application_settings_file(str(application_path),
+                                                                     APPLICATION_SETTINGS_FILE)
 
     def get_setting(self, settings_enum: ApplicationSettingsDefault) -> Any:
         """
         This method gets a specific setting from the setting file.
 
         Args:
-            settings_enum (ApplicationSettingsDefault): The setting we want to get.
-            None: if it failed to read it, this could be because user used an invalid value.
+            settings_enum (ApplicationSettingsDefault): The setting we want to get. "None" if it failed to read it,
+                this could be because user used an invalid value.
 
         Returns:
             Any: The value of the setting.
@@ -75,13 +73,12 @@ class ApplicationSettings:
             if settings_enum == application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER:
                 if settings[settings_enum.get_name()] is None:
                     return None
-                else:
-                    return Path(settings[settings_enum.get_name()])
 
-            else:
-                return settings[settings_enum.get_name()]
+                return Path(settings[settings_enum.get_name()])
 
-        except:
+            return settings[settings_enum.get_name()]
+
+        except Exception:
             return None
 
     def set_setting(self, settings_enum: ApplicationSettingsDefault, setting_value: Any) -> bool:
@@ -104,12 +101,12 @@ class ApplicationSettings:
             else:
                 settings[settings_enum.get_name()] = setting_value
 
-            with open(self._application_settings_file, WRITE_MODE) as settings_file:
+            with open(self._application_settings_file, WRITE_MODE, encoding="utf-8") as settings_file:
                 json.dump(settings, settings_file)
 
             return True
 
-        except:
+        except Exception:
             return False
 
     def _load_settings_file(self) -> Dict[Any]:
@@ -119,7 +116,7 @@ class ApplicationSettings:
         Returns:
             Dict[Any]: Returns a dictionary of settings.
         """
-        with open(self._application_settings_file, READ_MODE) as settings_file:
+        with open(self._application_settings_file, READ_MODE, encoding="utf-8") as settings_file:
             return json.load(settings_file)
 
     @classmethod
@@ -132,19 +129,22 @@ class ApplicationSettings:
             application_settings_file_name (str) The name of the settings file, should have the extension '.json'.
 
         Returns:
-            Path | None: The path towards the created file, none if didnt work.
+            Path | None: The path towards the created file, none if didn't work.
         """
         settings_dict: Dict[str, Any] = {}
 
         # create the dict which we wil save later to disk
         setting: ApplicationSettingsDefault
         for setting in application_settings_enum_i.ApplicationSettingsDefault:
-            settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
+            if setting == application_settings_enum_i.ApplicationSettingsDefault.DEFAULT_PROJECT_FOLDER:
+                settings_dict.update({setting.get_name(): saving_path})
+            else:
+                settings_dict.update({setting.get_name(): setting.get_default_setting_value()})
 
         # save the dict to disk
         try:
             full_path: Path = Path(os.path.join(saving_path, application_settings_file_name))
-            with open(full_path, WRITE_MODE) as settings_file:
+            with open(full_path, WRITE_MODE, encoding="utf-8") as settings_file:
                 json.dump(settings_dict, settings_file)
 
             return full_path
