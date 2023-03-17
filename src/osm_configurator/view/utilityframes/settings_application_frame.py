@@ -123,39 +123,39 @@ class SettingsApplicationFrame(TopLevelFrame):
         self._buttons.append(self.change_default_path_button)
 
         # Setting: Number of Processes
-        self.path_process_header = \
-            customtkinter.CTkLabel(master=self,
-                                   text="Number of Processes\n[Multiprocessing]",
-                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
-                                   )
-        self.path_process_header.grid(row=2, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
-        self._labels.append(self.path_process_header)
+        # self.path_process_header = \
+        #     customtkinter.CTkLabel(master=self,
+        #                            text="Number of Processes\n[Multiprocessing]",
+        #                            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+        #                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+        #                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+        #                            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+        #                            )
+        # self.path_process_header.grid(row=2, column=0, columnspan=1, rowspan=1, padx=10, pady=10)
+        # self._labels.append(self.path_process_header)
 
-        self.processes_entry: customtkinter.CTkEntry = \
-            customtkinter.CTkEntry(master=self,
-                                   corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
-                                   fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
-                                   text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
-                                   height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
-                                   )
-        self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
-        self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
-        self._entries.append(self.processes_entry)
-        # Info-Text
-        self.process_info = \
-            customtkinter.CTkLabel(master=self,
-                                   text="Warning: A high number of processes might\nlead to a high usage of the CPU.\n"
-                                        "Only increase, when you know what you are doing",
-                                   corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
-                                   fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
-                                   text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
-                                   anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
-                                   )
-        self.process_info.grid(row=2, column=3, columnspan=1, rowspan=1, padx=10, pady=10)
-        self._labels.append(self.process_info)
+        # self.processes_entry: customtkinter.CTkEntry = \
+        #     customtkinter.CTkEntry(master=self,
+        #                            corner_radius=entry_constants_i.EntryConstants.ENTRY_CORNER_RADIUS.value,
+        #                            fg_color=entry_constants_i.EntryConstants.ENTRY_FG_COLOR.value,
+        #                            text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value,
+        #                            height=entry_constants_i.EntryConstants.ENTRY_BASE_HEIGHT_SMALL.value
+        #                            )
+        # self.processes_entry.grid(row=2, column=1, columnspan=1, rowspan=1, padx=10, pady=10)
+        # self.processes_entry.bind("<KeyRelease>", self.__processes_entry_edited)
+        # self._entries.append(self.processes_entry)
+        # # Info-Text
+        # self.process_info = \
+        #     customtkinter.CTkLabel(master=self,
+        #                            text="Warning: A high number of processes might\nlead to a high usage of the CPU.\n"
+        #                                 "Only increase, when you know what you are doing",
+        #                            corner_radius=label_constants_i.LabelConstants.LABEL_CONSTANTS_CORNER_RADIUS.value,
+        #                            fg_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_FG_COLOR.value,
+        #                            text_color=label_constants_i.LabelConstants.LABEL_CONSTANTS_TEXT_COLOR.value,
+        #                            anchor=label_constants_i.LabelConstants.LABEL_CONSTANTS_ANCHOR_CENTER.value,
+        #                            )
+        # self.process_info.grid(row=2, column=3, columnspan=1, rowspan=1, padx=10, pady=10)
+        # self._labels.append(self.process_info)
 
         # Setting: Number of Key Recommendations
         self.path_key_recom_header = \
@@ -196,11 +196,11 @@ class SettingsApplicationFrame(TopLevelFrame):
             text=project_default_folder_string
         )
 
-        self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
+        # self.processes_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
         self.key_recom_entry.configure(text_color=entry_constants_i.EntryConstants.ENTRY_TEXT_COLOR.value)
 
-        self.processes_entry.delete(0, tkinter.END)
-        self.processes_entry.insert(0, self._settings_controller.get_number_of_processes())
+        # self.processes_entry.delete(0, tkinter.END)
+        # self.processes_entry.insert(0, self._settings_controller.get_number_of_processes())
 
         self.key_recom_entry.delete(0, tkinter.END)
         self.key_recom_entry.insert(0, self._settings_controller.get_number_of_key_recommendations())
