@@ -65,6 +65,8 @@ class MainWindow(customtkinter.CTk):
         super().__init__()
         self.title(main_window_constants_i.MainWindowConstants.WINDOW_TITLE.value)
 
+        self._calculation_controller = calculation_controller
+
         # Selecting the primary Monitor to get accurate location for centering the window
         primary_monitor: Monitor | None = None
         monitor: Monitor
@@ -192,6 +194,11 @@ class MainWindow(customtkinter.CTk):
         return True
 
     def _window_closed(self):
+        # try to cancel the controller
+        try:
+            self._calculation_controller.cancel_calculations()
+        except Exception:
+            pass
         self.quit()
         self.destroy()
         sys.exit()
