@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
+import sys
+
 import src.osm_configurator.model.application.application_settings_default_enum as application_settings_enum
 
 from definitions import PROJECT_DIR
@@ -47,7 +49,14 @@ class RecommenderSystem:
         number_of_keys_to_recommend: int = int(self._settings .get_setting(
             application_settings_enum.ApplicationSettingsDefault.NUMBER_OF_RECOMMENDATIONS))
 
-        path_to_recommender_file: Path = Path(os.path.join(PROJECT_DIR, MOST_USED_TAGS_TABLE_PATH))
+        if getattr(sys, "frozen", False):
+            # The application is frozen
+            path_to_data_file = os.path.join(os.path.dirname(sys.executable), MOST_USED_TAGS_TABLE_PATH)
+        else:
+            # The application is not frozen
+            path_to_data_file = MOST_USED_TAGS_TABLE_PATH
+
+        path_to_recommender_file: Path = Path(os.path.join(PROJECT_DIR, path_to_data_file))
         try:
             # open the file
             key_df = pd.read_csv(path_to_recommender_file)
