@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import sys
+
 import customtkinter
 
 import screeninfo
@@ -190,4 +192,6 @@ class MainWindow(customtkinter.CTk):
         return True
 
     def _window_closed(self):
+        self.quit()
         self.destroy()
+        sys.exit()

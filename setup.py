@@ -57,7 +57,8 @@ setup(
     executables=[
         Executable("src/osm_configurator/control/application_controller.py",
                    base=base,
-                   targetName="configurator_for_osm_data.exe"
+                   targetName="configurator_for_osm_data.exe",
+                   icon="icon_for_project.ico"
                    )
     ]
 )
